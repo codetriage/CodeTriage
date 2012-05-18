@@ -1,0 +1,19 @@
+
+<div class="clearfix">
+   <%= f.label :email, t("activerecord.attributes.user.email", :default => "Email"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :email, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :zip, t("activerecord.attributes.user.zip", :default => "Zip"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :zip, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <button class="btn primary" type="submit">Save</button> or
+	<%= link_to "Cancel", users_path %>
+</div>

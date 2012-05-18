@@ -1,0 +1,24 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: example_development
+  pool: 5
+  host: localhost
+  # username: root
+
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: example_test
+  pool: 5
+  host: localhost
+  # username: root
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: example_production
+  pool: 5
+  host: localhost
+  # username: root

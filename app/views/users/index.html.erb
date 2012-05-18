@@ -1,0 +1,30 @@
+<h1>Users</h1>
+<table class="table table-striped">
+ <thead>
+  <tr>
+    <th>ID</th>
+        <th>
+      <%= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) %>
+    </th>
+        <th>Created at</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| -%>
+   <tr>
+    <td><%= user.id %></td>
+        <td><%= link_to user.email, user_path(user) %>
+    </td>
+        <td><%= user.created_at %></td>
+    <td>
+      <%= link_to "Show", user_path(user) %>
+      <%= link_to "Edit", edit_user_path(user) %>
+      <%= link_to "Destroy", user_path(user), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+    </td>
+    </tr>
+    <% end -%>
+   </tbody>
+</table>
+
+<%= link_to "New", new_user_path, :class => 'btn btn-primary' %>

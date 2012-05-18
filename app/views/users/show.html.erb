@@ -1,0 +1,9 @@
+
+<label class="label"><%= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) %>:</label>
+<p><%= @user.email %></p>
+
+<div class="form-actions">
+<%= link_to "Back", users_path, :class => 'btn'  %>
+<%= link_to "Edit", edit_user_path(@user), :class => 'btn' %>
+<%= link_to "Delete", user_path(@user), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn' %>
+</div>

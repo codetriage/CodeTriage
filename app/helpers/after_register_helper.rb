@@ -1,0 +1,2 @@
+module AfterRegisterHelper
+end

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>example</title>
+
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+
+    <script src="http://heroku.github.com/template-app-bootstrap/jquery-1.7.1.min.js"></script>
+    <script src="http://heroku.github.com/template-app-bootstrap/jquery.replacetext.min.js"></script>
+
+    <!--
+      IMPORTANT:
+      This is Heroku specific styling. Remove to customize.
+    -->
+    <link href="http://heroku.github.com/template-app-bootstrap/heroku.css" rel="stylesheet">
+    <!-- /// -->
+
+    <!--
+      IMPORTANT:
+      To do the replacement  example for the real name application
+    -->
+    <script src="http://heroku.github.com/template-app-bootstrap/heroku.js"></script>
+    <!-- /// -->
+
+
+  </head>
+
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="/" class="brand">example</a>
+          <!--
+            IMPORTANT:
+            This is Heroku specific markup. Remove to customize.
+          -->
+          <a href="/" class="brand" id="heroku">by <strong>heroku</strong></a>
+          <!-- /// -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="getting-started">
+      <div class="row">
+        <div class="span8 offset2">
+          <div class="page-header">
+
+          </div>
+              <% [:notice, :error, :alert].each do |level| %>
+                <% unless flash[level].blank? %>
+                  <div data-alert="alert" class="alert alert-<%= flash_class(level) %> fade in">
+                    <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    <%= content_tag :p, flash[level] %>
+                  </div>
+                <% end %>
+              <% end %>
+              <%= yield %>
+        </div>
+      </div>
+    </div>
+    <%= javascript_include_tag "application" %>
+    <%= yield :js %>
+
+    <!-- google analytics -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2989055-1']);
+      _gaq.push(['_setDomainName', '.heroku.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
+
