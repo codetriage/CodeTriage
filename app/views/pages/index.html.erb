@@ -5,6 +5,8 @@
     Welcome, to get started with Opro first <%= link_to 'sign up', new_user_registration_path %> and then head over to the built in <%= link_to 'quick start guide', oauth_doc_path(:quick_start) %>.
   </p>
 
+
+
 <h2>Why Sign up?</h2>
 <p>Once you sign up, you can create a fully functioning OAuth key for your user. Without a user account this demo is pretty much non functional</p>
 
@@ -27,3 +29,15 @@
   </p>
   <hr />
 <%- end -%>
+
+
+\ No newline at end of file
++<h2>Example</h2>
++
++
++<% if current_user %>
++  You are signed in as <%= "@#{current_user.github}" %>
++<% else %>
++  <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
++<% end %>
++  <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>

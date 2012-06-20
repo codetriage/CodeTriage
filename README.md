@@ -43,6 +43,16 @@ Start your app
   $ foreman start
 ```
 
+## Github
+
+If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications)
+
+And then add the credentials to your .env file:
+
+    GITHUB_APP_ID=68b19basdfasdff808c725
+    GITHUB_APP_SECRET=8efasdfdsa5a5b0dca92bc298d4ae9
+
+
 
 ## Flow
 
