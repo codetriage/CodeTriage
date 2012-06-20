@@ -5,13 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token
 
   has_many :products
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = signed_in_resource || User.where(:github => auth.info.nickname).first
-    params = { :github   => auth.info.nickname }
+    params = { :github              => auth.info.nickname,
+               :github_access_token => auth.credentials.token }
     if user
       user.update_attributes(params)
     else

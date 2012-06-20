@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120518091140) do
+ActiveRecord::Schema.define(:version => 20120620000230) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(:version => 20120518091140) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "opro_access_grants", :force => true do |t|
+  create_table "opro_auth_grants", :force => true do |t|
     t.string   "code"
     t.string   "access_token"
     t.string   "refresh_token"
+    t.text     "permissions"
     t.datetime "access_token_expires_at"
     t.integer  "user_id"
     t.integer  "application_id"
@@ -42,13 +43,14 @@ ActiveRecord::Schema.define(:version => 20120518091140) do
     t.datetime "updated_at",              :null => false
   end
 
-  create_table "opro_client_applications", :force => true do |t|
+  create_table "opro_client_apps", :force => true do |t|
     t.string   "name"
     t.string   "app_id"
     t.string   "app_secret"
+    t.text     "permissions"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "repo_subscriptions", :force => true do |t|
@@ -80,19 +82,13 @@ ActiveRecord::Schema.define(:version => 20120518091140) do
     t.datetime "updated_at",                             :null => false
     t.string   "zip"
     t.string   "phone_number"
-    t.boolean  "twitter"
+    t.string   "twitter"
+    t.string   "github"
+    t.string   "github_access_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["github"], :name => "index_users_on_github", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
-  create_table "votes", :force => true do |t|
-    t.string   "user_id",    :limit => 50
-    t.integer  "charity_id"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-  end
-
-  add_index "votes", ["user_id"], :name => "unique_votes_user_id", :unique => true
 
 end

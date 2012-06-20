@@ -11,6 +11,8 @@ gem 'resque'
 
 gem 'sextant'
 
+gem 'unicorn'
+
 gem 'omniauth-github'
 
 gem 'quiet_assets', :group => :development
