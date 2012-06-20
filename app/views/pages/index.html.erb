@@ -29,3 +29,15 @@
   </p>
   <hr />
 <%- end -%>
+
+
+\ No newline at end of file
++<h2>Example</h2>
++
++
++<% if current_user %>
++  You are signed in as <%= "@#{current_user.github}" %>
++<% else %>
++  <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
++<% end %>
++  <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>

@@ -9,6 +9,12 @@ gem 'pg'
 
 gem 'resque'
 
+gem 'sextant'
+
+gem 'omniauth-github'
+
+gem 'quiet_assets', :group => :development
+
 
 gem 'will_paginate'
 
