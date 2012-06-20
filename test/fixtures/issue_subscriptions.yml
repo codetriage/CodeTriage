@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_name: MyString
+  repo_name: MyString
+  triage_random: false
+  triage_stale: false
+  issue_limit: 1
+
+two:
+  user_name: MyString
+  repo_name: MyString
+  triage_random: false
+  triage_stale: false
+  issue_limit: 1

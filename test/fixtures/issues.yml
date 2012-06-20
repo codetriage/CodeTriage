@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comment_count: 1
+  url: MyString
+  last_touched_at: 2012-05-18 16:37:45
+  number: 1
+
+two:
+  comment_count: 1
+  url: MyString
+  last_touched_at: 2012-05-18 16:37:45
+  number: 1

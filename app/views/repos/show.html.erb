@@ -1,0 +1,7 @@
+<h1>Repo: <%= @repo.username_repo %></h1>
+
+<p>
+	When you volunteer to triage a repo, you'll receive an email each day with a link to an open issue that needs to be triaged.
+
+	<%= button_to 'Triage', repo_subscriptions_path, :class => 'btn btn-primary'%>
+</p>

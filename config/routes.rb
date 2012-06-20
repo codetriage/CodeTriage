@@ -1,3 +1,6 @@
+require 'resque/server'
+
+
 Example::Application.routes.draw do
 
   devise_for  :users
@@ -7,9 +10,10 @@ Example::Application.routes.draw do
   resources   :after_register
 
   resources   :users
-  resources   :products
-  resources   :hstore_queries
+  resources   :repos
+  resources   :repo_subscriptions
 
+  mount Resque::Server.new, :at => "/resque"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

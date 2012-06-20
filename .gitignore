@@ -17,3 +17,6 @@
 
 .DS_Store
 .rvmrc
+
+
+.env

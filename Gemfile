@@ -7,6 +7,11 @@ gem 'rails', '3.2.2'
 
 gem 'pg'
 
+gem 'resque'
+
+
+gem 'will_paginate'
+
 gem 'httparty'
 
 # Gems used only for assets and not required
