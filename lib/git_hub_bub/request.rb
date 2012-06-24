@@ -7,6 +7,7 @@ module GitHubBub
     def self.fetch(url, input_options = {})
       options = {}
       options[:query] = input_options
+      url = "/#{url}" unless url =~ /^\//
       response    = self.get(url, options)
       GitHubBub::Response.create(response)
     end

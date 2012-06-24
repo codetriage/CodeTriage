@@ -1,7 +1,34 @@
 <h1>Repo: <%= @repo.username_repo %></h1>
 
-<p>
-	When you volunteer to triage a repo, you'll receive an email each day with a link to an open issue that needs to be triaged.
+<ul>
+  <li><%= link_to @repo.github_url, @repo.github_url %></li>
+</ul>
+<hr />
 
-	<%= button_to 'Triage', repo_subscriptions_path, :class => 'btn btn-primary'%>
+<h2>Help Triage Issues!</h2>
+<p>
+	When you volunteer to triage a issues, you'll receive an email each day with a link to an open issue that needs to be triaged in this project. You'll also receive instructions on how to triage issues.
 </p>
+
+
+
+	<%= button_to "I Want to Triage: #{@repo.username_repo}", repo_subscriptions_path(:repo_id => @repo.id), :class => 'btn btn-primary' %>
+</p>
+
+<hr />
+<h2>Open Issues in <%= @repo.username_repo %></h2>
+<div>
+  <div clas="page_info">
+    <%= page_entries_info @issues %>
+  </div>
+  <%= will_paginate @issues, :container => false %>
+</div>
+<br />
+  <ul>
+    <% @issues.each do |issue| %>
+      <li>
+        <%= link_to issue.title, issue.url %>
+      </li>
+    <% end %>
+  </ul
+<hr />

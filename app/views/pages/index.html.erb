@@ -1,12 +1,23 @@
-<h2>Triage With Resque</h2>
+<h2>Help Triage Github Issues With Resque</h2>
 
-
-<h2>Example</h2>
 
 
 <% if current_user %>
-  You are signed in as <%= "@#{current_user.github}" %>
+  You are signed in as <%= "@#{current_user.github}"  %> from Github
 <% else %>
+  <%= content_tag :h2, "Sign In" %>
   <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
 <% end %>
-<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
+
+
+
+
+<hr />
+<p>
+  <%= link_to "View All Repos", repos_path, :class => 'btn btn-primary' %>
+</p>
+
+<hr />
+<p>
+  <%= link_to "View All Repos You are Triaging", repo_subscriptions_path, :class => 'btn btn-primary' %>
+</p>

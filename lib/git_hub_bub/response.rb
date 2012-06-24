@@ -1,14 +1,30 @@
+require 'json'
+require 'uri'
+require 'cgi'
+
 module GitHubBub
   class Response < HTTParty::Response
 
      def self.create(response)
        response = self.new(response.request, response.response, response.parsed_response)
-       response.body = JSON.parse(response.body)
        response
+     end
+
+     def json_body
+      ::JSON.parse(self.body)
      end
 
      def pagination
        @pagination ||= parse_pagination
+     end
+
+     def parsed_response
+      response.body.inspect
+     end
+
+     def inspect
+      inspect_id = "%x" % (object_id * 2)
+      %(#<#{self.class}:0x#{inspect_id}, @response=#{response.inspect}, @headers=#{headers.inspect}>)
      end
 
      def next_url
@@ -31,13 +47,13 @@ module GitHubBub
      end
 
      def page_number_from_url(url)
-       query = URI.parse(url).query
-       CGI.parse(query)["page"].first.to_i
+       query = ::URI.parse(url).query
+       ::CGI.parse(query)["page"].first.to_i
      end
 
      def parse_pagination
-       self.headers['link'].split(',').each_with_object({}) do |element, hash|
-         key   = element[/rel='(.*)'/, 1]
+       self.headers['link'].split(',').each_with_object({})do |element, hash|
+         key   = element[/rel=["'](.*)['"]/, 1]
          value = element[/<(.*)>/, 1]
          hash["#{key}_url"] = value
        end

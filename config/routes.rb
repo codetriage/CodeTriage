@@ -2,8 +2,10 @@ require 'resque/server'
 
 
 Example::Application.routes.draw do
+  match "users/sign_in" => redirect('/')
 
   devise_for  :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+
 
   root        :to => "pages#index"
 

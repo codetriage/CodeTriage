@@ -30,10 +30,15 @@ Then create a database and run your migrations
 ````
 
 
-Add your github credentials for local development
+If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications)
+
+And then add the credentials to your .env file:
+
 
 ```shell
-  $ echo GITHUB_KEY=foo >> .env
+  $ echo GITHUB_APP_ID=foo >> .env
+  $ echo GITHUB_APP_SECRET=bar >> .env
+
 ```
 
 
@@ -42,15 +47,6 @@ Start your app
 ``` shell
   $ foreman start
 ```
-
-## Github
-
-If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications)
-
-And then add the credentials to your .env file:
-
-    GITHUB_APP_ID=68b19basdfasdff808c725
-    GITHUB_APP_SECRET=8efasdfdsa5a5b0dca92bc298d4ae9
 
 
 

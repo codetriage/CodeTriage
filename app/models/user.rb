@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token
 
-  has_many :products
+  has_many :repo_subscriptions
+  has_many :repos, :through => :repo_subscriptions
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = signed_in_resource || User.where(:github => auth.info.nickname).first

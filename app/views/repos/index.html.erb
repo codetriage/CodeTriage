@@ -1,7 +1,13 @@
+<h2>Subscribe To a Repo on Github</h2>
+
 <ul>
 	<% @repos.each do |repo| %>
 	  <li>
 	  	<%= link_to "#{repo.user_name}/#{repo.name}", repo %>
 	  </li>
 	<% end %>
-</ul
+</ul>
+
+<%= will_paginate @repos %>
+
+<%= link_to "Add a Repo", new_repo_path, :class => 'btn btn-primary' %>
