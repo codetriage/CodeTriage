@@ -20,6 +20,10 @@ Example::Application.routes.draw do
 
   mount Resque::Server.new, :at => "/resque"
 
+  if Rails.env.development?
+    mount UserMailer::Preview => 'mail_view'
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

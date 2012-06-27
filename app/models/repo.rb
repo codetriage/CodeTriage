@@ -1,7 +1,7 @@
 class Repo < ActiveRecord::Base
 
   validate :github_url_exists, :on => :create
-  after_create :run_populate_issues
+  after_create :populate_issues!
 
   validates :name, :user_name, :presence => true
 
@@ -36,11 +36,14 @@ class Repo < ActiveRecord::Base
     "#{user_name}/#{self.name}"
   end
 
-  def to_params
+  def populate_issues!
+    Resque.enqueue(PopulateIssues, self.id)
   end
 
-  def run_populate_issues
-    Resque.enqueue(PopulateIssues, self.id)
+  def self.queue_populate_open_issues!
+    find_each do |repo|
+      repo.populate_multi_issues!(:state => 'open')
+    end
   end
 
 
@@ -50,33 +53,34 @@ class Repo < ActiveRecord::Base
   class PopulateIssues
     @queue = :populate_issues
 
-
     def self.perform(repo_id)
       repo = Repo.find(repo_id.to_i)
       repo.populate_all_open_isues
     end
   end
 
-    def populate_issue(page = 1)
-    response = GitHubBub::Request.fetch(api_issues_path, :page => page, :sort => 'comments', :direction => 'desc')
-    issues   = response.json_body
-    issues.each do |issue|
-      puts "Issue: number: #{issue['number']}, updated_at: #{issue['updated_at']}"
-      issue_record = Issue.where(:number => issue['number']).first || Issue.create(:number => issue['number'], :repo => self)
-      issue_record.update_attributes(:title      => issue['title'],
-                                     :url        => issue['url'],
-                                     :updated_at => issue['updated_at'])
+  def populate_issue(options = {})
+    page  = options[:page]||1
+    state = options[:state]||"open"
+    response = GitHubBub::Request.fetch(api_issues_path, :state     => state,
+                                                         :page      => page,
+                                                         :sort      => 'comments',
+                                                         :direction => 'desc')
+    response.json_body.each do |issue_hash|
+      puts "Issue: number: #{issue_hash['number']}, updated_at: #{issue_hash['updated_at']}"
+      Issue.find_or_create_from_hash_and_repo(issue_hash, self)
     end
     response
   end
 
 
-    def populate_all_open_isues
-    page = 1
-    response = populate_issue
+  def populate_multi_issues!(options = {})
+    options[:state] ||= "open"
+    options[:page]  ||= 1
+    response = populate_issue(options)
     until response.last_page?
-      page += 1
-      response = populate_issue(page)
+      options[:page ] += 1
+      response = populate_issue(options)
     end
   end
 

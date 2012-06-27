@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622235822) do
+ActiveRecord::Schema.define(:version => 20120627213051) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
     t.integer  "issue_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "repo_subscription_id"
   end
 
   create_table "issues", :force => true do |t|
@@ -31,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20120622235822) do
     t.datetime "updated_at",      :null => false
     t.integer  "repo_id"
     t.string   "title"
+    t.string   "html_url"
+    t.string   "state"
   end
 
   create_table "opro_auth_grants", :force => true do |t|
@@ -58,10 +61,11 @@ ActiveRecord::Schema.define(:version => 20120622235822) do
   create_table "repo_subscriptions", :force => true do |t|
     t.string   "user_name"
     t.string   "repo_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.integer  "user_id"
     t.integer  "repo_id"
+    t.datetime "last_sent_at"
   end
 
   create_table "repos", :force => true do |t|
