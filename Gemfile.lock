@@ -31,6 +31,8 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
+    clockwork (0.4.0)
+      tzinfo
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -73,6 +75,7 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_view (1.0.2)
     mime-types (1.18)
     multi_json (1.3.5)
     multi_xml (0.5.1)
@@ -176,10 +179,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  clockwork
   coffee-rails (~> 3.2.1)
   devise (~> 2.0.4)
   httparty
   jquery-rails
+  mail_view (~> 1.0.2)
   omniauth-github
   pg
   quiet_assets
