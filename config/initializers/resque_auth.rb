@@ -6,7 +6,7 @@ class Authentication
 
   def call(env)
     user = env['warden'].user
-    raise "Cannot access protected resource as: #{user}" unless user.try(:admin?)
+    raise "Cannot access protected resource as: #{user.inspect}" unless user.try(:admin?)
     @app.call(env)
   end
 end
