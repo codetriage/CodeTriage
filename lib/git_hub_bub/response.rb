@@ -52,7 +52,8 @@ module GitHubBub
      end
 
      def parse_pagination
-       self.headers['link'].split(',').each_with_object({})do |element, hash|
+       header_links = self.headers['link'] ||  ""
+       header_links.split(',').each_with_object({})do |element, hash|
          key   = element[/rel=["'](.*)['"]/, 1]
          value = element[/<(.*)>/, 1]
          hash["#{key}_url"] = value
