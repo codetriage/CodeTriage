@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627213051) do
+ActiveRecord::Schema.define(:version => 20120707182259) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120627213051) do
     t.string   "twitter"
     t.string   "github"
     t.string   "github_access_token"
+    t.boolean  "admin"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
