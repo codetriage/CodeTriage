@@ -68,7 +68,7 @@ class Repo < ActiveRecord::Base
                                                          :direction => 'desc')
     response.json_body.each do |issue_hash|
       puts "Issue: number: #{issue_hash['number']}, updated_at: #{issue_hash['updated_at']}"
-      Issue.find_or_create_from_hash_and_repo(issue_hash, self)
+      Issue.find_or_create_from_hash!(issue_hash, self)
     end
     response
   end
