@@ -10,9 +10,16 @@
 	When you volunteer to triage a issues, you'll receive an email each day with a link to an open issue that needs to be triaged in this project. You'll also receive instructions on how to triage issues.
 </p>
 
-
-
+<% if current_user.blank? || current_user.not_yet_subscribed_to?(@repo) %>
 	<%= button_to "I Want to Triage: #{@repo.username_repo}", repo_subscriptions_path(:repo_id => @repo.id), :class => 'btn btn-primary' %>
+<% else %>
+<p>
+  You are already subscribed to <%= @repo.username_repo %>
+  <%= button_to "Stop Triaging: #{@repo.username_repo}", repo_subscription_path(current_user.sub_from_repo(@repo)), :class => 'btn btn-danger', :method => :delete, :confirm => "Are you sure?" %>
+
+</p>
+
+<% end %>
 </p>
 
 <hr />

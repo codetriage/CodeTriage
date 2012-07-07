@@ -20,6 +20,10 @@ class Repo < ActiveRecord::Base
     File.join("http://github.com", username_repo)
   end
 
+  def issues_url
+    File.join(github_url, 'issues')
+  end
+
   def path
     username_repo
   end

@@ -2,9 +2,12 @@
 <ul>
   <% @repos_subs.each do |sub| %>
   <li style="margin-top:10px">
-    <%= button_to 'X', sub, :method => :delete, :class => 'btn btn-danger', :confirm => "Are you sure you want to quit triaging '#{sub.repo.path}'?" %>
+    <%= link_to 'X', sub, :method => :delete, :class => 'btn btn-danger', :confirm => "Are you sure you want to quit triaging '#{sub.repo.path}'?" %>
 
-    <%= link_to sub.repo.github_url, sub.repo.github_url %>
+    <%= link_to sub.repo.github_url, sub.repo %> |
+    <%= link_to "Github Issues", sub.repo.issues_url %>
+
+
   </li>
   <% end %>
 </ul>

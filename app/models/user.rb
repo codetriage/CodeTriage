@@ -10,6 +10,19 @@ class User < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :repos, :through => :repo_subscriptions
 
+
+  def not_yet_subscribed_to?(repo)
+    !subscribed_to?(repo)
+  end
+
+  def subscribed_to?(repo)
+    sub_from_repo(repo).present?
+  end
+
+  def sub_from_repo(repo)
+    self.repo_subscriptions.where(:repo_id => repo.id).first
+  end
+
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = signed_in_resource || User.where(:github => auth.info.nickname).first
     params = { :github              => auth.info.nickname,

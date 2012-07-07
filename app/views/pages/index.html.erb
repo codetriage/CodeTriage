@@ -1,11 +1,9 @@
 <h2>Help Triage Github Issues With Resque</h2>
 
-
-
 <% if current_user %>
   You are signed in as <%= "@#{current_user.github}"  %> from Github
 <% else %>
-  <%= content_tag :h2, "Sign In" %>
+  <%= content_tag :h2, "You are not signed in!!" %>
   <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
 <% end %>
 
