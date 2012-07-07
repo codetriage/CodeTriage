@@ -29,7 +29,7 @@ class RepoSubscription < ActiveRecord::Base
 
   def issue_for_triage!
     assigned_issue_ids = assigned_issues.map(&:id) || []
-    repo.issues.where(:state => 'open').where("id not in ?", assigned_issue_ids).all.sample
+    repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
   end
 
   def assign_issue!
