@@ -9,7 +9,7 @@ class RepoSubscriptionsController < ApplicationController
     repo = Repo.find(params[:repo_id])
 		@repo_subscription = RepoSubscription.create(:repo => repo, :user => current_user)
     if @repo_subscription.save
-      render :index
+      redirect_to repo_subscriptions_path
     else
       flash[:error] = "Something went wront"
       redirect_to :back
