@@ -28,14 +28,14 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def issue_for_triage!
-    assigned_issue_ids = assigned_issues.map(&:id) + [-1]
+    assigned_issue_ids = assigned_issues.map(&:issue_id) + [-1]
     repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
   end
 
   def assign_issue!
     return false if wait?
     issue = issue_for_triage!
-    issue_assignments.create(:issue => issue) unless issue.blank?
+    issue_assignments.create(:issue_id => issue.id) unless issue.blank?
     return issue
   ensure
     self.update_attributes :last_sent_at => Time.now unless wait?
