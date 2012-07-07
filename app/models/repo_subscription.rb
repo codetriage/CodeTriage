@@ -18,7 +18,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def self.queue_triage_emails!
-    find_each(:conditions => ["last_sent_at < ?", 24.hours.ago]) do |repo_sub|
+    find_each(:conditions => ["last_sent_at is null or last_sent_at < ?", 24.hours.ago]) do |repo_sub|
       repo_sub.send_triage_email!
     end
   end
@@ -28,7 +28,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def issue_for_triage!
-    assigned_issue_ids = assigned_issues.map(&:id)
+    assigned_issue_ids = assigned_issues.map(&:id) || []
     repo.issues.where(:state => 'open').where("id not in ?", assigned_issue_ids).all.sample
   end
 
