@@ -15,8 +15,6 @@ gem 'unicorn'
 
 gem 'omniauth-github'
 
-gem 'clockwork'
-
 gem 'quiet_assets', :group => :development
 
 gem 'mail_view',          '~> 1.0.2'
