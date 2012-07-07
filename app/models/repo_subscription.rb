@@ -18,7 +18,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def self.queue_triage_emails!
-    find_each(:conditions => ["last_sent_at is null or last_sent_at < ?", 24.hours.ago]) do |repo_sub|
+    find_each(:conditions => ["last_sent_at is null or last_sent_at < ?", 23.hours.ago]) do |repo_sub|
       repo_sub.send_triage_email!
     end
   end
@@ -28,7 +28,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def issue_for_triage!
-    assigned_issue_ids = assigned_issues.map(&:id) || []
+    assigned_issue_ids = assigned_issues.map(&:id) || [-1]
     repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
   end
 
@@ -36,6 +36,7 @@ class RepoSubscription < ActiveRecord::Base
     return false if wait?
     issue = issue_for_triage!
     issue_assignments.create(:issue => issue) unless issue.blank?
+    return issue
   ensure
     self.update_attributes :last_sent_at => Time.now unless wait?
   end
@@ -45,7 +46,7 @@ class RepoSubscription < ActiveRecord::Base
     @queue = :send_triage_email
     def self.perform(id)
       repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id)
-      repo_sub.assign_issue!
+      issue = repo_sub.assign_issue!
       UserMailer.send_triage(:repo => repo_sub.repo, :user => repo_sub.user, :issue => issue).deliver
     end
   end
