@@ -36,28 +36,6 @@ ActiveRecord::Schema.define(:version => 20120707182259) do
     t.string   "state"
   end
 
-  create_table "opro_auth_grants", :force => true do |t|
-    t.string   "code"
-    t.string   "access_token"
-    t.string   "refresh_token"
-    t.text     "permissions"
-    t.datetime "access_token_expires_at"
-    t.integer  "user_id"
-    t.integer  "application_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-  end
-
-  create_table "opro_client_apps", :force => true do |t|
-    t.string   "name"
-    t.string   "app_id"
-    t.string   "app_secret"
-    t.text     "permissions"
-    t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "repo_subscriptions", :force => true do |t|
     t.string   "user_name"
     t.string   "repo_name"
@@ -90,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20120707182259) do
     t.datetime "updated_at",                             :null => false
     t.string   "zip"
     t.string   "phone_number"
-    t.string   "twitter"
+    t.boolean  "twitter"
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
