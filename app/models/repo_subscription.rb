@@ -45,8 +45,8 @@ class RepoSubscription < ActiveRecord::Base
   class SendTriageEmail
     @queue = :send_triage_email
     def self.perform(id)
-      repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id)
-      issue = repo_sub.assign_issue!
+      repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id).first
+      issue    = repo_sub.assign_issue!
       UserMailer.send_triage(:repo => repo_sub.repo, :user => repo_sub.user, :issue => issue).deliver
     end
   end
