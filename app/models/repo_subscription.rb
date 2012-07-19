@@ -4,6 +4,8 @@ class RepoSubscription < ActiveRecord::Base
   belongs_to :user
   has_many   :issue_assignments
 
+  has_many   :issues, :through => :issue_assignments
+
   def ready_for_next?
     return true if last_sent_at.blank?
     last_sent_at < 24.hours.ago
@@ -23,12 +25,8 @@ class RepoSubscription < ActiveRecord::Base
     end
   end
 
-  def assigned_issues
-    issue_assignments.includes(:issue).map {|assignment| assignment.issue }
-  end
-
   def issue_for_triage!
-    assigned_issue_ids = assigned_issues.map(&:issue_id) + [-1]
+    assigned_issue_ids = self.issues.map(&:id) + [-1]
     repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
   end
 
