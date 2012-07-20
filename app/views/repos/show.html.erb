@@ -1,7 +1,8 @@
-<h1>Repo: <%= @repo.username_repo %></h1>
+<h1><%= @repo.username_repo %></h1>
+
 
 <ul>
-  <li><%= link_to @repo.github_url, @repo.github_url %></li>
+  <li><%= link_to @repo.github_url, @repo.github_url %> </li>
 </ul>
 <hr />
 
@@ -23,7 +24,7 @@
 </p>
 
 <hr />
-<h2>Open Issues in <%= @repo.username_repo %></h2>
+<h2><%= @issues.total_entries %> open issues in <%= @repo.username_repo %></h2>
 <div>
   <div clas="page_info">
     <%= page_entries_info @issues %>

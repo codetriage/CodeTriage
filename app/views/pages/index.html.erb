@@ -2,6 +2,10 @@
 
 <% if current_user %>
   You are signed in as <%= "@#{current_user.github}"  %> from Github
+  <hr />
+  <p>
+    <%= link_to "View All Repos You are Triaging", repo_subscriptions_path, :class => 'btn btn-primary' %>
+  </p>
 <% else %>
   <%= content_tag :h2, "You are not signed in!!" %>
   <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
@@ -9,13 +13,19 @@
 
 
 
+<hr />
+
+<h2>Repos With the most Issues<h2>
+
+<ul>
+  <% @repos.each do |repo| %>
+    <li>
+      <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <%= repo.issues.count %>
+    </li>
+  <% end %>
+</ul>
 
 <hr />
 <p>
   <%= link_to "View All Repos", repos_path, :class => 'btn btn-primary' %>
-</p>
-
-<hr />
-<p>
-  <%= link_to "View All Repos You are Triaging", repo_subscriptions_path, :class => 'btn btn-primary' %>
 </p>

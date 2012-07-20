@@ -16,3 +16,7 @@ border: 1px solid
 #DDD;
 border-left-width: 0;
 }
+
+a.btn:visited {
+  color:white;
+}
