@@ -9,6 +9,12 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
 
+  def self.order_by_issue_count
+    repos_group_query  = Repo.column_names.map  {|x| "repos.#{x}"}.join(',')
+    issues_group_query = Issue.column_names.map {|x| "issues.#{x}"}.join(',')
+    self.joins(:issues).group('issues.id', issues_group_query, repos_group_query).order('COUNT(issues) DESC').includes(:issues)
+  end
+
   def github_url_exists
     response = GitHubBub::Request.fetch(api_issues_path, :page => 1, :sort => 'comments', :direction => 'desc')
     if response.code != 200

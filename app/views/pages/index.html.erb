@@ -17,14 +17,15 @@
 
 <h2>Repos With the most Issues<h2>
 
-<ul>
-  <% @repos.each do |repo| %>
-    <li>
-      <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <%= repo.issues.count %>
-    </li>
-  <% end %>
-</ul>
-
+<% cache('repos_with_the_most_issues', :expires_in => 5.minutes) do %>
+  <ul>
+    <% @repos.first(50).each do |repo| %>
+      <li>
+        <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <%= repo.issues.count %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 <hr />
 <p>
   <%= link_to "View All Repos", repos_path, :class => 'btn btn-primary' %>
