@@ -10,8 +10,10 @@ class ReposController < ApplicationController
 	end
 
   def show
-    @repo   = Repo.where(:id => params[:id]).includes(:issues).first
-    @issues = @repo.issues.page(params[:page]).per_page(params[:per_page]||20)
+    @repo     = Repo.where(:id => params[:id]).includes(:issues).first
+    @repo_sub = current_user.repo_subscriptions.where(:repo_id => @repo.id).includes(:issues).first if current_user
+
+    @issues   = @repo.issues.page(params[:page]).per_page(params[:per_page]||20)
   end
 
 	def create

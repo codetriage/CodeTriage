@@ -16,6 +16,7 @@ Example::Application.routes.draw do
 
   resources   :users
   resources   :repos
+  resources   :issue_assignments
   resources   :repo_subscriptions
 
   mount Resque::Server.new, :at => "/resque"

@@ -9,9 +9,10 @@ class RepoSubscriptionsController < ApplicationController
     repo = Repo.find(params[:repo_id])
 		@repo_subscription = RepoSubscription.create(:repo => repo, :user => current_user)
     if @repo_subscription.save
+      @repo_subscription.send_triage_email!
       redirect_to repo_subscriptions_path
     else
-      flash[:error] = "Something went wront"
+      flash[:error] = "Something went wrong"
       redirect_to :back
     end
 	end

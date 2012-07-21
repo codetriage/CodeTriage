@@ -25,15 +25,17 @@ class RepoSubscription < ActiveRecord::Base
     end
   end
 
-  def issue_for_triage!
+  def get_issue_for_triage
     assigned_issue_ids = self.issues.map(&:id) + [-1]
     repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
   end
 
-  def assign_issue!
-    return false if wait?
-    issue = issue_for_triage!
-    issue_assignments.create(:issue_id => issue.id) unless issue.blank?
+  def assign_issue!(send_email = true)
+    issue = get_issue_for_triage
+    unless issue.blank?
+      issue_assignments.create(:issue_id => issue.id)
+      UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver if send_email == true
+    end
     return issue
   ensure
     self.update_attributes :last_sent_at => Time.now unless wait?
@@ -44,8 +46,7 @@ class RepoSubscription < ActiveRecord::Base
     @queue = :send_triage_email
     def self.perform(id)
       repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id).first
-      issue    = repo_sub.assign_issue!
-      UserMailer.send_triage(:repo => repo_sub.repo, :user => repo_sub.user, :issue => issue).deliver
+      repo_sub.assign_issue!
     end
   end
 
