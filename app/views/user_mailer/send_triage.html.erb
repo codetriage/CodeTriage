@@ -1,7 +1,7 @@
 Hello <%= @user.github %>,
 
 <p>
-You signed up to help triage Github issues on <%= link_to @repo.username_repo, @repo.github_url %>. We think that's pretty awesome.
+You signed up to help triage Github issues on <%= link_to @repo.username_repo, @repo.github_url %>. That's pretty awesome.
 </p>
 
 <h2>Issue To Triage in <%= @repo.username_repo %></h2>
@@ -29,7 +29,7 @@ If the issue hasn't been update in awhile, or if no one has commented consider t
 </p>
 
 <p>
-If you can reproduce the issue or you believe it is a good pull request, add a comment and say why you think that is. Try to stay positive while triaging issues, ask questions before you :-1: something. If you do decide to :+1: or :-1: an issue, leave a comment as to why you feel that way. Issues are for social coding, if you help someone make better issues, you're helping the community.
+If you can reproduce the issue or you believe it is a good pull request, add a comment and say why you think that is. Try to stay positive while triaging issues, ask questions before you :-1: something. If you do decide to :+1: or :-1: on an issue, leave a comment as to why you feel that way. Issues are for social coding, if you help someone make better issues, you're helping the community.
 </p>
 
 <p>
@@ -40,3 +40,13 @@ If the issue goes stale, leave a comment asking if it is still a problem. If you
 
 
 <p>Go forth and make the world a better place</p>
+
+<p>Sincerely,</p>
+<a href='http://twitter.com/schneems'>@schneems</p>
+
+<hr />
+
+<p><%= link_to "Unsubscribe from triaging: #{@repo.username_repo}", @repo %></p>
+
+<p><%= link_to "Send me another issue from: #{@repo.username_repo}", @repo %></p>
+

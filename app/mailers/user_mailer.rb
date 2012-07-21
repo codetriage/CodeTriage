@@ -16,7 +16,7 @@ class UserMailer < ActionMailer::Base
       user  = User.last
       repo  = Repo.last
       issue = Issue.open.last
-      UserMailer.send_triage(:user => user, :repo => repo, :issue => issue)
+      ::UserMailer.send_triage(:user => user, :repo => repo, :issue => issue)
     end
   end
 
