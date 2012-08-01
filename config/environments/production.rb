@@ -16,7 +16,7 @@ Example::Application.configure do
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
-  config.action_mailer.default_url_options = { :host => "http://issuetriage.heroku.com" }
+  config.action_mailer.default_url_options = { :host => "issuetriage.heroku.com" }
 
 
   # Generate digests for assets URLs
