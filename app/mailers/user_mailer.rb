@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "noreply@issuetriage.heroku.com"
+  default from: "Issue Triage <noreply@issuetriage.heroku.com>"
 
 
   def send_triage(options = {})
