@@ -7,7 +7,20 @@
     <%= link_to "View All Repos You are Triaging", repo_subscriptions_path, :class => 'btn btn-primary' %>
   </p>
 <% else %>
-  <%= content_tag :h2, "You are not signed in!!" %>
+  <p>
+    Sign up to receive a different open issue in your inbox every day from any github repo.
+  </p>
+    <ol>
+      <li>Sign up via Github</li>
+      <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", "http://issuetriage.herokuapp.com/repos/5" %></li>
+      <li>Click the "Subscribe" button</li>
+      <li>Make the world a better place by triaging issues</li>
+    </ol>
+
+  <p>
+    The email will come with triaging instructions on how to help with the project. Unsubscribe any time.
+  </p>
+
   <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
 <% end %>
 
@@ -15,21 +28,32 @@
 
 <hr />
 
-<h2>Repos With the most Issues<h2>
+<h2>Repos With the most Issues</h2>
 <p>
   (Updated every 24 hours)
 </p>
+
 
 <% cache('repos_with_the_most_issues', :expires_in => 5.minutes) do %>
   <ul>
     <% @repos.first(50).each do |repo| %>
       <li>
-        <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <%= repo.issues.where(:state => 'open').count %>
+        <% if current_user %>
+          <%= link_to "Subscribe", repo_subscriptions_path(:repo_id => repo.id), :class => 'btn btn-primary', :method => 'post' %>
+        <% end %>
+
+        <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <strong><%= repo.issues.where(:state => 'open').count %></strong>
       </li>
+      <br />
     <% end %>
   </ul>
 <% end %>
 <hr />
 <p>
-  <%= link_to "View All Repos", repos_path, :class => 'btn btn-primary' %>
+  <%= link_to "View All Repos", repos_path, :class => 'btn btn-success' %>
+  <%= link_to "Add a Repo", new_repo_path, :class => 'btn btn-success' %>
+
+  <%# link_to "How does issue triage work?", page_path(:how), :class => 'btn btn-success ' %>
+
 </p>
+

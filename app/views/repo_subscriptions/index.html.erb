@@ -3,7 +3,6 @@
   <% @repos_subs.each do |sub| %>
   <li style="margin-top:10px">
 
-
     <%= link_to sub.repo.github_url, sub.repo %> |
     <%= link_to "Github Issues", sub.repo.issues_url %>
     <%= link_to 'Send new issue', issue_assignments_path(:id => sub.id), :class => 'btn btn-primary', :method => :post %>
