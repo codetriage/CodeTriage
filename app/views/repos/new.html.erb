@@ -1,10 +1,28 @@
 <%= form_for @repo do |f| %>
 
   http://github.com/
-  <%= f.text_field :user_name, :placeholder => 'user name' %>/
-  <%= f.text_field :name, :placeholder => 'repo name' %>
-
+  <%= f.text_field :user_name, :placeholder => 'user name e.g. "schneems" ' %> /
+  <%= f.text_field :name, :placeholder => 'repo name e.g. "sextant" ' %>
+  <br />
+  <br />
   <p>
-    <%= f.submit :class => 'btn btn-primary' %>
+    Preview: <a href='http://github.com' id='repoPreview' target='_blank'>http://github.com/</a>
+  </p>
+  <p>
+    <%= f.submit :value => "Add Repo", :class => 'btn btn-primary', :id => 'createRepo' %>
   </p>
 <% end %>
+
+
+<%= content_for :js do %>
+  <script type='text/javascript'>
+    $('#repo_user_name, #repo_name').on('keyup', function(){
+      var user_name = $('#repo_user_name').val();
+      var repo_name = $('#repo_name').val();
+      var github = "http://github.com/" + user_name + "/" + repo_name
+      $('#repoPreview').html(github)
+      $('#repoPreview').attr('href', github)
+    } )
+  </script>
+<% end %>
+
