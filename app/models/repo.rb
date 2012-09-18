@@ -89,7 +89,7 @@ class Repo < ActiveRecord::Base
     options[:page]  ||= 1
     response = populate_issue(options)
     until response.last_page?
-      options[:page ] += 1
+      options[:page] += 1
       response = populate_issue(options)
     end
   end
