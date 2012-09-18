@@ -43,7 +43,7 @@ module GitHubBub
        return true if next_url.nil?
        last_page_number = page_number_from_url(last_url)
        next_page_number = page_number_from_url(next_url)
-       next_page_number >= last_page_number
+       return next_page_number > last_page_number
      end
 
      def page_number_from_url(url)
