@@ -14,8 +14,8 @@ class Issue < ActiveRecord::Base
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
-    issue =   Issue.where(:number => issue_hash['number']).first
-    issue ||= Issue.create(:number => issue_hash['number'], :repo => repo)
+    issue =   Issue.where(:number  => issue_hash['number'], :repo_id  => repo.id).first
+    issue ||= Issue.create(:number => issue_hash['number'], :repo     => repo)
     issue.update_attributes( :title           => issue_hash['title'],
                              :url             => issue_hash['url'],
                              :last_touched_at => DateTime.parse(issue_hash['updated_at']),
