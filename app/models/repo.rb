@@ -52,7 +52,7 @@ class Repo < ActiveRecord::Base
 
   def self.queue_populate_open_issues!
     find_each do |repo|
-      repo.populate_multi_issues!(:state => 'open')
+      repo.populate_issues!
     end
   end
 
@@ -65,7 +65,7 @@ class Repo < ActiveRecord::Base
 
     def self.perform(repo_id)
       repo = Repo.find(repo_id.to_i)
-      repo.populate_all_open_isues
+      repo.populate_multi_issues!(:state => 'open')
     end
   end
 
