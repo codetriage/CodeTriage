@@ -37,10 +37,6 @@
   <ul>
     <% @repos.first(50).each do |repo| %>
       <li>
-        <% if current_user %>
-          <%= link_to "Subscribe", repo_subscriptions_path(:repo_id => repo.id), :class => 'btn btn-primary', :method => 'post' %>
-        <% end %>
-
         <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <strong><%= repo.issues.where(:state => 'open').count %></strong>
       </li>
       <br />
