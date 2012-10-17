@@ -1,3 +1,7 @@
+<% @repo.errors.full_messages.each do |msg| %>
+  <li><%= msg %></li>
+<% end %>
+
 <%= form_for @repo do |f| %>
 
   http://github.com/
