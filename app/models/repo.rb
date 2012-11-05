@@ -23,7 +23,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url
-    File.join("http://github.com", username_repo)
+    File.join("https://github.com", username_repo)
   end
 
   def issues_url
