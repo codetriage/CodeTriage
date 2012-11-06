@@ -17,7 +17,8 @@ class ReposController < ApplicationController
   end
 
 	def create
-    @repo = Repo.create(params[:repo])
+    @repo =   Repo.where(name: params[:repo][:name].downcase, user_name: params[:repo][:user_name].downcase).first
+    @repo ||= Repo.create(params[:repo])
 
     if @repo.save
       redirect_to @repo
