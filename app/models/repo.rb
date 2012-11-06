@@ -64,7 +64,6 @@ class Repo < ActiveRecord::Base
     end
   end
 
-
   # This class is used by resque,
   # by default anything you put into the perform method
   # will be called for each object in the redis queue
