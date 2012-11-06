@@ -10,7 +10,7 @@ class Issue < ActiveRecord::Base
   end
 
   def public_url
-    "http://github.com/repos/#{repo.user_name}/#{repo.name}/issues/#{number}"
+    "https://github.com/repos/#{repo.user_name}/#{repo.name}/issues/#{number}"
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
