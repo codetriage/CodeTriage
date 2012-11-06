@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Resque Triage</title>
+    <title>Issue Triage</title>
 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a href="/" class="brand">Resque Triage</a>
+          <a href="/" class="brand">Issue Triage</a>
           <div class='nav-collapse'>
             <ul class='nav'>
               <%- if current_user.present? -%>
@@ -46,7 +46,7 @@
               <%- else -%>
                 <li><%= link_to 'Sign Up', new_user_registration_path %></li>
               <%- end -%>
-                <li><%= link_to "Fork on Github", "github.com/heroku/issue_triage" %></li>
+                <li><%= link_to "Fork on Github", "https://github.com/heroku/issue_triage" %></li>
             </ul>
           </div>
           <!--

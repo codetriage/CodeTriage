@@ -31,7 +31,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url
-    File.join("http://github.com", username_repo)
+    File.join("https://github.com", username_repo)
   end
 
   def issues_url
@@ -63,7 +63,6 @@ class Repo < ActiveRecord::Base
       repo.populate_issues!
     end
   end
-
 
   # This class is used by resque,
   # by default anything you put into the perform method
