@@ -21,6 +21,9 @@ class ReposController < ApplicationController
     @repo ||= Repo.create(params[:repo])
 
     if @repo.save
+      repo_sub = RepoSubscription.create(:repo => @repo, :user => current_user)
+      repo_sub.send_triage_email!
+
       redirect_to @repo
     else
       render :new
