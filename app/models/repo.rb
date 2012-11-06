@@ -4,6 +4,7 @@ class Repo < ActiveRecord::Base
   after_create :populate_issues!
 
   validates :name, :user_name, :presence => true
+  validates :name, :uniqueness => {:scope => :user_name}
 
   has_many :issues
   has_many :repo_subscriptions
