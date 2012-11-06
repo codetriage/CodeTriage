@@ -3,14 +3,14 @@ class Repo < ActiveRecord::Base
   validate :github_url_exists, :on => :create
   after_create :populate_issues!
 
+  before_validation :downcase_name
+
   validates :name, :user_name, :presence => true
   validates :name, :uniqueness => {:scope => :user_name}
 
   has_many :issues
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
-
-  before_save :downcase_name
 
   def to_param
     "#{user_name}/#{name}"
