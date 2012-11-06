@@ -1,5 +1,15 @@
 class Issue < ActiveRecord::Base
-  belongs_to :repo
+  belongs_to :repo, counter_cache: true
+
+  after_save    :update_counter_cache
+  after_destroy :update_counter_cache
+
+  def update_counter_cache
+    return true unless self.state_changed? # only continue if state has changed
+    return true if repo.blank?
+    self.repo.issues_count = Issue.where(state: 'open', repo_id: self.repo_id).count
+    self.repo.save
+  end
 
   def self.open
     where(:state => 'open')

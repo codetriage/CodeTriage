@@ -51,6 +51,16 @@ Start your app
 ```
 
 
+## Tests
+
+$ psql
+> CREATE ROLE postgres WITH SUPERUSER CREATEDB;
+> \q
+
+
+$ rake db:create RAILS_ENV=test
+$ rake db:migrate RAILS_ENV=test
+
 
 ## Flow
 
