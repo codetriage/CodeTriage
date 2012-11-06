@@ -8,6 +8,7 @@ module GitHubBub
       options = {}
       options[:query] = input_options
       url = "/#{url}" unless url =~ /^\//
+      # self.headers["Authorization"] = "token #{User.random_github_token}"
       response    = self.get(url, options)
       GitHubBub::Response.create(response)
     end
