@@ -16,4 +16,17 @@ class IssueTest < ActiveSupport::TestCase
     repo.reload
     assert_equal 0, repo.issues_count
   end
+
+  test "permitted state values" do
+    issue = Issue.new
+
+    issue.state = "open"
+    assert issue.valid?
+
+    issue.state = "closed"
+    assert issue.valid?
+
+    issue.state = "bogus"
+    refute issue.valid?
+  end
 end
