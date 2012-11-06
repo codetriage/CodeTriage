@@ -13,7 +13,7 @@ test:
   database: triage_test
   pool: 5
   host: localhost
-  # username: root
+  username: postgres
 
 production:
   adapter: postgresql
