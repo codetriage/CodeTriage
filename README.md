@@ -1,6 +1,8 @@
 
 ## Issue Triage
 
+[![Build Status](https://secure.travis-ci.org/heroku/issue_triage.png)](http://travis-ci.org/heroku/issue_triage)
+
 ## What is Triage?
 
 When patients come into the emergency room, they don't see a doctor immediately, they go to a triage nurse. The nurse knows enough about medical problems to properly assign that person to the doctor that can help them the quickest. Since the doctors are the most limited resource, triage nurses help to assign them as effectively as possible. Triage in open source means looking at open issues and adding useful information for maintainers. While you might not maintain a repository, you can help those who do by diagnosing issues, reviewing pull requests.
@@ -55,13 +57,6 @@ Start your app
 - A user subscribes to a repo
 - Consume API: Once a day, find all the repos that haven't been updated in 24 hours, produce issue subscription
 - Issue Assigning [repo]: Find all users subscribed to that repo that haven't been assigned an issue in 24 hours, pick a random issue that the user is not a part of and send them an email.
-
-
-
-
-- Once A day, go through each user
-
-
 
 
 ## Contact
