@@ -1,5 +1,5 @@
 
-## Resque Triage
+## Issue Triage
 
 ## What is Triage?
 
@@ -15,7 +15,7 @@ Triage is an important part of open source. It can be difficult to keep up with 
 You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Resque to grab issues from Github's API, we then use another background task to assign users who subscribe to a repository one issue each day.
 
 
-## Run Resque Triage
+## Run Issue Triage
 
 ```shell
   $ gem install bundler
