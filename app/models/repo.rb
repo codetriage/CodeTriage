@@ -10,6 +10,13 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
 
+  before_save :downcase_name
+
+  def downcase_name
+    self.name      = self.name.downcase
+    self.user_name = self.user_name.downcase
+  end
+
   def self.order_by_issue_count
     repos_group_query  = Repo.column_names.map  {|x| "repos.#{x}"}.join(',')
     issues_group_query = Issue.column_names.map {|x| "issues.#{x}"}.join(',')
