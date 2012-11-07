@@ -12,7 +12,7 @@
   </p>
     <ol>
       <li>Sign up via Github</li>
-      <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", "http://issuetriage.herokuapp.com/repos/36" %></li>
+      <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", Repo.where(name: "rails", user_name: "rails").first %></li>
       <li>Click the "Subscribe" button</li>
       <li>Make the world a better place by triaging issues</li>
     </ol>
