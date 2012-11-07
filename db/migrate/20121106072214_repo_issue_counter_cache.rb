@@ -4,8 +4,7 @@ class RepoIssueCounterCache < ActiveRecord::Migration
 
     Repo.reset_column_information
     Repo.find_each do |repo|
-      repo.issues_count = repo.issues.where(state: 'open').count
-      repo.save
+      Repo.update_counters(repo.id, issues_count: repo.issues.where(state: 'open').count)
     end
   end
 
