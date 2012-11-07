@@ -15,7 +15,7 @@ Example::Application.routes.draw do
   resources   :after_register
 
   resources   :users
-  resources   :repos
+
   resources   :issue_assignments
   resources   :repo_subscriptions
 
@@ -81,5 +81,11 @@ Example::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+  # scope   "/repos" do
+  mount_sextant if Rails.env.development?
 
+  resources :repos, except: :show
+  resources :repos, :path => '', only: :show do
+    get "/:user_name/:name" => "repos#show"
+  end
 end

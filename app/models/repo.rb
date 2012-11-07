@@ -12,6 +12,10 @@ class Repo < ActiveRecord::Base
 
   before_save :downcase_name
 
+  def to_param
+    "#{user_name}/#{name}"
+  end
+
   def downcase_name
     self.name      = self.name.downcase
     self.user_name = self.user_name.downcase
