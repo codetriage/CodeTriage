@@ -18,9 +18,7 @@ class Repo < ActiveRecord::Base
   end
 
   def self.order_by_issue_count
-    repos_group_query  = Repo.column_names.map  {|x| "repos.#{x}"}.join(',')
-    issues_group_query = Issue.column_names.map {|x| "issues.#{x}"}.join(',')
-    self.joins(:issues).where(:issues => {:state => 'open'}).group('issues.id', issues_group_query, repos_group_query).order('COUNT(issues) DESC').includes(:issues)
+    self.order("issues_count DESC")
   end
 
   def github_url_exists
