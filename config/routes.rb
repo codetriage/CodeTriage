@@ -85,7 +85,6 @@ Example::Application.routes.draw do
   mount_sextant if Rails.env.development?
 
   resources :repos, except: :show
-  resources :repos, :path => '', only: :show do
-    get "/:user_name/:name" => "repos#show"
-  end
+
+  get "/:user_name(/:name)" => "repos#show", as: :repo
 end
