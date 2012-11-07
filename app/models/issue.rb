@@ -1,4 +1,9 @@
 class Issue < ActiveRecord::Base
+  OPEN = "open"
+  CLOSED = "closed"
+
+  validates :state, :inclusion => { :in => [OPEN, CLOSED] }
+
   belongs_to :repo, counter_cache: true
 
   after_save    :update_counter_cache
@@ -12,11 +17,11 @@ class Issue < ActiveRecord::Base
   end
 
   def self.open
-    where(:state => 'open')
+    where(:state => OPEN)
   end
 
   def self.closed
-    where(:state => 'closed')
+    where(:state => CLOSED)
   end
 
   def public_url
@@ -36,7 +41,7 @@ class Issue < ActiveRecord::Base
 
 
   def self.queue_mark_old_as_closed!
-    find_each(:conditions => ["state = 'open' and updated_at < ?", 24.hours.ago]) do |issue|
+    find_each(:conditions => ["state = ? and updated_at < ?", OPEN, 24.hours.ago]) do |issue|
       Resque.enqueue(MarkClosed, issue.id)
     end
   end
