@@ -40,7 +40,6 @@ And then add the credentials to your .env file:
 ```shell
   $ echo GITHUB_APP_ID=foo >> .env
   $ echo GITHUB_APP_SECRET=bar >> .env
-
 ```
 
 
@@ -53,14 +52,16 @@ Start your app
 
 ## Tests
 
+```shell
 $ psql
 > CREATE ROLE postgres WITH SUPERUSER CREATEDB;
 > \q
+```
 
-
+```shell
 $ rake db:create RAILS_ENV=test
 $ rake db:migrate RAILS_ENV=test
-
+```
 
 ## Flow
 
