@@ -17,10 +17,7 @@ gem 'unicorn'
 
 gem 'omniauth-github'
 
-gem 'quiet_assets', :group => :development
-
 gem 'mail_view',          '~> 1.0.2'
-
 
 gem 'will_paginate'
 
@@ -30,6 +27,15 @@ gem 'thin'
 
 gem 'dalli'
 
+gem 'quiet_assets', :group => :development
+
+group :test do
+  gem 'capybara'
+  # Not essential but helpful for save_and_open_page
+  gem 'launchy'
+  gem 'webmock'
+  gem 'vcr'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

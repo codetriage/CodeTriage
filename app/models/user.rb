@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
       user.update_attributes(params)
     else
       params = params.merge(:password => Devise.friendly_token[0,20],
-                            :name     => auth.extra.raw_info.name,
+                            # TODO do we need name?  Doesn't actually exist yet
+                            # :name     => auth.extra.raw_info.name,
                             :email    => auth.info.email)
       user = User.create(params)
     end
