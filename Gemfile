@@ -19,6 +19,14 @@ gem 'httparty'
 gem 'thin'
 gem 'dalli'
 
+group :test do
+  gem 'capybara'
+  # Not essential but helpful for save_and_open_page
+  gem 'launchy'
+  gem 'webmock'
+  gem 'vcr'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
