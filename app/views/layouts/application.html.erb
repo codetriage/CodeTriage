@@ -42,7 +42,7 @@
           <div class='nav-collapse'>
             <ul class='nav'>
               <%- if current_user.present? -%>
-                <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+                <li><%= link_to "Sign Out (#{current_user.github})", destroy_user_session_path, :method => :delete %></li>
               <%- else -%>
                 <li><%= link_to 'Sign Up', new_user_registration_path %></li>
               <%- end -%>
