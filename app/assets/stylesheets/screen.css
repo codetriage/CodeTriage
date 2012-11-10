@@ -2,7 +2,6 @@
   display: none;
 }
 
-
 .underline {
   text-decoration: underline;
 }
@@ -19,4 +18,8 @@ border-left-width: 0;
 
 a.btn:visited {
   color:white;
+}
+
+.navbar .nav img {
+  max-height: 40px;
 }
