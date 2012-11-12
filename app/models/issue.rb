@@ -1,5 +1,5 @@
 class Issue < ActiveRecord::Base
-  OPEN = "open"
+  OPEN   = "open"
   CLOSED = "closed"
 
   validates :state, :inclusion => { :in => [OPEN, CLOSED] }
