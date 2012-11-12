@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :through => :repo_subscriptions
   has_many :issues,            :through => :issue_assignments
 
-
   def not_yet_subscribed_to?(repo)
     !subscribed_to?(repo)
   end
