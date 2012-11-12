@@ -13,6 +13,7 @@ class Issue < ActiveRecord::Base
     return true unless self.state_changed? # only continue if state has changed
     return true if repo.blank?
     self.repo.force_issues_count_sync!
+    true
   end
 
   def self.closed
