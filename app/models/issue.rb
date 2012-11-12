@@ -22,6 +22,13 @@ class Issue < ActiveRecord::Base
 
   def self.closed
     where(:state => CLOSED)
+
+  def closed?
+    state == CLOSED
+  end
+
+  def open?
+    state == OPEN
   end
 
   def public_url
