@@ -15,7 +15,7 @@ class UserMailer < ActionMailer::Base
     def send_triage
       user  = User.last
       repo  = Repo.last
-      issue = Issue.where(state: "open").last
+      issue = Issue.where(state: "open").where("number is not null").last
       ::UserMailer.send_triage(:user => user, :repo => repo, :issue => issue)
     end
   end
