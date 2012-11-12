@@ -20,10 +20,6 @@ class Issue < ActiveRecord::Base
     self.repo.force_issues_count_sync!
   end
 
-  def self.open
-    where(:state => OPEN)
-  end
-
   def self.closed
     where(state: CLOSED)
   end
