@@ -12,8 +12,11 @@ class Issue < ActiveRecord::Base
   def update_counter_cache
     return true unless self.state_changed? # only continue if state has changed
     return true if repo.blank?
-    self.repo.issues_count = Issue.where(state: 'open', repo_id: self.repo_id).count
-    self.repo.save
+    if open?
+      Repo.increment_counter(:issues_count, self.repo.id)
+    elsif closed?
+      Repo.decrement_counter(:issues_count, self.repo.id)
+    end
   end
 
   def self.open
