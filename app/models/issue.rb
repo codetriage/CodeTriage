@@ -4,7 +4,7 @@ class Issue < ActiveRecord::Base
 
   validates :state, :inclusion => { :in => [OPEN, CLOSED] }
 
-  belongs_to :repo, counter_cache: true
+  belongs_to :repo
 
   after_save    :update_counter_cache
   after_destroy :update_counter_cache
