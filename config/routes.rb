@@ -2,7 +2,8 @@ require 'resque/server'
 
 
 Example::Application.routes.draw do
-  match "users/sign_in" => redirect('/')
+  match "users/sign_in" => redirect('/users/auth/github')
+  match "users/sign_up" => redirect('/users/auth/github')
 
   devise_for  :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
