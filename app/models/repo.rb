@@ -12,6 +12,20 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
 
+
+  # pulls out number of issues divided by number of subscribers
+  def self.order_by_need
+     joins(:repo_subscriptions).order("issues_count::float/COUNT(repo_subscriptions.repo_id) DESC").group("repos.id")
+  end
+
+  def self.not_in(*ids)
+    where("repos.id not in (?)", ids)
+  end
+
+  def self.rand
+    order("random()")
+  end
+
   def force_issues_count_sync!
      self.update_attributes(issues_count: self.issues.where(state: "open").count)
   end

@@ -13,6 +13,15 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :through => :repo_subscriptions
   has_many :issues,            :through => :issue_assignments
 
+  # users that are not subscribed to any repos
+  def self.inactive
+    joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
+  end
+
+  def enqueue_inactive_email
+    Resque.enqueue(InactiveEmail, self.id)
+  end
+
   def not_yet_subscribed_to?(repo)
     !subscribed_to?(repo)
   end
@@ -39,4 +48,15 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  class InactiveEmail
+    @queue = :inactive_email
+
+    def self.perform(user_id)
+      user = User.find(user_id.to_i)
+      return false if user.repo_subscriptions.present?
+      UserMailer.poke_inactive(user)
+    end
+  end
+
 end
