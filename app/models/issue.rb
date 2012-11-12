@@ -21,7 +21,8 @@ class Issue < ActiveRecord::Base
   end
 
   def self.closed
-    where(:state => CLOSED)
+    where(state: CLOSED)
+  end
 
   def closed?
     state == CLOSED
