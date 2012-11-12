@@ -4,6 +4,9 @@ class IssueTest < ActiveSupport::TestCase
   test "issue counter cache" do
     repo     = Repo.create(:user_name => 'rails', :name => 'rails')
 
+    repo.reload
+    assert_equal 0, repo.issues_count
+
     repo.issues.create(:title           => "Foo Bar",
                        :url             => "http://schneems.com",
                        :last_touched_at => 2.days.ago,
