@@ -12,6 +12,10 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
 
+  def force_issues_count_sync!
+     self.update_attributes(issues_count: self.issues.where(state: "open").count)
+  end
+
   def to_param
     "#{user_name}/#{name}"
   end
