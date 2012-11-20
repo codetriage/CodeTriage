@@ -1,9 +1,9 @@
 <h2>Subscribe To a Repo on Github</h2>
 
-<ul>
+<ul class="unstyled">
 	<% @repos.each do |repo| %>
 	  <li>
-	  	<%= link_to "#{repo.user_name}/#{repo.name}", repo %>
+      <%= link_to "#{repo.user_name}/#{repo.name}", repo %> <span class="label label-info"><%= repo.issues_count %> issues</span>
 	  </li>
 	<% end %>
 </ul>
