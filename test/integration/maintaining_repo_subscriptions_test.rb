@@ -12,14 +12,14 @@ class MaintainingRepoSubscriptionsTest < ActionController::IntegrationTest
 
   test "subscribing to a repo" do
     triage_the_sandbox
-    assert page.has_content?("Repos you are Triaging")
-    assert page.has_content?("https://github.com/bemurphy/issue_triage_sandbox")
+    assert page.has_content?("Repos you are helping")
+    assert page.has_content?("bemurphy/issue_triage_sandbox")
   end
 
   test "unsubscribing to a repo" do
     triage_the_sandbox
-    click_link "X"
-    assert page.has_content?("Repos you are Triaging")
+    click_link "Stop Triage"
+    assert page.has_content?("Repos you are helping")
     refute page.has_content?("https://github.com/bemurphy/issue_triage_sandbox")
   end
 end
