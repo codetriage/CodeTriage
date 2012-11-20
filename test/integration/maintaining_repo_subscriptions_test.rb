@@ -18,7 +18,7 @@ class MaintainingRepoSubscriptionsTest < ActionController::IntegrationTest
 
   test "unsubscribing to a repo" do
     triage_the_sandbox
-    click_link "Stop Triage"
+    click_link "Quit triaging"
     assert page.has_content?("Repos you are helping")
     refute page.has_content?("https://github.com/bemurphy/issue_triage_sandbox")
   end
