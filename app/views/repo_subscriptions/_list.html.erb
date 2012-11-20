@@ -1,0 +1,24 @@
+<%= content_tag :h2, "Repos you are helping" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @repos_subs.each do |sub| %>
+      <tr>
+        <td><%= link_to "<b>#{sub.repo.to_param}</b>".html_safe, sub.repo.github_url %></td>
+        <td><%= link_to "Project Issues", sub.repo.issues_url, class: 'btn btn-primary btn-mini' %></td>
+        <td><%= link_to "<i class='icon-arrow-right icon-white'></i> Send me a new issue".html_safe, issue_assignments_path(id: sub.id), class: 'btn btn-primary btn-mini', method: :post %></td>
+        <td><%= link_to "<i class='icon-trash icon-white'></i> Stop Triage".html_safe, sub, method: :delete,  confirm: "Are you sure you want to stop triaging '#{sub.repo.path}'", class: 'btn btn-mini btn-danger' %></td>
+      </tr>
+    <% end -%>
+  </tbody>
+</table>
+
+<%= link_to 'Find additional repos to Triage', repos_path unless params[:controller] == 'pages' %>

@@ -2,46 +2,31 @@
 
 <% if current_user %>
   You are signed in as <%= "@#{current_user.github}"  %> from Github
-  <hr />
-  <p>
-    <%= link_to "View All Repos You are Triaging", repo_subscriptions_path, :class => 'btn btn-primary' %>
-  </p>
+  <% if @repos_subs.present? %>
+    <hr>
+    <%= render 'repo_subscriptions/list' %>
+  <% end -%>
 <% else %>
-  <p>
-    Sign up to receive a different open issue in your inbox every day from any github repo.
-  </p>
-    <ol>
-      <li>Sign up via Github</li>
-      <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", Repo.where(name: "rails", user_name: "rails").first %></li>
-      <li>Click the "Subscribe" button</li>
-      <li>Make the world a better place by triaging issues</li>
-    </ol>
-
-  <p>
-    The email will come with triaging instructions on how to help with the project. Unsubscribe any time.
-  </p>
-
-  <%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
+  <%= render 'sign_in' %>
 <% end %>
-
-
 
 <hr />
 
-<h2>Repos With the most Issues</h2>
+<h2>Repos needing the most help</h2>
 <p>
   (Numbers updated every 24 hours)
 </p>
 
 
-  <ul>
-    <% @repos.first(50).each do |repo| %>
-      <li>
-        <%= link_to "#{repo.user_name}/#{repo.name}", repo %>, <strong><%= repo.issues_count %></strong>
-      </li>
-      <br />
-    <% end %>
-  </ul>
+<ul class="unstyled">
+  <% @repos.first(50).each do |repo| %>
+    <li>
+      <%= link_to "#{repo.user_name}/#{repo.name}", repo %> <span class="label label-info"><%= repo.issues_count %> issues</span>
+    </li>
+    <br />
+  <% end %>
+</ul>
+
 <hr />
 <p>
   <%= link_to "View All Repos", repos_path, :class => 'btn btn-success' %>
