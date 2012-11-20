@@ -15,13 +15,18 @@
 	<%= button_to "I Want to Triage: #{@repo.username_repo}", repo_subscriptions_path(:repo_id => @repo.id), :class => 'btn btn-primary' %>
 <% else %>
 <p>
-    <%= link_to 'Send new issue!', issue_assignments_path(:id => @repo_sub.id), :class => 'btn btn-primary', :method => :post %>
+    <%= link_to issue_assignments_path(:id => @repo_sub.id), :class => 'btn btn-primary', :method => :post do %>
+      <i class="icon-envelope icon-white"></i> Send new issue!
+    <% end %>
 </p>
 
 
 <p>
-  You are already subscribed to <%= @repo.username_repo %>
-  <%= button_to "Stop Triaging: #{@repo.username_repo}", repo_subscription_path(@repo_sub), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+  You are already subscribed to <%= @repo.username_repo %>.
+  <br/>
+  <%= link_to repo_subscription_path(@repo_sub), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Are you sure?' } do %>
+    <i class="icon-remove icon-white"></i> Stop Triaging: <%= @repo.username_repo %>
+  <% end %>
 
 </p>
 
