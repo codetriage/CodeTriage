@@ -1,9 +1,14 @@
-<h1><%= @repo.username_repo %></h1>
+<h1><%= @repo.username_repo %> <small><%= @repo.language %></small></h1>
 
 
 <ul>
   <li><%= link_to @repo.github_url, @repo.github_url %> </li>
 </ul>
+
+<p>
+  <%= @repo.description %>
+</p>
+
 <hr />
 
 <h2>Help Triage Issues!</h2>
