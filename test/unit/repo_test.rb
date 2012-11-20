@@ -12,4 +12,13 @@ class RepoTest < ActiveSupport::TestCase
     duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
     assert_equal ["has already been taken"], duplicate_repo.errors[:name]
   end
+
+  test "update repo info from github" do
+    VCR.use_cassette "repo_info" do
+      repo = Repo.new :user_name => 'refinery', :name => 'refinerycms'
+      repo.update_from_github
+      assert_equal "Ruby", repo.language
+      assert_equal "An extendable Ruby on Rails 'CMS framework' that supports Rails 3.2", repo.description
+    end
+  end
 end

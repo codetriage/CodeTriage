@@ -1,7 +1,7 @@
 class Repo < ActiveRecord::Base
 
   validate :github_url_exists, :on => :create
-  after_create :populate_issues!
+  after_create :populate_issues!, :update_repo_info!
 
   before_validation :downcase_name
 
@@ -119,6 +119,31 @@ class Repo < ActiveRecord::Base
     until response.last_page?
       options[:page] += 1
       response = populate_issue(options)
+    end
+  end
+
+  def update_from_github
+    resp = GitHubBub::Request.fetch(repo_path)
+
+    self.language = resp.json_body['language']
+    self.description = resp.json_body['description']
+    self.save
+  end
+
+  def repo_path
+    File.join 'repos', path
+  end
+
+  def update_repo_info!
+    Resque.enqueue UpdateRepoInfo, self.id
+  end
+
+  class UpdateRepoInfo
+    @queue = :update_repo_info
+
+    def self.perform(repo_id)
+      repo = Repo.find(repo_id)
+      repo.update_from_github
     end
   end
 
