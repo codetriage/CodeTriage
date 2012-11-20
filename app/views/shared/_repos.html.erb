@@ -1,0 +1,10 @@
+<ul class="unstyled repos-list">
+  <% repos.first(50).each do |repo| %>
+    <li>
+      <span class="badge badge-info"><%= repo.issues_count %></span>
+      <%= link_to "#{repo.user_name}/#{repo.name}", repo %>
+    </li>
+  <% end %>
+</ul>
+
+<hr />
