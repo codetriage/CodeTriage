@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     def self.perform(user_id)
       user = User.find(user_id.to_i)
       return false if user.repo_subscriptions.present?
-      UserMailer.poke_inactive(user)
+      UserMailer.poke_inactive(user).deliver
     end
   end
 
