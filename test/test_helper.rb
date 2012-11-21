@@ -20,6 +20,9 @@ OmniAuth.config.add_mock(:github, {
     :token => "d401116495671f0a0ceca9276e677eff"
   },
   :email => "mockstar@example.com",
+  :info => {
+    :nickname => 'mockstar'
+  },
   :extra => {
     :raw_info => {
       :name => "Mock Star"
@@ -44,4 +47,3 @@ module ActionController
     end
   end
 end
-

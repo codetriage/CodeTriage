@@ -22,4 +22,11 @@ class MaintainingRepoSubscriptionsTest < ActionController::IntegrationTest
     assert page.has_content?("Repos you are helping")
     refute page.has_content?("https://github.com/bemurphy/issue_triage_sandbox")
   end
+
+  test "listing subscribers" do
+    triage_the_sandbox
+    click_link 'bemurphy/issue_triage_sandbox'
+    click_link '1 subscriber'
+    assert page.has_content?("Mock Star")
+  end
 end
