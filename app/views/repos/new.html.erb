@@ -2,6 +2,34 @@
   <li><%= msg %></li>
 <% end %>
 
+<% if user_signed_in? %>
+  <h2>Your repos</h2>
+  <p>Only repos that you own, and have Github issues enabled are shown</p>
+  <table class="table table-striped">
+    <% @own_repos.each do |repo| %>
+      <% if repo["has_issues"] %>
+        <tr>
+          <%= form_for @repo do |f| %>
+            <%= f.hidden_field :user_name, :value => repo["full_name"].split("/").first %>
+            <%= f.hidden_field :name, :value => repo["full_name"].split("/").last %>
+            <td><%= repo["full_name"] %></td>
+            <td><%= repo["open_issues_count"] %> issues</td>
+            <td>
+              <% if  Repo.exists_with_name?(repo["full_name"]) %>
+                <p>Added!</p>
+              <% else -%>
+                <%= f.submit "Add", class: 'btn btn-mini btn-primary'  %>
+              <% end %>
+            </td>
+          <% end %>
+        </tr>
+      <% end -%>
+  <% end -%>
+  </table>
+<% end -%>
+
+<h3>Add another repo</h3>
+
 <%= form_for @repo do |f| %>
 
   https://github.com/
