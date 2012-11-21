@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(:version => 20121120203919) do
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
-    t.string   "avatar_url",             :default => "http://gravatar.com/avatar/default"
     t.string   "name"
+    t.string   "avatar_url",             :default => "http://gravatar.com/avatar/default"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
