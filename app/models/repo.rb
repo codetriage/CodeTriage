@@ -88,6 +88,10 @@ class Repo < ActiveRecord::Base
     end
   end
 
+  def self.exists_with_name?(name)
+    Repo.all.collect{|r| r.username_repo}.include? name
+  end
+
   # This class is used by resque,
   # by default anything you put into the perform method
   # will be called for each object in the redis queue
