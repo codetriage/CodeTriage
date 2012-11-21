@@ -14,20 +14,11 @@
 
 <h2>Repos needing the most help</h2>
 <p>
-  (Numbers updated every 24 hours)
+  (Ordered by issue count.  Numbers updated every 24 hours)
 </p>
 
+<%= render 'shared/repos', repos: @repos %>
 
-<ul class="unstyled">
-  <% @repos.first(50).each do |repo| %>
-    <li>
-      <%= link_to "#{repo.user_name}/#{repo.name}", repo %> <span class="label label-info"><%= repo.issues_count %> issues</span>
-    </li>
-    <br />
-  <% end %>
-</ul>
-
-<hr />
 <p>
   <%= link_to "View All Repos", repos_path, :class => 'btn btn-success' %>
   <%= link_to "Add a Repo", new_repo_path, :class => 'btn btn-success' %>

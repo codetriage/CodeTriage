@@ -23,3 +23,14 @@ a.btn:visited {
   max-height: 36px;
   margin: 2px auto;
 }
+
+ul.repos-list li {
+  float: left;
+  width: 340px;
+  height: 20px;
+  display: inline-block;
+}
+
+hr {
+  clear: both;
+}
