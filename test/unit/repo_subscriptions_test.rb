@@ -1,9 +1,10 @@
 ## quick and dirty tests, need to move logic to Factory or fixture
 
 class RepoSubscriptionsTest < ActiveSupport::TestCase
+  fixtures :users
 
   test "the get_issue_for_triage for new user" do
-    user     = User.create(:email => Time.now.to_f.to_s + "foo@example.com" , :password => Devise.friendly_token[0,20])
+    user     = users(:mockstar)
     repo     = Repo.create(:user_name => 'schneems', :name => 'sextant')
     repo_sub = user.repo_subscriptions.create(:repo => repo)
 
@@ -19,7 +20,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
 
   test "the get_issue_for_triage for user with existing issue assignments" do
-    user     = User.create(:email => Time.now.to_f.to_s + "foo@example.com" , :password => Devise.friendly_token[0,20])
+    user     = users(:mockstar)
     repo     = Repo.create(:user_name => 'schneems', :name => 'wicked')
     repo_sub = user.repo_subscriptions.create(:repo => repo)
 
