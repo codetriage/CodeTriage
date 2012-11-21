@@ -34,7 +34,7 @@ class Repo < ActiveRecord::Base
   end
 
   def to_param
-    "#{user_name}/#{name}"
+    username_repo
   end
 
   def downcase_name
@@ -75,7 +75,7 @@ class Repo < ActiveRecord::Base
   end
 
   def username_repo
-    "#{user_name}/#{self.name}"
+    "#{user_name}/#{name}"
   end
 
   def populate_issues!
