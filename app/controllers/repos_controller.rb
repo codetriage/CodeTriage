@@ -1,9 +1,10 @@
 class ReposController < ApplicationController
+
   before_filter :fix_name, :only => :show
 
   def index
     # TODO join and order by subscribers
-    @repos = Repo.page(params[:page]).per_page(params[:per_page]||50)
+    @repos = Repo.order(:name).page(params[:page]).per_page(params[:per_page]||50)
   end
 
   def new
