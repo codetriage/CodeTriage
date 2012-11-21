@@ -34,3 +34,15 @@ ul.repos-list li {
 hr {
   clear: both;
 }
+
+
+.repos-list small {
+  font-size:85%;
+  opacity:0.85;
+}
+
+.repos-list .badge {
+  text-align: center;
+  font-weight:normal;
+  width: 20px;
+}
