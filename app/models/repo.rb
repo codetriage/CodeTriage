@@ -12,6 +12,9 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
 
+  def subscriber_count
+    users.count
+  end
 
   # pulls out number of issues divided by number of subscribers
   def self.order_by_need

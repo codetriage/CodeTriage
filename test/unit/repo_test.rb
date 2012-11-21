@@ -21,4 +21,11 @@ class RepoTest < ActiveSupport::TestCase
       assert_equal "An extendable Ruby on Rails 'CMS framework' that supports Rails 3.2", repo.description
     end
   end
+
+  test "counts number of subscribers" do
+    repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
+    repo.users << users(:jroes)
+    repo.users << users(:schneems)
+    repo.subscriber_count == 2
+  end
 end
