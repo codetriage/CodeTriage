@@ -3,6 +3,7 @@
 
 <ul>
   <li><%= link_to @repo.github_url, @repo.github_url %> </li>
+  <li><span class="label label-info"><%= pluralize @repo.subscriber_count, 'subscriber' %></span></li>
 </ul>
 
 <p>
