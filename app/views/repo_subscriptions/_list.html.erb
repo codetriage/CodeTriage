@@ -6,11 +6,11 @@
         <td><%= link_to sub.repo.username_repo, sub.repo %></td>
         <td><%= link_to "Project Issues", sub.repo.issues_url %></td>
         <td>
-          <%= link_to(issue_assignments_path(:id => sub.id), :class => 'btn btn-primary', :method => :post) do %>
-            <i class="icon-envelope icon-white"></i> Send me another issue
+          <%= link_to(issue_assignments_path(:id => sub.id), :class => 'btn btn-primary', :title => "Send another issue from  #{sub.repo.username_repo}" , :method => :post) do %>
+            +1 <i class="icon-envelope icon-white"></i>
           <% end %>
-          <%= link_to(sub, :method => :delete, :class => 'btn btn-danger', :confirm => "Are you sure you want to quit triaging '#{sub.repo.path}'?") do %>
-            <i class="icon-remove icon-white"></i> Quit triaging
+          <%= link_to(sub, :method => :delete, :class => 'btn btn-danger', :title => "Quit triaging #{sub.repo.username_repo}", :confirm => "Are you sure you want to quit triaging '#{sub.repo.path}'?") do %>
+            <i class="icon-remove icon-white"></i>
           <% end %>
         </td>
       </tr>
