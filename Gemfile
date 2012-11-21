@@ -12,12 +12,16 @@ gem 'resque'
 gem 'sextant'
 gem 'unicorn'
 gem 'omniauth-github'
-gem 'quiet_assets', :group => :development
 gem 'mail_view',          '~> 1.0.2'
 gem 'will_paginate'
 gem 'httparty'
 gem 'thin'
 gem 'dalli'
+
+group :development do
+  gem 'foreman'
+  gem 'quiet_assets'
+end
 
 group :test do
   gem 'capybara'
