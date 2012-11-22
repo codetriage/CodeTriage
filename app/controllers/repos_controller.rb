@@ -9,6 +9,8 @@ class ReposController < ApplicationController
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: params[:name])
+    response = GitHubBub::Request.fetch("/user/repos", {type: "owner"}, current_user)
+    @own_repos = response.json_body
   end
 
   def show
@@ -33,6 +35,8 @@ class ReposController < ApplicationController
 
       redirect_to @repo
     else
+      response = GitHubBub::Request.fetch("/user/repos", {type: "owner"}, current_user)
+      @own_repos = response.json_body
       render :new
     end
   end
