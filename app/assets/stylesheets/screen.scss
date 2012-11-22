@@ -31,6 +31,10 @@ ul.repos-list li {
   display: inline-block;
 }
 
+.span6 ul.repos-list li {
+  width: 280px;
+}
+
 hr {
   clear: both;
 }
