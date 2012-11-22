@@ -28,4 +28,24 @@ class RepoTest < ActiveSupport::TestCase
     repo.users << users(:schneems)
     repo.subscriber_count == 2
   end
+
+  test "returns all languages" do
+    Repo.create :user_name => "rails", :name => "rails", :language => "Ruby"
+    Repo.create :user_name => "joyent", :name => "node", :language => "Javascript"
+    Repo.create :user_name => "pydata", :name => "pandas", :language => "Python"
+    Repo.create :user_name => "netty", :name => "netty", :language => "Java"
+
+    assert_equal ["Ruby", "Python", "Java", "Javascript"],  Repo.languages
+  end
+
+  test "returns repos filtered by language" do
+    Repo.create :user_name => "rails", :name => "rails", :language => "Ruby"
+    Repo.create :user_name => "joyent", :name => "node", :language => "Javascript"
+    repo = Repo.create :user_name => "pydata", :name => "pandas", :language => "Python"
+    Repo.create :user_name => "netty", :name => "netty", :language => "Java"
+
+    assert_equal [ repo ], Repo.filter_by_language("Python")
+
+    assert_equal 5, Repo.filter_by_language.size
+  end
 end
