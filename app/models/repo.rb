@@ -29,6 +29,18 @@ class Repo < ActiveRecord::Base
     order("random()")
   end
 
+  def self.languages
+    select("language").group("language").map(&:language)
+  end
+
+  def self.filter_by_language(lang = "All")
+    if (lang == "All")
+      return where(true)
+    end
+
+    where( :language => lang )
+  end
+
   def force_issues_count_sync!
      self.update_attributes(issues_count: self.issues.where(state: "open").count)
   end

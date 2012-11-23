@@ -17,7 +17,7 @@
   (Ordered by issue count.  Numbers updated every 24 hours)
 </p>
 
-<%= render 'shared/repos', repos: @repos %>
+<%= render 'shared/repos', repos: @repos, languages: @languages, selected_lang: @selected_lang %>
 
 <p>
   <%= link_to "View All Repos", repos_path, :class => 'btn btn-success' %>

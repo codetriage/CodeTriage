@@ -1,3 +1,12 @@
+<p>
+  <ul class="nav nav-pills">
+    <li class="<%= selected_lang == "All" ? "active" : "" %>"><%= link_to 'All' %></li>
+    <% languages.each do |lang| %>
+      <li class="<%= selected_lang == lang ? "active" : "" %>"><%= link_to lang, url_for( :lang => lang ) %></li>
+    <% end %>
+  </ul>
+</p>
+
 <ul class="unstyled repos-list">
   <% repos.first(50).each do |repo| %>
     <li>

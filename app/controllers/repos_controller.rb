@@ -3,8 +3,10 @@ class ReposController < ApplicationController
   before_filter :fix_name, :only => :show
 
   def index
+    @selected_lang = params[:lang] || "All"
     # TODO join and order by subscribers
-    @repos = Repo.order(:name).page(params[:page]).per_page(params[:per_page]||50)
+    @repos = Repo.filter_by_language(@selected_lang).order(:name).page(params[:page]).per_page(params[:per_page]||50)
+    @languages = Repo.languages
   end
 
   def new
