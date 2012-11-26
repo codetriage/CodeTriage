@@ -18,8 +18,8 @@ class RepoSubscriptionsController < ApplicationController
 	end
 
   def destroy
-    @repo = current_user.repo_subscriptions.where(:id => params[:id]).first
-    @repo.destroy
+    @repo_sub = current_user.repo_subscriptions.where(:id => params[:id]).first
+    @repo_sub.destroy
     redirect_to :back
   end
 
