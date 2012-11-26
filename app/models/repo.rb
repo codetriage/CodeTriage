@@ -21,6 +21,11 @@ class Repo < ActiveRecord::Base
      joins(:repo_subscriptions).order("issues_count::float/COUNT(repo_subscriptions.repo_id) DESC").group("repos.id")
   end
 
+  # these repos have no subscribers and have no buisness being in our database
+  def self.inactive
+    joins("LEFT OUTER JOIN repo_subscriptions on repos.id = repo_subscriptions.repo_id").where("repo_subscriptions.repo_id is null")
+  end
+
   def self.not_in(*ids)
     where("repos.id not in (?)", ids)
   end
