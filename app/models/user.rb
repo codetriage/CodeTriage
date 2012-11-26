@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token, :avatar_url, :name
 
-  has_many :repo_subscriptions
+  has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, :through => :repo_subscriptions
 
   has_many :issue_assignments, :through => :repo_subscriptions
