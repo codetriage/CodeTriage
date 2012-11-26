@@ -2,7 +2,7 @@
   <p>None!</p>
 <% else %>
   <table class="table table-striped">
-    <% repos.sorted_repo_list.each do |repo| %>
+    <% repos.each do |repo| %>
       <% if repo["has_issues"] && !repo["private"] %>
         <tr>
           <%= form_for @repo do |f| %>

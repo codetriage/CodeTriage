@@ -10,13 +10,13 @@ class ReposController < ApplicationController
   def new
     @repo = Repo.new(user_name: params[:user_name], name: params[:name])
     own_repos_response = GitHubBub::Request.fetch("/user/repos", {type: "owner"}, current_user)
-    @own_repos = own_repos_response.json_body
+    @own_repos = SortedRepoCollection.new(own_repos_response.json_body)
 
     starred_repos_response = GitHubBub::Request.fetch("/user/starred", nil, current_user)
-    @starred_repos = starred_repos_response.json_body
+    @starred_repos = SortedRepoCollection.new(starred_repos_response.json_body)
 
     watched_repos_response = GitHubBub::Request.fetch("/user/subscriptions", nil, current_user)
-    @watched_repos = watched_repos_response.json_body
+    @watched_repos = SortedRepoCollection.new(watched_repos_response.json_body)
   end
 
   def show
