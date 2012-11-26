@@ -24,4 +24,9 @@ namespace :schedule do
   end
 
 
+  desc "cleans inactive repos: if you want it you gotta subscribe"
+  task clean_inactive_repos: :environment do
+    Repo.inactive.destroy_all
+  end
+
 end
