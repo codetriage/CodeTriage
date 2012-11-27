@@ -1,7 +1,7 @@
 
 ## Code Triage
 
-[![Build Status](https://secure.travis-ci.org/heroku/issue_triage.png)](http://travis-ci.org/heroku/issue_triage)
+[![Build Status](https://secure.travis-ci.org/codetriage/codetriage.png)](http://travis-ci.org/codetriage/codetriage)
 
 ## What is Triage?
 

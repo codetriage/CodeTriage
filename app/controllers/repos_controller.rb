@@ -1,3 +1,5 @@
+require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
+
 class ReposController < ApplicationController
 
   before_filter :fix_name, :only => :show
@@ -9,8 +11,17 @@ class ReposController < ApplicationController
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: params[:name])
-    response = GitHubBub::Request.fetch("/user/repos", {type: "owner"}, current_user)
-    @own_repos = response.json_body
+
+    if user_signed_in?
+      own_repos_response = GitHubBub::Request.fetch("/user/repos", {type: "owner"}, current_user)
+      @own_repos = SortedRepoCollection.new(own_repos_response.json_body)
+
+      starred_repos_response = GitHubBub::Request.fetch("/user/starred", nil, current_user)
+      @starred_repos = SortedRepoCollection.new(starred_repos_response.json_body)
+
+      watched_repos_response = GitHubBub::Request.fetch("/user/subscriptions", nil, current_user)
+      @watched_repos = SortedRepoCollection.new(watched_repos_response.json_body)
+    end
   end
 
   def show
