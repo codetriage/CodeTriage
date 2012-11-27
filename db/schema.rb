@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120203919) do
+ActiveRecord::Schema.define(:version => 20121127163516) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20121120203919) do
     t.boolean  "admin"
     t.string   "name"
     t.string   "avatar_url",             :default => "http://gravatar.com/avatar/default"
+    t.boolean  "private"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

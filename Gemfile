@@ -17,6 +17,7 @@ gem 'will_paginate'
 gem 'httparty'
 gem 'thin'
 gem 'dalli'
+gem 'wicked'
 
 group :development do
   gem 'foreman'

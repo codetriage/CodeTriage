@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token, :avatar_url, :name
+  attr_accessible :private, :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token, :avatar_url, :name
 
   has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, :through => :repo_subscriptions
@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
   def enqueue_inactive_email
     Resque.enqueue(InactiveEmail, self.id)
   end
+
+  def public
+    !private
+  end
+  alias :public? :public
 
   def not_yet_subscribed_to?(repo)
     !subscribed_to?(repo)

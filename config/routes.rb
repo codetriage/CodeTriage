@@ -5,7 +5,7 @@ Example::Application.routes.draw do
   match "users/sign_in" => redirect('/users/auth/github')
   match "users/sign_up" => redirect('/users/auth/github')
 
-  devise_for  :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for  :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
 
   resources   :pages
   root        :to => "pages#index"
@@ -13,7 +13,11 @@ Example::Application.routes.draw do
 
   root        :to => "pages#index"
 
-  resources   :after_register
+
+
+  namespace :users do
+    resources :after_signup#, controller: "after_signup"
+  end
 
   resources   :users
 
