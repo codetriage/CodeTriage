@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121127163516) do
+ActiveRecord::Schema.define(:version => 20121127171308) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20121127163516) do
     t.integer  "issues_count", :default => 0, :null => false
     t.string   "language"
     t.string   "description"
+    t.string   "full_name"
   end
 
   create_table "users", :force => true do |t|
