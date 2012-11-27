@@ -15,9 +15,10 @@ mockstar:
   zip: 
   phone_number: 
   twitter: 
-  github: 
+  github: mockstar
   github_access_token: 
   admin: 
+  name: Mock Star
 schneems:
   id: 2
   email: richard.schneeman@gmail.com
@@ -35,9 +36,10 @@ schneems:
   zip: 
   phone_number: 
   twitter: 
-  github: 
+  github: schneems
   github_access_token: 
   admin: 
+  name: Richard Schneeman
 jroes:
   id: 3
   email: jroes@jroes.net
@@ -55,6 +57,7 @@ jroes:
   zip: 
   phone_number: 
   twitter: 
-  github: 
+  github: jroes
   github_access_token: 
   admin: 
+  name: Jonathan Roes

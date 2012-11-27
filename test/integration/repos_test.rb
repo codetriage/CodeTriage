@@ -10,4 +10,10 @@ class ReposTest < ActionController::TestCase
     assert_routing('repos', {controller: "repos", action: "index"})
   end
 
+  test "repo subscriber route" do
+    assert_routing(
+      'rails/rails/subscribers',
+      {controller: "subscribers", action: "show", user_name: "rails", name: "rails"})
+  end
+
 end

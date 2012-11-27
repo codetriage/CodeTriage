@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     user
   end
 
+  def github_url
+    "https://github.com/#{github}"
+  end
+
   class InactiveEmail
     @queue = :inactive_email
 

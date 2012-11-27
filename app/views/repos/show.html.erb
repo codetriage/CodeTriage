@@ -3,7 +3,11 @@
 
 <ul>
   <li><%= link_to @repo.github_url, @repo.github_url %> </li>
-  <li><span class="label label-info"><%= pluralize @repo.subscriber_count, 'subscriber' %></span></li>
+  <li>
+    <%= link_to repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) do %>
+      <span class="label label-info"><%= pluralize @repo.subscriber_count, 'subscriber' %></span>
+    <% end %>
+  </li>
 </ul>
 
 <p>
