@@ -1,11 +1,12 @@
 <h1><%= @repo.username_repo %> <small><%= @repo.language %></small></h1>
 
 
-<ul>
+<ul class="unstyled">
   <li><%= link_to @repo.github_url, @repo.github_url %> </li>
+  <%= render 'subscribers/avatars', subscribers: @subscribers, show_names: false %>
   <li>
     <%= link_to repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) do %>
-      <span class="label label-info"><%= pluralize @repo.subscriber_count, 'subscriber' %></span>
+      View subscribers
     <% end %>
   </li>
 </ul>

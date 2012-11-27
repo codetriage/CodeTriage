@@ -27,6 +27,7 @@ class ReposController < RepoBasedController
   def show
     @issues   = @repo.issues.where(state: 'open').page(params[:page]).per_page(params[:per_page]||20)
     @repo_sub = current_user.repo_subscriptions.where(:repo_id => @repo.id).includes(:issues).first if current_user
+    @subscribers = @repo.users.limit(20)
   end
 
   def create

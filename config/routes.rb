@@ -10,11 +10,6 @@ Example::Application.routes.draw do
   resources   :pages
   root        :to => "pages#index"
 
-
-  root        :to => "pages#index"
-
-
-
   namespace :users do
     resources :after_signup#, controller: "after_signup"
   end

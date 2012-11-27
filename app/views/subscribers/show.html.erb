@@ -1,10 +1,3 @@
 <h2>Subscribers to <%= link_to @repo.username_repo, @repo.github_url %></h2>
-
-<ul class="unstyled">
-  <%= content_tag_for(:li, @subscribers) do |subscriber| %>
-    <%= image_tag subscriber.avatar_url, alt: subscriber.name, class: 'avatar img-rounded' %>
-    <%= link_to "#{subscriber.name} (#{subscriber.github})", subscriber.github_url %>
-  <% end %>
-</ul>
-
+<%= render 'avatars', subscribers: @subscribers, show_names: true %>
 <%= will_paginate @subscribers %>
