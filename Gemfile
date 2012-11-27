@@ -18,6 +18,7 @@ gem 'httparty'
 gem 'thin'
 gem 'dalli'
 gem 'wicked'
+gem 'rails_autolink'
 
 group :development do
   gem 'foreman'

@@ -1,3 +1,5 @@
+require 'rails_autolink'
+
 class UserMailer < ActionMailer::Base
   default from: "Issue Triage <noreply@issuetriage.heroku.com>"
 
@@ -6,7 +8,7 @@ class UserMailer < ActionMailer::Base
     @user   = options[:user]
     @repo   = options[:repo]
     @issue  = options[:issue]
-    mail(:to => @user.email, :reply_to => "noreply@codetriage.com", :subject => "Help Triage #{@repo.path} on Github")
+    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on Github")
   end
 
   def poke_inactive(user)
@@ -14,12 +16,26 @@ class UserMailer < ActionMailer::Base
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
     @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
-    mail(:to => @user.email, :reply_to => "noreply@codetriage.com", :subject => "Code Triage misses you")
+    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage misses you")
   end
 
 
+  # general purpose mailer for sending out admin communications, only use from one off tasks
+  def spam(user, options = {})
+    @user    = user
+    @message = options[:message]
+    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
+  end
+
   class Preview < MailView
     # Pull data from existing fixtures
+    def send_spam
+      user    = User.last
+      message = "Hey, we just launched something big http://google.com"
+      subject = "Big launch"
+      ::UserMailer.spam(user, message: message, subject: subject)
+    end
+
     def send_triage
       user  = User.last
       repo  = Repo.last
