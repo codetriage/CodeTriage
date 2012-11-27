@@ -8,4 +8,9 @@ class SortedRepoCollection
   def each
     @repos.each { |r| yield r }
   end
+
+  def size
+    @repos.length
+  end
+
 end

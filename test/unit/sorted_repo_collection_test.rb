@@ -27,4 +27,15 @@ class SortedRepoCollectionTest < ActiveSupport::TestCase
     ]
     assert_equal expected_order, full_names_in_sort_order
   end
+
+  test 'yields the correct length' do
+    collection = SortedRepoCollection.new([
+      { "full_name" => "alice/coolness" },
+      { "full_name" => "Bob/bravado" },
+      { "full_name" => "Bob/awesomeness" },
+      { "full_name" => "alice/bravado" },
+      { "full_name" => "charlie/bravado" }
+    ])
+    assert_equal collection.size, 5
+  end
 end
