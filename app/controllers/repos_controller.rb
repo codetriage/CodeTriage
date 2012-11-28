@@ -2,8 +2,7 @@ require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
 class ReposController < RepoBasedController
   before_filter :fix_name, :only => :show
-  before_filter :find_repo, :only => :show
-  before_filter :get_repo_from_name, :only => [:edit, :update]
+  before_filter :find_repo, :only => [:show, :edit, :update]
 
   def index
     # TODO join and order by subscribers
@@ -60,9 +59,4 @@ class ReposController < RepoBasedController
     end
   end
 
-  private
-
-  def get_repo_from_name
-    @repo = Repo.find_by_user_name_and_name(params[:user_name], params[:name])
-  end
 end

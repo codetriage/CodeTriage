@@ -36,11 +36,13 @@
       </p>
     <% end -%>
 
-    <p>
-      <%= link_to repo_subscription_path(@repo_sub), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Are you sure?' } do %>
-        <i class="icon-remove icon-white"></i> Stop Triaging
-      <% end %>
-    </p>
+    <% if @repo_sub %>
+      <p>
+        <%= link_to repo_subscription_path(@repo_sub), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Are you sure?' } do %>
+          <i class="icon-remove icon-white"></i> Stop Triaging
+        <% end %>
+      </p>
+    <% end -%>
   </div>
 </div>
 
