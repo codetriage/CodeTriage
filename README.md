@@ -45,7 +45,7 @@ If you're on OS X, Homebrew is the simplest way to install Redis:
 
 ```shell
 $ brew install redis
-$ redis-server /path/to/etc/redis.conf
+$ redis-server
 ```
 
 You now have Redis running on 6379.
