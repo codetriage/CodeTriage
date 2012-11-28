@@ -1,0 +1,6 @@
+<ul class="unstyled">
+  <%= content_tag_for(:li, subscribers) do |subscriber| %>
+    <%= image_tag subscriber.avatar_url, alt: subscriber.name, class: 'avatar img-rounded' %>
+    <%= link_to "#{subscriber.name} (#{subscriber.github})", subscriber.github_url if (show_names ||= false) %>
+  <% end -%>
+</ul>

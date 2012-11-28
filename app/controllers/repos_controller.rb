@@ -1,8 +1,8 @@
 require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
-class ReposController < ApplicationController
-
+class ReposController < RepoBasedController
   before_filter :fix_name, :only => :show
+  before_filter :find_repo, :only => :show
 
   def index
     # TODO join and order by subscribers
@@ -25,14 +25,9 @@ class ReposController < ApplicationController
   end
 
   def show
-    @repo     = Repo.where(user_name: params[:user_name], name: params[:name])
-    if @repo.blank?
-      redirect_to new_repo_path(user_name: params[:user_name], name: params[:name]), :notice => "Could not find repo: \"#{params[:user_name]}/#{params[:name]}\" on Code Triage, add it?"
-    else
-      @repo     = @repo.includes(:issues).first
-      @issues   = @repo.issues.where(state: 'open').page(params[:page]).per_page(params[:per_page]||20)
-      @repo_sub = current_user.repo_subscriptions.where(:repo_id => @repo.id).includes(:issues).first if current_user
-    end
+    @issues   = @repo.issues.where(state: 'open').page(params[:page]).per_page(params[:per_page]||20)
+    @repo_sub = current_user.repo_subscriptions.where(:repo_id => @repo.id).includes(:issues).first if current_user
+    @subscribers = @repo.users.public.limit(20)
   end
 
   def create
@@ -51,10 +46,4 @@ class ReposController < ApplicationController
       render :new
     end
   end
-
-  def fix_name
-    params[:name] = [params[:name], params[:format]].compact.join('.')
-    true
-  end
-
 end

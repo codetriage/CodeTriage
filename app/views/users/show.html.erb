@@ -1,22 +1,27 @@
+<div class="row">
+  <div class="span5">
+    <h3>Email:</h3>
+    <p><%= @user.email %></p>
 
-<label class="label">Email:</label>
-<p><%= @user.email %></p>
+    <h3>Github:</h3>
+    <p><%= "@#{@user.github }"%></p>
 
-<label class="label">Github:</label>
-<p><%= "@#{@user.github }"%></p>
+    <h3>Publicly visible?:</h3>
+    <p><%= @user.public? ? "Yes" : "No" %></p>
 
-<label class="label">Public Account:</label>
-<p><%= @user.public? %></p>
-<p><small>If your account is public others can see what repos you are triaging. Your email is never shared, ever.</small></p>
+    <p><small>If your account is public others can see what repos you are triaging. Your email is never shared, ever.</small></p>
 
-<div class="form-actions">
-<%= link_to "↩ Back", users_path, class: 'btn btn-primary'  %>
+    <% if @user.public? %>
+      <%= link_to "Make account private", users_path(user: {private: true}), method: :put, :class => 'btn btn-primary'  %>
+    <% else %>
+      <%= link_to "Make account public", users_path(user: {private: false}), method: :put, :class => 'btn btn-primary'  %>
+    <% end %>
 
-<% if @user.public? %>
-  <%= link_to "Make account private", users_path(user: {private: true}), method: :put, :class => 'btn btn-primary'  %>
-<% else %>
-  <%= link_to "Make account public", users_path(user: {private: false}), method: :put, :class => 'btn btn-primary'  %>
+  </div>
 
-<% end %>
-<%= link_to "X | Delete", user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", :default => "Are you sure?")}", class:  'btn btn-danger' %>
+  <div class="span2 well">
+    <%= link_to user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", :default => "Are you sure?")}", class:  'btn btn-danger' do %>
+      <i class="icon-trash icon-white"></i> Delete my account
+    <% end -%>
+  </div>
 </div>
