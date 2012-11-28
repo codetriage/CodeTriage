@@ -19,35 +19,59 @@ You sign up to follow a repository, once a day you'll be emailed with an open is
 
 ## Run Code Triage
 
+### Dependencies
+Make sure you have bundler, then install the dependencies:
+
 ```shell
   $ gem install bundler
   $ bundle install
 ```
 
-Then create a database and run your migrations
+### Database
+Create a database (default is PostgreSQL) and run your migrations
 
 ```shell
   $ bundle exec rake db:create
   $ bundle exec rake db:migrate
 ````
 
+### Install Redis 
 
-If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications)
+Code Triage requires Redis for background processing.
 
-And then add the credentials to your .env file:
+**Homebrew**  
 
+If you're on OS X, Homebrew is the simplest way to install Redis:
+
+```shell
+$ brew install redis
+$ redis-server /path/to/etc/redis.conf
+```
+
+You now have Redis running on 6379.
+
+**Other**  
+
+See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
+
+### Environment
+If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications), then add the credentials to your .env file:
 
 ```shell
   $ echo GITHUB_APP_ID=foo >> .env
   $ echo GITHUB_APP_SECRET=bar >> .env
 ```
 
-
-Start your app
+### Running the app
+Start your app using Foreman
 
 ``` shell
-  $ foreman start
+  $ foreman start  
+  08:19:22 web.1    | started with pid 6347  
+  08:19:22 worker.1 | started with pid 6348  
 ```
+
+Code Triage should now be running at [http://localhost:5000](http://localhost:5000)
 
 
 ## Tests
