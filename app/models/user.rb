@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     Resque.enqueue(InactiveEmail, self.id)
   end
 
+  def able_to_edit_repo?(repo)
+    repo.user_name == github
+  end
+
   def public
     !private
   end

@@ -19,6 +19,7 @@ gem 'thin'
 gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
+gem 'bluecloth'
 
 group :development do
   gem 'foreman'
