@@ -43,4 +43,12 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     assert issue.is_a? Issue
   end
 
+  test 'the assign_issue creates an assignment for the user' do
+    user     = users(:mockstar)
+    repo     = Repo.create(:user_name => 'schneems', :name => 'wicked')
+    repo_sub = user.repo_subscriptions.create(:repo => repo)
+    repo_sub.assign_issue!(false)
+
+    assert_equal 1, user.issue_assignments.count
+  end
 end

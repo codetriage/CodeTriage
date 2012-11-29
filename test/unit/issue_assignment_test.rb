@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class IssueAssignmentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test "validates presence of relevant ids" do
+    ia = IssueAssignment.new
+    ia.valid?
+    assert_equal ["can't be blank"], ia.errors[:issue_id]
+    assert_equal ["can't be blank"], ia.errors[:user_id]
+  end
+
 end
