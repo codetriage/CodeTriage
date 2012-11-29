@@ -1,5 +1,7 @@
 class Repo < ActiveRecord::Base
 
+  attr_accessible :notes, :name, :user_name, :issues_count, :language, :description, :full_name
+
   validate :github_url_exists, :on => :create
   after_create :populate_issues!, :update_repo_info!
 
