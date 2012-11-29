@@ -1,7 +1,6 @@
 <h2>Help Triage Github Issues With Your Favorite Projects</h2>
 
-<% if current_user %>
-  You are signed in as <%= "@#{current_user.github}"  %> from Github
+<% if user_signed_in? %>
   <% if @repos_subs.present? %>
     <hr>
     <%= render 'repo_subscriptions/list' %>
