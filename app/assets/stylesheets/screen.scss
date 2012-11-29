@@ -15,10 +15,6 @@
   border-left-width: 0;
 }
 
-a.btn:visited {
-  color: white;
-}
-
 .avatar, .navbar .nav img {
   max-height: 36px;
   margin: 2px auto;
@@ -49,4 +45,7 @@ hr {
   text-align: center;
   font-weight:normal;
   width: 20px;
+}
+.avatars_list {
+  margin: 0 0 10px 0;
 }
