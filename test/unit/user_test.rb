@@ -7,6 +7,12 @@ class UserTest < ActiveSupport::TestCase
 
   test 'public scope should only return public users' do
     assert_equal 2, User.public.size
+
+    user     = users(:mockstar)
+    repo     = Repo.create(:user_name => 'schneems', :name => 'sextant')
+    repo_sub = user.repo_subscriptions.create(:repo => repo)
+
+    assert_equal 1, repo.users.public.size
   end
 
   test 'able_to_edit_repo allows the correct rights' do
