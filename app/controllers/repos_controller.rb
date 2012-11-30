@@ -1,8 +1,6 @@
 require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
 class ReposController < RepoBasedController
-  before_filter :fix_name, :only => :show
-  before_filter :find_repo, :only => [:show, :edit, :update]
 
   def index
     # TODO join and order by subscribers
@@ -10,7 +8,7 @@ class ReposController < RepoBasedController
   end
 
   def new
-    @repo = Repo.new(user_name: params[:user_name], name: params[:name])
+    @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
 
     if user_signed_in?
       own_repos_response = GitHubBub::Request.fetch("/user/repos", {type: "owner"}, current_user)
@@ -25,6 +23,7 @@ class ReposController < RepoBasedController
   end
 
   def show
+    @repo     = find_repo(params)
     @issues   = @repo.issues.where(state: 'open').page(params[:page]).per_page(params[:per_page]||20)
     @repo_sub = current_user.repo_subscriptions.where(:repo_id => @repo.id).includes(:issues).first if current_user
     @subscribers = @repo.users.public.limit(20)
@@ -48,10 +47,12 @@ class ReposController < RepoBasedController
   end
 
   def edit
+    @repo = find_repo(params)
     redirect_to root_path, :notice => "You cannot edit this repo" unless current_user.able_to_edit_repo?(@repo)
   end
 
   def update
+    @repo = find_repo(params)
     if @repo.update_attributes(params[:repo])
       redirect_to @repo, :notice => "Repo updated"
     else
