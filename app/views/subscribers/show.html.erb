@@ -1,3 +1,7 @@
 <h2>Subscribers to <%= link_to @repo.username_repo, @repo.github_url %></h2>
-<%= render 'avatars', subscribers: @subscribers, show_names: true %>
+<hr />
+
+<ul class='unstyled avatar_list'>
+  <%= render 'avatars', subscribers: @subscribers, show_names: true %>
+</ul>
 <%= will_paginate @subscribers %>

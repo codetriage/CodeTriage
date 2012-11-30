@@ -14,6 +14,8 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, :through => :repo_subscriptions
 
+  has_many :subscribers, through: :repo_subscriptions, source: :user
+
   before_save :set_full_name
 
   def set_full_name

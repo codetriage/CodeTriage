@@ -13,11 +13,15 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :through => :repo_subscriptions
   has_many :issues,            :through => :issue_assignments
 
-  scope :public, where(private: false)
+  scope :public, where("private is not true")
 
   # users that are not subscribed to any repos
   def self.inactive
     joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
+  end
+
+  def default_avatar_url
+    "http://gravatar.com/avatar/default"
   end
 
   def enqueue_inactive_email
@@ -45,6 +49,19 @@ class User < ActiveRecord::Base
     self.repo_subscriptions.where(:repo_id => repo.id).first
   end
 
+  def github_json
+    GitHubBub::Request.fetch(api_path, {}, self).json_body
+  end
+
+  def fetch_avatar_url
+    github_json["avatar_url"]
+  end
+
+  def set_avatar_url!
+    self.avatar_url = self.fetch_avatar_url || default_avatar_url
+    self.save!
+  end
+
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = signed_in_resource || User.where(:github => auth.info.nickname).first
     params = {
@@ -66,6 +83,10 @@ class User < ActiveRecord::Base
 
   def github_url
     "https://github.com/#{github}"
+  end
+
+  def api_path
+    "/user"
   end
 
   class InactiveEmail

@@ -46,6 +46,16 @@ hr {
   font-weight:normal;
   width: 20px;
 }
+
 .avatars_list {
   margin: 0 0 10px 0;
+  float: left;
+  li {
+    padding: 0 5px 0 0;
+    float:left;
+  }
+  .more {
+    margin-top: 10px;
+  }
 }
+

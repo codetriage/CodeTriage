@@ -2,6 +2,9 @@
   <div class="span8">
     <h1><%= @repo.username_repo %> <small><%= @repo.language %></small></h1>
     <p><%= link_to @repo.github_url, @repo.github_url %> </p>
+    <p>
+      <%= @repo.description %>
+    </p>
     <hr />
   </div>
 </div>
@@ -9,19 +12,16 @@
 <div class="row">
   <div class="span6">
 
-    <ul class="unstyled">
+    <ul class="unstyled avatars_list">
       <%= render 'subscribers/avatars', subscribers: @subscribers, show_names: false %>
-      <li>
-        <%= link_to repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) do %>
-          View subscribers
-        <% end %>
-      </li>
+      <% if (difference = @repo.subscribers.count - @subscribers.count) && difference > 0  %>
+        <li class='more'><%= link_to 'more' , repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) %></li>
+      <% end %>
     </ul>
 
-    <p>
-      <%= @repo.description %>
-    </p>
-
+    <%= link_to repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) do %>
+      <%=  @repo.subscribers.count %> Subscribers
+    <% end %>
     <% unless @repo.notes.blank? %>
       <p>
         <%= raw BlueCloth.new(@repo.notes).to_html %>
