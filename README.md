@@ -10,7 +10,7 @@ When patients come into the emergency room, they don't see a doctor immediately,
 
 ## Why Triage?
 
-Triage is an important part of open source. It can be difficult to keep up with bugs and assess the validity of contributions. Code introduced to fix one problem can easily generate more problems than it solves, so it's important to maintainers look closely at bug reports and code contributions. Unfortunately as the size of a project grows, the demands placed on the maintainers grow. This means that maintainers are forced to choose between spending enormous ammounts of time reviewing each GitHub issue, only skimming over issues, or worse ignoreing issues. As a non-maintainer, you can help an open source project by triaging issues. When issues come in, they are assigned out to triage. If you get assigned an issue, you should look closely at it, and provide feedback to make a maintainers life easier. If there is a bug reported, try to reproduce it and then give the results in the issue comments. If code is included in the issue, review the code, see if it makes sense. Code submitted should have a clear use case, be in the same style as the project, and not introduce failures into the test system. If the code is good, leave a comment explaining why you believe it is good. +1's are great, but leave no context and don't help maintainers much. If you don't like an issues you need to explain why as well. Either way leave a comment with the issue,
+Triage is an important part of open source. It can be difficult to keep up with bugs and assess the validity of contributions. Code introduced to fix one problem can easily generate more problems than it solves, so it's important to maintainers look closely at bug reports and code contributions. Unfortunately as the size of a project grows, the demands placed on the maintainers grow. This means that maintainers are forced to choose between spending enormous amounts of time reviewing each GitHub issue, only skimming over issues, or worse ignoring issues. As a non-maintainer, you can help an open source project by triaging issues. When issues come in, they are assigned out to triage. If you get assigned an issue, you should look closely at it, and provide feedback to make a maintainers life easier. If there is a bug reported, try to reproduce it and then give the results in the issue comments. If code is included in the issue, review the code, see if it makes sense. Code submitted should have a clear use case, be in the same style as the project, and not introduce failures into the test system. If the code is good, leave a comment explaining why you believe it is good. +1's are great, but leave no context and don't help maintainers much. If you don't like an issue you need to explain why as well. Either way leave a comment with the issue.
 
 ## How does it Work?
 
@@ -35,11 +35,11 @@ Create a database (default is PostgreSQL) and run your migrations
   $ bundle exec rake db:migrate
 ````
 
-### Install Redis 
+### Install Redis
 
 Code Triage requires Redis for background processing.
 
-**Homebrew**  
+**Homebrew**
 
 If you're on OS X, Homebrew is the simplest way to install Redis:
 
@@ -50,7 +50,7 @@ $ redis-server
 
 You now have Redis running on 6379.
 
-**Other**  
+**Other**
 
 See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
 
@@ -66,9 +66,9 @@ If you want your users to sign up with Github, create a [GitHub Client Applicati
 Start your app using Foreman
 
 ``` shell
-  $ foreman start  
-  08:19:22 web.1    | started with pid 6347  
-  08:19:22 worker.1 | started with pid 6348  
+  $ foreman start
+  08:19:22 web.1    | started with pid 6347
+  08:19:22 worker.1 | started with pid 6348
 ```
 
 Code Triage should now be running at [http://localhost:5000](http://localhost:5000)
@@ -98,7 +98,6 @@ $ rake db:migrate RAILS_ENV=test
 
 Richard Schneeman [@Schneems](http://twitter.com/schneems) for [Heroku](http://heroku.com).
 
-
-licensed under MIT License
-Copyright (c) 2012 Schneems. See LICENSE.txt for
-further details.
+Licensed under MIT License.
+Copyright (c) 2012 Schneems.
+See LICENSE.txt for further details.
