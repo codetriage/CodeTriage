@@ -26,7 +26,7 @@ class MaintainingRepoSubscriptionsTest < ActionController::IntegrationTest
   test "listing subscribers" do
     triage_the_sandbox
     click_link 'bemurphy/issue_triage_sandbox'
-    click_link 'View subscribers'
-    assert page.has_content?("Mock Star")
+    click_link 'Subscribers'
+    assert page.has_content?("@mockstar")
   end
 end
