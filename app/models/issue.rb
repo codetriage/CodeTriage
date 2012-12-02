@@ -9,11 +9,24 @@ class Issue < ActiveRecord::Base
   after_save    :update_counter_cache
   after_destroy :update_counter_cache
 
+  def valid_for_user?(user)
+    update_issue!
+
+    # TODO check to see if a user is already part of an issue here
+    return false if closed?
+    true
+  end
+
   def update_counter_cache
     return true unless self.state_changed? # only continue if state has changed
     return true if repo.blank?
     self.repo.force_issues_count_sync!
     true
+  end
+
+  def update_issue!
+    response = GitHubBub::Request.fetch(api_path).json_body
+    self.update_from_github_hash!(response)
   end
 
   def self.closed
@@ -28,19 +41,36 @@ class Issue < ActiveRecord::Base
     state == OPEN
   end
 
+  def repo_name
+    self.repo.name
+  end
+
+  def owner_name
+    self.repo.user_name
+  end
+
+  def api_path
+    "/repos/#{owner_name}/#{repo_name}/issues/#{number}"
+  end
+
   def public_url
     "https://github.com/repos/#{repo.user_name}/#{repo.name}/issues/#{number}"
   end
 
-  def self.find_or_create_from_hash!(issue_hash, repo)
-    issue =   Issue.where(:number  => issue_hash['number'], :repo_id  => repo.id).first
-    issue ||= Issue.create(:number => issue_hash['number'], :repo     => repo)
-    issue.update_attributes( :title           => issue_hash['title'],
-                             :url             => issue_hash['url'],
-                             :last_touched_at => DateTime.parse(issue_hash['updated_at']),
-                             :state           => issue_hash['state'],
-                             :html_url        => issue_hash['html_url'])
 
+
+  def self.find_or_create_from_hash!(issue_hash, repo)
+    issue =   Issue.where( number:  issue_hash['number'], repo_id: repo.id).first
+    issue ||= Issue.create(number:  issue_hash['number'], repo:    repo)
+    issue.update_from_github_hash!(issue_hash)
+  end
+
+  def update_from_github_hash!(issue_hash)
+    self.update_attributes(title:           issue_hash['title'],
+                           url:             issue_hash['url'],
+                           last_touched_at: DateTime.parse(issue_hash['updated_at']),
+                           state:           issue_hash['state'],
+                           html_url:        issue_hash['html_url'])
   end
 
 
