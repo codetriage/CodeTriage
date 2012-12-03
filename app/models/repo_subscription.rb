@@ -25,9 +25,19 @@ class RepoSubscription < ActiveRecord::Base
     end
   end
 
+  # a list of all issues assigned to the current repo_sub
+  def assigned_issue_ids
+    @assigned_issue_ids ||= self.issues.map(&:id) + [-1]
+  end
+
   def get_issue_for_triage
-    assigned_issue_ids = self.issues.map(&:id) + [-1]
-    repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
+    issue = repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
+    return false if issue.blank?
+    return issue if issue.valid_for_user?(self.user)
+
+    # add issue to restricted list and try again
+    assigned_issue_ids << issue.id
+    get_issue_for_triage
   end
 
   def assign_issue!(send_email = true)

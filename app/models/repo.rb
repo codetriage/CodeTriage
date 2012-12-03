@@ -147,7 +147,7 @@ class Repo < ActiveRecord::Base
   def update_from_github
     resp = GitHubBub::Request.fetch(repo_path)
 
-    self.language = resp.json_body['language']
+    self.language    = resp.json_body['language']
     self.description = resp.json_body['description']
     self.save
   end
