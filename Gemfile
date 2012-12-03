@@ -32,6 +32,7 @@ group :test do
   gem 'launchy'
   gem 'webmock'
   gem 'vcr'
+  gem 'simplecov', :require => false
 end
 
 # Gems used only for assets and not required
