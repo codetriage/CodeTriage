@@ -7,7 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Github"
       sign_in_and_redirect @user, :event => :authentication
     else
-      session["devise.github_data"] = request.env["omniauth.auth"]
+      session["devise.github_data"] = request.env["omniauth.auth"].delete("extra")
       flash[:error] = no_email_error if request.env["omniauth.auth"].info.email.blank?
       redirect_to root_path
     end
