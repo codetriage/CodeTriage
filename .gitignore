@@ -14,10 +14,12 @@
 /log/*.log
 /tmp
 
-
 .DS_Store
 .rvmrc
 
 
 .env
 dump.rdb
+
+# Code test coverage reports
+/coverage
