@@ -29,7 +29,7 @@ Example::Application.routes.draw do
 
   resources :repos, :except => :show
 
-  get "/:user_name(/:name)/subscribers" => "subscribers#show", as: :repo_subscribers
+  get "/:user_name(/:name)(.:format)/subscribers" => "subscribers#show", as: :repo_subscribers
   get "/:user_name(/:name)/edit" => "repos#edit", as: :edit_repo
   get "/:user_name(/:name)" => "repos#show", as: :repo
   put "/:user_name(/:name)" => "repos#update"
