@@ -15,6 +15,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
                        html_url:        "http://schneems.com",
                        number:          1)
     VCR.use_cassette('open_issue') do
+      Issue.any_instance.stubs(:valid_for_user?).returns(true)
       issue = repo_sub.get_issue_for_triage
       assert issue.is_a? Issue
     end
@@ -43,6 +44,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     repo_sub.issue_assignments.create(:issue => assigned_issue)
     VCR.use_cassette('open_issue') do
+      Issue.any_instance.stubs(:valid_for_user?).returns(true)
       issue = repo_sub.get_issue_for_triage
       assert issue.is_a? Issue
     end
@@ -60,6 +62,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
                        number:          1)
 
     VCR.use_cassette('open_issue') do
+      Issue.any_instance.stubs(:valid_for_user?).returns(true)
       repo_sub.assign_issue!(false)
       assert_equal 1, user.issue_assignments.count
     end

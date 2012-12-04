@@ -52,3 +52,5 @@ module ActionController
     end
   end
 end
+
+require 'mocha/setup'

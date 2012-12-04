@@ -11,9 +11,8 @@ class Issue < ActiveRecord::Base
 
   def valid_for_user?(user)
     update_issue!
-
-    # TODO check to see if a user is already part of an issue here
     return false if closed?
+    return false if commenting_users.include? user.github
     true
   end
 
@@ -57,7 +56,10 @@ class Issue < ActiveRecord::Base
     "https://github.com/repos/#{repo.user_name}/#{repo.name}/issues/#{number}"
   end
 
-
+  def commenting_users
+    response = GitHubBub::Request.fetch(api_path + "/comments").json_body
+    response.collect{|comment| comment["user"]["login"]}.uniq.sort
+  end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
     issue =   Issue.where( number:  issue_hash['number'], repo_id: repo.id).first
