@@ -32,4 +32,42 @@ class IssueTest < ActiveSupport::TestCase
     issue.state = "bogus"
     refute issue.valid?
   end
+
+  context '#valid_for_user?' do
+    setup do
+      @user = users("mockstar")
+      repo = repos("rails_rails")
+      @issue = repo.issues.new
+      @issue.stubs(:update_issue!).returns(true)
+    end
+
+    should 'be false with a closed issue' do
+      @issue.stubs(:closed?).returns(true)
+      assert !@issue.valid_for_user?(@user)
+    end
+
+    should 'be true with an open issue uncommented' do
+      @issue.stubs(:closed?).returns(false)
+      @issue.stubs(:commenting_users).returns(["foo", "bar"])
+      assert @issue.valid_for_user?(@user)
+    end
+
+    should 'be false with a commented open issue' do
+      @issue.stubs(:closed?).returns(false)
+      @issue.stubs(:commenting_users).returns(["mockstar", "bar"])
+      assert !@issue.valid_for_user?(@user)
+    end
+  end
+
+  test '#commenting users' do
+    repo = repos("rails_rails")
+    issue = repo.issues.new(repo_name: "rails", number: 8404)
+
+    commenting_users = []
+    VCR.use_cassette('commenting_users_issue') do
+      commenting_users = issue.commenting_users
+    end
+    assert_equal ['Trevoke', 'freegenie', 'pixeltrix', 'steveklabnik'], commenting_users
+  end
+
 end
