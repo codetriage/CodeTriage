@@ -82,6 +82,9 @@ $ psql
 > \q
 ```
 
+You may also need to run:
+'ALTER ROLE postgres WITH login;'
+
 ```shell
 $ rake db:create RAILS_ENV=test
 $ rake db:migrate RAILS_ENV=test
