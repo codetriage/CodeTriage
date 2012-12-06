@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span5">
     <h3>Email:</h3>
-    <p><%= @user.email %></p>
+    <p><%= @user.email %></p> 
 
     <h3>Github:</h3>
     <p><%= "@#{@user.github }"%></p>
@@ -20,8 +20,11 @@
   </div>
 
   <div class="span2 well">
+    <%= link_to "Edit my account", edit_user_path(@user), :class => 'btn btn-primary', :style => 'margin-bottom: 5px' %>
+
     <%= link_to user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", :default => "Are you sure?")}", class:  'btn btn-danger' do %>
       <i class="icon-trash icon-white"></i> Delete my account
     <% end -%>
+
   </div>
 </div>
