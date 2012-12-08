@@ -1,28 +1,18 @@
-<h2>Help Triage Github Issues With Your Favorite Projects</h2>
+<hr />
 
 <% if user_signed_in? %>
   <% if @repos_subs.present? %>
-    <hr>
+    <h2>Repos you are currently helping</h2>
+    <p>
     <%= render 'repo_subscriptions/list' %>
+    </p>
+  <% else %>
+    <h2>Repos needing the most help</h2>
+    <%= render 'shared/repos', repos: @repos %>
   <% end -%>
 <% else %>
-  <%= render 'sign_in' %>
+  <h2>Repos needing the most help</h2>
+  <%= render 'shared/repos', repos: @repos %>
 <% end %>
 
-<hr />
-
-<h2>Repos needing the most help</h2>
-<p>
-  (Ordered by issue count.  Numbers updated every 24 hours)
-</p>
-
-<%= render 'shared/repos', repos: @repos %>
-
-<p>
-  <%= link_to "View All Repos", repos_path, :class => 'btn btn-success' %>
-  <%= link_to "Add a Repo", new_repo_path, :class => 'btn btn-success' %>
-
-  <%# link_to "How does issue triage work?", page_path(:how), :class => 'btn btn-success ' %>
-
-</p>
 

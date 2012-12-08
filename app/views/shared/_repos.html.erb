@@ -1,31 +1,32 @@
 <% lang_index = 0 %>
 
-<div class="row">
-  <ul class="nav nav-tabs nav-stacked span2" data-tabs="tabs" id="repo-tabs">
-    <% repos.group_by(&:language).each do |lang, repos| %>
-      <% unless lang == nil %>
-        <li><a href="#<%= lang.parameterize %>" data-toggle="tab"><%= lang %></a></li>
-      <% end -%>
+<ul class="nav nav-tabs" data-tabs="tabs" id="repo-tabs">
+  <% repos.group_by(&:language).each do |lang, repos| %>
+    <% unless lang == nil %>
+      <li><a href="#<%= lang.parameterize %>" data-toggle="tab"><%= lang %></a></li>
     <% end -%>
-  </ul>
+  <% end -%>
+</ul>
 
-  <div class="tab-content span6">
-    <% repos.group_by(&:language).each do |lang, repos| %>
-      <% unless lang == nil %>
-        <div class="tab-pane<%= " active" if lang_index == 0 %>" id="<%= lang.parameterize %>">
-          <ul class="unstyled repos-list">
-            <% repos.each do |repo| %>
-              <li>
+<div class="tab-content">
+  <% repos.group_by(&:language).each do |lang, repos| %>
+    <% unless lang == nil %>
+      <div class="tab-pane<%= " active" if lang_index == 0 %>" id="<%= lang.parameterize %>">
+        <ul class="unstyled repos-list">
+          <% repos.each do |repo| %>
+            <li>
+              <h4>
+                <%= link_to repo.name, repo %>
+                <%= " <small>(#{repo.full_name})</small> ".html_safe if repo.full_name.present? %>
                 <span class="badge badge-info"><%= repo.issues_count %></span>
-                <%= link_to repo.to_param, repo %>
-              </li>
-            <% end -%>
-          </ul>
-        </div>
-        <% lang_index = lang_index + 1 %>
-      <% end -%>
+              </h4>
+              <p><%= raw repo.description %></p>
+            </li>
+          <% end -%>
+        </ul>
+      </div>
+      <% lang_index = lang_index + 1 %>
     <% end -%>
-  </div>
+  <% end -%>
 </div>
-
-<hr />
+<%= link_to "Submit a Repo", new_repo_path, :class => 'btn btn-success' %>
