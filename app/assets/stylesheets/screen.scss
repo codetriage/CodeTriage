@@ -1,3 +1,26 @@
+.container-narrow {
+  margin: 0 auto;
+  width: 700px;
+}
+.jumbotron {
+  margin: 60px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 64px;
+  line-height: 1;
+  margin: 10px auto;
+}
+.buffer {
+  margin: 30px auto;
+}
+h2 {
+  margin: 0 auto 20px 0;
+}
+.alert {
+  margin: 20px auto;
+}
+
 .hide {
   display: none;
 }
@@ -16,15 +39,18 @@
 }
 
 .avatar, .navbar .nav img {
-  max-height: 36px;
+  max-height: 50px;
   margin: 2px auto;
 }
 
 ul.repos-list li {
+  margin: 0 auto 30px 0;
+}
+ul.repos-list li span {
   float: left;
-  width: 340px;
-  height: 20px;
-  display: inline-block;
+}
+ul.repos-list li h4, ul.repos-list li p {
+  margin-left: 50px
 }
 
 .span6 ul.repos-list li {
