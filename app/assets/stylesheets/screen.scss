@@ -45,7 +45,12 @@ h2 {
 
 ul.repos-list li {
   margin: 0 auto 30px 0;
-
+}
+ul.repos-list li span {
+  float: left;
+}
+ul.repos-list li h4, ul.repos-list li p {
+  margin-left: 50px
 }
 
 .span6 ul.repos-list li {
