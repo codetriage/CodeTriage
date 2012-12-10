@@ -6,14 +6,13 @@
   <h2>Your repos</h2>
   <p>Only repos that have Github issues enabled are shown</p>
 
-  <div class="row">
-    <ul class="nav nav-tabs nav-stacked span2" data-tabs="tabs" id="repo-tabs">
+    <ul class="nav nav-tabs" data-tabs="tabs" id="repo-tabs">
       <li><a href="#own" data-toggle="tab">Your own repos</a></li>
       <li><a href="#starred" data-toggle="tab">Starred repos</a></li>
       <li><a href="#watched" data-toggle="tab">Watched repos</a></li>
     </ul>
 
-    <div class="tab-content span6">
+    <div class="tab-content ">
       <div class="tab-pane active" id="own">
         <%= render 'shared/add_repos_list', repos: @own_repos %>
       </div>
@@ -26,7 +25,6 @@
         <%= render 'shared/add_repos_list', repos: @watched_repos %>
       </div>
     </div>
-  </div>
 
 <% end -%>
 
