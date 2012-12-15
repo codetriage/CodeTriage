@@ -15,12 +15,7 @@
         <ul class="unstyled repos-list">
           <% repos.each do |repo| %>
             <li>
-              <span class="badge badge-info"><%= repo.issues_count %></span>
-              <h4>
-                <%= link_to repo.name, repo %>
-                <%= " <small>(#{repo.full_name})</small> ".html_safe if repo.full_name.present? %>
-              </h4>
-              <p><%= raw repo.description %></p>
+              <%= render repo %><%# repos/_repo.html.erb  %>
             </li>
           <% end -%>
         </ul>

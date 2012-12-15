@@ -1,18 +1,13 @@
 <hr />
 
-<% if user_signed_in? %>
-  <% if @repos_subs.present? %>
-    <h2>Repos you are currently helping</h2>
-    <p>
-    <%= render 'repo_subscriptions/list' %>
-    </p>
-  <% else %>
-    <h2>Repos needing the most help</h2>
-    <%= render 'shared/repos', repos: @repos %>
-  <% end -%>
-<% else %>
-  <h2>Repos needing the most help</h2>
-  <%= render 'shared/repos', repos: @repos %>
+<% if @repos_subs.present? %>
+  <h2>Repos you are currently helping</h2>
+  <p>
+    <%= render 'repo_subscriptions/list', repos_subs: @repos_subs %>
+    <%= link_to 'Find additional repos', repos_path, :class => 'btn btn-success' %>
+    <%= link_to "Submit a Repo", new_repo_path, :class => 'btn btn-success' %>
+  </p>
+  <hr />
 <% end %>
-
-
+<h2>Repos needing the most help</h2>
+<%= render 'shared/repos', repos: @repos %>

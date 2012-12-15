@@ -45,7 +45,7 @@
             <li class="active"><%= link_to 'Sign in', new_user_registration_path %></li>
           <%- end -%>
         </ul>
-        <h3 class="muted">CodeTriage</h3>
+        <h3 class="muted"><%= link_to "CodeTriage", root_path %></h3>
       </div>
 
       <% [:notice, :error, :alert].each do |level| %>

@@ -1,12 +1,7 @@
-
 <ul class="unstyled repos-list">
   <% @repos_subs.each do |sub| %>
     <li>
-      <h4><%= link_to sub.repo.name, sub.repo %>  <span class="badge badge-info"><%= sub.repo.issues_count %></span></h4>
-      <p><%= raw sub.repo.description %></p>
+      <%= render sub.repo %><%# repos/repo.html.erb %>
     </li>
   <% end %>
 </ul>
-
-<%= link_to 'Find additional repos', repos_path, :class => 'btn btn-success' %>
-<%= link_to "Submit a Repo", new_repo_path, :class => 'btn btn-success' %>
