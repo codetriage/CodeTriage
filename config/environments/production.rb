@@ -20,9 +20,13 @@ Example::Application.configure do
 
 
   # Generate digests for assets URLs
-  config.assets.digest = true
+  config.action_controller.asset_host = ENV["CDN_SUMO_URL"]
 
   config.static_cache_control = "public, max-age=2592000"
+
+
+  # Generate digests for assets URLs
+  config.assets.digest = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
