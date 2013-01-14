@@ -69,7 +69,7 @@ GEM
       thor (>= 0.13.6)
     hashie (1.2.0)
     hike (1.2.1)
-    httparty (0.8.3)
+    httparty (0.10.0)
       multi_json (~> 1.0)
       multi_xml
     httpauth (0.1)
@@ -101,7 +101,7 @@ GEM
     mocha (0.13.1)
       metaclass (~> 0.0.1)
     multi_json (1.5.0)
-    multi_xml (0.5.1)
+    multi_xml (0.5.2)
     multipart-post (1.1.5)
     nokogiri (1.5.5)
     oauth2 (0.6.1)
