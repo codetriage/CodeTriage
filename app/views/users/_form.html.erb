@@ -1,4 +1,3 @@
-
 <div class="clearfix">
    <%= f.label :email, t("activerecord.attributes.user.email", :default => "Email"), :class => :label %>
   <div class="input">
@@ -8,5 +7,5 @@
 
 <div class="form-actions">
   <button class="btn primary" type="submit">Save</button> or
-	<%= link_to "Cancel", users_path %>
+	<%= link_to "Cancel", :back %>
 </div>
