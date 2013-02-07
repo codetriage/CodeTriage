@@ -3,7 +3,7 @@
 <ul class="nav nav-tabs" data-tabs="tabs" id="repo-tabs">
   <% repos.group_by(&:language).each do |lang, repos| %>
     <% unless lang == nil %>
-      <li><a href="#<%= lang.parameterize %>" data-toggle="tab"><%= lang %></a></li>
+      <li><a href="#<%= "#{lang.parameterize}#{lang.hash}" %>" data-toggle="tab"><%= lang %></a></li>
     <% end -%>
   <% end -%>
 </ul>
@@ -11,7 +11,7 @@
 <div class="tab-content">
   <% repos.group_by(&:language).each do |lang, repos| %>
     <% unless lang == nil %>
-      <div class="tab-pane<%= " active" if lang_index == 0 %>" id="<%= lang.parameterize %>">
+      <div class="tab-pane<%= " active" if lang_index == 0 %>" id="<%= "#{lang.parameterize}#{lang.hash}" %>">
         <ul class="unstyled repos-list">
           <% repos.each do |repo| %>
             <li>
