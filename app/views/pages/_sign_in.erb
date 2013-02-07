@@ -3,7 +3,7 @@
 </p>
 
 <ol>
-  <li>Sign up via Github</li>
+  <li>Sign up via GitHub</li>
   <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", Repo.where(name: "rails", user_name: "rails").first %></li>
   <li>Click the "Subscribe" button</li>
   <li>Make the world a better place by triaging issues</li>
@@ -13,4 +13,4 @@
   The email will come with triaging instructions on how to help with the project. Unsubscribe any time.
 </p>
 
-<%= link_to "Sign in with Github", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
+<%= link_to "Sign in with GitHub", user_omniauth_authorize_path(:github), :class => 'btn btn-primary' %>
