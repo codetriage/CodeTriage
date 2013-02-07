@@ -4,7 +4,7 @@
 
 <% if user_signed_in? %>
   <h2>Your repos</h2>
-  <p>Only repos that have Github issues enabled are shown</p>
+  <p>Only repos that have GitHub issues enabled are shown</p>
 
     <ul class="nav nav-tabs" data-tabs="tabs" id="repo-tabs">
       <li><a href="#own" data-toggle="tab">Your own repos</a></li>
@@ -48,15 +48,15 @@
 
 <%= content_for :js do %>
   <script type='text/javascript'>
-    var addGithubLinkHelper = function() {
+    var addGitHubLinkHelper = function() {
       var user_name = $('#repo_user_name').val();
       var repo_name = $('#repo_name').val();
       var github = "https://github.com/" + user_name + "/" + repo_name
       $('#repoPreview').html(github)
       $('#repoPreview').attr('href', github)
     };
-    $('#repo_user_name, #repo_name').on('keyup', addGithubLinkHelper)
-    addGithubLinkHelper();
+    $('#repo_user_name, #repo_name').on('keyup', addGitHubLinkHelper)
+    addGitHubLinkHelper();
   </script>
 <% end %>
 

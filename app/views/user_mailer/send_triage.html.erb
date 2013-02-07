@@ -1,7 +1,7 @@
 Hello <%= @user.github %>,
 
 <p>
-You signed up to help triage Github issues on <%= link_to @repo.username_repo, @repo.github_url %>. That's pretty awesome.
+You signed up to help triage GitHub issues on <%= link_to @repo.username_repo, @repo.github_url %>. That's pretty awesome.
 </p>
 
 <h2>Triage Issue: <%= @repo.username_repo %><%= "##{@issue.number}" if @issue.number %></h2>
