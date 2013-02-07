@@ -1,6 +1,9 @@
 <div class="span4">
-  <h3>Email:</h3>
-  <p><%= @user.email %></p>
+  <% if current_user && current_user == @user %>
+    <h3>Email:</h3>
+    <p><%= @user.email %></p>
+    <small class='muted'>Only visible to you</small>
+  <% end %>
 
   <h3>GitHub:</h3>
   <p><%= "@#{@user.github }"%></p>
