@@ -29,8 +29,10 @@ Example::Application.routes.draw do
 
   resources :repos, :except => :show
 
-  get "/:user_name(/:name)(.:format)/subscribers" => "subscribers#show", as: :repo_subscribers
-  get "/:user_name(/:name)/edit" => "repos#edit", as: :edit_repo
-  get "/:user_name(/:name)" => "repos#show", as: :repo
-  put "/:user_name(/:name)" => "repos#update"
+  # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
+  # user_name: "angular", name: "angular.js" instead of using the "js" as a format
+  get "/:user_name(/*name)/subscribers" => "subscribers#show", as: :repo_subscribers, format: false
+  get "/:user_name(/*name)/edit"        => "repos#edit", as: :edit_repo, format: false
+  get "/:user_name(/*name)"             => "repos#show", as: :repo,  format: false
+  put "/:user_name(/*name)"             => "repos#update", format: false
 end
