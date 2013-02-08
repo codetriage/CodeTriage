@@ -122,7 +122,7 @@ GEM
     polyglot (0.3.3)
     quiet_assets (1.0.1)
       railties (~> 3.1)
-    rack (1.4.4)
+    rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-protection (1.2.0)
