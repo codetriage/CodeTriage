@@ -147,6 +147,8 @@ class Repo < ActiveRecord::Base
   def update_from_github
     resp = GitHubBub::Request.fetch(repo_path)
 
+    raise UpdateRepoInfoError, resp.json_body['message'] unless resp.success?
+
     self.language    = resp.json_body['language']
     self.description = resp.json_body['description']
     self.save
@@ -167,6 +169,9 @@ class Repo < ActiveRecord::Base
       repo = Repo.find(repo_id)
       repo.update_from_github
     end
+  end
+
+  class UpdateRepoInfoError < Exception
   end
 
 end
