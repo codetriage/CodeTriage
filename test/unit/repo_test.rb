@@ -22,6 +22,13 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
+  test "update repo info from github error" do
+    VCR.use_cassette "repo_info_error" do
+      repo = Repo.new :user_name => 'codetriage', :name => 'codetriage'
+      assert_raise(Repo::UpdateRepoInfoError) { repo.update_from_github }
+    end
+  end
+
   test "counts number of subscribers" do
     repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
     repo.users << users(:jroes)
