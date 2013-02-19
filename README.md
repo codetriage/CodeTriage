@@ -64,7 +64,7 @@ $ echo GITHUB_APP_SECRET=bar >> .env
 ### Running the app
 Start your app using Foreman
 
-``` shell
+```shell
 $ foreman start
 08:19:22 web.1    | started with pid 6347
 08:19:22 worker.1 | started with pid 6348
