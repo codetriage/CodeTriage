@@ -54,7 +54,12 @@ You now have Redis running on 6379.
 See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
 
 ### Environment
-If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications), then add the credentials to your .env file:
+If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications). The urls you are asked to provide will be something like this:
+
+- URL: `http://localhost:5000`
+- Callback URL: `http://localhost:5000/users/auth/github/callback`
+
+Then add the credentials to your .env file:
 
 ```shell
 $ echo GITHUB_APP_ID=foo >> .env
