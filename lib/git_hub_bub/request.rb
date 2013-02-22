@@ -6,9 +6,8 @@ module GitHubBub
 
     def self.fetch(url, input_options = {})
       options = {}
-      input_options ||= {}
 
-      token = input_options.delete(:token)
+      token = input_options.delete(:token) || User.random.first.try(:token)
 
       options[:query] = input_options
       url = "/#{url}" unless url =~ /^\//

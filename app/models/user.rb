@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
 
   alias_attribute :token, :github_access_token
 
+  def self.random
+    order("RANDOM()")
+  end
+
   # users that are not subscribed to any repos
   def self.inactive
     joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
