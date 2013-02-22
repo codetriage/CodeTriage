@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   scope :public, where("private is not true")
 
+  alias_attribute :token, :github_access_token
+
   # users that are not subscribed to any repos
   def self.inactive
     joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
@@ -50,7 +52,7 @@ class User < ActiveRecord::Base
   end
 
   def github_json
-    GitHubBub::Request.fetch(api_path, {}, self).json_body
+    GitHubBub::Request.fetch(api_path, token: self.token).json_body
   end
 
   def fetch_avatar_url
@@ -75,7 +77,7 @@ class User < ActiveRecord::Base
       user.update_attributes(params)
     else
       email =  auth.info.email
-      email =  GitHubBub::Request.fetch("/user/emails", token: token).json_body.first if email.blank?
+      email =  GitHubBub::Request.fetch("/user/emails", token: self.token).json_body.first if email.blank?
       params = params.merge(:password => Devise.friendly_token[0,20],
                             :name     => auth.extra.raw_info.name,
                             :email    => email)
