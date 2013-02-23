@@ -25,7 +25,7 @@ class RepoTest < ActiveSupport::TestCase
   test "update repo info from github error" do
     VCR.use_cassette "repo_info_error" do
       repo = Repo.new :user_name => 'codetriage', :name => 'codetriage'
-      assert_raise(Repo::UpdateRepoInfoError) { repo.update_from_github }
+      assert_raise(GitHubBub::RequestError) { repo.update_from_github }
     end
   end
 
