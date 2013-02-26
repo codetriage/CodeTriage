@@ -16,7 +16,7 @@
 
 .DS_Store
 .rvmrc
-
+.powrc
 
 .env
 dump.rdb

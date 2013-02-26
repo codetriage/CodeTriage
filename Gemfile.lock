@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
@@ -103,6 +103,7 @@ GEM
     multi_json (1.5.1)
     multi_xml (0.5.2)
     multipart-post (1.1.5)
+    mysql2 (0.3.11)
     nokogiri (1.5.5)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -246,6 +247,7 @@ DEPENDENCIES
   launchy
   mail_view (~> 1.0.2)
   mocha
+  mysql2
   omniauth-github
   pg
   quiet_assets

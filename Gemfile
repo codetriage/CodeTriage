@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 ruby '1.9.3'
 
@@ -24,6 +24,7 @@ gem 'bluecloth'
 group :development do
   gem 'foreman'
   gem 'quiet_assets'
+  gem 'mysql2'
 end
 
 group :test do
