@@ -1,11 +1,9 @@
 development:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: false
   database: triage_development
   pool: 5
   username: root
-  password:
   host: localhost
 
 test:
