@@ -11,7 +11,7 @@ class ReposController < RepoBasedController
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
 
     if user_signed_in?
-      own_repos_response = GitHubBub::Request.fetch("/user/repos", token: current_user.token, type: "owner")
+      own_repos_response = GitHubBub::Request.fetch("/user/repos", token: current_user.token, type: "owner", per_page: '100')
       @own_repos = SortedRepoCollection.new(own_repos_response.json_body)
 
       starred_repos_response = GitHubBub::Request.fetch("/user/starred", token: current_user.token)
