@@ -2,7 +2,8 @@ namespace :schedule do
 
   desc "Sends triage emails"
   task :triage_emails => :environment do
-    RepoSubscription.queue_triage_emails!
+    # RepoSubscription.queue_triage_emails!
+    User.queue_triage_emails!
   end
 
   desc "Populates github issues"

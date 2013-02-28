@@ -108,4 +108,29 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.queue_triage_emails!
+    find_each do |user|
+      user.send_daily_triage_email!
+    end
+  end
+
+  def send_daily_triage_email!
+    Resque.enqueue(SendDailyTriageEmail, self.id)
+  end
+
+  def send_daily_triage!
+    subscriptions = self.repo_subscriptions.ready_for_triage
+    issues        = subscriptions.map(&:assign_issue!).compact
+    return false if issues.blank?
+    UserMailer.send_daily_triage(user: self, issues: issues).deliver
+  end
+
+  class SendDailyTriageEmail
+    @queue = :send_daily_triage_email
+    def self.perform(id)
+      User.find(id).send_issues_email!
+    end
+  end
+
 end
+
