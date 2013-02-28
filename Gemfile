@@ -20,11 +20,14 @@ gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
 gem 'bluecloth'
+gem 'enumerize'
 
 group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller', "~> 0.6.9.pre2"
 end
 
 group :test do
