@@ -1,6 +1,12 @@
-Hello <%= @user.github %>,
+<p>
+	Hello <%= @user.github %>,
+</p>
 
 <h2><%= link_to @issue.title, @issue.html_url %></h2>
+
+<h2>Description</h2>
+
+<%= raw BlueCloth.new(@issue.body).to_html %> 
 
 <hr />
 
