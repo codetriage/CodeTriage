@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
       user.update_attributes(params)
     else
       email =  auth.info.email
-      email =  GitHubBub::Request.fetch("/user/emails", token: self.token).json_body.first if email.blank?
+      email =  GitHubBub::Request.fetch("/user/emails", token: token).json_body.first if email.blank?
       params = params.merge(:password => Devise.friendly_token[0,20],
                             :name     => auth.extra.raw_info.name,
                             :email    => email)
