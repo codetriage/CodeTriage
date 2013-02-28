@@ -3,9 +3,8 @@ development:
   encoding: utf8
   database: triage_development
   pool: 5
+  username: root
   host: localhost
-  # username: root
-
 
 test:
   adapter: postgresql

@@ -72,7 +72,8 @@ class Issue < ActiveRecord::Base
                            url:             issue_hash['url'],
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
-                           html_url:        issue_hash['html_url'])
+                           html_url:        issue_hash['html_url'],
+                           body:            issue_hash['body'])
   end
 
 
