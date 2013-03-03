@@ -44,7 +44,7 @@ class RepoSubscription < ActiveRecord::Base
     issue = get_issue_for_triage
     unless issue.blank?
       issue_assignments.create!(:issue_id => issue.id, :user_id => user.id)
-      UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver if send_email == true
+      UserMailer.send_triage(:user => self.user, :issues => [issue]).deliver if send_email == true
     end
     return issue
   ensure
