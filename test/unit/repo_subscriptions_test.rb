@@ -63,7 +63,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      repo_sub.assign_issue!(false)
+      repo_sub.assign_issue!
       assert_equal 1, user.issue_assignments.count
     end
   end

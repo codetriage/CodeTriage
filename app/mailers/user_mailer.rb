@@ -3,6 +3,13 @@ require 'rails_autolink'
 class UserMailer < ActionMailer::Base
   default from: "Issue Triage <noreply@issuetriage.heroku.com>"
 
+  def send_daily_triage(options = {})
+    @user   = options[:user]
+    @issues = options[:issues]
+    subject = "Help Triage #{@issues.count} Open Source #{"Issue".pluralize(@issues.count)}"
+    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: subject)
+  end
+
 
   def send_triage(options = {})
     @user   = options[:user]
@@ -41,6 +48,12 @@ class UserMailer < ActionMailer::Base
       repo  = Repo.last
       issue = Issue.where(state: "open").where("number is not null").last
       ::UserMailer.send_triage(:user => user, :repo => repo, :issue => issue)
+    end
+
+    def send_daily_triage
+      user   = User.last
+      issues = Issue.where(state: "open").where("number is not null").limit(rand(5) + 1)
+      ::UserMailer.send_daily_triage(user: user, issues: issues)
     end
 
     def poke_inactive

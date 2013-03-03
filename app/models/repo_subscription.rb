@@ -6,6 +6,10 @@ class RepoSubscription < ActiveRecord::Base
 
   has_many   :issues, :through => :issue_assignments
 
+  def self.ready_for_triage
+    where("last_sent_at is null or last_sent_at < ?", 23.hours.ago)
+  end
+
   def ready_for_next?
     return true if last_sent_at.blank?
     last_sent_at < 24.hours.ago
@@ -40,11 +44,10 @@ class RepoSubscription < ActiveRecord::Base
     get_issue_for_triage
   end
 
-  def assign_issue!(send_email = true)
+  def assign_issue!
     issue = get_issue_for_triage
     unless issue.blank?
       issue_assignments.create!(:issue_id => issue.id, :user_id => user.id)
-      UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver if send_email == true
     end
     return issue
   ensure
@@ -56,7 +59,8 @@ class RepoSubscription < ActiveRecord::Base
     @queue = :send_triage_email
     def self.perform(id)
       repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id).first
-      repo_sub.assign_issue!
+      issue    = repo_sub.assign_issue!
+      UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver
     end
   end
 
