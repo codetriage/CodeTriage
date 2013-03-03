@@ -10,10 +10,14 @@ class UserRepositorySubscriptions
   end
 
   def users_where_repository_nofitications_sent time_ago
-    user_join_repo_subs.where "last_sent_at is null or last_sent_at < ?", time_ago
+    notifications_sent(time_ago).group("users.id")
   end
 
   private
+    def notifications_sent time_ago
+      user_join_repo_subs.
+        where "repo_subscriptions.last_sent_at is null or repo_subscriptions.last_sent_at < ?", time_ago
+    end
     def user_join_repo_subs
       User.joins :repo_subscriptions
     end
