@@ -5,10 +5,11 @@ class UserMailer < ActionMailer::Base
 
 
   def send_triage(options = {})
-    @user   = options[:user]
-    @repo   = options[:repo]
-    @issue  = options[:issue]
-    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
+    @user    = options[:user]
+    @repos   = options[:issues].map { |issue| issue.repo }
+    @issues  = options[:issues]
+    repos    = @repos.map(&:path).join ', '
+    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{repos} on GitHub")
   end
 
   def poke_inactive(user)

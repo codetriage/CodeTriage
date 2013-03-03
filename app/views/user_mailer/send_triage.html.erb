@@ -1,12 +1,18 @@
 Hello <%= @user.github %>,
 
 <p>
-You signed up to help triage GitHub issues on <%= link_to @repo.username_repo, @repo.github_url %>. That's pretty awesome.
+  You signed up to help triage GitHub issues, that's pretty awesome.
 </p>
 
-<h2>Triage Issue: <%= @repo.username_repo %><%= "##{@issue.number}" if @issue.number %></h2>
+<h2>Triage Issues: </h2>
 
-<h2><%= link_to @issue.title, @issue.html_url %></h2>
+<% @issues.each do |issue| %>
+  <%- repo = issue.repo %>
+  <h2><%= repo.username_repo %><%= "##{issue.number}" if issue.number %></h2>
+  <h3><%= link_to issue.title, issue.html_url %></h3>
+  <p><%= link_to "Send another #{repo.username_repo} issue", repo_url(repo) %></p>
+  <p><%= link_to "Unsubscribe: #{repo.username_repo}", repo_url(repo) %></p>
+<% end %>
 
 <h2>Goals of Triage</h2>
 
@@ -46,6 +52,4 @@ If the issue goes stale, leave a comment asking if it is still a problem. If you
 
 <hr />
 
-<p><%= link_to "Send another #{@repo.username_repo} issue", repo_url(@repo) %></p>
-<p><%= link_to "Unsubscribe: #{@repo.username_repo}", repo_url(@repo) %></p>
 <p><%= link_to 'Help triage more repos at codetriage.com', root_url %></p>
