@@ -3,6 +3,8 @@ class Repo < ActiveRecord::Base
   attr_accessible :notes, :name, :user_name, :issues_count, :language, :description, :full_name
 
   validate :github_url_exists, :on => :create
+  validate :name, uniqueness: {scope: :user_name, case_sensitive: false }
+
   after_create :populate_issues!, :update_repo_info!
 
   before_validation :downcase_name
