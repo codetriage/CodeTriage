@@ -4,10 +4,10 @@ class IssueTest < ActiveSupport::TestCase
   test "issue counter cache" do
     repo     = repos(:rails_rails)
 
-    repo.reload
-    assert_equal 0, repo.issues_count
+    assert_equal 0, repo.issues.count
+    assert_equal 0, repo.reload.issues_count
 
-    assert_difference("Repo.where(id: #{repo.id}).first.issues_count", 1) do
+    assert_difference("Repo.find(#{repo.id}).issues_count", 1) do
       repo.issues.create(:title           => "Foo Bar",
                          :url             => "http://schneems.com",
                          :last_touched_at => 2.days.ago,
@@ -15,7 +15,7 @@ class IssueTest < ActiveSupport::TestCase
                          :html_url        => "http://schneems.com")
     end
 
-    assert_difference("Repo.where(id: #{repo.id}).first.issues_count", -1) do
+    assert_difference("Repo.find(#{repo.id}).issues_count", -1) do
       repo.issues.destroy_all
     end
   end
