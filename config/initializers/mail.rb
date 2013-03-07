@@ -6,4 +6,4 @@ ActionMailer::Base.smtp_settings = {
   :password       => ENV['SENDGRID_PASSWORD'],
   :domain         => 'codetriage.com'
 }
-ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.delivery_method ||= :smtp
