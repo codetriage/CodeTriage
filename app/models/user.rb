@@ -128,7 +128,7 @@ class User < ActiveRecord::Base
   class SendDailyTriageEmail
     @queue = :send_daily_triage_email
     def self.perform(id)
-      User.find(id).send_issues_email!
+      User.find(id).send_daily_triage!
     end
   end
 
