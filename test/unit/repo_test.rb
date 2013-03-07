@@ -23,7 +23,7 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "update repo info from github error" do
-    VCR.use_cassette "repo_info_error" do
+    VCR.use_cassette "repo_info_error", allow_playback_repeats: true do
       repo = Repo.new :user_name => 'codetriage', :name => 'codetriage'
       assert_raise(GitHubBub::RequestError) { repo.update_from_github }
     end

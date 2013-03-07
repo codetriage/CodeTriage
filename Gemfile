@@ -21,6 +21,9 @@ gem 'wicked'
 gem 'rails_autolink'
 gem 'bluecloth'
 
+
+gem 'rrrretry'
+
 group :development do
   gem 'foreman'
   gem 'quiet_assets'

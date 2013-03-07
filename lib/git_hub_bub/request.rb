@@ -1,4 +1,6 @@
 module GitHubBub
+  class RequestError < StandardError; end
+
   class Request
     include HTTParty
     base_uri 'https://api.github.com'
@@ -6,21 +8,28 @@ module GitHubBub
 
     def self.fetch(url, input_options = {})
       options = {}
-
-      token = input_options.delete(:token) || User.random.first.try(:token)
-
       options[:query] = input_options
-      url = "/#{url}" unless url =~ /^\//
-
-      self.headers["Authorization"] = "token #{token}" if token.present?
-
-      response    = self.get(url, options)
-      gh_resp = GitHubBub::Response.create(response)
-      raise RequestError, gh_resp.json_body['message'] unless gh_resp.success?
-      gh_resp
+      3.times.retry do
+        set_auth_from_token!(input_options)
+        response = get_with_validations(url, options)
+      end
     end
-  end
 
-  class RequestError < Exception
+    def self.set_auth_from_token!(options)
+      token = if options.has_key?(:token)
+        options.delete(:token)
+      else
+        User.random.first.try(:token)
+      end
+      self.headers["Authorization"] = "token #{token}" if token.present?
+    end
+
+    def self.get_with_validations(url, options)
+      url = "/#{url}" unless url =~ /^\//
+      response = self.get(url, options)
+      response = GitHubBub::Response.create(response)
+      raise RequestError, response.json_body['message'] unless response.success?
+      return response
+    end
   end
 end

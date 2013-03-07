@@ -160,6 +160,7 @@ GEM
       redis-namespace (~> 1.0.2)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
+    rrrretry (0.0.1)
     rubyzip (0.9.9)
     sass (3.1.18)
     sass-rails (3.2.5)
@@ -252,6 +253,7 @@ DEPENDENCIES
   rails (= 3.2.12)
   rails_autolink
   resque
+  rrrretry
   sass-rails (~> 3.2.3)
   sextant
   shoulda
