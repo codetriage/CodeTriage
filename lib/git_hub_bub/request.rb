@@ -15,7 +15,12 @@ module GitHubBub
       self.headers["Authorization"] = "token #{token}" if token.present?
 
       response    = self.get(url, options)
-      GitHubBub::Response.create(response)
+      gh_resp = GitHubBub::Response.create(response)
+      raise RequestError, gh_resp.json_body['message'] unless gh_resp.success?
+      gh_resp
     end
+  end
+
+  class RequestError < Exception
   end
 end
