@@ -52,4 +52,19 @@ class UserTest < ActiveSupport::TestCase
       user.send_daily_triage!
     end
   end
+
+  test "user favorite_language?" do
+    u = User.new( :favorite_languages => [ "ruby" ] )
+    assert u.favorite_language?("ruby")
+    assert !u.favorite_language?("java")
+  end
+
+  test "user has_favorite_languages?" do
+    u = User.new( :favorite_languages => [ "ruby" ] )
+    assert u.has_favorite_languages?
+
+    u = User.new( :favorite_languages => [] )
+    assert !u.has_favorite_languages?
+  end
+
 end

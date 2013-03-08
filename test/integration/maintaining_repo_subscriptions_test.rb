@@ -21,4 +21,10 @@ class MaintainingRepoSubscriptionsTest < ActionController::IntegrationTest
     click_link 'Subscribers'
     assert page.has_content?("@mockstar")
   end
+
+  test "list only favorite languages" do
+    login_via_github
+    visit "/"
+    assert !page.has_content?("javascript")
+  end
 end

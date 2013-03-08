@@ -8,7 +8,7 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "uniqueness of repo with case insensitivity" do
-    repo = Repo.create :user_name => 'refinery', :name => 'refinerycms'
+    Repo.create :user_name => 'refinery', :name => 'refinerycms'
     duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
     assert_equal ["has already been taken"], duplicate_repo.errors[:name]
   end
@@ -34,5 +34,20 @@ class RepoTest < ActiveSupport::TestCase
     repo.users << users(:jroes)
     repo.users << users(:schneems)
     repo.subscriber_count == 2
+  end
+
+  test "repos needing help when user has ruby language" do
+    repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ "ruby" ])).map(&:path)
+    assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" ], repos
+  end
+
+  test "repos needing help when user has no languages" do
+    repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ ])).map(&:path)
+    assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" , "joyent/node"], repos
+  end
+
+  test "repos needing help when user is null" do
+    repos = Repo.repos_needing_help_for_user(nil).map(&:path)
+    assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" , "joyent/node"], repos
   end
 end

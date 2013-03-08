@@ -46,6 +46,18 @@ class Repo < ActiveRecord::Base
     order("random()")
   end
 
+  def self.all_languages
+    self.select("language").group("language").map(&:language)
+  end
+
+  def self.repos_needing_help_for_user(user)
+    if user && user.has_favorite_languages?
+      self.where(language: user.favorite_languages).order_by_issue_count
+    else
+      self.order_by_issue_count
+    end
+  end
+
   def force_issues_count_sync!
      self.update_attributes(issues_count: self.issues.where(state: "open").count)
   end

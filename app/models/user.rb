@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :private, :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token, :avatar_url, :name
+  attr_accessible :private, :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token, :avatar_url, :name, :favorite_languages
 
   has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, :through => :repo_subscriptions
@@ -130,6 +130,14 @@ class User < ActiveRecord::Base
     def self.perform(id)
       User.find(id).send_daily_triage!
     end
+  end
+
+  def favorite_language?(language)
+    favorite_languages.include? language if favorite_languages
+  end
+
+  def has_favorite_languages?
+    favorite_languages && !favorite_languages.empty?
   end
 
 end

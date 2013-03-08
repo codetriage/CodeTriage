@@ -20,6 +20,7 @@ mockstar:
   admin:
   name: Mock Star
   private: false
+  favorite_languages: [ "ruby" ]
 schneems:
   id: 2
   email: richard.schneeman@gmail.com
