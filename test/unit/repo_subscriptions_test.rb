@@ -1,4 +1,5 @@
 ## quick and dirty tests, need to move logic to Factory or fixture
+require 'test_helper'
 
 class RepoSubscriptionsTest < ActiveSupport::TestCase
   fixtures :users
@@ -66,5 +67,22 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
       repo_sub.assign_issue!
       assert_equal 1, user.issue_assignments.count
     end
+  end
+
+  test "email_limit allows multiple issues per repo" do
+    user  = users(:mockstar)
+    repo  = repos(:rails_rails)
+    issue = repo.issues.create(:title           => "Foo Bar",
+                               :url             => "http://schneems.com",
+                               :last_touched_at => 2.days.ago,
+                               :state           => 'open',
+                               :html_url        => "http://schneems.com",
+                               :number          => 9000)
+    sub = user.repo_subscriptions.create(repo:        repo,
+                                   email_limit: 2)
+
+    RepoSubscription.any_instance.expects(:assign_issue!).twice
+    sub.assign_multi_issues!
+
   end
 end

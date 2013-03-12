@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
 
   def send_daily_triage!
     subscriptions = self.repo_subscriptions.ready_for_triage
-    issues        = subscriptions.map(&:assign_issue!).compact
+    issues        = subscriptions.map(&:assign_multi_issues!).flatten.compact
     return false if issues.blank?
     UserMailer.send_daily_triage(user: self, issues: issues).deliver
   end

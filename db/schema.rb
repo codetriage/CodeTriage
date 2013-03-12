@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128162942) do
+ActiveRecord::Schema.define(:version => 20130312023533) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
@@ -39,11 +39,12 @@ ActiveRecord::Schema.define(:version => 20121128162942) do
   create_table "repo_subscriptions", :force => true do |t|
     t.string   "user_name"
     t.string   "repo_name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
+    t.integer  "email_limit",  :default => 1
   end
 
   create_table "repos", :force => true do |t|
@@ -77,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20121128162942) do
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
-    t.string   "avatar_url",             :default => "http://gravatar.com/avatar/default"
     t.string   "name"
+    t.string   "avatar_url",             :default => "http://gravatar.com/avatar/default"
     t.boolean  "private"
   end
 

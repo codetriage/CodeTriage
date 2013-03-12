@@ -47,7 +47,7 @@ class UserTest < ActiveSupport::TestCase
                                :html_url        => "http://schneems.com",
                                :number          => 9000)
     user.repo_subscriptions.create(repo: repo)
-    assert_difference("user.issues.count", 1) do
+    assert_difference("User.find(#{user.id}).issues.count", 1) do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
       user.send_daily_triage!
     end

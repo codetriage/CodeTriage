@@ -7,6 +7,8 @@ class RepoSubscription < ActiveRecord::Base
 
   has_many   :issues, :through => :issue_assignments
 
+  validates :email_limit, numericality: {less_than: 21, greater_than: 0}
+
   def self.ready_for_triage
     where("last_sent_at is null or last_sent_at < ?", 23.hours.ago)
   end
@@ -33,6 +35,12 @@ class RepoSubscription < ActiveRecord::Base
   # a list of all issues assigned to the current repo_sub
   def assigned_issue_ids
     @assigned_issue_ids ||= self.issues.map(&:id) + [-1]
+  end
+
+  def assign_multi_issues!
+    self.email_limit.times.map do
+      assign_issue!
+    end
   end
 
   def get_issue_for_triage
