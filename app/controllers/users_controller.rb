@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     @user.update_attributes(params[:user])
-    redirect_to :back
+    if @user.save!
+      redirect_to @user, :flash => { :success => 'User successfully updated' }
+    end
   end
 
   def destroy

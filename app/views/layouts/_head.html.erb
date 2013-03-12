@@ -48,9 +48,9 @@
         <h3 class="muted"><%= link_to "CodeTriage", root_path %></h3>
       </div>
 
-      <% [:notice, :error, :alert].each do |level| %>
+      <% [:notice, :error, :alert, :success].each do |level| %>
         <% unless flash[level].blank? %>
-          <div class="alert alert-block">
+          <div class='alert alert-block <%="alert-#{level}" %>'>
             <a class="close" data-dismiss="alert" href="#">&times;</a>
             <%= content_tag :p, flash[level] %>
           </div>
