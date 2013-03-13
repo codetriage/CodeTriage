@@ -131,6 +131,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack-timeout (0.0.3)
     rails (3.2.13)
       actionmailer (= 3.2.13)
       actionpack (= 3.2.13)
@@ -250,6 +251,7 @@ DEPENDENCIES
   omniauth-github
   pg
   quiet_assets
+  rack-timeout
   rails (= 3.2.13)
   rails_autolink
   resque
