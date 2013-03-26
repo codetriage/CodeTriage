@@ -129,7 +129,7 @@ class Repo < ActiveRecord::Base
                                                          :sort      => 'comments',
                                                          :direction => 'desc')
     response.json_body.each do |issue_hash|
-      puts "Issue: number: #{issue_hash['number']}, updated_at: #{issue_hash['updated_at']}"
+      logger.info "Issue: number: #{issue_hash['number']}, updated_at: #{issue_hash['updated_at']}"
       Issue.find_or_create_from_hash!(issue_hash, self)
     end
     response
