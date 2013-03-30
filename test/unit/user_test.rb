@@ -52,4 +52,12 @@ class UserTest < ActiveSupport::TestCase
       user.send_daily_triage!
     end
   end
+
+  test 'valid_email? is true when valid' do
+    assert User.new(:email => 'richard.schneeman@gmail.com').valid_email?
+  end
+
+  test 'valid_email? is false when bad' do
+    assert !User.new(:email => 'a really bad e-mail address').valid_email?
+  end
 end
