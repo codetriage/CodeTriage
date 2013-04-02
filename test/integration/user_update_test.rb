@@ -10,5 +10,3 @@ class UserUpdateTest < ActionController::IntegrationTest
     assert_routing user_path(@user), { :controller => 'users', :action => 'show', :id => '1' }
   end
 end
-
-
