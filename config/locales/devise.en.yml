@@ -48,6 +48,7 @@ en:
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
+      bad_email_success: 'The e-mail address in your %{kind} account is not valid. Please set a legitimate one to receive e-mails from us.'
     mailer:
       confirmation_instructions:
         subject: 'Confirmation instructions'

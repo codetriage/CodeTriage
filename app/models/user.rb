@@ -2,7 +2,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :omniauthable
+
+  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
+  validates_length_of       :password, :within => 8..128, :allow_blank => true
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :private, :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, :github, :github_access_token, :avatar_url, :name
@@ -96,6 +99,15 @@ class User < ActiveRecord::Base
 
   def api_path
     "/user"
+  end
+
+  def valid_email?
+    begin
+      Mail::Address.new(email)
+      true
+    rescue
+      false
+    end
   end
 
   class InactiveEmail
