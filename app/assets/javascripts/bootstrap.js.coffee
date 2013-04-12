@@ -8,7 +8,7 @@ jQuery ->
   $("a[rel]").popover()
   $(".navbar").scrollspy()
   $(".tab").tab "show"
-  $(".tooltip").tooltip()
+  $("[data-toggle=tooltip]").tooltip()
   $(".typeahead").typeahead()
 
   $("#repo-tabs a:first").tab 'show'
