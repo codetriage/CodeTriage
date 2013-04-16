@@ -19,6 +19,25 @@
     <%= link_to "Make account public", users_path(user: {private: false}), method: :put, :class => 'btn btn-primary'  %>
   <% end %>
 
+  <h3>Favorite Languages:</h3>
+
+  <p>Select your favorite languages:</p>
+
+  <%= form_for @user do |f| %>
+
+    <% Repo.all_languages.each do |language| %>
+      <label class="checkbox">
+        <%= f.check_box :favorite_languages, { multiple: true }, language, nil %>
+        <%= language %>
+      </label>
+    <% end %>
+
+    <p>
+      <%= button_tag "Save", :class => "btn btn-primary" %>
+    </p>
+
+  <% end %>
+
 </div>
 
 <div class="span2 well">

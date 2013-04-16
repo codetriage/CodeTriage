@@ -8,6 +8,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+gem 'ar_pg_array'
 gem 'resque'
 gem 'sextant'
 gem 'unicorn'
