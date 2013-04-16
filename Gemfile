@@ -54,7 +54,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise',                  "~> 2.0.4"
-gem "twitter-bootstrap-rails", "~> 2.0.1.0"
+gem "twitter-bootstrap-rails", "~> 2.0.9"
 
 
 gem "rack-timeout"
