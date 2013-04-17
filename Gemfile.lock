@@ -207,11 +207,10 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.0.9)
+    twitter-bootstrap-rails (2.2.6)
       actionpack (>= 3.1)
-      less-rails (~> 2.2.2)
+      execjs
       railties (>= 3.1)
-      therubyracer (~> 0.10.1)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -249,6 +248,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   launchy
+  less-rails
   mail_view (~> 1.0.2)
   mocha
   omniauth-github
@@ -263,8 +263,9 @@ DEPENDENCIES
   sextant
   shoulda
   simplecov
+  therubyracer
   thin
-  twitter-bootstrap-rails (~> 2.0.9)
+  twitter-bootstrap-rails (~> 2.2.6)
   uglifier (>= 1.0.3)
   unicorn
   vcr

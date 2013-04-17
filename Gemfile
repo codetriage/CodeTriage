@@ -51,11 +51,13 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'therubyracer'
+  gem "less-rails"
 end
 
 gem 'jquery-rails'
 gem 'devise',                  "~> 2.0.4"
-gem "twitter-bootstrap-rails", "~> 2.0.9"
-
+gem "twitter-bootstrap-rails", "~> 2.2.6"
 
 gem "rack-timeout"
