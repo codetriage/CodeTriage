@@ -1,41 +1,45 @@
 <div class="span4">
+  <h2><%= "#{@user.github }"%></h2>
+
   <% if current_user && current_user == @user %>
-    <h3>Email:</h3>
-    <p><%= @user.email %></p>
-    <small class='muted'>Only visible to you</small>
-  <% end %>
+    <section id="user-details"</section>
+      <dl>
 
-  <h3>GitHub:</h3>
-  <p><%= "@#{@user.github }"%></p>
+        <dt>Email</dt>
+        <dd><%= @user.email %></dd>
+        <small class='muted'>Only visible to you</small>
 
-  <h3>Publicly visible?:</h3>
-  <p><%= @user.public? ? "Yes" : "No" %></p>
+        <dt>Publicly visible?</dt>
+        <dd><%= @user.public? ? "Yes" : "No" %></dd>
+        <% if @user.public? %>
+          <%= link_to "Make account private", users_path(user: {private: true}), method: :put, :class => 'btn btn-primary'  %>
+        <% else %>
+          <%= link_to "Make account public", users_path(user: {private: false}), method: :put, :class => 'btn btn-primary'  %>
+        <% end %>
 
-  <p><small>If your account is public others can see what repos you are triaging. Your email is never shared, ever.</small></p>
+      </dl>
+    </section>
 
-  <% if @user.public? %>
-    <%= link_to "Make account private", users_path(user: {private: true}), method: :put, :class => 'btn btn-primary'  %>
-  <% else %>
-    <%= link_to "Make account public", users_path(user: {private: false}), method: :put, :class => 'btn btn-primary'  %>
-  <% end %>
+    <section id="user-favorite-langs">
+      <h3>Favorite Languages:</h3>
 
-  <h3>Favorite Languages:</h3>
+      <p>Select your favorite languages:</p>
 
-  <p>Select your favorite languages:</p>
+      <%= form_for @user do |f| %>
 
-  <%= form_for @user do |f| %>
+        <% Repo.all_languages.each do |language| %>
+          <label class="checkbox">
+            <%= f.check_box :favorite_languages, { multiple: true }, language, nil %>
+            <%= language %>
+          </label>
+        <% end %>
 
-    <% Repo.all_languages.each do |language| %>
-      <label class="checkbox">
-        <%= f.check_box :favorite_languages, { multiple: true }, language, nil %>
-        <%= language %>
-      </label>
-    <% end %>
+        <p>
+          <%= button_tag "Save", :class => "btn btn-primary" %>
+        </p>
 
-    <p>
-      <%= button_tag "Save", :class => "btn btn-primary" %>
-    </p>
-
+      <% end %>
+    </section>
   <% end %>
 
 </div>
