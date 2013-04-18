@@ -43,6 +43,10 @@ h2 {
   margin: 2px auto;
 }
 
+ul#repo-tabs li.active a {
+  background-color: #f5f5f5;
+}
+
 ul.repos-list li {
   margin: 0 auto 30px 0;
 }
