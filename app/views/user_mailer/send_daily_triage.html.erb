@@ -10,7 +10,7 @@ Hello @<%= @user.github %>,
     </h2>
     <p>
     <small>
-       <%= link_to issue.repo.full_name, issue.repo %>
+       <%= link_to issue.repo.full_name, github_url(issue.repo.full_name) %>
        <%= time_ago_in_words issue.last_touched_at %>
      </small>
     <p>
