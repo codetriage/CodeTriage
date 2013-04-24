@@ -1,7 +1,7 @@
 require 'rails_autolink'
 
 class UserMailer < ActionMailer::Base
-  default from: "Issue Triage <noreply@issuetriage.heroku.com>"
+  default from: "CodeTriage <noreply@codetriage.com>"
 
   def send_daily_triage(options = {})
     @user   = options[:user]
