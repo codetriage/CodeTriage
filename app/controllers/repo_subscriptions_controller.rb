@@ -23,4 +23,14 @@ class RepoSubscriptionsController < ApplicationController
     redirect_to :back
   end
 
+  def update
+    @repo_sub = current_user.repo_subscriptions.where(:id => params[:id]).first
+    if @repo_sub.update_attributes(params[:repo_subscription])
+      flash[:success] = "Email preferences updated!"
+      redirect_to :back
+    else
+      flash[:error] ="Something went wrong"
+      redirect_to :back
+    end
+  end
 end
