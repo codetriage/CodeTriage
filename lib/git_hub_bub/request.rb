@@ -4,7 +4,7 @@ module GitHubBub
   class Request
     include HTTParty
     base_uri 'https://api.github.com'
-    headers  'Accept' => 'application/vnd.github.3.raw+json'
+    headers  'Accept' => 'application/vnd.github.3.raw+json', "User-Agent"=>"codetriage"
 
     def self.fetch(url, input_options = {})
       options = {}
