@@ -51,6 +51,13 @@
       <i class="icon-envelope icon-white"></i> Send new issue!
     <% end %>
   </p>
+  <p>
+    Currently receiving <%= @repo_sub.email_limit %> issues per day.
+    <%= form_for(@repo_sub, :html => {:class => 'form-inline'}) do |f| %>
+      <%= f.select :email_limit, (1..20) %>
+      <%= f.submit "Save", :class => 'btn btn-success' %>
+    <% end %>
+  </p>
 <% end %>
 
 <hr />
