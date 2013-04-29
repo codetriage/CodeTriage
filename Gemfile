@@ -21,6 +21,7 @@ gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
 gem 'bluecloth'
+gem 'skylight'
 
 
 gem 'rrrretry'
