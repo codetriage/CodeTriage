@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312023533) do
+ActiveRecord::Schema.define(:version => 20130503183402) do
 
   create_table "issue_assignments", :force => true do |t|
     t.integer  "user_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(:version => 20130312023533) do
     t.string       "name"
     t.boolean      "private"
     t.string_array "favorite_languages"
+    t.integer      "daily_issue_limit"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
