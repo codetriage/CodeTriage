@@ -53,6 +53,26 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test 'User#send_daily_triage! sends the correct # of issues when daily_issue_limit is set' do
+    user  = users(:mockstar)
+    user.daily_issue_limit = 1
+    repo_names = [:rails_rails, :node]
+    2.times do |i|
+      repo  = repos(repo_names[i])
+      repo.issues.create(:title           => "Foo Bar",
+                         :url             => "http://schneems.com",
+                         :last_touched_at => 2.days.ago,
+                         :state           => 'open',
+                         :html_url        => "http://schneems.com",
+                         :number          => 9000)
+      user.repo_subscriptions.create(repo: repo)
+    end
+    assert_difference("User.find(#{user.id}).issues.count", 1) do
+      Issue.any_instance.stubs(:valid_for_user?).returns(true)
+      user.send_daily_triage!
+    end
+  end
+
   test 'valid_email? is true when valid' do
     assert User.new(:email => 'richard.schneeman@gmail.com').valid_email?
   end

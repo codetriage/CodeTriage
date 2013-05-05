@@ -3,7 +3,10 @@
   <div class="input">
     <%= f.text_field :email, :class => 'text_field' %>
   </div>
-</div>
+   <%= f.label :daily_issue_limit, t("activerecord.attributes.user.daily_issue_limit", :default => "Max # of issues you want to receive per day"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :daily_issue_limit, :class => 'number_field' %>
+  </div></div>
 
 <div class="form-actions">
   <button class="btn primary" type="submit">Save</button> or
