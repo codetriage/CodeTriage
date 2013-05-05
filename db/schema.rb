@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(:version => 20130312023533) do
     t.string       "github"
     t.string       "github_access_token"
     t.boolean      "admin"
-    t.string       "avatar_url",             :default => "http://gravatar.com/avatar/default"
     t.string       "name"
+    t.string       "avatar_url",             :default => "http://gravatar.com/avatar/default"
     t.boolean      "private"
     t.string_array "favorite_languages"
   end
