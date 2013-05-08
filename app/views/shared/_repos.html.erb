@@ -29,12 +29,12 @@
 <%= link_to "Submit a Repo", new_repo_path, :class => 'btn btn-success' %>
 
 <script>
-  document.ready(){function(){
+  $(document).ready(function(){
     var hash = document.location.hash;
 
     if (hash) {
       $('.nav-tabs a[href='+hash+']').tab('show');
     }
-  }}
+  });
 
 </script>
