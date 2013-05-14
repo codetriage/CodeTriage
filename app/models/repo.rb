@@ -7,7 +7,7 @@ class Repo < ActiveRecord::Base
 
   after_create :populate_issues!, :update_repo_info!
 
-  before_validation :downcase_name
+  before_validation :downcase_name, :strip_whitespaces
 
   validates :name, :user_name, :presence => true
   validates :name, :uniqueness => {:scope => :user_name}
@@ -19,6 +19,11 @@ class Repo < ActiveRecord::Base
   has_many :subscribers, through: :repo_subscriptions, source: :user
 
   before_save :set_full_name
+
+  def strip_whitespaces
+    self.name.strip!
+    self.user_name.strip!
+  end
 
   def set_full_name
     self.full_name = "#{user_name}/#{name}"

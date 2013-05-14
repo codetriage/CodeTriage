@@ -49,8 +49,8 @@
 <%= content_for :js do %>
   <script type='text/javascript'>
     var addGitHubLinkHelper = function() {
-      var user_name = $('#repo_user_name').val();
-      var repo_name = $('#repo_name').val();
+      var user_name = $('#repo_user_name').val().trim();
+      var repo_name = $('#repo_name').val().trim();
       var github = "https://github.com/" + user_name + "/" + repo_name
       $('#repoPreview').html(github)
       $('#repoPreview').attr('href', github)
