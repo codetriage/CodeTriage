@@ -1,0 +1,1 @@
+var assertjs = chai.assert;
