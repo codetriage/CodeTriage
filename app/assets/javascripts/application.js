@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
+//= require coffee_script_utilities
+//= require tab_navigation
+//= require bootstrap
+//= require global
