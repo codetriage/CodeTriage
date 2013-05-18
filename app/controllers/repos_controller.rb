@@ -30,9 +30,9 @@ class ReposController < RepoBasedController
   end
 
   def create
-    @repo =   Repo.where(name: params[:repo][:name].downcase, user_name: params[:repo][:user_name].downcase).first
+    @repo =   Repo.where(name: params[:repo][:name].downcase.strip, user_name: params[:repo][:user_name].downcase.strip).first
     @repo ||= Repo.create(params[:repo])
-
+ 
     if @repo.save
       flash[:notice] = "Added #{@repo.to_param} for triaging"
       repo_sub = RepoSubscription.create(:repo => @repo, :user => current_user)
