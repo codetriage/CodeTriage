@@ -23,5 +23,5 @@ namespace 'Codetriage', (exports) ->
         location.hash = @locationHash
         @showTabLocation()
 
-    showTabLocation:() ->
+    showTabLocation: ->
       $("a[href='#{@locationHash}']").tab "show"
