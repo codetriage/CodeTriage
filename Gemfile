@@ -42,6 +42,10 @@ group :test do
   gem 'simplecov', :require => false
 end
 
+group :development, :test do
+  gem "teabag"
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
