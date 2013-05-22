@@ -26,7 +26,7 @@ class Issue < ActiveRecord::Base
   end
 
   def update_issue!
-    response = GitHubBub::Request.fetch(api_path).json_body
+    response = GitHubBub.get(api_path).json_body
     self.update_from_github_hash!(response)
   end
 
@@ -59,7 +59,7 @@ class Issue < ActiveRecord::Base
   end
 
   def commenting_users
-    response = GitHubBub::Request.fetch(api_path + "/comments").json_body
+    response = GitHubBub.get(api_path + "/comments").json_body
     response.collect{|comment| comment["user"]["login"]}.uniq.sort
   end
 
