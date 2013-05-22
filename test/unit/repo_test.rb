@@ -14,11 +14,11 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "update repo info from github" do
-    VCR.use_cassette "repo_info" do
-      repo = Repo.new :user_name => 'refinery', :name => 'refinerycms'
+    VCR.use_cassette "repo_info", record: :new_episodes do
+      repo = Repo.new user_name: 'refinery', name: 'refinerycms'
       repo.update_from_github
       assert_equal "Ruby", repo.language
-      assert_equal "An extendable Ruby on Rails CMS that supports Rails 3.2", repo.description
+      assert_equal "An extendable Ruby on Rails 'CMS framework' that supports Rails 3.2", repo.description
     end
   end
 
