@@ -12,11 +12,6 @@ before_fork do |server, worker|
     Rails.logger.info('Disconnected from ActiveRecord')
   end
 
-  # If you are using Redis but not Resque, change this
-  if defined?(Resque)
-    Resque.redis.quit
-    Rails.logger.info('Disconnected from Redis')
-  end
 end
 
 after_fork do |server, worker|
