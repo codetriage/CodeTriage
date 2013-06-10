@@ -1,4 +1,6 @@
 class RepoSubscription < ActiveRecord::Base
+  include ResqueDef
+
   validates :repo_id, :uniqueness => {:scope => :user_id}
 
   belongs_to :repo
@@ -23,7 +25,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def send_triage_email!
-    Resque.enqueue(SendTriageEmail, self.id)
+    background_send_triage_email(self.id)
   end
 
   def self.queue_triage_emails!
@@ -63,14 +65,9 @@ class RepoSubscription < ActiveRecord::Base
     self.update_attributes :last_sent_at => Time.now unless wait?
   end
 
-
-  class SendTriageEmail
-    @queue = :send_triage_email
-    def self.perform(id)
-      repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id).first
-      issue    = repo_sub.assign_issue!
-      UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver
-    end
+  resque_def(:background_send_triage_email) do |id|
+    repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id).first
+    issue    = repo_sub.assign_issue!
+    UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver
   end
-
 end

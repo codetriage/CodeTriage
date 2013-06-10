@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include ResqueDef
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,7 +10,7 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :within => 8..128, :allow_blank => true
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :private, :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter, 
+  attr_accessible :private, :email, :password, :password_confirmation, :remember_me, :zip, :phone_number, :twitter,
                   :github, :github_access_token, :avatar_url, :name, :favorite_languages, :daily_issue_limit
 
   has_many :repo_subscriptions, dependent: :destroy
@@ -35,7 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def enqueue_inactive_email
-    Resque.enqueue(InactiveEmail, self.id)
+    background_inactive_email(self.id)
   end
 
   def able_to_edit_repo?(repo)
@@ -111,14 +113,10 @@ class User < ActiveRecord::Base
     end
   end
 
-  class InactiveEmail
-    @queue = :inactive_email
-
-    def self.perform(user_id)
-      user = User.find(user_id.to_i)
-      return false if user.repo_subscriptions.present?
-      UserMailer.poke_inactive(user).deliver
-    end
+  resque_def(:background_inactive_email) do |id|
+    user = User.find(user_id.to_i)
+    return false if user.repo_subscriptions.present?
+    UserMailer.poke_inactive(user).deliver
   end
 
   def self.queue_triage_emails!
@@ -128,7 +126,7 @@ class User < ActiveRecord::Base
   end
 
   def send_daily_triage_email!
-    Resque.enqueue(SendDailyTriageEmail, self.id)
+    delay_send_daily_triage_email(self.id)
   end
 
   def send_daily_triage!
@@ -138,11 +136,8 @@ class User < ActiveRecord::Base
     UserMailer.send_daily_triage(user: self, issues: issues).deliver
   end
 
-  class SendDailyTriageEmail
-    @queue = :send_daily_triage_email
-    def self.perform(id)
-      User.find(id).send_daily_triage!
-    end
+  resque_def(:delay_send_daily_triage_email) do |id|
+    User.find(id).send_daily_triage!
   end
 
   def favorite_language?(language)
