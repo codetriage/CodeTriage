@@ -1,5 +1,5 @@
 class Repo < ActiveRecord::Base
-
+  include ResqueDef
   attr_accessible :notes, :name, :user_name, :issues_count, :language, :description, :full_name
 
   validate :github_url_exists, :on => :create
@@ -113,7 +113,7 @@ class Repo < ActiveRecord::Base
   end
 
   def populate_issues!
-    Resque.enqueue(PopulateIssues, self.id)
+    background_populate_issues(self.id)
   end
 
   def self.queue_populate_open_issues!
@@ -129,14 +129,11 @@ class Repo < ActiveRecord::Base
   # This class is used by resque,
   # by default anything you put into the perform method
   # will be called for each object in the redis queue
-  class PopulateIssues
-    @queue = :populate_issues
-
-    def self.perform(repo_id)
-      repo = Repo.find(repo_id.to_i)
-      repo.populate_multi_issues!(:state => 'open')
-    end
+  resque_def(:background_populate_issues) do |id|
+    repo = Repo.find(id.to_i)
+    repo.populate_multi_issues!(:state => 'open')
   end
+
 
   def populate_issue(options = {})
     page  = options[:page]||1
@@ -176,16 +173,11 @@ class Repo < ActiveRecord::Base
   end
 
   def update_repo_info!
-    Resque.enqueue UpdateRepoInfo, self.id
+    background_update_repo_info(self.id)
   end
 
-  class UpdateRepoInfo
-    @queue = :update_repo_info
-
-    def self.perform(repo_id)
-      repo = Repo.find(repo_id)
-      repo.update_from_github
-    end
+  resque_def(:background_update_repo_info) do |id|
+    repo = Repo.find(id)
+    repo.update_from_github
   end
-
 end
