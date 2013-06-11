@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
   end
 
   resque_def(:background_inactive_email) do |id|
-    user = User.find(user_id.to_i)
+    user = User.find(id.to_i)
     return false if user.repo_subscriptions.present?
     UserMailer.poke_inactive(user).deliver
   end
