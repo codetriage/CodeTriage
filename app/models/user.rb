@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def github_json
-    GitHubBub::Request.fetch(api_path, token: self.token).json_body
+    GitHubBub.get(api_path, token: self.token).json_body
   end
 
   def fetch_avatar_url
@@ -87,7 +87,7 @@ class User < ActiveRecord::Base
       user.update_attributes(params)
     else
       email =  auth.info.email
-      email =  GitHubBub::Request.fetch("/user/emails", token: token).json_body.first if email.blank?
+      email =  GitHubBub.get("/user/emails", token: token).json_body.first if email.blank?
       params = params.merge(:password => Devise.friendly_token[0,20],
                             :name     => auth.extra.raw_info.name,
                             :email    => email)

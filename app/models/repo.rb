@@ -82,7 +82,7 @@ class Repo < ActiveRecord::Base
 
   def github_url_exists
     return true if Rails.env.test? ## TODO fixme with propper stubs, perhaps factories
-    response = GitHubBub::Request.fetch(api_issues_path, :page => 1, :sort => 'comments', :direction => 'desc')
+    response = GitHubBub.get(api_issues_path, page: 1, sort: 'comments', direction: 'desc')
     if response.code != 200
       errors.add(:expiration_date, "cannot reach api.github.com/#{api_issues_path} perhaps github is down, or you mistyped something?")
     end
@@ -138,10 +138,10 @@ class Repo < ActiveRecord::Base
   def populate_issue(options = {})
     page  = options[:page]||1
     state = options[:state]||"open"
-    response = GitHubBub::Request.fetch(api_issues_path, :state     => state,
-                                                         :page      => page,
-                                                         :sort      => 'comments',
-                                                         :direction => 'desc')
+    response = GitHubBub.get(api_issues_path, state:     state,
+                                              page:      page,
+                                              sort:      'comments',
+                                              direction: 'desc')
     response.json_body.each do |issue_hash|
       logger.info "Issue: number: #{issue_hash['number']}, updated_at: #{issue_hash['updated_at']}"
       Issue.find_or_create_from_hash!(issue_hash, self)
@@ -161,7 +161,7 @@ class Repo < ActiveRecord::Base
   end
 
   def update_from_github
-    resp = GitHubBub::Request.fetch(repo_path)
+    resp = GitHubBub.get(repo_path)
 
     self.language    = resp.json_body['language']
     self.description = resp.json_body['description']
