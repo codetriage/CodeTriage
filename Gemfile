@@ -9,7 +9,7 @@ gem 'rails', '3.2.13'
 
 
 gem 'skylight'
-
+gem 'git_hub_bub'
 gem 'pg'
 gem 'ar_pg_array'
 gem 'resque'
