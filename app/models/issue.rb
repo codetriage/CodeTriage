@@ -59,7 +59,7 @@ class Issue < ActiveRecord::Base
   end
 
   def commenting_users
-    response = GitHubBub.get(api_path + "/comments").json_body
+    response = GitHubBub.get(File.join(api_path, "/comments")).json_body
     response.collect{|comment| comment["user"]["login"]}.uniq.sort
   end
 
