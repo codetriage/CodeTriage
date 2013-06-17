@@ -4,9 +4,14 @@ class AddingReposTest < ActionController::IntegrationTest
   test "adding a new valid repo" do
     visit "/"
     click_link "Submit a Repo"
+
     fill_in 'repo_user_name', :with => 'bemurphy'
-    fill_in 'repo_name', :with => 'issue_triage_sandbox'
+    fill_in 'repo_name',      :with => 'issue_triage_sandbox'
+
+
     click_button "Add Repo"
+
+    save_and_open_page
     VCR.use_cassette('add_valid_repo') do
       assert page.has_content?("Added bemurphy/issue_triage_sandbox for triaging")
     end
