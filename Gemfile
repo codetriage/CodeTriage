@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,21 +11,22 @@ gem 'rails', '3.2.13'
 gem 'skylight'
 gem 'git_hub_bub'
 gem 'pg'
-gem 'ar_pg_array'
+# gem 'ar_pg_array'
 gem 'resque'
 gem 'resque_def'
-gem 'sextant'
+# gem 'sextant'
 gem 'unicorn'
 gem 'omniauth-github'
 gem 'mail_view',          '~> 1.0.2'
 gem 'will_paginate'
 gem 'httparty'
-gem 'thin'
 gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
 gem 'bluecloth'
 
+
+gem 'rails_12factor', group: :production
 
 gem 'rrrretry'
 
@@ -52,8 +53,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -65,7 +66,16 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'devise',                  "~> 2.0.4"
+gem 'devise',                  "~> 3.0.0.rc"
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 
 gem "rack-timeout"
+
+
+
+
+
+gem 'protected_attributes'
+
+
+gem 'dotenv-rails', :groups => [:development, :test]
