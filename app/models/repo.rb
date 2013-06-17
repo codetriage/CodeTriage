@@ -180,4 +180,8 @@ class Repo < ActiveRecord::Base
     repo = Repo.find(id)
     repo.update_from_github
   end
+
+  def self.find_by_user_name_and_name(user_name, name)
+    Repo.includes(:issues).where(user_name: user_name, name: name).first!
+  end
 end
