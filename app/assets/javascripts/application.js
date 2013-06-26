@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require coffee_script_utilities
+//= require preview_link_builder
 //= require tab_navigation
 //= require bootstrap
 //= require global
