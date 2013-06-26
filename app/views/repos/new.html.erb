@@ -27,36 +27,15 @@
     </div>
 
 <% end -%>
-
 <h3>Add another repo</h3>
 
 <%= form_for @repo do |f| %>
 
   https://github.com/
-  <%= f.text_field :user_name, :placeholder => 'user name e.g. "schneems" ' %> /
-  <%= f.text_field :name, :placeholder => 'repo name e.g. "sextant" ' %>
-  <br />
-  <br />
-  <p>
-    Preview: <a href='https://github.com' id='repoPreview' target='_blank'>https://github.com/</a>
-  </p>
-  <p>
-    <%= f.submit :value => "Add Repo", :class => 'btn btn-primary', :id => 'createRepo' %>
+  <%= f.text_field :user_name, :placeholder => 'user name e.g. "schneems" ', class: 'preview_user_name' %> /
+  <%= f.text_field :name, :placeholder => 'repo name e.g. "sextant" ', class: 'preview_repo_name' %>
+  <%= f.submit :value => "Add Repo", :class => 'btn btn-primary', :id => 'createRepo' %>
+  <p id="repo_preview" class="repo_preview">
+    Preview: <a href='https://github.com' target='_blank'>https://github.com/</a>
   </p>
 <% end %>
-
-
-<%= content_for :js do %>
-  <script type='text/javascript'>
-    var addGitHubLinkHelper = function() {
-      var user_name = $('#repo_user_name').val().trim();
-      var repo_name = $('#repo_name').val().trim();
-      var github = "https://github.com/" + user_name + "/" + repo_name
-      $('#repoPreview').html(github)
-      $('#repoPreview').attr('href', github)
-    };
-    $('#repo_user_name, #repo_name').on('keyup', addGitHubLinkHelper)
-    addGitHubLinkHelper();
-  </script>
-<% end %>
-
