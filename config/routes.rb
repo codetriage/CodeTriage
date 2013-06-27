@@ -19,8 +19,6 @@ Example::Application.routes.draw do
   resources   :issue_assignments
   resources   :repo_subscriptions
 
-  mount Resque::Server.new, :at => "/resque"
-
   if Rails.env.development?
     mount UserMailer::Preview => 'mail_view'
   end
@@ -35,4 +33,6 @@ Example::Application.routes.draw do
   get "/:user_name(/*name)/edit"        => "repos#edit", as: :edit_repo, format: false
   get "/:user_name(/*name)"             => "repos#show", as: :repo,  format: false
   put "/:user_name(/*name)"             => "repos#update", format: false
+
+  mount Resque::Server.new, :at => "/resque"
 end
