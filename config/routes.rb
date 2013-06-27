@@ -27,6 +27,7 @@ Example::Application.routes.draw do
 
 
   resources :repos
+  mount Resque::Server.new, :at => "/resque"
 
   mount Resque::Server.new, :at => "/resque"
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
@@ -37,5 +38,4 @@ Example::Application.routes.draw do
 
   get "/repos/:user_name/*name",        to: redirect('/%{user_name}/%{name}')
   get "/:user_name/*name"               => "repos#show",  format: false, :constraints => {:name => /[^\/]+/}
-
 end
