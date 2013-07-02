@@ -81,9 +81,7 @@ Code Triage should now be running at [http://localhost:5000](http://localhost:50
 ## Tests
 
 ```shell
-$ psql
-> CREATE ROLE postgres WITH SUPERUSER CREATEDB;
-> \q
+$ createuser postgres --superuser --createdb
 ```
 
 You may also need to run:
@@ -91,7 +89,7 @@ You may also need to run:
 
 ```shell
 $ rake db:create RAILS_ENV=test
-$ rake db:migrate RAILS_ENV=test
+$ rake db:schema:load RAILS_ENV=test
 ```
 
 ## Flow

@@ -11,7 +11,6 @@ class AddingReposTest < ActionController::IntegrationTest
 
     click_button "Add Repo"
 
-    save_and_open_page
     VCR.use_cassette('add_valid_repo') do
       assert page.has_content?("Added bemurphy/issue_triage_sandbox for triaging")
     end
