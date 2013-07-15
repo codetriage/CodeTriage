@@ -62,7 +62,7 @@ GEM
     dotenv (0.7.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.22.1)
+    excon (0.25.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
