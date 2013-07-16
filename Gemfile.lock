@@ -62,7 +62,7 @@ GEM
     dotenv (0.7.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.22.1)
+    excon (0.25.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
@@ -72,7 +72,7 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
-    git_hub_bub (0.0.1)
+    git_hub_bub (0.0.2)
       excon
       rrrretry
     hashie (2.0.3)
