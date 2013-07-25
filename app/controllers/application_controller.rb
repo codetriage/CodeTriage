@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     elsif resource.new_record?
       users_after_signup_index_path
     else
-      super
+      request.env['omniauth.origin'] || stored_location_for(resource) || root_path
     end
   end
 end

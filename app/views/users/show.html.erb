@@ -1,5 +1,12 @@
 <div class="span4">
   <h2><%= "#{@user.github }"%></h2>
+  <% if current_user.blank? %>
+
+    Are you <%= @user.github %>?<br />
+    <span class="active"><%= link_to 'Login', new_user_registration_path %></span>
+    to edit your account
+
+  <% end %>
 
   <% if current_user && current_user == @user %>
     <section id="user-details"</section>
