@@ -1,6 +1,8 @@
 class RepoIssueCounterCache < ActiveRecord::Migration
   def up
-    add_column :repos, :issues_count, :integer, :default => 0, :null => false
+    unless column_exists?(:repos, :issues_count)
+      add_column :repos, :issues_count, :integer, :default => 0, :null => false
+    end
 
     Repo.reset_column_information
     Repo.find_each do |repo|
