@@ -18,8 +18,15 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 2, User.public.size
 
     user     = users(:mockstar)
-    repo     = Repo.create(:user_name => 'schneems', :name => 'sextant')
-    repo_sub = user.repo_subscriptions.create(:repo => repo)
+
+    repo     = Repo.new
+    repo.user_name = 'schneems'
+    repo.name = 'sextant'
+    repo.save
+
+    repo_sub = user.repo_subscriptions.new
+    repo_sub.repo = repo
+    repo_sub.save
 
     assert_equal 1, repo.users.public.size
   end
