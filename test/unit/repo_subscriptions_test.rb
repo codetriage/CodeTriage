@@ -7,14 +7,19 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
   test "the get_issue_for_triage for new user" do
     user     = users(:mockstar)
     repo     = repos(:rails_rails)
-    repo_sub = user.repo_subscriptions.create(:repo => repo)
+    repo_sub = user.repo_subscriptions.new
+    repo_sub.repo = repo
+    repo_sub.save
 
-    repo.issues.create(title:           "Foo Bar",
-                       url:             "http://schneems.com",
-                       last_touched_at: 2.days.ago,
-                       state:           'open',
-                       html_url:        "http://schneems.com",
-                       number:          1)
+    issue = repo.issues.new
+    issue.title = "Foo Bar"
+    issue.url   = "http://schneems.com"
+    issue.last_touched_at = 2.days.ago
+    issue.state = 'open'
+    issue.html_url = "http://schneems.com"
+    issue.number = 1
+    issue.save
+
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
       issue = repo_sub.get_issue_for_triage
@@ -26,22 +31,28 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
   test "the get_issue_for_triage for user with existing issue assignments" do
     user     = users(:mockstar)
     repo     = repos(:rails_rails)
-    repo_sub = user.repo_subscriptions.create(:repo => repo)
 
-    repo.issues.create(title:           "Foo Bar",
-                       url:             "http://schneems.com",
-                       last_touched_at: 2.days.ago,
-                       state:           'open',
-                       html_url:        "http://schneems.com",
-                       number:          1)
+    repo_sub = user.repo_subscriptions.new
+    repo_sub.repo = repo
+    repo_sub.save
 
+    issue = repo.issues.new
+    issue.title = "Foo Bar"
+    issue.url   = "http://schneems.com"
+    issue.last_touched_at = 2.days.ago
+    issue.state = 'open'
+    issue.html_url = "http://schneems.com"
+    issue.number = 1
+    issue.save
 
-    assigned_issue = repo.issues.create(title:           "Foo Bar",
-                                        url:             "http://schneems.com",
-                                        last_touched_at: 2.days.ago,
-                                        state:           'open',
-                                        html_url:        "http://schneems.com",
-                                        number:          2)
+    assigned_issue = repo.issues.new
+    assigned_issue.title = "Foo Bar"
+    assigned_issue.url   = "http://schneems.com"
+    assigned_issue.last_touched_at = 2.days.ago
+    assigned_issue.state = 'open'
+    assigned_issue.html_url = "http://schneems.com"
+    assigned_issue.number = 2
+    assigned_issue.save
 
     repo_sub.issue_assignments.create(:issue => assigned_issue)
     VCR.use_cassette('open_issue') do
@@ -54,13 +65,17 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
   test 'the assign_issue creates an assignment for the user' do
     user     = users(:mockstar)
     repo     = repos(:rails_rails)
-    repo_sub = user.repo_subscriptions.create(repo: repo)
-    repo.issues.create(title:           "Foo Bar",
-                       url:             "http://schneems.com",
-                       last_touched_at: 2.days.ago,
-                       state:           'open',
-                       html_url:        "http://schneems.com",
-                       number:          1)
+    repo_sub = user.repo_subscriptions.new
+    repo_sub.repo = repo
+    repo_sub.save
+    issue = repo.issues.new
+    issue.title = "Foo Bar"
+    issue.url   = "http://schneems.com"
+    issue.last_touched_at = 2.days.ago
+    issue.state = 'open'
+    issue.html_url = "http://schneems.com"
+    issue.number = 1
+    issue.save
 
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)

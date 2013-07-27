@@ -8,11 +8,13 @@ class IssueTest < ActiveSupport::TestCase
     assert_equal 0, repo.reload.issues_count
 
     assert_difference("Repo.find(#{repo.id}).issues_count", 1) do
-      repo.issues.create(:title           => "Foo Bar",
-                         :url             => "http://schneems.com",
-                         :last_touched_at => 2.days.ago,
-                         :state           => 'open',
-                         :html_url        => "http://schneems.com")
+      issue = repo.issues.new
+      issue.title = "Foo Bar"
+      issue.url   = "http://schneems.com"
+      issue.last_touched_at = 2.days.ago
+      issue.state = 'open'
+      issue.html_url = "http://schneems.com"
+      issue.save
     end
 
     assert_difference("Repo.find(#{repo.id}).issues_count", -1) do
@@ -61,7 +63,10 @@ class IssueTest < ActiveSupport::TestCase
 
   test '#commenting users' do
     repo = repos("rails_rails")
-    issue = repo.issues.new(repo_name: "rails", number: 8404)
+    issue = repo.issues.new
+    issue.repo_name = "rails"
+    issue.number = 8404
+    issue.save
 
     commenting_users = []
     VCR.use_cassette('commenting_users_issue') do
