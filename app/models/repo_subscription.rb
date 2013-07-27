@@ -60,7 +60,10 @@ class RepoSubscription < ActiveRecord::Base
   def assign_issue!
     issue = get_issue_for_triage
     unless issue.blank?
-      issue_assignments.create!(:issue_id => issue.id, :user_id => user.id)
+      assignment = issue_assignments.new
+      assignment.issue_id = issue.id
+      assignment.user_id  = user.id
+      assignment.save
     end
     return issue
   ensure
