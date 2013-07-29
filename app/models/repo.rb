@@ -160,10 +160,9 @@ class Repo < ActiveRecord::Base
   end
 
   def update_from_github
-    resp = GitHubBub.get(repo_path)
-
-    self.language    = resp.json_body['language']
-    self.description = resp.json_body['description']
+    resp = GitHubBub.get(repo_path).json_body
+    self.language    = resp['language']
+    self.description = resp['description']
     self.save
   end
 
