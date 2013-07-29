@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/schneems/sextant/issues?direction=desc&page=1&sort=comments&state=open
+    body:
+      encoding: UTF-8
+      string: '{"state":"open","page":1,"sort":"comments","direction":"desc"}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - f088f9cff57e3e81773340d73828147f
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 29 Jul 2013 04:26:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '46'
+      X-Ratelimit-Reset:
+      - '1375072726'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Mon, 29 Jul 2013 02:42:22 GMT
+      Etag:
+      - '"45cb6f3cb17f63788de8c24fbe0f683e"'
+      Vary:
+      - Accept, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '5900'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes
+      Access-Control-Allow-Origin:
+      - '*'
+    body:
+      encoding: UTF-8
+      string: '[{"url":"https://api.github.com/repos/schneems/sextant/issues/34","labels_url":"https://api.github.com/repos/schneems/sextant/issues/34/labels{/name}","comments_url":"https://api.github.com/repos/schneems/sextant/issues/34/comments","events_url":"https://api.github.com/repos/schneems/sextant/issues/34/events","html_url":"https://github.com/schneems/sextant/issues/34","id":16258826,"number":34,"title":"Add
+        Filter options based on controller.","user":{"login":"shamithc","id":404230,"avatar_url":"https://secure.gravatar.com/avatar/dec24df48717fb3c6c023bd57abda1b7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"dec24df48717fb3c6c023bd57abda1b7","url":"https://api.github.com/users/shamithc","html_url":"https://github.com/shamithc","followers_url":"https://api.github.com/users/shamithc/followers","following_url":"https://api.github.com/users/shamithc/following{/other_user}","gists_url":"https://api.github.com/users/shamithc/gists{/gist_id}","starred_url":"https://api.github.com/users/shamithc/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/shamithc/subscriptions","organizations_url":"https://api.github.com/users/shamithc/orgs","repos_url":"https://api.github.com/users/shamithc/repos","events_url":"https://api.github.com/users/shamithc/events{/privacy}","received_events_url":"https://api.github.com/users/shamithc/received_events","type":"User"},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":4,"created_at":"2013-07-02T11:07:11Z","updated_at":"2013-07-16T04:49:11Z","closed_at":null,"pull_request":{"html_url":"https://github.com/schneems/sextant/pull/34","diff_url":"https://github.com/schneems/sextant/pull/34.diff","patch_url":"https://github.com/schneems/sextant/pull/34.patch"},"body":"Filter
+        routes based on controller. \r\nEnabled select box of controllers in right
+        side of screen."},{"url":"https://api.github.com/repos/schneems/sextant/issues/29","labels_url":"https://api.github.com/repos/schneems/sextant/issues/29/labels{/name}","comments_url":"https://api.github.com/repos/schneems/sextant/issues/29/comments","events_url":"https://api.github.com/repos/schneems/sextant/issues/29/events","html_url":"https://github.com/schneems/sextant/issues/29","id":12108447,"number":29,"title":"Show
+        mounted engines routes","user":{"login":"ahmadsherif","id":1060507,"avatar_url":"https://secure.gravatar.com/avatar/1eaf2588b3309a43fd2b58335b39342a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"1eaf2588b3309a43fd2b58335b39342a","url":"https://api.github.com/users/ahmadsherif","html_url":"https://github.com/ahmadsherif","followers_url":"https://api.github.com/users/ahmadsherif/followers","following_url":"https://api.github.com/users/ahmadsherif/following{/other_user}","gists_url":"https://api.github.com/users/ahmadsherif/gists{/gist_id}","starred_url":"https://api.github.com/users/ahmadsherif/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ahmadsherif/subscriptions","organizations_url":"https://api.github.com/users/ahmadsherif/orgs","repos_url":"https://api.github.com/users/ahmadsherif/repos","events_url":"https://api.github.com/users/ahmadsherif/events{/privacy}","received_events_url":"https://api.github.com/users/ahmadsherif/received_events","type":"User"},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":1,"created_at":"2013-03-17T13:04:19Z","updated_at":"2013-06-20T09:17:03Z","closed_at":null,"pull_request":{"html_url":"https://github.com/schneems/sextant/pull/29","diff_url":"https://github.com/schneems/sextant/pull/29.diff","patch_url":"https://github.com/schneems/sextant/pull/29.patch"},"body":"Sextant
+        shows only the main app''s routes, which forces users to use `rake routes`
+        to list engines'' routes. A hack is used to reterive engines'' routes because
+        `RouteInspector` doesn''t have an accessor for `@engines` variable."},{"url":"https://api.github.com/repos/schneems/sextant/issues/26","labels_url":"https://api.github.com/repos/schneems/sextant/issues/26/labels{/name}","comments_url":"https://api.github.com/repos/schneems/sextant/issues/26/comments","events_url":"https://api.github.com/repos/schneems/sextant/issues/26/events","html_url":"https://github.com/schneems/sextant/issues/26","id":11259333,"number":26,"title":"Extracted
+        css and added some css to improve readability.","user":{"login":"samuelpismel","id":1752499,"avatar_url":"https://secure.gravatar.com/avatar/c1a5884d8af26fc89582f26425c6d85a?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"c1a5884d8af26fc89582f26425c6d85a","url":"https://api.github.com/users/samuelpismel","html_url":"https://github.com/samuelpismel","followers_url":"https://api.github.com/users/samuelpismel/followers","following_url":"https://api.github.com/users/samuelpismel/following{/other_user}","gists_url":"https://api.github.com/users/samuelpismel/gists{/gist_id}","starred_url":"https://api.github.com/users/samuelpismel/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/samuelpismel/subscriptions","organizations_url":"https://api.github.com/users/samuelpismel/orgs","repos_url":"https://api.github.com/users/samuelpismel/repos","events_url":"https://api.github.com/users/samuelpismel/events{/privacy}","received_events_url":"https://api.github.com/users/samuelpismel/received_events","type":"User"},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":1,"created_at":"2013-02-21T20:26:52Z","updated_at":"2013-02-22T06:04:29Z","closed_at":null,"pull_request":{"html_url":"https://github.com/schneems/sextant/pull/26","diff_url":"https://github.com/schneems/sextant/pull/26.diff","patch_url":"https://github.com/schneems/sextant/pull/26.patch"},"body":"A
+        simple change with lot of benefits"}]'
+    http_version: 
+  recorded_at: Mon, 29 Jul 2013 04:26:12 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/schneems/sextant
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - f088f9cff57e3e81773340d73828147f
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 29 Jul 2013 04:26:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '45'
+      X-Ratelimit-Reset:
+      - '1375072726'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Mon, 29 Jul 2013 02:42:22 GMT
+      Etag:
+      - '"45cb6f3cb17f63788de8c24fbe0f683e"'
+      Vary:
+      - Accept, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '4537'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes
+      Access-Control-Allow-Origin:
+      - '*'
+    body:
+      encoding: UTF-8
+      string: '{"id":4400834,"name":"sextant","full_name":"schneems/sextant","owner":{"login":"schneems","id":59744,"avatar_url":"https://secure.gravatar.com/avatar/db953d125f5cc49756edb6149f1b813e?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"db953d125f5cc49756edb6149f1b813e","url":"https://api.github.com/users/schneems","html_url":"https://github.com/schneems","followers_url":"https://api.github.com/users/schneems/followers","following_url":"https://api.github.com/users/schneems/following{/other_user}","gists_url":"https://api.github.com/users/schneems/gists{/gist_id}","starred_url":"https://api.github.com/users/schneems/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/schneems/subscriptions","organizations_url":"https://api.github.com/users/schneems/orgs","repos_url":"https://api.github.com/users/schneems/repos","events_url":"https://api.github.com/users/schneems/events{/privacy}","received_events_url":"https://api.github.com/users/schneems/received_events","type":"User"},"private":false,"html_url":"https://github.com/schneems/sextant","description":"find
+        your route on a long journey over Rails with Sextant","fork":false,"url":"https://api.github.com/repos/schneems/sextant","forks_url":"https://api.github.com/repos/schneems/sextant/forks","keys_url":"https://api.github.com/repos/schneems/sextant/keys{/key_id}","collaborators_url":"https://api.github.com/repos/schneems/sextant/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/schneems/sextant/teams","hooks_url":"https://api.github.com/repos/schneems/sextant/hooks","issue_events_url":"https://api.github.com/repos/schneems/sextant/issues/events{/number}","events_url":"https://api.github.com/repos/schneems/sextant/events","assignees_url":"https://api.github.com/repos/schneems/sextant/assignees{/user}","branches_url":"https://api.github.com/repos/schneems/sextant/branches{/branch}","tags_url":"https://api.github.com/repos/schneems/sextant/tags","blobs_url":"https://api.github.com/repos/schneems/sextant/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/schneems/sextant/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/schneems/sextant/git/refs{/sha}","trees_url":"https://api.github.com/repos/schneems/sextant/git/trees{/sha}","statuses_url":"https://api.github.com/repos/schneems/sextant/statuses/{sha}","languages_url":"https://api.github.com/repos/schneems/sextant/languages","stargazers_url":"https://api.github.com/repos/schneems/sextant/stargazers","contributors_url":"https://api.github.com/repos/schneems/sextant/contributors","subscribers_url":"https://api.github.com/repos/schneems/sextant/subscribers","subscription_url":"https://api.github.com/repos/schneems/sextant/subscription","commits_url":"https://api.github.com/repos/schneems/sextant/commits{/sha}","git_commits_url":"https://api.github.com/repos/schneems/sextant/git/commits{/sha}","comments_url":"https://api.github.com/repos/schneems/sextant/comments{/number}","issue_comment_url":"https://api.github.com/repos/schneems/sextant/issues/comments/{number}","contents_url":"https://api.github.com/repos/schneems/sextant/contents/{+path}","compare_url":"https://api.github.com/repos/schneems/sextant/compare/{base}...{head}","merges_url":"https://api.github.com/repos/schneems/sextant/merges","archive_url":"https://api.github.com/repos/schneems/sextant/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/schneems/sextant/downloads","issues_url":"https://api.github.com/repos/schneems/sextant/issues{/number}","pulls_url":"https://api.github.com/repos/schneems/sextant/pulls{/number}","milestones_url":"https://api.github.com/repos/schneems/sextant/milestones{/number}","notifications_url":"https://api.github.com/repos/schneems/sextant/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/schneems/sextant/labels{/name}","created_at":"2012-05-22T01:24:33Z","updated_at":"2013-07-29T02:42:22Z","pushed_at":"2013-06-22T03:45:26Z","git_url":"git://github.com/schneems/sextant.git","ssh_url":"git@github.com:schneems/sextant.git","clone_url":"https://github.com/schneems/sextant.git","svn_url":"https://github.com/schneems/sextant","homepage":null,"size":272,"watchers_count":493,"language":"Ruby","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":34,"mirror_url":null,"open_issues_count":3,"forks":34,"open_issues":3,"watchers":493,"master_branch":"master","default_branch":"master","network_count":34}'
+    http_version: 
+  recorded_at: Mon, 29 Jul 2013 04:26:13 GMT
+recorded_with: VCR 2.5.0
