@@ -17,18 +17,19 @@ class UserTest < ActiveSupport::TestCase
   test 'public scope should only return public users' do
     assert_equal 2, User.public.size
 
-    user     = users(:mockstar)
+    VCR.use_cassette('update_repo_info:schneems/sextant', ) do
+      user     = users(:mockstar)
 
-    repo     = Repo.new
-    repo.user_name = 'schneems'
-    repo.name = 'sextant'
-    repo.save
+      repo     = Repo.new
+      repo.user_name = 'schneems'
+      repo.name = 'sextant'
+      repo.save
+      repo_sub = user.repo_subscriptions.new
+      repo_sub.repo = repo
+      repo_sub.save
 
-    repo_sub = user.repo_subscriptions.new
-    repo_sub.repo = repo
-    repo_sub.save
-
-    assert_equal 1, repo.users.public.size
+      assert_equal 1, repo.users.public.size
+    end
   end
 
   test 'able_to_edit_repo allows the correct rights' do
