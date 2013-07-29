@@ -17,11 +17,19 @@ class UserTest < ActiveSupport::TestCase
   test 'public scope should only return public users' do
     assert_equal 2, User.public.size
 
-    user     = users(:mockstar)
-    repo     = Repo.create(:user_name => 'schneems', :name => 'sextant')
-    repo_sub = user.repo_subscriptions.create(:repo => repo)
+    VCR.use_cassette('update_repo_info:schneems/sextant', ) do
+      user     = users(:mockstar)
 
-    assert_equal 1, repo.users.public.size
+      repo     = Repo.new
+      repo.user_name = 'schneems'
+      repo.name = 'sextant'
+      repo.save
+      repo_sub = user.repo_subscriptions.new
+      repo_sub.repo = repo
+      repo_sub.save
+
+      assert_equal 1, repo.users.public.size
+    end
   end
 
   test 'able_to_edit_repo allows the correct rights' do
@@ -40,13 +48,20 @@ class UserTest < ActiveSupport::TestCase
   test 'User#send_daily_triage!' do
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
-    issue = repo.issues.create(:title           => "Foo Bar",
-                               :url             => "http://schneems.com",
-                               :last_touched_at => 2.days.ago,
-                               :state           => 'open',
-                               :html_url        => "http://schneems.com",
-                               :number          => 9000)
-    user.repo_subscriptions.create(repo: repo)
+
+    issue = repo.issues.new
+    issue.title = "Foo Bar"
+    issue.url = "http://schneems.com"
+    issue.last_touched_at = 2.days.ago
+    issue.state = 'open'
+    issue.html_url = "http://schneems.com"
+    issue.number = 9000
+    issue.save
+
+    repo_sub = user.repo_subscriptions.new
+    repo_sub.repo = repo
+    repo_sub.save
+
     assert_difference("User.find(#{user.id}).issues.count", 1) do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
       user.send_daily_triage!
@@ -59,13 +74,20 @@ class UserTest < ActiveSupport::TestCase
     repo_names = [:rails_rails, :node]
     2.times do |i|
       repo  = repos(repo_names[i])
-      repo.issues.create(:title           => "Foo Bar",
-                         :url             => "http://schneems.com",
-                         :last_touched_at => 2.days.ago,
-                         :state           => 'open',
-                         :html_url        => "http://schneems.com",
-                         :number          => 9000)
-      user.repo_subscriptions.create(repo: repo)
+
+      issue = repo.issues.new
+      issue.title = "Foo Bar"
+      issue.url = "http://schneems.com"
+      issue.last_touched_at = 2.days.ago
+      issue.state = 'open'
+      issue.html_url = "http://schneems.com"
+      issue.number = 9000
+      issue.save
+
+      repo_sub = user.repo_subscriptions.new
+      repo_sub.repo = repo
+      repo_sub.save
+
     end
     assert_difference("User.find(#{user.id}).issues.count", 1) do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)

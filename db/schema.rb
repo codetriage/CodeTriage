@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20130503183402) do
     t.string       "name"
     t.string       "avatar_url",             :default => "http://gravatar.com/avatar/default"
     t.boolean      "private"
-    t.string_array "favorite_languages"
+    t.string       "favorite_languages",     array: true
     t.integer      "daily_issue_limit"
   end
 
