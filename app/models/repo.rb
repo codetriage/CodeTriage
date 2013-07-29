@@ -179,7 +179,7 @@ class Repo < ActiveRecord::Base
     repo.update_from_github
   end
 
-  def self.find_by_user_name_and_name(user_name, name)
-    Repo.includes(:issues).where(user_name: user_name, name: name).first!
+  def self.find_by_full_name(full_name)
+    Repo.includes(:issues).where(full_name: full_name).first!
   end
 end

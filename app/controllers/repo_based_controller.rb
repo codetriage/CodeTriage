@@ -6,9 +6,6 @@ class RepoBasedController < ApplicationController
     end
 
     def find_repo(options)
-      user_name = options[:user_name]
-      name      = name_from_params(options)
-
-      Repo.find_by_user_name_and_name(user_name, name)
+      Repo.find_by_full_name(options[:full_name])
     end
 end
