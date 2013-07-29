@@ -25,17 +25,22 @@ Example::Application.routes.draw do
 
   # mount_sextant if Rails.env.development?
 
-
-  resources :repos
   mount Resque::Server.new, :at => "/resque"
 
-  mount Resque::Server.new, :at => "/resque"
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
-  get "/:user_name(/*name)/subscribers" => "subscribers#show", as: :repo_subscribers, format: false
-  get "/:user_name(/*name)/edit"        => "repos#edit", format: false
-  put "/:user_name(/*name)"             => "repos#update", format: false
+  REPO_PATH_PATTERN = %r{[-_.a-zA-Z0-9]+/[-_.a-zA-Z0-9]+}
 
-  get "/repos/:user_name/*name",        to: redirect('/%{user_name}/%{name}')
-  get "/:user_name/*name"               => "repos#show",  format: false, :constraints => {:name => /[^\/]+/}
+  scope format: false do
+    resources :repos, only: %w[index new create]
+
+    scope ':full_name' do
+      constraints full_name: REPO_PATH_PATTERN do
+        get '/',            to: 'repos#show',        as: 'repo'
+        put '/',            to: 'repos#update',      as:  nil
+        get '/edit',        to: 'repos#edit',        as: 'edit_repo'
+        get '/subscribers', to: 'subscribers#index', as: 'repo_subscribers'
+      end
+    end
+  end
 end

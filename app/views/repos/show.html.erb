@@ -14,12 +14,12 @@
 <ul class="unstyled avatars_list">
   <%= render 'subscribers/avatars', subscribers: @subscribers, show_names: false %>
   <% if (difference = @repo.subscribers.count - @subscribers.count) && difference > 0  %>
-    <li class='more'><%= link_to 'more' , repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) %></li>
+    <li class='more'><%= link_to 'more' , repo_subscribers_path(full_name: @repo.full_name) %></li>
   <% end %>
 </ul>
 
 <p>
-  <%= link_to repo_subscribers_path(:user_name => @repo.user_name, :name => @repo.name) do %>
+  <%= link_to repo_subscribers_path(full_name: @repo.full_name) do %>
     <%=  @repo.subscribers.count %> Subscribers
   <% end %>
 </p>
