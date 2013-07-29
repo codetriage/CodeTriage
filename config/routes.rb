@@ -39,7 +39,7 @@ Example::Application.routes.draw do
         get '/',            to: 'repos#show',        as: 'repo'
         put '/',            to: 'repos#update',      as:  nil
         get '/edit',        to: 'repos#edit',        as: 'edit_repo'
-        get '/subscribers', to: 'subscribers#index', as: 'repo_subscribers'
+        get '/subscribers', to: 'subscribers#show',  as: 'repo_subscribers'
       end
     end
   end
