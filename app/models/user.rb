@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :through => :repo_subscriptions
   has_many :issues,            :through => :issue_assignments
 
-  scope :public, where("private is not true")
 
   alias_attribute :token, :github_access_token
 
@@ -44,10 +43,9 @@ class User < ActiveRecord::Base
     repo.user_name == github
   end
 
-  def public
+  def public?
     !private
   end
-  alias :public? :public
 
   def not_yet_subscribed_to?(repo)
     !subscribed_to?(repo)
@@ -148,5 +146,7 @@ class User < ActiveRecord::Base
     favorite_languages && !favorite_languages.empty?
   end
 
+  def self.public
+    where("private is not true")
+  end
 end
-

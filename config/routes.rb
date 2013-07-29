@@ -2,8 +2,8 @@ require 'resque/server'
 
 
 Example::Application.routes.draw do
-  match "users/sign_in" => redirect('/users/auth/github')
-  match "users/sign_up" => redirect('/users/auth/github')
+  get "users/sign_in" => redirect('/users/auth/github'), via: [:get, :post]
+  get "users/sign_up" => redirect('/users/auth/github'), via: [:get, :post]
 
   devise_for  :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
 
@@ -23,16 +23,19 @@ Example::Application.routes.draw do
     mount UserMailer::Preview => 'mail_view'
   end
 
-  mount_sextant if Rails.env.development?
+  # mount_sextant if Rails.env.development?
 
-  resources :repos, :except => :show
 
+  resources :repos
+  mount Resque::Server.new, :at => "/resque"
+
+  mount Resque::Server.new, :at => "/resque"
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
   get "/:user_name(/*name)/subscribers" => "subscribers#show", as: :repo_subscribers, format: false
-  get "/:user_name(/*name)/edit"        => "repos#edit", as: :edit_repo, format: false
-  get "/:user_name(/*name)"             => "repos#show", as: :repo,  format: false
+  get "/:user_name(/*name)/edit"        => "repos#edit", format: false
   put "/:user_name(/*name)"             => "repos#update", format: false
 
-  mount Resque::Server.new, :at => "/resque"
+  get "/repos/:user_name/*name",        to: redirect('/%{user_name}/%{name}')
+  get "/:user_name/*name"               => "repos#show",  format: false, :constraints => {:name => /[^\/]+/}
 end
