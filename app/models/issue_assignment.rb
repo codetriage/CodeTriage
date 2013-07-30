@@ -6,4 +6,7 @@ class IssueAssignment < ActiveRecord::Base
 
   validates_presence_of :user_id
   validates_presence_of :issue_id
+
+  attr_protected :admin
+
 end
