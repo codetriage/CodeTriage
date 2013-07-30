@@ -85,6 +85,7 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     kgio (2.8.0)
+    kramdown (1.1.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     less (2.3.2)
@@ -98,6 +99,9 @@ GEM
       treetop (~> 1.4.8)
     mail_view (1.0.3)
       tilt
+    maildown (0.0.1)
+      kramdown
+      rails (> 3.2.0)
     metaclass (0.0.1)
     mime-types (1.23)
     mini_portile (0.5.0)
@@ -268,6 +272,7 @@ DEPENDENCIES
   launchy
   less-rails
   mail_view (~> 1.0.2)
+  maildown
   mocha
   omniauth-github
   pg
