@@ -24,7 +24,7 @@ gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
 gem 'bluecloth'
-
+gem 'maildown'
 
 gem 'rails_12factor', group: :production
 
