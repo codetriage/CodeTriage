@@ -8,6 +8,11 @@
     </div>
   <% end -%>
 
+  <div class="jumbotron">
+    <h2></h2>
+    <p class="lead"><%= number_with_delimiter(User.count, delimiter: ',') %> developers and working on <%= Repo.count %> open source repos</p>
+  </div>
+
   <!-- yield -->
   <div class="row marketing">
     <%= yield %>
