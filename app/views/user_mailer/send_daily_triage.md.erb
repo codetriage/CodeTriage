@@ -1,0 +1,23 @@
+Hello @<%= @user.github %>,
+
+Here are some issues you should check out:
+
+<% @issues.each do |issue| %>
+### <%= "##{issue.number}" if issue.number %> <%= link_to issue.title, issue.html_url  %>
+
+<%= "[#{issue.repo.full_name}](#{repo_url(issue.repo)})" %>
+<%= time_ago_in_words issue.last_touched_at %> ago
+
+- - -
+
+<% end %>
+
+Go forth and make the world a better place
+
+[@schneems](http://twitter.com/schneems)
+
+[Help triage more repos at codetriage.com](<%= root_url%>)
+
+[Delete Account](<%= user_url(@user) %>)
+
+
