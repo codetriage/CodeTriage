@@ -23,8 +23,6 @@ Example::Application.routes.draw do
     mount UserMailer::Preview => 'mail_view'
   end
 
-  # mount_sextant if Rails.env.development?
-
   mount Resque::Server.new, :at => "/resque"
 
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
