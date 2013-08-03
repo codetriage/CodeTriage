@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :issue_assignments, :through => :repo_subscriptions
   has_many :issues,            :through => :issue_assignments
 
-  scope :public, -> { where("private IS NOT true") }
+  scope :public, -> { where.not(users: { private: true }) }
 
   alias_attribute :token, :github_access_token
 
