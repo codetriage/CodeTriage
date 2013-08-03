@@ -47,7 +47,7 @@ group :test do
 end
 
 group :development, :test do
-  gem "teabag"
+  gem "teaspoon"
 end
 
 # Gems used only for assets and not required
