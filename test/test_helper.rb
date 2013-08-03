@@ -46,12 +46,12 @@ end
 
 # Provide default configuration.
 #
-# You can override various configuration directives defined here by using arguments with the teabag command.
+# You can override various configuration directives defined here by using arguments with the teaspoon command.
 #
-# teabag --driver=selenium --suppress-log
-# rake teabag DRIVER=selenium SUPPRESS_LOG=false
+# teaspoon --driver=selenium --suppress-log
+# rake teaspoon DRIVER=selenium SUPPRESS_LOG=false
 
-Teabag.setup do |config|
+Teaspoon.setup do |config|
   # Driver / Server
   #config.driver           = "phantomjs" # available: phantomjs, selenium
   #config.server           = nil # defaults to Rack::Server
