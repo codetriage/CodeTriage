@@ -23,7 +23,6 @@ gem 'jquery-rails'
 gem 'devise',                  "~> 3.0.0.rc"
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 gem 'rack-timeout'
-gem 'protected_attributes'
 
 group :development do
   gem 'foreman'
