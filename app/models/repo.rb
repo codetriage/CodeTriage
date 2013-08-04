@@ -1,6 +1,6 @@
 class Repo < ActiveRecord::Base
   include ResqueDef
-  attr_accessible :notes, :name, :user_name, :issues_count, :language, :description, :full_name
+  # attr_accessible :notes, :name, :user_name, :issues_count, :language, :description, :full_name
 
   validate :github_url_exists, :on => :create
   validate :name, uniqueness: {scope: :user_name, case_sensitive: false }

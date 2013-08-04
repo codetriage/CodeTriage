@@ -1,7 +1,7 @@
 class RepoSubscription < ActiveRecord::Base
   include ResqueDef
 
-  attr_protected :admin
+  # attr_protected :admin
 
   validates :repo_id, :uniqueness => {:scope => :user_id}
 
