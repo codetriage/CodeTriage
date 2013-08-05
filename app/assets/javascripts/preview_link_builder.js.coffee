@@ -4,7 +4,7 @@ namespace 'Codetriage', (exports) ->
       defaultOptions = {
         "userNameInput"     : ".preview_user_name",
         "userRepoNameInput" : ".preview_repo_name",
-        "previewLink" : "#repo_preview"
+        "previewLink"       : "#repo_preview"
       }
 
       @options = $.extend({}, defaultOptions, customOptions)
@@ -13,8 +13,8 @@ namespace 'Codetriage', (exports) ->
       @updatePreviewLinkOnKeyup()
 
     createGithubUrl: ->
-      userName = $(@options.userNameInput).val().trim()
-      repoName = $(@options.userRepoNameInput).val().trim()
+      userName = $(@options.userNameInput).val()?.trim()
+      repoName = $(@options.userRepoNameInput).val()?.trim()
       "https://github.com/#{userName}/#{repoName}"
 
     checkPreviewUrl: ->
