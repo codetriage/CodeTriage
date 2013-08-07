@@ -25,7 +25,7 @@ class RepoSubscriptionsController < ApplicationController
 
   def update
     @repo_sub = current_user.repo_subscriptions.where(:id => params[:id]).first
-    if @repo_sub.update_attributes(params[:repo_subscription])
+    if @repo_sub.update_attributes(repo_subscription_params)
       flash[:success] = "Email preferences updated!"
       redirect_to :back
     else
@@ -33,4 +33,12 @@ class RepoSubscriptionsController < ApplicationController
       redirect_to :back
     end
   end
+
+  private
+
+    def repo_subscription_params
+      params.require(:repo_subscription).permit(
+        :email_limit
+        )
+    end
 end
