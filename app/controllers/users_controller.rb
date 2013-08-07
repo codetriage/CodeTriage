@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update_attributes(params[:user])
+    @user.update_attributes(user_params)
     if @user.save!
       redirect_to @user, :flash => { :success => 'User successfully updated' }
     end
@@ -27,4 +27,24 @@ class UsersController < ApplicationController
     redirect_to root_url, notice: "Successfully removed your user account"
   end
 
+  private
+
+    def user_params
+      params.require(:user).permit(
+        :private,
+        :email,
+        :password,
+        :password_confirmation,
+        :remember_me,
+        :zip,
+        :phone_number,
+        :twitter,
+        :github,
+        :github_access_token,
+        :avatar_url,
+        :name,
+        :favorite_languages,
+        :daily_issue_limit
+        )
+    end
 end
