@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'devise',                  "~> 3.0.0.rc"
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 gem 'rack-timeout'
+gem 'unicorn'
 
 group :development do
   gem 'foreman'
@@ -58,6 +59,5 @@ group :assets do
 end
 
 group :production do
-  gem 'unicorn'
   gem 'rails_12factor'
 end
