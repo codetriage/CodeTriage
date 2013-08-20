@@ -31,7 +31,7 @@ class ReposController < RepoBasedController
 
   def create
     @repo =   Repo.where(name: params[:repo][:name].downcase.strip, user_name: params[:repo][:user_name].downcase.strip).first
-    @repo ||= Repo.create!(params[:repo])
+    @repo ||= Repo.create!(repo_params)
 
     if @repo.save
       flash[:notice] = "Added #{@repo.to_param} for triaging"
@@ -53,11 +53,24 @@ class ReposController < RepoBasedController
 
   def update
     @repo = find_repo(params)
-    if @repo.update_attributes(params[:repo])
+    if @repo.update_attributes(repo_params)
       redirect_to @repo, :notice => "Repo updated"
     else
       render :edit
     end
   end
 
+  private
+
+    def repo_params
+      params.require(:repo).permit(
+        :notes,
+        :name,
+        :user_name,
+        :issues_count,
+        :language,
+        :description,
+        :full_name
+        )
+    end
 end

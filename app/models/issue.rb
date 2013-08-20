@@ -10,8 +10,6 @@ class Issue < ActiveRecord::Base
 
   after_save    :update_counter_cache
   after_destroy :update_counter_cache
-  attr_protected :admin
-
 
   def valid_for_user?(user)
     update_issue!
