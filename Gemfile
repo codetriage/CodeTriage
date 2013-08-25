@@ -24,6 +24,7 @@ gem 'devise',                  "~> 3.0.0.rc"
 gem "twitter-bootstrap-rails", "~> 2.2.6"
 gem 'rack-timeout'
 gem 'unicorn'
+gem 'mail_view',   '~> 1.0.2'
 
 group :development do
   gem 'foreman'
@@ -44,7 +45,6 @@ end
 group :development, :test do
   gem "teaspoon"
   gem "dotenv-rails"
-  gem 'mail_view',   '~> 1.0.2'
 end
 
 # Gems used only for assets and not required
