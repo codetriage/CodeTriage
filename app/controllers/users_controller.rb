@@ -43,8 +43,8 @@ class UsersController < ApplicationController
         :github_access_token,
         :avatar_url,
         :name,
-        :favorite_languages,
-        :daily_issue_limit
+        :daily_issue_limit,
+        favorite_languages: []
         )
     end
 end
