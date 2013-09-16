@@ -7,11 +7,10 @@ Example::Application.routes.draw do
 
   devise_for  :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
 
-  resources   :pages
   root        :to => "pages#index"
 
   namespace :users do
-    resources :after_signup#, controller: "after_signup"
+    resources :after_signup
   end
 
   resources   :users
@@ -27,8 +26,6 @@ Example::Application.routes.draw do
 
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
-  REPO_PATH_PATTERN = %r{[-_.a-zA-Z0-9]+/[-_.a-zA-Z0-9]+}
-
   scope format: false do
     resources :repos, only: %w[index new create]
 
