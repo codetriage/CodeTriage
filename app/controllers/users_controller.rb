@@ -44,6 +44,7 @@ class UsersController < ApplicationController
         :avatar_url,
         :name,
         :daily_issue_limit,
+        :skip_issues_with_pr,
         favorite_languages: []
         )
     end
