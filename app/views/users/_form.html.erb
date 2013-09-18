@@ -6,7 +6,10 @@
    <%= f.label :daily_issue_limit, t("activerecord.attributes.user.daily_issue_limit", :default => "Max # of issues you want to receive per day"), :class => :label %>
   <div class="input">
     <%= f.number_field :daily_issue_limit, :class => 'number_field' %>
-  </div></div>
+  </div>
+  <%= f.label :skip_issues_with_pr, t("activerecord.attributes.user.skip_issues_with_pr", :default => "Skip Issues with Pull requests"), :class => :label %>
+  <%= f.check_box :skip_issues_with_pr, :class => 'checkbox' %>
+</div>
 
 <div class="form-actions">
   <button class="btn primary" type="submit">Save</button> or
