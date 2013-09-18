@@ -74,9 +74,21 @@ class Issue < ActiveRecord::Base
                            url:             issue_hash['url'],
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
-                           html_url:        issue_hash['html_url'])
+                           html_url:        issue_hash['html_url']
+                           pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
   end
 
+
+  def pr_attached_with_issue?(pull_request_hash)
+    # issue_hash['pull_request'] has following structure
+    #    pull_request: {
+    #                    html_url: null,
+    #                    diff_url: null,
+    #                    patch_url: null
+    #                  }
+    # When all the keys are nil, PR is not attached with the issue
+    pull_request_hash.values.uniq != nil
+  end
 
   def self.queue_mark_old_as_closed!
     find_each(:conditions => ["state = ? and updated_at < ?", OPEN, 24.hours.ago]) do |issue|
