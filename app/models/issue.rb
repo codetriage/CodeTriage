@@ -15,6 +15,7 @@ class Issue < ActiveRecord::Base
     update_issue!
     return false if closed?
     return false if commenting_users.include? user.github
+    return false if pr_attached? && user.skip_issues_with_pr?
     true
   end
 
@@ -74,9 +75,9 @@ class Issue < ActiveRecord::Base
                            url:             issue_hash['url'],
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
-                           html_url:        issue_hash['html_url'])
+                           html_url:        issue_hash['html_url'],
+                           pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
   end
-
 
   def self.queue_mark_old_as_closed!
     find_each(:conditions => ["state = ? and updated_at < ?", OPEN, 24.hours.ago]) do |issue|
@@ -88,4 +89,18 @@ class Issue < ActiveRecord::Base
     issue = Issue.find(id)
     issue.update_attributes(state: CLOSED)
   end
+
+  private
+
+  def pr_attached_with_issue?(pull_request_hash)
+    # issue_hash['pull_request'] has following structure
+    #    pull_request: {
+    #                    html_url: null,
+    #                    diff_url: null,
+    #                    patch_url: null
+    #                  }
+    # When all the values are nil, PR is not attached with the issue
+    pull_request_hash.values.uniq != [nil]
+  end
+
 end

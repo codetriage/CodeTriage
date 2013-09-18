@@ -45,19 +45,31 @@ class IssueTest < ActiveSupport::TestCase
 
     should 'be false with a closed issue' do
       @issue.stubs(:closed?).returns(true)
-      assert !@issue.valid_for_user?(@user)
+      refute @issue.valid_for_user?(@user)
     end
 
-    should 'be true with an open issue uncommented' do
+    should 'be true with an open issue with no comments from the current user' do
       @issue.stubs(:closed?).returns(false)
       @issue.stubs(:commenting_users).returns(["foo", "bar"])
       assert @issue.valid_for_user?(@user)
     end
 
-    should 'be false with a commented open issue' do
+    should 'be false with an open issue with comments from the current user' do
       @issue.stubs(:closed?).returns(false)
       @issue.stubs(:commenting_users).returns(["mockstar", "bar"])
-      assert !@issue.valid_for_user?(@user)
+      refute @issue.valid_for_user?(@user)
+    end
+
+    should 'be false with an open issue with attached PR if current user has skipped issues with PR' do
+      @issue.stubs(:pr_attached?).returns(true)
+      @user.stubs(:skip_issues_with_pr?).returns(true)
+      refute @issue.valid_for_user?(@user)
+    end
+
+    should 'be true with an open issue with attached PR if current user has not skipped issues with PR' do
+      @issue.stubs(:pr_attached?).returns(true)
+      @user.stubs(:skip_issues_with_pr?).returns(false)
+      assert @issue.valid_for_user?(@user)
     end
   end
 
