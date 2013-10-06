@@ -87,4 +87,9 @@ class IssueTest < ActiveSupport::TestCase
     assert_equal ['Trevoke', 'freegenie', 'pixeltrix', 'steveklabnik'], commenting_users
   end
 
+  test "#public_url" do
+    repo  = repos("rails_rails")
+    issue = repo.issues.new(number: "8404")
+    assert_equal "https://github.com/repos/rails/rails/issues/8404", issue.public_url
+  end
 end
