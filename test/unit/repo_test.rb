@@ -36,6 +36,11 @@ class RepoTest < ActiveSupport::TestCase
     repo.subscriber_count == 2
   end
 
+  test "#all_languages contains no empty results" do
+    repo = Repo.create :user_name => 'Refinery', :name => "RefineryCMS", :language => ""
+    refute Repo.all_languages.include? ""
+  end
+
   test "repos needing help when user has ruby language" do
     repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ "ruby" ])).map(&:path)
     assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" ], repos
