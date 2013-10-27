@@ -47,7 +47,7 @@ en:
       send_paranoid_instructions: 'If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.'
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'
-      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+      failure: 'Could not authorize you from %{kind} because of "%{reason}".'
       bad_email_success: 'The e-mail address in your %{kind} account is not valid. Please set a legitimate one to receive e-mails from us.'
     mailer:
       confirmation_instructions:

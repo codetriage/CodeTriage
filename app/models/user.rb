@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :omniauthable
 
   validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
-  validates_length_of       :password, :within => 8..128, :allow_blank => true
+  validates_length_of     :password, :within => 8..128, :allow_blank => true
+  validates :github, presence: true, uniqueness: true
 
   # Setup accessible (or protected) attributes for your model
 
@@ -72,7 +73,10 @@ class User < ActiveRecord::Base
   end
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
-    user  = signed_in_resource || User.where(:github => auth.info.nickname).first
+    user  = signed_in_resource ||
+            User.where(:github => auth.info.nickname).first ||
+            User.where(:email  => auth.info.email).first
+
     token = auth.credentials.token
     params = {
       :github              => auth.info.nickname,
