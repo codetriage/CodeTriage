@@ -61,12 +61,16 @@ class IssueTest < ActiveSupport::TestCase
     end
 
     should 'be false with an open issue with attached PR if current user has skipped issues with PR' do
+      @issue.stubs(:closed?).returns(false)
+      @issue.stubs(:commenting_users).returns(["foo", "bar"])
       @issue.stubs(:pr_attached?).returns(true)
       @user.stubs(:skip_issues_with_pr?).returns(true)
       refute @issue.valid_for_user?(@user)
     end
 
     should 'be true with an open issue with attached PR if current user has not skipped issues with PR' do
+      @issue.stubs(:closed?).returns(false)
+      @issue.stubs(:commenting_users).returns(["foo", "bar"])
       @issue.stubs(:pr_attached?).returns(true)
       @user.stubs(:skip_issues_with_pr?).returns(false)
       assert @issue.valid_for_user?(@user)
