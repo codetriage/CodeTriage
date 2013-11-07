@@ -26,6 +26,16 @@ class UsersController < ApplicationController
     redirect_to root_url, notice: "Successfully removed your user account"
   end
 
+  def token_delete
+    @user = User.where(account_delete_token: params[:account_delete_token]).first
+  end
+
+  def token_destroy
+    @user = User.where(account_delete_token: params[:account_delete_token]).first
+    @user.destroy
+    redirect_to root_url, notice: "Successfully removed your user account"
+  end
+
   private
 
     def user_params

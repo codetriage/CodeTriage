@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130918060600) do
+ActiveRecord::Schema.define(version: 20131107042958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,10 @@ ActiveRecord::Schema.define(version: 20130918060600) do
     t.string   "favorite_languages",                                                                 array: true
     t.integer  "daily_issue_limit"
     t.boolean  "skip_issues_with_pr",    default: false
+    t.string   "account_delete_token"
   end
 
+  add_index "users", ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["github"], name: "index_users_on_github", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

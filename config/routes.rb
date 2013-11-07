@@ -11,9 +11,12 @@ Example::Application.routes.draw do
 
   namespace :users do
     resources :after_signup
+
   end
 
   resources   :users
+  get         "/users/unsubscribe/:account_delete_token" => "users#token_delete", as: :token_delete_user
+  delete      "/users/unsubscribe/:account_delete_token" => "users#token_destroy"
 
   resources   :issue_assignments
   resources   :repo_subscriptions

@@ -35,6 +35,15 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/default"
   end
 
+  def account_delete_token
+    if self[:account_delete_token].blank?
+      self.account_delete_token = SecureRandom.hex(64)
+      update_attribute(:account_delete_token, account_delete_token) unless new_record?
+    end
+
+    super
+  end
+
   def enqueue_inactive_email
     background_inactive_email(self.id)
   end
