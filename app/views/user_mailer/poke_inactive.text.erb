@@ -27,4 +27,4 @@ in you.
 @schneems (http://twitter.com/schneems)
 
 
-Delete Account: <%= user_url(@user) %>
+Delete Account: <%= token_delete_user_url(@user.account_delete_token) %>

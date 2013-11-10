@@ -1,0 +1,9 @@
+<div class="alert alert-error">
+  Are you sure you want to delete your account and stop receiving triage emails at
+  <strong><%= @user.email %></strong>?
+</div>
+
+<%= form_for @user, url: token_delete_user_path(@user.account_delete_token), method: :delete, html_options: { class: "form form-horizontal" } do |f| %>
+  <%= f.submit "Yes, Delete My Account", class: "btn btn-danger" %>
+  <%= link_to "No, Cancel", root_url, class: "btn" %>
+<% end %>
