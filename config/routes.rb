@@ -25,7 +25,7 @@ Example::Application.routes.draw do
     mount UserMailer::Preview => 'mail_view'
   end
 
-  mount Resque::Server.new, :at => "/resque"
+  mount Resque::Server.new, :at => "/codetriage/resque"
 
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
