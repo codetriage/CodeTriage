@@ -96,4 +96,17 @@ class IssueTest < ActiveSupport::TestCase
     issue = repo.issues.new(number: "8404")
     assert_equal "https://github.com/repos/rails/rails/issues/8404", issue.public_url
   end
+
+  test ".open_issues" do
+    open_issues = []
+    repo  = repos("rails_rails")
+    repo.issues.new(state: 'closed')
+
+    2.times do
+      open_issues << repo.issues.create(state: 'open')
+    end
+
+    assert_equal open_issues, repo.open_issues
+  end
+
 end

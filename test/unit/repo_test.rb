@@ -70,4 +70,11 @@ class RepoTest < ActiveSupport::TestCase
     repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
     assert_equal "https://api.github.com/repos/codetriage/codetriage/issues", repo.api_issues_url
   end
-end
+
+  test ".search_by returns repo by name and user_name" do
+    repo1 = Repo.create(name: 'codetriage', user_name: 'codetriage')
+    repo2 = Repo.create(name: 'codetriage2', user_name: 'codetriage2')
+
+    assert_equal [repo1], Repo.search_by('codetriage', 'codetriage')
+  end
+ end

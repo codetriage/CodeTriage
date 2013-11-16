@@ -118,4 +118,24 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
       assert_equal false, @repo_sub.ready_for_next?
     end
   end
+
+  test ".subscriptions_for a repo" do
+    user  = users(:mockstar)
+    repo  = repos(:rails_rails)
+    repo2 = repos(:rails_rails)
+    issue = repo.issues.create(:title         => "Foo Bar",
+                               :url             => "http://schneems.com",
+                               :last_touched_at => 2.days.ago,
+                               :state           => 'open',
+                               :html_url        => "http://schneems.com",
+                               :number          => 9000)
+
+    sub1 = user.repo_subscriptions.create(repo: repo, email_limit: 2)
+    sub2 = user.repo_subscriptions.create(repo: repo2, email_limit: 2)
+
+    assert_equal [sub1], user.repo_subscriptions_for(repo.id)
+    assert_equal [sub1], RepoSubscription.for(repo.id)
+  end
+
+
 end

@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
 
   alias_attribute :token, :github_access_token
 
+  delegate :for, to: :repo_subscriptions, prefix: true
+
   def self.random
     order("RANDOM()")
   end

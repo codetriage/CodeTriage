@@ -23,14 +23,14 @@ class ReposController < RepoBasedController
   end
 
   def show
-    @repo     = find_repo(params)
-    @issues   = @repo.issues.where(state: 'open').page(params[:page]).per_page(params[:per_page]||20)
-    @repo_sub = current_user.repo_subscriptions.where(:repo_id => @repo.id).includes(:issues).first if current_user
+    @repo        = find_repo(params)
+    @issues      = @repo.open_issues.page(params[:page]).per_page(params[:per_page]||20)
+    @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
     @subscribers = @repo.subscribers.public.limit(27)
   end
 
   def create
-    @repo =   Repo.where(name: params[:repo][:name].downcase.strip, user_name: params[:repo][:user_name].downcase.strip).first
+    @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first
     @repo ||= Repo.create!(repo_params)
 
     if @repo.save
