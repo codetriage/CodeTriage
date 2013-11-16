@@ -7,7 +7,7 @@ class ReposControllerTest < ActionController::TestCase
 
   test 'responds with 404 if repo does not exist' do
     assert_raise(ActiveRecord::RecordNotFound) {
-      get :show, full_name: 'foobar'
+      get :show, full_name: 'foo/bar'
     }
   end
 end
