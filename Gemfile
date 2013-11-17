@@ -21,7 +21,6 @@ gem 'maildown'
 gem 'rrrretry'
 gem 'jquery-rails'
 gem 'devise',                  "~> 3.0.0.rc"
-gem "twitter-bootstrap-rails", "~> 2.2.6"
 gem 'rack-timeout'
 gem 'unicorn'
 gem 'mail_view',   '~> 1.0.2'
@@ -54,7 +53,6 @@ group :assets do
   gem 'coffee-rails', '~> 4.0.0'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'uglifier', '>= 1.0.3'
-  gem 'therubyracer', '~> 0.12.0'
   gem "less-rails"
 end
 
