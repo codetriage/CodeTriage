@@ -34,6 +34,10 @@ class RepoSubscription < ActiveRecord::Base
     end
   end
 
+  def self.for(repo_id)
+    where(:repo_id => repo_id).includes(:issues)
+  end
+
   # a list of all issues assigned to the current repo_sub
   def assigned_issue_ids
     @assigned_issue_ids ||= self.issues.map(&:id) + [-1]

@@ -35,6 +35,10 @@ class Issue < ActiveRecord::Base
     where(state: CLOSED)
   end
 
+  def self.open_issues
+    where(state: OPEN)
+  end
+
   def closed?
     state == CLOSED
   end

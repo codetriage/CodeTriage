@@ -17,6 +17,7 @@ class Repo < ActiveRecord::Base
 
   has_many :subscribers, through: :repo_subscriptions, source: :user
 
+  delegate :open_issues, to: :issues
   before_save :set_full_name
 
   def strip_whitespaces
@@ -77,6 +78,10 @@ class Repo < ActiveRecord::Base
 
   def self.order_by_issue_count
     self.order("issues_count DESC")
+  end
+
+  def self.search_by(repo_name, user_name)
+    where(name: repo_name.downcase.strip, user_name: user_name.downcase.strip)
   end
 
   def github_url_exists
