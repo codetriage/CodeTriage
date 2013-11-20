@@ -5,3 +5,11 @@ script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
   - psql -c 'create database triage_test;' -U postgres
+deploy:
+  provider: heroku
+  api_key:
+    secure: g7kv3IvEQBIuj3/lIqge31nyfE9Y8h/hwPqt+r8YgVch0MnBQcqk/QGx6BdJTA0aLF67pn7+2YyhR07HJXTLXYsdubvotkgrm8dWlp8zeo2Q/2kut18RjJL/PYv13FvL0IAZKZIpP6eelj+PO9m7tt0wo04IC+tSiTGzlFOk2eg=
+  app: issuetriage
+  on:
+    repo: codetriage/codetriage
+  run: "rake db:migrate"
