@@ -82,3 +82,5 @@ module ActionController
 end
 
 require 'mocha/setup'
+
+Resque.inline = true
