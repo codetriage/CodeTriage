@@ -2,14 +2,6 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-  setup do
-    Resque.inline = true
-  end
-
-  teardown do
-    Resque.inline = false
-  end
-
   test '#github_url returns github url' do
     assert User.new(:github => 'jroes').github_url == 'https://github.com/jroes'
   end
