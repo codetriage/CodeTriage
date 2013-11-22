@@ -75,6 +75,6 @@ class RepoSubscription < ActiveRecord::Base
   resque_def(:background_send_triage_email) do |id|
     repo_sub = RepoSubscription.includes(:user, :repo).where(:id => id).first
     issue    = repo_sub.assign_issue!
-    UserMailer.send_triage(:repo => self.repo, :user => self.user, :issue => issue).deliver
+    UserMailer.send_triage(:repo => repo_sub.repo, :user => repo_sub.user, :issue => issue).deliver unless issue.blank?
   end
 end

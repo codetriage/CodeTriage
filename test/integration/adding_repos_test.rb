@@ -1,7 +1,9 @@
 require "test_helper"
 
 class AddingReposTest < ActionController::IntegrationTest
+
   test "adding a new valid repo" do
+    login_via_github
     visit "/"
     click_link "Submit a Repo"
 
