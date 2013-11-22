@@ -73,7 +73,7 @@ class RepoTest < ActiveSupport::TestCase
 
   test ".search_by returns repo by name and user_name" do
     repo1 = Repo.create(name: 'codetriage', user_name: 'codetriage')
-    repo2 = Repo.create(name: 'codetriage2', user_name: 'codetriage2')
+    repo2 = Repo.create(name: 'rails', user_name: 'rails')
 
     assert_equal [repo1], Repo.search_by('codetriage', 'codetriage')
   end
