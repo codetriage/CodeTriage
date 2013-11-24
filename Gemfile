@@ -24,6 +24,10 @@ gem 'devise',                  "~> 3.0.0.rc"
 gem 'rack-timeout'
 gem 'unicorn'
 gem 'mail_view',   '~> 1.0.2'
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.0.3'
+gem "less-rails"
 
 group :development do
   gem 'foreman'
@@ -44,16 +48,6 @@ end
 group :development, :test do
   gem "teaspoon"
   gem "dotenv-rails"
-end
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'uglifier', '>= 1.0.3'
-  gem "less-rails"
 end
 
 group :production do
