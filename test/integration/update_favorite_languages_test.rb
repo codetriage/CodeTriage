@@ -21,7 +21,7 @@ class UpdateFavoriteLanguagesTest < ActionController::IntegrationTest
     check 'user_favorite_languages_javascript'
     click_button 'Save'
     @user.reload
-    assert_equal ["javascript", "ruby"].sort, @user.favorite_languages
+    assert_equal ["javascript", "ruby"], @user.favorite_languages.sort
     assert page.has_content? 'User successfully updated'
   end
 end
