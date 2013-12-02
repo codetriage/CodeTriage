@@ -23,8 +23,6 @@ class ReposControllerTest < ActionController::TestCase
     sign_in users(:mockstar)
     get :new
 
-    assert_not_nil assigns(:own_repos)
-    assert_not_nil assigns(:starred_repos)
-    assert_not_nil assigns(:watched_repos)
+    assert_response 200
   end
 end
