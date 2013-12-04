@@ -10,11 +10,13 @@ When patients come into the emergency room, they don't see a doctor immediately,
 
 ## Why Triage?
 
-Triage is an important part of open source. It can be difficult to keep up with bugs and assess the validity of contributions. Code introduced to fix one problem can easily generate more problems than it solves, so it's important to maintainers look closely at bug reports and code contributions. Unfortunately as the size of a project grows, the demands placed on the maintainers grow. This means that maintainers are forced to choose between spending enormous amounts of time reviewing each GitHub issue, only skimming over issues, or worse ignoring issues. As a non-maintainer, you can help an open source project by triaging issues. When issues come in, they are assigned out to triage. If you get assigned an issue, you should look closely at it, and provide feedback to make a maintainers life easier. If there is a bug reported, try to reproduce it and then give the results in the issue comments. If code is included in the issue, review the code, see if it makes sense. Code submitted should have a clear use case, be in the same style as the project, and not introduce failures into the test system. If the code is good, leave a comment explaining why you believe it is good. +1's are great, but leave no context and don't help maintainers much. If you don't like an issue you need to explain why as well. Either way leave a comment with the issue.
+Triage is an important part of open source. It can be difficult to keep up with bugs and assess the validity of contributions. Code introduced to fix one problem can easily generate more problems than it solves, so it's important for maintainers to look closely at bug reports and code contributions. Unfortunately as the size of a project grows, the demands placed on the maintainers grow. This means they are forced to choose between spending enormous amounts of time reviewing each GitHub issue, only skimming over issues, or worse, ignoring issues. 
 
-## How does it Work?
+As a non-maintainer, you can help an open source project by triaging issues. When issues come in, they are assigned out to triage. If you get assigned an issue, you should look closely at it, and provide feedback to make a maintainer's life easier. If there is a bug reported, try to reproduce it and then give the results in the issue comments. If code is included in the issue, review the code, see if it makes sense. Code submitted should have a clear use case, be in the same style as the project, and not introduce failures into the test system. If the code is good, leave a comment explaining why you believe it is good. +1's are great, but leave no context and don't help maintainers much. If you don't like an issue you need to explain why as well. Either way leave a comment with the issue.
 
-You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Resque to grab issues from Github's API, we then use another background task to assign users who subscribe to a repository one issue each day.
+## How Does it Work?
+
+You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Resque to grab issues from GitHub's API, we then use another background task to assign users who subscribe to a repository one issue each day.
 
 
 ## Run Code Triage
@@ -55,7 +57,7 @@ You now have Redis running on 6379.
 See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
 
 ### Environment
-If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications). The urls you are asked to provide will be something like this:
+If you want your users to sign up with GitHub, create a [GitHub Client Application](https://github.com/settings/applications). The URLs you are asked to provide will be something like this:
 
 - URL: `http://localhost:5000`
 - Callback URL: `http://localhost:5000/users/auth/github/callback`
@@ -86,7 +88,8 @@ $ createuser postgres --superuser --createdb
 ```
 
 You may also need to run:
-'ALTER ROLE postgres WITH login;'
+
+    ALTER ROLE postgres WITH login;
 
 ```shell
 $ rake db:create RAILS_ENV=test
@@ -96,7 +99,7 @@ $ rake db:schema:load RAILS_ENV=test
 ## Flow
 
 - A user subscribes to a repo
-- Consume API: Once a day, find all the repos that haven't been updated in 24 hours, produce issue subscription
+- Consume API: Once a day, find all the repos that haven't been updated in 24 hours, produce issue subscription.
 - Issue Assigning [repo]: Find all users subscribed to that repo that haven't been assigned an issue in 24 hours, pick a random issue that the user is not a part of and send them an email.
 
 
@@ -104,6 +107,6 @@ $ rake db:schema:load RAILS_ENV=test
 
 Richard Schneeman [@Schneems](http://twitter.com/schneems) for [Heroku](http://heroku.com).
 
-Licensed under MIT License.
-Copyright (c) 2012 Schneems.
+Licensed under MIT License.  
+Copyright (c) 2012 Schneems.  
 See LICENSE.txt for further details.
