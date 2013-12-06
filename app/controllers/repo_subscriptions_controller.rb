@@ -7,7 +7,7 @@ class RepoSubscriptionsController < ApplicationController
 
   def create
     repo = Repo.find(params[:repo_id])
-    @repo_subscription = RepoSubscription.new(:repo => repo, :user => current_user)
+    @repo_subscription = current_user.repo_subscriptions.new repo: repo
     if @repo_subscription.save
       @repo_subscription.send_triage_email!
       redirect_to repo_subscriptions_path, notice: I18n.t('repo_subscriptions.subscribed')
@@ -18,20 +18,19 @@ class RepoSubscriptionsController < ApplicationController
   end
 
   def destroy
-    @repo_sub = current_user.repo_subscriptions.where(:id => params[:id]).first
+    @repo_sub = current_user.repo_subscriptions.find params[:id]
     @repo_sub.destroy
     redirect_to :back
   end
 
   def update
-    @repo_sub = current_user.repo_subscriptions.where(:id => params[:id]).first
+    @repo_sub = current_user.repo_subscriptions.find params[:id]
     if @repo_sub.update_attributes(repo_subscription_params)
       flash[:success] = "Email preferences updated!"
-      redirect_to :back
     else
-      flash[:error] ="Something went wrong"
-      redirect_to :back
+      flash[:error] = "Something went wrong"
     end
+    redirect_to :back
   end
 
   private
