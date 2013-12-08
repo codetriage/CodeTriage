@@ -134,7 +134,6 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     sub2 = user.repo_subscriptions.create(repo: repo2, email_limit: 2)
 
     assert_equal [sub1], user.repo_subscriptions_for(repo.id)
-    assert_equal [sub1], RepoSubscription.for(repo.id)
   end
 
 
