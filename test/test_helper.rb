@@ -22,7 +22,7 @@ OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:github, {
   :uid => 'mockstar',
   :credentials => {
-    :token => "d401116495671f0a0ceca9276e677eff"
+    :token => ENV['GITHUB_API_KEY'] || "d401116495671f0a0ceca9276e677eff"
   },
   :email => "mockstar@example.com",
   :info => {
@@ -41,6 +41,11 @@ VCR.configure do |c|
   c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = 'test/vcr_cassettes'
   c.hook_into :webmock
+
+  'GITHUB_APP_ID GITHUB_APP_SECRET GITHUB_API_KEY'.split(' ').each do |secure|
+    sensitive = ENV[secure] ||= secure
+    c.filter_sensitive_data("<#{secure}>") { sensitive }
+  end
 end
 
 

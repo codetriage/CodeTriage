@@ -33,7 +33,7 @@ http_interactions:
       Content-Length:
       - '5602'
       Etag:
-      - ! '"58d28f8657660f297e951dbd79fe1306"'
+      - '"58d28f8657660f297e951dbd79fe1306"'
       X-Ratelimit-Remaining:
       - '55'
       Last-Modified:
@@ -44,9 +44,9 @@ http_interactions:
       - '60'
     body:
       encoding: US-ASCII
-      string: ! '{"watchers":2486,"watchers_count":2486,"git_refs_url":"https://api.github.com/repos/refinery/refinerycms/git/refs{/sha}","url":"https://api.github.com/repos/refinery/refinerycms","mirror_url":null,"open_issues_count":14,"contents_url":"https://api.github.com/repos/refinery/refinerycms/contents/{+path}","issue_events_url":"https://api.github.com/repos/refinery/refinerycms/issues/events{/number}","keys_url":"https://api.github.com/repos/refinery/refinerycms/keys{/key_id}","owner":{"starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","url":"https://api.github.com/users/refinery","received_events_url":"https://api.github.com/users/refinery/received_events","login":"refinery","organizations_url":"https://api.github.com/users/refinery/orgs","followers_url":"https://api.github.com/users/refinery/followers","avatar_url":"https://secure.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","events_url":"https://api.github.com/users/refinery/events{/privacy}","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","following_url":"https://api.github.com/users/refinery/following","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","id":339098,"repos_url":"https://api.github.com/users/refinery/repos","subscriptions_url":"https://api.github.com/users/refinery/subscriptions"},"full_name":"refinery/refinerycms","pushed_at":"2012-11-19T02:29:39Z","notifications_url":"https://api.github.com/repos/refinery/refinerycms/notifications{?since,all,participating}","issue_comment_url":"https://api.github.com/repos/refinery/refinerycms/issues/comments/{number}","trees_url":"https://api.github.com/repos/refinery/refinerycms/git/trees{/sha}","forks":797,"created_at":"2009-05-28T20:13:21Z","homepage":"http://refinerycms.com/guides/","has_issues":true,"has_wiki":true,"forks_count":797,"merges_url":"https://api.github.com/repos/refinery/refinerycms/merges","compare_url":"https://api.github.com/repos/refinery/refinerycms/compare/{base}...{head}","stargazers_url":"https://api.github.com/repos/refinery/refinerycms/stargazers","assignees_url":"https://api.github.com/repos/refinery/refinerycms/assignees{/user}","labels_url":"https://api.github.com/repos/refinery/refinerycms/labels{/name}","contributors_url":"https://api.github.com/repos/refinery/refinerycms/contributors","statuses_url":"https://api.github.com/repos/refinery/refinerycms/statuses/{sha}","forks_url":"https://api.github.com/repos/refinery/refinerycms/forks","html_url":"https://github.com/refinery/refinerycms","network_count":797,"issues_url":"https://api.github.com/repos/refinery/refinerycms/issues{/number}","downloads_url":"https://api.github.com/repos/refinery/refinerycms/downloads","archive_url":"https://api.github.com/repos/refinery/refinerycms/{archive_format}{/ref}","branches_url":"https://api.github.com/repos/refinery/refinerycms/branches{/branch}","organization":{"starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","url":"https://api.github.com/users/refinery","received_events_url":"https://api.github.com/users/refinery/received_events","login":"refinery","organizations_url":"https://api.github.com/users/refinery/orgs","followers_url":"https://api.github.com/users/refinery/followers","avatar_url":"https://secure.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","events_url":"https://api.github.com/users/refinery/events{/privacy}","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","following_url":"https://api.github.com/users/refinery/following","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","id":339098,"repos_url":"https://api.github.com/users/refinery/repos","subscriptions_url":"https://api.github.com/users/refinery/subscriptions"},"master_branch":"master","ssh_url":"git@github.com:refinery/refinerycms.git","milestones_url":"https://api.github.com/repos/refinery/refinerycms/milestones{/number}","comments_url":"https://api.github.com/repos/refinery/refinerycms/comments{/number}","subscribers_url":"https://api.github.com/repos/refinery/refinerycms/subscribers","collaborators_url":"https://api.github.com/repos/refinery/refinerycms/collaborators{/collaborator}","description":"An
+      string: '{"watchers":2486,"watchers_count":2486,"git_refs_url":"https://api.github.com/repos/refinery/refinerycms/git/refs{/sha}","url":"https://api.github.com/repos/refinery/refinerycms","mirror_url":null,"open_issues_count":14,"contents_url":"https://api.github.com/repos/refinery/refinerycms/contents/{+path}","issue_events_url":"https://api.github.com/repos/refinery/refinerycms/issues/events{/number}","keys_url":"https://api.github.com/repos/refinery/refinerycms/keys{/key_id}","owner":{"starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","url":"https://api.github.com/users/refinery","received_events_url":"https://api.github.com/users/refinery/received_events","login":"refinery","organizations_url":"https://api.github.com/users/refinery/orgs","followers_url":"https://api.github.com/users/refinery/followers","avatar_url":"https://secure.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","events_url":"https://api.github.com/users/refinery/events{/privacy}","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","following_url":"https://api.github.com/users/refinery/following","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","id":339098,"repos_url":"https://api.github.com/users/refinery/repos","subscriptions_url":"https://api.github.com/users/refinery/subscriptions"},"full_name":"refinery/refinerycms","pushed_at":"2012-11-19T02:29:39Z","notifications_url":"https://api.github.com/repos/refinery/refinerycms/notifications{?since,all,participating}","issue_comment_url":"https://api.github.com/repos/refinery/refinerycms/issues/comments/{number}","trees_url":"https://api.github.com/repos/refinery/refinerycms/git/trees{/sha}","forks":797,"created_at":"2009-05-28T20:13:21Z","homepage":"http://refinerycms.com/guides/","has_issues":true,"has_wiki":true,"forks_count":797,"merges_url":"https://api.github.com/repos/refinery/refinerycms/merges","compare_url":"https://api.github.com/repos/refinery/refinerycms/compare/{base}...{head}","stargazers_url":"https://api.github.com/repos/refinery/refinerycms/stargazers","assignees_url":"https://api.github.com/repos/refinery/refinerycms/assignees{/user}","labels_url":"https://api.github.com/repos/refinery/refinerycms/labels{/name}","contributors_url":"https://api.github.com/repos/refinery/refinerycms/contributors","statuses_url":"https://api.github.com/repos/refinery/refinerycms/statuses/{sha}","forks_url":"https://api.github.com/repos/refinery/refinerycms/forks","html_url":"https://github.com/refinery/refinerycms","network_count":797,"issues_url":"https://api.github.com/repos/refinery/refinerycms/issues{/number}","downloads_url":"https://api.github.com/repos/refinery/refinerycms/downloads","archive_url":"https://api.github.com/repos/refinery/refinerycms/{archive_format}{/ref}","branches_url":"https://api.github.com/repos/refinery/refinerycms/branches{/branch}","organization":{"starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","url":"https://api.github.com/users/refinery","received_events_url":"https://api.github.com/users/refinery/received_events","login":"refinery","organizations_url":"https://api.github.com/users/refinery/orgs","followers_url":"https://api.github.com/users/refinery/followers","avatar_url":"https://secure.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","events_url":"https://api.github.com/users/refinery/events{/privacy}","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","following_url":"https://api.github.com/users/refinery/following","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","id":339098,"repos_url":"https://api.github.com/users/refinery/repos","subscriptions_url":"https://api.github.com/users/refinery/subscriptions"},"master_branch":"master","ssh_url":"git@github.com:refinery/refinerycms.git","milestones_url":"https://api.github.com/repos/refinery/refinerycms/milestones{/number}","comments_url":"https://api.github.com/repos/refinery/refinerycms/comments{/number}","subscribers_url":"https://api.github.com/repos/refinery/refinerycms/subscribers","collaborators_url":"https://api.github.com/repos/refinery/refinerycms/collaborators{/collaborator}","description":"An
         extendable Ruby on Rails ''CMS framework'' that supports Rails 3.2","size":13008,"pulls_url":"https://api.github.com/repos/refinery/refinerycms/pulls{/number}","blobs_url":"https://api.github.com/repos/refinery/refinerycms/git/blobs{/sha}","fork":false,"open_issues":14,"updated_at":"2012-11-20T20:58:24Z","commits_url":"https://api.github.com/repos/refinery/refinerycms/commits{/sha}","subscription_url":"https://api.github.com/repos/refinery/refinerycms/subscription","tags_url":"https://api.github.com/repos/refinery/refinerycms/tags{/tag}","events_url":"https://api.github.com/repos/refinery/refinerycms/events","teams_url":"https://api.github.com/repos/refinery/refinerycms/teams","name":"refinerycms","git_url":"git://github.com/refinery/refinerycms.git","clone_url":"https://github.com/refinery/refinerycms.git","git_tags_url":"https://api.github.com/repos/refinery/refinerycms/git/tags{/sha}","private":false,"id":212862,"svn_url":"https://github.com/refinery/refinerycms","language":"Ruby","has_downloads":false,"git_commits_url":"https://api.github.com/repos/refinery/refinerycms/git/commits{/sha}","languages_url":"https://api.github.com/repos/refinery/refinerycms/languages","hooks_url":"https://api.github.com/repos/refinery/refinerycms/hooks"}'
-    http_version: 
+    http_version:
   recorded_at: Tue, 20 Nov 2012 21:14:35 GMT
 - request:
     method: get
@@ -85,15 +85,1269 @@ http_interactions:
       Vary:
       - Accept
       Etag:
-      - ! '"42f1b372dff5d240512edafe43c59d6b"'
+      - '"42f1b372dff5d240512edafe43c59d6b"'
       Cache-Control:
       - public, max-age=60, s-maxage=60
       X-Github-Media-Type:
       - github.beta; param=raw.3; format=json
     body:
       encoding: US-ASCII
-      string: ! '{"id":212862,"fork":false,"forks_count":852,"merges_url":"https://api.github.com/repos/refinery/refinerycms/merges","full_name":"refinery/refinerycms","watchers":2570,"statuses_url":"https://api.github.com/repos/refinery/refinerycms/statuses/{sha}","notifications_url":"https://api.github.com/repos/refinery/refinerycms/notifications{?since,all,participating}","compare_url":"https://api.github.com/repos/refinery/refinerycms/compare/{base}...{head}","branches_url":"https://api.github.com/repos/refinery/refinerycms/branches{/branch}","tags_url":"https://api.github.com/repos/refinery/refinerycms/tags{/tag}","watchers_count":2570,"collaborators_url":"https://api.github.com/repos/refinery/refinerycms/collaborators{/collaborator}","open_issues":23,"created_at":"2009-05-28T20:13:21Z","keys_url":"https://api.github.com/repos/refinery/refinerycms/keys{/key_id}","contents_url":"https://api.github.com/repos/refinery/refinerycms/contents/{+path}","labels_url":"https://api.github.com/repos/refinery/refinerycms/labels{/name}","stargazers_url":"https://api.github.com/repos/refinery/refinerycms/stargazers","mirror_url":null,"pushed_at":"2013-02-05T01:14:42Z","trees_url":"https://api.github.com/repos/refinery/refinerycms/git/trees{/sha}","milestones_url":"https://api.github.com/repos/refinery/refinerycms/milestones{/number}","language":"Ruby","description":"An
+      string: '{"id":212862,"fork":false,"forks_count":852,"merges_url":"https://api.github.com/repos/refinery/refinerycms/merges","full_name":"refinery/refinerycms","watchers":2570,"statuses_url":"https://api.github.com/repos/refinery/refinerycms/statuses/{sha}","notifications_url":"https://api.github.com/repos/refinery/refinerycms/notifications{?since,all,participating}","compare_url":"https://api.github.com/repos/refinery/refinerycms/compare/{base}...{head}","branches_url":"https://api.github.com/repos/refinery/refinerycms/branches{/branch}","tags_url":"https://api.github.com/repos/refinery/refinerycms/tags{/tag}","watchers_count":2570,"collaborators_url":"https://api.github.com/repos/refinery/refinerycms/collaborators{/collaborator}","open_issues":23,"created_at":"2009-05-28T20:13:21Z","keys_url":"https://api.github.com/repos/refinery/refinerycms/keys{/key_id}","contents_url":"https://api.github.com/repos/refinery/refinerycms/contents/{+path}","labels_url":"https://api.github.com/repos/refinery/refinerycms/labels{/name}","stargazers_url":"https://api.github.com/repos/refinery/refinerycms/stargazers","mirror_url":null,"pushed_at":"2013-02-05T01:14:42Z","trees_url":"https://api.github.com/repos/refinery/refinerycms/git/trees{/sha}","milestones_url":"https://api.github.com/repos/refinery/refinerycms/milestones{/number}","language":"Ruby","description":"An
         extendable Ruby on Rails CMS that supports Rails 3.2","assignees_url":"https://api.github.com/repos/refinery/refinerycms/assignees{/user}","forks":852,"git_url":"git://github.com/refinery/refinerycms.git","ssh_url":"git@github.com:refinery/refinerycms.git","url":"https://api.github.com/repos/refinery/refinerycms","has_wiki":true,"updated_at":"2013-02-07T23:18:21Z","git_commits_url":"https://api.github.com/repos/refinery/refinerycms/git/commits{/sha}","master_branch":"master","git_refs_url":"https://api.github.com/repos/refinery/refinerycms/git/refs{/sha}","homepage":"http://refinerycms.com/guides/","issue_events_url":"https://api.github.com/repos/refinery/refinerycms/issues/events{/number}","html_url":"https://github.com/refinery/refinerycms","has_issues":true,"clone_url":"https://github.com/refinery/refinerycms.git","organization":{"type":"Organization","followers_url":"https://api.github.com/users/refinery/followers","subscriptions_url":"https://api.github.com/users/refinery/subscriptions","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","following_url":"https://api.github.com/users/refinery/following","url":"https://api.github.com/users/refinery","events_url":"https://api.github.com/users/refinery/events{/privacy}","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","avatar_url":"https://secure.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","organizations_url":"https://api.github.com/users/refinery/orgs","repos_url":"https://api.github.com/users/refinery/repos","login":"refinery","starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","id":339098,"received_events_url":"https://api.github.com/users/refinery/received_events"},"private":false,"comments_url":"https://api.github.com/repos/refinery/refinerycms/comments{/number}","pulls_url":"https://api.github.com/repos/refinery/refinerycms/pulls{/number}","downloads_url":"https://api.github.com/repos/refinery/refinerycms/downloads","events_url":"https://api.github.com/repos/refinery/refinerycms/events","subscription_url":"https://api.github.com/repos/refinery/refinerycms/subscription","name":"refinerycms","git_tags_url":"https://api.github.com/repos/refinery/refinerycms/git/tags{/sha}","languages_url":"https://api.github.com/repos/refinery/refinerycms/languages","forks_url":"https://api.github.com/repos/refinery/refinerycms/forks","hooks_url":"https://api.github.com/repos/refinery/refinerycms/hooks","open_issues_count":23,"issue_comment_url":"https://api.github.com/repos/refinery/refinerycms/issues/comments/{number}","size":13488,"issues_url":"https://api.github.com/repos/refinery/refinerycms/issues{/number}","svn_url":"https://github.com/refinery/refinerycms","commits_url":"https://api.github.com/repos/refinery/refinerycms/commits{/sha}","has_downloads":false,"network_count":852,"archive_url":"https://api.github.com/repos/refinery/refinerycms/{archive_format}{/ref}","subscribers_url":"https://api.github.com/repos/refinery/refinerycms/subscribers","blobs_url":"https://api.github.com/repos/refinery/refinerycms/git/blobs{/sha}","teams_url":"https://api.github.com/repos/refinery/refinerycms/teams","contributors_url":"https://api.github.com/repos/refinery/refinerycms/contributors","owner":{"type":"Organization","followers_url":"https://api.github.com/users/refinery/followers","subscriptions_url":"https://api.github.com/users/refinery/subscriptions","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","following_url":"https://api.github.com/users/refinery/following","url":"https://api.github.com/users/refinery","events_url":"https://api.github.com/users/refinery/events{/privacy}","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","avatar_url":"https://secure.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","organizations_url":"https://api.github.com/users/refinery/orgs","repos_url":"https://api.github.com/users/refinery/repos","login":"refinery","starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","id":339098,"received_events_url":"https://api.github.com/users/refinery/received_events"},"default_branch":"master"}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 08 Feb 2013 04:44:35 GMT
-recorded_with: VCR 2.3.0
+- request:
+    method: get
+    uri: https://api.github.com/repos/refinery/refinerycms/issues?direction=desc&page=1&sort=comments&state=open
+    body:
+      encoding: UTF-8
+      string: '{"state":"open","page":1,"sort":"comments","direction":"desc"}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - d3a82c8eb3f5a8840be46e40f59ee0e8
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 09 Dec 2013 19:17:20 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '44'
+      X-Ratelimit-Reset:
+      - '1386620230'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Etag:
+      - '"ef7bcc2888b2ac8ec8294388da4bbec6"'
+      Vary:
+      - Accept, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      Link:
+      - <https://api.github.com/repositories/212862/issues?state=open&page=2&sort=comments&direction=desc>;
+        rel="next", <https://api.github.com/repositories/212862/issues?state=open&page=2&sort=comments&direction=desc>;
+        rel="last"
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '76227'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 633D470B:70CB:4EA95EB:52A61740
+    body:
+      encoding: UTF-8
+      string: '[{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2418","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2418/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2418/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2418/events","html_url":"https://github.com/refinery/refinerycms/issues/2418","id":20173470,"number":2418,"title":"It
+        is not possible to install the gem with the command: \"gem install refinerycms\"","user":{"login":"adimircolen","id":220818,"avatar_url":"https://0.gravatar.com/avatar/8f19ac6e3cdadc4bae6d13263a38a5a9?d=https%3A%2F%2Fidenticons.github.com%2Fc18f40d47eb9c2ddd7fed651633d6e81.png&r=x","gravatar_id":"8f19ac6e3cdadc4bae6d13263a38a5a9","url":"https://api.github.com/users/adimircolen","html_url":"https://github.com/adimircolen","followers_url":"https://api.github.com/users/adimircolen/followers","following_url":"https://api.github.com/users/adimircolen/following{/other_user}","gists_url":"https://api.github.com/users/adimircolen/gists{/gist_id}","starred_url":"https://api.github.com/users/adimircolen/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/adimircolen/subscriptions","organizations_url":"https://api.github.com/users/adimircolen/orgs","repos_url":"https://api.github.com/users/adimircolen/repos","events_url":"https://api.github.com/users/adimircolen/events{/privacy}","received_events_url":"https://api.github.com/users/adimircolen/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Awaiting+Response","name":"Awaiting
+        Response","color":"d7e102"}],"state":"open","assignee":null,"milestone":null,"comments":19,"created_at":"2013-09-27T14:26:19Z","updated_at":"2013-11-11T12:47:18Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"ERROR:  While
+        executing gem ... (Gem::ImpossibleDependenciesError)\r\n    activemodel-3.0.2
+        requires i18n (~> 0.4.1) but it conflicted:\r\n  Activated i18n-0.4.2 instead
+        of (~> 0.5) via:\r\n    rails-i18n-0.7.4, refinerycms-i18n-2.1.0, refinerycms-core-2.1.0,
+        refinerycms-authentication-2.1.0, refinerycms-2.1.0"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2427","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2427/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2427/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2427/events","html_url":"https://github.com/refinery/refinerycms/issues/2427","id":20428255,"number":2427,"title":"Problem
+        viewing content of pages with children","user":{"login":"prigg-brenda","id":5422523,"avatar_url":"https://2.gravatar.com/avatar/380bc99667b924d502de8fe6c0cea4f8?d=https%3A%2F%2Fidenticons.github.com%2Fc5d3d749bfdaa009379aace0f9dfd974.png&r=x","gravatar_id":"380bc99667b924d502de8fe6c0cea4f8","url":"https://api.github.com/users/prigg-brenda","html_url":"https://github.com/prigg-brenda","followers_url":"https://api.github.com/users/prigg-brenda/followers","following_url":"https://api.github.com/users/prigg-brenda/following{/other_user}","gists_url":"https://api.github.com/users/prigg-brenda/gists{/gist_id}","starred_url":"https://api.github.com/users/prigg-brenda/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/prigg-brenda/subscriptions","organizations_url":"https://api.github.com/users/prigg-brenda/orgs","repos_url":"https://api.github.com/users/prigg-brenda/repos","events_url":"https://api.github.com/users/prigg-brenda/events{/privacy}","received_events_url":"https://api.github.com/users/prigg-brenda/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":13,"created_at":"2013-10-02T23:06:02Z","updated_at":"2013-10-03T18:24:59Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"Version
+        Information I am using:\r\n\r\nHeroku : Ruby Version 1.9.3-p327, Rails Version
+        3.2.12\r\n\r\nHere is link to my site:\r\n\r\nhttp://ez-pension.herokuapp.com/\r\n\r\nWhen
+        I click on \"Retirement Plans\" I expect to see \r\nThe parent content associated
+        with the page.  However, instead I see the child content (\"401(k) Plan\")\r\n\r\nI
+        have tried recreate the page hierarchy, tried varying all available advance
+        setting for the pages in refinery and finally tried re-installing the app
+        from scratch.\r\n\r\nIn all cases, the condition still remains the same.\r\n\r\nI
+        am puzzled on what else to try.  Maybe I am using incompatible toolchains?\r\n\r\nAny
+        Help for further debugging is appreciated."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/1921","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/1921/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/1921/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/1921/events","html_url":"https://github.com/refinery/refinerycms/issues/1921","id":6603485,"number":1921,"title":"Plugins
+        with same name/different namespace are not registered","user":{"login":"alepore","id":557414,"avatar_url":"https://2.gravatar.com/avatar/fdfc8990e036917ea7ba14cb88027259?d=https%3A%2F%2Fidenticons.github.com%2F51180beb518ba74e4d08fb7fe202216a.png&r=x","gravatar_id":"fdfc8990e036917ea7ba14cb88027259","url":"https://api.github.com/users/alepore","html_url":"https://github.com/alepore","followers_url":"https://api.github.com/users/alepore/followers","following_url":"https://api.github.com/users/alepore/following{/other_user}","gists_url":"https://api.github.com/users/alepore/gists{/gist_id}","starred_url":"https://api.github.com/users/alepore/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/alepore/subscriptions","organizations_url":"https://api.github.com/users/alepore/orgs","repos_url":"https://api.github.com/users/alepore/repos","events_url":"https://api.github.com/users/alepore/events{/privacy}","received_events_url":"https://api.github.com/users/alepore/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Needs+discussion","name":"Needs
+        discussion","color":"d7e102"},{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Edge","name":"Edge","color":"02d7e1"}],"state":"open","assignee":null,"milestone":null,"comments":12,"created_at":"2012-09-02T15:48:53Z","updated_at":"2012-12-30T03:55:42Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"Hi,
+        i have some custom engines and two plugins with the same name:\r\n\r\n```ruby\r\nRefinery::Events::Category\r\nRefinery::Businesses::Category\r\n```\r\n\r\nin
+        admin menu i see only the first one as \"Categories\", frontend menu has both.\r\nRefinery
+        is 2.1.0.dev (master)\r\n\r\nLooks like a namespacing bug?\r\n\r\nThanks"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2346","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2346/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2346/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2346/events","html_url":"https://github.com/refinery/refinerycms/issues/2346","id":17285188,"number":2346,"title":"Image
+        and File routes","user":{"login":"markgarrigan","id":422391,"avatar_url":"https://0.gravatar.com/avatar/0450540bfa34ee83eda162e4517bfcb3?d=https%3A%2F%2Fidenticons.github.com%2F166d5141df42c664c484fafa2b59f607.png&r=x","gravatar_id":"0450540bfa34ee83eda162e4517bfcb3","url":"https://api.github.com/users/markgarrigan","html_url":"https://github.com/markgarrigan","followers_url":"https://api.github.com/users/markgarrigan/followers","following_url":"https://api.github.com/users/markgarrigan/following{/other_user}","gists_url":"https://api.github.com/users/markgarrigan/gists{/gist_id}","starred_url":"https://api.github.com/users/markgarrigan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/markgarrigan/subscriptions","organizations_url":"https://api.github.com/users/markgarrigan/orgs","repos_url":"https://api.github.com/users/markgarrigan/repos","events_url":"https://api.github.com/users/markgarrigan/events{/privacy}","received_events_url":"https://api.github.com/users/markgarrigan/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Awaiting+Response","name":"Awaiting
+        Response","color":"d7e102"}],"state":"open","assignee":null,"milestone":null,"comments":10,"created_at":"2013-07-26T21:19:40Z","updated_at":"2013-09-10T13:11:00Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"We''re
+        having a strange issue that we can''t track down.\r\n\r\nWhen developing locally
+        on macs running both rails server and pow image and file uploads work fine
+        in the dev and prod environments.\r\n\r\nHowever, after deploying to our production
+        box which is Apache and passenger we get the following error...\r\n\r\n```\r\nStarted
+        POST \"/refinery/images?dialog=true\" for xxx.xx.xxx.xxx at 2013-07-26 17:43:34
+        +0000\r\n\r\nActionController::RoutingError (No route matches [POST] \"/images\")\r\n```\r\n\r\nCould
+        it be server related? Refinery config related? RVM? No ideas where to begin.\r\n\r\n```ruby\r\n#Gemfile\r\ngem
+        ''refinerycms'', ''~> 2.0.0'', :git => ''git://github.com/refinery/refinerycms.git'',
+        :branch => ''2-0-stable''\r\ngem ''refinerycms-i18n'', ''~> 2.0.0''\r\ngem
+        ''refinerycms-blog''\r\ngem ''refinerycms-search'', ''~> 2.0.0''\r\n```"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/1683","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/1683/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/1683/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/1683/events","html_url":"https://github.com/refinery/refinerycms/issues/1683","id":4705408,"number":1683,"title":"Run
+        Rspec in Refinery cms ","user":{"login":"railsfactory-sivamanikandan","id":1464508,"avatar_url":"https://1.gravatar.com/avatar/23f016b990104617a354e594e95f1611?d=https%3A%2F%2Fidenticons.github.com%2Fb176c1b98bf181d2c073bc69b63eed55.png&r=x","gravatar_id":"23f016b990104617a354e594e95f1611","url":"https://api.github.com/users/railsfactory-sivamanikandan","html_url":"https://github.com/railsfactory-sivamanikandan","followers_url":"https://api.github.com/users/railsfactory-sivamanikandan/followers","following_url":"https://api.github.com/users/railsfactory-sivamanikandan/following{/other_user}","gists_url":"https://api.github.com/users/railsfactory-sivamanikandan/gists{/gist_id}","starred_url":"https://api.github.com/users/railsfactory-sivamanikandan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/railsfactory-sivamanikandan/subscriptions","organizations_url":"https://api.github.com/users/railsfactory-sivamanikandan/orgs","repos_url":"https://api.github.com/users/railsfactory-sivamanikandan/repos","events_url":"https://api.github.com/users/railsfactory-sivamanikandan/events{/privacy}","received_events_url":"https://api.github.com/users/railsfactory-sivamanikandan/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Needs+discussion","name":"Needs
+        discussion","color":"d7e102"},{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Edge","name":"Edge","color":"02d7e1"},{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Documentation","name":"Documentation","color":"905d4e"}],"state":"open","assignee":{"login":"robyurkowski","id":230379,"avatar_url":"https://2.gravatar.com/avatar/68e1778cf7b9623d5ed3d9f356132cf3?d=https%3A%2F%2Fidenticons.github.com%2F6472932d97c33b99f49b6d7794230ffa.png&r=x","gravatar_id":"68e1778cf7b9623d5ed3d9f356132cf3","url":"https://api.github.com/users/robyurkowski","html_url":"https://github.com/robyurkowski","followers_url":"https://api.github.com/users/robyurkowski/followers","following_url":"https://api.github.com/users/robyurkowski/following{/other_user}","gists_url":"https://api.github.com/users/robyurkowski/gists{/gist_id}","starred_url":"https://api.github.com/users/robyurkowski/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/robyurkowski/subscriptions","organizations_url":"https://api.github.com/users/robyurkowski/orgs","repos_url":"https://api.github.com/users/robyurkowski/repos","events_url":"https://api.github.com/users/robyurkowski/events{/privacy}","received_events_url":"https://api.github.com/users/robyurkowski/received_events","type":"User","site_admin":false},"milestone":null,"comments":10,"created_at":"2012-05-23T05:43:45Z","updated_at":"2013-07-09T01:41:47Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"How
+        to run rspec in refinery cms \n\ni had added new engine i want to test whole
+        refinery cms  using rspec or unit testing what are details given in refinerycms
+        site is not working\n can any you help me how to run the test\n\nPlease give
+        me one by one step it helps me to run the test (unit or rspec)\n\nThanks in
+        advance "},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2388","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2388/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2388/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2388/events","html_url":"https://github.com/refinery/refinerycms/pull/2388","id":18347052,"number":2388,"title":"Possible
+        fix for previewing pages with inherited templates.","user":{"login":"Rakoth","id":34753,"avatar_url":"https://1.gravatar.com/avatar/c4eb02ef0d5e1474bbfe5be14ed6adf8?d=https%3A%2F%2Fidenticons.github.com%2F67012a7770c47eba3bc1b811ca28ecc6.png&r=x","gravatar_id":"c4eb02ef0d5e1474bbfe5be14ed6adf8","url":"https://api.github.com/users/Rakoth","html_url":"https://github.com/Rakoth","followers_url":"https://api.github.com/users/Rakoth/followers","following_url":"https://api.github.com/users/Rakoth/following{/other_user}","gists_url":"https://api.github.com/users/Rakoth/gists{/gist_id}","starred_url":"https://api.github.com/users/Rakoth/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Rakoth/subscriptions","organizations_url":"https://api.github.com/users/Rakoth/orgs","repos_url":"https://api.github.com/users/Rakoth/repos","events_url":"https://api.github.com/users/Rakoth/events{/privacy}","received_events_url":"https://api.github.com/users/Rakoth/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":9,"created_at":"2013-08-21T10:44:48Z","updated_at":"2013-09-02T17:01:41Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2388","diff_url":"https://github.com/refinery/refinerycms/pull/2388.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2388.patch"},"body":"There
+        is an issue with previewing pages, which uses templates inheritance.\r\nRails
+        fails to find partials from views/refinery/pages and views/application folders,
+        because `Refinery::Pages::Admin::PreviewController` not inherited from `Refinery::PagesController`.\r\nIt
+        fails with exception message: \r\n```\r\nMissing partial refinery/pages/admin/preview/inherited_partial,
+        refinery/admin/inherited_partial with {:locale=>[:en], :formats=>[:html],
+        :handlers=>[:erb, :builder, :coffee]}.\r\n```\r\nExample app for this issue:\r\nhttps://github.com/Rakoth/refienry-2.1.0-pages-preview"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2416","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2416/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2416/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2416/events","html_url":"https://github.com/refinery/refinerycms/pull/2416","id":20061857,"number":2416,"title":"Update
+        jquery to ~> 3.0.0","user":{"login":"pusewicz","id":940,"avatar_url":"https://2.gravatar.com/avatar/dcbf676f860477e44b275cae5d6318a4?d=https%3A%2F%2Fidenticons.github.com%2F8d6dc35e506fc23349dd10ee68dabb64.png&r=x","gravatar_id":"dcbf676f860477e44b275cae5d6318a4","url":"https://api.github.com/users/pusewicz","html_url":"https://github.com/pusewicz","followers_url":"https://api.github.com/users/pusewicz/followers","following_url":"https://api.github.com/users/pusewicz/following{/other_user}","gists_url":"https://api.github.com/users/pusewicz/gists{/gist_id}","starred_url":"https://api.github.com/users/pusewicz/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/pusewicz/subscriptions","organizations_url":"https://api.github.com/users/pusewicz/orgs","repos_url":"https://api.github.com/users/pusewicz/repos","events_url":"https://api.github.com/users/pusewicz/events{/privacy}","received_events_url":"https://api.github.com/users/pusewicz/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":9,"created_at":"2013-09-25T18:50:29Z","updated_at":"2013-09-28T11:11:28Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2416","diff_url":"https://github.com/refinery/refinerycms/pull/2416.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2416.patch"},"body":""},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2476","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2476/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2476/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2476/events","html_url":"https://github.com/refinery/refinerycms/pull/2476","id":23424698,"number":2476,"title":"Page
+        Finder","user":{"login":"awagener","id":189705,"avatar_url":"https://1.gravatar.com/avatar/0b3b8c8c0c2192ae51919687963a45c9?d=https%3A%2F%2Fidenticons.github.com%2F4f1f4e38676b6955d514b19153f97bc6.png&r=x","gravatar_id":"0b3b8c8c0c2192ae51919687963a45c9","url":"https://api.github.com/users/awagener","html_url":"https://github.com/awagener","followers_url":"https://api.github.com/users/awagener/followers","following_url":"https://api.github.com/users/awagener/following{/other_user}","gists_url":"https://api.github.com/users/awagener/gists{/gist_id}","starred_url":"https://api.github.com/users/awagener/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/awagener/subscriptions","organizations_url":"https://api.github.com/users/awagener/orgs","repos_url":"https://api.github.com/users/awagener/repos","events_url":"https://api.github.com/users/awagener/events{/privacy}","received_events_url":"https://api.github.com/users/awagener/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":9,"created_at":"2013-11-28T00:49:26Z","updated_at":"2013-12-06T22:47:22Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2476","diff_url":"https://github.com/refinery/refinerycms/pull/2476.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2476.patch"},"body":"Pulling
+        out the logic from class methods in Page into instance methods (eventually
+        at least) in finding classes.\r\n\r\nNaming things is hard.\r\n\r\nThis is
+        mostly a Request for Comment, still some cleaning up to do.  Although all
+        the tests pass for me, and it''s pure refactoring (all existing method calls
+        should work) so feel free to merge if desired.\r\n\r\n/cc @parndt"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2487","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2487/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2487/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2487/events","html_url":"https://github.com/refinery/refinerycms/issues/2487","id":23833556,"number":2487,"title":"Refinery::Admin::PagesController#update
+        error","user":{"login":"mattherick","id":225205,"avatar_url":"https://2.gravatar.com/avatar/cbe6605e0d074313d68c733a079ad927?d=https%3A%2F%2Fidenticons.github.com%2F6c037a13a7e2d089a0f88f86b6405daf.png&r=x","gravatar_id":"cbe6605e0d074313d68c733a079ad927","url":"https://api.github.com/users/mattherick","html_url":"https://github.com/mattherick","followers_url":"https://api.github.com/users/mattherick/followers","following_url":"https://api.github.com/users/mattherick/following{/other_user}","gists_url":"https://api.github.com/users/mattherick/gists{/gist_id}","starred_url":"https://api.github.com/users/mattherick/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mattherick/subscriptions","organizations_url":"https://api.github.com/users/mattherick/orgs","repos_url":"https://api.github.com/users/mattherick/repos","events_url":"https://api.github.com/users/mattherick/events{/privacy}","received_events_url":"https://api.github.com/users/mattherick/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":9,"created_at":"2013-12-06T02:16:27Z","updated_at":"2013-12-06T04:02:23Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"If
+        I update an existing page and leave the title blank i get following error:
+        \r\n\r\n    NoMethodError in Refinery::Admin::PagesController#update\r\n    undefined
+        method `to_slug'' for nil:NilClass\r\n\r\nI use refinerycms 2.1.1"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2229","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2229/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2229/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2229/events","html_url":"https://github.com/refinery/refinerycms/issues/2229","id":12588869,"number":2229,"title":"decorators
+        in engines not registered","user":{"login":"mattolson","id":168657,"avatar_url":"https://0.gravatar.com/avatar/ef914230fcc7574980dbf3d3ebe14b56?d=https%3A%2F%2Fidenticons.github.com%2F0e18810ddb663bcd8cf02be338210f80.png&r=x","gravatar_id":"ef914230fcc7574980dbf3d3ebe14b56","url":"https://api.github.com/users/mattolson","html_url":"https://github.com/mattolson","followers_url":"https://api.github.com/users/mattolson/followers","following_url":"https://api.github.com/users/mattolson/following{/other_user}","gists_url":"https://api.github.com/users/mattolson/gists{/gist_id}","starred_url":"https://api.github.com/users/mattolson/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mattolson/subscriptions","organizations_url":"https://api.github.com/users/mattolson/orgs","repos_url":"https://api.github.com/users/mattolson/repos","events_url":"https://api.github.com/users/mattolson/events{/privacy}","received_events_url":"https://api.github.com/users/mattolson/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Accepted","name":"Accepted","color":"02e10c"}],"state":"open","assignee":null,"milestone":null,"comments":8,"created_at":"2013-03-28T23:02:24Z","updated_at":"2013-08-03T20:04:12Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I
+        have been debugging an issue with an engine I''m writing, wherein I have several
+        decorators I''d like to load. According to [core/engine.rb:13](https://github.com/refinery/refinerycms/blob/master/core/lib/refinery/core/engine.rb),
+        register_decorators! is supposed to load decorators from app/decorators in
+        the same way as the main app. However, I was having trouble with this and
+        inserted some logging in register_decorators! and in my engine''s engine.rb
+        where Refinery::Plugin.register is called, and determined that my engine is
+        not registered until after register_decorators! is called, so my decorators
+        are never loaded."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2482","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2482/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2482/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2482/events","html_url":"https://github.com/refinery/refinerycms/pull/2482","id":23673002,"number":2482,"title":"Moved
+        RDBMS gems into groups in Gemfile","user":{"login":"ratmav","id":1655830,"avatar_url":"https://0.gravatar.com/avatar/5da70a2f72e276cc3ffb073fbc2952fa?d=https%3A%2F%2Fidenticons.github.com%2F81b2488bfe896f9f28e20dfb5113173e.png&r=x","gravatar_id":"5da70a2f72e276cc3ffb073fbc2952fa","url":"https://api.github.com/users/ratmav","html_url":"https://github.com/ratmav","followers_url":"https://api.github.com/users/ratmav/followers","following_url":"https://api.github.com/users/ratmav/following{/other_user}","gists_url":"https://api.github.com/users/ratmav/gists{/gist_id}","starred_url":"https://api.github.com/users/ratmav/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ratmav/subscriptions","organizations_url":"https://api.github.com/users/ratmav/orgs","repos_url":"https://api.github.com/users/ratmav/repos","events_url":"https://api.github.com/users/ratmav/events{/privacy}","received_events_url":"https://api.github.com/users/ratmav/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":8,"created_at":"2013-12-03T20:53:12Z","updated_at":"2013-12-03T21:12:04Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2482","diff_url":"https://github.com/refinery/refinerycms/pull/2482.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2482.patch"},"body":"I''ve
+        wrapped the mysql2 and pg gems inside of groups to allow users to choose whether
+        or not they''d like to install a respective RDBMS gem. The previous Gemfile
+        would install both MySQL and PostgreSQL gems if Travis was not found in the
+        shell environment. To choose which RDBMS gem you''d like to use, you can run
+        ```bundle install --without mysql``` to install pg ONLY, or you can run ```bundle
+        install --without postgres``` to install mysql2 ONLY. This should work whether
+        or not Travis is found."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2488","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2488/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2488/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2488/events","html_url":"https://github.com/refinery/refinerycms/pull/2488","id":23836860,"number":2488,"title":"menu
+        presenter: added possibility to set title html_safe","user":{"login":"mattherick","id":225205,"avatar_url":"https://2.gravatar.com/avatar/cbe6605e0d074313d68c733a079ad927?d=https%3A%2F%2Fidenticons.github.com%2F6c037a13a7e2d089a0f88f86b6405daf.png&r=x","gravatar_id":"cbe6605e0d074313d68c733a079ad927","url":"https://api.github.com/users/mattherick","html_url":"https://github.com/mattherick","followers_url":"https://api.github.com/users/mattherick/followers","following_url":"https://api.github.com/users/mattherick/following{/other_user}","gists_url":"https://api.github.com/users/mattherick/gists{/gist_id}","starred_url":"https://api.github.com/users/mattherick/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mattherick/subscriptions","organizations_url":"https://api.github.com/users/mattherick/orgs","repos_url":"https://api.github.com/users/mattherick/repos","events_url":"https://api.github.com/users/mattherick/events{/privacy}","received_events_url":"https://api.github.com/users/mattherick/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":8,"created_at":"2013-12-06T04:12:35Z","updated_at":"2013-12-08T01:36:50Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2488","diff_url":"https://github.com/refinery/refinerycms/pull/2488.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2488.patch"},"body":"Sometimes
+        it is necessary that in a menu the title should be rendered html_safe. For
+        example if you have a title like \"Version<sup>2</sup>\""},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2481","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2481/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2481/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2481/events","html_url":"https://github.com/refinery/refinerycms/issues/2481","id":23662317,"number":2481,"title":"Gemfile
+        forcing install of mysql gem","user":{"login":"ratmav","id":1655830,"avatar_url":"https://0.gravatar.com/avatar/5da70a2f72e276cc3ffb073fbc2952fa?d=https%3A%2F%2Fidenticons.github.com%2F81b2488bfe896f9f28e20dfb5113173e.png&r=x","gravatar_id":"5da70a2f72e276cc3ffb073fbc2952fa","url":"https://api.github.com/users/ratmav","html_url":"https://github.com/ratmav","followers_url":"https://api.github.com/users/ratmav/followers","following_url":"https://api.github.com/users/ratmav/following{/other_user}","gists_url":"https://api.github.com/users/ratmav/gists{/gist_id}","starred_url":"https://api.github.com/users/ratmav/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ratmav/subscriptions","organizations_url":"https://api.github.com/users/ratmav/orgs","repos_url":"https://api.github.com/users/ratmav/repos","events_url":"https://api.github.com/users/ratmav/events{/privacy}","received_events_url":"https://api.github.com/users/ratmav/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":8,"created_at":"2013-12-03T18:18:05Z","updated_at":"2013-12-03T21:23:31Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I''m
+        trying to get started contributing to Refinery by running the dummy app. In
+        the [guide](http://refinerycms.com/guides/contributing-to-refinery), it lists
+        the following steps: \r\n```bash\r\n$ git clone git@github.com:USERNAME/refinerycms.git\r\n$
+        cd refinerycms\r\n$ bundle install\r\n$ rake refinery:testing:dummy_app\r\n$
+        rails server\r\n```\r\n\r\nWhen I run bundler, I get the following error:\r\n```bash\r\nInstalling
+        mysql2 (0.3.14) \r\nGem::Installer::ExtensionBuildError: ERROR: Failed to
+        build gem native extension.\r\n\r\n        /home/ratmav/.rvm/rubies/ruby-1.9.3-p448/bin/ruby
+        extconf.rb \r\nchecking for ruby/thread.h... no\r\nchecking for rb_thread_blocking_region()...
+        yes\r\nchecking for rb_wait_for_single_fd()... yes\r\nchecking for rb_hash_dup()...
+        yes\r\nchecking for rb_intern3()... yes\r\nchecking for mysql_query() in -lmysqlclient...
+        no\r\nchecking for main() in -lm... yes\r\nchecking for mysql_query() in -lmysqlclient...
+        no\r\nchecking for main() in -lz... yes\r\nchecking for mysql_query() in -lmysqlclient...
+        no\r\nchecking for main() in -lsocket... no\r\nchecking for mysql_query()
+        in -lmysqlclient... no\r\nchecking for main() in -lnsl... yes\r\nchecking
+        for mysql_query() in -lmysqlclient... no\r\nchecking for main() in -lmygcc...
+        no\r\nchecking for mysql_query() in -lmysqlclient... no\r\n*** extconf.rb
+        failed ***\r\nCould not create Makefile due to some reason, probably lack
+        of\r\nnecessary libraries and/or headers.  Check the mkmf.log file for more\r\ndetails.  You
+        may need configuration options.\r\n\r\nProvided configuration options:\r\n\t--with-opt-dir\r\n\t--without-opt-dir\r\n\t--with-opt-include\r\n\t--without-opt-include=${opt-dir}/include\r\n\t--with-opt-lib\r\n\t--without-opt-lib=${opt-dir}/lib\r\n\t--with-make-prog\r\n\t--without-make-prog\r\n\t--srcdir=.\r\n\t--curdir\r\n\t--ruby=/home/ratmav/.rvm/rubies/ruby-1.9.3-p448/bin/ruby\r\n\t--with-mysql-dir\r\n\t--without-mysql-dir\r\n\t--with-mysql-include\r\n\t--without-mysql-include=${mysql-dir}/include\r\n\t--with-mysql-lib\r\n\t--without-mysql-lib=${mysql-dir}/lib\r\n\t--with-mysql-config\r\n\t--without-mysql-config\r\n\t--with-mysql-dir\r\n\t--without-mysql-dir\r\n\t--with-mysql-include\r\n\t--without-mysql-include=${mysql-dir}/include\r\n\t--with-mysql-lib\r\n\t--without-mysql-lib=${mysql-dir}/lib\r\n\t--with-mysqlclientlib\r\n\t--without-mysqlclientlib\r\n\t--with-mlib\r\n\t--without-mlib\r\n\t--with-mysqlclientlib\r\n\t--without-mysqlclientlib\r\n\t--with-zlib\r\n\t--without-zlib\r\n\t--with-mysqlclientlib\r\n\t--without-mysqlclientlib\r\n\t--with-socketlib\r\n\t--without-socketlib\r\n\t--with-mysqlclientlib\r\n\t--without-mysqlclientlib\r\n\t--with-nsllib\r\n\t--without-nsllib\r\n\t--with-mysqlclientlib\r\n\t--without-mysqlclientlib\r\n\t--with-mygcclib\r\n\t--without-mygcclib\r\n\t--with-mysqlclientlib\r\n\t--without-mysqlclientlib\r\n\r\n\r\nGem
+        files will remain installed in /home/ratmav/.rvm/gems/ruby-1.9.3-p448@refinerycms/gems/mysql2-0.3.14
+        for inspection.\r\nResults logged to /home/ratmav/.rvm/gems/ruby-1.9.3-p448@refinerycms/gems/mysql2-0.3.14/ext/mysql2/gem_make.out\r\n\r\nAn
+        error occurred while installing mysql2 (0.3.14), and Bundler cannot continue.\r\nMake
+        sure that `gem install mysql2 -v ''0.3.14''` succeeds before bundling.\r\n```
+        \r\n\r\nMy machine currently only has PostgreSQL installed but not MySQL,
+        so this error makes sense. I took a look at the Gemfile, and I noticed that
+        there are some flags to check for Travis setups in the database configuration:\r\n```ruby\r\n#
+        Database Configuration\r\nunless ENV[''TRAVIS'']\r\n  gem ''activerecord-jdbcsqlite3-adapter'',
+        ''>= 1.3.0.rc1'', platform: :jruby\r\n  gem ''sqlite3'', platform: :ruby\r\nend\r\n\r\nif
+        !ENV[''TRAVIS''] || ENV[''DB''] == ''mysql''\r\n  gem ''activerecord-jdbcmysql-adapter'',
+        ''>= 1.3.0.rc1'', :platform => :jruby\r\n  gem ''mysql2'', :platform => :ruby\r\nend\r\n\r\nif
+        !ENV[''TRAVIS''] || ENV[''DB''] == ''postgresql''\r\n  gem ''activerecord-jdbcpostgresql-adapter'',
+        ''>= 1.3.0.rc1'', :platform => :jruby\r\n  gem ''pg'', :platform => :ruby\r\nend\r\n```\r\n\r\nSo
+        what appears to be happening is that Bundler is trying to install the mysql
+        gem then the pg gem since it''s not a Travis environment. I don''t have MySQL
+        installed, so Bundler crashes since it can''t find what it needs for the mysql
+        gem installation. If I comment out the mysql gem, everything runs like a champ.\r\n\r\nIs
+        this a legitimate issue, is something missing in the documentation, and/or
+        am I missing something (likely with Travis, I''ve never used it) for getting
+        the dummy app up and running?  \r\n"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2143","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2143/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2143/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2143/events","html_url":"https://github.com/refinery/refinerycms/issues/2143","id":10028618,"number":2143,"title":"Old
+        slugs should redirect with a 302","user":{"login":"jokklan","id":700373,"avatar_url":"https://0.gravatar.com/avatar/cca096911a92a4955dd90b6c10478ad8?d=https%3A%2F%2Fidenticons.github.com%2F750ea8ab15416e7136d20c347952b0de.png&r=x","gravatar_id":"cca096911a92a4955dd90b6c10478ad8","url":"https://api.github.com/users/jokklan","html_url":"https://github.com/jokklan","followers_url":"https://api.github.com/users/jokklan/followers","following_url":"https://api.github.com/users/jokklan/following{/other_user}","gists_url":"https://api.github.com/users/jokklan/gists{/gist_id}","starred_url":"https://api.github.com/users/jokklan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jokklan/subscriptions","organizations_url":"https://api.github.com/users/jokklan/orgs","repos_url":"https://api.github.com/users/jokklan/repos","events_url":"https://api.github.com/users/jokklan/events{/privacy}","received_events_url":"https://api.github.com/users/jokklan/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Feature+Request","name":"Feature
+        Request","color":"253499"}],"state":"open","assignee":null,"milestone":null,"comments":7,"created_at":"2013-01-16T18:00:07Z","updated_at":"2013-08-03T20:11:35Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"This
+        is actually a old already fixed issue (#846) that''s for some reason have
+        been removed again. Not only those this result in SEO penalties, it also results
+        in a 404 for all links pointing at the old slug. This includes internal (static)
+        links, so the user will have to update all pages with links to the page, if
+        he/she changes the page title.\r\n\r\nIs there some way to implement this
+        again? "},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/1733","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/1733/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/1733/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/1733/events","html_url":"https://github.com/refinery/refinerycms/issues/1733","id":4941132,"number":1733,"title":"Removing
+        default frontend locale breaks the admin.","user":{"login":"agush22","id":1354020,"avatar_url":"https://1.gravatar.com/avatar/5deffc0ba97393b529a7dd899ae30fb6?d=https%3A%2F%2Fidenticons.github.com%2F923590aedf1080f0b5341efd7ae86dad.png&r=x","gravatar_id":"5deffc0ba97393b529a7dd899ae30fb6","url":"https://api.github.com/users/agush22","html_url":"https://github.com/agush22","followers_url":"https://api.github.com/users/agush22/followers","following_url":"https://api.github.com/users/agush22/following{/other_user}","gists_url":"https://api.github.com/users/agush22/gists{/gist_id}","starred_url":"https://api.github.com/users/agush22/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/agush22/subscriptions","organizations_url":"https://api.github.com/users/agush22/orgs","repos_url":"https://api.github.com/users/agush22/repos","events_url":"https://api.github.com/users/agush22/events{/privacy}","received_events_url":"https://api.github.com/users/agush22/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":7,"created_at":"2012-06-06T23:40:17Z","updated_at":"2013-11-21T16:15:32Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I
+        created my site without modyfing the frontend locale in i18n.rb initializer.\n\nThen
+        after i decided to change it to: \n```ruby\nRefinery::I18n.configure do |config|\n  config.enabled
+        = true\n  config.default_frontend_locale = :es\n  config.frontend_locales
+        = [:es]\nend\n```\nAnd it breaks the backend admin:\n\n\n### NoMethodError
+        in Refinery/admin/pages#edit\n\nShowing /home/user/site/gems/refinerycms-pages-2.0.4/app/views/refinery/admin/pages/_form.html.erb
+        where line #2 raised:\n\nundefined method `persisted?'' for nil:NilClass\n\nExtracted
+        source (around line #2):\n\n```\n1: <%= form_for [refinery, :admin, @page],\n2:              :url
+        => (refinery.admin_page_path(@page.uncached_nested_url) if @page.persisted?)
+        do |f| %>\n3: \n4:   <%= render ''/refinery/admin/error_messages'', :object
+        => @page, :include_object_name => true %>\n```\n"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2489","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2489/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2489/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2489/events","html_url":"https://github.com/refinery/refinerycms/issues/2489","id":23868142,"number":2489,"title":"Refinery::Image
+        delete in overview => Error on association","user":{"login":"mattherick","id":225205,"avatar_url":"https://2.gravatar.com/avatar/cbe6605e0d074313d68c733a079ad927?d=https%3A%2F%2Fidenticons.github.com%2F6c037a13a7e2d089a0f88f86b6405daf.png&r=x","gravatar_id":"cbe6605e0d074313d68c733a079ad927","url":"https://api.github.com/users/mattherick","html_url":"https://github.com/mattherick","followers_url":"https://api.github.com/users/mattherick/followers","following_url":"https://api.github.com/users/mattherick/following{/other_user}","gists_url":"https://api.github.com/users/mattherick/gists{/gist_id}","starred_url":"https://api.github.com/users/mattherick/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mattherick/subscriptions","organizations_url":"https://api.github.com/users/mattherick/orgs","repos_url":"https://api.github.com/users/mattherick/repos","events_url":"https://api.github.com/users/mattherick/events{/privacy}","received_events_url":"https://api.github.com/users/mattherick/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":7,"created_at":"2013-12-06T16:21:54Z","updated_at":"2013-12-08T00:56:59Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I
+        have an own refinery extension, so far so good and everything works.\r\nI
+        have a Project which has a logo => association to Refinery::Image\r\n\r\n    module
+        Refinery\r\n      module Projects\r\n        class Project < Refinery::Core::BaseModel\r\n          self.table_name
+        = ''refinery_projects''\r\n          belongs_to :logo, :class_name => ''::Refinery::Image''\r\n          attr_accessible
+        :logo_id\r\n          validates :logo_id, :presence => true\r\n        end\r\n      end\r\n    end\r\n\r\nIn
+        the Refinery::Images overview I can edit, update and destroy the image, so
+        far so good.\r\n\r\nBut no my problem is, that I have validates :presence
+        => true on my project logo. And If I have an image_tag in my views like:\r\n\r\n    <%=
+        image_tag @project.logo.url %> \r\n\r\nAnd the image was destroyed on localhost:3000/refinery/images
+        I get an exception\r\n\r\n    undefined method `url'' for nil:NilClass\r\n\r\nbecause
+        of the missing image of the association.\r\n\r\nIs this a bug or a feature?\r\n\r\nOf
+        course I could fix the view exception like:\r\n\r\n    <%= image_tag @project.logo.url
+        if @project.logo %> \r\n\r\nbut that is annoying, because of the presence
+        validation.\r\n"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2365","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2365/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2365/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2365/events","html_url":"https://github.com/refinery/refinerycms/issues/2365","id":17748467,"number":2365,"title":"Extensions
+        and inflections not working right","user":{"login":"jurriaan","id":345809,"avatar_url":"https://0.gravatar.com/avatar/8ddcaa34842dc61a1389ea1959e2a32a?d=https%3A%2F%2Fidenticons.github.com%2Fc0d849df86bf12179f21e2b004541a3a.png&r=x","gravatar_id":"8ddcaa34842dc61a1389ea1959e2a32a","url":"https://api.github.com/users/jurriaan","html_url":"https://github.com/jurriaan","followers_url":"https://api.github.com/users/jurriaan/followers","following_url":"https://api.github.com/users/jurriaan/following{/other_user}","gists_url":"https://api.github.com/users/jurriaan/gists{/gist_id}","starred_url":"https://api.github.com/users/jurriaan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jurriaan/subscriptions","organizations_url":"https://api.github.com/users/jurriaan/orgs","repos_url":"https://api.github.com/users/jurriaan/repos","events_url":"https://api.github.com/users/jurriaan/events{/privacy}","received_events_url":"https://api.github.com/users/jurriaan/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Awaiting+Response","name":"Awaiting
+        Response","color":"d7e102"}],"state":"open","assignee":null,"milestone":null,"comments":7,"created_at":"2013-08-07T13:42:22Z","updated_at":"2013-09-24T05:13:56Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I''ve
+        added\r\n\r\n```ruby\r\nActiveSupport::Inflector.inflections do |inflect|\r\n  inflect.plural
+        ''casus'', ''cases''\r\nend\r\n```\r\nto a project''s inflections initializer
+        and tried to add a new model with the name casus to an existing extension/namespace
+        named Projects.\r\n\r\nThis works, except for the fact that the migration
+        classname and the controllers classnames are incorrect. \r\nThey are called
+        `CreateProjectsCases` and `CasesController` while the filenames *are* correct.\r\n\r\nAlso,
+        the route helpers have incorrect names.. (which I fixed by using inflect.irregular
+        instead of inflect.plural)\r\n\r\nI''m using Refinery 2.1.0."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2398","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2398/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2398/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2398/events","html_url":"https://github.com/refinery/refinerycms/issues/2398","id":18957280,"number":2398,"title":"Sorting
+        155 pages takes over a minute with high cpu load.","user":{"login":"nickfrandsen","id":844730,"avatar_url":"https://2.gravatar.com/avatar/d52adeee15ce74a0f44ebf26a8e8da57?d=https%3A%2F%2Fidenticons.github.com%2Fd9a6f4592684574b1e167954e50588f2.png&r=x","gravatar_id":"d52adeee15ce74a0f44ebf26a8e8da57","url":"https://api.github.com/users/nickfrandsen","html_url":"https://github.com/nickfrandsen","followers_url":"https://api.github.com/users/nickfrandsen/followers","following_url":"https://api.github.com/users/nickfrandsen/following{/other_user}","gists_url":"https://api.github.com/users/nickfrandsen/gists{/gist_id}","starred_url":"https://api.github.com/users/nickfrandsen/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/nickfrandsen/subscriptions","organizations_url":"https://api.github.com/users/nickfrandsen/orgs","repos_url":"https://api.github.com/users/nickfrandsen/repos","events_url":"https://api.github.com/users/nickfrandsen/events{/privacy}","received_events_url":"https://api.github.com/users/nickfrandsen/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":6,"created_at":"2013-09-04T07:40:14Z","updated_at":"2013-09-05T09:50:40Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"As
+        our unicorn requests are terminated after 30 seconds this effectively makes
+        our site unsortable. I have profiled the request to update_positions and can
+        see that a lot of time is spent on acts_as_indexed and expire_page_caching
+        both of which are set as on save callbacks.\r\n\r\nWe use sunspot/solr so
+        don''t actually need acts_as_indexed and hopefully we can find a quicker way
+        to clear the cache.\r\n\r\nHas anyone else had problems with sorting larger
+        sites? Have you got any suggestions for how you made it work? We could potentially
+        create a pull request that fixes it but it would likely involve being able
+        to disable acts_as_indexed in the config. This would then break the little
+        internal search field on the admin/pages page however this could then either
+        be removed or implemented in another way for users with acts_as_indexed disabled.
+        What does everyone think? How shall we fix this problem? Thanks in advance."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2403","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2403/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2403/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2403/events","html_url":"https://github.com/refinery/refinerycms/issues/2403","id":19083513,"number":2403,"title":"Custom
+        Inflections for Refinery Engines","user":{"login":"tx-tim","id":636371,"avatar_url":"https://0.gravatar.com/avatar/0e78afd8a145fa2d976612bab99358b8?d=https%3A%2F%2Fidenticons.github.com%2F4e53c24c9b55b6eb17de0fa85f538b6a.png&r=x","gravatar_id":"0e78afd8a145fa2d976612bab99358b8","url":"https://api.github.com/users/tx-tim","html_url":"https://github.com/tx-tim","followers_url":"https://api.github.com/users/tx-tim/followers","following_url":"https://api.github.com/users/tx-tim/following{/other_user}","gists_url":"https://api.github.com/users/tx-tim/gists{/gist_id}","starred_url":"https://api.github.com/users/tx-tim/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tx-tim/subscriptions","organizations_url":"https://api.github.com/users/tx-tim/orgs","repos_url":"https://api.github.com/users/tx-tim/repos","events_url":"https://api.github.com/users/tx-tim/events{/privacy}","received_events_url":"https://api.github.com/users/tx-tim/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":6,"created_at":"2013-09-06T01:02:43Z","updated_at":"2013-09-11T05:38:34Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"Refinery
+        2.0.10\r\nRails 3.2.13\r\n\r\nIt seems that custom inflection definitions
+        in the main rails app are being ignored.\r\n  \r\nI did some tests with an
+        engine named foo.  Tried with both of these inflections defined before generating
+        the engine. \r\n\r\n```ruby\r\nActiveSupport::Inflector.inflections do |inflect|\r\n   inflect.irregular
+        ''foo'', ''foo''\r\nend\r\n```\r\n\r\nAND\r\n\r\n```ruby\r\nActiveSupport::Inflector.inflections
+        do |inflect|\r\n   inflect.uncountable %w( foo )\r\nend\r\n```\r\n\r\n In
+        each case the engine is generated as foos, with the routes defined by refinery
+        as foos, the table name as `refinery_foos`, the controller as `foos_controller`,
+        etc.  I can only conclude that refinery is not checking `app/config/initializers/inflections.rb`
+        for custom inflectors\r\n\r\nThanks for Refinery!!\r\n"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2280","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2280/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2280/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2280/events","html_url":"https://github.com/refinery/refinerycms/pull/2280","id":14816766,"number":2280,"title":"Domain
+        Name based i18n : changes for sitemap & url localised","user":{"login":"benxao","id":2856275,"avatar_url":"https://0.gravatar.com/avatar/451bd1310dca6530460f092868ecdc0f?d=https%3A%2F%2Fidenticons.github.com%2F94729d7d712fc4fdb9bcec702ddac084.png&r=x","gravatar_id":"451bd1310dca6530460f092868ecdc0f","url":"https://api.github.com/users/benxao","html_url":"https://github.com/benxao","followers_url":"https://api.github.com/users/benxao/followers","following_url":"https://api.github.com/users/benxao/following{/other_user}","gists_url":"https://api.github.com/users/benxao/gists{/gist_id}","starred_url":"https://api.github.com/users/benxao/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/benxao/subscriptions","organizations_url":"https://api.github.com/users/benxao/orgs","repos_url":"https://api.github.com/users/benxao/repos","events_url":"https://api.github.com/users/benxao/events{/privacy}","received_events_url":"https://api.github.com/users/benxao/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":6,"created_at":"2013-05-28T03:15:17Z","updated_at":"2013-09-24T05:50:08Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2280","diff_url":"https://github.com/refinery/refinerycms/pull/2280.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2280.patch"},"body":"proposed
+        changes for sitemap and page url localised for domain name enabled i18n\r\n\r\ndepends
+        on \r\nhttps://github.com/refinery/refinerycms-i18n/pull/43 "},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2353","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2353/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2353/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2353/events","html_url":"https://github.com/refinery/refinerycms/issues/2353","id":17551537,"number":2353,"title":"Translatable
+        extension URLs","user":{"login":"jurriaan","id":345809,"avatar_url":"https://0.gravatar.com/avatar/8ddcaa34842dc61a1389ea1959e2a32a?d=https%3A%2F%2Fidenticons.github.com%2Fc0d849df86bf12179f21e2b004541a3a.png&r=x","gravatar_id":"8ddcaa34842dc61a1389ea1959e2a32a","url":"https://api.github.com/users/jurriaan","html_url":"https://github.com/jurriaan","followers_url":"https://api.github.com/users/jurriaan/followers","following_url":"https://api.github.com/users/jurriaan/following{/other_user}","gists_url":"https://api.github.com/users/jurriaan/gists{/gist_id}","starred_url":"https://api.github.com/users/jurriaan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jurriaan/subscriptions","organizations_url":"https://api.github.com/users/jurriaan/orgs","repos_url":"https://api.github.com/users/jurriaan/repos","events_url":"https://api.github.com/users/jurriaan/events{/privacy}","received_events_url":"https://api.github.com/users/jurriaan/received_events","type":"User","site_admin":false},"labels":[{"url":"https://api.github.com/repos/refinery/refinerycms/labels/Feature+Request","name":"Feature
+        Request","color":"253499"}],"state":"open","assignee":null,"milestone":null,"comments":5,"created_at":"2013-08-02T09:24:31Z","updated_at":"2013-08-02T21:20:25Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I
+        would like for extension URLs to be changeable and translatable.\r\n\r\nAt
+        the moment this would give a problem when using pages to create a menu item
+        for them.\r\n\r\nIt''s possible, but the whole structure of linking pages
+        to extensions has to be changed.\r\n\r\n"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2213","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2213/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2213/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2213/events","html_url":"https://github.com/refinery/refinerycms/issues/2213","id":11978680,"number":2213,"title":"Refinery
+        admin CSS classes are conflicting with jQuery UI","user":{"login":"j15e","id":143380,"avatar_url":"https://0.gravatar.com/avatar/b020a6773e9d0213d2696e45567de789?d=https%3A%2F%2Fidenticons.github.com%2Fa3ffe11fad20f99394802cf663e08151.png&r=x","gravatar_id":"b020a6773e9d0213d2696e45567de789","url":"https://api.github.com/users/j15e","html_url":"https://github.com/j15e","followers_url":"https://api.github.com/users/j15e/followers","following_url":"https://api.github.com/users/j15e/following{/other_user}","gists_url":"https://api.github.com/users/j15e/gists{/gist_id}","starred_url":"https://api.github.com/users/j15e/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/j15e/subscriptions","organizations_url":"https://api.github.com/users/j15e/orgs","repos_url":"https://api.github.com/users/j15e/repos","events_url":"https://api.github.com/users/j15e/events{/privacy}","received_events_url":"https://api.github.com/users/j15e/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":5,"created_at":"2013-03-13T15:35:25Z","updated_at":"2013-06-11T14:27:52Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"This
+        issue does not seems to be reported yet, but the class names used by refinery
+        admin are conflicting with jquery `ui-` names.\r\n\r\nIncluding jquery-ui
+        for ex. a datepicker results in the following problems (extra borders & other
+        visual issues) :\r\n\r\n![jquery-ui](https://f.cloud.github.com/assets/143380/254344/9abbf5e8-8bf1-11e2-92d3-cbaf00a07cea.png)\r\n\r\nWe
+        can download a namespaced jquery-ui (ex. `.myscope .ui-widget`), but it doesn''t
+        fix the issue completly because this way jquery-ui styles still get overwitten
+        by refinery styles because they aren''t scoped (ex. `.ui-widget`).\r\n\r\nI
+        would like to know how you think this issue should be solved.\r\n\r\nOur suggestion
+        is to rename `.ui-` classes to a still short but unique `.rui-`.\r\n\r\ncc
+        @renaudleo @cloutierlp"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2451","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2451/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2451/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2451/events","html_url":"https://github.com/refinery/refinerycms/pull/2451","id":21619035,"number":2451,"title":"Added
+        additional needed line, clarified variable","user":{"login":"peck","id":344935,"avatar_url":"https://2.gravatar.com/avatar/88da73b8590c770b9ca8cc93780bd701?d=https%3A%2F%2Fidenticons.github.com%2Ff0dd8d678ccd0c03cc89cf53cd1c62ad.png&r=x","gravatar_id":"88da73b8590c770b9ca8cc93780bd701","url":"https://api.github.com/users/peck","html_url":"https://github.com/peck","followers_url":"https://api.github.com/users/peck/followers","following_url":"https://api.github.com/users/peck/following{/other_user}","gists_url":"https://api.github.com/users/peck/gists{/gist_id}","starred_url":"https://api.github.com/users/peck/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/peck/subscriptions","organizations_url":"https://api.github.com/users/peck/orgs","repos_url":"https://api.github.com/users/peck/repos","events_url":"https://api.github.com/users/peck/events{/privacy}","received_events_url":"https://api.github.com/users/peck/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":2,"created_at":"2013-10-25T22:00:55Z","updated_at":"2013-10-26T10:44:08Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2451","diff_url":"https://github.com/refinery/refinerycms/pull/2451.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2451.patch"},"body":"Guide
+        on using decorators was incomplete and a bit misleading. Added reference to
+        the helper that is required to use the blog partials and clarified that when
+        using this approach the blogs objects are in the @posts variable instead of
+        @blog_posts"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2468","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2468/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2468/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2468/events","html_url":"https://github.com/refinery/refinerycms/pull/2468","id":22736254,"number":2468,"title":"Clone
+        pages","user":{"login":"bitscraps","id":345801,"avatar_url":"https://1.gravatar.com/avatar/c37db00ee11a339aa72ff9a4f1c2595d?d=https%3A%2F%2Fidenticons.github.com%2F31b68d81e2a8824c65d552eaaf116d2a.png&r=x","gravatar_id":"c37db00ee11a339aa72ff9a4f1c2595d","url":"https://api.github.com/users/bitscraps","html_url":"https://github.com/bitscraps","followers_url":"https://api.github.com/users/bitscraps/followers","following_url":"https://api.github.com/users/bitscraps/following{/other_user}","gists_url":"https://api.github.com/users/bitscraps/gists{/gist_id}","starred_url":"https://api.github.com/users/bitscraps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/bitscraps/subscriptions","organizations_url":"https://api.github.com/users/bitscraps/orgs","repos_url":"https://api.github.com/users/bitscraps/repos","events_url":"https://api.github.com/users/bitscraps/events{/privacy}","received_events_url":"https://api.github.com/users/bitscraps/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":2,"created_at":"2013-11-15T14:50:21Z","updated_at":"2013-12-07T17:38:33Z","closed_at":null,"pull_request":{"html_url":"https://github.com/refinery/refinerycms/pull/2468","diff_url":"https://github.com/refinery/refinerycms/pull/2468.diff","patch_url":"https://github.com/refinery/refinerycms/pull/2468.patch"},"body":"Added
+        code to duplicate a page from the admin area.  It duplicates pages, page_parts
+        and translations."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2490","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2490/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2490/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2490/events","html_url":"https://github.com/refinery/refinerycms/issues/2490","id":23901579,"number":2490,"title":"Dependencies
+        issues on bundle install","user":{"login":"ndemoreau","id":630156,"avatar_url":"https://1.gravatar.com/avatar/80a177676cc8519ca20a49a89ffbba56?d=https%3A%2F%2Fidenticons.github.com%2F2e1f0795f6c1d63fe154ad5017e0a8e7.png&r=x","gravatar_id":"80a177676cc8519ca20a49a89ffbba56","url":"https://api.github.com/users/ndemoreau","html_url":"https://github.com/ndemoreau","followers_url":"https://api.github.com/users/ndemoreau/followers","following_url":"https://api.github.com/users/ndemoreau/following{/other_user}","gists_url":"https://api.github.com/users/ndemoreau/gists{/gist_id}","starred_url":"https://api.github.com/users/ndemoreau/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ndemoreau/subscriptions","organizations_url":"https://api.github.com/users/ndemoreau/orgs","repos_url":"https://api.github.com/users/ndemoreau/repos","events_url":"https://api.github.com/users/ndemoreau/events{/privacy}","received_events_url":"https://api.github.com/users/ndemoreau/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":2,"created_at":"2013-12-07T07:43:41Z","updated_at":"2013-12-07T16:10:02Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"Hi,\r\n\r\nI
+        tried to install refinery for the first time this morning but when I do a
+        bundle install on my first install, I get plenty of conflicts:\r\n\r\nBundler
+        could not find compatible versions for gem \"actionpack\":\r\n  In Gemfile:\r\n    refinerycms-acts-as-indexed
+        (~> 1.0.0) ruby depends on\r\nactionpack (!= 3.2.0, != 3.2.1, != 3.2.10, !=
+        3.2.11, != 3.2.2, != 3.2.3,\r\n!= 3.2.4, != 3.2.5, != 3.2.6, != 3.2.7, !=
+        3.2.8, != 3.2.9, < 3.3, >= 3.1.11)\r\nruby\r\n\r\n    rails (= 4.0.1rc2) ruby
+        depends on\r\n      railties (4.0.1.rc2)\r\n\r\nWhen I remove refinerycms-acts-as-indexed
+        from the gemfile, I get another issue:\r\n\r\nBundler could not find compatible
+        versions for gem \"railties\":\r\n  In Gemfile:\r\n    refinerycms (~> 2.1.0)
+        ruby depends on\r\nrailties (!= 3.2.0, != 3.2.1, != 3.2.10, != 3.2.11, !=
+        3.2.2, != 3.2.3, !=\r\n3.2.4, != 3.2.5, != 3.2.6, != 3.2.7, != 3.2.8, != 3.2.9,
+        < 3.3, >= 3.1.11) ruby\r\n\r\n    rails (= 4.0.1rc2) ruby depends on\r\n      railties
+        (4.0.1.rc2)\r\n\r\nAny way to get out of this dependencies hell? Thx!"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2358","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2358/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2358/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2358/events","html_url":"https://github.com/refinery/refinerycms/issues/2358","id":17626355,"number":2358,"title":"Problems
+        with I18n in generated engine","user":{"login":"jurriaan","id":345809,"avatar_url":"https://0.gravatar.com/avatar/8ddcaa34842dc61a1389ea1959e2a32a?d=https%3A%2F%2Fidenticons.github.com%2Fc0d849df86bf12179f21e2b004541a3a.png&r=x","gravatar_id":"8ddcaa34842dc61a1389ea1959e2a32a","url":"https://api.github.com/users/jurriaan","html_url":"https://github.com/jurriaan","followers_url":"https://api.github.com/users/jurriaan/followers","following_url":"https://api.github.com/users/jurriaan/following{/other_user}","gists_url":"https://api.github.com/users/jurriaan/gists{/gist_id}","starred_url":"https://api.github.com/users/jurriaan/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jurriaan/subscriptions","organizations_url":"https://api.github.com/users/jurriaan/orgs","repos_url":"https://api.github.com/users/jurriaan/repos","events_url":"https://api.github.com/users/jurriaan/events{/privacy}","received_events_url":"https://api.github.com/users/jurriaan/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":2,"created_at":"2013-08-05T09:33:09Z","updated_at":"2013-09-24T05:14:10Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I
+        used \r\n```\r\nrails generate refinery:engine employee name:string gender:string
+        function:string \\\r\nsince:integer image:image intro:text body:text --i18n
+        function intro body\r\n```\r\n to generate a Employee engine.\r\n\r\nThis
+        generates an _employee.html.erb file containing the following on line 8:\r\n```ruby\r\nif
+        translation.name.present?\r\n```\r\n\r\nThe problem with this is that name
+        attribute isn''t translatable so I get a NoMethodError after I create the
+        first employee:\r\n```\r\nundefined method `name'' for #<Refinery::Employees::Employee::Translation:0x007ffd92974720>\r\n```\r\n\r\nAlso,
+        after pressing the save button it redirects me to the pages index.\r\n\r\nI''m
+        using version 2.1.0 of refinery"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2426","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2426/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2426/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2426/events","html_url":"https://github.com/refinery/refinerycms/issues/2426","id":20422143,"number":2426,"title":"No
+        image is shown after upload a image though the backend","user":{"login":"martinmose","id":621570,"avatar_url":"https://0.gravatar.com/avatar/58e5e8d35bfae851efcd39341d0c3d12?d=https%3A%2F%2Fidenticons.github.com%2Fca6fd45c99cab221931c256c03376d65.png&r=x","gravatar_id":"58e5e8d35bfae851efcd39341d0c3d12","url":"https://api.github.com/users/martinmose","html_url":"https://github.com/martinmose","followers_url":"https://api.github.com/users/martinmose/followers","following_url":"https://api.github.com/users/martinmose/following{/other_user}","gists_url":"https://api.github.com/users/martinmose/gists{/gist_id}","starred_url":"https://api.github.com/users/martinmose/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/martinmose/subscriptions","organizations_url":"https://api.github.com/users/martinmose/orgs","repos_url":"https://api.github.com/users/martinmose/repos","events_url":"https://api.github.com/users/martinmose/events{/privacy}","received_events_url":"https://api.github.com/users/martinmose/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":2,"created_at":"2013-10-02T21:10:32Z","updated_at":"2013-10-02T22:12:06Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"Hello,\r\n\r\nI
+        have a problem, and I have search for an solution everywhere, so now I''m
+        posting a issue.\r\n\r\nAfter I have uploaded a image through the backend
+        I can''t see the images. It gives me a 500 server error:\r\n\r\n```\r\nDragonfly::FunctionManager::UnableToHandle\r\n\r\nNone
+        of the functions registered with #<Dragonfly::Processor:0x007f9da2e69398>
+        \r\nwere able to deal with the method call thumb(<Dragonfly::TempObject\r\ndata=\"\\x89PNG\\r\\n\\x1A\\n\\0\\0\\0\\rIHDR\\0\\0\\v@\\0...\"
+        >,\"135x135#c\"). \r\nYou may need to register one that can.\r\n```\r\n\r\nIf
+        I click on \"View this image\" the image is showing just fine.\r\n\r\nI have
+        installed ImageMagick with homebrew (version 6.8.7-0).\r\n\r\nHere is the
+        relevant gem''s from my gem file:\r\n\r\ngem ''rails'', ''3.2.13''\r\ngem
+        ''refinerycms'', ''~> 2.0.9''\r\n\r\nCould you help me out? I can see that
+        people have posted on Google forum and ImageMagick that some other have the
+        same problem. Some came up with a solution, but nothing have worked for me,
+        and it doesn''t sound like it works either for the other guys.\r\n\r\nPlease
+        tell me if you need more information or anything!\r\n\r\nCheers"},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2417","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2417/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2417/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2417/events","html_url":"https://github.com/refinery/refinerycms/issues/2417","id":20066821,"number":2417,"title":"[Edge]
+        Bundler could not find compatible versions for gem \"activerecord\"","user":{"login":"bvsatyaram","id":166072,"avatar_url":"https://0.gravatar.com/avatar/7658a1574f82a50ab2b9f0767547166a?d=https%3A%2F%2Fidenticons.github.com%2Fe3a08064476ee8a4ec907195bef348b8.png&r=x","gravatar_id":"7658a1574f82a50ab2b9f0767547166a","url":"https://api.github.com/users/bvsatyaram","html_url":"https://github.com/bvsatyaram","followers_url":"https://api.github.com/users/bvsatyaram/followers","following_url":"https://api.github.com/users/bvsatyaram/following{/other_user}","gists_url":"https://api.github.com/users/bvsatyaram/gists{/gist_id}","starred_url":"https://api.github.com/users/bvsatyaram/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/bvsatyaram/subscriptions","organizations_url":"https://api.github.com/users/bvsatyaram/orgs","repos_url":"https://api.github.com/users/bvsatyaram/repos","events_url":"https://api.github.com/users/bvsatyaram/events{/privacy}","received_events_url":"https://api.github.com/users/bvsatyaram/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":1,"created_at":"2013-09-25T20:12:10Z","updated_at":"2013-09-30T19:37:45Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"I
+        am unable to create a new rails project using the master branch.\r\n\r\nI
+        am trying to create a new rails project using refinerycms edge generate as
+        follows:\r\n```rails new application_name -m http://refinerycms.com/t/edge```\r\n\r\nI
+        did change the references to the local paths (/code/parndt/...) with the commented
+        out github path.\r\n\r\nI get the following error:\r\n```\r\nBundler could
+        not find compatible versions for gem \"activerecord\":\r\n  In Gemfile:\r\n    refinerycms
+        (>= 0) ruby depends on\r\n      activerecord (~> 3.0) ruby\r\n\r\n    rails
+        (= 4.0.0) ruby depends on\r\n      activerecord (4.0.0)\r\n\r\nBundler could
+        not find compatible versions for gem \"rails\":\r\n  In Gemfile:\r\n    refinerycms
+        (>= 0) ruby depends on\r\n      rails (~> 3) ruby\r\n\r\n    rails (4.0.0)\r\n        rake    db:create\r\ngit://github.com/refinery/refinerycms.git
+        (at master) is not checked out. Please run `bundle install`\r\n```\r\n\r\nPlease
+        help me fix this."},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2437","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2437/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2437/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2437/events","html_url":"https://github.com/refinery/refinerycms/issues/2437","id":20914724,"number":2437,"title":"Add
+        support for updated Google''s \"Analytics Tracking Code to Support Display
+        Advertising\"","user":{"login":"mgdelcar","id":468807,"avatar_url":"https://0.gravatar.com/avatar/0293762a3aecdee64cad887824e989a4?d=https%3A%2F%2Fidenticons.github.com%2F14196fc46d507ecc3b72a64c140c9f38.png&r=x","gravatar_id":"0293762a3aecdee64cad887824e989a4","url":"https://api.github.com/users/mgdelcar","html_url":"https://github.com/mgdelcar","followers_url":"https://api.github.com/users/mgdelcar/followers","following_url":"https://api.github.com/users/mgdelcar/following{/other_user}","gists_url":"https://api.github.com/users/mgdelcar/gists{/gist_id}","starred_url":"https://api.github.com/users/mgdelcar/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/mgdelcar/subscriptions","organizations_url":"https://api.github.com/users/mgdelcar/orgs","repos_url":"https://api.github.com/users/mgdelcar/repos","events_url":"https://api.github.com/users/mgdelcar/events{/privacy}","received_events_url":"https://api.github.com/users/mgdelcar/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":1,"created_at":"2013-10-12T18:03:49Z","updated_at":"2013-10-12T19:40:49Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"Google
+        updated it''s \"Analytics Tracking Code to Support Display Advertising\".
+        See details at https://support.google.com/analytics/answer/2444872?hl=en&utm_id=ad\r\n\r\nRefinery
+        should give us the option to use the new \"ga.src = (''https:'' == document.location.protocol
+        ? ''https://'' : ''http://'') + ''stats.g.doubleclick.net/dc.js'';\".\r\n\r\nIn
+        addition a way to provide the updated privacy policy would be a plus.\r\n\r\nThe
+        logic in refinery seems to be at: core/app/views/refinery/_google_analytics.html.erb
+        "},{"url":"https://api.github.com/repos/refinery/refinerycms/issues/2473","labels_url":"https://api.github.com/repos/refinery/refinerycms/issues/2473/labels{/name}","comments_url":"https://api.github.com/repos/refinery/refinerycms/issues/2473/comments","events_url":"https://api.github.com/repos/refinery/refinerycms/issues/2473/events","html_url":"https://github.com/refinery/refinerycms/issues/2473","id":23295528,"number":2473,"title":"Devise
+        deprecation warning","user":{"login":"parndt","id":10128,"avatar_url":"https://0.gravatar.com/avatar/fe9ccfa856aa05ff2d534fcf87cc74f5?d=https%3A%2F%2Fidenticons.github.com%2F85c9f9efab89cee90a95cb98f15feacd.png&r=x","gravatar_id":"fe9ccfa856aa05ff2d534fcf87cc74f5","url":"https://api.github.com/users/parndt","html_url":"https://github.com/parndt","followers_url":"https://api.github.com/users/parndt/followers","following_url":"https://api.github.com/users/parndt/following{/other_user}","gists_url":"https://api.github.com/users/parndt/gists{/gist_id}","starred_url":"https://api.github.com/users/parndt/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/parndt/subscriptions","organizations_url":"https://api.github.com/users/parndt/orgs","repos_url":"https://api.github.com/users/parndt/repos","events_url":"https://api.github.com/users/parndt/events{/privacy}","received_events_url":"https://api.github.com/users/parndt/received_events","type":"User","site_admin":false},"labels":[],"state":"open","assignee":null,"milestone":null,"comments":1,"created_at":"2013-11-26T06:00:49Z","updated_at":"2013-11-26T07:25:06Z","closed_at":null,"pull_request":{"html_url":null,"diff_url":null,"patch_url":null},"body":"DEPRECATION
+        WARNING: an empty resource was given to Devise::Strategies::DatabaseAuthenticatable#validate.
+        Please ensure the resource is not nil. (called from create at authentication/app/controllers/refinery/sessions_controller.rb:9)\r\n\r\n\r\nThis
+        is when running the specs. @ugisozols any interest?"}]'
+    http_version:
+  recorded_at: Mon, 09 Dec 2013 19:17:21 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/refinery/refinerycms/issues?direction=desc&page=2&sort=comments&state=open
+    body:
+      encoding: UTF-8
+      string: '{"state":"open","page":2,"sort":"comments","direction":"desc"}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - d3a82c8eb3f5a8840be46e40f59ee0e8
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 09 Dec 2013 19:17:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '43'
+      X-Ratelimit-Reset:
+      - '1386620230'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Etag:
+      - '"fd1198e23c70fec37c3ea48803bc4344"'
+      Vary:
+      - Accept, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      Link:
+      - <https://api.github.com/repositories/212862/issues?state=open&page=1&sort=comments&direction=desc>;
+        rel="last", <https://api.github.com/repositories/212862/issues?state=open&page=1&sort=comments&direction=desc>;
+        rel="first", <https://api.github.com/repositories/212862/issues?state=open&page=1&sort=comments&direction=desc>;
+        rel="prev"
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '35749'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 633D470B:70CC:54BF7F5:52A61741
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        W3sidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVy
+        eS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQxMSIsImxhYmVsc191cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21z
+        L2lzc3Vlcy8yNDExL2xhYmVsc3svbmFtZX0iLCJjb21tZW50c191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5
+        Y21zL2lzc3Vlcy8yNDExL2NvbW1lbnRzIiwiZXZlbnRzX3VybCI6Imh0dHBz
+        Oi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMv
+        aXNzdWVzLzI0MTEvZXZlbnRzIiwiaHRtbF91cmwiOiJodHRwczovL2dpdGh1
+        Yi5jb20vcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0MTEiLCJpZCI6
+        MTk4Mzg1MDYsIm51bWJlciI6MjQxMSwidGl0bGUiOiJSZWRpcmVjdCBsb29w
+        IGZvciBwYWdlcyB3aXRoIG5vIHRyYW5zbGF0ZWQgdmVyc2lvbiIsInVzZXIi
+        OnsibG9naW4iOiJsb2NhbHN0YXRpYyIsImlkIjo1NzMxMDEsImF2YXRhcl91
+        cmwiOiJodHRwczovLzAuZ3JhdmF0YXIuY29tL2F2YXRhci85YzViOGY3YjBi
+        MzI4ZmM1NmIzM2VlMGUzMzYzMDVmNj9kPWh0dHBzJTNBJTJGJTJGaWRlbnRp
+        Y29ucy5naXRodWIuY29tJTJGZjU2N2U1NTY0MDY0NWJlZGUyYzNhZTNkZmE0
+        NmNlNjUucG5nJnI9eCIsImdyYXZhdGFyX2lkIjoiOWM1YjhmN2IwYjMyOGZj
+        NTZiMzNlZTBlMzM2MzA1ZjYiLCJ1cmwiOiJodHRwczovL2FwaS5naXRodWIu
+        Y29tL3VzZXJzL2xvY2Fsc3RhdGljIiwiaHRtbF91cmwiOiJodHRwczovL2dp
+        dGh1Yi5jb20vbG9jYWxzdGF0aWMiLCJmb2xsb3dlcnNfdXJsIjoiaHR0cHM6
+        Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9sb2NhbHN0YXRpYy9mb2xsb3dlcnMi
+        LCJmb2xsb3dpbmdfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vy
+        cy9sb2NhbHN0YXRpYy9mb2xsb3dpbmd7L290aGVyX3VzZXJ9IiwiZ2lzdHNf
+        dXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9sb2NhbHN0YXRp
+        Yy9naXN0c3svZ2lzdF9pZH0iLCJzdGFycmVkX3VybCI6Imh0dHBzOi8vYXBp
+        LmdpdGh1Yi5jb20vdXNlcnMvbG9jYWxzdGF0aWMvc3RhcnJlZHsvb3duZXJ9
+        ey9yZXBvfSIsInN1YnNjcmlwdGlvbnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0
+        aHViLmNvbS91c2Vycy9sb2NhbHN0YXRpYy9zdWJzY3JpcHRpb25zIiwib3Jn
+        YW5pemF0aW9uc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJz
+        L2xvY2Fsc3RhdGljL29yZ3MiLCJyZXBvc191cmwiOiJodHRwczovL2FwaS5n
+        aXRodWIuY29tL3VzZXJzL2xvY2Fsc3RhdGljL3JlcG9zIiwiZXZlbnRzX3Vy
+        bCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvbG9jYWxzdGF0aWMv
+        ZXZlbnRzey9wcml2YWN5fSIsInJlY2VpdmVkX2V2ZW50c191cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3VzZXJzL2xvY2Fsc3RhdGljL3JlY2VpdmVk
+        X2V2ZW50cyIsInR5cGUiOiJVc2VyIiwic2l0ZV9hZG1pbiI6ZmFsc2V9LCJs
+        YWJlbHMiOltdLCJzdGF0ZSI6Im9wZW4iLCJhc3NpZ25lZSI6bnVsbCwibWls
+        ZXN0b25lIjpudWxsLCJjb21tZW50cyI6MSwiY3JlYXRlZF9hdCI6IjIwMTMt
+        MDktMjBUMjA6MTI6NDFaIiwidXBkYXRlZF9hdCI6IjIwMTMtMTAtMDRUMTU6
+        MzY6MzdaIiwiY2xvc2VkX2F0IjpudWxsLCJwdWxsX3JlcXVlc3QiOnsiaHRt
+        bF91cmwiOm51bGwsImRpZmZfdXJsIjpudWxsLCJwYXRjaF91cmwiOm51bGx9
+        LCJib2R5IjoiSSBoYXZlIGEgc3RhbmRhbG9uZSBSZWZpbmVyeSBzaXRlIChp
+        LmUuIG5vdCBwYXJ0IG9mIGFuIGV4aXN0aW5nIGFwcCkgYW5kIHVzZSBtdWx0
+        aXBsZSBmcm9udGVuZCBsb2NhbGVzLiBXaGVuIGF0dGVtcHRpbmcgdG8gYWNj
+        ZXNzIGEgcGFnZSBpbiBhIGZyb250ZW5kIGxvY2FsZSBmb3Igd2hpY2ggbm8g
+        Y29udGVudCBoYXMgYmVlbiBlbnRlcmVkLCBpdCBjYXVzZXMgYSByZWRpcmVj
+        dCBsb29wIHJhdGhlciB0aGFuIGEgNDA0ICh3aGljaCBpcyB3aGF0IEkgd291
+        bGQgZXhwZWN0KS5cclxuXHJcbldoZW4gdGhpcyBoYXBwZW5zLCBJIGdldCB0
+        aGUgZm9sbG93aW5nIGluIG15IGNvbnNvbGUsIHJlcGVhdGVkIG1hbnkgdGlt
+        ZXMgYmVmb3JlIHRoZSBicm93c2VyIChDaHJvbWUpIGZpbmFsbHkgZ2l2ZXMg
+        dXAgd2l0aCBhIFwiVGhpcyB3ZWJwYWdlIGhhcyBhIHJlZGlyZWN0IGxvb3Bc
+        IiBlcnJvcjpcclxuXHJcbmBgYFxyXG5TdGFydGVkIEdFVCBcIi9mci90ZXN0
+        XCIgZm9yIDEyNy4wLjAuMSBhdCAyMDEzLTA5LTIwIDEyOjM4OjM4IC0wNjAw
+        XHJcblByb2Nlc3NpbmcgYnkgUmVmaW5lcnk6OlBhZ2VzQ29udHJvbGxlciNz
+        aG93IGFzIEhUTUxcclxuICBQYXJhbWV0ZXJzOiB7XCJwYXRoXCI9PlwidGVz
+        dFwiLCBcImxvY2FsZVwiPT46ZnJ9XHJcbiAgUmVmaW5lcnk6OlBhZ2UgTG9h
+        ZCAoMC4zbXMpICBTRUxFQ1QgXCJyZWZpbmVyeV9wYWdlc1wiLiogRlJPTSBc
+        InJlZmluZXJ5X3BhZ2VzXCIgSU5ORVIgSk9JTiBcInJlZmluZXJ5X3BhZ2Vf
+        dHJhbnNsYXRpb25zXCIgT04gXCJyZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9u
+        c1wiLlwicmVmaW5lcnlfcGFnZV9pZFwiID0gXCJyZWZpbmVyeV9wYWdlc1wi
+        LlwiaWRcIiBXSEVSRSBcInJlZmluZXJ5X3BhZ2VzXCIuXCJwYXJlbnRfaWRc
+        IiBJUyBOVUxMIEFORCBcInJlZmluZXJ5X3BhZ2VfdHJhbnNsYXRpb25zXCIu
+        XCJsb2NhbGVcIiBJTiAoJ3VzJywgJ2ZyJykgQU5EIFwicmVmaW5lcnlfcGFn
+        ZV90cmFuc2xhdGlvbnNcIi5cInNsdWdcIiA9ICd0ZXN0JyBMSU1JVCAxXHJc
+        biAgUmVmaW5lcnk6OlBhZ2U6OlRyYW5zbGF0aW9uIExvYWQgKDAuMW1zKSAg
+        U0VMRUNUIFwicmVmaW5lcnlfcGFnZV90cmFuc2xhdGlvbnNcIi4qIEZST00g
+        XCJyZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc1wiIFdIRVJFIFwicmVmaW5l
+        cnlfcGFnZV90cmFuc2xhdGlvbnNcIi5cInJlZmluZXJ5X3BhZ2VfaWRcIiA9
+        IDRcclxuUmVkaXJlY3RlZCB0byBodHRwOi8vbG9jYWxob3N0OjMwMDEvZnIv
+        dGVzdFxyXG5gYGBcclxuXHJcbiMgU3RlcHMgdG8gcmVwcm9kdWNlOlxyXG5c
+        clxuMS4gQ3JlYXRlIGZyZXNoIG5ldyByZWZpbmVyeSBpbnN0YW5jZVxyXG4y
+        LiBDb25maWd1cmUgaTE4biBzZXR0aW5ncyBpbiBjb25maWcvaW5pdGlhbGl6
+        ZXJzL3JlZmluZXJ5L2kxOG4ucmIgKHNlZSBiZWxvdylcclxuMy4gTG9nIGlu
+        dG8gYmFja2VuZFxyXG40LiBDcmVhdGUgbmV3IHBhZ2Ugd2l0aCBjb250ZW50
+        IGZvciBvbmUgbG9jYWxlIG9ubHkgKGUuZy4gdGhlIGRlZmF1bHRfZnJvbnRl
+        bmRfbG9jYWxlKVxyXG41LiBBdHRlbXB0IHRvIGFjY2VzcyB0aGUgcGFnZSB1
+        c2luZyBhbm90aGVyIGZyb250ZW5kX2xvY2FsZSAoZS5nLiAvZnIvdGVzdCwg
+        d2hlcmUgXCJ0ZXN0XCIgaXMgdGhlIHBhZ2UncyBzbHVnIGFuZCBcImZyXCIg
+        aXMgbm90IHRoZSBsb2NhbGUgZm9yIHdoaWNoIHlvdSBlbnRlcmVkIGNvbnRl
+        bnQgaW4gdGhlIHByZXZpb3VzIHN0ZXApLlxyXG5cclxuIyMgY29uZmlnL2lu
+        aXRpYWxpemVycy9yZWZpbmVyeS9pMThuLnJiXHJcblxyXG5gYGBydWJ5XHJc
+        biMgZW5jb2Rpbmc6IHV0Zi04XHJcblxyXG5SZWZpbmVyeTo6STE4bi5jb25m
+        aWd1cmUgZG8gfGNvbmZpZ3xcclxuICBjb25maWcuZGVmYXVsdF9sb2NhbGUg
+        PSA6dXNcclxuICBjb25maWcuY3VycmVudF9sb2NhbGUgPSA6dXNcclxuICBj
+        b25maWcuZGVmYXVsdF9mcm9udGVuZF9sb2NhbGUgPSA6dXNcclxuICBjb25m
+        aWcuZnJvbnRlbmRfbG9jYWxlcyA9IFs6dXMsIDpmcl1cclxuICBjb25maWcu
+        bG9jYWxlcyA9IHs6dXM9PlwiVVMgRW5nbGlzaFwiLCA6ZnI9PlwiRnJhbsOn
+        YWlzXCJ9XHJcbmVuZFxyXG5gYGBcclxuIn0seyJ1cmwiOiJodHRwczovL2Fw
+        aS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vl
+        cy8yMzc2IiwibGFiZWxzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        cmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzIzNzYvbGFiZWxz
+        ey9uYW1lfSIsImNvbW1lbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5j
+        b20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzIzNzYvY29t
+        bWVudHMiLCJldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9y
+        ZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjM3Ni9ldmVudHMi
+        LCJodG1sX3VybCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9yZWZpbmVyeS9yZWZp
+        bmVyeWNtcy9pc3N1ZXMvMjM3NiIsImlkIjoxNzkyMjEwNywibnVtYmVyIjoy
+        Mzc2LCJ0aXRsZSI6IkNoYW5naW5nIHZpZXcgdGVtcGxhdGUgZG9lcyBub3Qg
+        Y2hhbmdlIHBhZ2UgcGFydHMiLCJ1c2VyIjp7ImxvZ2luIjoid2t1bmtlbCIs
+        ImlkIjoxNDAzMjI4LCJhdmF0YXJfdXJsIjoiaHR0cHM6Ly8xLmdyYXZhdGFy
+        LmNvbS9hdmF0YXIvNGQ5M2JiMjY4ZmFkMmI0YjFlYmI3YTJlNTQxMjBmOWM/
+        ZD1odHRwcyUzQSUyRiUyRmlkZW50aWNvbnMuZ2l0aHViLmNvbSUyRjE2ZjEw
+        NDdkYjJiMTBjNDVhNDQzNzNjMWUzOWYzYTk4LnBuZyZyPXgiLCJncmF2YXRh
+        cl9pZCI6IjRkOTNiYjI2OGZhZDJiNGIxZWJiN2EyZTU0MTIwZjljIiwidXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy93a3Vua2VsIiwiaHRt
+        bF91cmwiOiJodHRwczovL2dpdGh1Yi5jb20vd2t1bmtlbCIsImZvbGxvd2Vy
+        c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL3drdW5rZWwv
+        Zm9sbG93ZXJzIiwiZm9sbG93aW5nX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1
+        Yi5jb20vdXNlcnMvd2t1bmtlbC9mb2xsb3dpbmd7L290aGVyX3VzZXJ9Iiwi
+        Z2lzdHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy93a3Vu
+        a2VsL2dpc3Rzey9naXN0X2lkfSIsInN0YXJyZWRfdXJsIjoiaHR0cHM6Ly9h
+        cGkuZ2l0aHViLmNvbS91c2Vycy93a3Vua2VsL3N0YXJyZWR7L293bmVyfXsv
+        cmVwb30iLCJzdWJzY3JpcHRpb25zX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1
+        Yi5jb20vdXNlcnMvd2t1bmtlbC9zdWJzY3JpcHRpb25zIiwib3JnYW5pemF0
+        aW9uc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL3drdW5r
+        ZWwvb3JncyIsInJlcG9zX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        dXNlcnMvd2t1bmtlbC9yZXBvcyIsImV2ZW50c191cmwiOiJodHRwczovL2Fw
+        aS5naXRodWIuY29tL3VzZXJzL3drdW5rZWwvZXZlbnRzey9wcml2YWN5fSIs
+        InJlY2VpdmVkX2V2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29t
+        L3VzZXJzL3drdW5rZWwvcmVjZWl2ZWRfZXZlbnRzIiwidHlwZSI6IlVzZXIi
+        LCJzaXRlX2FkbWluIjpmYWxzZX0sImxhYmVscyI6W3sidXJsIjoiaHR0cHM6
+        Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9s
+        YWJlbHMvRWRnZSIsIm5hbWUiOiJFZGdlIiwiY29sb3IiOiIwMmQ3ZTEifSx7
+        InVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkv
+        cmVmaW5lcnljbXMvbGFiZWxzL0FjY2VwdGVkIiwibmFtZSI6IkFjY2VwdGVk
+        IiwiY29sb3IiOiIwMmUxMGMifV0sInN0YXRlIjoib3BlbiIsImFzc2lnbmVl
+        IjpudWxsLCJtaWxlc3RvbmUiOm51bGwsImNvbW1lbnRzIjoxLCJjcmVhdGVk
+        X2F0IjoiMjAxMy0wOC0xMlQwMjozMzoxOFoiLCJ1cGRhdGVkX2F0IjoiMjAx
+        My0wOC0xMlQxMzo1NzozMloiLCJjbG9zZWRfYXQiOm51bGwsInB1bGxfcmVx
+        dWVzdCI6eyJodG1sX3VybCI6bnVsbCwiZGlmZl91cmwiOm51bGwsInBhdGNo
+        X3VybCI6bnVsbH0sImJvZHkiOiJDaGFuZ2luZyB0aGUgdmlldyB0ZW1wbGF0
+        ZSBvbiBhbiBleGlzdGluZyBwYWdlLCBvciBiZWZvcmUgc2F2aW5nIG9uIGEg
+        bmV3IHBhZ2UsIGRvZXMgbm90IGNoYW5nZSB0aGUgcGFnZSBwYXJ0cyB0byBt
+        YXRjaCB0aG9zZSBzdXBwb3J0ZWQgYnkgdGhlIHZpZXcgdGVtcGxhdGUuIFRo
+        ZSBwYWdlIHBhcnRzIGRvIHNob3cgdXAgY29ycmVjdGx5IHdoZW4gdGhlIHZp
+        ZXcgdGVtcGxhdGUgaXMgcGFzc2VkIHZpYSBhIFVSTCBwYXJhbWV0ZXIgdG8g
+        dGhlIG5ldyBhY3Rpb24sIGkuZS4gaHR0cDovL2xvY2FsaG9zdDozMDAwL3Jl
+        ZmluZXJ5L3BhZ2VzL25ldz92aWV3X3RlbXBsYXRlPWhvbWUsIGJ1dCBhcyB0
+        aGVyZSBpcyBubyB3YXkgdG8gZG8gdGhpcyBzaG9ydCBvZiBtYW51YWxseSBl
+        bnRlcmluZyBpbiB0aGUgVVJMLCBhbGxvd2luZyBkaWZmZXJlbnQgcGFnZSBw
+        YXJ0cyBmb3IgZGlmZmVyZW50IHRlbXBsYXRlcyBpcyBtb3N0bHkgdXNlbGVz
+        cy4ifSx7InVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVm
+        aW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzIwODciLCJsYWJlbHNfdXJsIjoi
+        aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVy
+        eWNtcy9pc3N1ZXMvMjA4Ny9sYWJlbHN7L25hbWV9IiwiY29tbWVudHNfdXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZp
+        bmVyeWNtcy9pc3N1ZXMvMjA4Ny9jb21tZW50cyIsImV2ZW50c191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5
+        Y21zL2lzc3Vlcy8yMDg3L2V2ZW50cyIsImh0bWxfdXJsIjoiaHR0cHM6Ly9n
+        aXRodWIuY29tL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yMDg3Iiwi
+        aWQiOjkzNjEyNTksIm51bWJlciI6MjA4NywidGl0bGUiOiJUb28gbWFueSBz
+        cWwgcXVlcmllcyB0byBidWlsZCBtZW51LiIsInVzZXIiOnsibG9naW4iOiJz
+        aW1pIiwiaWQiOjE5MzkzNiwiYXZhdGFyX3VybCI6Imh0dHBzOi8vMi5ncmF2
+        YXRhci5jb20vYXZhdGFyL2I1ZDM2MWM1Y2RmYTgxNTA4MmQ1NDAyMmJjNDVl
+        Y2UyP2Q9aHR0cHMlM0ElMkYlMkZpZGVudGljb25zLmdpdGh1Yi5jb20lMkZm
+        Y2I4Yjg5YThmZTUyZjE5NzIzN2E1NWMzNjE0MWMwOS5wbmcmcj14IiwiZ3Jh
+        dmF0YXJfaWQiOiJiNWQzNjFjNWNkZmE4MTUwODJkNTQwMjJiYzQ1ZWNlMiIs
+        InVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvc2ltaSIsImh0
+        bWxfdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL3NpbWkiLCJmb2xsb3dlcnNf
+        dXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9zaW1pL2ZvbGxv
+        d2VycyIsImZvbGxvd2luZ191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29t
+        L3VzZXJzL3NpbWkvZm9sbG93aW5ney9vdGhlcl91c2VyfSIsImdpc3RzX3Vy
+        bCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvc2ltaS9naXN0c3sv
+        Z2lzdF9pZH0iLCJzdGFycmVkX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5j
+        b20vdXNlcnMvc2ltaS9zdGFycmVkey9vd25lcn17L3JlcG99Iiwic3Vic2Ny
+        aXB0aW9uc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL3Np
+        bWkvc3Vic2NyaXB0aW9ucyIsIm9yZ2FuaXphdGlvbnNfdXJsIjoiaHR0cHM6
+        Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9zaW1pL29yZ3MiLCJyZXBvc191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL3NpbWkvcmVwb3MiLCJl
+        dmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9zaW1p
+        L2V2ZW50c3svcHJpdmFjeX0iLCJyZWNlaXZlZF9ldmVudHNfdXJsIjoiaHR0
+        cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9zaW1pL3JlY2VpdmVkX2V2ZW50
+        cyIsInR5cGUiOiJVc2VyIiwic2l0ZV9hZG1pbiI6ZmFsc2V9LCJsYWJlbHMi
+        Olt7InVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5l
+        cnkvcmVmaW5lcnljbXMvbGFiZWxzL0FjY2VwdGVkIiwibmFtZSI6IkFjY2Vw
+        dGVkIiwiY29sb3IiOiIwMmUxMGMifV0sInN0YXRlIjoib3BlbiIsImFzc2ln
+        bmVlIjpudWxsLCJtaWxlc3RvbmUiOm51bGwsImNvbW1lbnRzIjoxLCJjcmVh
+        dGVkX2F0IjoiMjAxMi0xMi0xOFQwOTowNzo1OFoiLCJ1cGRhdGVkX2F0Ijoi
+        MjAxMy0wOS0wNVQwOTo0ODo1MloiLCJjbG9zZWRfYXQiOm51bGwsInB1bGxf
+        cmVxdWVzdCI6eyJodG1sX3VybCI6bnVsbCwiZGlmZl91cmwiOm51bGwsInBh
+        dGNoX3VybCI6bnVsbH0sImJvZHkiOiJUTERSOiAyIHNlbGVjdHMgZm9yIGV2
+        ZXJ5IG5lc3RlZCBwYWdlLiBJIHRoaW5rIHRoaXMgaXMgc2VyaW91cyAyLjEu
+        MCBibG9ja2VyLlxyXG5cclxuRXh0cmFjdGVkIGZyb20gaHR0cHM6Ly9naXRo
+        dWIuY29tL3JlZmluZXJ5L3JlZmluZXJ5Y21zL3B1bGwvMjA2OSNpc3N1ZWNv
+        bW1lbnQtMTEyMjcwODk6XHJcblNvIHdlIGhhdmUgYW4gaXNzdWUgd2hlcmVi
+        eSB3ZSd2ZSBoaXQgYSBsaW1pdGF0aW9uIHdoZW4gaGF2aW5nIGEgbWFueS1k
+        ZWVwIG5lc3RlZCBzZXQgaXQgaGl0cyBTUUwgcXVpdGUgYSBsb3QuIEkndmUg
+        ZGlzY3Vzc2VkIHRoaXMgd2l0aCBAc2ltaSBhdCBncmVhdCBsZW5ndGggYW5k
+        IHdlIGhhdmVuJ3QgY29tZSB1cCB3aXRoIGEgc29sdXRpb24geWV0LiBJdCdz
+        IG5vdCBhIG5ldyBpc3N1ZSBidXQgaXQncyBzb21ldGhpbmcgdGhhdCB3ZSBz
+        aG91bGQgcmVhbGx5IGRlYWwgd2l0aC5cclxuXHJcbk9uZSBpZGVhIEkgaGFk
+        IGFmdGVyIHdha2luZyB1cCBpcyB0aGF0IHdlIGNvdWxkIGRlbGVnYXRlIFVS
+        TCBidWlsZGluZyB0byBzb21lIG90aGVyIG1vZHVsZSB0aGF0IFBhZ2UgKGJ1
+        dCBhY3R1YWxseSBNZW51SXRlbSkgY291bGQgZGVsZWdhdGUgdG8uIFRoaXMg
+        d291bGQgbWVhbiBtZW51X2l0ZW1zIHdvdWxkIG5lZWQgdG8gaGF2ZSBzbWFy
+        dGVyIGF0dHJpYnV0ZXMgZm9yIHRvX3BhcmFtIHRvIGJlIGluIHRoZXJlLiBB
+        bmQgdGhlIG1lbnUgd291bGQgaGF2ZSB0byBiZSBpbnN0cnVjdGVkIHRvIGJ1
+        aWxkIGEgbmVzdGVkIFVSTCBvciBzb21ldGhpbmcuIn0seyJ1cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21z
+        L2lzc3Vlcy8yNDMzIiwibGFiZWxzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1
+        Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0MzMv
+        bGFiZWxzey9uYW1lfSIsImNvbW1lbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdp
+        dGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0
+        MzMvY29tbWVudHMiLCJldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHVi
+        LmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQzMy9l
+        dmVudHMiLCJodG1sX3VybCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9yZWZpbmVy
+        eS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQzMyIsImlkIjoyMDgyOTMyNCwibnVt
+        YmVyIjoyNDMzLCJ0aXRsZSI6IlNlYXJjaCBmZWF0dXJlIG9uIHJlc291cmNl
+        cyIsInVzZXIiOnsibG9naW4iOiJtaWNoZWxib2F2ZW50dXJhIiwiaWQiOjEx
+        MTAzNywiYXZhdGFyX3VybCI6Imh0dHBzOi8vMS5ncmF2YXRhci5jb20vYXZh
+        dGFyLzczMWYwZmM1N2VkZjFkYjc4NTFmZDIyMTc5MzQ5MzJiP2Q9aHR0cHMl
+        M0ElMkYlMkZpZGVudGljb25zLmdpdGh1Yi5jb20lMkY4YWVhYzBlMGM1MDhk
+        YTA5MTQ3YTg0MGI5ZWYxYjZjZC5wbmcmcj14IiwiZ3JhdmF0YXJfaWQiOiI3
+        MzFmMGZjNTdlZGYxZGI3ODUxZmQyMjE3OTM0OTMyYiIsInVybCI6Imh0dHBz
+        Oi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvbWljaGVsYm9hdmVudHVyYSIsImh0
+        bWxfdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL21pY2hlbGJvYXZlbnR1cmEi
+        LCJmb2xsb3dlcnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vy
+        cy9taWNoZWxib2F2ZW50dXJhL2ZvbGxvd2VycyIsImZvbGxvd2luZ191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL21pY2hlbGJvYXZlbnR1
+        cmEvZm9sbG93aW5ney9vdGhlcl91c2VyfSIsImdpc3RzX3VybCI6Imh0dHBz
+        Oi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvbWljaGVsYm9hdmVudHVyYS9naXN0
+        c3svZ2lzdF9pZH0iLCJzdGFycmVkX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1
+        Yi5jb20vdXNlcnMvbWljaGVsYm9hdmVudHVyYS9zdGFycmVkey9vd25lcn17
+        L3JlcG99Iiwic3Vic2NyaXB0aW9uc191cmwiOiJodHRwczovL2FwaS5naXRo
+        dWIuY29tL3VzZXJzL21pY2hlbGJvYXZlbnR1cmEvc3Vic2NyaXB0aW9ucyIs
+        Im9yZ2FuaXphdGlvbnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91
+        c2Vycy9taWNoZWxib2F2ZW50dXJhL29yZ3MiLCJyZXBvc191cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3VzZXJzL21pY2hlbGJvYXZlbnR1cmEvcmVw
+        b3MiLCJldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vy
+        cy9taWNoZWxib2F2ZW50dXJhL2V2ZW50c3svcHJpdmFjeX0iLCJyZWNlaXZl
+        ZF9ldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9t
+        aWNoZWxib2F2ZW50dXJhL3JlY2VpdmVkX2V2ZW50cyIsInR5cGUiOiJVc2Vy
+        Iiwic2l0ZV9hZG1pbiI6ZmFsc2V9LCJsYWJlbHMiOltdLCJzdGF0ZSI6Im9w
+        ZW4iLCJhc3NpZ25lZSI6bnVsbCwibWlsZXN0b25lIjpudWxsLCJjb21tZW50
+        cyI6MSwiY3JlYXRlZF9hdCI6IjIwMTMtMTAtMTBUMTk6MjU6MDFaIiwidXBk
+        YXRlZF9hdCI6IjIwMTMtMTAtMTBUMTk6Mzk6NDZaIiwiY2xvc2VkX2F0Ijpu
+        dWxsLCJwdWxsX3JlcXVlc3QiOnsiaHRtbF91cmwiOm51bGwsImRpZmZfdXJs
+        IjpudWxsLCJwYXRjaF91cmwiOm51bGx9LCJib2R5IjoiSXQgd291bGQgYmUg
+        Z3JlYXQgaWYgdGhlIFwiaW5zZXJ0IGxpbmtcIiBvcHRpb24gb24gdGhlIHBh
+        Z2UgZWRpdG9yJ3MgaGF2ZSBhIHNlYXJjaCwganVzdCBsaWtlIHRoZSBcImlu
+        c2VydCBpbWFnZVwiLiBUaGVyZSBpcyBhbnlvbmUgd29ya2luZyBvbiBpdCBz
+        byBmYXI/IEkgY2FuIGhlbHAgaXQhIn0seyJ1cmwiOiJodHRwczovL2FwaS5n
+        aXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8y
+        MjcyIiwibGFiZWxzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVw
+        b3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzIyNzIvbGFiZWxzey9u
+        YW1lfSIsImNvbW1lbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        cmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzIyNzIvY29tbWVu
+        dHMiLCJldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBv
+        cy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjI3Mi9ldmVudHMiLCJo
+        dG1sX3VybCI6Imh0dHBzOi8vZ2l0aHViLmNvbS9yZWZpbmVyeS9yZWZpbmVy
+        eWNtcy9pc3N1ZXMvMjI3MiIsImlkIjoxNDQ4MDMwMiwibnVtYmVyIjoyMjcy
+        LCJ0aXRsZSI6Ik1lbnUgbG9hZHMgdmVyeSBzbG93LiIsInVzZXIiOnsibG9n
+        aW4iOiJqdXJyaWFhbiIsImlkIjozNDU4MDksImF2YXRhcl91cmwiOiJodHRw
+        czovLzEuZ3JhdmF0YXIuY29tL2F2YXRhci84ZGRjYWEzNDg0MmRjNjFhMTM4
+        OWVhMTk1OWUyYTMyYT9kPWh0dHBzJTNBJTJGJTJGaWRlbnRpY29ucy5naXRo
+        dWIuY29tJTJGYzBkODQ5ZGY4NmJmMTIxNzlmMjFlMmIwMDQ1NDFhM2EucG5n
+        JnI9eCIsImdyYXZhdGFyX2lkIjoiOGRkY2FhMzQ4NDJkYzYxYTEzODllYTE5
+        NTllMmEzMmEiLCJ1cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJz
+        L2p1cnJpYWFuIiwiaHRtbF91cmwiOiJodHRwczovL2dpdGh1Yi5jb20vanVy
+        cmlhYW4iLCJmb2xsb3dlcnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS91c2Vycy9qdXJyaWFhbi9mb2xsb3dlcnMiLCJmb2xsb3dpbmdfdXJsIjoi
+        aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9qdXJyaWFhbi9mb2xsb3dp
+        bmd7L290aGVyX3VzZXJ9IiwiZ2lzdHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0
+        aHViLmNvbS91c2Vycy9qdXJyaWFhbi9naXN0c3svZ2lzdF9pZH0iLCJzdGFy
+        cmVkX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvanVycmlh
+        YW4vc3RhcnJlZHsvb3duZXJ9ey9yZXBvfSIsInN1YnNjcmlwdGlvbnNfdXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9qdXJyaWFhbi9zdWJz
+        Y3JpcHRpb25zIiwib3JnYW5pemF0aW9uc191cmwiOiJodHRwczovL2FwaS5n
+        aXRodWIuY29tL3VzZXJzL2p1cnJpYWFuL29yZ3MiLCJyZXBvc191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL2p1cnJpYWFuL3JlcG9zIiwi
+        ZXZlbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvanVy
+        cmlhYW4vZXZlbnRzey9wcml2YWN5fSIsInJlY2VpdmVkX2V2ZW50c191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL2p1cnJpYWFuL3JlY2Vp
+        dmVkX2V2ZW50cyIsInR5cGUiOiJVc2VyIiwic2l0ZV9hZG1pbiI6ZmFsc2V9
+        LCJsYWJlbHMiOltdLCJzdGF0ZSI6Im9wZW4iLCJhc3NpZ25lZSI6bnVsbCwi
+        bWlsZXN0b25lIjpudWxsLCJjb21tZW50cyI6MSwiY3JlYXRlZF9hdCI6IjIw
+        MTMtMDUtMThUMDc6NDQ6MjhaIiwidXBkYXRlZF9hdCI6IjIwMTMtMDUtMThU
+        MDk6NTU6NDJaIiwiY2xvc2VkX2F0IjpudWxsLCJwdWxsX3JlcXVlc3QiOnsi
+        aHRtbF91cmwiOm51bGwsImRpZmZfdXJsIjpudWxsLCJwYXRjaF91cmwiOm51
+        bGx9LCJib2R5IjoiSSdtIGJ1aWxkaW5nIGEgd2Vic2l0ZSB3aXRoIDE1MDAg
+        KyBwYWdlcy4gQW5kIGxvYWRpbmcgcGFnZXMgaXMgd2F5IHRvbyBzbG93Llxy
+        XG5JIHRyYWNrZWQgaXQgZG93biB0byB0aGUgTWVudS5cclxuXHJcbmBQYWdl
+        LmZhc3RfbWVudWAgZG9lcyBsb2FkIGFsbCBwYWdlcyB3aXRoIG9uZSBxdWVy
+        eSAoaW5jbHVkaW5nIHNsdWdzKSwgYnV0IGBQYWdlI3RvX3JlZmluZXJ5X21l
+        bnVfaXRlbWAgdXNlcyB0aGUgYFJlZmluZXJ5OjpQYWdlI3VybGAgbWV0aG9k
+        IHRvIGdlbmVyYXRlIHRoZSB1cmwgd2hpY2ggZmV0Y2hlcyBhbGwgcGFyZW50
+        cyBmb3IgYSBzZWNvbmQgdGltZS4gVGhpcyBpcyB2ZXJ5IHNsb3cuXHJcblxy
+        XG5UaGlzIGlzIHRoZSBvdXRwdXQgb2YgdG9fcmVmaW5lcnlfbWVudV9pdGVt
+        LiBUaGUgZmlyc3QgcXVlcnkgaXMgdGhlIGBQYWdlLmZhc3RfbWVudWAgb25l
+        LCAgYnV0IHRoZSBgUGFnZSN1cmxgIG1ldGhvZCBnZW5lcmF0ZXMgNyEgYWRk
+        aXRpb25hbCBxdWVyaWVzLlxyXG5cclxuYGBgcnVieVxyXG5SZWZpbmVyeTo6
+        UGFnZS5mYXN0X21lbnVbM10udG9fcmVmaW5lcnlfbWVudV9pdGVtXHJcbmBg
+        YFxyXG5gYGBcclxuICBTUUwgKDIwLjFtcykgIFNFTEVDVCBgcmVmaW5lcnlf
+        cGFnZXNgLmBpZGAgQVMgdDBfcjAsIGByZWZpbmVyeV9wYWdlc2AuYHBhcmVu
+        dF9pZGAgQVMgdDBfcjEsIGByZWZpbmVyeV9wYWdlc2AuYHBhdGhgIEFTIHQw
+        X3IyLCBgcmVmaW5lcnlfcGFnZXNgLmBzbHVnYCBBUyB0MF9yMywgYHJlZmlu
+        ZXJ5X3BhZ2VzYC5gc2hvd19pbl9tZW51YCBBUyB0MF9yNCwgYHJlZmluZXJ5
+        X3BhZ2VzYC5gbGlua191cmxgIEFTIHQwX3I1LCBgcmVmaW5lcnlfcGFnZXNg
+        LmBtZW51X21hdGNoYCBBUyB0MF9yNiwgYHJlZmluZXJ5X3BhZ2VzYC5gZGVs
+        ZXRhYmxlYCBBUyB0MF9yNywgYHJlZmluZXJ5X3BhZ2VzYC5gZHJhZnRgIEFT
+        IHQwX3I4LCBgcmVmaW5lcnlfcGFnZXNgLmBza2lwX3RvX2ZpcnN0X2NoaWxk
+        YCBBUyB0MF9yOSwgYHJlZmluZXJ5X3BhZ2VzYC5gbGZ0YCBBUyB0MF9yMTAs
+        IGByZWZpbmVyeV9wYWdlc2AuYHJndGAgQVMgdDBfcjExLCBgcmVmaW5lcnlf
+        cGFnZXNgLmBkZXB0aGAgQVMgdDBfcjEyLCBgcmVmaW5lcnlfcGFnZXNgLmB2
+        aWV3X3RlbXBsYXRlYCBBUyB0MF9yMTMsIGByZWZpbmVyeV9wYWdlc2AuYGxh
+        eW91dF90ZW1wbGF0ZWAgQVMgdDBfcjE0LCBgcmVmaW5lcnlfcGFnZXNgLmBj
+        cmVhdGVkX2F0YCBBUyB0MF9yMTUsIGByZWZpbmVyeV9wYWdlc2AuYHVwZGF0
+        ZWRfYXRgIEFTIHQwX3IxNiwgYHJlZmluZXJ5X3BhZ2VzYC5gc291cmNlYCBB
+        UyB0MF9yMTcsIGByZWZpbmVyeV9wYWdlc2AuYGNvbW1lbnRzYCBBUyB0MF9y
+        MTgsIGByZWZpbmVyeV9wYWdlc2AuYGNvbXBhbnlfaWRgIEFTIHQwX3IxOSwg
+        YHJlZmluZXJ5X3BhZ2VzYC5gYXJ0aWNsZV90eXBlYCBBUyB0MF9yMjAsIGBw
+        YXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gaWRgIEFTIHQxX3IwLCBgcGFyZW50
+        c19yZWZpbmVyeV9wYWdlc2AuYHBhcmVudF9pZGAgQVMgdDFfcjEsIGBwYXJl
+        bnRzX3JlZmluZXJ5X3BhZ2VzYC5gcGF0aGAgQVMgdDFfcjIsIGBwYXJlbnRz
+        X3JlZmluZXJ5X3BhZ2VzYC5gc2x1Z2AgQVMgdDFfcjMsIGBwYXJlbnRzX3Jl
+        ZmluZXJ5X3BhZ2VzYC5gc2hvd19pbl9tZW51YCBBUyB0MV9yNCwgYHBhcmVu
+        dHNfcmVmaW5lcnlfcGFnZXNgLmBsaW5rX3VybGAgQVMgdDFfcjUsIGBwYXJl
+        bnRzX3JlZmluZXJ5X3BhZ2VzYC5gbWVudV9tYXRjaGAgQVMgdDFfcjYsIGBw
+        YXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gZGVsZXRhYmxlYCBBUyB0MV9yNywg
+        YHBhcmVudHNfcmVmaW5lcnlfcGFnZXNgLmBkcmFmdGAgQVMgdDFfcjgsIGBw
+        YXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gc2tpcF90b19maXJzdF9jaGlsZGAg
+        QVMgdDFfcjksIGBwYXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gbGZ0YCBBUyB0
+        MV9yMTAsIGBwYXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gcmd0YCBBUyB0MV9y
+        MTEsIGBwYXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gZGVwdGhgIEFTIHQxX3Ix
+        MiwgYHBhcmVudHNfcmVmaW5lcnlfcGFnZXNgLmB2aWV3X3RlbXBsYXRlYCBB
+        UyB0MV9yMTMsIGBwYXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gbGF5b3V0X3Rl
+        bXBsYXRlYCBBUyB0MV9yMTQsIGBwYXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5g
+        Y3JlYXRlZF9hdGAgQVMgdDFfcjE1LCBgcGFyZW50c19yZWZpbmVyeV9wYWdl
+        c2AuYHVwZGF0ZWRfYXRgIEFTIHQxX3IxNiwgYHBhcmVudHNfcmVmaW5lcnlf
+        cGFnZXNgLmBzb3VyY2VgIEFTIHQxX3IxNywgYHBhcmVudHNfcmVmaW5lcnlf
+        cGFnZXNgLmBjb21tZW50c2AgQVMgdDFfcjE4LCBgcGFyZW50c19yZWZpbmVy
+        eV9wYWdlc2AuYGNvbXBhbnlfaWRgIEFTIHQxX3IxOSwgYHBhcmVudHNfcmVm
+        aW5lcnlfcGFnZXNgLmBhcnRpY2xlX3R5cGVgIEFTIHQxX3IyMCwgYHJlZmlu
+        ZXJ5X3BhZ2VfdHJhbnNsYXRpb25zYC5gaWRgIEFTIHQyX3IwLCBgcmVmaW5l
+        cnlfcGFnZV90cmFuc2xhdGlvbnNgLmByZWZpbmVyeV9wYWdlX2lkYCBBUyB0
+        Ml9yMSwgYHJlZmluZXJ5X3BhZ2VfdHJhbnNsYXRpb25zYC5gbG9jYWxlYCBB
+        UyB0Ml9yMiwgYHJlZmluZXJ5X3BhZ2VfdHJhbnNsYXRpb25zYC5gdGl0bGVg
+        IEFTIHQyX3IzLCBgcmVmaW5lcnlfcGFnZV90cmFuc2xhdGlvbnNgLmBjdXN0
+        b21fc2x1Z2AgQVMgdDJfcjQsIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9u
+        c2AuYG1lbnVfdGl0bGVgIEFTIHQyX3I1LCBgcmVmaW5lcnlfcGFnZV90cmFu
+        c2xhdGlvbnNgLmBzbHVnYCBBUyB0Ml9yNiwgYHJlZmluZXJ5X3BhZ2VfdHJh
+        bnNsYXRpb25zYC5gY3JlYXRlZF9hdGAgQVMgdDJfcjcsIGByZWZpbmVyeV9w
+        YWdlX3RyYW5zbGF0aW9uc2AuYHVwZGF0ZWRfYXRgIEFTIHQyX3I4IEZST00g
+        YHJlZmluZXJ5X3BhZ2VzYCBJTk5FUiBKT0lOIGByZWZpbmVyeV9wYWdlX3Ry
+        YW5zbGF0aW9uc2AgT04gYHJlZmluZXJ5X3BhZ2VfdHJhbnNsYXRpb25zYC5g
+        cmVmaW5lcnlfcGFnZV9pZGAgPSBgcmVmaW5lcnlfcGFnZXNgLmBpZGAgTEVG
+        VCBPVVRFUiBKT0lOIGByZWZpbmVyeV9wYWdlc2AgYHBhcmVudHNfcmVmaW5l
+        cnlfcGFnZXNgIE9OIGBwYXJlbnRzX3JlZmluZXJ5X3BhZ2VzYC5gaWRgID0g
+        YHJlZmluZXJ5X3BhZ2VzYC5gcGFyZW50X2lkYCBXSEVSRSBgcmVmaW5lcnlf
+        cGFnZXNgLmBkcmFmdGAgPSAwIEFORCBgcmVmaW5lcnlfcGFnZXNgLmBzaG93
+        X2luX21lbnVgID0gMSBBTkQgYHJlZmluZXJ5X3BhZ2VfdHJhbnNsYXRpb25z
+        YC5gbG9jYWxlYCA9ICdlbicgQU5EIGByZWZpbmVyeV9wYWdlc2AuYGFydGlj
+        bGVfdHlwZWAgPSAxIE9SREVSIEJZIGByZWZpbmVyeV9wYWdlc2AuYGxmdGBc
+        clxuICBSZWZpbmVyeTo6UGFnZSBMb2FkICgwLjNtcykgIFNFTEVDVCBgcmVm
+        aW5lcnlfcGFnZXNgLiogRlJPTSBgcmVmaW5lcnlfcGFnZXNgIFdIRVJFIGBy
+        ZWZpbmVyeV9wYWdlc2AuYGlkYCA9IDUgTElNSVQgMVxyXG4gIFJlZmluZXJ5
+        OjpQYWdlIExvYWQgKDAuMW1zKSAgU0VMRUNUIGByZWZpbmVyeV9wYWdlc2Au
+        KiBGUk9NIGByZWZpbmVyeV9wYWdlc2AgV0hFUkUgYHJlZmluZXJ5X3BhZ2Vz
+        YC5gaWRgID0gNCBMSU1JVCAxXHJcbiAgUmVmaW5lcnk6OlBhZ2UgTG9hZCAo
+        MC4xbXMpICBTRUxFQ1QgYHJlZmluZXJ5X3BhZ2VzYC4qIEZST00gYHJlZmlu
+        ZXJ5X3BhZ2VzYCBXSEVSRSBgcmVmaW5lcnlfcGFnZXNgLmBpZGAgPSAzIExJ
+        TUlUIDFcclxuICBSZWZpbmVyeTo6UGFnZTo6VHJhbnNsYXRpb24gTG9hZCAo
+        NjQuOW1zKSAgU0VMRUNUIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2Au
+        KiBGUk9NIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AgV0hFUkUgYHJl
+        ZmluZXJ5X3BhZ2VfdHJhbnNsYXRpb25zYC5gcmVmaW5lcnlfcGFnZV9pZGAg
+        PSAzXHJcbiAgUmVmaW5lcnk6OlBhZ2U6OlRyYW5zbGF0aW9uIExvYWQgKDAu
+        M21zKSAgU0VMRUNUIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AuKiBG
+        Uk9NIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AgV0hFUkUgYHJlZmlu
+        ZXJ5X3BhZ2VfdHJhbnNsYXRpb25zYC5gcmVmaW5lcnlfcGFnZV9pZGAgPSA0
+        XHJcbiAgUmVmaW5lcnk6OlBhZ2U6OlRyYW5zbGF0aW9uIExvYWQgKDAuMm1z
+        KSAgU0VMRUNUIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AuKiBGUk9N
+        IGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AgV0hFUkUgYHJlZmluZXJ5
+        X3BhZ2VfdHJhbnNsYXRpb25zYC5gcmVmaW5lcnlfcGFnZV9pZGAgPSA1XHJc
+        biAgUmVmaW5lcnk6OlBhZ2U6OlRyYW5zbGF0aW9uIExvYWQgKDAuMm1zKSAg
+        U0VMRUNUIGByZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AuKiBGUk9NIGBy
+        ZWZpbmVyeV9wYWdlX3RyYW5zbGF0aW9uc2AgV0hFUkUgYHJlZmluZXJ5X3Bh
+        Z2VfdHJhbnNsYXRpb25zYC5gcmVmaW5lcnlfcGFnZV9pZGAgPSA2XHJcbmBg
+        YFxyXG5gYGBydWJ5XHJcbj0+IHs6aWQ9PjcsXHJcbiA6bGZ0PT45LFxyXG4g
+        OmRlcHRoPT40LFxyXG4gOm1lbnVfbWF0Y2g9Pm5pbCxcclxuIDpwYXJlbnRf
+        aWQ9PjYsXHJcbiA6cmd0PT4xMCxcclxuIDp0aXRsZT0+XCJ0ZXN0XCIsXHJc
+        biA6dHlwZT0+XCJSZWZpbmVyeTo6UGFnZVwiLFxyXG4gOnVybD0+XHJcbiAg
+        ezpjb250cm9sbGVyPT5cIi9yZWZpbmVyeS9wYWdlc1wiLFxyXG4gICA6YWN0
+        aW9uPT5cInNob3dcIixcclxuICAgOm9ubHlfcGF0aD0+dHJ1ZSxcclxuICAg
+        OnBhdGg9PltcInRlc3RcIiwgXCJ0ZXN0XCIsIFwidGVzdFwiLCBcInRlc3Rc
+        IiwgXCJ0ZXN0XCJdLFxyXG4gICA6aWQ9Pm5pbH19XHJcbmBgYCJ9LHsidXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZp
+        bmVyeWNtcy9pc3N1ZXMvMjQzNiIsImxhYmVsc191cmwiOiJodHRwczovL2Fw
+        aS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vl
+        cy8yNDM2L2xhYmVsc3svbmFtZX0iLCJjb21tZW50c191cmwiOiJodHRwczov
+        L2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lz
+        c3Vlcy8yNDM2L2NvbW1lbnRzIiwiZXZlbnRzX3VybCI6Imh0dHBzOi8vYXBp
+        LmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVz
+        LzI0MzYvZXZlbnRzIiwiaHRtbF91cmwiOiJodHRwczovL2dpdGh1Yi5jb20v
+        cmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0MzYiLCJpZCI6MjA4NzM5
+        MzAsIm51bWJlciI6MjQzNiwidGl0bGUiOiJFbGltaW5hdGUgcmVuZGVyLWJs
+        b2NraW5nIGphdmFzY3JpcHQgYW5kIENTUyBpbiBhYm92ZS10aGUtZm9sZCBj
+        b250ZW50IHRvIG9wdGltaXplIGxvYWRpbmcgc3BlZWQiLCJ1c2VyIjp7Imxv
+        Z2luIjoiZHVjY2lvYXJtZW5pc2UiLCJpZCI6Nzk0MTU0LCJhdmF0YXJfdXJs
+        IjoiaHR0cHM6Ly8xLmdyYXZhdGFyLmNvbS9hdmF0YXIvMTg1MmU0YWE1MDUz
+        YTlmYTMwNTFhMjQ5MjdlMWY2NzY/ZD1odHRwcyUzQSUyRiUyRmlkZW50aWNv
+        bnMuZ2l0aHViLmNvbSUyRjQ2OTVlMTQ0MjAxNzYzOTc2OTVhOWM1NmM3MjNi
+        ZDk0LnBuZyZyPXgiLCJncmF2YXRhcl9pZCI6IjE4NTJlNGFhNTA1M2E5ZmEz
+        MDUxYTI0OTI3ZTFmNjc2IiwidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS91c2Vycy9kdWNjaW9hcm1lbmlzZSIsImh0bWxfdXJsIjoiaHR0cHM6Ly9n
+        aXRodWIuY29tL2R1Y2Npb2FybWVuaXNlIiwiZm9sbG93ZXJzX3VybCI6Imh0
+        dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvZHVjY2lvYXJtZW5pc2UvZm9s
+        bG93ZXJzIiwiZm9sbG93aW5nX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5j
+        b20vdXNlcnMvZHVjY2lvYXJtZW5pc2UvZm9sbG93aW5ney9vdGhlcl91c2Vy
+        fSIsImdpc3RzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMv
+        ZHVjY2lvYXJtZW5pc2UvZ2lzdHN7L2dpc3RfaWR9Iiwic3RhcnJlZF91cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL2R1Y2Npb2FybWVuaXNl
+        L3N0YXJyZWR7L293bmVyfXsvcmVwb30iLCJzdWJzY3JpcHRpb25zX3VybCI6
+        Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvZHVjY2lvYXJtZW5pc2Uv
+        c3Vic2NyaXB0aW9ucyIsIm9yZ2FuaXphdGlvbnNfdXJsIjoiaHR0cHM6Ly9h
+        cGkuZ2l0aHViLmNvbS91c2Vycy9kdWNjaW9hcm1lbmlzZS9vcmdzIiwicmVw
+        b3NfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9kdWNjaW9h
+        cm1lbmlzZS9yZXBvcyIsImV2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRo
+        dWIuY29tL3VzZXJzL2R1Y2Npb2FybWVuaXNlL2V2ZW50c3svcHJpdmFjeX0i
+        LCJyZWNlaXZlZF9ldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS91c2Vycy9kdWNjaW9hcm1lbmlzZS9yZWNlaXZlZF9ldmVudHMiLCJ0eXBl
+        IjoiVXNlciIsInNpdGVfYWRtaW4iOmZhbHNlfSwibGFiZWxzIjpbXSwic3Rh
+        dGUiOiJvcGVuIiwiYXNzaWduZWUiOm51bGwsIm1pbGVzdG9uZSI6bnVsbCwi
+        Y29tbWVudHMiOjEsImNyZWF0ZWRfYXQiOiIyMDEzLTEwLTExVDE1OjAxOjQ0
+        WiIsInVwZGF0ZWRfYXQiOiIyMDEzLTEyLTAzVDEzOjU2OjM0WiIsImNsb3Nl
+        ZF9hdCI6bnVsbCwicHVsbF9yZXF1ZXN0Ijp7Imh0bWxfdXJsIjpudWxsLCJk
+        aWZmX3VybCI6bnVsbCwicGF0Y2hfdXJsIjpudWxsfSwiYm9keSI6IkFzIEdv
+        b2dsZSBwb2ludHMgb3V0IGZvciBteSB1bmRlciBjb25zdHJ1Y3Rpb24gd2Vi
+        c2l0ZSAodXNpbmcgUmVmaW5lcnkgMi4xLjApOiBodHRwOi8vZGV2ZWxvcGVy
+        cy5nb29nbGUuY29tL3NwZWVkL3BhZ2VzcGVlZC9pbnNpZ2h0cy8/dXJsPW5l
+        bWJvd2ViLml0XHJcblxyXG4hW2ltYWdlXShodHRwczovL2YuY2xvdWQuZ2l0
+        aHViLmNvbS9hc3NldHMvNzk0MTU0LzEzMTUzMTQvZmU4ZjczM2EtMzI4NC0x
+        MWUzLTgxYWQtZmI2Mjk4MDkzYTE3LnBuZylcclxuXHJcbkFzIHRoaXMgaXMg
+        dGhlIG9ubHkgcGVyZm9ybWFuY2UgaXNzdWUgZm91bmQsIEkgdGhpbmsgd2Ug
+        c2hvdWxkIHJlYWxseSBmaW5kIGEgc29sdXRpb24gdG8gZ28gYWxsIGdyZWVu
+        ISJ9LHsidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZp
+        bmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQzMiIsImxhYmVsc191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5
+        Y21zL2lzc3Vlcy8yNDMyL2xhYmVsc3svbmFtZX0iLCJjb21tZW50c191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmlu
+        ZXJ5Y21zL2lzc3Vlcy8yNDMyL2NvbW1lbnRzIiwiZXZlbnRzX3VybCI6Imh0
+        dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnlj
+        bXMvaXNzdWVzLzI0MzIvZXZlbnRzIiwiaHRtbF91cmwiOiJodHRwczovL2dp
+        dGh1Yi5jb20vcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0MzIiLCJp
+        ZCI6MjA4MjcxMTgsIm51bWJlciI6MjQzMiwidGl0bGUiOiJHbG9iYWxpemUg
+        aGFzIGNoYW5nZWQgcmVwb3NpdG9yeSBhbmQgbmFtZSIsInVzZXIiOnsibG9n
+        aW4iOiJtaWNoZWxib2F2ZW50dXJhIiwiaWQiOjExMTAzNywiYXZhdGFyX3Vy
+        bCI6Imh0dHBzOi8vMS5ncmF2YXRhci5jb20vYXZhdGFyLzczMWYwZmM1N2Vk
+        ZjFkYjc4NTFmZDIyMTc5MzQ5MzJiP2Q9aHR0cHMlM0ElMkYlMkZpZGVudGlj
+        b25zLmdpdGh1Yi5jb20lMkY4YWVhYzBlMGM1MDhkYTA5MTQ3YTg0MGI5ZWYx
+        YjZjZC5wbmcmcj14IiwiZ3JhdmF0YXJfaWQiOiI3MzFmMGZjNTdlZGYxZGI3
+        ODUxZmQyMjE3OTM0OTMyYiIsInVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5j
+        b20vdXNlcnMvbWljaGVsYm9hdmVudHVyYSIsImh0bWxfdXJsIjoiaHR0cHM6
+        Ly9naXRodWIuY29tL21pY2hlbGJvYXZlbnR1cmEiLCJmb2xsb3dlcnNfdXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9taWNoZWxib2F2ZW50
+        dXJhL2ZvbGxvd2VycyIsImZvbGxvd2luZ191cmwiOiJodHRwczovL2FwaS5n
+        aXRodWIuY29tL3VzZXJzL21pY2hlbGJvYXZlbnR1cmEvZm9sbG93aW5ney9v
+        dGhlcl91c2VyfSIsImdpc3RzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5j
+        b20vdXNlcnMvbWljaGVsYm9hdmVudHVyYS9naXN0c3svZ2lzdF9pZH0iLCJz
+        dGFycmVkX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvbWlj
+        aGVsYm9hdmVudHVyYS9zdGFycmVkey9vd25lcn17L3JlcG99Iiwic3Vic2Ny
+        aXB0aW9uc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL21p
+        Y2hlbGJvYXZlbnR1cmEvc3Vic2NyaXB0aW9ucyIsIm9yZ2FuaXphdGlvbnNf
+        dXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9taWNoZWxib2F2
+        ZW50dXJhL29yZ3MiLCJyZXBvc191cmwiOiJodHRwczovL2FwaS5naXRodWIu
+        Y29tL3VzZXJzL21pY2hlbGJvYXZlbnR1cmEvcmVwb3MiLCJldmVudHNfdXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9taWNoZWxib2F2ZW50
+        dXJhL2V2ZW50c3svcHJpdmFjeX0iLCJyZWNlaXZlZF9ldmVudHNfdXJsIjoi
+        aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9taWNoZWxib2F2ZW50dXJh
+        L3JlY2VpdmVkX2V2ZW50cyIsInR5cGUiOiJVc2VyIiwic2l0ZV9hZG1pbiI6
+        ZmFsc2V9LCJsYWJlbHMiOltdLCJzdGF0ZSI6Im9wZW4iLCJhc3NpZ25lZSI6
+        eyJsb2dpbiI6InBhcm5kdCIsImlkIjoxMDEyOCwiYXZhdGFyX3VybCI6Imh0
+        dHBzOi8vMS5ncmF2YXRhci5jb20vYXZhdGFyL2ZlOWNjZmE4NTZhYTA1ZmYy
+        ZDUzNGZjZjg3Y2M3NGY1P2Q9aHR0cHMlM0ElMkYlMkZpZGVudGljb25zLmdp
+        dGh1Yi5jb20lMkY4NWM5ZjllZmFiODljZWU5MGE5NWNiOThmMTVmZWFjZC5w
+        bmcmcj14IiwiZ3JhdmF0YXJfaWQiOiJmZTljY2ZhODU2YWEwNWZmMmQ1MzRm
+        Y2Y4N2NjNzRmNSIsInVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNl
+        cnMvcGFybmR0IiwiaHRtbF91cmwiOiJodHRwczovL2dpdGh1Yi5jb20vcGFy
+        bmR0IiwiZm9sbG93ZXJzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        dXNlcnMvcGFybmR0L2ZvbGxvd2VycyIsImZvbGxvd2luZ191cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3VzZXJzL3Bhcm5kdC9mb2xsb3dpbmd7L290
+        aGVyX3VzZXJ9IiwiZ2lzdHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS91c2Vycy9wYXJuZHQvZ2lzdHN7L2dpc3RfaWR9Iiwic3RhcnJlZF91cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL3Bhcm5kdC9zdGFycmVk
+        ey9vd25lcn17L3JlcG99Iiwic3Vic2NyaXB0aW9uc191cmwiOiJodHRwczov
+        L2FwaS5naXRodWIuY29tL3VzZXJzL3Bhcm5kdC9zdWJzY3JpcHRpb25zIiwi
+        b3JnYW5pemF0aW9uc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3Vz
+        ZXJzL3Bhcm5kdC9vcmdzIiwicmVwb3NfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0
+        aHViLmNvbS91c2Vycy9wYXJuZHQvcmVwb3MiLCJldmVudHNfdXJsIjoiaHR0
+        cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9wYXJuZHQvZXZlbnRzey9wcml2
+        YWN5fSIsInJlY2VpdmVkX2V2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRo
+        dWIuY29tL3VzZXJzL3Bhcm5kdC9yZWNlaXZlZF9ldmVudHMiLCJ0eXBlIjoi
+        VXNlciIsInNpdGVfYWRtaW4iOmZhbHNlfSwibWlsZXN0b25lIjpudWxsLCJj
+        b21tZW50cyI6MSwiY3JlYXRlZF9hdCI6IjIwMTMtMTAtMTBUMTg6NDc6Mjla
+        IiwidXBkYXRlZF9hdCI6IjIwMTMtMTAtMTBUMjA6MDE6MjlaIiwiY2xvc2Vk
+        X2F0IjpudWxsLCJwdWxsX3JlcXVlc3QiOnsiaHRtbF91cmwiOm51bGwsImRp
+        ZmZfdXJsIjpudWxsLCJwYXRjaF91cmwiOm51bGx9LCJib2R5IjoiQW5kIGl0
+        IGJyZWFrcyBvdXIgR2VtZmlsZTogaHR0cHM6Ly9naXRodWIuY29tL3N2ZW5m
+        dWNocy9nbG9iYWxpemUzXHJcblxyXG4ifSx7InVybCI6Imh0dHBzOi8vYXBp
+        LmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVz
+        LzI0NjMiLCJsYWJlbHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9y
+        ZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQ2My9sYWJlbHN7
+        L25hbWV9IiwiY29tbWVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQ2My9jb21t
+        ZW50cyIsImV2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3Jl
+        cG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yNDYzL2V2ZW50cyIs
+        Imh0bWxfdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL3JlZmluZXJ5L3JlZmlu
+        ZXJ5Y21zL2lzc3Vlcy8yNDYzIiwiaWQiOjIyMzcxNTkxLCJudW1iZXIiOjI0
+        NjMsInRpdGxlIjoiQ2FuIEkgb3ZlcnJpZGVzIGludGVyZmFjZS5qcy5jb2Zm
+        ZWUuZXJiID8iLCJ1c2VyIjp7ImxvZ2luIjoiSk5hamVyYSIsImlkIjo2MTY2
+        NjEsImF2YXRhcl91cmwiOiJodHRwczovLzIuZ3JhdmF0YXIuY29tL2F2YXRh
+        ci8wM2YwYjJmOTg5ZDJlMzgyNDM5NGRkMTQ4ZjdhZWI3ND9kPWh0dHBzJTNB
+        JTJGJTJGaWRlbnRpY29ucy5naXRodWIuY29tJTJGZWNmZWNhMzc2OWMxNzMz
+        MmY1ZmFiZDViYzU1NjQzNGYucG5nJnI9eCIsImdyYXZhdGFyX2lkIjoiMDNm
+        MGIyZjk4OWQyZTM4MjQzOTRkZDE0OGY3YWViNzQiLCJ1cmwiOiJodHRwczov
+        L2FwaS5naXRodWIuY29tL3VzZXJzL0pOYWplcmEiLCJodG1sX3VybCI6Imh0
+        dHBzOi8vZ2l0aHViLmNvbS9KTmFqZXJhIiwiZm9sbG93ZXJzX3VybCI6Imh0
+        dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvSk5hamVyYS9mb2xsb3dlcnMi
+        LCJmb2xsb3dpbmdfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vy
+        cy9KTmFqZXJhL2ZvbGxvd2luZ3svb3RoZXJfdXNlcn0iLCJnaXN0c191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL0pOYWplcmEvZ2lzdHN7
+        L2dpc3RfaWR9Iiwic3RhcnJlZF91cmwiOiJodHRwczovL2FwaS5naXRodWIu
+        Y29tL3VzZXJzL0pOYWplcmEvc3RhcnJlZHsvb3duZXJ9ey9yZXBvfSIsInN1
+        YnNjcmlwdGlvbnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vy
+        cy9KTmFqZXJhL3N1YnNjcmlwdGlvbnMiLCJvcmdhbml6YXRpb25zX3VybCI6
+        Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvSk5hamVyYS9vcmdzIiwi
+        cmVwb3NfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9KTmFq
+        ZXJhL3JlcG9zIiwiZXZlbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5j
+        b20vdXNlcnMvSk5hamVyYS9ldmVudHN7L3ByaXZhY3l9IiwicmVjZWl2ZWRf
+        ZXZlbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvSk5h
+        amVyYS9yZWNlaXZlZF9ldmVudHMiLCJ0eXBlIjoiVXNlciIsInNpdGVfYWRt
+        aW4iOmZhbHNlfSwibGFiZWxzIjpbXSwic3RhdGUiOiJvcGVuIiwiYXNzaWdu
+        ZWUiOm51bGwsIm1pbGVzdG9uZSI6bnVsbCwiY29tbWVudHMiOjAsImNyZWF0
+        ZWRfYXQiOiIyMDEzLTExLTA4VDIzOjM3OjAwWiIsInVwZGF0ZWRfYXQiOiIy
+        MDEzLTExLTA4VDIzOjM3OjAwWiIsImNsb3NlZF9hdCI6bnVsbCwicHVsbF9y
+        ZXF1ZXN0Ijp7Imh0bWxfdXJsIjpudWxsLCJkaWZmX3VybCI6bnVsbCwicGF0
+        Y2hfdXJsIjpudWxsfSwiYm9keSI6IkhpLFxyXG5cclxuSW0gdHJ5aW5nIHRv
+        IG92ZXJyaWRlIHRoaXMgZmlsZSBmb3IgY3VzdG9taXNlIHRoZSBqY2Fyb3Vz
+        ZWwsIGJ1dCB3aGVuIG1hZGUgbXkgb3ZlcnJpZGVzIHRvIHRoZSBmaWxlLCBp
+        dCBzdGlsbCBjaGFyZ2UgdGhlIG9yaWdpbmFsIGZpbGUuIEkgbmVlZCB0byBk
+        byBzb21ldGhpbmcgZWxzZSB0byBnZXQgdGhpcyB3b3JraW5nPyBcclxuXHJc
+        blRoYW5rcyBpbiBhZHZhbmNlOlxyXG5cclxuVXNpbmc6XHJcbiAgKiByZWZp
+        bmVyeWNtcyAoMi4wLjEwIGNlM2M1NWMpXHJcblxyXG5JIHB1bGwgdGhlIGZp
+        bGUgd2l0aDpcclxucmFrZSByZWZpbmVyeTpvdmVycmlkZSBqYXZhc2NyaXB0
+        PXJlZmluZXJ5L2ludGVyZmFjZSJ9LHsidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0
+        aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjQ1
+        MyIsImxhYmVsc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9z
+        L3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yNDUzL2xhYmVsc3svbmFt
+        ZX0iLCJjb21tZW50c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3Jl
+        cG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yNDUzL2NvbW1lbnRz
+        IiwiZXZlbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3Mv
+        cmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0NTMvZXZlbnRzIiwiaHRt
+        bF91cmwiOiJodHRwczovL2dpdGh1Yi5jb20vcmVmaW5lcnkvcmVmaW5lcnlj
+        bXMvaXNzdWVzLzI0NTMiLCJpZCI6MjE2ODkzNzEsIm51bWJlciI6MjQ1Mywi
+        dGl0bGUiOiJyZWZpbmVyeWNtcy1jb3JlIDIuMS4wIC0gaW5pdF9yZXNvdXJj
+        ZXNfc3VibWl0IGRvZXMgbm90IGNsb3NlIHBvcHVwIiwidXNlciI6eyJsb2dp
+        biI6Im1hdHRoZXJpY2siLCJpZCI6MjI1MjA1LCJhdmF0YXJfdXJsIjoiaHR0
+        cHM6Ly8yLmdyYXZhdGFyLmNvbS9hdmF0YXIvY2JlNjYwNWUwZDA3NDMxM2Q2
+        OGM3MzNhMDc5YWQ5Mjc/ZD1odHRwcyUzQSUyRiUyRmlkZW50aWNvbnMuZ2l0
+        aHViLmNvbSUyRjZjMDM3YTEzYTdlMmQwODlhMGY4OGY4NmI2NDA1ZGFmLnBu
+        ZyZyPXgiLCJncmF2YXRhcl9pZCI6ImNiZTY2MDVlMGQwNzQzMTNkNjhjNzMz
+        YTA3OWFkOTI3IiwidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vy
+        cy9tYXR0aGVyaWNrIiwiaHRtbF91cmwiOiJodHRwczovL2dpdGh1Yi5jb20v
+        bWF0dGhlcmljayIsImZvbGxvd2Vyc191cmwiOiJodHRwczovL2FwaS5naXRo
+        dWIuY29tL3VzZXJzL21hdHRoZXJpY2svZm9sbG93ZXJzIiwiZm9sbG93aW5n
+        X3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvbWF0dGhlcmlj
+        ay9mb2xsb3dpbmd7L290aGVyX3VzZXJ9IiwiZ2lzdHNfdXJsIjoiaHR0cHM6
+        Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9tYXR0aGVyaWNrL2dpc3Rzey9naXN0
+        X2lkfSIsInN0YXJyZWRfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91
+        c2Vycy9tYXR0aGVyaWNrL3N0YXJyZWR7L293bmVyfXsvcmVwb30iLCJzdWJz
+        Y3JpcHRpb25zX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMv
+        bWF0dGhlcmljay9zdWJzY3JpcHRpb25zIiwib3JnYW5pemF0aW9uc191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL21hdHRoZXJpY2svb3Jn
+        cyIsInJlcG9zX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMv
+        bWF0dGhlcmljay9yZXBvcyIsImV2ZW50c191cmwiOiJodHRwczovL2FwaS5n
+        aXRodWIuY29tL3VzZXJzL21hdHRoZXJpY2svZXZlbnRzey9wcml2YWN5fSIs
+        InJlY2VpdmVkX2V2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29t
+        L3VzZXJzL21hdHRoZXJpY2svcmVjZWl2ZWRfZXZlbnRzIiwidHlwZSI6IlVz
+        ZXIiLCJzaXRlX2FkbWluIjpmYWxzZX0sImxhYmVscyI6W10sInN0YXRlIjoi
+        b3BlbiIsImFzc2lnbmVlIjpudWxsLCJtaWxlc3RvbmUiOm51bGwsImNvbW1l
+        bnRzIjowLCJjcmVhdGVkX2F0IjoiMjAxMy0xMC0yOFQxMzozODowMFoiLCJ1
+        cGRhdGVkX2F0IjoiMjAxMy0xMC0yOFQxMzozODowMFoiLCJjbG9zZWRfYXQi
+        Om51bGwsInB1bGxfcmVxdWVzdCI6eyJodG1sX3VybCI6bnVsbCwiZGlmZl91
+        cmwiOm51bGwsInBhdGNoX3VybCI6bnVsbH0sImJvZHkiOiJEb2VzIGFueW9u
+        ZSBlbHNlIGFsc28gaGF2ZSBmb2xsb3dpbmcgcHJvYmxlbTpcclxuXHJcbmFw
+        cC9hc3NldHMvamF2YXNjcmlwdHMvcmVmaW5lcnkvYWRtaW4uanMuZXJiXHJc
+        blxyXG4gICAgaW5pdF9yZXNvdXJjZXNfc3VibWl0OiBmdW5jdGlvbigpe1xy
+        XG4gICAgICAkKCcjZXhpc3RpbmdfcmVzb3VyY2VfYXJlYSAuZm9ybS1hY3Rp
+        b25zLWRpYWxvZyAjc3VibWl0X2J1dHRvbicpLmNsaWNrKGZ1bmN0aW9uKGUp
+        e1xyXG4gICAgICAgIC8vIG1vcmUganMgY29kZVxyXG4gICAgICAgICQoJy5m
+        b3JtLWFjdGlvbnMtZGlhbG9nICNjYW5jZWxfYnV0dG9uJykudHJpZ2dlcign
+        Y2xpY2snKTtcclxuICAgICAgfSk7XHJcbiAgICB9LFxyXG5cclxuVGhlIGNs
+        b3NlIGRvZXMgbm90IGdldCB0cmlnZ2VyZWQuIElmIEkgYWRkIHRoaXMgbGlu
+        ZTpcclxuXHJcbiAgICBjbG9zZV9kaWFsb2coZSk7XHJcblxyXG5JdCB3b3Jr
+        cy4gSXMgdGhpcyBhIGJ1Zz8gTWF5YmUgaXQgaXMgYSBicm93c2VyIHByb2Js
+        ZW0/IEkgZG8gbm90IGtub3cuLkkgdXNlIGZpcmVmb3ggYW5kIGdvb2dsZSBj
+        aHJvbWUuIFRoaXMgaGFwcGVucyBpbiB0aGUgXCJSZXNvdXJjZXNcIiB0YWIg
+        b2YgdGhlIHBhZ2UtcmVzb3VyY2VzIGdlbS4ifSx7InVybCI6Imh0dHBzOi8v
+        YXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5lcnkvcmVmaW5lcnljbXMvaXNz
+        dWVzLzIyMTUiLCJsYWJlbHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjIxNS9sYWJl
+        bHN7L25hbWV9IiwiY29tbWVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHVi
+        LmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjIxNS9j
+        b21tZW50cyIsImV2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29t
+        L3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yMjE1L2V2ZW50
+        cyIsImh0bWxfdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL3JlZmluZXJ5L3Jl
+        ZmluZXJ5Y21zL2lzc3Vlcy8yMjE1IiwiaWQiOjEyMDY2NjQ0LCJudW1iZXIi
+        OjIyMTUsInRpdGxlIjoiSW50ZXJuYWwgbGlua3Mgbm90IHVwZGF0ZWQgd2hl
+        biBwYWdlcycgcGFyZW50IGNoYW5nZXMiLCJ1c2VyIjp7ImxvZ2luIjoibWlj
+        aHJvbWUiLCJpZCI6NTk2NzcwLCJhdmF0YXJfdXJsIjoiaHR0cHM6Ly8xLmdy
+        YXZhdGFyLmNvbS9hdmF0YXIvODRhZGY3ZThjZTAwMDMzNTg1NDQ4Yzg2MDI2
+        NmI1ZTA/ZD1odHRwcyUzQSUyRiUyRmlkZW50aWNvbnMuZ2l0aHViLmNvbSUy
+        RmRiY2E5ZDdhN2U0MWYwMzQ0M2VhNGIyYTQ1ZjY2NDA4LnBuZyZyPXgiLCJn
+        cmF2YXRhcl9pZCI6Ijg0YWRmN2U4Y2UwMDAzMzU4NTQ0OGM4NjAyNjZiNWUw
+        IiwidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9taWNocm9t
+        ZSIsImh0bWxfdXJsIjoiaHR0cHM6Ly9naXRodWIuY29tL21pY2hyb21lIiwi
+        Zm9sbG93ZXJzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMv
+        bWljaHJvbWUvZm9sbG93ZXJzIiwiZm9sbG93aW5nX3VybCI6Imh0dHBzOi8v
+        YXBpLmdpdGh1Yi5jb20vdXNlcnMvbWljaHJvbWUvZm9sbG93aW5ney9vdGhl
+        cl91c2VyfSIsImdpc3RzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        dXNlcnMvbWljaHJvbWUvZ2lzdHN7L2dpc3RfaWR9Iiwic3RhcnJlZF91cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL21pY2hyb21lL3N0YXJy
+        ZWR7L293bmVyfXsvcmVwb30iLCJzdWJzY3JpcHRpb25zX3VybCI6Imh0dHBz
+        Oi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvbWljaHJvbWUvc3Vic2NyaXB0aW9u
+        cyIsIm9yZ2FuaXphdGlvbnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS91c2Vycy9taWNocm9tZS9vcmdzIiwicmVwb3NfdXJsIjoiaHR0cHM6Ly9h
+        cGkuZ2l0aHViLmNvbS91c2Vycy9taWNocm9tZS9yZXBvcyIsImV2ZW50c191
+        cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL21pY2hyb21lL2V2
+        ZW50c3svcHJpdmFjeX0iLCJyZWNlaXZlZF9ldmVudHNfdXJsIjoiaHR0cHM6
+        Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9taWNocm9tZS9yZWNlaXZlZF9ldmVu
+        dHMiLCJ0eXBlIjoiVXNlciIsInNpdGVfYWRtaW4iOmZhbHNlfSwibGFiZWxz
+        IjpbXSwic3RhdGUiOiJvcGVuIiwiYXNzaWduZWUiOm51bGwsIm1pbGVzdG9u
+        ZSI6bnVsbCwiY29tbWVudHMiOjAsImNyZWF0ZWRfYXQiOiIyMDEzLTAzLTE1
+        VDE1OjAwOjI4WiIsInVwZGF0ZWRfYXQiOiIyMDEzLTAzLTE1VDE1OjAwOjI4
+        WiIsImNsb3NlZF9hdCI6bnVsbCwicHVsbF9yZXF1ZXN0Ijp7Imh0bWxfdXJs
+        IjpudWxsLCJkaWZmX3VybCI6bnVsbCwicGF0Y2hfdXJsIjpudWxsfSwiYm9k
+        eSI6IklmIGEgcGFnZSdzIHBhcmVudCBjaGFuZ2VzLCBpbnRlcm5hbCBsaW5r
+        cyB0byB0aGF0IHBhZ2UgYXJlIG5vdCB1cGRhdGVkLlxyXG5cclxuIyMgRXhw
+        ZXJpZW5jZWQgb24gdmVyc2lvbnNcclxuXHJcbmAyLjAuOWAsIGAyLjAuMTBg
+        XHJcblxyXG4jIyBTdGVwcyB0byByZWNyZWF0ZSBpc3N1ZVxyXG5cclxuMSkg
+        Q3JlYXRlIHRoaXMgcGFnZSBoaWVyYXJjaHk6XHJcbiogSG9tZVxyXG4gICog
+        UGFnZSAxXHJcbiAgKiBQYWdlIDJcclxuXHJcbjIpIENyZWF0ZSBhbiBpbnRl
+        cm5hbCBwYWdlIGxpbmsgaW5zaWRlIGBQYWdlIDFgIHRoYXQgbGlua3MgdG8g
+        YFBhZ2UgMmAuXHJcblxyXG4zKSBWZXJpZnkgdmlhIGEgYnJvd3NlciB0aGF0
+        IHRoZSBsaW5rIGluIGBQYWdlIDFgIGlzIGAvaG9tZS9wYWdlLTJgLlxyXG5c
+        clxuNCkgUmVvcmRlciBwYWdlcyB0byB0aGlzIGhpZXJhcmNoeTpcclxuKiBI
+        b21lXHJcbiAgKiBQYWdlIDFcclxuICAgICAgKiBQYWdlIDJcclxuXHJcbjUp
+        IFJlbG9hZCBgUGFnZSAxYCBpbiBhIGJyb3dzZXIuIE5vdGUgdGhlIGxpbmsg
+        KipoYXMgbm90KiogYmVlbiB1cGRhdGVkIHRvIGAvaG9tZS9wYWdlLTEvcGFn
+        ZS0yYC4ifSx7InVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3Mv
+        cmVmaW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0MTQiLCJsYWJlbHNfdXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZp
+        bmVyeWNtcy9pc3N1ZXMvMjQxNC9sYWJlbHN7L25hbWV9IiwiY29tbWVudHNf
+        dXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9y
+        ZWZpbmVyeWNtcy9pc3N1ZXMvMjQxNC9jb21tZW50cyIsImV2ZW50c191cmwi
+        OiJodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmlu
+        ZXJ5Y21zL2lzc3Vlcy8yNDE0L2V2ZW50cyIsImh0bWxfdXJsIjoiaHR0cHM6
+        Ly9naXRodWIuY29tL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yNDE0
+        IiwiaWQiOjIwMDIzOTc0LCJudW1iZXIiOjI0MTQsInRpdGxlIjoiQ2hpbGQg
+        cGFnZXMgY2FudCBiZSBzZWFyY2hlZCBvbmx5IHBhcmVudCBjYW4gaXMgdGhl
+        cmUgYW55IHJlYXNvbiBpdCBpcyBkb25lIHRoaXMgd2F5ICIsInVzZXIiOnsi
+        bG9naW4iOiJoYXJzc2hoZnMiLCJpZCI6MjgxMjk5NCwiYXZhdGFyX3VybCI6
+        Imh0dHBzOi8vMC5ncmF2YXRhci5jb20vYXZhdGFyL2MzZGM4YzlkNzU5OGU3
+        NmE1NjRjZDhmZjdlZjU3ODYxP2Q9aHR0cHMlM0ElMkYlMkZpZGVudGljb25z
+        LmdpdGh1Yi5jb20lMkYyOTViZTIxN2NiMmI5YzAxZjU4MGNiMWE0Y2UzNzM4
+        ZC5wbmcmcj14IiwiZ3JhdmF0YXJfaWQiOiJjM2RjOGM5ZDc1OThlNzZhNTY0
+        Y2Q4ZmY3ZWY1Nzg2MSIsInVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        dXNlcnMvaGFyc3NoaGZzIiwiaHRtbF91cmwiOiJodHRwczovL2dpdGh1Yi5j
+        b20vaGFyc3NoaGZzIiwiZm9sbG93ZXJzX3VybCI6Imh0dHBzOi8vYXBpLmdp
+        dGh1Yi5jb20vdXNlcnMvaGFyc3NoaGZzL2ZvbGxvd2VycyIsImZvbGxvd2lu
+        Z191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL2hhcnNzaGhm
+        cy9mb2xsb3dpbmd7L290aGVyX3VzZXJ9IiwiZ2lzdHNfdXJsIjoiaHR0cHM6
+        Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9oYXJzc2hoZnMvZ2lzdHN7L2dpc3Rf
+        aWR9Iiwic3RhcnJlZF91cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3Vz
+        ZXJzL2hhcnNzaGhmcy9zdGFycmVkey9vd25lcn17L3JlcG99Iiwic3Vic2Ny
+        aXB0aW9uc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL2hh
+        cnNzaGhmcy9zdWJzY3JpcHRpb25zIiwib3JnYW5pemF0aW9uc191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL2hhcnNzaGhmcy9vcmdzIiwi
+        cmVwb3NfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9oYXJz
+        c2hoZnMvcmVwb3MiLCJldmVudHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHVi
+        LmNvbS91c2Vycy9oYXJzc2hoZnMvZXZlbnRzey9wcml2YWN5fSIsInJlY2Vp
+        dmVkX2V2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJz
+        L2hhcnNzaGhmcy9yZWNlaXZlZF9ldmVudHMiLCJ0eXBlIjoiVXNlciIsInNp
+        dGVfYWRtaW4iOmZhbHNlfSwibGFiZWxzIjpbXSwic3RhdGUiOiJvcGVuIiwi
+        YXNzaWduZWUiOm51bGwsIm1pbGVzdG9uZSI6bnVsbCwiY29tbWVudHMiOjAs
+        ImNyZWF0ZWRfYXQiOiIyMDEzLTA5LTI1VDA2OjE3OjU2WiIsInVwZGF0ZWRf
+        YXQiOiIyMDEzLTA5LTI1VDA2OjE3OjU2WiIsImNsb3NlZF9hdCI6bnVsbCwi
+        cHVsbF9yZXF1ZXN0Ijp7Imh0bWxfdXJsIjpudWxsLCJkaWZmX3VybCI6bnVs
+        bCwicGF0Y2hfdXJsIjpudWxsfSwiYm9keSI6IkluIGFkbWluIHBhZ2UgaW5k
+        ZXggdXNlciBjYW5ub3Qgc2VhcmNoIGNoaWxkIHBhZ2VzIGR1ZSB0byBiZWxv
+        dyBsaW5lIGFuZCBpZiBJIHJlbW92ZSBcclxuPiAuc2VsZWN0e3xwfCBwLnBh
+        cmVudF9pZC5uaWw/IGR1cGxpY2F0ZSBlbnRyaWVzIGNhbiBiZSBzZWVuIFxy
+        XG5cclxuXHJcbj4gIDwlPSByZW5kZXIgOnBhcnRpYWwgPT4gJ3BhZ2UnLCA6
+        Y29sbGVjdGlvbiA9PiBAcGFnZXMuc2VsZWN0e3xwfCBwLnBhcmVudF9pZC5u
+        aWw/fSAgJT5cclxuIn0seyJ1cmwiOiJodHRwczovL2FwaS5naXRodWIuY29t
+        L3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yMzQ0IiwibGFi
+        ZWxzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVmaW5l
+        cnkvcmVmaW5lcnljbXMvaXNzdWVzLzIzNDQvbGFiZWxzey9uYW1lfSIsImNv
+        bW1lbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVm
+        aW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzIzNDQvY29tbWVudHMiLCJldmVu
+        dHNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVy
+        eS9yZWZpbmVyeWNtcy9pc3N1ZXMvMjM0NC9ldmVudHMiLCJodG1sX3VybCI6
+        Imh0dHBzOi8vZ2l0aHViLmNvbS9yZWZpbmVyeS9yZWZpbmVyeWNtcy9pc3N1
+        ZXMvMjM0NCIsImlkIjoxNzA5MTc2MiwibnVtYmVyIjoyMzQ0LCJ0aXRsZSI6
+        Ikh5cGVybGluayBkaWFsb2cgZmFpbHMgZm9yIGEgdXNlciB3aG8gY2Fubm90
+        IG1vZGlmeSBQYWdlcyIsInVzZXIiOnsibG9naW4iOiJQYXRydSIsImlkIjox
+        MjYzOTcsImF2YXRhcl91cmwiOiJodHRwczovLzAuZ3JhdmF0YXIuY29tL2F2
+        YXRhci8wN2FmZmYxYmI3Y2IzZmIzMTg3YTUwYzQ3Yjk3Y2YxMT9kPWh0dHBz
+        JTNBJTJGJTJGaWRlbnRpY29ucy5naXRodWIuY29tJTJGZjZmNzMzZjMzOTEy
+        ZDA3MDY5ODcyYTA4ZWJmNzQyODEucG5nJnI9eCIsImdyYXZhdGFyX2lkIjoi
+        MDdhZmZmMWJiN2NiM2ZiMzE4N2E1MGM0N2I5N2NmMTEiLCJ1cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3VzZXJzL1BhdHJ1IiwiaHRtbF91cmwiOiJo
+        dHRwczovL2dpdGh1Yi5jb20vUGF0cnUiLCJmb2xsb3dlcnNfdXJsIjoiaHR0
+        cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9QYXRydS9mb2xsb3dlcnMiLCJm
+        b2xsb3dpbmdfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9Q
+        YXRydS9mb2xsb3dpbmd7L290aGVyX3VzZXJ9IiwiZ2lzdHNfdXJsIjoiaHR0
+        cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9QYXRydS9naXN0c3svZ2lzdF9p
+        ZH0iLCJzdGFycmVkX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNl
+        cnMvUGF0cnUvc3RhcnJlZHsvb3duZXJ9ey9yZXBvfSIsInN1YnNjcmlwdGlv
+        bnNfdXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS91c2Vycy9QYXRydS9z
+        dWJzY3JpcHRpb25zIiwib3JnYW5pemF0aW9uc191cmwiOiJodHRwczovL2Fw
+        aS5naXRodWIuY29tL3VzZXJzL1BhdHJ1L29yZ3MiLCJyZXBvc191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL1BhdHJ1L3JlcG9zIiwiZXZl
+        bnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvUGF0cnUv
+        ZXZlbnRzey9wcml2YWN5fSIsInJlY2VpdmVkX2V2ZW50c191cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3VzZXJzL1BhdHJ1L3JlY2VpdmVkX2V2ZW50
+        cyIsInR5cGUiOiJVc2VyIiwic2l0ZV9hZG1pbiI6ZmFsc2V9LCJsYWJlbHMi
+        OltdLCJzdGF0ZSI6Im9wZW4iLCJhc3NpZ25lZSI6bnVsbCwibWlsZXN0b25l
+        IjpudWxsLCJjb21tZW50cyI6MCwiY3JlYXRlZF9hdCI6IjIwMTMtMDctMjNU
+        MDk6MzQ6MDBaIiwidXBkYXRlZF9hdCI6IjIwMTMtMDctMjNUMDk6MzQ6MDBa
+        IiwiY2xvc2VkX2F0IjpudWxsLCJwdWxsX3JlcXVlc3QiOnsiaHRtbF91cmwi
+        Om51bGwsImRpZmZfdXJsIjpudWxsLCJwYXRjaF91cmwiOm51bGx9LCJib2R5
+        IjoiSSBub3RpY2VkIHRoaXMgd2hlbiBJIGNyZWF0ZWQgYSB1c2VyIHdobyBz
+        aG91bGQganVzdCBiZSBhYmxlIHRvIGVkaXQgQmxvZy1lbnRyaWVzLiBBcyB0
+        aGF0IHVzZXIgSSBjb3VsZCBnbyBhbG9uZyBhbmQgZWRpdCBteSBibG9nIHBv
+        c3QsIGJ1dCB3aGVuZXZlciBJIHdhbnRlZCB0byBpbnNlcnQgYSBsaW5rIEkg
+        b25seSBnb3QgYSA0MDQgaW5zaWRlIG15IGRpYWxvZy4gSW4gdGhlIGxvZyBJ
+        IGZvdW5kIHRoZSBsaW5lXHJcblxyXG5gJ3VzZXJuYW1lJyB0cmllZCB0byBh
+        Y2Nlc3MgJ3JlZmluZXJ5L3BhZ2VzX2RpYWxvZ3MnIGJ1dCB3YXMgcmVqZWN0
+        ZWQuYFxyXG5cclxud2hpY2ggbWFkZSBjbGVhciB0aGF0IGl0IHdhcyBhIHBl
+        cm1pc3Npb24gcHJvYmxlbS4gSSBnYXZlIHRoZSB1c2VyIG1vZGlmaWNhdGlv
+        biByaWdodHMgZm9yIFBhZ2VzIHRvbyBhbmQgSSBjb3VsZCBpbnNlcnQgbGlu
+        a3MgYWdhaW4uXHJcbkhvd2V2ZXIgSSBkbyBub3QgdGhpbmsgdGhpcyBpcyB0
+        aGUgcmlnaHQgc29sdXRpb24sIHdlIHNob3VsZCBiZSBhYmxlIHRvIGhhdmUg
+        dXNlcnMgd2hvIGNhbiBjcmVhdGUgbGlua3MgKGFsc28gdG8gaW50ZXJuYWwg
+        cGFnZXMgd2hpY2ggYXJlIHB1YmxpYyBhZnRlciBhbGwpLCBidXQgYXJlIG5v
+        dCBhbGxvd2VkIHRvIGNyZWF0ZSByZWd1bGFyIHBhZ2VzIG9uIHRoZWlyIG93
+        bi4ifSx7InVybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vcmVwb3MvcmVm
+        aW5lcnkvcmVmaW5lcnljbXMvaXNzdWVzLzI0NzkiLCJsYWJlbHNfdXJsIjoi
+        aHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZpbmVy
+        eWNtcy9pc3N1ZXMvMjQ3OS9sYWJlbHN7L25hbWV9IiwiY29tbWVudHNfdXJs
+        IjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy9yZWZpbmVyeS9yZWZp
+        bmVyeWNtcy9pc3N1ZXMvMjQ3OS9jb21tZW50cyIsImV2ZW50c191cmwiOiJo
+        dHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zL3JlZmluZXJ5L3JlZmluZXJ5
+        Y21zL2lzc3Vlcy8yNDc5L2V2ZW50cyIsImh0bWxfdXJsIjoiaHR0cHM6Ly9n
+        aXRodWIuY29tL3JlZmluZXJ5L3JlZmluZXJ5Y21zL2lzc3Vlcy8yNDc5Iiwi
+        aWQiOjIzNDcyNTcyLCJudW1iZXIiOjI0NzksInRpdGxlIjoiU29tZSBEb3Vi
+        bGUgV2lkdGggQ2hhcmFjdGVycyBhcmUgbm90IGRpc3BsYXllZCIsInVzZXIi
+        OnsibG9naW4iOiJLYWdldHN1a2kiLCJpZCI6ODY0NjM0LCJhdmF0YXJfdXJs
+        IjoiaHR0cHM6Ly8yLmdyYXZhdGFyLmNvbS9hdmF0YXIvOGY0YzNiM2I2ZjUy
+        MDZkMzg2NjdjMjNjMjVlMjczMTI/ZD1odHRwcyUzQSUyRiUyRmlkZW50aWNv
+        bnMuZ2l0aHViLmNvbSUyRjEzMGNlMjcwYTNmZmVmZGViMzE4NWRiZTNiNzg0
+        YjE0LnBuZyZyPXgiLCJncmF2YXRhcl9pZCI6IjhmNGMzYjNiNmY1MjA2ZDM4
+        NjY3YzIzYzI1ZTI3MzEyIiwidXJsIjoiaHR0cHM6Ly9hcGkuZ2l0aHViLmNv
+        bS91c2Vycy9LYWdldHN1a2kiLCJodG1sX3VybCI6Imh0dHBzOi8vZ2l0aHVi
+        LmNvbS9LYWdldHN1a2kiLCJmb2xsb3dlcnNfdXJsIjoiaHR0cHM6Ly9hcGku
+        Z2l0aHViLmNvbS91c2Vycy9LYWdldHN1a2kvZm9sbG93ZXJzIiwiZm9sbG93
+        aW5nX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvS2FnZXRz
+        dWtpL2ZvbGxvd2luZ3svb3RoZXJfdXNlcn0iLCJnaXN0c191cmwiOiJodHRw
+        czovL2FwaS5naXRodWIuY29tL3VzZXJzL0thZ2V0c3VraS9naXN0c3svZ2lz
+        dF9pZH0iLCJzdGFycmVkX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20v
+        dXNlcnMvS2FnZXRzdWtpL3N0YXJyZWR7L293bmVyfXsvcmVwb30iLCJzdWJz
+        Y3JpcHRpb25zX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMv
+        S2FnZXRzdWtpL3N1YnNjcmlwdGlvbnMiLCJvcmdhbml6YXRpb25zX3VybCI6
+        Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNlcnMvS2FnZXRzdWtpL29yZ3Mi
+        LCJyZXBvc191cmwiOiJodHRwczovL2FwaS5naXRodWIuY29tL3VzZXJzL0th
+        Z2V0c3VraS9yZXBvcyIsImV2ZW50c191cmwiOiJodHRwczovL2FwaS5naXRo
+        dWIuY29tL3VzZXJzL0thZ2V0c3VraS9ldmVudHN7L3ByaXZhY3l9IiwicmVj
+        ZWl2ZWRfZXZlbnRzX3VybCI6Imh0dHBzOi8vYXBpLmdpdGh1Yi5jb20vdXNl
+        cnMvS2FnZXRzdWtpL3JlY2VpdmVkX2V2ZW50cyIsInR5cGUiOiJVc2VyIiwi
+        c2l0ZV9hZG1pbiI6ZmFsc2V9LCJsYWJlbHMiOltdLCJzdGF0ZSI6Im9wZW4i
+        LCJhc3NpZ25lZSI6bnVsbCwibWlsZXN0b25lIjpudWxsLCJjb21tZW50cyI6
+        MCwiY3JlYXRlZF9hdCI6IjIwMTMtMTEtMjlUMDI6MDM6MTRaIiwidXBkYXRl
+        ZF9hdCI6IjIwMTMtMTEtMjlUMDI6MDM6MTRaIiwiY2xvc2VkX2F0IjpudWxs
+        LCJwdWxsX3JlcXVlc3QiOnsiaHRtbF91cmwiOm51bGwsImRpZmZfdXJsIjpu
+        dWxsLCJwYXRjaF91cmwiOm51bGx9LCJib2R5IjoiVGhlIGZvbGxvd2luZyBk
+        b3VibGUgd2lkdGggY2hhcmFjdGVycyAoYW5kIHByb2JhYmx5IGEgZmV3IG1v
+        cmUpIGFyZSBub3QgZGlzcGxheWVkIG9uIHJlbmRlcmVkIHZpZXdzIGJ1dCBk
+        aXNwbGF5IHByb3Blcmx5IGluIHRoZSBlZGl0b3I6XHJcbu+8ke+8ku+8k++8
+        lO+8le+8lu+8l++8mO+8me+8kOOAnO+/pVxyXG5UaGUgY2hhcmFjdGVycyBh
+        cmUgbm90IHByZXNlbnQgaW4gdGhlIHJlbmRlcmVkIHNvdXJjZSBzbyB3ZSBj
+        YW4gY29uZmlybSBpdCBoYXMgc29tZXRoaW5nIHRvIGRvIHdpdGggaG93ZXZl
+        ciB0aGUgdGV4dCBpcyBwcm9jZXNzZWQuIFBhc3QgdGhhdCB3ZSdyZSBzb3J0
+        IG9mIGR1bWJmb3VuZGVkIGFzIHdlJ3JlIG5vdCBzdXJlIGhvdyBSZWZpbmVy
+        eSB0YWtlcyB0ZXh0IGZyb20gdGhlIGRhdGFiYXNlIGFuZCBwcm9jZXNzZXMg
+        aXQgYmVmb3JlIGJlaW5nIHJlbmRlcmVkIGluIGZyb250IGVuZCB2aWV3cy5c
+        clxuXHJcbklmIHdlIGNhbiBnZXQgc29tZSBoaW50cyB3ZSdsbCB0cnkgdG8g
+        Zml4IGl0IGFuZCBwdXNoLiJ9XQ==
+    http_version:
+  recorded_at: Mon, 09 Dec 2013 19:17:21 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/refinery/refinerycms
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - d3a82c8eb3f5a8840be46e40f59ee0e8
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 09 Dec 2013 19:17:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '42'
+      X-Ratelimit-Reset:
+      - '1386620230'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Last-Modified:
+      - Mon, 09 Dec 2013 12:25:31 GMT
+      Etag:
+      - '"495493b99ed39287e22babbd4f32e717"'
+      Vary:
+      - Accept, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '5904'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 633D470B:70CD:550D5F1:52A61742
+    body:
+      encoding: UTF-8
+      string: '{"id":212862,"name":"refinerycms","full_name":"refinery/refinerycms","owner":{"login":"refinery","id":339098,"avatar_url":"https://1.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https%3A%2F%2Fidenticons.github.com%2F9fdb141c4faa83f0e12fd5e5e2c3db41.png&r=x","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","url":"https://api.github.com/users/refinery","html_url":"https://github.com/refinery","followers_url":"https://api.github.com/users/refinery/followers","following_url":"https://api.github.com/users/refinery/following{/other_user}","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/refinery/subscriptions","organizations_url":"https://api.github.com/users/refinery/orgs","repos_url":"https://api.github.com/users/refinery/repos","events_url":"https://api.github.com/users/refinery/events{/privacy}","received_events_url":"https://api.github.com/users/refinery/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/refinery/refinerycms","description":"An
+        extendable Ruby on Rails CMS that supports Rails 3.2","fork":false,"url":"https://api.github.com/repos/refinery/refinerycms","forks_url":"https://api.github.com/repos/refinery/refinerycms/forks","keys_url":"https://api.github.com/repos/refinery/refinerycms/keys{/key_id}","collaborators_url":"https://api.github.com/repos/refinery/refinerycms/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/refinery/refinerycms/teams","hooks_url":"https://api.github.com/repos/refinery/refinerycms/hooks","issue_events_url":"https://api.github.com/repos/refinery/refinerycms/issues/events{/number}","events_url":"https://api.github.com/repos/refinery/refinerycms/events","assignees_url":"https://api.github.com/repos/refinery/refinerycms/assignees{/user}","branches_url":"https://api.github.com/repos/refinery/refinerycms/branches{/branch}","tags_url":"https://api.github.com/repos/refinery/refinerycms/tags","blobs_url":"https://api.github.com/repos/refinery/refinerycms/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/refinery/refinerycms/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/refinery/refinerycms/git/refs{/sha}","trees_url":"https://api.github.com/repos/refinery/refinerycms/git/trees{/sha}","statuses_url":"https://api.github.com/repos/refinery/refinerycms/statuses/{sha}","languages_url":"https://api.github.com/repos/refinery/refinerycms/languages","stargazers_url":"https://api.github.com/repos/refinery/refinerycms/stargazers","contributors_url":"https://api.github.com/repos/refinery/refinerycms/contributors","subscribers_url":"https://api.github.com/repos/refinery/refinerycms/subscribers","subscription_url":"https://api.github.com/repos/refinery/refinerycms/subscription","commits_url":"https://api.github.com/repos/refinery/refinerycms/commits{/sha}","git_commits_url":"https://api.github.com/repos/refinery/refinerycms/git/commits{/sha}","comments_url":"https://api.github.com/repos/refinery/refinerycms/comments{/number}","issue_comment_url":"https://api.github.com/repos/refinery/refinerycms/issues/comments/{number}","contents_url":"https://api.github.com/repos/refinery/refinerycms/contents/{+path}","compare_url":"https://api.github.com/repos/refinery/refinerycms/compare/{base}...{head}","merges_url":"https://api.github.com/repos/refinery/refinerycms/merges","archive_url":"https://api.github.com/repos/refinery/refinerycms/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/refinery/refinerycms/downloads","issues_url":"https://api.github.com/repos/refinery/refinerycms/issues{/number}","pulls_url":"https://api.github.com/repos/refinery/refinerycms/pulls{/number}","milestones_url":"https://api.github.com/repos/refinery/refinerycms/milestones{/number}","notifications_url":"https://api.github.com/repos/refinery/refinerycms/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/refinery/refinerycms/labels{/name}","releases_url":"https://api.github.com/repos/refinery/refinerycms/releases{/id}","created_at":"2009-05-28T20:13:21Z","updated_at":"2013-12-09T12:25:31Z","pushed_at":"2013-12-04T11:50:14Z","git_url":"git://github.com/refinery/refinerycms.git","ssh_url":"git@github.com:refinery/refinerycms.git","clone_url":"https://github.com/refinery/refinerycms.git","svn_url":"https://github.com/refinery/refinerycms","homepage":"http://refinerycms.com/guides/","size":41948,"stargazers_count":2807,"watchers_count":2807,"language":"Ruby","has_issues":true,"has_downloads":false,"has_wiki":true,"forks_count":1076,"mirror_url":null,"open_issues_count":43,"forks":1076,"open_issues":43,"watchers":2807,"default_branch":"master","master_branch":"master","organization":{"login":"refinery","id":339098,"avatar_url":"https://1.gravatar.com/avatar/fa8eb6800ed040d905e1493a154f3eef?d=https%3A%2F%2Fidenticons.github.com%2F9fdb141c4faa83f0e12fd5e5e2c3db41.png&r=x","gravatar_id":"fa8eb6800ed040d905e1493a154f3eef","url":"https://api.github.com/users/refinery","html_url":"https://github.com/refinery","followers_url":"https://api.github.com/users/refinery/followers","following_url":"https://api.github.com/users/refinery/following{/other_user}","gists_url":"https://api.github.com/users/refinery/gists{/gist_id}","starred_url":"https://api.github.com/users/refinery/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/refinery/subscriptions","organizations_url":"https://api.github.com/users/refinery/orgs","repos_url":"https://api.github.com/users/refinery/repos","events_url":"https://api.github.com/users/refinery/events{/privacy}","received_events_url":"https://api.github.com/users/refinery/received_events","type":"Organization","site_admin":false},"network_count":1076,"subscribers_count":102}'
+    http_version:
+  recorded_at: Mon, 09 Dec 2013 19:17:22 GMT
+recorded_with: VCR 2.5.0
