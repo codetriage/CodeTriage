@@ -11,14 +11,20 @@ class ReposController < RepoBasedController
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
 
     if user_signed_in?
-      own_repos_response = GitHubBub.get("/user/repos", token: current_user.token, type: "owner", per_page: '100')
-      @own_repos = SortedRepoCollection.new(own_repos_response.json_body)
+      @own_repos = Rails.cache.fetch("user/repos/#{current_user.id}", expires_in: 30.minutes) do
+        own_repos_response = GitHubBub.get("/user/repos", token: current_user.token, type: "owner", per_page: '100')
+        SortedRepoCollection.new(own_repos_response.json_body)
+      end
 
-      starred_repos_response = GitHubBub.get("/user/starred", token: current_user.token)
-      @starred_repos = SortedRepoCollection.new(starred_repos_response.json_body)
+      @starred_repos = Rails.cache.fetch("users/starred/#{current_user.id}", expires_in: 30.minutes) do
+        starred_repos_response = GitHubBub.get("/user/starred", token: current_user.token)
+        SortedRepoCollection.new(starred_repos_response.json_body)
+      end
 
-      watched_repos_response = GitHubBub.get("/user/subscriptions", token: current_user.token)
-      @watched_repos = SortedRepoCollection.new(watched_repos_response.json_body)
+      @watched_repos = Rails.cache.fetch("users/subscriptions/#{current_user.id}", expires_in: 30.minutes) do
+        watched_repos_response = GitHubBub.get("/user/subscriptions", token: current_user.token)
+        SortedRepoCollection.new(watched_repos_response.json_body)
+      end
     end
   end
 
