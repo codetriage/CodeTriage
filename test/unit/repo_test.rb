@@ -2,15 +2,19 @@ require 'test_helper'
 
 class RepoTest < ActiveSupport::TestCase
   test "normalizing names to lowercase" do
-    repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
-    assert_equal "refinery", repo.user_name
-    assert_equal "refinerycms", repo.name
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
+      assert_equal "refinery", repo.user_name
+      assert_equal "refinerycms", repo.name
+    end
   end
 
   test "uniqueness of repo with case insensitivity" do
-    Repo.create user_name: 'refinery', name: 'refinerycms'
-    duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
-    assert_equal ["has already been taken"], duplicate_repo.errors[:name]
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      Repo.create user_name: 'refinery', name: 'refinerycms'
+      duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
+      assert_equal ["has already been taken"], duplicate_repo.errors[:name]
+    end
   end
 
   test "update repo info from github" do
@@ -30,15 +34,19 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "counts number of subscribers" do
-    repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
-    repo.users << users(:jroes)
-    repo.users << users(:schneems)
-    repo.subscriber_count == 2
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
+      repo.users << users(:jroes)
+      repo.users << users(:schneems)
+      repo.subscriber_count == 2
+    end
   end
 
-  test "#all_languages contains no empty results" do
-    repo = Repo.create :user_name => 'Refinery', :name => "RefineryCMS", :language => ""
-    refute Repo.all_languages.include? ""
+  test "#all_languages does not contain empty string" do
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      Repo.create :user_name => 'Refinery', :name => "RefineryCMS", :language => ""
+      refute Repo.all_languages.include? ""
+    end
   end
 
   test "repos needing help when user has ruby language" do
@@ -72,9 +80,9 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "search_by returns repo by name and user_name" do
-    repo1 = Repo.create(name: 'codetriage', user_name: 'codetriage')
-    repo2 = Repo.create(name: 'rails', user_name: 'rails')
-
-    assert_equal [repo1], Repo.search_by('codetriage', 'codetriage')
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
+      assert_equal [repo], Repo.search_by('refinerycms', 'refinery')
+    end
   end
  end
