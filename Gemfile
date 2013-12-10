@@ -4,7 +4,7 @@ ruby '2.0.0'
 
 # Gems required in all environments
 
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 gem 'skylight'
 gem 'git_hub_bub'
 gem 'pg'
