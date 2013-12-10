@@ -1,0 +1,198 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/repos?per_page=100&type=owner
+    body:
+      encoding: UTF-8
+      string: '{"type":"owner","per_page":"100"}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - c748ac0303eecdc40ffa2572d7343d0f
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 04 Dec 2013 16:20:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4993'
+      X-Ratelimit-Reset:
+      - '1386177126'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"8933d79216611f43934848923bf0e0e9"'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, public_repo, repo:status, repo:deployment, delete_repo, site_admin
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '306746'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 1849BBCA:3B1F:1891F40:529F5656
+    body:
+      encoding: UTF-8
+      string: '[{"id":7099457,"name":"24pullrequests","full_name":"jamescook/24pullrequests","owner":{"login":"jamescook","id":4067,"avatar_url":"https://2.gravatar.com/avatar/acf32219944558e5aeb55abc37e3d63e?d=https%3A%2F%2Fidenticons.github.com%2Fe951ccd95572a67138f4572c1c7d7ee8.png&r=x","gravatar_id":"acf32219944558e5aeb55abc37e3d63e","url":"https://api.github.com/users/jamescook","html_url":"https://github.com/jamescook","followers_url":"https://api.github.com/users/jamescook/followers","following_url":"https://api.github.com/users/jamescook/following{/other_user}","gists_url":"https://api.github.com/users/jamescook/gists{/gist_id}","starred_url":"https://api.github.com/users/jamescook/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jamescook/subscriptions","organizations_url":"https://api.github.com/users/jamescook/orgs","repos_url":"https://api.github.com/users/jamescook/repos","events_url":"https://api.github.com/users/jamescook/events{/privacy}","received_events_url":"https://api.github.com/users/jamescook/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/jamescook/24pullrequests","description":"Giving
+        back little gifts of code for Christmas","fork":true,"url":"https://api.github.com/repos/jamescook/24pullrequests","forks_url":"https://api.github.com/repos/jamescook/24pullrequests/forks","keys_url":"https://api.github.com/repos/jamescook/24pullrequests/keys{/key_id}","collaborators_url":"https://api.github.com/repos/jamescook/24pullrequests/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/jamescook/24pullrequests/teams","hooks_url":"https://api.github.com/repos/jamescook/24pullrequests/hooks","issue_events_url":"https://api.github.com/repos/jamescook/24pullrequests/issues/events{/number}","events_url":"https://api.github.com/repos/jamescook/24pullrequests/events","assignees_url":"https://api.github.com/repos/jamescook/24pullrequests/assignees{/user}","branches_url":"https://api.github.com/repos/jamescook/24pullrequests/branches{/branch}","tags_url":"https://api.github.com/repos/jamescook/24pullrequests/tags","blobs_url":"https://api.github.com/repos/jamescook/24pullrequests/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/jamescook/24pullrequests/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/jamescook/24pullrequests/git/refs{/sha}","trees_url":"https://api.github.com/repos/jamescook/24pullrequests/git/trees{/sha}","statuses_url":"https://api.github.com/repos/jamescook/24pullrequests/statuses/{sha}","languages_url":"https://api.github.com/repos/jamescook/24pullrequests/languages","stargazers_url":"https://api.github.com/repos/jamescook/24pullrequests/stargazers","contributors_url":"https://api.github.com/repos/jamescook/24pullrequests/contributors","subscribers_url":"https://api.github.com/repos/jamescook/24pullrequests/subscribers","subscription_url":"https://api.github.com/repos/jamescook/24pullrequests/subscription","commits_url":"https://api.github.com/repos/jamescook/24pullrequests/commits{/sha}","git_commits_url":"https://api.github.com/repos/jamescook/24pullrequests/git/commits{/sha}","comments_url":"https://api.github.com/repos/jamescook/24pullrequests/comments{/number}","issue_comment_url":"https://api.github.com/repos/jamescook/24pullrequests/issues/comments/{number}","contents_url":"https://api.github.com/repos/jamescook/24pullrequests/contents/{+path}","compare_url":"https://api.github.com/repos/jamescook/24pullrequests/compare/{base}...{head}","merges_url":"https://api.github.com/repos/jamescook/24pullrequests/merges","archive_url":"https://api.github.com/repos/jamescook/24pullrequests/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/jamescook/24pullrequests/downloads","issues_url":"https://api.github.com/repos/jamescook/24pullrequests/issues{/number}","pulls_url":"https://api.github.com/repos/jamescook/24pullrequests/pulls{/number}","milestones_url":"https://api.github.com/repos/jamescook/24pullrequests/milestones{/number}","notifications_url":"https://api.github.com/repos/jamescook/24pullrequests/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/jamescook/24pullrequests/labels{/name}","releases_url":"https://api.github.com/repos/jamescook/24pullrequests/releases{/id}","created_at":"2012-12-10T19:41:26Z","updated_at":"2013-01-13T14:31:25Z","pushed_at":"2012-12-19T14:35:35Z","git_url":"git://github.com/jamescook/24pullrequests.git","ssh_url":"git@github.com:jamescook/24pullrequests.git","clone_url":"https://github.com/jamescook/24pullrequests.git","svn_url":"https://github.com/jamescook/24pullrequests","homepage":"http://24pullrequests.com/","size":132,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","master_branch":"master","permissions":{"admin":true,"push":true,"pull":true}}]'
+    http_version:
+  recorded_at: Wed, 04 Dec 2013 16:20:53 GMT
+- request:
+    method: get
+    uri: https://api.github.com/user/starred
+    body:
+      encoding: UTF-8
+      string: '{}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - c748ac0303eecdc40ffa2572d7343d0f
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 04 Dec 2013 16:20:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4992'
+      X-Ratelimit-Reset:
+      - '1386177126'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"b7d23ed67f65c22b05b83a2d5b6ebfbe"'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, public_repo, repo:status, repo:deployment, delete_repo, site_admin
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      Link:
+      - <https://api.github.com/user/starred?page=2>; rel="next", <https://api.github.com/user/starred?page=3>;
+        rel="last"
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '148740'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 1849BBCA:31F4:1AC5824:529F5658
+    body:
+      encoding: UTF-8
+      string: '[{"id":11768811,"name":"bandcampbx","full_name":"megalithic/bandcampbx","owner":{"login":"megalithic","id":3678,"avatar_url":"https://2.gravatar.com/avatar/3a41c1a4e3cdc7be0abd2cb6429f6344?d=https%3A%2F%2Fidenticons.github.com%2F2151b4c76b4dcb048d06a5c32942b6f6.png&r=x","gravatar_id":"3a41c1a4e3cdc7be0abd2cb6429f6344","url":"https://api.github.com/users/megalithic","html_url":"https://github.com/megalithic","followers_url":"https://api.github.com/users/megalithic/followers","following_url":"https://api.github.com/users/megalithic/following{/other_user}","gists_url":"https://api.github.com/users/megalithic/gists{/gist_id}","starred_url":"https://api.github.com/users/megalithic/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/megalithic/subscriptions","organizations_url":"https://api.github.com/users/megalithic/orgs","repos_url":"https://api.github.com/users/megalithic/repos","events_url":"https://api.github.com/users/megalithic/events{/privacy}","received_events_url":"https://api.github.com/users/megalithic/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/megalithic/bandcampbx","description":"BandCampBX
+        is a gem for accessing CampBX''s API","fork":false,"url":"https://api.github.com/repos/megalithic/bandcampbx","forks_url":"https://api.github.com/repos/megalithic/bandcampbx/forks","keys_url":"https://api.github.com/repos/megalithic/bandcampbx/keys{/key_id}","collaborators_url":"https://api.github.com/repos/megalithic/bandcampbx/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/megalithic/bandcampbx/teams","hooks_url":"https://api.github.com/repos/megalithic/bandcampbx/hooks","issue_events_url":"https://api.github.com/repos/megalithic/bandcampbx/issues/events{/number}","events_url":"https://api.github.com/repos/megalithic/bandcampbx/events","assignees_url":"https://api.github.com/repos/megalithic/bandcampbx/assignees{/user}","branches_url":"https://api.github.com/repos/megalithic/bandcampbx/branches{/branch}","tags_url":"https://api.github.com/repos/megalithic/bandcampbx/tags","blobs_url":"https://api.github.com/repos/megalithic/bandcampbx/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/megalithic/bandcampbx/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/megalithic/bandcampbx/git/refs{/sha}","trees_url":"https://api.github.com/repos/megalithic/bandcampbx/git/trees{/sha}","statuses_url":"https://api.github.com/repos/megalithic/bandcampbx/statuses/{sha}","languages_url":"https://api.github.com/repos/megalithic/bandcampbx/languages","stargazers_url":"https://api.github.com/repos/megalithic/bandcampbx/stargazers","contributors_url":"https://api.github.com/repos/megalithic/bandcampbx/contributors","subscribers_url":"https://api.github.com/repos/megalithic/bandcampbx/subscribers","subscription_url":"https://api.github.com/repos/megalithic/bandcampbx/subscription","commits_url":"https://api.github.com/repos/megalithic/bandcampbx/commits{/sha}","git_commits_url":"https://api.github.com/repos/megalithic/bandcampbx/git/commits{/sha}","comments_url":"https://api.github.com/repos/megalithic/bandcampbx/comments{/number}","issue_comment_url":"https://api.github.com/repos/megalithic/bandcampbx/issues/comments/{number}","contents_url":"https://api.github.com/repos/megalithic/bandcampbx/contents/{+path}","compare_url":"https://api.github.com/repos/megalithic/bandcampbx/compare/{base}...{head}","merges_url":"https://api.github.com/repos/megalithic/bandcampbx/merges","archive_url":"https://api.github.com/repos/megalithic/bandcampbx/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/megalithic/bandcampbx/downloads","issues_url":"https://api.github.com/repos/megalithic/bandcampbx/issues{/number}","pulls_url":"https://api.github.com/repos/megalithic/bandcampbx/pulls{/number}","milestones_url":"https://api.github.com/repos/megalithic/bandcampbx/milestones{/number}","notifications_url":"https://api.github.com/repos/megalithic/bandcampbx/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/megalithic/bandcampbx/labels{/name}","releases_url":"https://api.github.com/repos/megalithic/bandcampbx/releases{/id}","created_at":"2013-07-30T15:44:51Z","updated_at":"2013-10-18T02:22:35Z","pushed_at":"2013-08-20T19:10:37Z","git_url":"git://github.com/megalithic/bandcampbx.git","ssh_url":"git@github.com:megalithic/bandcampbx.git","clone_url":"https://github.com/megalithic/bandcampbx.git","svn_url":"https://github.com/megalithic/bandcampbx","homepage":null,"size":164,"stargazers_count":2,"watchers_count":2,"language":"Ruby","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":2,"mirror_url":null,"open_issues_count":2,"forks":2,"open_issues":2,"watchers":2,"default_branch":"master","master_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
+    http_version:
+  recorded_at: Wed, 04 Dec 2013 16:20:54 GMT
+- request:
+    method: get
+    uri: https://api.github.com/user/subscriptions
+    body:
+      encoding: UTF-8
+      string: '{}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - c748ac0303eecdc40ffa2572d7343d0f
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 04 Dec 2013 16:20:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4991'
+      X-Ratelimit-Reset:
+      - '1386177126'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"d0e0b5f47a6a7a6e119dae4a40208d3c"'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, public_repo, repo:status, repo:deployment, delete_repo, site_admin
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; param=3.raw; format=json
+      Link:
+      - <https://api.github.com/user/subscriptions?page=2>; rel="next", <https://api.github.com/user/subscriptions?page=8>;
+        rel="last"
+      X-Content-Type-Options:
+      - nosniff
+      Content-Length:
+      - '152998'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - '*'
+      X-Github-Request-Id:
+      - 1849BBCA:3B1D:1AF0A7A:529F5659
+    body:
+      encoding: UTF-8
+      string: '[{"id":111124,"name":"garb","full_name":"Fosome/garb","owner":{"login":"Fosome","id":842652,"avatar_url":"https://1.gravatar.com/avatar/841d0faf7b2fa9968dd52993e4dac6fc?d=https%3A%2F%2Fidenticons.github.com%2Fbcf6f2da7488c4c9a781fe2e153557f6.png&r=x","gravatar_id":"841d0faf7b2fa9968dd52993e4dac6fc","url":"https://api.github.com/users/Fosome","html_url":"https://github.com/Fosome","followers_url":"https://api.github.com/users/Fosome/followers","following_url":"https://api.github.com/users/Fosome/following{/other_user}","gists_url":"https://api.github.com/users/Fosome/gists{/gist_id}","starred_url":"https://api.github.com/users/Fosome/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Fosome/subscriptions","organizations_url":"https://api.github.com/users/Fosome/orgs","repos_url":"https://api.github.com/users/Fosome/repos","events_url":"https://api.github.com/users/Fosome/events{/privacy}","received_events_url":"https://api.github.com/users/Fosome/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Fosome/garb","description":"A
+        Ruby wrapper for the Google Analytics API","fork":false,"url":"https://api.github.com/repos/Fosome/garb","forks_url":"https://api.github.com/repos/Fosome/garb/forks","keys_url":"https://api.github.com/repos/Fosome/garb/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Fosome/garb/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Fosome/garb/teams","hooks_url":"https://api.github.com/repos/Fosome/garb/hooks","issue_events_url":"https://api.github.com/repos/Fosome/garb/issues/events{/number}","events_url":"https://api.github.com/repos/Fosome/garb/events","assignees_url":"https://api.github.com/repos/Fosome/garb/assignees{/user}","branches_url":"https://api.github.com/repos/Fosome/garb/branches{/branch}","tags_url":"https://api.github.com/repos/Fosome/garb/tags","blobs_url":"https://api.github.com/repos/Fosome/garb/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Fosome/garb/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Fosome/garb/git/refs{/sha}","trees_url":"https://api.github.com/repos/Fosome/garb/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Fosome/garb/statuses/{sha}","languages_url":"https://api.github.com/repos/Fosome/garb/languages","stargazers_url":"https://api.github.com/repos/Fosome/garb/stargazers","contributors_url":"https://api.github.com/repos/Fosome/garb/contributors","subscribers_url":"https://api.github.com/repos/Fosome/garb/subscribers","subscription_url":"https://api.github.com/repos/Fosome/garb/subscription","commits_url":"https://api.github.com/repos/Fosome/garb/commits{/sha}","git_commits_url":"https://api.github.com/repos/Fosome/garb/git/commits{/sha}","comments_url":"https://api.github.com/repos/Fosome/garb/comments{/number}","issue_comment_url":"https://api.github.com/repos/Fosome/garb/issues/comments/{number}","contents_url":"https://api.github.com/repos/Fosome/garb/contents/{+path}","compare_url":"https://api.github.com/repos/Fosome/garb/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Fosome/garb/merges","archive_url":"https://api.github.com/repos/Fosome/garb/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Fosome/garb/downloads","issues_url":"https://api.github.com/repos/Fosome/garb/issues{/number}","pulls_url":"https://api.github.com/repos/Fosome/garb/pulls{/number}","milestones_url":"https://api.github.com/repos/Fosome/garb/milestones{/number}","notifications_url":"https://api.github.com/repos/Fosome/garb/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Fosome/garb/labels{/name}","releases_url":"https://api.github.com/repos/Fosome/garb/releases{/id}","created_at":"2009-01-20T15:20:38Z","updated_at":"2013-11-22T15:05:53Z","pushed_at":"2011-12-20T07:37:34Z","git_url":"git://github.com/Fosome/garb.git","ssh_url":"git@github.com:Fosome/garb.git","clone_url":"https://github.com/Fosome/garb.git","svn_url":"https://github.com/Fosome/garb","homepage":"http://www.viget.com/extend/","size":2626,"stargazers_count":719,"watchers_count":719,"language":"Ruby","has_issues":true,"has_downloads":false,"has_wiki":true,"forks_count":161,"mirror_url":null,"open_issues_count":27,"forks":161,"open_issues":27,"watchers":719,"default_branch":"master","master_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
+    http_version:
+  recorded_at: Wed, 04 Dec 2013 16:20:55 GMT
+recorded_with: VCR 2.5.0
