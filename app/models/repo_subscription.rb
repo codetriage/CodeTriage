@@ -50,7 +50,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def get_issue_for_triage
-    issue = repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
+    issue = repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).order(:updated_at).first
     return nil   if issue.blank?
     return issue if issue.valid_for_user?(self.user)
 

@@ -27,6 +27,40 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     end
   end
 
+  test "get_issue_for_triage returns the oldest issue" do
+    user     = users(:mockstar)
+    repo     = repos(:rails_rails)
+
+    repo_sub = user.repo_subscriptions.new
+    repo_sub.repo = repo
+    repo_sub.save
+
+    issue = repo.issues.new
+    issue.title = "Foo Bar"
+    issue.url   = "http://schneems.com"
+    issue.last_touched_at = 2.days.ago
+    issue.state = 'open'
+    issue.html_url = "http://schneems.com"
+    issue.number = 1
+    issue.save
+    issue.update_attribute :updated_at, 1.day.ago
+
+    older_issue = repo.issues.new
+    older_issue.title = "Bar Baz"
+    older_issue.url   = "http://schneems.com"
+    older_issue.last_touched_at = 2.days.ago
+    older_issue.state = 'open'
+    older_issue.html_url = "http://schneems.com"
+    older_issue.number = 2
+    older_issue.save
+    older_issue.update_attribute :updated_at, 2.days.ago
+
+    VCR.use_cassette('open_issue') do
+      Issue.any_instance.stubs(:valid_for_user?).returns(true)
+      issue = repo_sub.get_issue_for_triage
+      assert issue == older_issue
+    end
+  end
 
   test "the get_issue_for_triage for user with existing issue assignments" do
     user     = users(:mockstar)
