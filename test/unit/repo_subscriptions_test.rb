@@ -157,7 +157,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
     repo2 = repos(:rails_rails)
-    issue = repo.issues.create(:title         => "Foo Bar",
+    issue = repo.issues.create(:title           => "Foo Bar",
                                :url             => "http://schneems.com",
                                :last_touched_at => 2.days.ago,
                                :state           => 'open',
