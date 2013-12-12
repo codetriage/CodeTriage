@@ -30,9 +30,12 @@ $ bundle install
 ```
 
 ### Database
-Create a database (default is PostgreSQL) and run your migrations
+* Create a database (default is PostgreSQL)
+* Copy database.yml and if you need, setup your own database credentials
+* Run migrations
 
 ```shell
+$ cp config/database.example.yml config/database.yml
 $ bundle exec rake db:create
 $ bundle exec rake db:migrate
 ````

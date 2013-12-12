@@ -25,3 +25,6 @@ dump.rdb
 
 # Code test coverage reports
 /coverage
+
+# ignore personal settings
+/config/database.yml
