@@ -4,6 +4,7 @@ rvm:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_script:
+  - cp config/database.example.yml config/database.yml
   - psql -c 'create database triage_test;' -U postgres
 deploy:
   provider: heroku
