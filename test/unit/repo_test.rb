@@ -12,8 +12,10 @@ class RepoTest < ActiveSupport::TestCase
   test "uniqueness of repo with case insensitivity" do
     VCR.use_cassette "create_repo_refinery", record: :once do
       Repo.create user_name: 'refinery', name: 'refinerycms'
-      duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
-      assert_equal ["has already been taken"], duplicate_repo.errors[:name]
+      VCR.use_cassette "create_duplicate_repo_refinery", record: :once do
+        duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
+        assert_equal ["has already been taken"], duplicate_repo.errors[:name]
+      end
     end
   end
 
