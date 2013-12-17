@@ -3,8 +3,7 @@ require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 class ReposController < RepoBasedController
 
   def index
-    # TODO join and order by subscribers
-    @repos = Repo.order(:name).page(params[:page]).per_page(params[:per_page]||50)
+    @repos = Repo.order_by_subscribers.order(:name).page(params[:page]).per_page(params[:per_page] || 50)
   end
 
   def new
