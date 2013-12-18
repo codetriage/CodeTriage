@@ -3,9 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Gems required in all environments
-
-gem 'rails', '4.0.2'
-
+gem 'rails', '4.1.0.beta1'
 gem 'sprockets_better_errors'
 gem 'skylight'
 gem 'git_hub_bub'
