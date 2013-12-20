@@ -40,13 +40,16 @@ class IssueTest < ActiveSupport::TestCase
     issue = repos("rails_rails").issues.new
     issue.stubs(:update_issue!).returns(true)
 
+    # should be false if a closed issue
     issue.stubs(:closed?).returns(true)
     refute issue.valid_for_user?(user)
 
+    # should be true with an open issue with no comments from the current user
     issue.stubs(:closed?).returns(false)
     issue.stubs(:commenting_users).returns(["foo", "bar"])
     assert issue.valid_for_user?(user)
 
+    # should be false with comments from the current user
     issue.stubs(:commenting_users).returns(["mockstar", "bar"])
     refute issue.valid_for_user?(user)
   end
