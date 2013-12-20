@@ -55,6 +55,7 @@ class IssueTest < ActiveSupport::TestCase
     user = users("mockstar")
     issue = repos("rails_rails").issues.new
     issue.stubs(:update_issue!).returns(true)
+    issue.stubs(:commenting_users).returns(["foo", "bar"])
 
     issue.stubs(:pr_attached?).returns(true)
     user.stubs(:skip_issues_with_pr?).returns(true)
@@ -65,6 +66,7 @@ class IssueTest < ActiveSupport::TestCase
     user = users("mockstar")
     issue = repos("rails_rails").issues.new
     issue.stubs(:update_issue!).returns(true)
+    issue.stubs(:commenting_users).returns(["foo", "bar"])
 
     issue.stubs(:pr_attached?).returns(true)
     user.stubs(:skip_issues_with_pr?).returns(false)
