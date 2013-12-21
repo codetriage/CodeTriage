@@ -35,46 +35,45 @@ class IssueTest < ActiveSupport::TestCase
     refute issue.valid?
   end
 
-  context '#valid_for_user?' do
-    setup do
-      @user = users("mockstar")
-      repo = repos("rails_rails")
-      @issue = repo.issues.new
-      @issue.stubs(:update_issue!).returns(true)
-    end
+  test "#valid_for_user?" do
+    user = users("mockstar")
+    issue = repos("rails_rails").issues.new
+    issue.stubs(:update_issue!).returns(true)
 
-    should 'be false with a closed issue' do
-      @issue.stubs(:closed?).returns(true)
-      refute @issue.valid_for_user?(@user)
-    end
+    # should be false if a closed issue
+    issue.stubs(:closed?).returns(true)
+    refute issue.valid_for_user?(user)
 
-    should 'be true with an open issue with no comments from the current user' do
-      @issue.stubs(:closed?).returns(false)
-      @issue.stubs(:commenting_users).returns(["foo", "bar"])
-      assert @issue.valid_for_user?(@user)
-    end
+    # should be true with an open issue with no comments from the current user
+    issue.stubs(:closed?).returns(false)
+    issue.stubs(:commenting_users).returns(["foo", "bar"])
+    assert issue.valid_for_user?(user)
 
-    should 'be false with an open issue with comments from the current user' do
-      @issue.stubs(:closed?).returns(false)
-      @issue.stubs(:commenting_users).returns(["mockstar", "bar"])
-      refute @issue.valid_for_user?(@user)
-    end
+    # should be false with comments from the current user
+    issue.stubs(:commenting_users).returns(["mockstar", "bar"])
+    refute issue.valid_for_user?(user)
+  end
 
-    should 'be false with an open issue with attached PR if current user has skipped issues with PR' do
-      @issue.stubs(:closed?).returns(false)
-      @issue.stubs(:commenting_users).returns(["foo", "bar"])
-      @issue.stubs(:pr_attached?).returns(true)
-      @user.stubs(:skip_issues_with_pr?).returns(true)
-      refute @issue.valid_for_user?(@user)
-    end
+  test "valid_for_user? when has open issue and user skipped with PR" do
+    user = users("mockstar")
+    issue = repos("rails_rails").issues.new
+    issue.stubs(:update_issue!).returns(true)
+    issue.stubs(:commenting_users).returns(["foo", "bar"])
 
-    should 'be true with an open issue with attached PR if current user has not skipped issues with PR' do
-      @issue.stubs(:closed?).returns(false)
-      @issue.stubs(:commenting_users).returns(["foo", "bar"])
-      @issue.stubs(:pr_attached?).returns(true)
-      @user.stubs(:skip_issues_with_pr?).returns(false)
-      assert @issue.valid_for_user?(@user)
-    end
+    issue.stubs(:pr_attached?).returns(true)
+    user.stubs(:skip_issues_with_pr?).returns(true)
+    refute issue.valid_for_user?(user)
+  end
+
+  test "valid_for_user? when has open issue and user has not skipped issues with PR" do
+    user = users("mockstar")
+    issue = repos("rails_rails").issues.new
+    issue.stubs(:update_issue!).returns(true)
+    issue.stubs(:commenting_users).returns(["foo", "bar"])
+
+    issue.stubs(:pr_attached?).returns(true)
+    user.stubs(:skip_issues_with_pr?).returns(false)
+    assert issue.valid_for_user?(user)
   end
 
   test '#commenting users' do
