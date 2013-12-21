@@ -302,6 +302,6 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   unicorn
   vcr
-  webmock (~> 1.12)
+  webmock
   wicked
   will_paginate
