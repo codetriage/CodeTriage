@@ -85,8 +85,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url_exists
-    return true if Rails.env.test? ## TODO fixme with propper stubs, perhaps factories
-    response = GitHubBub.get(api_issues_path, page: 1, sort: 'comments', direction: 'desc')
+    GitHubBub.get(api_issues_path, page: 1, sort: 'comments', direction: 'desc')
   rescue GitHubBub::RequestError
     errors.add(:expiration_date, "cannot reach api.github.com/#{api_issues_path} perhaps github is down, or you mistyped something?")
   end
