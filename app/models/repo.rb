@@ -128,6 +128,14 @@ class Repo < ActiveRecord::Base
     Repo.all.collect{|r| r.username_repo}.include? name
   end
 
+  def self.order_by_subscribers
+    joins("LEFT OUTER JOIN repo_subscriptions
+           ON repo_subscriptions.repo_id = repos.id
+           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id").
+      group("repos.id").
+      order("count(users.id) DESC")
+  end
+
   # This class is used by resque,
   # by default anything you put into the perform method
   # will be called for each object in the redis queue
