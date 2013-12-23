@@ -210,7 +210,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sprockets_better_errors (0.0.2)
+    sprockets_better_errors (0.0.4)
       sprockets-rails (>= 1.0.0)
     teaspoon (0.7.4)
       phantomjs (>= 1.8.1.1)
