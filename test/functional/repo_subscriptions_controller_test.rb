@@ -9,14 +9,14 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     request.env["HTTP_REFERER"] = "http://localhost:5000"
   end
 
-  test 'successfully subscribe to a repo when signed in as mockstart' do
+  test 'successfully subscribe to a repo when signed in as mockstar' do
     sign_in users(:mockstar)
     post :create, repo_id: repos(:rails_rails).id
     assert flash[:notice] == I18n.t('repo_subscriptions.subscribed')
     assert_redirected_to repo_subscriptions_path
   end
 
-  test 'recive failure message when subscription did not created when signed in as mockstart' do
+  test 'receive failure message when subscription did not created when signed in as mockstar' do
     sign_in users(:mockstar)
     RepoSubscription.any_instance.stubs(:save).returns false
     post :create, repo_id: repos(:rails_rails).id
@@ -24,7 +24,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     assert_redirected_to :back
   end
 
-  test "not update schneems' subscription when signed in as mockstart" do
+  test "not update schneems' subscription when signed in as mockstar" do
     sign_in users(:mockstar)
     assert_raise ActiveRecord::RecordNotFound do
       patch :update, id: repo_subscriptions(:schneems_to_triage).id,
@@ -32,7 +32,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     end
   end
 
-  test "not destroy schneems' subscription when signed in as mockstart" do
+  test "not destroy schneems' subscription when signed in as mockstar" do
     sign_in users(:mockstar)
     assert_raise ActiveRecord::RecordNotFound do
       delete :destroy, id: repo_subscriptions(:schneems_to_triage).id
