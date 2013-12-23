@@ -101,22 +101,19 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
   end
 
-  context "#ready_for_next?" do
-    setup do
-      user           = users(:mockstar)
-      repo           = repos(:rails_rails)
-      @repo_sub      = user.repo_subscriptions.new
-      @repo_sub.repo = repo
-    end
+  test "#ready_for_next?" do
+    user           = users(:mockstar)
+    repo           = repos(:rails_rails)
+    @repo_sub      = user.repo_subscriptions.new
+    @repo_sub.repo = repo
 
-    should "return true if there is no email sent for this repo subscription" do
-      assert_equal true, @repo_sub.ready_for_next?
-    end
+    # return true if there is no email sent for this repo subscription
+    assert_equal true, @repo_sub.ready_for_next?
 
-    should "return false if an email is sent within last 24 hours for this repo subscription" do
-      @repo_sub.assign_issue!
-      assert_equal false, @repo_sub.ready_for_next?
-    end
+    # return false if an email is sent within last 24 hours for this repo subscription
+    @repo_sub.assign_issue!
+    assert_equal false, @repo_sub.ready_for_next?
+
   end
 
   test ".subscriptions_for a repo" do

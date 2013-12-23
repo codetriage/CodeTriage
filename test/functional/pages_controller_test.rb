@@ -5,37 +5,19 @@ class PagesControllerTest < ActionController::TestCase
 
   fixtures :users
 
-  context 'when user signed in' do
-    setup do
-      sign_in users(:mockstar)
-      get :index
-    end
+  test "siged in user" do
+    sign_in users(:mockstar)
+    get :index
 
-    should 'successfully renders index' do
-      assert_response :success
-    end
-
-    should 'assigns to repos' do
-      assert_not_nil assigns(:repos)
-    end
-
-    should 'assigns to repos_subs' do
-      assert_not_nil assigns(:repos_subs)
-    end
-
-    should 'render index template' do
-      assert_template :index
-    end
-
-    should 'render home layout' do
-      assert_template layout: 'home'
-    end
+    assert_response :success, 'successfully renders index'
+    assert_not_nil assigns(:repos), 'assigns to repos'
+    assert_not_nil assigns(:repos_subs), 'assigns to repos_subs'
+    assert_template :index, 'render index template'
+    assert_template({layout: 'home'}, 'render home layout')
   end
 
-  context 'when user is not signed in' do
-    should 'not assigns to repos_subs' do
-      get :index
-      assert_nil assigns(:repos_subs)
-    end
+  test "not signed in user" do
+    get :index
+    assert_nil assigns(:repos_subs), 'not assigns to repos_subs'
   end
 end
