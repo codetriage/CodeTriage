@@ -1,6 +1,4 @@
-# require 'test_helper'
-require 'test/unit'
-require 'active_support/test_case'
+require 'test_helper'
 require_relative '../../lib/sorted_repo_collection'
 
 class SortedRepoCollectionTest < ActiveSupport::TestCase
