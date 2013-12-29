@@ -1,7 +1,7 @@
 require 'resque/server'
 
 
-Example::Application.routes.draw do
+CodeTriage::Application.routes.draw do
   get "users/sign_in" => redirect('/users/auth/github'), via: [:get, :post]
   get "users/sign_up" => redirect('/users/auth/github'), via: [:get, :post]
 

@@ -4,5 +4,5 @@ require File.expand_path('../application', __FILE__)
 
 
 # Initialize the rails application
-Example::Application.initialize!
+CodeTriage::Application.initialize!
 
