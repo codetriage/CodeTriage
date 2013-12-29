@@ -1,8 +1,9 @@
 language: ruby
 rvm:
-  - 2.0.0
+  - 2.1.0
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
+before_install: gem install bundler -v=1.5.1
 before_script:
   - cp config/database.example.yml config/database.yml
   - psql -c 'create database triage_test;' -U postgres
