@@ -4,7 +4,7 @@ ruby '2.1.0'
 
 # Gems required in all environments
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.0.3'
 
 gem 'sprockets_better_errors'
 gem 'skylight'
