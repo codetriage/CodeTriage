@@ -3,6 +3,7 @@ defaults: &defaults
   encoding: utf8
   pool: 5
   host: localhost
+  password:
 
 development:
   <<: *defaults
