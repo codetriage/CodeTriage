@@ -6,6 +6,7 @@ ruby '2.1.0'
 
 gem 'rails', '4.0.3'
 
+gem 'puma'
 gem 'sprockets_better_errors'
 gem 'skylight'
 gem 'git_hub_bub'
