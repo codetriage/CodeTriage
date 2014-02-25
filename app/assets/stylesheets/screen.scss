@@ -1,6 +1,19 @@
 .container-narrow {
+  &:before {
+  display: table;
+  line-height:0;
+  content: "";
+  }
   margin: 0 auto;
   max-width: 700px;
+  display:block;
+
+  &:after {
+  display: table;
+  line-height:0;
+  content: "";
+  }
+
 }
 .jumbotron {
   margin: 60px 0;
@@ -122,4 +135,11 @@ hr {
   .btn-primary {
     margin: 0 0 10px 5px;
   }
+}
+@media( max-width: 768px)
+
+{
+.hidden-xs {
+display:none;
+}
 }
