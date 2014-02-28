@@ -68,6 +68,7 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
+    get_process_mem (0.0.2)
     git_hub_bub (0.0.2)
       excon
       rrrretry
@@ -139,6 +140,9 @@ GEM
     polyglot (0.3.4)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
+    puma_worker_killer (0.0.2)
+      get_process_mem (~> 0)
+      puma (~> 2)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -268,6 +272,7 @@ DEPENDENCIES
   omniauth-github
   pg
   puma
+  puma_worker_killer
   quiet_assets
   rack-timeout
   rails (= 4.0.3)
