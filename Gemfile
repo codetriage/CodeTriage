@@ -7,7 +7,7 @@ ruby '2.1.1'
 gem 'rails', '4.0.3'
 
 gem 'puma'
-gem 'puma_auto_tune'
+gem 'puma_auto_tune', github: "schneems/puma_auto_tune"
 gem 'sprockets_better_errors'
 gem 'skylight'
 gem 'git_hub_bub'

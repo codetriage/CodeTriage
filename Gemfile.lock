@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/schneems/puma_auto_tune.git
+  revision: a3a28753678524ac018cd9a28a084feec1751184
+  specs:
+    puma_auto_tune (0.0.1)
+      get_process_mem (~> 0)
+      puma (~> 2.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -140,9 +148,6 @@ GEM
     polyglot (0.3.4)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
-    puma_auto_tune (0.0.1)
-      get_process_mem (~> 0)
-      puma (~> 2.7)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
@@ -272,7 +277,7 @@ DEPENDENCIES
   omniauth-github
   pg
   puma
-  puma_auto_tune
+  puma_auto_tune!
   quiet_assets
   rack-timeout
   rails (= 4.0.3)
