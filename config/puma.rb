@@ -7,8 +7,6 @@ port ENV['PORT'] || 3000
 environment ENV['RACK_ENV'] || 'development'
 preload_app!
 
-Thread.abort_on_exception = true
-
 on_worker_boot do
   # worker specific setup
   ActiveSupport.on_load(:active_record) do
