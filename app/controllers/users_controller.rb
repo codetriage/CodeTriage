@@ -14,14 +14,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    begin
-      uparams = user_params
-    rescue ActionController::ParameterMissing
-      uparams = {favorite_languages: []}
-    end
-
     @user = current_user
-    if @user.update_attributes(uparams)
+    if @user.update_attributes(user_params)
       redirect_to @user, :flash => { :success => 'User successfully updated' }
     end
   end
