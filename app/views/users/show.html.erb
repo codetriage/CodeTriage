@@ -24,7 +24,7 @@
     <section id="user-favorite-langs">
       <h5>Favorite Languages:</h5>
       <ul>
-        <% User.first.favorite_languages.each do |language| %>
+        <% @user.favorite_languages.each do |language| %>
           <li> <%= language %> </li>
         <% end %>
       </ul>
