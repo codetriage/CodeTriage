@@ -5,7 +5,6 @@ class UpdateFavoriteLanguagesTest < ActionController::IntegrationTest
     @user = User.first
     @user.favorite_languages = ["ruby"]
     @user.save
-
     visit user_path @user
   end
 
