@@ -34,10 +34,10 @@ CodeTriage::Application.routes.draw do
 
     scope ':full_name' do
       constraints full_name: REPO_PATH_PATTERN do
-        get '/',            to: 'repos#show',        as: 'repo'
-        put '/',            to: 'repos#update',      as:  nil
-        get '/edit',        to: 'repos#edit',        as: 'edit_repo'
-        get '/subscribers', to: 'subscribers#show',  as: 'repo_subscribers'
+        get   '/',            to: 'repos#show',        as: 'repo'
+        patch '/',            to: 'repos#update',      as:  nil
+        get   '/edit',        to: 'repos#edit',        as: 'edit_repo'
+        get   '/subscribers', to: 'subscribers#show',  as: 'repo_subscribers'
       end
     end
   end

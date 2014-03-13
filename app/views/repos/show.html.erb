@@ -26,7 +26,7 @@
 
 <p>
   <% if user_signed_in? && current_user.able_to_edit_repo?(@repo) %>
-    <%= link_to "Edit this repo", edit_repo_path(@repo), class: 'btn btn-mini' %>
+    <%= link_to "Edit this repo", edit_repo_path(@repo), class: 'btn btn-primary' %>
   <% end -%>
 
   <% if @repo_sub %>
@@ -79,5 +79,3 @@
     <% end %>
   </ul
 <hr />
-
-
