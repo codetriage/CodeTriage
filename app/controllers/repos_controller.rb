@@ -35,6 +35,7 @@ class ReposController < RepoBasedController
   end
 
   def create
+    parse_params_for_repo_info
     @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first
     @repo ||= Repo.create!(repo_params)
 
@@ -77,5 +78,14 @@ class ReposController < RepoBasedController
         :description,
         :full_name
         )
+    end
+
+    def parse_params_for_repo_info
+      if params[:url]
+        params[:url].match(/^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/)
+        params[:repo] ||= {}
+        params[:repo][:user_name] = $1
+        params[:repo][:name] = $2
+      end
     end
 end
