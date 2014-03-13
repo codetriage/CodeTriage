@@ -14,20 +14,6 @@
   <%= f.label :skip_issues_with_pr, t("activerecord.attributes.user.skip_issues_with_pr", :default => "Skip Issues with Pull requests"), :class => "label label-info" %>
   <%= f.check_box :skip_issues_with_pr, :class => 'checkbox' %>
 
-  <section id="user-favorite-langs">
-
-    <h4>Select your favorite languages </h4>
-
-    <%= hidden_field_tag "user[favorite_languages][]" %>
-    <% Repo.all_languages.each do |language| %>
-      <label class="checkbox">
-        <%= f.check_box :favorite_languages, { multiple: true }, language, nil %>
-        <%= language %>
-      </label>
-    <% end %>
-
-  </section>
-
 </div>
 
 <div class="form-actions">

@@ -22,12 +22,21 @@
     </section>
 
     <section id="user-favorite-langs">
-      <h5>Favorite Languages:</h5>
-      <ul>
-        <% @user.favorite_languages.each do |language| %>
-          <li> <%= language %> </li>
+      <h3>Favorite Languages:</h3>
+      <p>Select your favorite languages:</p>
+
+      <%= form_for @user do |f| %>
+        <% Repo.all_languages.each do |language| %>
+          <label class="checkbox">
+            <%= f.check_box :favorite_languages, { multiple: true }, language, nil %>
+            <%= language %>
+          </label>
         <% end %>
-      </ul>
+        <p>
+          <%= button_tag "Save", :class => "btn btn-primary" %>
+        </p>
+
+      <% end %>
     </section>
   <% end %>
 
