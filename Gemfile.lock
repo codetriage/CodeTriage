@@ -55,7 +55,7 @@ GEM
     commonjs (0.2.6)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
-    dalli (2.6.4)
+    dalli (2.7.0)
     devise (3.0.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
