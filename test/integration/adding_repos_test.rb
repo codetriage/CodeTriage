@@ -15,7 +15,9 @@ class AddingReposTest < ActionController::IntegrationTest
       fill_in 'repo_user_name', :with => 'bemurphy'
       fill_in 'repo_name',      :with => 'issue_triage_sandbox'
 
-      click_button "Add Repo"
+      within '#new_repo_from_names' do
+        click_button "Add Repo"
+      end
     end
 
     VCR.use_cassette('add_valid_repo') do
