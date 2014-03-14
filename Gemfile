@@ -24,7 +24,7 @@ gem 'bluecloth'
 gem 'maildown'
 gem 'rrrretry'
 gem 'jquery-rails'
-gem 'devise',                  "~> 3.0.0.rc"
+gem 'devise', "~> 3.2.3"
 gem 'rack-timeout'
 gem 'unicorn'
 gem 'mail_view',   '~> 1.0.2'
