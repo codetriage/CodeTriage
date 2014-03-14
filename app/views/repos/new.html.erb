@@ -29,8 +29,8 @@
 <% end -%>
 <h3>Add another repo</h3>
 
-<%= form_for @repo do |f| %>
-
+<h4>by entering the user and repo name</h4>
+<%= form_for @repo, html: { id: "new_repo_from_names" } do |f| %>
   https://github.com/
   <%= f.text_field :user_name, :placeholder => 'user name e.g. "schneems" ', class: 'preview_user_name' %> /
   <%= f.text_field :name, :placeholder => 'repo name e.g. "sextant" ', class: 'preview_repo_name' %>
@@ -38,4 +38,10 @@
   <p id="repo_preview" class="repo_preview">
     Preview: <a href='https://github.com' target='_blank'>https://github.com/</a>
   </p>
+<% end %>
+
+<h4>or by pasting the full repo URL</h4>
+<%= form_tag repos_path, class: "new_repo" do %>
+  <%= text_field_tag :url, nil, :placeholder => 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field' %>
+  <%= submit_tag nil, :value => "Add Repo", :class => 'btn btn-primary', :id => 'createRepo' %>
 <% end %>
