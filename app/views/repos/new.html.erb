@@ -30,7 +30,7 @@
 <h3>Add another repo</h3>
 
 <h4>by entering the user and repo name</h4>
-<%= form_for @repo do |f| %>
+<%= form_for @repo, html: { id: "new_repo_from_names" } do |f| %>
   https://github.com/
   <%= f.text_field :user_name, :placeholder => 'user name e.g. "schneems" ', class: 'preview_user_name' %> /
   <%= f.text_field :name, :placeholder => 'repo name e.g. "sextant" ', class: 'preview_repo_name' %>
