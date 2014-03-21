@@ -117,7 +117,7 @@ GEM
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     mono_logger (1.1.0)
-    multi_json (1.9.0)
+    multi_json (1.9.2)
     multi_xml (0.5.4)
     multipart-post (1.2.0)
     nokogiri (1.6.0)
@@ -167,7 +167,7 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_autolink (1.1.0)
+    rails_autolink (1.1.5)
       rails (> 3.1)
     rails_serve_static_assets (0.0.1)
     rails_stdout_logging (0.0.1)
