@@ -15,6 +15,16 @@ class RepoSubscription < ActiveRecord::Base
     where("last_sent_at is null or last_sent_at < ?", 23.hours.ago)
   end
 
+  def self.queue_triage_emails!
+    find_each(:conditions => ["last_sent_at is null or last_sent_at < ?", 23.hours.ago]) do |repo_sub|
+      repo_sub.send_triage_email!
+    end
+  end
+
+  def self.for(repo_id)
+    where(:repo_id => repo_id).includes(:issues)
+  end
+
   def ready_for_next?
     return true if last_sent_at.blank?
     last_sent_at < 24.hours.ago
@@ -26,16 +36,6 @@ class RepoSubscription < ActiveRecord::Base
 
   def send_triage_email!
     background_send_triage_email(self.id)
-  end
-
-  def self.queue_triage_emails!
-    find_each(:conditions => ["last_sent_at is null or last_sent_at < ?", 23.hours.ago]) do |repo_sub|
-      repo_sub.send_triage_email!
-    end
-  end
-
-  def self.for(repo_id)
-    where(:repo_id => repo_id).includes(:issues)
   end
 
   # a list of all issues assigned to the current repo_sub

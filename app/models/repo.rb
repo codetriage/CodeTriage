@@ -20,22 +20,9 @@ class Repo < ActiveRecord::Base
   delegate :open_issues, to: :issues
   before_save :set_full_name
 
-  def strip_whitespaces
-    self.name.strip!
-    self.user_name.strip!
-  end
-
-  def set_full_name
-    self.full_name = "#{user_name}/#{name}"
-  end
-
-  def subscriber_count
-    users.count
-  end
-
   # pulls out number of issues divided by number of subscribers
   def self.order_by_need
-     joins(:repo_subscriptions).order("issues_count::float/COUNT(repo_subscriptions.repo_id) DESC").group("repos.id")
+    joins(:repo_subscriptions).order("issues_count::float/COUNT(repo_subscriptions.repo_id) DESC").group("repos.id")
   end
 
   # these repos have no subscribers and have no buisness being in our database
@@ -63,8 +50,60 @@ class Repo < ActiveRecord::Base
     end
   end
 
+  def self.order_by_issue_count
+    self.order("issues_count DESC")
+  end
+
+  def self.search_by(repo_name, user_name)
+    where(name: repo_name.downcase.strip, user_name: user_name.downcase.strip)
+  end
+
+  def self.queue_populate_open_issues!
+    find_each do |repo|
+      repo.populate_issues!
+    end
+  end
+
+  def self.exists_with_name?(name)
+    Repo.all.collect{|r| r.username_repo}.include? name
+  end
+
+  def self.order_by_subscribers
+    joins("LEFT OUTER JOIN repo_subscriptions
+           ON repo_subscriptions.repo_id = repos.id
+           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id").
+      group("repos.id").
+      order("count(users.id) DESC")
+  end
+
+  def self.find_by_full_name(full_name)
+    Repo.includes(:issues).where(full_name: full_name).first!
+  end
+
+  # This class is used by resque,
+  # by default anything you put into the perform method
+  # will be called for each object in the redis queue
+  resque_def(:background_populate_issues) do |id|
+    repo = Repo.find(id.to_i)
+    repo.populate_multi_issues!(:state => 'open')
+  end
+
+  def strip_whitespaces
+    self.name.strip!
+    self.user_name.strip!
+  end
+
+  def set_full_name
+    self.full_name = "#{user_name}/#{name}"
+  end
+
+  def subscriber_count
+    users.count
+  end
+
+
   def force_issues_count_sync!
-     self.update_attributes(issues_count: self.issues.where(state: "open").count)
+    self.update_attributes(issues_count: self.issues.where(state: "open").count)
   end
 
   def to_param
@@ -74,14 +113,6 @@ class Repo < ActiveRecord::Base
   def downcase_name
     self.name      = self.name.downcase
     self.user_name = self.user_name.downcase
-  end
-
-  def self.order_by_issue_count
-    self.order("issues_count DESC")
-  end
-
-  def self.search_by(repo_name, user_name)
-    where(name: repo_name.downcase.strip, user_name: user_name.downcase.strip)
   end
 
   def github_url_exists
@@ -117,33 +148,6 @@ class Repo < ActiveRecord::Base
   def populate_issues!
     background_populate_issues(self.id)
   end
-
-  def self.queue_populate_open_issues!
-    find_each do |repo|
-      repo.populate_issues!
-    end
-  end
-
-  def self.exists_with_name?(name)
-    Repo.all.collect{|r| r.username_repo}.include? name
-  end
-
-  def self.order_by_subscribers
-    joins("LEFT OUTER JOIN repo_subscriptions
-           ON repo_subscriptions.repo_id = repos.id
-           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id").
-      group("repos.id").
-      order("count(users.id) DESC")
-  end
-
-  # This class is used by resque,
-  # by default anything you put into the perform method
-  # will be called for each object in the redis queue
-  resque_def(:background_populate_issues) do |id|
-    repo = Repo.find(id.to_i)
-    repo.populate_multi_issues!(:state => 'open')
-  end
-
 
   def populate_issue(options = {})
     page  = options[:page]||1

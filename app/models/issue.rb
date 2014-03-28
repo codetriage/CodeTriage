@@ -11,6 +11,26 @@ class Issue < ActiveRecord::Base
   after_save    :update_counter_cache
   after_destroy :update_counter_cache
 
+  def self.closed
+    where(state: CLOSED)
+  end
+
+  def self.open_issues
+    where(state: OPEN)
+  end
+
+  def self.find_or_create_from_hash!(issue_hash, repo)
+    issue =   Issue.where( number:  issue_hash['number'], repo_id: repo.id).first
+    issue ||= Issue.create(number:  issue_hash['number'], repo:    repo)
+    issue.update_from_github_hash!(issue_hash)
+  end
+
+  def self.queue_mark_old_as_closed!
+    find_each(:conditions => ["state = ? and updated_at < ?", OPEN, 24.hours.ago]) do |issue|
+      self.delay_mark_closed(issue.id)
+    end
+  end
+  
   def valid_for_user?(user)
     update_issue!
     return false if closed?
@@ -29,14 +49,6 @@ class Issue < ActiveRecord::Base
   def update_issue!
     response = GitHubBub.get(api_path).json_body
     self.update_from_github_hash!(response)
-  end
-
-  def self.closed
-    where(state: CLOSED)
-  end
-
-  def self.open_issues
-    where(state: OPEN)
   end
 
   def closed?
@@ -68,11 +80,6 @@ class Issue < ActiveRecord::Base
     response.collect{|comment| comment["user"]["login"]}.uniq.sort
   end
 
-  def self.find_or_create_from_hash!(issue_hash, repo)
-    issue =   Issue.where( number:  issue_hash['number'], repo_id: repo.id).first
-    issue ||= Issue.create(number:  issue_hash['number'], repo:    repo)
-    issue.update_from_github_hash!(issue_hash)
-  end
 
   def update_from_github_hash!(issue_hash)
     self.update_attributes(title:           issue_hash['title'],
@@ -83,11 +90,6 @@ class Issue < ActiveRecord::Base
                            pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
   end
 
-  def self.queue_mark_old_as_closed!
-    find_each(:conditions => ["state = ? and updated_at < ?", OPEN, 24.hours.ago]) do |issue|
-      self.delay_mark_closed(issue.id)
-    end
-  end
 
   resque_def(:delay_mark_closed) do |id|
     issue = Issue.find(id)

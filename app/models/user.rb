@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :omniauthable
+  :recoverable, :rememberable, :trackable, :omniauthable
 
   validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
   validates_length_of     :password, :within => 8..128, :allow_blank => true
@@ -31,6 +31,12 @@ class User < ActiveRecord::Base
   # users that are not subscribed to any repos
   def self.inactive
     joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
+  end
+
+  def self.queue_triage_emails!
+    find_each do |user|
+      user.send_daily_triage_email!
+    end
   end
 
   def default_avatar_url
@@ -85,8 +91,8 @@ class User < ActiveRecord::Base
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user  = signed_in_resource ||
-            User.where(:github => auth.info.nickname).first ||
-            User.where(:email  => auth.info.email).first
+      User.where(:github => auth.info.nickname).first ||
+      User.where(:email  => auth.info.email).first
 
     token = auth.credentials.token
     params = {
@@ -124,12 +130,6 @@ class User < ActiveRecord::Base
     user = User.find(id.to_i)
     return false if user.repo_subscriptions.present?
     UserMailer.poke_inactive(user).deliver
-  end
-
-  def self.queue_triage_emails!
-    find_each do |user|
-      user.send_daily_triage_email!
-    end
   end
 
   def send_daily_triage_email!
