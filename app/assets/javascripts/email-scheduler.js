@@ -48,7 +48,7 @@ var Scheduler = (function(){
         $target.siblings().removeClass('selected');
         $target.addClass('selected');
         server_object = this.parse_user_date(user_day, $target);
-        this.params[ server_object.day ] = server_object.hour;
+        this.params[ server_object.day ] = String(server_object.hour);
       }
     }
     Scheduler.prototype.parse_user_date = function(user_day_string, $time_block){
