@@ -10,8 +10,8 @@ GB_TO_BYTE = 1_073_741_824 # 1024**3 = 1_073_741_824
 CONVERSION = { "kb" => KB_TO_BYTE, "mb" => MB_TO_BYTE, "gb" => GB_TO_BYTE }
 ROUND_UP   = BigDecimal.new("0.5")
 
-def linux_memory(file = @process_file)
-  lines = file.each_line.select {|line| line.match /(^Pss|^Swap)/ }
+def linux_memory(file)
+  lines = file.each_line.select {|line| line.match /^Pss/ }
   return if lines.empty?
   lines.reduce(0) do |sum, line|
     line.match(/(?<value>(\d*\.{0,1}\d+))\s+(?<unit>\w\w)/) do |m|
