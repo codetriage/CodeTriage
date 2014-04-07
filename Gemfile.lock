@@ -1,6 +1,7 @@
 GIT
   remote: git://github.com/schneems/puma_auto_tune.git
-  revision: 08a727a1f16d2968056f337c8e5cd76dfb260876
+  revision: 7b1740b5f9776297310c57a040f368beebe29231
+  branch: schneems/count-swap
   specs:
     puma_auto_tune (0.0.2)
       get_process_mem (~> 0.1)
