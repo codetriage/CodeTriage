@@ -1,6 +1,6 @@
 require "test_helper"
 
-class MaintainingRepoSubscriptionsTest < ActionController::IntegrationTest
+class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
   fixtures :repos
 
   def triage_the_sandbox

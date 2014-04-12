@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UpdateFavoriteLanguagesTest < ActionController::IntegrationTest
+class UpdateFavoriteLanguagesTest < ActionDispatch::IntegrationTest
   setup do
     @user = User.first
     @user.favorite_languages = ["ruby"]

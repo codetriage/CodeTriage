@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserUpdateTest < ActionController::IntegrationTest
+class UserUpdateTest < ActionDispatch::IntegrationTest
   test 'updating the user email address' do
     @user = User.first
     visit edit_user_path(@user)

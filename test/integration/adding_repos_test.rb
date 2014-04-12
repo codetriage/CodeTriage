@@ -1,6 +1,6 @@
 require "test_helper"
 
-class AddingReposTest < ActionController::IntegrationTest
+class AddingReposTest < ActionDispatch::IntegrationTest
 
   teardown do
     Rails.cache.clear
