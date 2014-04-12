@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'public scope should only return public users' do
-    assert_equal 2, User.public.size
+    assert_equal 2, User.public_profile.size
 
     VCR.use_cassette('update_repo_info:schneems/sextant', ) do
       user     = users(:mockstar)
@@ -20,7 +20,7 @@ class UserTest < ActiveSupport::TestCase
       repo_sub.repo = repo
       repo_sub.save
 
-      assert_equal 1, repo.users.public.size
+      assert_equal 1, repo.users.public_profile.size
     end
   end
 
