@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Gems required in all environments
-gem 'rails', '4.1.0.rc2'
+gem 'rails', '4.1.0'
 
 gem 'puma'
 gem 'puma_auto_tune', github: "schneems/puma_auto_tune"
@@ -41,6 +41,7 @@ group :test do
   gem 'vcr'
   gem 'mocha', require: false
   gem 'shoulda'
+  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem 'simplecov', :require => false
 end
 
