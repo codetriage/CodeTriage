@@ -78,7 +78,7 @@ Teaspoon.setup do |config|
   #config.coverage_reports = "text,html,cobertura"
 end
 
-module ActionController
+module ActionDispatch
   class IntegrationTest
     include Capybara::DSL
 
