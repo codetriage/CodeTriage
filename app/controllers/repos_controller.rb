@@ -8,7 +8,6 @@ class ReposController < RepoBasedController
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
-
     if user_signed_in?
       @own_repos = Rails.cache.fetch("user/repos/#{current_user.id}", expires_in: 30.minutes) do
         own_repos_response = GitHubBub.get("/user/repos", token: current_user.token, type: "owner", per_page: '100')
@@ -31,7 +30,7 @@ class ReposController < RepoBasedController
     @repo        = find_repo(params)
     @issues      = @repo.open_issues.order("created_at DESC").page(params[:page]).per_page(params[:per_page]||20)
     @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
-    @subscribers = @repo.subscribers.public.limit(27)
+    @subscribers = @repo.subscribers.public_profile.limit(27)
   end
 
   def create
