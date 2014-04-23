@@ -53,17 +53,17 @@ class RepoTest < ActiveSupport::TestCase
 
   test "repos needing help when user has ruby language" do
     repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ "ruby" ])).map(&:path)
-    assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" ], repos
+    assert_equal [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" ], repos
   end
 
   test "repos needing help when user has no languages" do
     repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ ])).map(&:path)
-    assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" , "joyent/node"], repos
+    assert_equal [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" , "andrewrk/groovebasin"], repos
   end
 
   test "repos needing help when user is null" do
     repos = Repo.repos_needing_help_for_user(nil).map(&:path)
-    assert_equal [ "bemurphy/issue_triage_sandbox", "rails/rails" , "joyent/node"], repos
+    assert_equal [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" , "andrewrk/groovebasin"], repos
   end
 
   test "check existence of repo by its name and user's name" do
