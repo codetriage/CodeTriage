@@ -31,6 +31,7 @@ gem 'mail_view',   '~> 1.0.2'
 group :development do
   gem 'foreman'
   gem 'quiet_assets'
+  gem 'spring'
 end
 
 group :test do
