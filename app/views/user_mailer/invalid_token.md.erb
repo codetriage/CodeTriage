@@ -1,0 +1,18 @@
+Hello @<%= @user.github %>,
+
+Your GitHub token for Code Triage is returning a non-success status. This can happen if you've changed authentication credentials for GitHub or if you revoke API access.
+
+If you intended to revoke access, and don't want to receive any more Code Triage emails please [Delete Your Account](<%= token_delete_user_url(@user.account_delete_token) %>).
+
+If you would like to continue receiving CodeTriage emails, please [Log in](<%= root_url %>) and re-authorize your GitHub token by pressing "sign in" and accepting any GitHub prompts.
+
+If you've believe you've already re-authorized your account but are still getting this email please open a [GitHub Issue](https://github.com/codetriage/codetriage/issues) and we can look into it.
+
+
+- - -
+
+Go forth and make the world a better place
+
+[@schneems](http://twitter.com/schneems)
+
+[Delete Account](<%= token_delete_user_url(@user.account_delete_token) %>)

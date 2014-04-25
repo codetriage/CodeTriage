@@ -8,6 +8,6 @@ GitHubBub::Request.set_before_callback do |request|
   if request.options.key?(:token) || request.token?
     # Request is authorized, do nothing
   else
-    request.token = ENV['GITHUB_API_KEY'] || User.random.first.try(:token)
+    request.token = ENV['GITHUB_API_KEY'] || User.random.where.not(token: nil).first.token
   end
 end
