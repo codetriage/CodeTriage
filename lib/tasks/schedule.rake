@@ -28,4 +28,20 @@ namespace :schedule do
     # Repo.inactive.destroy_all
   end
 
+  task check_user_auth: :environment do
+    User.find_each(conditions: "token is not null") do |user|
+      if user.auth_is_valid?
+        # good
+      else
+        user.update_attributes(token: nil)
+      end
+    end
+  end
+
+  task warn_invalid_token: :environment do
+    User.find_each(conditions: "token is null") do |user|
+      next unless Date.today.thursday?
+      ::UserMailer.invalid_token(user).deliver
+    end
+  end
 end

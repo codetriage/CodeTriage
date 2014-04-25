@@ -19,11 +19,16 @@ class UserMailer < ActionMailer::Base
   end
 
   def poke_inactive(user)
-    @user         = user
+    @user        = user
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
     @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
     mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage misses you")
+  end
+
+  def invalid_token(user)
+    @user = user
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage auth failure")
   end
 
 
@@ -35,6 +40,12 @@ class UserMailer < ActionMailer::Base
   end
 
   class Preview < MailView
+
+    def invalid_token
+      user = User.last
+      ::UserMailer.invalid_token(user)
+    end
+
     # Pull data from existing fixtures
     def send_spam
       user    = User.last

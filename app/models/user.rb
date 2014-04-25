@@ -24,6 +24,14 @@ class User < ActiveRecord::Base
 
   delegate :for, to: :repo_subscriptions, prefix: true
 
+
+  def auth_is_valid?
+    GitHubBub.get("https://#{ENV['GITHUB_APP_ID']}:#{ENV['GITHUB_APP_SECRET']}@api.github.com/applications/#{ENV['GITHUB_APP_ID']}/tokens/#{self.token}", {}, token: nil)
+    true
+  rescue GitHubBub::RequestError
+    false
+  end
+
   def self.random
     order("RANDOM()")
   end
