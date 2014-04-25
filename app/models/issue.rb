@@ -104,6 +104,7 @@ class Issue < ActiveRecord::Base
     #                    patch_url: null
     #                  }
     # When all the values are nil, PR is not attached with the issue
+    return false if pull_request_hash.blank?
     pull_request_hash.values.uniq != [nil]
   end
 
