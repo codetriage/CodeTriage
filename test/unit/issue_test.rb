@@ -102,7 +102,7 @@ class IssueTest < ActiveSupport::TestCase
     repo.issues.new(state: 'closed')
 
     2.times do
-      open_issues << repo.issues.create(state: 'open')
+      open_issues << repo.issues.create!(state: 'open')
     end
 
     assert_equal open_issues, repo.open_issues
