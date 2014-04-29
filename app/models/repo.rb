@@ -57,10 +57,10 @@ class Repo < ActiveRecord::Base
 
   def self.repos_needing_help_for_user(user)
     if user && user.has_favorite_languages?
-      self.where(language: user.favorite_languages).order_by_issue_count
+      where(language: user.favorite_languages)
     else
-      self.order_by_issue_count
-    end
+      self
+    end.with_some_issues.order_by_issue_count
   end
 
   def force_issues_count_sync!
@@ -82,6 +82,10 @@ class Repo < ActiveRecord::Base
 
   def self.search_by(repo_name, user_name)
     where(name: repo_name.downcase.strip, user_name: user_name.downcase.strip)
+  end
+
+  def self.with_some_issues
+    self.where("issues_count > 0")
   end
 
   def github_url_exists
