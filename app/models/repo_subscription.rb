@@ -61,13 +61,12 @@ class RepoSubscription < ActiveRecord::Base
 
   def assign_issue!
     issue = get_issue_for_triage
-    unless issue.blank?
-      assignment = issue_assignments.new
-      assignment.issue_id = issue.id
-      assignment.user_id  = user.id
-      assignment.save
-    end
-    return issue
+    return false if issue.blank?
+    assignment          = issue_assignments.new
+    assignment.issue_id = issue.id
+    assignment.user_id  = user.id
+
+    return issue if assignment.save
   ensure
     self.update_attributes :last_sent_at => Time.now unless wait?
   end
