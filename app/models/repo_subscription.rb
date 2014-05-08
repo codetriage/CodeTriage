@@ -52,11 +52,13 @@ class RepoSubscription < ActiveRecord::Base
   def get_issue_for_triage
     issue = repo.issues.where(:state => 'open').where("id not in (?)", assigned_issue_ids).all.sample
     return nil   if issue.blank?
-    return issue if issue.valid_for_user?(self.user)
 
-    # add issue to restricted list and try again
     assigned_issue_ids << issue.id
-    get_issue_for_triage
+    if issue.valid_for_user?(self.user)
+      return issue
+    else
+      get_issue_for_triage
+    end
   end
 
   def assign_issue!
