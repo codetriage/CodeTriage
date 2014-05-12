@@ -87,13 +87,13 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
   test "email_limit allows multiple issues per repo" do
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
-    issue = repo.issues.create(:title           => "Foo Bar",
-                               :url             => "http://schneems.com",
-                               :last_touched_at => 2.days.ago,
-                               :state           => 'open',
-                               :html_url        => "http://schneems.com",
-                               :number          => 9000)
-    sub = user.repo_subscriptions.create(repo:        repo,
+    repo.issues.create(:title           => "Foo Bar",
+                       :url             => "http://schneems.com",
+                       :last_touched_at => 2.days.ago,
+                       :state           => 'open',
+                       :html_url        => "http://schneems.com",
+                       :number          => 9000)
+    sub = user.repo_subscriptions.create(repo: repo,
                                    email_limit: 2)
 
     RepoSubscription.any_instance.expects(:assign_issue!).twice
@@ -120,15 +120,15 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
     repo2 = repos(:rails_rails)
-    issue = repo.issues.create(:title         => "Foo Bar",
-                               :url             => "http://schneems.com",
-                               :last_touched_at => 2.days.ago,
-                               :state           => 'open',
-                               :html_url        => "http://schneems.com",
-                               :number          => 9000)
+    repo.issues.create(:title         => "Foo Bar",
+                       :url             => "http://schneems.com",
+                       :last_touched_at => 2.days.ago,
+                       :state           => 'open',
+                       :html_url        => "http://schneems.com",
+                       :number          => 9000)
 
     sub1 = user.repo_subscriptions.create(repo: repo, email_limit: 2)
-    sub2 = user.repo_subscriptions.create(repo: repo2, email_limit: 2)
+    user.repo_subscriptions.create(repo: repo2, email_limit: 2)
 
     assert_equal [sub1], user.repo_subscriptions_for(repo.id)
   end
