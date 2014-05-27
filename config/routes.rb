@@ -19,6 +19,9 @@ CodeTriage::Application.routes.draw do
   delete      "/users/unsubscribe/:account_delete_token" => "users#token_destroy"
 
   resources   :issue_assignments
+
+  get "/issue_assignments/:id/users/:user_id/click", to: "issue_assignments#click_redirect", as: :issue_click
+
   resources   :repo_subscriptions
 
   if Rails.env.development?

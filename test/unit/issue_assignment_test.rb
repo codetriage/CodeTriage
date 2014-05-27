@@ -6,7 +6,6 @@ class IssueAssignmentTest < ActiveSupport::TestCase
     ia = IssueAssignment.new
     ia.valid?
     assert_equal ["can't be blank"], ia.errors[:issue_id]
-    assert_equal ["can't be blank"], ia.errors[:user_id]
   end
 
 end

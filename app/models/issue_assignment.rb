@@ -3,11 +3,6 @@ class IssueAssignment < ActiveRecord::Base
   has_one     :user, :through => :repo_subscription
   has_one     :repo, :through => :repo_subscription
   belongs_to  :issue
-
-  validates :issue_id, :uniqueness => { :scope => :user_id }
-
-
-  validates_presence_of :user_id
-  validates_presence_of :issue_id
-
+  validates :repo_subscription_id, presence: true
+  validates :issue_id, :uniqueness => { :scope => :repo_subscription_id }, presence: true
 end

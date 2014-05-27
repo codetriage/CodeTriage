@@ -4,9 +4,13 @@ class UserMailer < ActionMailer::Base
   default from: "CodeTriage <noreply@codetriage.com>"
 
   def send_daily_triage(options = {})
-    @user   = options[:user]
-    @issues = options[:issues]
-    subject = "Help Triage #{@issues.count} Open Source #{"Issue".pluralize(@issues.count)}"
+    @user        = options[:user]
+    @assignments = options[:assignments]
+    @max_days    = 2
+    subject = ""
+    @days   = (Time.now - @user.last_clicked_at).to_i / 1.day
+    subject << "[#{@days} days] " if @days > @max_days
+    subject << "Help Triage #{@assignments.count} Open Source #{"Issue".pluralize(@assignments.count)}"
     mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
@@ -62,9 +66,14 @@ class UserMailer < ActionMailer::Base
     end
 
     def send_daily_triage
-      user   = User.last
-      issues = Issue.where(state: "open").where("number is not null").limit(rand(5) + 1)
-      ::UserMailer.send_daily_triage(user: user, issues: issues)
+      user        = User.last
+      assignments = []
+      rand(1..5).times do
+        issue = Issue.where(state: "open").where("number is not null").first
+        sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: issue.repo.id)
+        assignments << sub.issue_assignments.first_or_create!(issue_id: issue.id)
+      end
+      ::UserMailer.send_daily_triage(user: user, assignments: assignments)
     end
 
     def poke_inactive
