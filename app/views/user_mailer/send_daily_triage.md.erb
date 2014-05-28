@@ -1,12 +1,15 @@
 Hello @<%= @user.github %>,
 
+<% if @days > @max_days %>
+It's been [<%= @days %> days] since you've clicked on a codetriage.com link, let's keep those issue counts down.
+<% end %>
 Here are some issues you should check out:
 
-<% @issues.each do |issue| %>
-### <%= "##{issue.number}" if issue.number %> <%= link_to issue.title, issue.html_url  %>
+<% @assignments.each do |assignment| %>
+### <%= "##{assignment.issue.number}" if assignment.issue.number %> <%= link_to assignment.issue.title, issue_click_path(assignment.id, assignment.user.id ) %>
 
-<%= "[#{issue.repo.full_name}](#{repo_url(issue.repo)})" %>
-<%= time_ago_in_words issue.last_touched_at %> ago
+<%= "[#{assignment.issue.repo.full_name}](#{repo_url(assignment.issue.repo)})" %>
+<%= time_ago_in_words assignment.issue.last_touched_at %> ago
 
 - - -
 
@@ -19,5 +22,3 @@ Go forth and make the world a better place
 [Help triage more repos at codetriage.com](<%= root_url%>)
 
 [Delete Account](<%= token_delete_user_url(@user.account_delete_token) %>)
-
-

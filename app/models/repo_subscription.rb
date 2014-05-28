@@ -1,10 +1,12 @@
 class RepoSubscription < ActiveRecord::Base
   include ResqueDef
 
-  validates :repo_id, :uniqueness => {:scope => :user_id}
+  validates :repo_id, :uniqueness => {:scope => :user_id}, presence: true
+  validates :user_id,  presence: true
 
   belongs_to :repo
   belongs_to :user
+
   has_many   :issue_assignments
 
   has_many   :issues, :through => :issue_assignments
@@ -68,7 +70,7 @@ class RepoSubscription < ActiveRecord::Base
     assignment.issue_id = issue.id
     assignment.user_id  = user.id
 
-    return issue if assignment.save
+    return assignment if assignment.save
   ensure
     self.update_attributes :last_sent_at => Time.now unless wait?
   end

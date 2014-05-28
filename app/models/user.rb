@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
   alias_attribute :token, :github_access_token
 
   delegate :for, to: :repo_subscriptions, prefix: true
+  before_save :set_default_last_clicked_at
 
+  def set_default_last_clicked_at
+    self.last_clicked_at ||= Time.now
+  end
 
   def auth_is_valid?
     GitHubBub.get("https://#{ENV['GITHUB_APP_ID']}:#{ENV['GITHUB_APP_SECRET']}@api.github.com/applications/#{ENV['GITHUB_APP_ID']}/tokens/#{self.token}", {}, token: nil)
@@ -146,9 +150,9 @@ class User < ActiveRecord::Base
 
   def send_daily_triage!
     subscriptions = self.repo_subscriptions.ready_for_triage.order('RANDOM()').limit(daily_issue_limit)
-    issues        = subscriptions.map(&:assign_multi_issues!).flatten.compact
-    return false if issues.blank?
-    UserMailer.send_daily_triage(user: self, issues: issues).deliver
+    assignments   = subscriptions.map(&:assign_multi_issues!).flatten.compact
+    return false if assignments.blank?
+    UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
   end
 
   resque_def(:delay_send_daily_triage_email) do |id|
