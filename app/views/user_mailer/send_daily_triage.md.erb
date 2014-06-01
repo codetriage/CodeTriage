@@ -8,7 +8,7 @@ Here are some issues you should check out:
 <% @assignments.each do |assignment| %>
 ### <%= "##{assignment.issue.number}" if assignment.issue.number %> <%= link_to assignment.issue.title, issue_click_url(assignment.id, assignment.user.id ) %>
 
-<%= "[#{assignment.issue.repo.full_name}](#{repo_url(assignment.issue.repo)})" %>
+<%= "[#{assignment.repo.full_name}](#{repo_url(assignment.repo)})" %>
 <%= time_ago_in_words assignment.issue.last_touched_at %> ago
 
 - - -

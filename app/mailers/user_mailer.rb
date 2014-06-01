@@ -69,8 +69,9 @@ class UserMailer < ActionMailer::Base
       user        = User.last
       assignments = []
       rand(1..5).times do
-        issue = Issue.where(state: "open").where("number is not null").first
-        sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: issue.repo.id)
+        repo  = Repo.order("random()").first
+        issue = Issue.where(state: "open", repo_id: repo.id).where("number is not null").first
+        sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
         assignments << sub.issue_assignments.first_or_create!(issue_id: issue.id)
       end
       ::UserMailer.send_daily_triage(user: user, assignments: assignments)
