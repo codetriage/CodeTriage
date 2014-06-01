@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
   def send_triage(options = {})
     @user   = options[:user]
     @repo   = options[:repo]
-    @issue  = options[:issue]
+    @issue  = options[:assignment].issue
     mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
   end
 
@@ -60,9 +60,11 @@ class UserMailer < ActionMailer::Base
 
     def send_triage
       user  = User.last
-      repo  = Repo.last
-      issue = Issue.where(state: "open").where("number is not null").last
-      ::UserMailer.send_triage(:user => user, :repo => repo, :issue => issue)
+      repo  = Repo.order("random()").first
+      issue = Issue.where(state: "open", repo_id: repo.id).where("number is not null").first!
+      sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
+      assignment = sub.issue_assignments.first_or_create!(issue_id: issue.id)
+      ::UserMailer.send_triage(:user => user, :repo => repo, :assignment => assignment)
     end
 
     def send_daily_triage
