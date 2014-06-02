@@ -16,9 +16,10 @@ class UserMailer < ActionMailer::Base
 
 
   def send_triage(options = {})
-    @user   = options[:user]
-    @repo   = options[:repo]
-    @issue  = options[:assignment].issue
+    raise "no assignment" unless assignment =  options[:assignment]
+    @user  = options[:user]
+    @repo  = options[:repo]
+    @issue = assignment.issue
     mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
   end
 
