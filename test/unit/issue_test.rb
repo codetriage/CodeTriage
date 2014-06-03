@@ -2,7 +2,7 @@ require 'test_helper'
 
 class IssueTest < ActiveSupport::TestCase
   test "issue counter cache" do
-    repo     = repos(:rails_rails)
+    repo = repos(:rails_rails)
 
     assert_equal 0, repo.issues.count
     assert_equal 0, repo.reload.issues_count
@@ -35,29 +35,29 @@ class IssueTest < ActiveSupport::TestCase
     refute issue.valid?
   end
 
-  test "#valid_for_user?" do
-    user = users("mockstar")
+  test "valid_for_user?" do
+    user  = users("mockstar")
     issue = repos("rails_rails").issues.new
     issue.stubs(:update_issue!).returns(true)
+    issue.stubs(:commenting_users).returns(["foo", "bar"])
 
     # should be false if a closed issue
     issue.stubs(:closed?).returns(true)
-    refute issue.valid_for_user?(user)
+    refute issue.valid_for_user?(user, false), "Issue: #{issue.inspect} expected to be closed"
 
     # should be true with an open issue with no comments from the current user
     issue.stubs(:closed?).returns(false)
-    issue.stubs(:commenting_users).returns(["foo", "bar"])
-    assert issue.valid_for_user?(user)
+    assert issue.valid_for_user?(user, false)
 
     # should be false with comments from the current user
+
     issue.stubs(:commenting_users).returns(["mockstar", "bar"])
-    refute issue.valid_for_user?(user)
+    refute issue.valid_for_user?(user, false)
   end
 
   test "valid_for_user? when has open issue and user skipped with PR" do
-    user = users("mockstar")
+    user  = users("mockstar")
     issue = repos("rails_rails").issues.new
-    issue.stubs(:update_issue!).returns(true)
     issue.stubs(:commenting_users).returns(["foo", "bar"])
 
     issue.stubs(:pr_attached?).returns(true)
@@ -66,17 +66,17 @@ class IssueTest < ActiveSupport::TestCase
   end
 
   test "valid_for_user? when has open issue and user has not skipped issues with PR" do
-    user = users("mockstar")
+    user  = users("mockstar")
     issue = repos("rails_rails").issues.new
-    issue.stubs(:update_issue!).returns(true)
     issue.stubs(:commenting_users).returns(["foo", "bar"])
+    issue.stubs(:update_issue!).returns(true)
 
     issue.stubs(:pr_attached?).returns(true)
     user.stubs(:skip_issues_with_pr?).returns(false)
-    assert issue.valid_for_user?(user)
+    assert issue.valid_for_user?(user, false), "issue is not valid for given user"
   end
 
-  test '#commenting users' do
+  test 'commenting users' do
     repo = repos("rails_rails")
     issue = repo.issues.new
     issue.repo_name = "rails"
@@ -90,13 +90,13 @@ class IssueTest < ActiveSupport::TestCase
     assert_equal ['Trevoke', 'freegenie', 'pixeltrix', 'steveklabnik'], commenting_users
   end
 
-  test "#public_url" do
+  test "public_url" do
     repo  = repos("rails_rails")
     issue = repo.issues.new(number: "8404")
     assert_equal "https://github.com/repos/rails/rails/issues/8404", issue.public_url
   end
 
-  test ".open_issues" do
+  test "open_issues" do
     open_issues = []
     repo  = repos("rails_rails")
     repo.issues.new(state: 'closed')

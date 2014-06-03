@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user_id: 1
-  issue_id: 1
+  repo_subscription: schneems_to_triage
 
-two:
-  user_id: 1
-  issue_id: 1

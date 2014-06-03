@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UpdateFavoriteLanguagesTest < ActionDispatch::IntegrationTest
   setup do
-    @user = User.first
+    @user = users(:mockstar)
     @user.favorite_languages = ["ruby"]
     @user.save
     visit user_path @user

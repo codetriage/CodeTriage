@@ -1,5 +1,4 @@
 issue_triage_sandbox:
-  id: 1
   user_name: bemurphy
   name: issue_triage_sandbox
   full_name: bemurphy/issue_triage_sandbox
@@ -9,7 +8,6 @@ issue_triage_sandbox:
   issues_count: 1
 
 rails_rails:
-  id: 2
   user_name: rails
   name: rails
   full_name: rails/rails
@@ -19,17 +17,15 @@ rails_rails:
   issues_count: 0
 
 sinatra_sinatra:
-  id: 3
   user_name: sinatra
   name: sinatra
   full_name: sinatra/sinatra
   language: ruby
   created_at: 2012-11-10 21:50:48.351554000 Z
   updated_at: 2012-11-10 21:50:48.351554000 Z
-  issues_count: 1  
+  issues_count: 1
 
 node:
-  id: 4
   user_name: joyent
   name: node
   full_name: joyent/node
@@ -39,7 +35,6 @@ node:
   issues_count: 0
 
 groovebasin:
-  id: 5
   user_name: andrewrk
   name: groovebasin
   full_name: andrewrk/groovebasin

@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20140524120051) do
   create_table "issue_assignments", force: true do |t|
     t.integer  "user_id"
     t.integer  "issue_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
   end
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20140524120051) do
     t.string   "user_name"
     t.datetime "last_touched_at"
     t.integer  "number"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_id"
     t.string   "title"
     t.string   "html_url"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20140524120051) do
   create_table "repo_subscriptions", force: true do |t|
     t.string   "user_name"
     t.string   "repo_name"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
@@ -55,13 +55,13 @@ ActiveRecord::Schema.define(version: 20140524120051) do
   create_table "repos", force: true do |t|
     t.string   "name"
     t.string   "user_name"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
     t.integer  "issues_count", default: 0, null: false
     t.string   "language"
     t.string   "description"
     t.string   "full_name"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -75,16 +75,16 @@ ActiveRecord::Schema.define(version: 20140524120051) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "zip"
     t.string   "phone_number"
     t.boolean  "twitter"
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
-    t.string   "name"
     t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
+    t.string   "name"
     t.boolean  "private",                default: false
     t.string   "favorite_languages",                                                                 array: true
     t.integer  "daily_issue_limit"
