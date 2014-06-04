@@ -1,8 +1,10 @@
-<li>
-  <span class="label label-info" data-toggle="tooltip" title="<%= repo.issues_count %> Issues"><%= repo.issues_count %></span>
-  <h4>
-    <%= link_to repo.name, repo %>
-    <%= " <small>(#{repo.full_name})</small> ".html_safe if repo.full_name.present? %>
-  </h4>
-  <p><%= raw repo.description %></p>
-</li>
+<div class="span4">
+  <div class="hero-widget well well-sm">
+    <span class="label label-info" data-toggle="tooltip" title="<%= repo.issues_count %> Issues"><%= repo.issues_count %></span>
+    <h4>
+      <%= link_to repo.name, repo %>
+      <%= " <small>(#{repo.full_name})</small> ".html_safe if repo.full_name.present? %>
+    </h4>
+    <p><%= raw repo.description %></p>
+  </div>
+</div>
