@@ -1,5 +1,4 @@
 mockstar:
-  id: 1
   email: mockstar@example.com
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
   reset_password_token:
@@ -23,7 +22,6 @@ mockstar:
   favorite_languages: [ "ruby" ]
   last_clicked_at: 2012-11-10 23:53:33.202139000 Z
 schneems:
-  id: 2
   email: richard.schneeman@gmail.com
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
   reset_password_token:
@@ -46,7 +44,6 @@ schneems:
   private: false
   last_clicked_at: 2012-11-10 23:53:33.202139000 Z
 jroes:
-  id: 3
   email: jroes@jroes.net
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
   reset_password_token:

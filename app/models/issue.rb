@@ -11,11 +11,13 @@ class Issue < ActiveRecord::Base
   after_save    :update_counter_cache
   after_destroy :update_counter_cache
 
-  def valid_for_user?(user)
-    update_issue!
-    return false if closed?
-    return false if commenting_users.include? user.github
-    return false if pr_attached? && user.skip_issues_with_pr?
+  def valid_for_user?(user, skip_update = Rails.env.test?)
+    unless skip_update
+      update_issue!
+      return false if commenting_users.include?(user.github)
+    end
+    return false  if closed?
+    return false  if pr_attached? && user.skip_issues_with_pr?
     true
   end
 
