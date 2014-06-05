@@ -12,9 +12,7 @@
     <% repos.group_by(&:language).each do |lang, repos| %>
       <% unless lang == nil %>
         <div class="tab-pane<%= " active" if lang_index == 0 %>" id="<%= "#{lang.parameterize}#{lang.hash}" %>">
-          <ul class="unstyled repos-list">
-            <%= render partial: 'repos/repo', collection: repos %>
-          </ul>
+              <%= render partial: 'repos/repo', collection: repos %>    
         </div>
         <% lang_index = lang_index + 1 %>
       <% end -%>
