@@ -30,10 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def auth_is_valid?
-    GitHubBub.get("https://#{ENV['GITHUB_APP_ID']}:#{ENV['GITHUB_APP_SECRET']}@api.github.com/applications/#{ENV['GITHUB_APP_ID']}/tokens/#{self.token}", {}, token: nil)
-    true
-  rescue GitHubBub::RequestError
-    false
+    GitHubBub.valid_token?(token)
   end
 
   def self.random

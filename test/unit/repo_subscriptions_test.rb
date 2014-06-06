@@ -98,7 +98,6 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     RepoSubscription.any_instance.expects(:assign_issue!).twice
     sub.assign_multi_issues!
-
   end
 
   test "#ready_for_next?" do
