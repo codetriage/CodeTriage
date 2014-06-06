@@ -48,7 +48,7 @@ class RepoSubscription < ActiveRecord::Base
   def assign_multi_issues!
     self.email_limit.times.map do
       assign_issue!
-    end
+    end.delete_if {|a| a.blank? }
   end
 
   def get_issue_for_triage

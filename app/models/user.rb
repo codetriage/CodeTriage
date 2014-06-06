@@ -147,7 +147,7 @@ class User < ActiveRecord::Base
 
   def send_daily_triage!
     subscriptions = self.repo_subscriptions.ready_for_triage.order('RANDOM()').limit(daily_issue_limit)
-    assignments   = subscriptions.map(&:assign_multi_issues!).flatten.delete_if {|a| a.blank? }.compact
+    assignments   = subscriptions.map(&:assign_multi_issues!).flatten.compact
     return false if assignments.blank?
     UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
   end

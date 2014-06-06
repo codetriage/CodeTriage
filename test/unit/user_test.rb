@@ -3,20 +3,20 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   test '#github_url returns github url' do
-    assert User.new(:github => 'jroes').github_url == 'https://github.com/jroes'
+    assert User.new(github: 'jroes').github_url == 'https://github.com/jroes'
   end
 
   test 'public scope should only return public users' do
     assert_equal 2, User.public_profile.size
 
     VCR.use_cassette('update_repo_info:schneems/sextant', ) do
-      user     = users(:mockstar)
-
-      repo     = Repo.new
+      user           = users(:mockstar)
+      repo           = Repo.new
       repo.user_name = 'schneems'
-      repo.name = 'sextant'
+      repo.name      = 'sextant'
       repo.save
-      repo_sub = user.repo_subscriptions.new
+
+      repo_sub      = user.repo_subscriptions.new
       repo_sub.repo = repo
       repo_sub.save
 
@@ -25,10 +25,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'able_to_edit_repo allows the correct rights' do
-    u = User.new(:github => "bob")
-    r = Repo.new(:user_name => "bob")
+    u = User.new(github: "bob")
+    r = Repo.new(user_name: "bob")
     assert u.able_to_edit_repo?(r)
-    r2 = Repo.new(:user_name => "neilmiddleton")
+
+    r2 = Repo.new(user_name: "neilmiddleton")
     assert !u.able_to_edit_repo?(r2)
   end
 
@@ -42,15 +43,15 @@ class UserTest < ActiveSupport::TestCase
     repo  = repos(:rails_rails)
 
     issue = repo.issues.new
-    issue.title = "Foo Bar"
-    issue.url = "http://schneems.com"
+    issue.title           = "Foo Bar"
+    issue.url             = "http://schneems.com"
     issue.last_touched_at = 2.days.ago
-    issue.state = 'open'
-    issue.html_url = "http://schneems.com"
-    issue.number = 9000
+    issue.state           = 'open'
+    issue.html_url        = "http://schneems.com"
+    issue.number          = 9000
     issue.save
 
-    repo_sub = user.repo_subscriptions.new
+    repo_sub      = user.repo_subscriptions.new
     repo_sub.repo = repo
     repo_sub.save
 
@@ -61,22 +62,21 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'User#send_daily_triage! sends the correct # of issues when daily_issue_limit is set' do
-    user  = users(:mockstar)
+    user                   = users(:mockstar)
     user.daily_issue_limit = 1
-    repo_names = [:rails_rails, :node]
+    repo_names             = [:rails_rails, :node]
     2.times do |i|
-      repo  = repos(repo_names[i])
-
-      issue = repo.issues.new
-      issue.title = "Foo Bar"
-      issue.url = "http://schneems.com"
+      repo                  = repos(repo_names[i])
+      issue                 = repo.issues.new
+      issue.title           = "Foo Bar"
+      issue.url             = "http://schneems.com"
       issue.last_touched_at = 2.days.ago
-      issue.state = 'open'
-      issue.html_url = "http://schneems.com"
-      issue.number = 9000
+      issue.state           = 'open'
+      issue.html_url        = "http://schneems.com"
+      issue.number          = 9000
       issue.save
 
-      repo_sub = user.repo_subscriptions.new
+      repo_sub      = user.repo_subscriptions.new
       repo_sub.repo = repo
       repo_sub.save
 
@@ -96,16 +96,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user favorite_language?" do
-    u = User.new( :favorite_languages => [ "ruby" ] )
+    u = User.new(favorite_languages: [ "ruby" ])
     assert u.favorite_language?("ruby")
     assert !u.favorite_language?("java")
   end
 
   test "user has_favorite_languages?" do
-    u = User.new( :favorite_languages => [ "ruby" ] )
+    u = User.new(favorite_languages: [ "ruby" ] )
     assert u.has_favorite_languages?
 
-    u = User.new( :favorite_languages => [] )
+    u = User.new(favorite_languages: [] )
     assert !u.has_favorite_languages?
   end
 
