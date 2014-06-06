@@ -86,7 +86,7 @@ class Issue < ActiveRecord::Base
   end
 
   def self.queue_mark_old_as_closed!
-    find_each(:conditions => ["state = ? and updated_at < ?", OPEN, 24.hours.ago]) do |issue|
+    where("state = ? and updated_at < ?", OPEN, 24.hours.ago).find_each do |issue|
       self.delay_mark_closed(issue.id)
     end
   end

@@ -31,7 +31,7 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def self.queue_triage_emails!
-    find_each(:conditions => ["last_sent_at is null or last_sent_at < ?", 23.hours.ago]) do |repo_sub|
+    where("last_sent_at is null or last_sent_at < ?", 23.hours.ago).find_each do |repo_sub|
       repo_sub.send_triage_email!
     end
   end

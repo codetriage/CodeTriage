@@ -29,7 +29,7 @@ namespace :schedule do
   end
 
   task check_user_auth: :environment do
-    User.find_each(conditions: "token is not null") do |user|
+    User.where(token: nil).find_each do |user|
       if user.auth_is_valid?
         # good
       else
@@ -39,7 +39,7 @@ namespace :schedule do
   end
 
   task warn_invalid_token: :environment do
-    User.find_each(conditions: "token is null") do |user|
+    User.where(token: nil).find_each do |user|
       next unless Date.today.thursday?
       ::UserMailer.invalid_token(user).deliver
     end
