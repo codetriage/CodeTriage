@@ -35,7 +35,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '2.3.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'webmock'
