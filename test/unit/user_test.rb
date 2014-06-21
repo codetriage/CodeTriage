@@ -34,7 +34,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'send out daily triage email' do
-    User.any_instance.expects(:send_daily_triage_email!).at_least_once
+    User.any_instance.expects(:send_daily_triage!).at_least_once
     User.queue_triage_emails!
   end
 
@@ -55,7 +55,7 @@ class UserTest < ActiveSupport::TestCase
     repo_sub.repo = repo
     repo_sub.save
 
-    assert_difference("User.find(#{user.id}).issues.count", 1) do
+    assert_difference("User.find(#{user.id}).issue_assignments.where(delivered: true).count", 1) do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
       user.send_daily_triage!
     end
@@ -65,8 +65,9 @@ class UserTest < ActiveSupport::TestCase
     user                   = users(:mockstar)
     user.daily_issue_limit = 1
     repo_names             = [:rails_rails, :node]
-    2.times do |i|
-      repo                  = repos(repo_names[i])
+
+    repo_names.each do |name|
+      repo                  = repos(name)
       issue                 = repo.issues.new
       issue.title           = "Foo Bar"
       issue.url             = "http://schneems.com"
@@ -79,9 +80,9 @@ class UserTest < ActiveSupport::TestCase
       repo_sub      = user.repo_subscriptions.new
       repo_sub.repo = repo
       repo_sub.save
-
     end
-    assert_difference("User.find(#{user.id}).issues.count", 1) do
+
+    assert_difference("User.find(#{user.id}).issues.count", 2) do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
       user.send_daily_triage!
     end

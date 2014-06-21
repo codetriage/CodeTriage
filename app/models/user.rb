@@ -137,18 +137,16 @@ class User < ActiveRecord::Base
 
   def self.queue_triage_emails!
     find_each do |user|
-      user.send_daily_triage_email!
+      user.delay_send_daily_triage_email(user.id)
     end
   end
 
-  def send_daily_triage_email!
-    delay_send_daily_triage_email(self.id)
-  end
-
   def send_daily_triage!
-    subscriptions = self.repo_subscriptions.ready_for_triage.order('RANDOM()').limit(daily_issue_limit)
-    assignments   = subscriptions.map(&:assign_multi_issues!).flatten.compact
-    return false if assignments.blank?
+    IssueAssigner.new(self, repo_subscriptions).assign
+    ids         = repo_subscriptions.pluck(:id)
+    assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)
+    assignments.each        {|a| a.update_attributes(delivered: true) }
+    repo_subscriptions.each {|s| s.update_attributes(last_sent_at: Time.now) }
     UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
   end
 

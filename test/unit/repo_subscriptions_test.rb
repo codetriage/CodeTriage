@@ -22,8 +22,8 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      issue = repo_sub.get_issue_for_triage
-      assert issue.is_a? Issue
+      IssueAssigner.new(user, [repo_sub]).assign
+      assert_equal 1, user.issues.count
     end
   end
 
@@ -56,8 +56,8 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     repo_sub.issue_assignments.create(:issue => assigned_issue)
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      issue = repo_sub.get_issue_for_triage
-      assert issue.is_a? Issue
+      IssueAssigner.new(user, [repo_sub]).assign
+      assert_equal 2, user.issues.count
     end
   end
 
@@ -79,7 +79,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      repo_sub.assign_issue!
+      IssueAssigner.new(user, [repo_sub]).assign
       assert_equal 1, user.issue_assignments.count
     end
   end
@@ -93,27 +93,18 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
                        state:           'open',
                        html_url:        "http://schneems.com",
                        number:          9000)
+    repo.issues.create(title:           "Bar Bar",
+                       url:             "http://schneems.com",
+                       last_touched_at: 2.days.ago,
+                       state:           'open',
+                       html_url:        "http://schneems.com",
+                       number:          9001)
     sub = user.repo_subscriptions.create(repo: repo,
                                    email_limit: 2)
-
-    RepoSubscription.any_instance.expects(:assign_issue!).twice
-    sub.assign_multi_issues!
+    IssueAssigner.new(user, user.repo_subscriptions).assign
+    assert_equal 2, sub.issue_assignments.count
   end
 
-  test "#ready_for_next?" do
-    user           = users(:mockstar)
-    repo           = repos(:rails_rails)
-    @repo_sub      = user.repo_subscriptions.new
-    @repo_sub.repo = repo
-
-    # return true if there is no email sent for this repo subscription
-    assert_equal true, @repo_sub.ready_for_next?
-
-    # return false if an email is sent within last 24 hours for this repo subscription
-    @repo_sub.assign_issue!
-    assert_equal false, @repo_sub.ready_for_next?
-
-  end
 
   test ".subscriptions_for a repo" do
     user  = users(:mockstar)

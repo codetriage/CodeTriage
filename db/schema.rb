@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524120051) do
+ActiveRecord::Schema.define(version: 20140621155109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,11 +19,14 @@ ActiveRecord::Schema.define(version: 20140524120051) do
   create_table "issue_assignments", force: true do |t|
     t.integer  "user_id"
     t.integer  "issue_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
+    t.boolean  "delivered",            default: false
   end
+
+  add_index "issue_assignments", ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
 
   create_table "issues", force: true do |t|
     t.integer  "comment_count"
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 20140524120051) do
     t.string   "user_name"
     t.datetime "last_touched_at"
     t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "repo_id"
     t.string   "title"
     t.string   "html_url"
@@ -41,11 +44,33 @@ ActiveRecord::Schema.define(version: 20140524120051) do
     t.boolean  "pr_attached",     default: false
   end
 
+  create_table "opro_auth_grants", force: true do |t|
+    t.string   "code"
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.text     "permissions"
+    t.datetime "access_token_expires_at"
+    t.integer  "user_id"
+    t.integer  "application_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "opro_client_apps", force: true do |t|
+    t.string   "name"
+    t.string   "app_id"
+    t.string   "app_secret"
+    t.text     "permissions"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "repo_subscriptions", force: true do |t|
     t.string   "user_name"
     t.string   "repo_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
@@ -55,13 +80,13 @@ ActiveRecord::Schema.define(version: 20140524120051) do
   create_table "repos", force: true do |t|
     t.string   "name"
     t.string   "user_name"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "issues_count", default: 0, null: false
     t.string   "language"
     t.string   "description"
     t.string   "full_name"
     t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
@@ -75,16 +100,16 @@ ActiveRecord::Schema.define(version: 20140524120051) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                                            null: false
+    t.datetime "updated_at",                                                            null: false
     t.string   "zip"
     t.string   "phone_number"
     t.boolean  "twitter"
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
-    t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
     t.string   "name"
+    t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
     t.boolean  "private",                default: false
     t.string   "favorite_languages",                                                                 array: true
     t.integer  "daily_issue_limit"
