@@ -18,7 +18,28 @@ class IssueAssigner
 
   private
     def assign_issue_for_sub(sub)
-      issue = sub.repo.issues.where(state: 'open').where.not(id: sub.issues.pluck(:id) ).first
+      issue = Issue.find_by_sql(<<-SQL
+                SELECT
+                  *
+                FROM
+                  issues
+                WHERE
+                  repo_id = '#{sub.repo_id}'
+                  AND id NOT IN (
+                    SELECT
+                      issue_id
+                    FROM
+                      issue_assignments
+                    WHERE
+                      user_id = '#{sub.user_id}'
+                  )
+                ORDER BY
+                  random()
+                LIMIT
+                  1
+                SQL
+              ).first
+
       return false if issue.blank?
       if issue.valid_for_user?(user)
         sub.issue_assignments.create!(issue_id: issue.id, user_id: user.id)
@@ -29,3 +50,4 @@ class IssueAssigner
       end
     end
 end
+
