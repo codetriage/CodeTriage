@@ -135,10 +135,19 @@ class User < ActiveRecord::Base
     UserMailer.poke_inactive(user).deliver
   end
 
-  def self.queue_triage_emails!
-    find_each do |user|
-      user.delay_send_daily_triage_email(user.id)
-    end
+  def days_since_last_click
+    return 0 if last_clicked_at.blank?
+    (
+      (Time.now - last_clicked_at) / 1.day
+    ).to_i # only want whole days
+  end
+
+  def days_since_last_email
+    last_sent_at = repo_subscriptions.last.last_sent_at
+    return 0 if last_sent_at.blank?
+    (
+      (Time.now - last_sent_at) / 1.day
+    ).to_i # only want whole days
   end
 
   def send_daily_triage!
