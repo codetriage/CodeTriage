@@ -41,7 +41,7 @@ class ReposController < RepoBasedController
     if @repo.save
       flash[:notice] = "Added #{@repo.to_param} for triaging"
       repo_sub = RepoSubscription.create(:repo => @repo, :user => current_user)
-      repo_sub.send_triage_email!
+      RepoSubscription.background_send_triage_email(repo_sub.id)
 
       redirect_to @repo
     else
