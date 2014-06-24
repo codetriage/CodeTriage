@@ -135,7 +135,7 @@ class User < ActiveRecord::Base
     UserMailer.poke_inactive(user).deliver
   end
 
-  def days_since_last_click
+  def days_since_last_clicked
     return 0 if last_clicked_at.blank?
     (
       (Time.now - last_clicked_at) / 1.day

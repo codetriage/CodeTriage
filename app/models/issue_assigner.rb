@@ -32,6 +32,7 @@ class IssueAssigner
                       issue_assignments
                     WHERE
                       user_id = '#{sub.user_id}'
+                      AND delivered <> true
                   )
                 ORDER BY
                   random()

@@ -1,7 +1,7 @@
 class RepoSubscription < ActiveRecord::Base
   include ResqueDef
 
-  validates  :repo_id, uniqueness: { scope: :user_id}, presence: true
+  validates  :repo_id, uniqueness: { scope: :user_id }, presence: true
   validates  :user_id, presence: true
   validates  :email_limit, numericality: { less_than: 21, greater_than: 0 }
 

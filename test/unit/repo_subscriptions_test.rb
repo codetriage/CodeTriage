@@ -53,7 +53,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     assigned_issue.number          = 2
     assigned_issue.save
 
-    repo_sub.issue_assignments.create(:issue => assigned_issue)
+    repo_sub.issue_assignments.create(issue: assigned_issue)
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
       IssueAssigner.new(user, [repo_sub]).assign
