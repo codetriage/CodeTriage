@@ -143,7 +143,7 @@ class User < ActiveRecord::Base
   end
 
   def days_since_last_email
-    last_sent_at = repo_subscriptions.last.last_sent_at
+    last_sent_at = repo_subscriptions.last.try(:last_sent_at)
     return 0 if last_sent_at.blank?
     (
       (Time.now - last_sent_at) / 1.day
