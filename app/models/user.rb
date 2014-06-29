@@ -144,20 +144,23 @@ class User < ActiveRecord::Base
 
   def days_since_last_email
     last_sent_at = repo_subscriptions.last.try(:last_sent_at)
-    return 0 if last_sent_at.blank?
+    last_sent_at ||= self.created_at
     (
       (Time.now - last_sent_at) / 1.day
     ).to_i # only want whole days
   end
 
   def send_daily_triage!
+    return false if repo_subscriptions.blank?
     return false if EmailDecider.new(days_since_last_clicked).skip?(days_since_last_email)
     IssueAssigner.new(self, repo_subscriptions).assign
     ids         = repo_subscriptions.pluck(:id)
     assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)
-    assignments.each        {|a| a.update_attributes(delivered: true) }
-    repo_subscriptions.each {|s| s.update_attributes(last_sent_at: Time.now) }
-    UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
+    if assignments.present?
+      assignments.each        {|a| a.update_attributes(delivered: true) }
+      repo_subscriptions.each {|s| s.update_attributes(last_sent_at: Time.now) }
+      UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
+    end
   end
 
   resque_def(:delay_send_daily_triage_email) do |id|

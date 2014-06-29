@@ -65,3 +65,26 @@ jroes:
   name: Jonathan Roes
   private: true
   last_clicked_at: 2012-11-10 23:53:33.202139000 Z
+
+empty:
+  email: empty@empty.com
+  encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at:
+  sign_in_count: 1
+  current_sign_in_at: 2012-11-10 23:53:33.202139000 Z
+  last_sign_in_at: 2012-11-10 23:53:33.202139000 Z
+  current_sign_in_ip: 68.5.230.247
+  last_sign_in_ip: 68.5.230.247
+  created_at: 2012-11-10 23:53:33.147175000 Z
+  updated_at: 2012-11-10 23:53:33.203388000 Z
+  zip:
+  phone_number:
+  twitter:
+  github: empty
+  github_access_token:
+  admin:
+  name: Empty
+  private: false
+  last_clicked_at: 2012-11-10 23:53:33.202139000 Z

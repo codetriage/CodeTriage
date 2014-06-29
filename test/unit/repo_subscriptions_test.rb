@@ -29,7 +29,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
 
   test "the get_issue_for_triage for user with existing issue assignments" do
-    user          = users(:mockstar)
+    user          = users(:empty)
     repo          = repos(:rails_rails)
     repo_sub      = user.repo_subscriptions.new
     repo_sub.repo = repo
@@ -41,7 +41,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     issue.last_touched_at = 2.days.ago
     issue.state           = 'open'
     issue.html_url        = "http://schneems.com"
-    issue.number          = 1
+    issue.number          = 2
     issue.save
 
     assigned_issue                 = repo.issues.new
@@ -50,7 +50,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     assigned_issue.last_touched_at = 2.days.ago
     assigned_issue.state           = 'open'
     assigned_issue.html_url        = "http://schneems.com"
-    assigned_issue.number          = 2
+    assigned_issue.number          = 3
     assigned_issue.save
 
     repo_sub.issue_assignments.create(issue: assigned_issue)
