@@ -122,12 +122,6 @@ class Repo < ActiveRecord::Base
     background_populate_issues(self.id)
   end
 
-  def self.queue_populate_open_issues!
-    find_each do |repo|
-      repo.populate_issues!
-    end
-  end
-
   def self.exists_with_name?(name)
     Repo.all.collect{|r| r.username_repo}.include? name
   end
@@ -144,8 +138,12 @@ class Repo < ActiveRecord::Base
   # by default anything you put into the perform method
   # will be called for each object in the redis queue
   resque_def(:background_populate_issues) do |id|
-    repo = Repo.find(id.to_i)
-    repo.populate_multi_issues!(:state => 'open')
+    begin
+      repo = Repo.find(id.to_i)
+      repo.populate_multi_issues!(:state => 'open')
+    rescue GitHubBub::RequestError => e
+      repo.update_attributes(github_error_msg: e.message)
+    end
   end
 
 

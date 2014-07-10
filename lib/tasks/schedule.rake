@@ -9,7 +9,9 @@ namespace :schedule do
 
   desc "Populates github issues"
   task populate_issues: :environment do
-    Repo.queue_populate_open_issues!
+    Repo.find_each do |repo|
+      repo.populate_issues!
+    end
   end
 
   desc "Marks issues as closed"
