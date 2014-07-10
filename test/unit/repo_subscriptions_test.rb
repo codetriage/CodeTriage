@@ -20,11 +20,9 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     issue.number          = 1
     issue.save
 
-    VCR.use_cassette('open_issue') do
-      Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      IssueAssigner.new(user, [repo_sub]).assign
-      assert_equal 1, user.issues.count
-    end
+    Issue.any_instance.stubs(:valid_for_user?).returns(true)
+    IssueAssigner.new(user, [repo_sub]).assign
+    assert_equal 1, user.issues.count
   end
 
 
@@ -41,7 +39,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     issue.last_touched_at = 2.days.ago
     issue.state           = 'open'
     issue.html_url        = "http://schneems.com"
-    issue.number          = 2
+    issue.number          = (repo.issues.last.try(:number) || 0) + 1
     issue.save
 
     assigned_issue                 = repo.issues.new
@@ -50,15 +48,14 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     assigned_issue.last_touched_at = 2.days.ago
     assigned_issue.state           = 'open'
     assigned_issue.html_url        = "http://schneems.com"
-    assigned_issue.number          = 3
+    assigned_issue.number          = (repo.issues.last.try(:number) || 1) + 1
     assigned_issue.save
 
     repo_sub.issue_assignments.create(issue: assigned_issue)
-    VCR.use_cassette('open_issue') do
-      Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      IssueAssigner.new(user, [repo_sub]).assign
-      assert_equal 2, user.issues.count
-    end
+
+    Issue.any_instance.stubs(:valid_for_user?).returns(true)
+    IssueAssigner.new(user, [repo_sub]).assign
+    assert_equal 2, user.issues.count
   end
 
   test 'the assign_issue creates an assignment for the user' do

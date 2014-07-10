@@ -20,7 +20,7 @@ mockstar:
   name: Mock Star
   private: false
   favorite_languages: [ "ruby" ]
-  last_clicked_at: 2012-11-10 23:53:33.202139000 Z
+  last_clicked_at: <%= Time.now %>
 schneems:
   email: richard.schneeman@gmail.com
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
@@ -42,7 +42,7 @@ schneems:
   admin:
   name: Richard Schneeman
   private: false
-  last_clicked_at: 2012-11-10 23:53:33.202139000 Z
+  last_clicked_at: <%= Time.now %>
 jroes:
   email: jroes@jroes.net
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
@@ -64,7 +64,7 @@ jroes:
   admin:
   name: Jonathan Roes
   private: true
-  last_clicked_at: 2012-11-10 23:53:33.202139000 Z
+  last_clicked_at: <%= Time.now %>
 
 empty:
   email: empty@empty.com
@@ -87,4 +87,4 @@ empty:
   admin:
   name: Empty
   private: false
-  last_clicked_at: 2012-11-10 23:53:33.202139000 Z
+  last_clicked_at: <%= Time.now %>

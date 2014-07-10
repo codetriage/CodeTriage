@@ -7,20 +7,19 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'public scope should only return public users' do
-    assert_equal 2, User.public_profile.size
+    user           = users(:mockstar)
+    repo           = Repo.new
+    repo.user_name = 'schneems'
+    repo.name      = 'sextant'
 
     VCR.use_cassette('update_repo_info:schneems/sextant', ) do
-      user           = users(:mockstar)
-      repo           = Repo.new
-      repo.user_name = 'schneems'
-      repo.name      = 'sextant'
       repo.save
+    end
 
+    assert_difference("Repo.find(#{repo.id}).users.public_profile.size", 1) do
       repo_sub      = user.repo_subscriptions.new
       repo_sub.repo = repo
       repo_sub.save
-
-      assert_equal 1, repo.users.public_profile.size
     end
   end
 
@@ -40,7 +39,7 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test 'User#send_daily_triage!' do
+  test 'send_daily_triage!' do
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
 
@@ -50,7 +49,7 @@ class UserTest < ActiveSupport::TestCase
     issue.last_touched_at = 2.days.ago
     issue.state           = 'open'
     issue.html_url        = "http://schneems.com"
-    issue.number          = 9000
+    issue.number          = (repo.issues.last.try(:number) || 0) + 1
     issue.save
 
     repo_sub      = user.repo_subscriptions.new
@@ -76,7 +75,7 @@ class UserTest < ActiveSupport::TestCase
       issue.last_touched_at = 2.days.ago
       issue.state           = 'open'
       issue.html_url        = "http://schneems.com"
-      issue.number          = 9000
+      issue.number          = (repo.issues.last.try(:number) || 0) + 1
       issue.save
 
       repo_sub      = user.repo_subscriptions.new
@@ -84,8 +83,12 @@ class UserTest < ActiveSupport::TestCase
       repo_sub.save
     end
 
+    assert user.repo_subscriptions.present?
+    assert EmailDecider.new(user.days_since_last_clicked).now?(user.days_since_last_email)
+
     assert_difference("User.find(#{user.id}).issues.count", 2) do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
+
       user.send_daily_triage!
     end
   end

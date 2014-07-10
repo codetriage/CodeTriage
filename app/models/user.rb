@@ -6,17 +6,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable
 
-  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?
-  validates_length_of     :password, :within => 8..128, :allow_blank => true
+  validates_uniqueness_of :email,    allow_blank: true, :if => :email_changed?
+  validates_length_of     :password, within:  8..128, allow_blank: true
   validates :github, presence: true, uniqueness: true
 
   # Setup accessible (or protected) attributes for your model
 
   has_many :repo_subscriptions, dependent: :destroy
-  has_many :repos, :through => :repo_subscriptions
+  has_many :repos, through: :repo_subscriptions
 
-  has_many :issue_assignments, :through => :repo_subscriptions
-  has_many :issues,            :through => :issue_assignments
+  has_many :issue_assignments, through: :repo_subscriptions
+  has_many :issues,            through: :issue_assignments
 
   scope :public_profile, -> { where.not(users: { private: true }) }
 
