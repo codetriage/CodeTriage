@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.1.1
+  - 2.1.2
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate test
 before_install: gem install bundler -v=1.5.1
