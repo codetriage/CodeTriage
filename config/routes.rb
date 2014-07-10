@@ -35,7 +35,7 @@ CodeTriage::Application.routes.draw do
   scope format: false do
     resources :repos, only: %w[index new create]
 
-    scope ':full_name' do
+    scope '*full_name' do
       constraints full_name: REPO_PATH_PATTERN do
         get   '/',            to: 'repos#show',        as: 'repo'
         patch '/',            to: 'repos#update',      as:  nil
