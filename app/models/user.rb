@@ -153,6 +153,7 @@ class User < ActiveRecord::Base
   def send_daily_triage!
     return false if repo_subscriptions.blank?
     return false if EmailDecider.new(days_since_last_clicked).skip?(days_since_last_email)
+
     IssueAssigner.new(self, repo_subscriptions).assign
     ids         = repo_subscriptions.pluck(:id)
     assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)

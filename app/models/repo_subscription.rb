@@ -11,12 +11,6 @@ class RepoSubscription < ActiveRecord::Base
   has_many   :issue_assignments
   has_many   :issues, through: :issue_assignments
 
-  def self.queue_triage_emails!
-    where("last_sent_at is null or last_sent_at < ?", 23.hours.ago).find_each do |repo_sub|
-      repo_sub.background_send_triage_email(self.id)
-    end
-  end
-
   def self.for(repo_id)
     where(repo_id: repo_id).includes(:issues)
   end
