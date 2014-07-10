@@ -31,7 +31,7 @@ class IssueAssigner
                     FROM
                       issue_assignments
                     WHERE
-                      user_id = '#{sub.user_id}'
+                      repo_subscription_id = '#{sub.id}'
                       AND delivered <> true
                   )
                 ORDER BY
@@ -43,10 +43,10 @@ class IssueAssigner
 
       return false if issue.blank?
       if issue.valid_for_user?(user)
-        sub.issue_assignments.create!(issue_id: issue.id, user_id: user.id)
+        sub.issue_assignments.create!(issue_id: issue.id)
       else
         # prevent selecting this issue again and try to find another one
-        sub.issue_assignments.create!(issue_id: issue.id, user_id: user.id, delivered: true)
+        sub.issue_assignments.create!(issue_id: issue.id, delivered: true)
         assign_issue_for_sub(sub) # yay recursion!
       end
     end
