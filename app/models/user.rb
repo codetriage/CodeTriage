@@ -158,8 +158,8 @@ class User < ActiveRecord::Base
     ids         = repo_subscriptions.pluck(:id)
     assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)
     if assignments.present?
-      assignments.each        {|a| a.update_attributes(delivered: true) }
-      repo_subscriptions.each {|s| s.update_attributes(last_sent_at: Time.now) }
+      assignments.update_all(delivered: true)
+      repo_subscriptions.update_all(last_sent_at: Time.now)
       UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
     end
   end
