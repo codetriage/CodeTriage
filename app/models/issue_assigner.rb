@@ -32,7 +32,6 @@ class IssueAssigner
                       issue_assignments
                     WHERE
                       repo_subscription_id = '#{sub.id}'
-                      AND delivered <> true
                   )
                 ORDER BY
                   random()
