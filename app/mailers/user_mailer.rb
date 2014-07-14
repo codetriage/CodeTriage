@@ -10,7 +10,7 @@ class UserMailer < ActionMailer::Base
     subject = ""
     @days   = @user.days_since_last_clicked
     subject << "[#{@days} days] " if @days > @max_days
-    subject << "Help Triage #{@assignments.count} Open Source #{"Issue".pluralize(@assignments.count)}"
+    subject << "Help Triage #{@assignments.size} Open Source #{ "Issue".pluralize(@assignments.count)}"
     mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
