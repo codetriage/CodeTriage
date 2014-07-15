@@ -32,7 +32,7 @@ namespace :schedule do
   end
 
   task check_user_auth: :environment do
-    User.where(token: nil).find_each do |user|
+    User.where.not(token: nil).find_each do |user|
       if user.auth_is_valid?
         # good
       else
