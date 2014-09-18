@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
-
+# ruby '2.1.2'
+ruby "2.1.2", :patchlevel => "216"
 # Gems required in all environments
 gem 'rails', '4.1.2'
 
