@@ -1,5 +1,5 @@
 $ ->
-  $('.digg_pagination a').click ->
+  $pagination = $('#issues')
+  $pagination.on "click", "a", ->
     $.get this.href, null, null, 'script'
-    console.log $('.digg_pagination em.current')
     return false

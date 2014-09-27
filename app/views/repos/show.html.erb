@@ -63,14 +63,6 @@
 <hr />
 <h2><%= @issues.total_entries %> open issues in <%= @repo.username_repo %></h2>
 
-<div class="digg_pagination">
-  <div clas="page_info">
-    <%#= page_entries_info @issues %>
-  </div>
-  <br />
-  <%= will_paginate @issues, :container => false %>
-</div>
-<br />
 <div id="issues">
   <%= render 'issues', issues: @issues %>
 </div>
