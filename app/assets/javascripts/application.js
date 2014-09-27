@@ -18,3 +18,4 @@
 //= require tab_navigation
 //= require bootstrap
 //= require global
+//= require repos_pagination

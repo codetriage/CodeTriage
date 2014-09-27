@@ -71,11 +71,7 @@
   <%= will_paginate @issues, :container => false %>
 </div>
 <br />
-  <ul>
-    <% @issues.each do |issue| %>
-      <li>
-        <%= link_to issue.title, issue.html_url %>
-      </li>
-    <% end %>
-  </ul
+<div id="issues">
+  <%= render 'issues', issues: @issues %>
+</div>
 <hr />

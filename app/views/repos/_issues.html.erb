@@ -1,0 +1,7 @@
+  <ul>
+    <% issues.each do |issue| %>
+      <li>
+        <%= link_to issue.title, issue.html_url %>
+      </li>
+    <% end %>
+  </ul>
