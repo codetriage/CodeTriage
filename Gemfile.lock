@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/schneems/omniauth.git
+  revision: 3c4b79504eb58df076c2c0d06a16ff3294f28184
+  branch: schneems/hashie-breakup
+  specs:
+    omniauth (1.2.2)
+      rack (~> 1.0)
+
+GIT
   remote: git://github.com/schneems/puma_auto_tune.git
   revision: 08a727a1f16d2968056f337c8e5cd76dfb260876
   specs:
@@ -86,7 +94,6 @@ GEM
     git_hub_bub (0.0.6)
       excon
       rrrretry
-    hashie (2.1.1)
     hike (1.2.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
@@ -133,9 +140,6 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    omniauth (1.2.1)
-      hashie (>= 1.2, < 3)
-      rack (~> 1.0)
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.1)
@@ -284,6 +288,7 @@ DEPENDENCIES
   mail_view (~> 1.0.2)
   maildown
   mocha
+  omniauth!
   omniauth-github
   pg
   puma
