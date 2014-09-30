@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-# ruby '2.1.2'
-ruby "2.1.2", :patchlevel => "216"
+ruby '2.1.2'
+
 # Gems required in all environments
 gem 'rails', '4.1.2'
 
@@ -42,8 +42,6 @@ group :test do
   gem 'webmock'
   gem 'vcr'
   gem 'mocha', require: false
-  gem 'shoulda'
-  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
   gem 'simplecov', :require => false
 end
 
