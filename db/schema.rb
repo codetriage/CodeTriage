@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710164307) do
+ActiveRecord::Schema.define(version: 20141011211617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "issue_assignments", force: true do |t|
     t.integer  "issue_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
     t.boolean  "delivered",            default: false
@@ -34,58 +34,41 @@ ActiveRecord::Schema.define(version: 20140710164307) do
     t.string   "user_name"
     t.datetime "last_touched_at"
     t.integer  "number"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_id"
     t.string   "title"
     t.string   "html_url"
     t.string   "state"
     t.boolean  "pr_attached",     default: false
+    t.string   "level"
+    t.string   "labels",                          array: true
   end
 
-  create_table "opro_auth_grants", force: true do |t|
-    t.string   "code"
-    t.string   "access_token"
-    t.string   "refresh_token"
-    t.text     "permissions"
-    t.datetime "access_token_expires_at"
-    t.integer  "user_id"
-    t.integer  "application_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "opro_client_apps", force: true do |t|
-    t.string   "name"
-    t.string   "app_id"
-    t.string   "app_secret"
-    t.text     "permissions"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+  add_index "issues", ["level"], name: "index_issues_on_level", using: :btree
 
   create_table "repo_subscriptions", force: true do |t|
     t.string   "user_name"
     t.string   "repo_name"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
     t.integer  "email_limit",  default: 1
+    t.string   "labels",                   array: true
   end
 
   create_table "repos", force: true do |t|
     t.string   "name"
     t.string   "user_name"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
     t.integer  "issues_count",     default: 0, null: false
     t.string   "language"
     t.string   "description"
     t.string   "full_name"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "github_error_msg"
   end
 
@@ -100,22 +83,23 @@ ActiveRecord::Schema.define(version: 20140710164307) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "zip"
     t.string   "phone_number"
     t.boolean  "twitter"
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
-    t.string   "name"
     t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
+    t.string   "name"
     t.boolean  "private",                default: false
     t.string   "favorite_languages",                                                                 array: true
     t.integer  "daily_issue_limit"
     t.boolean  "skip_issues_with_pr",    default: false
     t.string   "account_delete_token"
     t.datetime "last_clicked_at"
+    t.string   "level"
   end
 
   add_index "users", ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
