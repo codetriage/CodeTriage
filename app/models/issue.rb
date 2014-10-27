@@ -4,7 +4,7 @@ class Issue < ActiveRecord::Base
   OPEN   = "open"
   CLOSED = "closed"
 
-  validates :state, :inclusion => { :in => [OPEN, CLOSED] }
+  validates :state, inclusion: { in: [OPEN, CLOSED] }
 
   belongs_to :repo
 
