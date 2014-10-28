@@ -53,13 +53,13 @@ class ReposController < RepoBasedController
 
   def edit
     @repo = find_repo(params)
-    redirect_to root_path, :notice => "You cannot edit this repo" unless current_user.able_to_edit_repo?(@repo)
+    redirect_to root_path, notice: "You cannot edit this repo" unless current_user.able_to_edit_repo?(@repo)
   end
 
   def update
     @repo = find_repo(params)
     if @repo.update_attributes(repo_params)
-      redirect_to @repo, :notice => "Repo updated"
+      redirect_to @repo, notice: "Repo updated"
     else
       render :edit
     end
