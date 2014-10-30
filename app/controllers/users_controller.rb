@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:update, :destroy]
+  before_filter :authenticate_user!, only: [:update, :destroy]
 
   def show
     @user = User.find(params[:id])
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
     @user = current_user
     if @user.update_attributes(uparams)
-      redirect_to @user, :flash => { :success => 'User successfully updated' }
+      redirect_to @user, flash: { success: 'User successfully updated' }
     end
   end
 

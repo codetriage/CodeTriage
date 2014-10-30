@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable
 
-  validates_uniqueness_of :email,    allow_blank: true, :if => :email_changed?
+  validates_uniqueness_of :email,    allow_blank: true, if: :email_changed?
   validates_length_of     :password, within:  8..128, allow_blank: true
   validates :github, presence: true, uniqueness: true
 
@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   end
 
   def sub_from_repo(repo)
-    self.repo_subscriptions.where(:repo_id => repo.id).first
+    self.repo_subscriptions.where(repo_id: repo.id).first
   end
 
   def github_json
@@ -94,14 +94,14 @@ class User < ActiveRecord::Base
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user  = signed_in_resource ||
-            User.where(:github => auth.info.nickname).first ||
-            User.where(:email  => auth.info.email).first
+            User.where(github: auth.info.nickname).first ||
+            User.where(email:  auth.info.email).first
 
     token = auth.credentials.token
     params = {
-      :github              => auth.info.nickname,
-      :github_access_token => token,
-      :avatar_url => auth.extra.raw_info.avatar_url
+      github:              auth.info.nickname,
+      github_access_token: token,
+      avatar_url: auth.extra.raw_info.avatar_url
     }
 
     if user
@@ -109,9 +109,9 @@ class User < ActiveRecord::Base
     else
       email =  auth.info.email
       email =  GitHubBub.get("/user/emails", token: token).json_body.first if email.blank?
-      params = params.merge(:password => Devise.friendly_token[0,20],
-                            :name     => auth.extra.raw_info.name,
-                            :email    => email)
+      params = params.merge(password: Devise.friendly_token[0,20],
+                            name:     auth.extra.raw_info.name,
+                            email:    email)
       user = User.create(params)
     end
     user

@@ -1,19 +1,19 @@
 class Repo < ActiveRecord::Base
   include ResqueDef
 
-  validate :github_url_exists, :on => :create
+  validate :github_url_exists, on: :create
   validate :name, uniqueness: {scope: :user_name, case_sensitive: false }
 
   after_create :populate_issues!, :update_repo_info!
 
   before_validation :downcase_name, :strip_whitespaces
 
-  validates :name, :user_name, :presence => true
-  validates :name, :uniqueness => {:scope => :user_name}
+  validates :name, :user_name, presence: true
+  validates :name, uniqueness: {scope: :user_name}
 
   has_many :issues
   has_many :repo_subscriptions
-  has_many :users, :through => :repo_subscriptions
+  has_many :users, through: :repo_subscriptions
 
   has_many :subscribers, through: :repo_subscriptions, source: :user
 
@@ -140,7 +140,7 @@ class Repo < ActiveRecord::Base
   resque_def(:background_populate_issues) do |id|
     begin
       repo = Repo.find(id.to_i)
-      repo.populate_multi_issues!(:state => 'open')
+      repo.populate_multi_issues!(state: 'open')
     rescue GitHubBub::RequestError => e
       repo.update_attributes(github_error_msg: e.message)
     end
