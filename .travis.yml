@@ -9,6 +9,7 @@ before_script:
   - psql -c 'create database triage_test;' -U postgres
 deploy:
   provider: heroku
+  strategy: git
   api_key:
     secure: SJwHN+BOodUbMjOGSIPRxqGnxQQ+20mC8pveALLYOmBp2SHtPKkYKX3AanqJ8jws2ZNnf1bg/RZER/PbbfKJ7q/9JiZ4FHBrIHQW8F0NI+tEoHummOag6Jc4A2tCaRWDPcl/B87NcmaDGjAfWuvAmD3MHL/trIdBhUfitmRNr9s=
   app: issuetriage
