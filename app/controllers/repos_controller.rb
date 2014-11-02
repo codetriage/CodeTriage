@@ -2,6 +2,8 @@ require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
 class ReposController < RepoBasedController
 
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
+
   def index
     @repos = Repo.order_by_subscribers.order(:name).page(params[:page]).per_page(params[:per_page] || 50)
   end

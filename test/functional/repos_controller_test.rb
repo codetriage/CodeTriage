@@ -10,4 +10,22 @@ class ReposControllerTest < ActionController::TestCase
       get :show, full_name: 'foo/bar'
     }
   end
+
+  test 'trying to create repo without logged in will redirect to login page' do
+    assert_no_difference -> { Repo.count } do
+      post :create, repo: { name: 'codetriage', user_name: 'codetriage' }
+    end
+
+    assert_redirected_to new_user_session_path
+  end
+
+  test 'logged in user can create repo' do
+    sign_in users(:mockstar)
+
+    assert_difference -> { Repo.count } do
+      post :create, repo: { name: 'codetriage', user_name: 'codetriage' }
+    end
+
+    assert_redirected_to repo_path("codetriage/codetriage")
+  end
 end
