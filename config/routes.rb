@@ -5,13 +5,12 @@ CodeTriage::Application.routes.draw do
   get "users/sign_in" => redirect('/users/auth/github'), via: [:get, :post]
   get "users/sign_up" => redirect('/users/auth/github'), via: [:get, :post]
 
-  devise_for  :users, :controllers => {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
+  devise_for  :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
 
-  root        :to => "pages#index"
+  root        to: "pages#index"
 
   namespace :users do
     resources :after_signup
-
   end
 
   resources   :users
@@ -28,7 +27,7 @@ CodeTriage::Application.routes.draw do
     mount UserMailer::Preview => 'mail_view'
   end
 
-  mount Resque::Server.new, :at => "/codetriage/resque"
+  mount Resque::Server.new, at: "/codetriage/resque"
 
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
