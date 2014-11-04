@@ -126,7 +126,11 @@ class User < ActiveRecord::Base
   end
 
   def valid_email?
-    Mail::Parsers::AddressListsParser.new.parse(email).present?
+    begin
+      Mail::Parsers::AddressListsParser.new.parse(email).present?
+    rescue 
+      false
+    end
   end
 
   resque_def(:background_inactive_email) do |id|
@@ -176,4 +180,4 @@ class User < ActiveRecord::Base
     favorite_languages && !favorite_languages.empty?
   end
 
-end
+  end
