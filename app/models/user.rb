@@ -126,11 +126,7 @@ class User < ActiveRecord::Base
   end
 
   def valid_email?
-    begin
-      Mail::Parsers::AddressListsParser.new.parse(email).present?
-    rescue 
-      false
-    end
+    ValidateEmail.valid?(email)
   end
 
   resque_def(:background_inactive_email) do |id|

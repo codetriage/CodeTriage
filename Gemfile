@@ -28,6 +28,7 @@ gem 'devise'
 gem 'rack-timeout'
 gem 'unicorn'
 gem 'mail_view',   '~> 1.0.2'
+gem 'valid_email'
 
 group :development do
   gem 'foreman'

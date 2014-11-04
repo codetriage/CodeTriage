@@ -238,6 +238,9 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    valid_email (0.0.10)
+      activemodel
+      mail (~> 2.6.1)
     vcr (2.5.0)
     vegas (0.1.11)
       rack (>= 1.0.0)
@@ -293,6 +296,7 @@ DEPENDENCIES
   teaspoon
   uglifier (>= 1.0.3)
   unicorn
+  valid_email
   vcr
   webmock
   wicked
