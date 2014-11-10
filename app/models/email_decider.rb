@@ -26,16 +26,17 @@ class EmailDecider
   end
 
   private
-    def frequency
-      case @days
-      when 0..3
-        :daily
-      when 7..14
-        :twice_a_week
-      when 14..Float::INFINITY
-        :once_a_week
-      else
-        :wait
-      end
+
+  def frequency
+    case @days
+    when 0..3
+      :daily
+    when 7..14
+      :twice_a_week
+    when 14..Float::INFINITY
+      :once_a_week
+    else
+      :wait
     end
+  end
 end
