@@ -8,7 +8,7 @@
   </div>
    <%= f.label :daily_issue_limit, t("activerecord.attributes.user.daily_issue_limit", :default => "Max # of issues you want to receive per day"), :class => "label label-info" %>
   <div class="input">
-    <%= f.number_field :daily_issue_limit, :class => 'number_field' %>
+    <%= f.number_field :daily_issue_limit, :class => 'number_field', :min => 0 %>
   </div>
 
   <%= f.label :skip_issues_with_pr, t("activerecord.attributes.user.skip_issues_with_pr", :default => "Skip Issues with Pull requests"), :class => "label label-info" %>
