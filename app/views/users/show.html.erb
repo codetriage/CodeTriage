@@ -19,6 +19,9 @@
       <% else %>
         <%= link_to "Go public", users_path(user: {private: false}), method: :put, :class => 'btn btn-success'  %>
       <% end %>
+
+      <h5>Max # of issues you want to receive per day: <%= @user.daily_issue_limit.presence || 'not set' %></h5>
+      <h5>Skip Issues with Pull Requests: <%= @user.skip_issues_with_pr %></h5>
     </section>
 
     <section id="user-favorite-langs">
