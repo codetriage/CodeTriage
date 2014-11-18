@@ -82,7 +82,12 @@ class Issue < ActiveRecord::Base
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
                            html_url:        issue_hash['html_url'],
-                           pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
+                           pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']),
+                           labels: label_names(issue_hash['labels']))
+  end
+
+  def label_names(labels)
+    labels.map { |label| label["name"] }
   end
 
   def self.queue_mark_old_as_closed!
