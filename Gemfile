@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.2.0"
 
 # Gems required in all environments
-gem 'rails', '4.1.7'
+gem 'rails', '4.1.8'
 
 gem 'puma'
 gem 'puma_auto_tune', github: "schneems/puma_auto_tune"
