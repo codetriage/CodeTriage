@@ -22,8 +22,10 @@ class ReposControllerTest < ActionController::TestCase
   test 'logged in user can create repo' do
     sign_in users(:mockstar)
 
-    assert_difference -> { Repo.count } do
-      post :create, repo: { name: 'refinerycms', user_name: 'refinery' }
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      assert_difference -> { Repo.count } do
+        post :create, repo: { name: 'refinerycms', user_name: 'refinery' }
+      end
     end
 
     assert_redirected_to repo_path('refinery/refinerycms')
