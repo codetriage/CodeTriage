@@ -23,9 +23,9 @@ class ReposControllerTest < ActionController::TestCase
     sign_in users(:mockstar)
 
     assert_difference -> { Repo.count } do
-      post :create, repo: { name: 'codetriage', user_name: 'codetriage' }
+      post :create, repo: { name: 'refinerycms', user_name: 'refinery' }
     end
 
-    assert_redirected_to repo_path("codetriage/codetriage")
+    assert_redirected_to repo_path('refinery/refinerycms')
   end
 end
