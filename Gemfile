@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby "2.2.0"
 
 # Gems required in all environments
-gem 'rails', '4.1.2'
+gem 'rails', '4.1.8'
 
 gem 'puma'
 gem 'puma_auto_tune', github: "schneems/puma_auto_tune"
@@ -28,6 +28,7 @@ gem 'devise'
 gem 'rack-timeout'
 gem 'unicorn'
 gem 'mail_view',   '~> 1.0.2'
+gem 'valid_email'
 
 group :development do
   gem 'foreman'
