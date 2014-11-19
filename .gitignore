@@ -30,3 +30,6 @@ dump.rdb
 /config/database.yml
 
 public/assets
+
+# ignore vendor/bundle
+vendor/bundle
