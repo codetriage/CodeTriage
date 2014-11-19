@@ -34,9 +34,9 @@ Rails.application.configure do
 
 
   # Generate digests for assets URLs
-  config.action_controller.asset_host = ENV["CDN_SUMO_URL"]
+  # config.action_controller.asset_host = ENV["CDN_SUMO_URL"]
 
-  config.static_cache_control = "public, max-age=2592000"
+  # config.static_cache_control = "public, max-age=2592000"
   # Generate digests for assets URLs.
   config.assets.digest = true
 
