@@ -29,92 +29,92 @@ ActiveRecord::Schema.define(version: 20140710164307) do
 
   create_table "issues", force: true do |t|
     t.integer  "comment_count"
-    t.string   "url"
-    t.string   "repo_name"
-    t.string   "user_name"
+    t.string   "url",             limit: nil
+    t.string   "repo_name",       limit: nil
+    t.string   "user_name",       limit: nil
     t.datetime "last_touched_at"
     t.integer  "number"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "repo_id"
-    t.string   "title"
-    t.string   "html_url"
-    t.string   "state"
-    t.boolean  "pr_attached",     default: false
+    t.string   "title",           limit: nil
+    t.string   "html_url",        limit: nil
+    t.string   "state",           limit: nil
+    t.boolean  "pr_attached",                 default: false
   end
 
   create_table "opro_auth_grants", force: true do |t|
-    t.string   "code"
-    t.string   "access_token"
-    t.string   "refresh_token"
+    t.string   "code",                    limit: nil
+    t.string   "access_token",            limit: nil
+    t.string   "refresh_token",           limit: nil
     t.text     "permissions"
     t.datetime "access_token_expires_at"
     t.integer  "user_id"
     t.integer  "application_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "opro_client_apps", force: true do |t|
+    t.string   "name",        limit: nil
+    t.string   "app_id",      limit: nil
+    t.string   "app_secret",  limit: nil
+    t.text     "permissions"
+    t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  create_table "opro_client_apps", force: true do |t|
-    t.string   "name"
-    t.string   "app_id"
-    t.string   "app_secret"
-    t.text     "permissions"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "repo_subscriptions", force: true do |t|
-    t.string   "user_name"
-    t.string   "repo_name"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "user_name",    limit: nil
+    t.string   "repo_name",    limit: nil
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
-    t.integer  "email_limit",  default: 1
+    t.integer  "email_limit",              default: 1
   end
 
   create_table "repos", force: true do |t|
-    t.string   "name"
-    t.string   "user_name"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.integer  "issues_count",     default: 0, null: false
-    t.string   "language"
-    t.string   "description"
-    t.string   "full_name"
+    t.string   "name",             limit: nil
+    t.string   "user_name",        limit: nil
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "issues_count",                 default: 0, null: false
+    t.string   "language",         limit: nil
+    t.string   "description",      limit: nil
+    t.string   "full_name",        limit: nil
     t.text     "notes"
     t.text     "github_error_msg"
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "",                                   null: false
-    t.string   "encrypted_password",     default: "",                                   null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: nil, default: "",                                   null: false
+    t.string   "encrypted_password",     limit: nil, default: "",                                   null: false
+    t.string   "reset_password_token",   limit: nil
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                                            null: false
-    t.datetime "updated_at",                                                            null: false
-    t.string   "zip"
-    t.string   "phone_number"
+    t.string   "current_sign_in_ip",     limit: nil
+    t.string   "last_sign_in_ip",        limit: nil
+    t.datetime "created_at",                                                                        null: false
+    t.datetime "updated_at",                                                                        null: false
+    t.string   "zip",                    limit: nil
+    t.string   "phone_number",           limit: nil
     t.boolean  "twitter"
-    t.string   "github"
-    t.string   "github_access_token"
+    t.string   "github",                 limit: nil
+    t.string   "github_access_token",    limit: nil
     t.boolean  "admin"
-    t.string   "name"
-    t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
-    t.boolean  "private",                default: false
-    t.string   "favorite_languages",                                                                 array: true
+    t.string   "name",                   limit: nil
+    t.string   "avatar_url",             limit: nil, default: "http://gravatar.com/avatar/default"
+    t.boolean  "private",                            default: false
+    t.string   "favorite_languages",     limit: nil,                                                             array: true
     t.integer  "daily_issue_limit"
-    t.boolean  "skip_issues_with_pr",    default: false
-    t.string   "account_delete_token"
+    t.boolean  "skip_issues_with_pr",                default: false
+    t.string   "account_delete_token",   limit: nil
     t.datetime "last_clicked_at"
   end
 
