@@ -2,14 +2,13 @@ class Repo < ActiveRecord::Base
   include ResqueDef
 
   validate :github_url_exists, on: :create
-  validate :name, uniqueness: {scope: :user_name, case_sensitive: false }
+  validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
 
   after_create :populate_issues!, :update_repo_info!
 
   before_validation :downcase_name, :strip_whitespaces
 
   validates :name, :user_name, presence: true
-  validates :name, uniqueness: {scope: :user_name}
 
   has_many :issues
   has_many :repo_subscriptions
