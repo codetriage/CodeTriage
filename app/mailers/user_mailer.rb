@@ -62,7 +62,7 @@ class UserMailer < ActionMailer::Base
     def send_triage
       user  = User.last
       repo  = Repo.order("random()").first
-      issue = Issue.where(state: "open", repo_id: repo.id).where("number is not null").first!
+      issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first!
       sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
       assignment = sub.issue_assignments.first_or_create!(issue_id: issue.id)
       ::UserMailer.send_triage(:user => user, :repo => repo, :assignment => assignment)
@@ -73,7 +73,7 @@ class UserMailer < ActionMailer::Base
       assignments = []
       rand(1..5).times do
         repo  = Repo.order("random()").first
-        issue = Issue.where(state: "open", repo_id: repo.id).where("number is not null").first
+        issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first
         sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
         assignments << sub.issue_assignments.first_or_create!(issue_id: issue.id)
       end

@@ -192,6 +192,6 @@ class Repo < ActiveRecord::Base
   end
 
   def self.find_by_full_name(full_name)
-    Repo.includes(:issues).where(full_name: full_name).first!
+    Repo.includes(:issues).find_by!(full_name: full_name)
   end
 end

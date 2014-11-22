@@ -71,8 +71,8 @@ class Issue < ActiveRecord::Base
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
-    issue =   Issue.where( number:  issue_hash['number'], repo_id: repo.id).first
-    issue ||= Issue.create(number:  issue_hash['number'], repo:    repo)
+    issue = Issue.find_by(number: issue_hash['number'], repo_id: repo.id)
+    issue ||= Issue.create(number: issue_hash['number'], repo: repo)
     issue.update_from_github_hash!(issue_hash)
   end
 

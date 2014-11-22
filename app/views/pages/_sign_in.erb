@@ -4,7 +4,7 @@
 
 <ol>
   <li>Sign up via GitHub</li>
-  <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", Repo.where(name: "rails", user_name: "rails").first %></li>
+  <li>Find the repo you want to receive issues from such as <%= link_to "rails/rails", Repo.find_by(name: "rails", user_name: "rails") %></li>
   <li>Click the "Subscribe" button</li>
   <li>Make the world a better place by triaging issues</li>
 </ol>
