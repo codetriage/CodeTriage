@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   end
 
   def sub_from_repo(repo)
-    self.repo_subscriptions.where(repo_id: repo.id).first
+    self.repo_subscriptions.find_by(repo_id: repo.id)
   end
 
   def github_json
@@ -94,8 +94,8 @@ class User < ActiveRecord::Base
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user  = signed_in_resource ||
-            User.where(github: auth.info.nickname).first ||
-            User.where(email:  auth.info.email).first
+            User.find_by(github: auth.info.nickname) ||
+            User.find_by(email:  auth.info.email)
 
     token = auth.credentials.token
     params = {
