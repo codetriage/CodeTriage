@@ -1,7 +1,13 @@
-<ul class="unstyled repos-list">
-  <% @repos_subs.each do |sub| %>
-    <li>
-      <%= render sub.repo %><%# repos/repo.html.erb %>
-    </li>
-  <% end %>
-</ul>
+<% @repos_subs.in_groups_of(3) do |group| %>
+  <div class="row">
+    <% group.compact.each do |sub| %> 
+         <%= render sub.repo %><%# repos/repo.html.erb %>   
+    <% end %>
+  </div>
+<% end %>
+
+
+
+
+
+
