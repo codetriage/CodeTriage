@@ -19,6 +19,17 @@ class ReposControllerTest < ActionController::TestCase
     assert_redirected_to new_user_session_path
   end
 
+  test 'do not send email for repo without issues' do
+    sign_in users(:mockstar)
+    UserMailer.any_instance.expects(:send_triage).once
+    VCR.use_cassette "create_repo_refinery", record: :once do
+      post :create, repo: { name: 'refinerycms', user_name: 'refinery' }
+    end
+    VCR.use_cassette "create_repo_without_issues", record: :once do
+      post :create, repo: { name: 'faker', user_name: 'igas' }
+    end
+  end
+
   test 'logged in user can create repo' do
     sign_in users(:mockstar)
 
