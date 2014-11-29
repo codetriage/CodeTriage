@@ -2,12 +2,12 @@ language: ruby
 rvm:
   - 2.2.0-preview1
 script:
-  - RAILS_ENV=test bundle exec rake test
+  - RAILS_ENV=test bin/rake test
 before_install: gem install bundler -v=1.5.1
 before_script:
   - cp config/database.example.yml config/database.yml
   - psql -c 'create database triage_test;' -U postgres
-  - bundle exec rake db:migrate
+  - bin/rake db:migrate
 deploy:
   provider: heroku
   strategy: git
@@ -16,4 +16,4 @@ deploy:
   app: issuetriage
   on:
     repo: codetriage/codetriage
-  run: "rake db:migrate"
+  run: "bin/rake db:migrate"
