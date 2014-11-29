@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
 
-ruby "2.2.0"
+ruby '2.2.0'
 
 # Gems required in all environments
 gem 'rails', '4.1.8'
 
 gem 'puma'
-gem 'puma_auto_tune', github: "schneems/puma_auto_tune"
+gem 'puma_auto_tune', github: 'schneems/puma_auto_tune'
 gem 'sprockets_better_errors'
 gem 'skylight'
 gem 'git_hub_bub'
@@ -27,8 +27,11 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'rack-timeout'
 gem 'unicorn'
-gem 'mail_view',   '~> 1.0.2'
+gem 'mail_view', '~> 1.0.2'
 gem 'valid_email'
+gem 'sass-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.0.3'
 
 group :development do
   gem 'foreman'
@@ -43,21 +46,12 @@ group :test do
   gem 'webmock'
   gem 'vcr'
   gem 'mocha', require: false
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
-  gem "teaspoon"
-  gem "dotenv-rails"
-end
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0.0'
-  gem 'coffee-rails', '~> 4.0.0'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'uglifier', '>= 1.0.3'
+  gem 'teaspoon'
+  gem 'dotenv-rails'
 end
 
 group :production do
