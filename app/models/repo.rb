@@ -122,8 +122,8 @@ class Repo < ActiveRecord::Base
   end
 
   def self.exists_with_name?(name)
-    uname, rname = name.downcase.split(?/)
-    Repo.exists?(user_name: uname, name: rname)
+    user_name, repo_name = name.downcase.split(?/)
+    Repo.exists?(user_name: user_name, name: repo_name)
   end
 
   def self.order_by_subscribers
