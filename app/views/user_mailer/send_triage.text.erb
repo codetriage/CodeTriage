@@ -1,9 +1,9 @@
 Hello <%= @user.github %>,
 
-You signed up to help triage GitHub issues on <%= @repo.username_repo %> (<%= @repo.github_url %>).
+You signed up to help triage GitHub issues on <%= @repo.path %> (<%= @repo.github_url %>).
 That's pretty awesome.
 
-Triage Issue: <%= @repo.username_repo %><%= "##{@issue.number}" if @issue.number %>
+Triage Issue: <%= @repo.path %><%= "##{@issue.number}" if @issue.number %>
 
 <%= @issue.title %> (<%= @issue.html_url %>)
 
@@ -51,7 +51,7 @@ Sincerely,
 
 --
 
-Send another <%= @repo.username_repo %> issue: <%= repo_url(@repo) %>
-Unsubscribe from <%= @repo.username_repo %>: <%=  repo_url(@repo) %>
+Send another <%= @repo.path %> issue: <%= repo_url(@repo) %>
+Unsubscribe from <%= @repo.path %>: <%=  repo_url(@repo) %>
 Delete Account: <%= token_delete_user_url(@user.account_delete_token) %>
 Help triage more repos at codetriage.com: <%= root_url %>

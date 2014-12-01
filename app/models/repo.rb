@@ -67,7 +67,7 @@ class Repo < ActiveRecord::Base
   end
 
   def to_param
-    username_repo
+    path
   end
 
   def downcase_name
@@ -94,7 +94,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url
-    File.join("https://github.com", username_repo)
+    File.join('https://github.com', path)
   end
 
   def issues_url
@@ -102,7 +102,7 @@ class Repo < ActiveRecord::Base
   end
 
   def path
-    username_repo
+    "#{user_name}/#{name}"
   end
 
   def api_issues_path
@@ -111,10 +111,6 @@ class Repo < ActiveRecord::Base
 
   def api_issues_url
     File.join("https://api.github.com", api_issues_path)
-  end
-
-  def username_repo
-    "#{user_name}/#{name}"
   end
 
   def populate_issues!
