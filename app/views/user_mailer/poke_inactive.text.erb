@@ -5,13 +5,13 @@ great, but you didn't actually subscribe to any projects. To fix this just
 click on a link below, sign in, then click on the giant "subscribe" button:
 
 Help the repo with the most issues:
-<%= @most_repo.username_repo %> (<%= repo_url(@most_repo) %>)
+<%= @most_repo.path %> (<%= repo_url(@most_repo) %>)
 
 Help a repo in need:
-<%= @need_repo.username_repo %> (<%= repo_url(@need_repo) %>)
+<%= @need_repo.path %> (<%= repo_url(@need_repo) %>)
 
 Help a random repo:
-<%= @random_repo.username_repo =%> (<%= repo_url(@random_repo) %>)
+<%= @random_repo.path =%> (<%= repo_url(@random_repo) %>)
 
 If you don't like any of those add your own repo (<%= new_repo_url %>), browse
 existing repos (<%= repos_url %>), or you can even subscribe to code triage

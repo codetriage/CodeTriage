@@ -44,7 +44,7 @@
 </p>
 
 <% if @repo_sub.blank? %>
-	<%= button_to "I Want to Triage: #{@repo.username_repo}", repo_subscriptions_path(:repo_id => @repo.id), :class => 'btn btn-primary btn-success' %>
+  <%= button_to "I Want to Triage: #{@repo.path}", repo_subscriptions_path(:repo_id => @repo.id), :class => 'btn btn-primary btn-success' %>
 <% else %>
   <p>
     <%= link_to issue_assignments_path(:id => @repo_sub.id), :class => 'btn btn-success', :method => :post do %>
@@ -61,7 +61,7 @@
 <% end %>
 
 <hr />
-<h2><%= @issues.total_entries %> open issues in <%= @repo.username_repo %></h2>
+<h2><%= @issues.total_entries %> open issues in <%= @repo.path %></h2>
 
 <div class="digg_pagination">
   <div clas="page_info">

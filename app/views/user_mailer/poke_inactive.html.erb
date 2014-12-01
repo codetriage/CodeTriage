@@ -4,13 +4,13 @@ Hello <%= @user.github %>,<br /><br />
 You signed up to make a difference by triaging issues in github, which is great, but you didn't actually subscribe to any projects. To fix this just click on a link below, sign in, then click on the giant "subscribe" button:<br /><br />
 
 Help the repo with the most issues:
-<h3><%= link_to @most_repo.username_repo, repo_url(@most_repo) %></h3><br />
+<h3><%= link_to @most_repo.path, repo_url(@most_repo) %></h3><br />
 
 Help a repo in need:
-<h3><%= link_to @need_repo.username_repo , repo_url(@need_repo) %></h3><br />
+<h3><%= link_to @need_repo.path , repo_url(@need_repo) %></h3><br />
 
 Help a random repo:
-<h3><%= link_to @random_repo.username_repo, repo_url(@random_repo) %></h3><br />
+<h3><%= link_to @random_repo.path, repo_url(@random_repo) %></h3><br />
 
 If you don't like any of those <%= link_to "add your own", new_repo_url %> repo, <%= link_to "browse existing " , repos_url %> repos, or you can even subscribe to <%= link_to "code triage itself", File.join(root_url, "/codetriage/codetriage") %>. The important part is that you pick something to triage, or you will get this same email next week, maybe with different repos.<br /><br />
 
