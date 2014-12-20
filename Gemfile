@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.0'
 
 # Gems required in all environments
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.0'
 
 gem 'puma'
 gem 'puma_auto_tune', github: 'schneems/puma_auto_tune'
@@ -37,6 +37,7 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 group :test do

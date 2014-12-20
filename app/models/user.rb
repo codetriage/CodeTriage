@@ -132,7 +132,7 @@ class User < ActiveRecord::Base
   resque_def(:background_inactive_email) do |id|
     user = User.find(id.to_i)
     return false if user.repo_subscriptions.present?
-    UserMailer.poke_inactive(user).deliver
+    UserMailer.poke_inactive(user).deliver_now
   end
 
   def days_since_last_clicked
@@ -160,7 +160,7 @@ class User < ActiveRecord::Base
     if assignments.present?
       assignments.update_all(delivered: true)
       repo_subscriptions.update_all(last_sent_at: Time.now)
-      UserMailer.send_daily_triage(user: self, assignments: assignments).deliver
+      UserMailer.send_daily_triage(user: self, assignments: assignments).deliver_now
     end
   end
 
