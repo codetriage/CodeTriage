@@ -1,0 +1,228 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/igas/faker/issues?direction=desc&page=1&sort=comments
+    body:
+      encoding: UTF-8
+      string: '{"page":1,"sort":"comments","direction":"desc"}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - 46b3978f128fecd8d11c86be28186463
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 29 Nov 2014 10:00:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4991'
+      X-Ratelimit-Reset:
+      - '1417256876'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"0c5e38a547f58e044dd2effc5ff42e73"'
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Length:
+      - '2'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - CA3AC057:15D5:D73942:54799930
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 76d9828c7e4f1d910f7ba069e90ce976
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Sat, 29 Nov 2014 10:00:17 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/igas/faker/issues?direction=desc&page=1&sort=comments&state=open
+    body:
+      encoding: UTF-8
+      string: '{"state":"open","page":1,"sort":"comments","direction":"desc"}'
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - 46b3978f128fecd8d11c86be28186463
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 29 Nov 2014 10:00:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4990'
+      X-Ratelimit-Reset:
+      - '1417256876'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"0c5e38a547f58e044dd2effc5ff42e73"'
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Length:
+      - '2'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - CA3AC057:15D8:1D89D8F:54799931
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 01d096e6cfe28f8aea352e988c332cd3
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Sat, 29 Nov 2014 10:00:18 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/igas/faker
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - 46b3978f128fecd8d11c86be28186463
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 29 Nov 2014 10:00:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4989'
+      X-Ratelimit-Reset:
+      - '1417256876'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Fri, 28 Nov 2014 00:17:11 GMT
+      Etag:
+      - '"94e10f0037e16390c1418b97c7787581"'
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Length:
+      - '4275'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - CA3AC057:15D8:1D89FDB:54799933
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 8dd185e423974a7e13abbbe6e060031e
+    body:
+      encoding: UTF-8
+      string: '{"id":18573162,"name":"faker","full_name":"igas/faker","owner":{"login":"igas","id":175652,"avatar_url":"https://avatars.githubusercontent.com/u/175652?v=3","gravatar_id":"","url":"https://api.github.com/users/igas","html_url":"https://github.com/igas","followers_url":"https://api.github.com/users/igas/followers","following_url":"https://api.github.com/users/igas/following{/other_user}","gists_url":"https://api.github.com/users/igas/gists{/gist_id}","starred_url":"https://api.github.com/users/igas/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/igas/subscriptions","organizations_url":"https://api.github.com/users/igas/orgs","repos_url":"https://api.github.com/users/igas/repos","events_url":"https://api.github.com/users/igas/events{/privacy}","received_events_url":"https://api.github.com/users/igas/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/igas/faker","description":"Faker
+        is pure Elixir library for generating fake data.","fork":false,"url":"https://api.github.com/repos/igas/faker","forks_url":"https://api.github.com/repos/igas/faker/forks","keys_url":"https://api.github.com/repos/igas/faker/keys{/key_id}","collaborators_url":"https://api.github.com/repos/igas/faker/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/igas/faker/teams","hooks_url":"https://api.github.com/repos/igas/faker/hooks","issue_events_url":"https://api.github.com/repos/igas/faker/issues/events{/number}","events_url":"https://api.github.com/repos/igas/faker/events","assignees_url":"https://api.github.com/repos/igas/faker/assignees{/user}","branches_url":"https://api.github.com/repos/igas/faker/branches{/branch}","tags_url":"https://api.github.com/repos/igas/faker/tags","blobs_url":"https://api.github.com/repos/igas/faker/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/igas/faker/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/igas/faker/git/refs{/sha}","trees_url":"https://api.github.com/repos/igas/faker/git/trees{/sha}","statuses_url":"https://api.github.com/repos/igas/faker/statuses/{sha}","languages_url":"https://api.github.com/repos/igas/faker/languages","stargazers_url":"https://api.github.com/repos/igas/faker/stargazers","contributors_url":"https://api.github.com/repos/igas/faker/contributors","subscribers_url":"https://api.github.com/repos/igas/faker/subscribers","subscription_url":"https://api.github.com/repos/igas/faker/subscription","commits_url":"https://api.github.com/repos/igas/faker/commits{/sha}","git_commits_url":"https://api.github.com/repos/igas/faker/git/commits{/sha}","comments_url":"https://api.github.com/repos/igas/faker/comments{/number}","issue_comment_url":"https://api.github.com/repos/igas/faker/issues/comments/{number}","contents_url":"https://api.github.com/repos/igas/faker/contents/{+path}","compare_url":"https://api.github.com/repos/igas/faker/compare/{base}...{head}","merges_url":"https://api.github.com/repos/igas/faker/merges","archive_url":"https://api.github.com/repos/igas/faker/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/igas/faker/downloads","issues_url":"https://api.github.com/repos/igas/faker/issues{/number}","pulls_url":"https://api.github.com/repos/igas/faker/pulls{/number}","milestones_url":"https://api.github.com/repos/igas/faker/milestones{/number}","notifications_url":"https://api.github.com/repos/igas/faker/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/igas/faker/labels{/name}","releases_url":"https://api.github.com/repos/igas/faker/releases{/id}","created_at":"2014-04-08T20:05:26Z","updated_at":"2014-11-28T00:17:11Z","pushed_at":"2014-11-28T00:17:11Z","git_url":"git://github.com/igas/faker.git","ssh_url":"git@github.com:igas/faker.git","clone_url":"https://github.com/igas/faker.git","svn_url":"https://github.com/igas/faker","homepage":"","size":524,"stargazers_count":15,"watchers_count":15,"language":"Elixir","has_issues":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":7,"mirror_url":null,"open_issues_count":0,"forks":7,"open_issues":0,"watchers":15,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true},"network_count":7,"subscribers_count":2}'
+    http_version: 
+  recorded_at: Sat, 29 Nov 2014 10:00:19 GMT
+recorded_with: VCR 2.5.0
