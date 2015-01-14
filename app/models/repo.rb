@@ -3,30 +3,18 @@ class Repo < ActiveRecord::Base
 
   validate :github_url_exists, on: :create
   validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
-
-  after_create :populate_issues!, :update_repo_info!
-
-  before_validation :downcase_name, :strip_whitespaces
-
   validates :name, :user_name, presence: true
 
   has_many :issues
   has_many :repo_subscriptions
   has_many :users, through: :repo_subscriptions
-
   has_many :subscribers, through: :repo_subscriptions, source: :user
 
   delegate :open_issues, to: :issues
+
+  before_validation :downcase_name, :strip_whitespaces
   before_save :set_full_name
-
-  def strip_whitespaces
-    self.name.strip!
-    self.user_name.strip!
-  end
-
-  def set_full_name
-    self.full_name = "#{user_name}/#{name}"
-  end
+  after_create :populate_issues!, :update_repo_info!
 
   def subscriber_count
     users.count
@@ -68,11 +56,6 @@ class Repo < ActiveRecord::Base
 
   def to_param
     path
-  end
-
-  def downcase_name
-    self.name      = self.name.downcase
-    self.user_name = self.user_name.downcase
   end
 
   def self.order_by_issue_count
@@ -191,4 +174,21 @@ class Repo < ActiveRecord::Base
   def self.find_by_full_name(full_name)
     Repo.includes(:issues).find_by!(full_name: full_name)
   end
+
+  private
+
+  def downcase_name
+    self.name.downcase!
+    self.user_name.downcase!
+  end
+
+  def set_full_name
+    self.full_name = "#{user_name}/#{name}"
+  end
+
+  def strip_whitespaces
+    self.name.strip!
+    self.user_name.strip!
+  end
+
 end
