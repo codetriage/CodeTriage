@@ -76,6 +76,18 @@ class IssueTest < ActiveSupport::TestCase
     assert issue.valid_for_user?(user, false), "issue is not valid for given user"
   end
 
+  test "valid_for_user? when user is the creator of issue" do
+    user  = users("mockstar")
+    issue = repos("rails_rails").issues.new
+    issue.stubs(:commenting_users).returns([])
+    issue.stubs(:update_issue!).returns(true)
+
+    # should be false when the issue is the user's own
+    issue.stubs(:creator).returns("mockstar")
+    refute issue.valid_for_user?(user, false),
+      "issue is not valid: it was created by the given user"
+  end
+
   test 'commenting users' do
     repo = repos("rails_rails")
     issue = repo.issues.new
