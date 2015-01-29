@@ -16,8 +16,9 @@ class Issue < ActiveRecord::Base
       update_issue!
       return false if commenting_users.include?(user.github)
     end
-    return false  if closed?
-    return false  if pr_attached? && user.skip_issues_with_pr?
+    return false if closed?
+    return false if created_by?(user)
+    return false if pr_attached? && user.skip_issues_with_pr?
     true
   end
 
@@ -49,6 +50,10 @@ class Issue < ActiveRecord::Base
     state == OPEN
   end
 
+  def created_by?(user)
+    user.github == self.creator
+  end
+
   def repo_name
     self.repo.name
   end
@@ -78,6 +83,7 @@ class Issue < ActiveRecord::Base
   def update_from_github_hash!(issue_hash)
     self.update_attributes(title:           issue_hash['title'],
                            url:             issue_hash['url'],
+                           creator:         issue_hash['user']['login'],
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
                            html_url:        issue_hash['html_url'],
