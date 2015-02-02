@@ -160,7 +160,7 @@ GEM
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
-    puma (2.8.2)
+    puma (2.11.0)
       rack (>= 1.1, < 2.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -243,8 +243,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sprockets_better_errors (0.0.4)
-      sprockets-rails (>= 1.0.0)
     teaspoon (0.7.4)
       phantomjs (>= 1.8.1.1)
       railties (>= 3.2.5, < 5)
@@ -318,7 +316,6 @@ DEPENDENCIES
   simplecov
   skylight
   spring
-  sprockets_better_errors
   teaspoon
   uglifier (>= 1.0.3)
   unicorn
