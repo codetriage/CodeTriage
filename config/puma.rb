@@ -1,17 +1,16 @@
-threads Integer(ENV['MIN_THREADS']  || 1), Integer(ENV['MAX_THREADS'] || 16)
+workers ENV.fetch('WEB_CONCURRENCY') { 2 }.to_i
 
-workers Integer(ENV['WEB_CONCURRENCY'] || 3)
+threads_count = ENV.fetch('MAX_THREADS') { 5 }.to_i
+threads threads_count, threads_count
 
 rackup DefaultRackup
-port ENV['PORT'] || 3000
-environment ENV['RACK_ENV'] || 'development'
+port ENV.fetch('PORT') { 3000 }
+environment ENV.fetch('RACK_ENV') { 'development' }
 preload_app!
 
 on_worker_boot do
   # worker specific setup
-  ActiveSupport.on_load(:active_record) do
-    ActiveRecord::Base.establish_connection
-  end
+  ActiveRecord::Base.establish_connection
 
   # If you are using Redis but not Resque, change this
   if defined?(Resque)
@@ -19,3 +18,4 @@ on_worker_boot do
     Rails.logger.info('Connected to Redis')
   end
 end
+
