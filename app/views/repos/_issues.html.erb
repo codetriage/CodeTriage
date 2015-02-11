@@ -1,0 +1,15 @@
+<div class="digg_pagination">
+  <div class="page_info">
+    <%#= page_entries_info @issues %>
+  </div>
+  <br />
+  <%= will_paginate issues, :container => false %>
+</div>
+<br />
+<ul>
+  <% issues.each do |issue| %>
+    <li>
+      <%= link_to issue.title, issue.html_url %>
+    </li>
+  <% end %>
+</ul>

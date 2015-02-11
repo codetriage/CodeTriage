@@ -63,19 +63,7 @@
 <hr />
 <h2><%= @issues.total_entries %> open issues in <%= @repo.path %></h2>
 
-<div class="digg_pagination">
-  <div clas="page_info">
-    <%#= page_entries_info @issues %>
-  </div>
-  <br />
-  <%= will_paginate @issues, :container => false %>
+<div id="issues">
+  <%= render 'issues', issues: @issues %>
 </div>
-<br />
-  <ul>
-    <% @issues.each do |issue| %>
-      <li>
-        <%= link_to issue.title, issue.html_url %>
-      </li>
-    <% end %>
-  </ul
 <hr />
