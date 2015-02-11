@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128225725) do
+ActiveRecord::Schema.define(version: 20150211163514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150128225725) do
     t.string   "html_url"
     t.string   "state"
     t.boolean  "pr_attached",     default: false
-    t.string   "creator"
+    t.string   "created_by"
   end
 
   create_table "repo_subscriptions", force: :cascade do |t|

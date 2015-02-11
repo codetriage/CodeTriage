@@ -51,7 +51,7 @@ class Issue < ActiveRecord::Base
   end
 
   def created_by?(user)
-    user.github == self.creator
+    user.github == self.created_by
   end
 
   def repo_name
@@ -83,7 +83,7 @@ class Issue < ActiveRecord::Base
   def update_from_github_hash!(issue_hash)
     self.update_attributes(title:           issue_hash['title'],
                            url:             issue_hash['url'],
-                           creator:         issue_hash['user']['login'],
+                           created_by:      issue_hash['user']['login'],
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
                            html_url:        issue_hash['html_url'],
