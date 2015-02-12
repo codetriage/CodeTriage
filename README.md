@@ -36,8 +36,8 @@ $ bundle install
 
 ```shell
 $ cp config/database.example.yml config/database.yml
-$ bundle exec rake db:create
-$ bundle exec rake db:migrate
+$ bin/rake db:create
+$ bin/rake db:migrate
 ````
 
 ### Install Redis
@@ -90,8 +90,8 @@ Code Triage should now be running at [http://localhost:3000](http://localhost:30
 ## Tests
 
 ```shell
-$ rake db:create RAILS_ENV=test
-$ rake db:schema:load RAILS_ENV=test
+$ bin/rake db:create RAILS_ENV=test
+$ bin/rake db:schema:load RAILS_ENV=test
 ```
 
 You may need a github API token to run tests locally. You can get this by spinning your local server, clicking the "sign in" button and going through the OAuth flow.
@@ -99,7 +99,7 @@ You may need a github API token to run tests locally. You can get this by spinni
 Once you've done this spin down your server and run this:
 
 ```
-$ rails c
+$ bin/rails c
 > `echo GITHUB_API_KEY=#{User.last.token} >> .env`
 ```
 
@@ -112,7 +112,7 @@ Make sure it shows up in your `.env`:
 Now you should be able to run tests
 
 ```
-$ bundle exec rake test
+$ bin/rake test
 ```
 
 ## Writing tests
