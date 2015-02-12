@@ -17,7 +17,7 @@ class Issue < ActiveRecord::Base
       return false if commenting_users.include?(user.github)
     end
     return false if closed?
-    return false if created_by?(user)
+    return false if created_by?(user) && user.skip_my_own_issues_and_prs?
     return false if pr_attached? && user.skip_issues_with_pr?
     true
   end
