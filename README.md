@@ -127,7 +127,7 @@ end
 
 Make sure to name your cassette something unique. The first time you run tests you'll need to set a [record mode](https://relishapp.com/vcr/vcr/v/2-8-0/docs/record-modes). This will make a real-life request to github using your `GITHUB_API_KEY` you specified in the `.env` and record the result. The next time you run your tests it should use your "cassette" instead of actually hitting github. All secrets including your `GITHUB_API_KEY` are filtered out, so you can safely commit the resultant. When running on travis the VCR cassettes are used to eliminate/minimize actual calls to Github.
 
-The bennifit of using VCR over stubbing/mocking methods is that we could swap out implementations if we wanted.
+The benefit of using VCR over stubbing/mocking methods is that we could swap out implementations if we wanted.
 
 Make sure to remove any record modes from your VCR cassette before committing.
 
