@@ -17,3 +17,5 @@ deploy:
   on:
     repo: codetriage/codetriage
   run: "rake db:migrate"
+sudo: false
+  
