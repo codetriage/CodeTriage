@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.2.0-preview1
+  - 2.2
 script:
   - RAILS_ENV=test bundle exec rake test
 before_install: gem install bundler -v=1.5.1
