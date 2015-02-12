@@ -13,7 +13,7 @@ class RepoTest < ActiveSupport::TestCase
     VCR.use_cassette "create_repo_refinery", record: :once do
       Repo.create user_name: 'refinery', name: 'refinerycms'
       VCR.use_cassette "create_duplicate_repo_refinery", record: :once do
-        duplicate_repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
+        duplicate_repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
         assert_equal ["has already been taken"], duplicate_repo.errors[:name]
       end
     end
@@ -37,7 +37,7 @@ class RepoTest < ActiveSupport::TestCase
 
   test "counts number of subscribers" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      repo = Repo.create :user_name => 'Refinery', :name => 'Refinerycms'
+      repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
       repo.users << users(:jroes)
       repo.users << users(:schneems)
       repo.subscriber_count == 2
@@ -46,18 +46,18 @@ class RepoTest < ActiveSupport::TestCase
 
   test "#all_languages does not contain empty string" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      Repo.create :user_name => 'Refinery', :name => "RefineryCMS", :language => ""
+      Repo.create user_name: 'Refinery', name: "RefineryCMS", language: ""
       refute Repo.all_languages.include? ""
     end
   end
 
   test "repos needing help when user has ruby language" do
-    repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ "ruby" ])).map(&:path)
+    repos = Repo.repos_needing_help_for_user(User.new( favorite_languages: [ "ruby" ])).map(&:path)
     assert_equal [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" ], repos
   end
 
   test "repos needing help when user has no languages" do
-    repos = Repo.repos_needing_help_for_user(User.new( :favorite_languages => [ ])).map(&:path)
+    repos = Repo.repos_needing_help_for_user(User.new( favorite_languages: [ ])).map(&:path)
     assert_equal [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" , "andrewrk/groovebasin"], repos
   end
 

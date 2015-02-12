@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
     @days   = @user.days_since_last_clicked
     subject << "[#{@days} days] " if @days > @max_days
     subject << "Help Triage #{@assignments.size} Open Source #{ "Issue".pluralize(@assignments.count)}"
-    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: subject)
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
 
@@ -20,7 +20,7 @@ class UserMailer < ActionMailer::Base
     @user  = options[:user]
     @repo  = options[:repo]
     @issue = assignment.issue
-    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
   end
 
   def poke_inactive(user)
@@ -28,7 +28,7 @@ class UserMailer < ActionMailer::Base
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
     @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
-    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage misses you")
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage misses you")
   end
 
   def invalid_token(user)
@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
   def spam(user, options = {})
     @user    = user
     @message = options[:message]
-    mail(:to => @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
   end
 
   class Preview < MailView
@@ -65,7 +65,7 @@ class UserMailer < ActionMailer::Base
       issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first!
       sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
       assignment = sub.issue_assignments.first_or_create!(issue_id: issue.id)
-      ::UserMailer.send_triage(:user => user, :repo => repo, :assignment => assignment)
+      ::UserMailer.send_triage(user: user, repo: repo, assignment: assignment)
     end
 
     def send_daily_triage

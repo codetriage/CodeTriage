@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
 
     <script src="http://heroku.github.com/template-app-bootstrap/jquery-1.7.1.min.js"></script>
     <script src="http://heroku.github.com/template-app-bootstrap/jquery.replacetext.min.js"></script>
@@ -36,7 +36,7 @@
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to current_user.github, current_user %></li>
             </li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           <%- else -%>
             <li><%= link_to "Home", root_path %></li>
             <li class="active"><%= link_to 'Sign in', new_user_registration_path %></li>

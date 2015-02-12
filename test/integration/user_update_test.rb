@@ -13,7 +13,7 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
 
   test 'updating the user email address' do
     @user = users(:mockstar)
-    login_as(@user, :scope => :user)
+    login_as(@user, scope: :user)
     visit edit_user_path(@user)
     fill_in 'Email', with: 'newemail@me.com'
     click_button 'Save'
@@ -22,9 +22,9 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
 
   test 'updating the user daily_issue_limit' do
     @user = users(:mockstar)
-    login_as(@user, :scope => :user)
+    login_as(@user, scope: :user)
     visit edit_user_path(@user)
-    fill_in 'Max # of issues you want to receive per day', :with => '1'
+    fill_in 'Max # of issues you want to receive per day', with: '1'
     click_button 'Save'
     assert page.has_content?('User successfully updated')
     @user.reload
@@ -33,9 +33,9 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
 
   test 'updating the user daily_issue_limit to unlimited' do
     @user = users(:mockstar)
-    login_as(@user, :scope => :user)
+    login_as(@user, scope: :user)
     visit edit_user_path(@user)
-    fill_in 'Max # of issues you want to receive per day', :with => ''
+    fill_in 'Max # of issues you want to receive per day', with: ''
     click_button 'Save'
     assert page.has_content?('User successfully updated')
     @user.reload
@@ -44,7 +44,7 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
 
   test 'updating the users skip_issues_with_pr setting to true' do
     @user = users(:mockstar)
-    login_as(@user, :scope => :user)
+    login_as(@user, scope: :user)
     visit edit_user_path(@user)
     check 'user_skip_issues_with_pr'
     click_button 'Save'
@@ -55,7 +55,7 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
 
   test 'updating the users skip_issues_with_pr setting to false' do
     @user = users(:mockstar)
-    login_as(@user, :scope => :user)
+    login_as(@user, scope: :user)
     visit edit_user_path(@user)
     uncheck 'user_skip_issues_with_pr'
     click_button 'Save'
