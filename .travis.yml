@@ -18,4 +18,5 @@ deploy:
     repo: codetriage/codetriage
   run: "rake db:migrate"
 sudo: false
-  
+cache:
+  - bundler
