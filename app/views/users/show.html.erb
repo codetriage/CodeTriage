@@ -15,9 +15,9 @@
 
       <h5>Publicly visible? : <%= @user.public? ? "Yes" : "No" %> </h5>
       <% if @user.public? %>
-        <%= link_to "Stay private", users_path(user: {private: true}), method: :put, :class => 'btn btn-warning'  %>
+        <%= link_to "Stay private", users_path(user: {private: true}), method: :put, class: 'btn btn-warning'  %>
       <% else %>
-        <%= link_to "Go public", users_path(user: {private: false}), method: :put, :class => 'btn btn-success'  %>
+        <%= link_to "Go public", users_path(user: {private: false}), method: :put, class: 'btn btn-success'  %>
       <% end %>
 
       <h5>Max # of issues you want to receive per day: <%= @user.daily_issue_limit.presence || 'not set' %></h5>
@@ -36,7 +36,7 @@
           </label>
         <% end %>
         <p>
-          <%= button_tag "Save", :class => "btn btn-primary" %>
+          <%= button_tag "Save", class: "btn btn-primary" %>
         </p>
 
       <% end %>
@@ -49,8 +49,8 @@
       <span class="active"><%= link_to 'Login', new_user_registration_path %></span>
       to edit your account
     <% elsif current_user == @user %>
-      <%= link_to '<i class="icon-edit icon-white"></i> Edit my Account'.html_safe, edit_user_path(@user), :class => 'btn btn-primary', :style => 'margin-bottom: 5px' %>
-      <%= link_to '<i class="icon-trash icon-white"></i> Delete my account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-danger' %>
+      <%= link_to '<i class="icon-edit icon-white"></i> Edit my Account'.html_safe, edit_user_path(@user), class: 'btn btn-primary', style: 'margin-bottom: 5px' %>
+      <%= link_to '<i class="icon-trash icon-white"></i> Delete my account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", default: "Are you sure?")}", class: 'btn btn-danger' %>
     <% else %>
       This isn't your account, jump to <%= link_to current_user.github, current_user %>
     <% end %>

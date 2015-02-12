@@ -22,17 +22,17 @@ end
 
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:github, {
-  :uid => 'mockstar',
-  :credentials => {
-    :token => ENV['GITHUB_API_KEY'] || "d401116495671f0a0ceca9276e677eff"
+  uid: 'mockstar',
+  credentials: {
+    token: ENV['GITHUB_API_KEY'] || "d401116495671f0a0ceca9276e677eff"
   },
-  :email => "mockstar@example.com",
-  :info => {
-    :nickname => 'mockstar'
+  email: "mockstar@example.com",
+  info: {
+    nickname: 'mockstar'
   },
-  :extra => {
-    :raw_info => {
-      :name => "Mock Star"
+  extra: {
+    raw_info: {
+      name: "Mock Star"
     }
   }
 })

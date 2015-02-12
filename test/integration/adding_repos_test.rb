@@ -12,8 +12,8 @@ class AddingReposTest < ActionDispatch::IntegrationTest
       visit "/"
       click_link "Submit a Repo"
 
-      fill_in 'repo_user_name', :with => 'bemurphy'
-      fill_in 'repo_name',      :with => 'issue_triage_sandbox'
+      fill_in 'repo_user_name', with: 'bemurphy'
+      fill_in 'repo_name',      with: 'issue_triage_sandbox'
 
       within '#new_repo_from_names' do
         click_button "Add Repo"
@@ -31,8 +31,8 @@ class AddingReposTest < ActionDispatch::IntegrationTest
       visit "/"
       click_link "Submit a Repo"
 
-      fill_in 'url', :with => 'https://github.com/bemurphy/issue_triage_sandbox'
-      fill_in 'repo_name',      :with => ''
+      fill_in 'url', with: 'https://github.com/bemurphy/issue_triage_sandbox'
+      fill_in 'repo_name',      with: ''
 
       within '#new_repo_from_url' do
         click_button "Add Repo"
@@ -51,8 +51,8 @@ class AddingReposTest < ActionDispatch::IntegrationTest
   #   VCR.use_cassette('add_invalid_repo') do
   #     visit "/"
   #     click_link "Add a Repo"
-  #     fill_in 'repo_user_name', :with => 'bemurphy'
-  #     fill_in 'repo_name', :with => 'issue_triage_bogus_repo'
+  #     fill_in 'repo_user_name', with: 'bemurphy'
+  #     fill_in 'repo_name', with: 'issue_triage_bogus_repo'
   #     click_button "Add Repo"
   #     assert page.has_content?("you mistyped something?")
   #   end

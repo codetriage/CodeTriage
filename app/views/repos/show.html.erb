@@ -30,7 +30,7 @@
   <% end -%>
 
   <% if @repo_sub %>
-      <%= link_to repo_subscription_path(@repo_sub), :class => 'btn btn-danger', :method => :delete, :data => { :confirm => 'Are you sure?' } do %>
+      <%= link_to repo_subscription_path(@repo_sub), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do %>
         <i class="icon-remove icon-white"></i> Stop Triaging
       <% end %>
   <% end -%>
@@ -44,18 +44,18 @@
 </p>
 
 <% if @repo_sub.blank? %>
-  <%= button_to "I Want to Triage: #{@repo.path}", repo_subscriptions_path(:repo_id => @repo.id), :class => 'btn btn-primary btn-success' %>
+  <%= button_to "I Want to Triage: #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'btn btn-primary btn-success' %>
 <% else %>
   <p>
-    <%= link_to issue_assignments_path(:id => @repo_sub.id), :class => 'btn btn-success', :method => :post do %>
+    <%= link_to issue_assignments_path(id: @repo_sub.id), class: 'btn btn-success', method: :post do %>
       <i class="icon-envelope icon-white"></i> Send new issue!
     <% end %>
   </p>
   <p>
     Currently receiving <%= @repo_sub.email_limit %> issues per day.
-    <%= form_for(@repo_sub, :html => {:class => 'form-inline'}) do |f| %>
+    <%= form_for(@repo_sub, html: {class: 'form-inline'}) do |f| %>
       <%= f.select :email_limit, (1..20) %>
-      <%= f.submit "Save", :class => 'btn btn-success' %>
+      <%= f.submit "Save", class: 'btn btn-success' %>
     <% end %>
   </p>
 <% end %>
@@ -68,7 +68,7 @@
     <%#= page_entries_info @issues %>
   </div>
   <br />
-  <%= will_paginate @issues, :container => false %>
+  <%= will_paginate @issues, container: false %>
 </div>
 <br />
   <ul>

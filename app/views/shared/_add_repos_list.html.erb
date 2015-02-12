@@ -6,8 +6,8 @@
       <% if repo["has_issues"] && !repo["private"] %>
         <tr>
           <%= form_for @repo do |f| %>
-            <%= f.hidden_field :user_name, :value => repo["full_name"].split("/").first %>
-            <%= f.hidden_field :name, :value => repo["full_name"].split("/").last %>
+            <%= f.hidden_field :user_name, value: repo["full_name"].split("/").first %>
+            <%= f.hidden_field :name, value: repo["full_name"].split("/").last %>
             <td><% if repo["fork"] %><a title="Fork"><span class="icon-random"></span></a><% end -%></td>
             <td><%= repo["full_name"] %></td>
             <td><%= repo["open_issues_count"] %> issues</td>
