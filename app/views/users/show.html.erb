@@ -22,6 +22,7 @@
 
       <h5>Max # of issues you want to receive per day: <%= @user.daily_issue_limit.presence || 'not set' %></h5>
       <h5>Skip Issues with Pull Requests: <%= @user.skip_issues_with_pr %></h5>
+      <h5>Skip my own Issues and Pull Requests: <%= @user.skip_my_own_issues_and_prs %></h5>
     </section>
 
     <section id="user-favorite-langs">
