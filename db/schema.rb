@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211163514) do
+ActiveRecord::Schema.define(version: 20150211235706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,12 +69,12 @@ ActiveRecord::Schema.define(version: 20150211163514) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",                                   null: false
-    t.string   "encrypted_password",     default: "",                                   null: false
+    t.string   "email",                      default: "",                                   null: false
+    t.string   "encrypted_password",         default: "",                                   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",              default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -87,14 +87,15 @@ ActiveRecord::Schema.define(version: 20150211163514) do
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
-    t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
+    t.string   "avatar_url",                 default: "http://gravatar.com/avatar/default"
     t.string   "name"
-    t.boolean  "private",                default: false
-    t.string   "favorite_languages",                                                                 array: true
+    t.boolean  "private",                    default: false
+    t.string   "favorite_languages",                                                                     array: true
     t.integer  "daily_issue_limit"
-    t.boolean  "skip_issues_with_pr",    default: false
+    t.boolean  "skip_issues_with_pr",        default: false
     t.string   "account_delete_token"
     t.datetime "last_clicked_at"
+    t.boolean  "skip_my_own_issues_and_prs", default: false
   end
 
   add_index "users", ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
