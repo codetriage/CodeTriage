@@ -1,4 +1,4 @@
-<li>
+<li id="repo-<%= repo.id %>" data-name="<%= repo.name %>" data-description="<%= raw repo.description %>" style="display: ">
   <span class="label label-info" data-toggle="tooltip" title="<%= pluralize(repo.issues_count, 'Issue') %>"><%= repo.issues_count %></span>
   <h4>
     <%= link_to repo.name, repo %>
