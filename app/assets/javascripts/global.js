@@ -1,55 +1,74 @@
+var arrayRepos = [];
+
 jQuery(document).ready(function(){
-  new Codetriage.TabNavigation();
-  new Codetriage.previewLinkBuilder();
+	new Codetriage.TabNavigation();
+	new Codetriage.previewLinkBuilder();
 
-  // hash reference to select a specific list
-  var hash = document.location.hash;
+	// hash reference to select a specific list
+	var hash = document.location.hash;
 
-  if (hash) {
-  	$('.nav-tabs a[href='+hash+']').tab('show');
-  }
+	if (hash) {
+		$('.nav-tabs a[href='+hash+']').tab('show');
+	}
 
-  // exits search component?
-  var searchRepo = $("#input-repo");
-  if (searchRepo.length) {
+	// add function to reset elements to show
+	Array.prototype.reset = function () {
+		$.each (this, function (index, element) {
+			element.show = true;
+		});
+	};
 
-  	// make un array finding html elements
-  	var arrayRepos = makeArray ();
-  	// add function to reset elements to show
-  	arrayRepos.reset = function () {
-  		$.each (this, function (index, element) {
-  			element.show = true;
-  		});
-  	};
+	// exits search component?
+	var searchRepo = $("#input-repo");
+	if (searchRepo.length) {
+		// first loading
+		arrayRepos = makeArray ($("#tab-repo .tab-pane.active").first());
+	}
 
-  	$("#search-repo").click(function() {
-  		var search = $.trim (searchRepo.val ());
-  		if (search !== '') {
-  			determineVisibility (arrayRepos, search.toLowerCase());
-  		} else {
-  			arrayRepos.reset ();
-  		}
-  		hideShowRepos (arrayRepos);
-  	});
-  }
+	var onSearch = function() {
+		var search = $.trim (searchRepo.val ());
+		if (search !== '') {
+			determineVisibility (arrayRepos, search.toLowerCase());
+		} else {
+			arrayRepos.reset ();
+		}
+		hideShowRepos (arrayRepos);
+	};
+
+	// register events on search component
+	$("#search-repo").click(onSearch);
+	$("#input-repo").keypress(function (e) {
+		if (e.which == 13) {
+			onSearch ();
+			return true;
+		}
+	});
 });
 
-function makeArray () {
-  	var reposToFind = [];
-  	// find current tab
-  	var reposList = $('#tab-repo .tab-pane.active ul > li');
+function filter (tab) {
+	arrayRepos = makeArray (tab);
+	arrayRepos.reset ();
+	hideShowRepos (arrayRepos);
+	$("#input-repo").val ('');
+}
 
-  	// make an array with obj to find repos
-  	$.each (reposList, function (index, value) {
-  		reposToFind.push({
-  			id: $(value).attr ('id'),
-  			name: $(value).data ('name'),
-  			description: $(value).data ('description'),
-  			show: true
-  		});
-  	});
 
-  	return reposToFind;
+function makeArray (tab) {
+	var array = [];
+	// find current tab
+	var reposList = $(tab).find('ul > li');
+
+	// make an array with obj to find repos
+	$.each (reposList, function (index, value) {
+		array.push({
+			id: $(value).attr ('id'),
+			name: $(value).data ('name'),
+			description: $(value).data ('description'),
+			show: true
+		});
+	});
+
+	return array;
 }
 
 function determineVisibility (arrayRepos, search) {
@@ -65,9 +84,9 @@ function determineVisibility (arrayRepos, search) {
 function hideShowRepos (arrayRepos) {
 	$.each (arrayRepos, function (index, element) {
 		if (element['show']) {
-			$('#repos-list #' + element['id']).show ();
+			$('#repos-list #' + element['id']).fadeIn();
 		} else {
-			$('#repos-list #' + element['id']).hide ();
+			$('#repos-list #' + element['id']).fadeOut();
 		}
 	});
 }

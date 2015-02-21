@@ -3,14 +3,14 @@
   <ul class="nav nav-tabs nav-stacked span4" data-tabs="tabs" id="repo-tabs">
     <% repos.group_by(&:language).each do |lang, repos| %>
       <% unless lang == nil %>
-        <li><a href="#<%= "#{lang.parameterize}#{lang.hash}" %>" data-toggle="tab"><%= lang %></a></li>
+        <li><a href="#<%= "#{lang.parameterize}#{lang.hash}" %>" data-toggle="tab" onclick="filter('#<%= "#{lang.parameterize}#{lang.hash}" %>')"><%= lang %></a></li>
       <% end -%>
     <% end -%>
   </ul>
 
   <div id="tab-repo" class="tab-content span8">
     <div class="input-append">
-      <input id="input-repo"  class="span10" id="appendedInputButton" type="text">
+      <input id="input-repo"  class="span12" id="appendedInputButton" type="text">
       <button id="search-repo" class="btn" type="button">Go!</button>
     </div>
     <% repos.group_by(&:language).each do |lang, repos| %>
