@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.1'
 
 # Gems required in all environments
 gem 'rails', '4.2.1.rc2'
