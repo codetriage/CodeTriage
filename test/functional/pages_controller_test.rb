@@ -13,7 +13,6 @@ class PagesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:repos), 'assigns to repos'
     assert_not_nil assigns(:repos_subs), 'assigns to repos_subs'
     assert_template :index, 'render index template'
-    assert_template({layout: 'home'}, 'render home layout')
   end
 
   test "not signed in user" do
