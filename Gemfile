@@ -60,3 +60,4 @@ end
 
 
 gem 'newrelic_rpm'
+gem 'derailed_benchmarks'
