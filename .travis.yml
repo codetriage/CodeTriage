@@ -3,7 +3,6 @@ rvm:
   - 2.2.2
 script:
   - RAILS_ENV=test bin/rake test
-before_install: gem install bundler -v=1.5.1
 before_script:
   - cp config/database.example.yml config/database.yml
   - psql -c 'create database triage_test;' -U postgres
