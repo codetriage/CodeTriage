@@ -1,0 +1,18 @@
+- unless user_signed_in?
+  .jumbotron
+    h1 Help your favorite open source projects
+    p.lead Sign up to receive a different open issue in your inbox every day from your favorite GitHub repos
+    = link_to'Sign up today', new_user_registration_path, class: 'btn btn-large btn-success'
+
+  .jumbotron
+    p.lead #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos
+hr
+- if @repos_subs.present?
+  h2 Repos you are currently helping
+  p
+    = render 'repo_subscriptions/list', repos_subs: @repos_subs
+    = link_to 'Find additional repos', repos_path, class: 'btn btn-success'
+    = link_to "Submit a Repo", new_repo_path, class: 'btn btn-success'
+  hr
+h2 Repos needing the most help
+= render 'repos', repos: @repos
