@@ -80,20 +80,12 @@ class Repo < ActiveRecord::Base
     File.join('https://github.com', path)
   end
 
-  def issues_url
-    File.join(github_url, 'issues')
-  end
-
   def path
     "#{user_name}/#{name}"
   end
 
   def api_issues_path
     File.join('repos', path, '/issues')
-  end
-
-  def api_issues_url
-    File.join("https://api.github.com", api_issues_path)
   end
 
   def populate_issues!
