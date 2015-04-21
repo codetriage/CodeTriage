@@ -1,0 +1,4 @@
+h2 Subscribers to #{link_to @repo.path, @repo.github_url}
+hr
+ul.unstyled.avatar_list = render 'avatars', subscribers: @subscribers, show_names: true
+= will_paginate @subscribers

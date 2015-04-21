@@ -1,0 +1,4 @@
+= content_tag_for(:li, subscribers) do |subscriber|
+  = link_to subscriber.github_url, title: "@#{subscriber.github}", rel: "tooltip", 'data-placement': 'top' do
+    = image_tag subscriber.avatar_url, alt: subscriber.github, class: 'avatar img-rounded'
+  = link_to "@#{subscriber.github}", subscriber.github_url if (show_names ||= false)
