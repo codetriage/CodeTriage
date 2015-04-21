@@ -71,14 +71,9 @@ class RepoTest < ActiveSupport::TestCase
     refute Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
   end
 
-  test "#issues_url returns issues url" do
+  test "#api_issues_path returns issues path with Github api" do
     repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
-    assert_equal "https://github.com/codetriage/codetriage/issues", repo.issues_url
-  end
-
-  test "#api_issues_url returns issues url with Github api" do
-    repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
-    assert_equal "https://api.github.com/repos/codetriage/codetriage/issues", repo.api_issues_url
+    assert_equal "repos/codetriage/codetriage/issues", repo.api_issues_path
   end
 
   test "search_by returns repo by name and user_name" do
