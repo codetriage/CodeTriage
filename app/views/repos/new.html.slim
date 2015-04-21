@@ -1,0 +1,48 @@
+- @repo.errors.full_messages.each do |msg|
+  li= msg
+
+- if user_signed_in?
+  h2 Your repos
+  p Only repos that have GitHub issues enabled are shown
+
+  ul.nav.nav-tabs#repo-tabs data-tabs="tabs"
+    li
+      a href="#own" data-toggle="tab"
+        | Your own repos
+    li
+      a href="#starred" data-toggle="tab"
+        | Starred repos
+    li
+      a href="#watched" data-toggle="tab"
+        | Watched repos
+
+  .tab-content
+    .tab-pane.active#own
+      = render 'shared/add_repos_list', repos: @own_repos
+
+    .tab-pane.active#starred
+      = render 'shared/add_repos_list', repos: @starred_repos
+
+    .tab-pane.active#watched
+      = render 'shared/add_repos_list', repos: @watched_repos
+
+h3 Add another repo
+
+h4 by entering the user and repo name
+
+= form_for @repo, html: { id: "new_repo_from_names" } do |f|
+  span https://github.com/
+  = f.text_field :user_name, placeholder: 'user name e.g. "schneems" ', class: 'preview_user_name'
+  span /
+  = f.text_field :name, placeholder: 'repo name e.g. "sextant" ', class: 'preview_repo_name'
+  = f.submit value: "Add Repo", class: 'btn btn-primary', id: 'createRepo'
+  p.repo_preview#repo_preview
+    | Preview:
+    a href='https://github.com' target='_blank'
+      | https://github.com/
+
+h4 or by pasting the full repo URL
+
+= form_tag repos_path, { class: "new_repo", id: "new_repo_from_url" } do
+  = text_field_tag :url, nil, placeholder: 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field'
+  = submit_tag nil, value: "Add Repo", class: 'btn btn-primary', id: 'createRepo'
