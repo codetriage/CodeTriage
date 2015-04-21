@@ -1,8 +1,0 @@
-<li>
-  <span class="label label-info" data-toggle="tooltip" title="<%= pluralize(repo.issues_count, 'Issue') %>"><%= repo.issues_count %></span>
-  <h4>
-    <%= link_to repo.name, repo %>
-    <%= " <small>(#{repo.full_name})</small> ".html_safe if repo.full_name.present? %>
-  </h4>
-  <p><%= raw repo.description %></p>
-</li>
