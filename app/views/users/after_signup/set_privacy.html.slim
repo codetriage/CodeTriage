@@ -1,10 +1,10 @@
 h2 Set Privacy
 p By default when you subscribe to a repo to triage, that information will be public knowledge. We think this is a good thing, you're helping out the open source community so why not share the fun? We won't share your email, or anything else, just your GitHub username and the repo you are subscribing to. It might look something like this:
 div style='height:50px; border: solid 1px black; display:inline-block; padding: 0 100px 0 0; border-radius: 5px'
-  = image_tag current_user.avatar_url, class: 'img-rounded', style: "height: 40px; margin: 5px"
+  => image_tag current_user.avatar_url, class: 'img-rounded', style: "height: 40px; margin: 5px"
   | #{current_user.github} has subscribed to: #{link_to "codetriage/codetriage", "https://github.com/codetriage/codetriage"}
 p While we think this might be an awesome show of your commitment to quality code, you might not want this info public, if that's the case, we understand. You can make your account private by selecting the appropriate button below:
 = link_to "Make Private", next_wizard_path(user: {private: true}), method: :put,  class: "btn btn-primary"
-= link_to "Stay Public", next_wizard_path(user: {private: false}), method: :put, class: "btn btn-success"
+=<> link_to "Stay Public", next_wizard_path(user: {private: false}), method: :put, class: "btn btn-success"
 = link_to "skip →", next_wizard_path, class: "btn btn-primary"
 p You can change your mind any time, and set your account to private on your settings page.

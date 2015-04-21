@@ -10,5 +10,5 @@ h2 Editing repo #{@repo.full_name}
   p= f.text_area :notes, class: 'span6', rows: 5
 
   div
-    = f.submit "Update repo", class: 'btn btn-primary'
+    => f.submit "Update repo", class: 'btn btn-primary'
     = link_to "Cancel", repo_path(@repo), class: 'btn'

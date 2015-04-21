@@ -31,10 +31,11 @@ h3 Add another repo
 h4 by entering the user and repo name
 
 = form_for @repo, html: { id: "new_repo_from_names" } do |f|
-  span https://github.com/
+  span> https://github.com/
   = f.text_field :user_name, placeholder: 'user name e.g. "schneems" ', class: 'preview_user_name'
-  span /
-  = f.text_field :name, placeholder: 'repo name e.g. "sextant" ', class: 'preview_repo_name'
+  span<>
+    | /
+  => f.text_field :name, placeholder: 'repo name e.g. "sextant" ', class: 'preview_repo_name'
   = f.submit value: "Add Repo", class: 'btn btn-primary', id: 'createRepo'
   p.repo_preview#repo_preview
     | Preview:
@@ -44,5 +45,5 @@ h4 by entering the user and repo name
 h4 or by pasting the full repo URL
 
 = form_tag repos_path, { class: "new_repo", id: "new_repo_from_url" } do
-  = text_field_tag :url, nil, placeholder: 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field'
+  => text_field_tag :url, nil, placeholder: 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field'
   = submit_tag nil, value: "Add Repo", class: 'btn btn-primary', id: 'createRepo'
