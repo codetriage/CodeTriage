@@ -60,6 +60,7 @@ class UsersController < ApplicationController
         :name,
         :daily_issue_limit,
         :skip_issues_with_pr,
+        :skip_my_own_issues_and_prs,
         favorite_languages: []
         )
     end

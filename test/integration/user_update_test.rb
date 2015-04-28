@@ -63,4 +63,26 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
     @user.reload
     assert_equal false, @user.skip_issues_with_pr
   end
+
+  test 'updating the user\'s skip_my_own_issues_and_prs setting to true' do
+    @user = users(:mockstar)
+    login_as(@user, :scope => :user)
+    visit edit_user_path(@user)
+    check 'user_skip_my_own_issues_and_prs'
+    click_button 'Save'
+    assert page.has_content?('User successfully updated')
+    @user.reload
+    assert @user.skip_my_own_issues_and_prs?
+  end
+
+  test 'updating the user\'s skip_my_own_issues_and_prs setting to false' do
+    @user = users(:mockstar)
+    login_as(@user, :scope => :user)
+    visit edit_user_path(@user)
+    uncheck 'user_skip_my_own_issues_and_prs'
+    click_button 'Save'
+    assert page.has_content?('User successfully updated')
+    @user.reload
+    refute @user.skip_my_own_issues_and_prs?
+  end
 end

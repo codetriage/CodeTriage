@@ -76,6 +76,30 @@ class IssueTest < ActiveSupport::TestCase
     assert issue.valid_for_user?(user, false), "issue is not valid for given user"
   end
 
+  test "valid_for_user? when issue was created by user and skips own issues" do
+    user  = users("mockstar")
+    issue = repos("rails_rails").issues.new
+    issue.stubs(:commenting_users).returns([])
+    issue.stubs(:update_issue!).returns(true)
+
+    # should be false: issue is user's own and chooses to skip
+    issue.stubs(:created_by).returns("mockstar")
+    user.stubs(:skip_my_own_issues_and_prs?).returns(true)
+    refute issue.valid_for_user?(user, false), "issue is not valid for given user"
+  end
+
+  test "valid_for_user? when issue was created by user and does not skip own issues" do
+    user  = users("mockstar")
+    issue = repos("rails_rails").issues.new
+    issue.stubs(:commenting_users).returns([])
+    issue.stubs(:update_issue!).returns(true)
+
+    # should be true: issue is user's own and chooses not to skip
+    issue.stubs(:created_by).returns("mockstar")
+    user.stubs(:skip_my_own_issues_and_prs?).returns(false)
+    assert issue.valid_for_user?(user, false)
+  end
+
   test 'commenting users' do
     repo = repos("rails_rails")
     issue = repo.issues.new

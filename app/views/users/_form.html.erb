@@ -14,6 +14,9 @@
   <%= f.label :skip_issues_with_pr, t("activerecord.attributes.user.skip_issues_with_pr", default: "Skip Issues with Pull requests"), class: "label label-info" %>
   <%= f.check_box :skip_issues_with_pr, class: 'checkbox' %>
 
+  <%= f.label :skip_my_own_issues_and_prs, t("activerecord.attributes.user.skip_my_own_issues_and_prs", :default => "Skip my own Issues and Pull requests"), :class => "label label-info" %>
+  <%= f.check_box :skip_my_own_issues_and_prs, :class => 'checkbox' %>
+
 </div>
 
 <div class="form-actions">
