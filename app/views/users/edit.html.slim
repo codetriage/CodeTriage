@@ -1,0 +1,2 @@
+= form_for @user, url: user_path(@user), method: :patch, html: { class: "edit_user", id: "edit_user" } do |f|
+  = render partial: "form", locals: {f: f}

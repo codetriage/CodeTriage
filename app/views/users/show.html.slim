@@ -1,0 +1,38 @@
+.span8
+  h2= @user.github
+  - if current_user.blank?
+    | Are you #{@user.github}?
+    br
+    span.active= link_to 'Login', new_user_registration_path
+    | to edit your account
+  - if current_user && current_user == @user
+    section#user-details
+      h5 Email : #{@user.email}
+      small.muted Only visible to you
+      h5 Publicly visible? : #{@user.public? ? "Yes" : "No"}
+      - if @user.public?
+        = link_to "Stay private", users_path(user: {private: true}), method: :put, class: 'btn btn-warning'
+      - else
+        = link_to "Go public", users_path(user: {private: false}), method: :put, class: 'btn btn-success'
+      h5 Max # of issues you want to receive per day: #{@user.daily_issue_limit.presence || 'not set'}
+      h5 Skip Issues with Pull Requests: #{@user.skip_issues_with_pr}
+    section#user-favorite-langs
+      h3 Favorite Languages:
+      p Select your favorite languages:
+      = form_for @user do |f|
+        - Repo.all_languages.each do |language|
+          label.checkbox
+            = f.check_box :favorite_languages, { multiple: true }, language, nil
+            = language
+        p= button_tag "Save", class: "btn btn-primary"
+  .form-actions
+    - if current_user.blank?
+      | Are you #{@user.github}?
+      br
+      span.active= link_to 'Login', new_user_registration_path
+      | to edit your account
+    - elsif current_user == @user
+      => link_to '<i class="icon-edit icon-white"></i> Edit my Account'.html_safe, edit_user_path(@user), class: 'btn btn-primary', style: 'margin-bottom: 5px'
+      = link_to '<i class="icon-trash icon-white"></i> Delete my account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", default: "Are you sure?")}", class: 'btn btn-danger'
+    - else
+      | This isn't your account, jump to #{link_to current_user.github, current_user}
