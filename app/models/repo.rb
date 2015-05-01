@@ -92,9 +92,9 @@ class Repo < ActiveRecord::Base
     background_populate_issues(self.id)
   end
 
-  def self.exists_with_name?(name)
+  def self.exists_with_name?(name, repos)
     user_name, repo_name = name.downcase.split(?/)
-    Repo.exists?(user_name: user_name, name: repo_name)
+    repos.map { |r| r.name }.include?(name)
   end
 
   def self.order_by_subscribers
