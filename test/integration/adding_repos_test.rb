@@ -44,6 +44,33 @@ class AddingReposTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test "adding invalid repo with blank params" do
+    login_via_github
+    VCR.use_cassette('blank_repo') do
+      visit "/"
+      click_link "Submit a Repo"
+
+      within '#new_repo_from_names' do
+        click_button "Add Repo"
+      end
+    end
+
+    assert page.has_content? "can't be blank"
+  end
+
+  test "adding invalid repo through URL with blank params" do
+    login_via_github
+    VCR.use_cassette('blank_repo') do
+      visit "/"
+      click_link "Submit a Repo"
+
+      within '#new_repo_from_url' do
+        click_button "Add Repo"
+      end
+    end
+
+    assert page.has_content?("can't be blank")
+  end
 
   # TODO: Pending for now but we should enable this, there's an env change in repo that
   # treats all repo urls as valid in test.  Fix this one that is removed
