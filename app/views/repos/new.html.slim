@@ -1,6 +1,9 @@
 - @repo.errors.full_messages.each do |msg|
   li= msg
 
+- @repo_sub.errors.full_messages.each do |msg|
+  li= msg
+
 - if user_signed_in?
   h2 Your repos
   p Only repos that have GitHub issues enabled are shown
