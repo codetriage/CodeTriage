@@ -18,13 +18,13 @@
 
   .tab-content
     .tab-pane.active#own
-      = render 'shared/add_repos_list', repos: @own_repos
+      = render 'shared/add_repos_list', repos: @own_repos, all_repos: Repo.all
 
     .tab-pane.active#starred
-      = render 'shared/add_repos_list', repos: @starred_repos
+      = render 'shared/add_repos_list', repos: @starred_repos, all_repos: Repo.all
 
     .tab-pane.active#watched
-      = render 'shared/add_repos_list', repos: @watched_repos
+      = render 'shared/add_repos_list', repos: @watched_repos, all_repos: Repo.all
 
 h3 Add another repo
 

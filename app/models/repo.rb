@@ -94,7 +94,7 @@ class Repo < ActiveRecord::Base
 
   def self.exists_with_name?(name, repos)
     user_name, repo_name = name.downcase.split(?/)
-    repos.map { |r| r.full_name }.include?(name)
+    repos.map { |r| r.full_name }.include?("#{user_name}/#{repo_name}")
   end
 
   def self.order_by_subscribers
