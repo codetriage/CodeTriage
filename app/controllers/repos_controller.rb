@@ -39,10 +39,10 @@ class ReposController < RepoBasedController
     parse_params_for_repo_info
     @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first unless params_blank?
     @repo ||= Repo.new(repo_params)
-    if @repo.save
+    @repo_sub = RepoSubscription.new(repo: @repo, user: current_user)
+    if @repo.save && @repo_sub.save
       flash[:notice] = "Added #{@repo.to_param} for triaging"
-      repo_sub = RepoSubscription.create!(repo_id: @repo.id, user_id: current_user.id)
-      RepoSubscription.background_send_triage_email(repo_sub.id)
+      RepoSubscription.background_send_triage_email(@repo_sub.id)
       redirect_to @repo
     else
       response = GitHubBub.get("/user/repos", type: "owner", token: current_user.token)
