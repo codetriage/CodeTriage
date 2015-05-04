@@ -89,6 +89,6 @@ class ReposController < RepoBasedController
     end
 
     def params_blank?
-      repo_params.values.any? { |param| param.blank? }
+      repo_params.values.any?(&:blank?)
     end
 end
