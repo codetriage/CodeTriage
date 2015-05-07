@@ -10,6 +10,7 @@ class ReposController < RepoBasedController
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
+    @repo_sub = RepoSubscription.new
     if user_signed_in?
       @own_repos = Rails.cache.fetch("user/repos/#{current_user.id}", expires_in: 30.minutes) do
         own_repos_response = GitHubBub.get("/user/repos", token: current_user.token, type: "owner", per_page: '100')
@@ -39,8 +40,8 @@ class ReposController < RepoBasedController
     parse_params_for_repo_info
     @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first unless params_blank?
     @repo ||= Repo.new(repo_params)
-    @repo_sub = RepoSubscription.new(repo: @repo, user: current_user)
-    if @repo.save && @repo_sub.save
+    if @repo.save
+      @repo_sub = current_user.repo_subscriptions.create(repo: @repo)
       flash[:notice] = "Added #{@repo.to_param} for triaging"
       RepoSubscription.background_send_triage_email(@repo_sub.id)
       redirect_to @repo
