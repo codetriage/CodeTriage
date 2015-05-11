@@ -1,6 +1,7 @@
 require 'rails_autolink'
 
 class UserMailer < ActionMailer::Base
+  include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"
 
   def send_daily_triage(options = {})
@@ -9,7 +10,7 @@ class UserMailer < ActionMailer::Base
     @max_days    = 2
     subject = ""
     @days   = @user.days_since_last_clicked
-    subject << "[#{@days} days] " if @days > @max_days
+    subject << "[#{ time_ago_in_words(@days.days.ago).humanize }] " if @days > @max_days
     subject << "Help Triage #{@assignments.size} Open Source #{"Issue".pluralize(@assignments.size)}"
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end

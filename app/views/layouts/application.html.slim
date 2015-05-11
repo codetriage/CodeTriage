@@ -10,10 +10,6 @@ html
         = render "flashes"
         = yield
       .footer
-        p
-          a.brand#heroku href="/"
-            ' by
-            strong heroku
     - if Rails.env.production?
       /! google analytics
       javascript:

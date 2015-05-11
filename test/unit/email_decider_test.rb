@@ -2,18 +2,44 @@ require 'test_helper'
 
 class EmailDeciderTest < ActiveSupport::TestCase
   test "decides email frequency" do
+    seed_array = [1,2,3,4,5,6,7]
     # daily
-    assert EmailDecider.new(rand(0..3)).now?(1)
+    last_clicked_days_ago = 0..3
+    multiplier            = 1
+    valid_values          = seed_array.map { |n| n * multiplier }
+    invalid_values        = last_clicked_days_ago.to_a - valid_values
+    assert EmailDecider.new(rand(last_clicked_days_ago)).now?(valid_values.sample)
 
     # wait
-    assert EmailDecider.new(rand(4..6)).skip?(1)
+    last_clicked_days_ago = 4..6
+    multiplier            = 1
+    valid_values          = seed_array.map { |n| n * multiplier }
+    invalid_values        = last_clicked_days_ago.to_a - valid_values
+    assert EmailDecider.new(rand(last_clicked_days_ago)).skip?(valid_values.sample)
+
 
     # twice a week
-    assert EmailDecider.new(rand(7..13)).now?([3, 6, 9, 12].sample)
-    assert EmailDecider.new(rand(7..13)).skip?([4, 7, 10, 13].sample)
+    last_clicked_days_ago = 7..13
+    multiplier            = 3
+    valid_values          = seed_array.map { |n| n * multiplier }
+    invalid_values        = last_clicked_days_ago.to_a - valid_values
+    assert EmailDecider.new(rand(last_clicked_days_ago)).now?(valid_values.sample)
+    assert EmailDecider.new(rand(last_clicked_days_ago)).skip?(invalid_values.sample)
 
     # once a week
-    assert EmailDecider.new(rand(14..100)).now?([7, 14, 21, 28].sample)
-    assert EmailDecider.new(rand(14..100)).skip?([8, 15, 22, 29].sample)
+    last_clicked_days_ago = 14..30
+    multiplier            = 7
+    valid_values          = seed_array.map { |n| n * multiplier }
+    invalid_values        = last_clicked_days_ago.to_a - valid_values
+    assert EmailDecider.new(rand(last_clicked_days_ago)).now?(valid_values.sample)
+    assert EmailDecider.new(rand(last_clicked_days_ago)).skip?(invalid_values.sample)
+
+    # once a month
+    last_clicked_days_ago = 31..10_000
+    multiplier            = 30
+    valid_values          = seed_array.map { |n| n * multiplier }
+    invalid_values        = last_clicked_days_ago.to_a - valid_values
+    assert EmailDecider.new(rand(last_clicked_days_ago)).now?(valid_values.sample)
+    assert EmailDecider.new(rand(last_clicked_days_ago)).skip?(invalid_values.sample)
   end
 end

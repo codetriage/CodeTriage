@@ -147,7 +147,7 @@ Make sure to remove any record modes from your VCR cassette before committing.
 
 ## Contact
 
-Richard Schneeman [@Schneems](http://twitter.com/schneems) for [Heroku](http://heroku.com).
+Richard Schneeman [@Schneems](http://twitter.com/schneems)
 
 Licensed under MIT License.
 Copyright (c) 2012 Schneems.
