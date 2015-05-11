@@ -152,7 +152,9 @@ class User < ActiveRecord::Base
 
   def send_daily_triage!
     return false if repo_subscriptions.blank?
-    return false if EmailDecider.new(days_since_last_clicked).skip?(days_since_last_email)
+    skip = EmailDecider.new(days_since_last_clicked).skip?(days_since_last_email)
+    puts "User #{github}: skip: #{skip.inspect}, days_since_last_clicked: #{days_since_last_clicked}, days_since_last_email: #{days_since_last_email}"
+    return false if skip
 
     IssueAssigner.new(self, repo_subscriptions).assign
     ids         = repo_subscriptions.pluck(:id)
