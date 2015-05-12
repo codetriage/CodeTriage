@@ -36,7 +36,7 @@ class EmailDecider
       case @last_clicked_days_ago
       when 0..3
         :daily
-      when 7..14
+      when 7..13
         :twice_a_week
       when 14..30
         :once_a_week
