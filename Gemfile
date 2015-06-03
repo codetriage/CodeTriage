@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.2.2'
 
+gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
+
 # Gems required in all environments
 gem 'rails', '4.2.1'
 
