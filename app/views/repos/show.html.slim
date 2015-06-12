@@ -6,7 +6,7 @@ h1
 p= link_to @repo.github_url, @repo.github_url
 p= @repo.description
 - unless @repo.notes.blank?
-  p= raw BlueCloth.new(@repo.notes).to_html
+  p= sanitize BlueCloth.new(@repo.notes).to_html
 hr
 
 
