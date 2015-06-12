@@ -2,8 +2,9 @@ require 'test_helper'
 
 class EmailDeciderTest < ActiveSupport::TestCase
   test "decides email frequency" do
-    seed_array = [1,2,3,4,5,6,7]
-    # daily
+    seed_array = (1..350).to_a # max value has to be divisible by the multiplier of th higest used value i.e. 10_000/30.0
+
+    # Daily
     last_clicked_days_ago = 0..3
     multiplier            = 1
     valid_values          = seed_array.map { |n| n * multiplier }
@@ -54,6 +55,5 @@ class EmailDeciderTest < ActiveSupport::TestCase
     bad_clicked_ago        = invalid_values.sample
     assert EmailDecider.new(day_ago).now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailDecider.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailDecider.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
-
   end
 end
