@@ -60,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def able_to_edit_repo?(repo)
-    repo.user_name == github
+    repo.user_name == github.downcase
   end
 
   def public?
