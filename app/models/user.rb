@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
 
+  has_many :language_subscriptions, dependent: :destroy
+
   has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, through: :repo_subscriptions
 
