@@ -53,6 +53,18 @@ class ReposController < RepoBasedController
     end
   end
 
+  def destroy
+    parse_username = params[:url].split("/")
+    @repo = Repo.find_by(name: params[:name].downcase, user_name: parse_username[parse_username.size-2].downcase)
+    
+    if @repo
+      @repo.destroy
+    end
+
+    redirect_to new_repo_path  
+
+  end
+
   def edit
     @repo = find_repo(params)
     redirect_to root_path, notice: "You cannot edit this repo" unless current_user.able_to_edit_repo?(@repo)

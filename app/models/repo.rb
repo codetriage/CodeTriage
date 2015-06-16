@@ -5,10 +5,10 @@ class Repo < ActiveRecord::Base
   validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
   validates :name, :user_name, presence: true
 
-  has_many :issues
-  has_many :repo_subscriptions
-  has_many :users, through: :repo_subscriptions
-  has_many :subscribers, through: :repo_subscriptions, source: :user
+  has_many :issues, :dependent => :delete_all
+  has_many :repo_subscriptions, :dependent => :delete_all
+  has_many :users, through: :repo_subscriptions, :dependent => :delete_all
+  has_many :subscribers, through: :repo_subscriptions, source: :user, :dependent => :delete_all
 
   delegate :open_issues, to: :issues
 

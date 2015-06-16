@@ -16,6 +16,6 @@
             td #{repo["open_issues_count"]} issues
             td
               - if Repo.exists_with_name?(repo["full_name"])
-                p Added!
+                = link_to "Remove", repo, class: 'btn btn-mini btn-danger', method: :delete
               - else
                 = f.submit "Add", class: 'btn btn-mini btn-primary'

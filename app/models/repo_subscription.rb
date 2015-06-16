@@ -8,8 +8,8 @@ class RepoSubscription < ActiveRecord::Base
   belongs_to :repo
   belongs_to :user
 
-  has_many   :issue_assignments
-  has_many   :issues, through: :issue_assignments
+  has_many   :issue_assignments, :dependent => :delete_all
+  has_many   :issues, through: :issue_assignments, :dependent => :delete_all
 
   def self.for(repo_id)
     where(repo_id: repo_id).includes(:issues)
