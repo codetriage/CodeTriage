@@ -38,6 +38,7 @@ CodeTriage::Application.routes.draw do
       constraints full_name: REPO_PATH_PATTERN do
         get   '/',            to: 'repos#show',        as: 'repo'
         patch '/',            to: 'repos#update',      as:  nil
+        delete '/',           to: 'repos#destroy',     as: 'delete_repo'
         get   '/edit',        to: 'repos#edit',        as: 'edit_repo'
         get   '/subscribers', to: 'subscribers#show',  as: 'repo_subscribers'
       end

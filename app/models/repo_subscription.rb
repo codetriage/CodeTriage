@@ -8,7 +8,7 @@ class RepoSubscription < ActiveRecord::Base
   belongs_to :repo
   belongs_to :user
 
-  has_many   :issue_assignments
+  has_many   :issue_assignments, :dependent => :destroy
   has_many   :issues, through: :issue_assignments
 
   def self.for(repo_id)
