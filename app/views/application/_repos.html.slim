@@ -4,7 +4,7 @@
     - repos.group_by(&:language).each do |lang, repos|
       - unless lang == nil
         li = link_to lang, "##{lang.parameterize}#{lang.hash}", data: { toggle: "tab" }
-  .tab-content.span8
+  .tab-content.span8#repos
     - repos.group_by(&:language).each do |lang, repos|
       - unless lang == nil
         div class="tab-pane#{" active" if lang_index == 0}" id="#{lang.parameterize}#{lang.hash}"
@@ -20,4 +20,5 @@ javascript:
     if (hash) {
       $('.nav-tabs a[href='+hash+']').tab('show');
     }
+    $("#repos").slimscroll({height: '250px'});
   });
