@@ -5,7 +5,7 @@
     = link_to 'Sign up today', new_user_registration_path, class: 'btn btn-large btn-success'
 
   .jumbotron
-    p.lead #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos
+    p.lead #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open-source repos
 hr
 - if @repos_subs.present?
   h2 Repos you are currently helping

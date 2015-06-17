@@ -7,6 +7,17 @@ p= link_to @repo.github_url, @repo.github_url
 p= @repo.description
 - unless @repo.notes.blank?
   p= sanitize BlueCloth.new(@repo.notes).to_html
+  
+p
+  - if user_signed_in? && current_user.able_to_edit_repo?(@repo)
+    = link_to "Edit this repo ", edit_repo_path(@repo), class: 'btn btn-primary'
+
+  - if @repo_sub
+    = link_to repo_subscription_path(@repo_sub), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do
+      i.icon-remove.icon-white>
+      
+      | Unsubscribe
+
 hr
 
 
@@ -18,29 +29,20 @@ ul.unstyled.avatars_list
 p
   = link_to pluralize(@repo.subscribers.count, 'Subscriber'), repo_subscribers_path(full_name: @repo.full_name)
 
-p
-  - if user_signed_in? && current_user.able_to_edit_repo?(@repo)
-    = link_to "Edit this repo", edit_repo_path(@repo), class: 'btn btn-primary'
-
-  - if @repo_sub
-    = link_to repo_subscription_path(@repo_sub), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } do
-      i.icon-remove.icon-white>
-      | Stop Triaging
-
 hr
 
 h2 Help Triage Issues!
 p
-  | When you volunteer to triage issues, you'll receive an email each day with a link to an open issue that needs to be triaged in this project.
+  | When you volunteer to triage issues, you'll receive an email each day with a link to an open issue that needs help in this repo.
     You'll also receive instructions on how to triage issues.
 
 - if @repo_sub.blank?
-  = button_to "I Want to Triage: #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'btn btn-primary btn-success'
+  = button_to "I want to Triage: #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'btn btn-primary btn-success'
 - else
   p
     = link_to issue_assignments_path(id: @repo_sub.id), class: 'btn btn-success', method: :post do
       i.icon-envelope.icon-white>
-      | Send new issue!
+      | Receive new issue!
   p Currently receiving #{@repo_sub.email_limit} issues per day.
   = form_for(@repo_sub, html: {class: 'form-inline'}) do |f|
     => f.select :email_limit, (1..20)
