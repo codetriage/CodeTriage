@@ -24,6 +24,7 @@ CodeTriage::Application.routes.draw do
   resources   :repo_subscriptions
 
   resources   :language_subscriptions
+  
   if Rails.env.development?
     mount UserMailer::Preview => 'mail_view'
   end
