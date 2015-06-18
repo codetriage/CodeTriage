@@ -46,8 +46,12 @@ class ReposController < RepoBasedController
       RepoSubscription.background_send_triage_email(@repo_sub.id)
       redirect_to @repo
     else
-      response = GitHubBub.get("/user/repos", type: "owner", token: current_user.token)
-      @own_repos = response.json_body
+      flash.now[:error] = @repo.errors.full_messages.map {|error| "<li>#{error}<br/>"}.join.html_safe    
+      
+      @own_repos = GitHubBub.get("/user/repos", type: "owner", token: current_user.token).json_body
+      @starred_repos = GitHubBub.get("/user/starred", token: current_user.token).json_body
+      @watched_repos = GitHubBub.get("/user/subscriptions", token: current_user.token).json_body
+      
       render :new
     end
   end
