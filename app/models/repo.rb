@@ -62,6 +62,11 @@ class Repo < ActiveRecord::Base
     self.order("issues_count DESC")
   end
 
+  def self.search(search)
+    search_condition = "%#{search}%"
+    where('name LIKE ? OR description LIKE ?', search_condition, search_condition)
+  end
+
   def self.search_by(repo_name, user_name)
     where(name: repo_name.downcase.strip, user_name: user_name.downcase.strip)
   end

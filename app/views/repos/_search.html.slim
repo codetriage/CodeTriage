@@ -1,0 +1,5 @@
+
+= form_tag(:controller => 'repos', :action => 'search', :method => "get", class: "navbar-form", id: "search-form") do
+  .input-append
+    = text_field_tag :search, params[:search], class: "span2", :size => 200, placeholder: "Search a repo..."
+    <button class="btn" type="submit"><i class="icon-search"></i></button>
