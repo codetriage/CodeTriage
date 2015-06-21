@@ -1,17 +1,21 @@
 - lang_index = 0
 
-.span4
-  ul.nav.nav-tabs.nav-stacked#repo-tabs data-tabs="tabs"
+.row-fluid
+  .span4
+    ul.nav.nav-tabs.nav-stacked#repo-tabs data-tabs="tabs"
+      / = select_tag "lang", options_for_select(@languages)
+      select#language
+        - repos.group_by(&:language).each do |lang, repos|
+          - unless lang == nil
+              option value="##{lang.parameterize}#{lang.hash}" data-target="##{lang.parameterize}#{lang.hash}" = lang
+        / li = link_to lang, "##{lang.parameterize}#{lang.hash}", data: { toggle: "tab" }
+    = link_to "Submit a Repo", new_repo_path, class: 'btn btn-success'
+  .tab-content.span12#repos
     - repos.group_by(&:language).each do |lang, repos|
       - unless lang == nil
-        li = link_to lang, "##{lang.parameterize}#{lang.hash}", data: { toggle: "tab" }
-  = link_to "Submit a Repo", new_repo_path, class: 'btn btn-success'
-.tab-content.span12#repos
-  - repos.group_by(&:language).each do |lang, repos|
-    - unless lang == nil
-      div class="tab-pane#{" active" if lang_index == 0}" id="#{lang.parameterize}#{lang.hash}"
-        ul.unstyled.repos-list = render repos
-      - lang_index = lang_index + 1
+        div class="tab-pane#{" active" if lang_index == 0}" id="#{lang.parameterize}#{lang.hash}"
+          ul.unstyled.repos-list = render repos
+        - lang_index = lang_index + 1
 
 javascript:
   $(document).ready(function(){
@@ -21,4 +25,8 @@ javascript:
       $('.nav-tabs a[href='+hash+']').tab('show');
     }
     $("#repos").slimscroll({height: '50vh'});
+
+    $('#language').on('change', function(e){
+      $('#language option[value="' + $(this).val() + '"]').attr("selected", "selected").tab("show");
+    });
   });
