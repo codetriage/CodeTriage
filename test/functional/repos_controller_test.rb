@@ -26,7 +26,7 @@ class ReposControllerTest < ActionController::TestCase
       post :create, repo: { name: 'refinerycms', user_name: 'refinery' }
     end
     VCR.use_cassette "create_repo_without_issues", record: :once do
-      post :create, repo: { name: 'faker', user_name: 'igas' }
+      post :create, repo: { name: 'scene-hub-v2', user_name: 'chrisccerami' }
     end
   end
 

@@ -46,7 +46,7 @@ group :test do
   gem 'capybara', '2.3.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
-  gem 'webmock'
+  gem 'webmock', '~> 1.8.0'
   gem 'vcr'
   gem 'mocha', require: false
   gem 'simplecov', require: false
