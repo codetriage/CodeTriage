@@ -5,4 +5,5 @@ li
     - if repo.full_name.present?
       small<
         | (#{repo.full_name})
+        = ' | ' + repo.issues_count.to_s + ' issues'
   p = raw repo.description

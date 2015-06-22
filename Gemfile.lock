@@ -74,8 +74,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    crack (0.4.1)
-      safe_yaml (~> 0.9.0)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     dalli (2.7.0)
     debug_inspector (0.0.2)
     derailed_benchmarks (0.0.0)
@@ -224,7 +224,7 @@ GEM
     resque_def (0.0.3)
       resque
     rrrretry (1.0.0)
-    safe_yaml (0.9.4)
+    safe_yaml (1.0.4)
     sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -288,9 +288,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (~> 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    webmock (1.20.4)
+    webmock (1.8.11)
       addressable (>= 2.2.7)
-      crack (>= 0.3.2)
+      crack (>= 0.1.7)
     websocket-driver (0.3.2)
     wicked (1.0.0)
       rails (>= 3.0.7)
@@ -343,7 +343,7 @@ DEPENDENCIES
   valid_email
   vcr
   web-console (~> 2.0)
-  webmock
+  webmock (~> 1.8.0)
   wicked
   will_paginate
 
