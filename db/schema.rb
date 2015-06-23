@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20150211235706) do
 
   create_table "issue_assignments", force: :cascade do |t|
     t.integer  "issue_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "repo_subscription_id"
-    t.boolean  "clicked",              default: false
-    t.boolean  "delivered",            default: false
+    t.boolean  "clicked",                  default: false
+    t.boolean  "delivered",                default: false
+    t.integer  "language_subscription_id"
   end
 
   add_index "issue_assignments", ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree

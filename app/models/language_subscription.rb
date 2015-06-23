@@ -12,8 +12,19 @@ class LanguageSubscription < ActiveRecord::Base
   has_many   :issue_assignments
   has_many   :issues, through: :issue_assignments
 
-  def self.get_issues
-    repos = Repo.find_where(language: @language)
+  #gets a random issue from a random repo in the language
+  def get_issues
+    tried_repo = []
+    issue = false
+    while true
+      repo = Repo.where(language: language).where.not(id: tried_repo).order("RANDOM()").first
+      return false if repo.nil?
+      invalid_issues = user.issue_assignments.pluck(:issue_id)
+      issue = repo.issues.where.not(id: invalid_issues).order("RANDOM()").first
+      break unless issue.nil?
+      tried_repo << repo.id
+    end
+    issue
   end
 
   def language_exists
