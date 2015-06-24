@@ -41,13 +41,26 @@ class ReposController < RepoBasedController
     @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first unless params_blank?
     @repo ||= Repo.new(repo_params)
     if @repo.save
-      @repo_sub = current_user.repo_subscriptions.create(repo: @repo)
-      flash[:notice] = "Added #{@repo.to_param} for triaging"
-      RepoSubscription.background_send_triage_email(@repo_sub.id)
-      redirect_to @repo
+      @repo_sub = current_user.repo_subscriptions.find_or_initialize_by(repo: @repo)
+      
+      if @repo_sub.new_record?
+        @repo_sub.save
+        flash[:notice] = "Added #{@repo.to_param} for triaging"
+        RepoSubscription.background_send_triage_email(@repo_sub.id)
+      else
+        flash[:notice] = "Repository already exists"
+      end
+      redirect_to @repo      
     else
-      response = GitHubBub.get("/user/repos", type: "owner", token: current_user.token)
-      @own_repos = response.json_body
+      err = ""
+      @repo.errors.full_messages.each do |msg|
+        err += "<li> " + msg + "<br/>"
+      end
+
+      flash.now[:error] = err.html_safe
+      @own_repos = GitHubBub.get("/user/repos", type: "owner", token: current_user.token).json_body
+      @starred_repos = GitHubBub.get("/user/starred", token: current_user.token).json_body
+      @watched_repos = GitHubBub.get("/user/subscriptions", token: current_user.token).json_body
       render :new
     end
   end
