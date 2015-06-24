@@ -18,3 +18,4 @@
 //= require tab_navigation
 //= require bootstrap
 //= require global
+//= require jquery.slimscroll.min
