@@ -1,26 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>404 Not Found</title>
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+
+    body {
+      background-color: #fff;
+      color: #666;
+      text-align: center;
+      font-family: arial, sans-serif;
+      }
     div.dialog {
       width: 25em;
-      padding: 0 4em;
+      background-color: #FFF;
+      padding: 0 4em 2em;
       margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
+      border: 2px solid #ccc;
       border-right-color: #999;
       border-bottom-color: #999;
+
     }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
+    h1 {
+      font-size: 48px;
+      /*color: #f00;*/
+      line-height: 1.5em;
+      }
+    h3 {
+      font-size: 23.5px;
+      color: #999;
+      }
+
+      a{
+        color: #999;
+      }
+
+      a:active {
+        color: #00F;
+      }
+
+      a:hover {
+        color: #000;
+      }
+
   </style>
 </head>
+
+
 
 <body>
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
+    <a href="http://www.codetriage.com"><h3>CodeTriage</h3></a>
+    <h1>404 Not Found</h1>
     <p>You may have mistyped the address or the page may have moved.</p>
+
+    <a href = "http://www.codetriage.com">Home</a> |
+    <a href = "http://www.codetriage.com/repos">Repos</a>
+
   </div>
+
 </body>
 </html>
