@@ -12,3 +12,6 @@
  *= require_tree .
 */
 
+.row-fluid {
+  width: 1000px;
+}
