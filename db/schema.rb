@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710164307) do
+ActiveRecord::Schema.define(version: 20150211235706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "issue_assignments", force: true do |t|
+  create_table "issue_assignments", force: :cascade do |t|
     t.integer  "issue_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
     t.boolean  "delivered",            default: false
@@ -27,95 +27,75 @@ ActiveRecord::Schema.define(version: 20140710164307) do
 
   add_index "issue_assignments", ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
 
-  create_table "issues", force: true do |t|
+  create_table "issues", force: :cascade do |t|
     t.integer  "comment_count"
-    t.string   "url",             limit: nil
-    t.string   "repo_name",       limit: nil
-    t.string   "user_name",       limit: nil
+    t.string   "url",             limit: 255
+    t.string   "repo_name",       limit: 255
+    t.string   "user_name",       limit: 255
     t.datetime "last_touched_at"
     t.integer  "number"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_id"
-    t.string   "title",           limit: nil
-    t.string   "html_url",        limit: nil
-    t.string   "state",           limit: nil
+    t.string   "title",           limit: 255
+    t.string   "html_url",        limit: 255
+    t.string   "state",           limit: 255
     t.boolean  "pr_attached",                 default: false
+    t.string   "created_by"
   end
 
-  create_table "opro_auth_grants", force: true do |t|
-    t.string   "code",                    limit: nil
-    t.string   "access_token",            limit: nil
-    t.string   "refresh_token",           limit: nil
-    t.text     "permissions"
-    t.datetime "access_token_expires_at"
-    t.integer  "user_id"
-    t.integer  "application_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  create_table "opro_client_apps", force: true do |t|
-    t.string   "name",        limit: nil
-    t.string   "app_id",      limit: nil
-    t.string   "app_secret",  limit: nil
-    t.text     "permissions"
-    t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  create_table "repo_subscriptions", force: true do |t|
-    t.string   "user_name",    limit: nil
-    t.string   "repo_name",    limit: nil
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+  create_table "repo_subscriptions", force: :cascade do |t|
+    t.string   "user_name",    limit: 255
+    t.string   "repo_name",    limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
     t.integer  "email_limit",              default: 1
   end
 
-  create_table "repos", force: true do |t|
-    t.string   "name",             limit: nil
-    t.string   "user_name",        limit: nil
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+  create_table "repos", force: :cascade do |t|
+    t.string   "name",             limit: 255
+    t.string   "user_name",        limit: 255
     t.integer  "issues_count",                 default: 0, null: false
-    t.string   "language",         limit: nil
-    t.string   "description",      limit: nil
-    t.string   "full_name",        limit: nil
+    t.string   "language",         limit: 255
+    t.string   "description",      limit: 255
+    t.string   "full_name",        limit: 255
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "github_error_msg"
   end
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  limit: nil, default: "",                                   null: false
-    t.string   "encrypted_password",     limit: nil, default: "",                                   null: false
-    t.string   "reset_password_token",   limit: nil
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                      limit: 255, default: "",                                   null: false
+    t.string   "encrypted_password",         limit: 255, default: "",                                   null: false
+    t.string   "reset_password_token",       limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0
+    t.integer  "sign_in_count",                          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: nil
-    t.string   "last_sign_in_ip",        limit: nil
-    t.datetime "created_at",                                                                        null: false
-    t.datetime "updated_at",                                                                        null: false
-    t.string   "zip",                    limit: nil
-    t.string   "phone_number",           limit: nil
+    t.string   "current_sign_in_ip",         limit: 255
+    t.string   "last_sign_in_ip",            limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "zip",                        limit: 255
+    t.string   "phone_number",               limit: 255
     t.boolean  "twitter"
-    t.string   "github",                 limit: nil
-    t.string   "github_access_token",    limit: nil
+    t.string   "github",                     limit: 255
+    t.string   "github_access_token",        limit: 255
     t.boolean  "admin"
-    t.string   "name",                   limit: nil
-    t.string   "avatar_url",             limit: nil, default: "http://gravatar.com/avatar/default"
-    t.boolean  "private",                            default: false
-    t.string   "favorite_languages",     limit: nil,                                                             array: true
+    t.string   "avatar_url",                 limit: 255, default: "http://gravatar.com/avatar/default"
+    t.string   "name",                       limit: 255
+    t.boolean  "private",                                default: false
+    t.string   "favorite_languages",                                                                                 array: true
     t.integer  "daily_issue_limit"
-    t.boolean  "skip_issues_with_pr",                default: false
-    t.string   "account_delete_token",   limit: nil
+    t.boolean  "skip_issues_with_pr",                    default: false
+    t.string   "account_delete_token",       limit: 255
     t.datetime "last_clicked_at"
+    t.boolean  "skip_my_own_issues_and_prs",             default: false
   end
 
   add_index "users", ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
