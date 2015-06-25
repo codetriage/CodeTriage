@@ -1,8 +1,13 @@
 li
-  span.label.label-info data-toggle="tooltip" title=pluralize(repo.issues_count, 'Issue') = repo.issues_count
+  /span.label.label-info data-toggle="tooltip" title=pluralize(repo.issues_count, 'Issue') = repo.issues_count
   h4
     = link_to repo.name, repo
     - if repo.full_name.present?
       small<
         | (#{repo.full_name})
+    br
+    = repo.language
+    small< 
+      = ' | ' + pluralize(repo.issues_count, 'issue')
+      = ' | ' + pluralize(repo.subscribers.count, 'subscriber')
   p = raw repo.description

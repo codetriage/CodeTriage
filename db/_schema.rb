@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710164307) do
+ActiveRecord::Schema.define(version: 20150616041947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "issue_assignments", force: :cascade do |t|
     t.integer  "issue_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
     t.boolean  "delivered",            default: false
@@ -34,13 +34,29 @@ ActiveRecord::Schema.define(version: 20140710164307) do
     t.string   "user_name"
     t.datetime "last_touched_at"
     t.integer  "number"
+<<<<<<< Updated upstream
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+=======
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> Stashed changes
     t.integer  "repo_id"
     t.string   "title"
     t.string   "html_url"
     t.string   "state"
     t.boolean  "pr_attached",     default: false
+  end
+
+<<<<<<< Updated upstream
+  create_table "language_subscriptions", force: :cascade do |t|
+    t.string   "user_name"
+    t.integer  "user_id"
+    t.string   "language"
+    t.datetime "last_sent_at"
+    t.integer  "email_limit",  default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "opro_auth_grants", force: :cascade do |t|
@@ -70,6 +86,13 @@ ActiveRecord::Schema.define(version: 20140710164307) do
     t.string   "repo_name"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+=======
+  create_table "repo_subscriptions", force: :cascade do |t|
+    t.string   "user_name"
+    t.string   "repo_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> Stashed changes
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
@@ -79,13 +102,18 @@ ActiveRecord::Schema.define(version: 20140710164307) do
   create_table "repos", force: :cascade do |t|
     t.string   "name"
     t.string   "user_name"
+<<<<<<< Updated upstream
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+=======
+>>>>>>> Stashed changes
     t.integer  "issues_count",     default: 0, null: false
     t.string   "language"
     t.string   "description"
     t.string   "full_name"
     t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "github_error_msg"
   end
 
@@ -100,16 +128,26 @@ ActiveRecord::Schema.define(version: 20140710164307) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+<<<<<<< Updated upstream
     t.datetime "created_at",                                                            null: false
     t.datetime "updated_at",                                                            null: false
+=======
+    t.datetime "created_at"
+    t.datetime "updated_at"
+>>>>>>> Stashed changes
     t.string   "zip"
     t.string   "phone_number"
     t.boolean  "twitter"
     t.string   "github"
     t.string   "github_access_token"
     t.boolean  "admin"
+<<<<<<< Updated upstream
     t.string   "name"
     t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
+=======
+    t.string   "avatar_url",             default: "http://gravatar.com/avatar/default"
+    t.string   "name"
+>>>>>>> Stashed changes
     t.boolean  "private",                default: false
     t.string   "favorite_languages",                                                                 array: true
     t.integer  "daily_issue_limit"

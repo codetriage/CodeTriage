@@ -7,7 +7,7 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
     login_via_github
     visit "/"
     click_link "issue_triage_sandbox"
-    click_button "I Want to Triage: bemurphy/issue_triage_sandbox"
+    click_button "I want to Triage: bemurphy/issue_triage_sandbox"
   end
 
   test "subscribing to a repo" do
