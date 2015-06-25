@@ -13,8 +13,9 @@ class LanguageSubscriptionsController < ApplicationController
 
   def create
     language = params[:language_subscription][:language]
-    @language_subscription = current_user.language_subscriptions.new language: language
-    if @language_subscription.save
+    @language_sub = current_user.language_subscriptions.new language: language
+    if @language_sub.save
+      LanguageSubscription.background_send_language_email @language_sub.id
       redirect_to :back, notice: "Awesome! You'll receive daily triage e-mails for this language."
     else
       flash[:error] = "Something went wrong"
@@ -23,8 +24,8 @@ class LanguageSubscriptionsController < ApplicationController
   end
 
   def update
-    @language_subs = current_user.language_subscriptions.find params[:id]
-    if @language_subs.update_attributes language_subscription_params
+    @language_sub = current_user.language_subscriptions.find params[:id]
+    if @language_sub.update_attributes language_subscription_params
       flash[:success] = "Email preferences updated!"
     else
       flash[:error] = "Something went wrong"
@@ -35,6 +36,12 @@ class LanguageSubscriptionsController < ApplicationController
     @language_sub = current_user.language_subscriptions.find params[:id]
     @language_sub.destroy
     redirect_to :back
+  end
+
+  def send_issue
+    @language_sub = current_user.language_subscriptions.find params[:id]
+    LanguageSubscription.background_send_language_email @language_sub.id
+    redirect_to :back, notice: "You will receive an email with your new issue shortly"
   end
 
   private

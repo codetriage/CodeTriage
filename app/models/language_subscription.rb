@@ -12,7 +12,7 @@ class LanguageSubscription < ActiveRecord::Base
   has_many   :issue_assignments
   has_many   :issues, through: :issue_assignments
 
-  #gets a random issue from a random repo in the language
+  #gets a random issue from a random repo in the language // needs improvement
   def get_issues
     tried_repo = []
     issue = false
@@ -20,15 +20,23 @@ class LanguageSubscription < ActiveRecord::Base
       repo = Repo.where(language: language).where.not(id: tried_repo).order("RANDOM()").first
       return false if repo.nil?
       invalid_issues = user.issue_assignments.pluck(:issue_id)
-      issue = repo.issues.where.not(id: invalid_issues).order("RANDOM()").first
+      issue = repo.issues.where(state: "open").where.not(id: invalid_issues).order("RANDOM()").first
       break unless issue.nil?
       tried_repo << repo.id
     end
-    issue
+    issue = IssueAssignment.create! language_subscription_id: id, issue_id: issue.id if issue
   end
 
   def language_exists
     errors.add(:language, "does not exists") unless Repo.exists?(language: language)
+  end
+
+  resque_def(:background_send_language_email) do |id|
+    language_sub = LanguageSubscription.includes(:user).find(id)
+    if assignment = language_sub.get_issues
+      assignment.update!(delivered: true)
+      UserMailer.send_triage(repo: assignment.repo, user: language_sub.user, assignment: assignment, language: language_sub.language).deliver_now
+    end
   end
 
 end

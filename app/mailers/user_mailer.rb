@@ -21,7 +21,9 @@ class UserMailer < ActionMailer::Base
     @user  = options[:user]
     @repo  = options[:repo]
     @issue = assignment.issue
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
+    @language = options[:language]
+    subject = "Help Triage #{@language} on Github"
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
   def poke_inactive(user)

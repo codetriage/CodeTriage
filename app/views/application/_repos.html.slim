@@ -14,7 +14,8 @@
               = f.hidden_field :language, value: lang
               = f.submit "Subscribe to this Language", class: 'btn btn-mini btn-primary'
           - else
-            = link_to "Unsubscribe to this Language", language_subscription_path(subscription), method: :delete, class: 'btn btn-mini btn-danger',  confirm: 'Are you sure?'
+            => link_to "Unsubscribe to this Language", language_subscription_path(subscription), method: :delete, class: 'btn btn-mini btn-danger',  data: {confirm: 'Are you sure?'}
+            = link_to "Send a random issue!", language_subscription_send_email_path(subscription), method: :post, class: 'btn btn-mini btn-success'
           ul.unstyled.repos-list = render repos
         - lang_index = lang_index + 1
 

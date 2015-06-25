@@ -1,8 +1,14 @@
 Hello <%= @user.github %>,
 
-<p>
-You signed up to help triage GitHub issues on <%= link_to @repo.path, @repo.github_url %>. That's pretty awesome.
-</p>
+<% if @language.nil? %>
+  <p>
+  You signed up to help triage GitHub issues on <%= link_to @repo.path, @repo.github_url %>. That's pretty awesome.
+  </p>
+<% else %>
+  <p>
+  You signed up to help triage Github issues on the <%= @language %> language. That's pretty awesome.
+  </p>
+<% end %>
 
 <h2>Triage Issue: <%= @repo.path %><%= "##{@issue.number}" if @issue.number %></h2>
 
