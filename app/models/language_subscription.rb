@@ -14,17 +14,19 @@ class LanguageSubscription < ActiveRecord::Base
 
   #gets a random issue from a random repo in the language // needs improvement
   def get_issues
-    tried_repo = []
-    issue = false
-    while true
-      repo = Repo.where(language: language).where.not(id: tried_repo).order("RANDOM()").first
-      return false if repo.nil?
+    repos = Repo.where(language: language).order("RANDOM()")
+    repos.each do |r|
       invalid_issues = user.issue_assignments.pluck(:issue_id)
-      issue = repo.issues.where(state: "open").where.not(id: invalid_issues).order("RANDOM()").first
-      break unless issue.nil?
-      tried_repo << repo.id
+      issues = Issue.where(state: "open").where.not(id: invalid_issues).order("RANDOM()")
+      issues.each do |i|
+        if i.valid_for_user? user
+          return issue_assignments.create! issue_id: i.id
+        else
+          issue_assignments.create! issue_id: i.id, delivered: true
+        end
+      end
     end
-    issue = IssueAssignment.create! language_subscription_id: id, issue_id: issue.id if issue
+    return false
   end
 
   def language_exists
