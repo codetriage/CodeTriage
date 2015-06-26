@@ -66,6 +66,13 @@ class ReposController < RepoBasedController
     end
   end
 
+  def search
+    @repos = Repo.search(params[:search])
+    if @repos.empty?
+      flash[:alert] = "Couldn't find repository with name = #{params[:search]}"
+    end
+  end
+
   private
 
     def repo_params

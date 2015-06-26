@@ -5,6 +5,10 @@ CodeTriage::Application.routes.draw do
   get "users/sign_in" => redirect('/users/auth/github'), via: [:get, :post]
   get "users/sign_up" => redirect('/users/auth/github'), via: [:get, :post]
 
+  get "repos/search" => "repos#search"
+  post "repos/search" => "repos#search"
+
+
   devise_for  :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
 
   root        to: "pages#index"
