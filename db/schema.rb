@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(version: 20140710164307) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
 
   create_table "issue_assignments", force: :cascade do |t|
     t.integer  "issue_id"
