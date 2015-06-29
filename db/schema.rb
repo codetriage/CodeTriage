@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211235706) do
+ActiveRecord::Schema.define(version: 20150629010617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,14 +45,12 @@ ActiveRecord::Schema.define(version: 20150211235706) do
   end
 
   create_table "repo_subscriptions", force: :cascade do |t|
-    t.string   "user_name",    limit: 255
-    t.string   "repo_name",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
-    t.integer  "email_limit",              default: 1
+    t.integer  "email_limit",  default: 1
   end
 
   create_table "repos", force: :cascade do |t|
