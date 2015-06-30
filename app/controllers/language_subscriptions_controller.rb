@@ -27,8 +27,10 @@ class LanguageSubscriptionsController < ApplicationController
     @language_sub = current_user.language_subscriptions.find params[:id]
     if @language_sub.update_attributes language_subscription_params
       flash[:success] = "Email preferences updated!"
+      redirect_to :back
     else
       flash[:error] = "Something went wrong"
+      redirect_to :back
     end
   end
 

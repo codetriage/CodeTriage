@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, through: :repo_subscriptions
 
-  has_many :issue_assignments, through: :repo_subscriptions
+  has_many :issue_assignments, through: :repo_subscriptions #add issue assignments added by language_subscriptions
   has_many :issues,            through: :issue_assignments
 
   scope :public_profile, -> { where.not(users: { private: true }) }
@@ -163,17 +163,18 @@ class User < ActiveRecord::Base
     assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)
 
     language_subscriptions.each do |l|
-      lang_assign = l.get_issues
-      assignments << lang_assign if lang_assign
+      l.get_issues
     end
+
     ids = language_subscriptions.pluck(:id)
     lang_assignments = IssueAssignment.where(language_subscription_id: ids).where(delivered: false)
 
-    if assignments.present?
+    if assignments.present?  || lang_assignments.present?
+      UserMailer.send_daily_triage(user: self, assignments: assignments, lang_assignments: lang_assignments).deliver_now
+      #update after send
       assignments.update_all(delivered: true)
       lang_assignments.update_all(delivered: true)
       repo_subscriptions.update_all(last_sent_at: Time.now)
-      UserMailer.send_daily_triage(user: self, assignments: assignments).deliver_now
     end
   end
 

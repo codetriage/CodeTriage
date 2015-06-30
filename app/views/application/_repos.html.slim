@@ -16,6 +16,10 @@
           - else
             => link_to "Unsubscribe to this Language", language_subscription_path(subscription), method: :delete, class: 'btn btn-mini btn-danger',  data: {confirm: 'Are you sure?'}
             = link_to "Send a random issue!", language_subscription_send_email_path(subscription), method: :post, class: 'btn btn-mini btn-success'
+            p = "Currently receiving #{subscription.email_limit} issues for this language"
+            = form_for :language_subscription, url: language_subscription_path(subscription), method: :patch, html: {class: "form-inline"} do |f|
+              => f.select :email_limit, (1..20), selected: subscription.email_limit
+              => f.submit "Save", class: "btn btn-success"
           ul.unstyled.repos-list = render repos
         - lang_index = lang_index + 1
 

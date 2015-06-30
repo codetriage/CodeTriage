@@ -7,11 +7,13 @@ class UserMailer < ActionMailer::Base
   def send_daily_triage(options = {})
     @user        = options[:user]
     @assignments = options[:assignments]
+    @lang_assignments = options[:lang_assignments]
     @max_days    = 2
     subject = ""
     @days   = @user.days_since_last_clicked
+    size = @assignments.size + @lang_assignments.size
     subject << "[#{ time_ago_in_words(@days.days.ago).humanize }] " if @days > @max_days
-    subject << "Help Triage #{@assignments.size} Open Source #{"Issue".pluralize(@assignments.size)}"
+    subject << "Help Triage #{size} Open Source #{"Issue".pluralize(size)}"
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
@@ -22,7 +24,11 @@ class UserMailer < ActionMailer::Base
     @repo  = options[:repo]
     @issue = assignment.issue
     @language = options[:language]
-    subject = "Help Triage #{@language} on Github"
+    if @language
+      subject = "Help Triage #{@language} on Github"
+    else
+      subject = "Help Triage #{@repo.path} on Github"
+    end
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
