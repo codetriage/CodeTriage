@@ -9,7 +9,8 @@ html
         = render "nav"
         = render "flashes"
         = yield
-      .footer
+      .footer  
+        = render "footer"
     - if Rails.env.production?
       /! google analytics
       javascript:
