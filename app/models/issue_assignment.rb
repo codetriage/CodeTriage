@@ -4,17 +4,20 @@ class IssueAssignment < ActiveRecord::Base
 
   belongs_to :issue
   has_one    :repo, through: :issue
-  # validates  :repo_subscription_id, presence: true
+
   validates  :issue_id, uniqueness: { scope: :repo_subscription_id }, presence: true, if: :is_repo_assignment?
   validates  :issue_id, uniqueness: { scope: :language_subscription_id }, presence: true, if: :is_language_assignment?
 
-  def user
+  #belongs_to :user, through: :repo_subscription
+  #belongs_to :user, through: :language_subscription
+  def user(reload=false)
+    @user = nil if reload
     if language_subscription_id
-      return language_subscription.user
+      @user ||= language_subscription.user
     elsif repo_subscription_id
-      return repo_subscription.user
+      @user ||= repo_subscription.user
     else
-      return nil
+      @user = nil
     end
   end
 

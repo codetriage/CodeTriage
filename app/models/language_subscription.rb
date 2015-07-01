@@ -20,7 +20,7 @@ class LanguageSubscription < ActiveRecord::Base
   end
 
   def assign_issue
-    repos = Repo.where(language: language).rand
+    repos = Repo.where(language: language).includes(:issues).rand
     repos.each do |r|
       invalid_issues = issue_assignments.pluck(:issue_id)
       issues = r.issues.where(state: "open").where.not(id: invalid_issues).order("RANDOM()")

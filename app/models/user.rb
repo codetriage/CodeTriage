@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, through: :repo_subscriptions
 
-  has_many :issue_assignments, through: :repo_subscriptions #add issue assignments added by language_subscriptions
+  has_many :issue_assignments, through: :repo_subscriptions
   has_many :issues,            through: :issue_assignments
 
   scope :public_profile, -> { where.not(users: { private: true }) }
