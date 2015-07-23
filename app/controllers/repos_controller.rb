@@ -12,20 +12,9 @@ class ReposController < RepoBasedController
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
     @repo_sub = RepoSubscription.new
     if user_signed_in?
-      @own_repos = Rails.cache.fetch("user/repos/#{current_user.id}", expires_in: 30.minutes) do
-        own_repos_response = GitHubBub.get("/user/repos", token: current_user.token, type: "owner", per_page: '100')
-        SortedRepoCollection.new(own_repos_response.json_body)
-      end
-
-      @starred_repos = Rails.cache.fetch("users/starred/#{current_user.id}", expires_in: 30.minutes) do
-        starred_repos_response = GitHubBub.get("/user/starred", token: current_user.token)
-        SortedRepoCollection.new(starred_repos_response.json_body)
-      end
-
-      @watched_repos = Rails.cache.fetch("users/subscriptions/#{current_user.id}", expires_in: 30.minutes) do
-        watched_repos_response = GitHubBub.get("/user/subscriptions", token: current_user.token)
-        SortedRepoCollection.new(watched_repos_response.json_body)
-      end
+      @own_repos     = cached_repos 'repos', type: 'owner', per_page: '100'
+      @starred_repos = cached_repos 'starred'
+      @watched_repos = cached_repos 'subscriptions'
     end
   end
 
@@ -91,5 +80,12 @@ class ReposController < RepoBasedController
 
     def params_blank?
       repo_params.values.any?(&:blank?)
+    end
+
+    def cached_repos(type, options = {})
+      Rails.cache.fetch("user/#{type}/#{current_user.id}", expires_in: 30.minutes) do
+        repos_response = GitHubBub.get("/user/#{type}", { token: current_user.token }.merge(options))
+        SortedRepoCollection.new(repos_response.json_body)
+      end
     end
 end
