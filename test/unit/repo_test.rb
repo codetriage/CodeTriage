@@ -67,8 +67,8 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "check existence of repo by its name and user's name" do
-    assert Repo.exists_with_name?("bemurphy/issue_triage_sandbox")
-    refute Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
+    assert Repo.exists_with_name?("bemurphy/issue_triage_sandbox", Repo.all)
+    refute Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox", Repo.all)
   end
 
   test "#api_issues_path returns issues path with Github api" do
