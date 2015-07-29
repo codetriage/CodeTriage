@@ -1,4 +1,31 @@
 GIT
+  remote: git://github.com/rails/sass-rails.git
+  revision: 6594807594348802c0e559cfdf788c199f4b45b3
+  specs:
+    sass-rails (6.0.0)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.3)
+      sprockets (>= 4.0)
+      sprockets-rails (>= 3.0, < 4.0)
+      tilt (>= 1.1, < 3)
+
+GIT
+  remote: git://github.com/rails/sprockets-rails.git
+  revision: 6389649358846f37507206885e3ece145862a0be
+  specs:
+    sprockets-rails (3.0.0)
+      actionpack (>= 4.0)
+      activesupport (>= 4.0)
+      sprockets (>= 3.0.0)
+
+GIT
+  remote: git://github.com/rails/sprockets.git
+  revision: 8db447f8d0dcbb817971b75a3c1f6d3c8fdabd15
+  specs:
+    sprockets (4.0.0)
+      rack (~> 1.0)
+
+GIT
   remote: git://github.com/schneems/omniauth.git
   revision: 3c4b79504eb58df076c2c0d06a16ff3294f28184
   branch: schneems/hashie-breakup
@@ -106,7 +133,6 @@ GEM
       rrrretry
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    hike (1.2.3)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -139,7 +165,7 @@ GEM
     mocha (1.0.0)
       metaclass (~> 0.0.1)
     mono_logger (1.1.0)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     multi_xml (0.5.4)
     multipart-post (2.0.0)
     newrelic_rpm (3.9.8.273)
@@ -226,11 +252,7 @@ GEM
       resque
     rrrretry (1.0.0)
     safe_yaml (0.9.4)
-    sass (3.2.10)
-    sass-rails (4.0.0)
-      railties (>= 4.0.0.beta, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0)
+    sass (3.4.16)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -251,15 +273,6 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     spring (1.1.2)
-    sprockets (2.12.4)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
-      rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      sprockets (~> 2.8)
     teaspoon (0.7.4)
       phantomjs (>= 1.8.1.1)
       railties (>= 3.2.5, < 5)
@@ -333,11 +346,13 @@ DEPENDENCIES
   resque
   resque_def
   rrrretry
-  sass-rails (~> 4.0.0)
+  sass-rails!
   simplecov
   skylight
   slim-rails
   spring
+  sprockets!
+  sprockets-rails!
   teaspoon
   uglifier (>= 1.0.3)
   unicorn
