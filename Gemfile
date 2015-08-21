@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
