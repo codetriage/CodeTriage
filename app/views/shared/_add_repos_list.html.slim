@@ -1,5 +1,7 @@
-- if repos.blank?
-  p None!
+- if repos.blank? || repos.count == 0
+  table.table.table-striped
+    tr
+      td None
 - else
   table.table.table-striped
     - repos.each do |repo|
