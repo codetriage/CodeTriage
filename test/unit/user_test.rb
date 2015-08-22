@@ -130,5 +130,4 @@ class UserTest < ActiveSupport::TestCase
 
     assert_not_equal u.updated_at, u.tap(&:account_delete_token).updated_at
   end
-
 end

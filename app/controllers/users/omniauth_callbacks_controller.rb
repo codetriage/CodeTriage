@@ -1,7 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def github
-    @user = User.find_for_github_oauth(request.env["omniauth.auth"], current_user)
+    @user = GitHubAuthenticator.authenticate(request.env["omniauth.auth"], current_user)
 
     if @user.persisted?
       if @user.valid_email?

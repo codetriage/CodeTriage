@@ -26,7 +26,7 @@ class Users::OmniauthCallbacksControllerTest < ActionController::TestCase
   def stub_oauth_user(email)
     user = User.new(email: email)
     user.stubs(:persisted?).returns(true)
-    User.stubs(:find_for_github_oauth).returns(user)
+    GitHubAuthenticator.stubs(:authenticate).returns(user)
     user
   end
 end
