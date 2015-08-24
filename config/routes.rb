@@ -23,6 +23,9 @@ CodeTriage::Application.routes.draw do
 
   resources   :repo_subscriptions
 
+  resources   :language_subscriptions
+  post        "/language_subscription/email/:id" => "language_subscriptions#send_issue", as: :language_subscription_send_email
+
   if Rails.env.development?
     mount UserMailer::Preview => 'mail_view'
   end

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
 
+  has_many :language_subscriptions, dependent: :destroy
+
   has_many :repo_subscriptions, dependent: :destroy
   has_many :repos, through: :repo_subscriptions
 
@@ -126,7 +128,7 @@ class User < ActiveRecord::Base
   end
 
   def send_daily_triage!
-    return false if repo_subscriptions.blank?
+    return false if repo_subscriptions.blank? and language_subscriptions.blank?
     skip = EmailDecider.new(days_since_last_clicked).skip?(days_since_last_email)
     puts "User #{github}: skip: #{skip.inspect}, days_since_last_clicked: #{days_since_last_clicked}, days_since_last_email: #{days_since_last_email}"
     return false if skip
@@ -134,10 +136,20 @@ class User < ActiveRecord::Base
     IssueAssigner.new(self, repo_subscriptions).assign
     ids         = repo_subscriptions.pluck(:id)
     assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)
-    if assignments.present?
+
+    language_subscriptions.each do |l|
+      l.get_issues
+    end
+
+    ids = language_subscriptions.pluck(:id)
+    lang_assignments = IssueAssignment.where(language_subscription_id: ids).where(delivered: false)
+
+    if assignments.present?  || lang_assignments.present?
+      UserMailer.send_daily_triage(user: self, assignments: assignments, lang_assignments: lang_assignments).deliver_now
+      #update after send
       assignments.update_all(delivered: true)
+      lang_assignments.update_all(delivered: true)
       repo_subscriptions.update_all(last_sent_at: Time.now)
-      UserMailer.send_daily_triage(user: self, assignments: assignments).deliver_now
     end
   end
 

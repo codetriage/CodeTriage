@@ -3,16 +3,36 @@ Hello @<%= @user.github %>,
 <% if @days > @max_days %>
 It's been [<%= @days %> days] since you've clicked on a codetriage.com link, let's keep those issue counts down.
 <% end %>
-Here are some issues you should check out:
+<%= "Here are some issues you should check out:" if @assignments %>
 
 <% @assignments.each do |assignment| %>
+<% if assignment.language_subscription_id%>
+##  <%= "For #{assignment.language_subscription.language} language"%>
+<% end %>
+
 ### <%= "##{assignment.issue.number}" if assignment.issue.number %> <%= link_to assignment.issue.title, issue_click_url(assignment.id, assignment.user.id ) %>
 
-<%= "[#{assignment.repo.full_name}](#{repo_url(assignment.repo)})" %>
+<%= "[#{assignment.issue.repo.full_name}](#{repo_url(assignment.issue.repo)})" %>
 <%= time_ago_in_words assignment.issue.last_touched_at %> ago
 
 - - -
 
+<% end %>
+
+<%= "Here are some language specific issues" if @lang_assignments %>
+
+<% @lang_assignments.group_by(&:language_subscription).each do |lang, repos| %>
+## <%= lang.language %>
+
+<% repos.each do |a| %>
+### <%= "##{a.issue.number}" if a.issue.number %> <%= link_to a.issue.title, issue_click_url(a.id, a.user.id ) %>
+
+<%= "[#{a.issue.repo.full_name}](#{repo_url(a.issue.repo)})" %>
+<%= time_ago_in_words a.issue.last_touched_at %> ago
+
+- - -
+
+<% end %>
 <% end %>
 
 Go forth and make the world a better place

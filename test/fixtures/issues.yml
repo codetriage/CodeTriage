@@ -52,4 +52,3 @@ issue_triage_sandbox_issue:
   title: first test issue in sinatra
   html_url: https://github.com/sinatra/sinatra/issues/1
   state: open
-

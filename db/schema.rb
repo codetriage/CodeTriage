@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20150211235706) do
 
   create_table "issue_assignments", force: :cascade do |t|
     t.integer  "issue_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
     t.integer  "repo_subscription_id"
-    t.boolean  "clicked",              default: false
-    t.boolean  "delivered",            default: false
+    t.boolean  "clicked",                  default: false
+    t.boolean  "delivered",                default: false
+    t.integer  "language_subscription_id"
   end
 
   add_index "issue_assignments", ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
@@ -52,7 +53,17 @@ ActiveRecord::Schema.define(version: 20150211235706) do
     t.integer  "user_id"
     t.integer  "repo_id"
     t.datetime "last_sent_at"
-    t.integer  "email_limit",              default: 1
+    t.integer  "email_limit",  default: 1
+  end
+
+  create_table "language_subscriptions", force: :cascade do |t|
+    t.string   "user_name"
+    t.integer  "user_id"
+    t.string   "language"
+    t.datetime "last_sent_at"
+    t.integer  "email_limit",  default: 1
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "repos", force: :cascade do |t|
