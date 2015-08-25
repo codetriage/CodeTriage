@@ -2,18 +2,24 @@ require 'resque/server'
 
 
 CodeTriage::Application.routes.draw do
-  get "users/sign_in" => redirect('/users/auth/github'), via: [:get, :post]
+  get "users/sign_in" => redirect('/users/auth/github'), via: [:get, :post], as: :new_user_registration
   get "users/sign_up" => redirect('/users/auth/github'), via: [:get, :post]
 
-  devise_for  :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks",  registrations: "users"}
+  devise_for :users, skip: [:registrations], controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+  as :user do
+    get 'users/edit' => 'users#edit', as: :edit_user_registration
+    patch 'users' => 'users#update', as: :user_registration
+  end
 
-  root        to: "pages#index"
+  root to: "pages#index"
 
   namespace :users do
     resources :after_signup
   end
 
-  resources   :users
+  resources   :users, except: [:new, :create, :index]
   get         "/users/unsubscribe/:account_delete_token" => "users#token_delete", as: :token_delete_user
   delete      "/users/unsubscribe/:account_delete_token" => "users#token_destroy"
 
