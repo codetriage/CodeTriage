@@ -11,9 +11,9 @@
       small.muted Only visible to you
       h5 Publicly visible? : #{@user.public? ? "Yes" : "No"}
       - if @user.public?
-        = link_to "Stay private", users_path(user: {private: true}), method: :put, class: 'btn btn-warning'
+        = link_to "Stay private", user_registration_path(user: {private: true}), method: :patch, class: 'btn btn-warning'
       - else
-        = link_to "Go public", users_path(user: {private: false}), method: :put, class: 'btn btn-success'
+        = link_to "Go public", user_registration_path(user: {private: false}), method: :patch, class: 'btn btn-success'
       h5 Max # of issues you want to receive per day: #{@user.daily_issue_limit.presence || 'not set'}
       h5 Skip Issues with Pull Requests: #{@user.skip_issues_with_pr}
     section#user-favorite-langs
