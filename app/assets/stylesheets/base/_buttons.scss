@@ -1,18 +1,21 @@
+.button,
 #{$all-buttons} {
   appearance: none;
   background-color: $action-color;
-  border: 0;
   border-radius: $base-border-radius;
+  box-shadow: 0 1px 2px darken($base-background-color, 5%);
+  border: 0;
   color: #fff;
   cursor: pointer;
   display: inline-block;
   font-family: $base-font-family;
-  font-size: $base-font-size;
-  -webkit-font-smoothing: antialiased;
+  font-size: rem(14);
   font-weight: 600;
+  letter-spacing: 1px;
   line-height: 1;
-  padding: $small-spacing $base-spacing;
+  padding: ($small-spacing * 1.5) $base-spacing;
   text-decoration: none;
+  text-transform: uppercase;
   transition: background-color $base-duration $base-timing;
   user-select: none;
   vertical-align: middle;

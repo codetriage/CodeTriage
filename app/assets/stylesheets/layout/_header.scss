@@ -1,0 +1,16 @@
+.application-navigation {
+  @include clearfix;
+}
+
+.application-logo {
+  float: left;
+}
+
+.application-navigation--items {
+  float: right;
+}
+
+.application-navigation--item {
+  display: inline-block;
+  margin-left: $base-spacing;
+}

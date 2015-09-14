@@ -1,13 +1,11 @@
-.masthead
-  ul
-    - if user_signed_in?
-      li= link_to "Home", root_path
-      li= link_to  "Repos", repos_path
-      li= link_to current_user.github, current_user
-      li= image_tag current_user.avatar_url, class: 'img-rounded', height: 30, width: 30
-      li= link_to "Sign Out", destroy_user_session_path, method: :delete
-    - else
-      li= link_to 'Sign up today', new_user_registration_path
-      li= link_to 'Log in', new_user_registration_path
-  h3
+nav.application-navigation
+  h1.application-logo
     = link_to "CodeTriage", root_path
+  ul.application-navigation--items
+    - if user_signed_in?
+      li.application-navigation--item= link_to  "Repos", repos_path
+      li.application-navigation--item= link_to current_user.github, current_user
+      li.application-navigation--item= image_tag current_user.avatar_url, class: 'img-rounded', height: 30, width: 30
+      li.application-navigation--item= link_to "Sign Out", destroy_user_session_path, method: :delete
+    - else
+      li.application-navigation--item= link_to 'Log in', new_user_registration_path

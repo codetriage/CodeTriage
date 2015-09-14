@@ -1,16 +1,15 @@
 - unless user_signed_in?
-  h1 Help your favorite open source projects l
-  p Sign up to receive a different open issue in your inbox every day from your favorite GitHub repos
-  p #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos
-  = link_to 'Sign up today', new_user_registration_path
-
+  .hero
+    h1.hero--primary-title Help your favorite open source projects and become a better developer while doing it.
+    h2.hero--secondary--title Sign up to receive a different open issue in your inbox every day from your favorite GitHub repos. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos
+    = link_to 'Sign up with GitHub', new_user_registration_path, class: 'button'
 
 - if @repos_subs.present?
   h2 Repos you are currently helping
   p
     = render 'repo_subscriptions/list', repos_subs: @repos_subs
-    = link_to 'Find additional repos', repos_path, class: 'btn btn-success'
-    = link_to "Submit a Repo", new_repo_path, class: 'btn btn-success'
+    = link_to 'Find additional repos', repos_path, class: 'button'
+    = link_to "Submit a Repo", new_repo_path, class: 'button'
 
 h2 Repos needing the most help
 = render 'repos', repos: @repos
