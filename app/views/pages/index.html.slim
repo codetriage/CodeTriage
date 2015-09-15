@@ -1,7 +1,7 @@
 - unless user_signed_in?
   .hero
-    h1.hero--primary-title Help your favorite open source projects and become a better developer while doing it.
-    h2.hero--secondary--title Sign up to receive a different open issue in your inbox every day from your favorite GitHub repos. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos
+    h1.hero-title-primary Help your favorite open source projects and become a better developer while doing it.
+    h2.hero-title-secondary Sign up to receive a different open issue in your inbox every day from your favorite GitHub repos. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos
     = link_to 'Sign up with GitHub', new_user_registration_path, class: 'button'
 
 - if @repos_subs.present?
