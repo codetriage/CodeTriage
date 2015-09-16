@@ -3,7 +3,8 @@
 }
 
 .application-logo {
-  float: left;
+  text-align: center;
+  padding-top: 3rem;
 }
 
 .application-navigation-list {
@@ -11,6 +12,11 @@
 }
 
 .application-navigation-list-item {
-  display: inline-block;
-  margin-left: $base-spacing;
+  float: left;
+
+  a {
+    display: block;
+    background-color: darken($base-background-color, 10%);
+    padding: $small-spacing $base-spacing;
+  }
 }

@@ -1,0 +1,67 @@
+.types-filter-wrapper {
+  @include clearfix;
+  background-color: darken($base-background-color, 2%);
+  border-radius: $base-border-radius;
+  font-size: 1.125rem;
+  margin: $small-spacing auto 5rem;
+  position: relative;
+  text-align: center;
+  width: 420px;
+}
+
+.types-filter-label {
+  float: left;
+  font-size: 1.125rem;
+  font-weight: normal;
+  margin-bottom: 0;
+  padding-left: $base-spacing;
+  padding-top: $small-spacing;
+}
+
+.types-filter-button {
+  background-color: darken($base-background-color, 5%);
+  cursor: pointer;
+  float: right;
+  padding: $small-spacing $base-spacing;
+  position: relative;
+  position: relative;
+  text-align: left;
+  width: 50%;
+
+  .down-circle {
+    @include position(absolute, 1rem $small-spacing null null);
+    fill: $action-color;
+  }
+}
+
+.types-filter {
+  @include clearfix;
+  @include position(absolute, 80px (-$base-spacing) null);
+  @include transition (all 0.2s ease-in-out);
+  background-color: darken($base-background-color, 5%);
+  border-radius: $base-border-radius;
+  cursor: pointer;
+  display: none;
+  padding: $base-spacing;
+  text-align: left;
+  z-index: 1;
+
+  @include media(730px) {
+    @include position(absolute, 80px -33% null);
+  }
+
+  &:after {
+    @include position(absolute, -0.5rem 50% null null);
+    @include size(1rem);
+    background-color: darken($base-background-color, 5%);
+    content: "";
+    margin-left: -0.5rem;
+    transform: rotate(45deg)
+  }
+
+  li {
+    float: left;
+    margin-right: $small-spacing;
+    width: 150px;
+  }
+}

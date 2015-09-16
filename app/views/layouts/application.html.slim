@@ -5,7 +5,10 @@ html
   body
     = render "flashes"
     = render "nav"
-    = yield
+
+    main.main-application
+      = yield
+
     = render "footer"
 
     - if Rails.env.production?
