@@ -1,0 +1,67 @@
+.repo-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$base-spacing;
+  padding-top: 1.25rem;
+}
+
+.repo-item {
+  background-color: darken($base-background-color, 5%);
+  border-radius: $base-border-radius;
+  box-shadow: 0 1px 0 lighten($base-background-color, 5%);
+  flex-basis: 300px;
+  flex-grow: 1;
+  margin-bottom: $base-spacing;
+  margin-right: $base-spacing;
+  overflow: hidden;
+  padding: $base-spacing ($small-spacing * 1.5) 3rem;
+  position: relative;
+}
+
+.repo-item-header {
+  @include clearfix;
+  background-color: $codetriage-blue;
+  margin: (-$base-spacing) (-$small-spacing * 1.5) $small-spacing;
+  padding: $small-spacing ($small-spacing * 1.5);
+
+  .high & {
+    background-color: $codetriage-red;
+  }
+
+  .medium & {
+    background-color: $codetriage-yellow;
+  }
+
+  .low & {
+    background-color: $codetriage-green;
+  }
+}
+
+.repo-item-title {
+  color: $base-font-color;
+  float: left;
+  font-size: 1.125rem;
+  margin-bottom: 0;
+}
+
+.repo-item-issues {
+  color: $base-font-color;
+  float: right;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  .issue-icon {
+    display: inline-block;
+    fill: $base-font-color;
+    margin-right: 0.5rem;
+    position: relative;
+    top: 3px;
+    vertical-align: baseline;
+  }
+}
+
+.repo-item-full-name {
+  @include position(absolute, null null $base-spacing null);
+  color: rgba($base-font-color, 0.4);
+}

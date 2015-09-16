@@ -1,6 +1,6 @@
 .hero {
   @include outer-container;
-  @include padding(4rem null);
+  @include padding(4rem null 2rem);
   text-align: center;
 
   .button {
@@ -10,7 +10,7 @@
 
 .hero-title-primary {
   color: $base-font-color;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: $small-spacing;
 }
 
