@@ -6,7 +6,7 @@
   margin: $small-spacing auto 5rem;
   position: relative;
   text-align: center;
-  width: 420px;
+  width: 26.25rem;
 }
 
 .types-filter-label {
@@ -35,7 +35,7 @@
 
 .types-filter {
   @include clearfix;
-  @include position(absolute, 80px (-$base-spacing) null);
+  @include position(absolute, 5rem (-$base-spacing) null);
   @include transition (all 0.2s ease-in-out);
   background-color: darken($base-background-color, 5%);
   border-radius: $base-border-radius;
@@ -46,10 +46,11 @@
   z-index: 1;
 
   @include media(730px) {
-    @include position(absolute, 80px -33% null);
+    left: -33%;
+    right: -33%;
   }
 
-  &:after {
+  &::after {
     @include position(absolute, -0.5rem 50% null null);
     @include size(1rem);
     background-color: darken($base-background-color, 5%);
