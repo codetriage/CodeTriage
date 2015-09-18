@@ -9,20 +9,20 @@
   background-color: darken($base-background-color, 5%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 0 lighten($base-background-color, 5%);
-  flex-basis: 300px;
+  flex-basis: 18.75rem;
   flex-grow: 1;
   margin-bottom: $base-spacing;
   margin-right: $base-spacing;
   overflow: hidden;
-  padding: $base-spacing ($small-spacing * 1.5) 3rem;
+  padding: $base-spacing $medium-spacing 3rem;
   position: relative;
 }
 
 .repo-item-header {
   @include clearfix;
   background-color: $codetriage-blue;
-  margin: (-$base-spacing) (-$small-spacing * 1.5) $small-spacing;
-  padding: $small-spacing ($small-spacing * 1.5);
+  margin: (-$base-spacing) $medium-spacing $small-spacing;
+  padding: $small-spacing $medium-spacing;
 
   .high & {
     background-color: $codetriage-red;
@@ -41,7 +41,6 @@
   color: $base-font-color;
   float: left;
   font-size: 1.125rem;
-  margin-bottom: 0;
 }
 
 .repo-item-issues {
