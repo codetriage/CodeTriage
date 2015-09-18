@@ -6,6 +6,13 @@
   .button {
     margin-top: 3rem;
   }
+
+  .github-icon {
+    @include position(relative, 2px null null null);
+    @include size(1rem);
+    fill: $base-font-color;
+    margin-right: 1rem;
+  }
 }
 
 .hero-title-primary {
