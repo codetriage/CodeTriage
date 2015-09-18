@@ -28,7 +28,7 @@
   width: 50%;
 
   .down-circle {
-    @include position(absolute, 1rem $small-spacing null null);
+    @include position(absolute, 1.15rem 1rem null null);
     fill: $action-color;
   }
 }
