@@ -1,6 +1,8 @@
 .masthead
   ul.nav.nav-pills.pull-right
     li= link_to "Home", root_path
+    li= link_to "Help", help_path
+
     - if user_signed_in?
       li= link_to  "Repos", repos_path
       li= link_to current_user.github, current_user
