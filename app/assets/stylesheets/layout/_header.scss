@@ -15,8 +15,9 @@
   float: left;
 
   a {
-    display: block;
     background-color: darken($base-background-color, 10%);
+    color: rgba($base-font-color, 0.5);
+    display: block;
     padding: $small-spacing $base-spacing;
   }
 }
