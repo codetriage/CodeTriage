@@ -1,0 +1,19 @@
+.application-footer {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.footer-action {
+  margin-bottom: 2rem;
+}
+
+.github-numbers {
+  margin-bottom: 2rem;
+}
+
+.thoughtbot-logo {
+  @include size(8rem);
+  display: block;
+  fill: $codetriage-red;
+  margin: 0 auto;
+}
