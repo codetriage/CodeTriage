@@ -13,7 +13,8 @@ $heading-line-height: 1.2;
 $base-border-radius: 4px;
 $base-spacing: $base-line-height * 1rem;
 $small-spacing: $base-spacing / 2;
-$medium-spacing: ($small-spacing * 1.5);
+$medium-spacing: $small-spacing * 1.5;
+$large-spacing: $base-spacing * 2;
 $base-z-index: 0;
 
 // Colors
@@ -30,7 +31,7 @@ $white: #fff;
 
 // Font Colors
 $base-font-color: $white;
-$action-color: $codetriage-red;
+$action-color: $codetriage-blue;
 
 // Border
 $base-border-color: $light-gray;
