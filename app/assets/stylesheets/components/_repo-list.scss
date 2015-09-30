@@ -1,8 +1,9 @@
 .repo-list {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -$base-spacing;
   padding-top: 1.25rem;
+  max-width: 100rem;
+  margin: 0 auto;
 }
 
 .repo-item {
@@ -11,11 +12,34 @@
   box-shadow: 0 1px 0 lighten($base-background-color, 5%);
   flex-basis: 18.75rem;
   flex-grow: 1;
-  margin-bottom: $base-spacing;
-  margin-right: $base-spacing;
+  margin-bottom: $base-spacing * 1.5;
+  margin-right: $base-spacing * 1.5;
   overflow: hidden;
-  padding: $base-spacing $medium-spacing 3rem;
-  position: relative;
+  transition: all 0.25s ease-out;
+
+  &:hover {
+    background-color: darken($base-background-color, 8%);
+    transition: all 0.25s ease-out;
+    transform: translateY(-3px);
+
+    &.high .repo-item-header {
+      background-color: shade($codetriage-red, 5%);
+    }
+
+    &.medium .repo-item-header {
+      background-color: shade($codetriage-yellow, 5%);
+    }
+
+    &.low .repo-item-header {
+      background-color: shade($codetriage-green, 5%);
+    }
+  }
+
+  a {
+    display: block;
+    padding: $base-spacing $medium-spacing 3rem;
+    position: relative;
+  }
 }
 
 .repo-item-header {
@@ -58,6 +82,10 @@
     top: 3px;
     vertical-align: baseline;
   }
+}
+
+.repo-item-description {
+  color: rgba($base-font-color, 0.6);
 }
 
 .repo-item-full-name {
