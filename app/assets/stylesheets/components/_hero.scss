@@ -18,11 +18,12 @@
 .hero-title-primary {
   color: $base-font-color;
   font-size: 2.5rem;
-  margin-bottom: $small-spacing;
+  margin-bottom: $base-spacing;
 }
 
 .hero-title-secondary {
   font-size: 1.25rem;
+  line-height: 1.5;
   font-weight: 100;
   margin: 0 auto;
   max-width: rem(800);
