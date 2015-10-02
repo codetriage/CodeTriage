@@ -1,0 +1,136 @@
+.repo-wrapper {
+  background-color: darken($base-background-color, 5%);
+  border-radius: $base-border-radius;
+  box-shadow: 0 1px 0 lighten($base-background-color, 5%);
+  margin: $base-spacing auto 0;
+  max-width: 48rem;
+  overflow: hidden;
+  padding: $base-spacing;
+}
+
+.repo-header {
+  @include clearfix;
+  background-color: $codetriage-blue;
+  margin: (-$base-spacing) (-$base-spacing) $base-spacing;
+  padding: $base-spacing;
+
+  .high & {
+    background-color: $codetriage-red;
+
+    &:hover {
+      background-color: shade($codetriage-red, 5%);
+    }
+  }
+
+  .medium & {
+    background-color: $codetriage-yellow;
+
+    &:hover {
+      background-color: shade($codetriage-yellow, 5%);
+    }
+  }
+
+  .low & {
+    background-color: $codetriage-green;
+
+    &:hover {
+      background-color: shade($codetriage-green, 5%);
+    }
+  }
+}
+
+.repo-title {
+  color: $base-font-color;
+  font-size: 1.5rem;
+  margin-right: $small-spacing;
+
+  @include media(38rem) {
+    float: left;
+  }
+}
+
+.repo-language {
+  color: rgba($base-font-color, 0.6);
+  font-size: 0.875rem;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  text-transform: uppercase;
+
+  @include media(38rem) {
+    float: right;
+  }
+}
+
+.repo-url {
+  color: rgba($base-font-color, 0.4);
+  margin-bottom: 0;
+  margin-top: 4px;
+
+  @include media(38rem) {
+    float: left;
+  }
+}
+
+.repo-description {
+  clear: both;
+  color: rgba($base-font-color, 0.8);
+  margin-bottom: 0;
+  margin-top: $small-spacing / 2;
+}
+
+.repo-section {
+  @include clearfix;
+  border-bottom: $repo-border;
+  padding: $base-spacing 0;
+
+  &:last-of-type {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.repo-section-title {
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+  color: $base-font-color;
+}
+
+.repo-instructions {
+  @include media(43em) {
+    @include span-columns(6);
+  }
+}
+
+.repo-action{
+  @include media(43em) {
+    @include span-columns(6);
+    margin-right: 0;
+  }
+}
+
+.repo-footer-action {
+  display: block;
+  margin-top: $base-spacing;
+  width: 100%;
+}
+
+.repo-issues-list {
+  border: $repo-border;
+  font-size: 1.125rem;
+}
+
+.repo-issue-item {
+  border-bottom: $repo-border;
+  padding: $small-spacing;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  .issue-icon {
+    fill: rgba($base-font-color, 0.4);
+    margin-right: $small-spacing;
+    transform: translateY(2px);
+  }
+}
