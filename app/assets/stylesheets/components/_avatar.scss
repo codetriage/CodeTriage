@@ -4,12 +4,12 @@
   li {
     margin-bottom: $small-spacing;
 
-    @include media(max-width 24.9375rem) {
+    @include media(max-width calc(25rem - 1px)) {
       @include omega(2n);
       @include span-columns(6);
     }
 
-    @include media(min-width 25rem max-width 42.9375rem) {
+    @include media(min-width 25rem max-width calc(43rem - 1px)) {
       @include omega(3n);
       @include span-columns(4);
     }
