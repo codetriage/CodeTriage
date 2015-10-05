@@ -54,5 +54,6 @@ div class="repo-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @re
             = link_to issue.title, issue.html_url
 
       .digg_pagination= will_paginate @issues, container: false
+
     - if @repo_sub.blank?
       = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button repo-footer-action'
