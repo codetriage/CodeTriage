@@ -6,14 +6,15 @@
       = render 'github'
       | Sign up with GitHub
 
-    hr.section-break
-
 - if @repos_subs.present?
-  h2 Repos you are currently helping
-  p
+  .hero
+    h1.hero-title-primary Repos you are currently helping
+  .hero-repo-list-container
     = render 'repo_subscriptions/list', repos_subs: @repos_subs
     = link_to 'Find additional repos', repos_path, class: 'button'
     = link_to "Submit a Repo", new_repo_path, class: 'button'
+
+hr.section-break
 
 .all-repos
   h2.all-repos-title Open source projects on GitHub that need your help.
