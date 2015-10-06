@@ -103,6 +103,8 @@
 }
 
 .repo-action{
+  text-align: center;
+
   @include media(43em) {
     @include span-columns(6);
     margin-right: 0;
@@ -132,5 +134,40 @@
     fill: rgba($base-font-color, 0.4);
     margin-right: $small-spacing;
     transform: translateY(2px);
+  }
+}
+
+.stop-triaging {
+  background-color: $codetriage-red;
+  clear: both;
+  margin-top: $base-spacing;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: darken($codetriage-red, 5%);
+  }
+}
+
+.email-amount {
+  label {
+    font-weight: normal;
+  }
+
+  select {
+    display: inline-block;
+  }
+
+  .save-amount {
+    background: none;
+    color: $action-color;
+    display: inline-block;
+    margin-left: $small-spacing;
+    padding: 0;
+
+    &:hover {
+      background: none;
+      color: $base-font-color;
+    }
   }
 }

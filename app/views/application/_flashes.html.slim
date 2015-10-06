@@ -1,6 +1,4 @@
 - [:notice, :error, :alert, :success].each do |level|
   - unless flash[level].blank?
-    div class="alert alert-block alert-#{level}"
-      a.close href="#" data-dismiss="alert"
-        | &times;
+    div class="alert flash-#{level}"
       = content_tag :p, flash[level]

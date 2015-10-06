@@ -19,5 +19,15 @@
     color: rgba($base-font-color, 0.5);
     display: block;
     padding: $small-spacing $base-spacing;
+
+    &:hover {
+      color: $base-font-color;
+      background-color: darken($base-background-color, 15%);
+    }
   }
+}
+
+.user-profile-image {
+  line-height: 1;
+  max-height: 3rem;
 }

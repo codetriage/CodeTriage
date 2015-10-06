@@ -10,17 +10,44 @@
   background-color: darken($base-background-color, 5%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 0 lighten($base-background-color, 5%);
-  flex-basis: 18.75rem;
-  flex-grow: 1;
   margin-bottom: $base-spacing * 1.5;
-  margin-right: $base-spacing * 1.5;
+  min-width: 18rem;
   overflow: hidden;
   transition: all 0.25s ease-out;
+  width: 100%;
+
+  @include media(700px) {
+    margin-right: flex-gutter();
+  }
+
+  @include media(min-width 700px max-width 1000px) {
+    width: flex-grid(6);
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media(min-width 1000px max-width 1299px) {
+    width: flex-grid(4);
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media(1300px) {
+    width: flex-grid(3);
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
 
   &:hover {
     background-color: darken($base-background-color, 8%);
-    transition: all 0.25s ease-out;
     transform: translateY(-3px);
+    transition: all 0.25s ease-out;
 
     &.high .repo-item-header {
       background-color: shade($codetriage-red, 5%);
