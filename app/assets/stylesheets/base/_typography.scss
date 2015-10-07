@@ -1,8 +1,12 @@
+html {
+  background-color: $base-background-color;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   background-color: $base-background-color;
   background-image: linear-gradient(darken($base-background-color, 5%), $base-background-color 800px);
-  color: rgba($base-font-color, 0.7);
+  color: $light-font-color;
   font-family: $base-font-family;
   font-feature-settings: "kern", "liga", "pnum";
   font-size: $base-font-size;

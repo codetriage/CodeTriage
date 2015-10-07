@@ -1,0 +1,47 @@
+.all-languages-list {
+  @include clearfix;
+}
+
+.language-item {
+  position: relative;
+
+  @include media(max-width 699px) {
+    @include omega(2n);
+    @include span-columns(6);
+  }
+
+  @include media(700px) {
+    @include omega(4n);
+    @include span-columns(3);
+  }
+
+  input[type='checkbox'] {
+    width: 1rem;
+    cursor: pointer;
+
+    + label {
+      cursor: pointer;
+      margin-bottom: $small-spacing;
+
+      &::before {
+        @include position(absolute, 3px null null -2px);
+        @include size(1.1rem 1rem);
+        background-color: $codetriage-blue;
+        border-radius: $base-border-radius;
+        color: $base-background-color;
+        content: "";
+        display: inline-block;
+        line-height: 1rem;
+        pointer-events: none;
+        text-align: center;
+      }
+    }
+
+    &:checked + label {
+      &::before {
+        content: "×";
+        background-color: $codetriage-green;
+      }
+    }
+  }
+}

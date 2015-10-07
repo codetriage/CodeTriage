@@ -1,16 +1,12 @@
 class RepoSubscriptionsController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
-    @repos_subs = current_user.repo_subscriptions.page(params[:page]||1).per_page(params[:per_page]||50)
-  end
-
   def create
     repo = Repo.find(params[:repo_id])
     @repo_subscription = current_user.repo_subscriptions.new repo: repo
     if @repo_subscription.save
       RepoSubscription.background_send_triage_email(@repo_subscription.id)
-      redirect_to repo_subscriptions_path, notice: I18n.t('repo_subscriptions.subscribed')
+      redirect_to repo, notice: I18n.t('repo_subscriptions.subscribed')
     else
       flash[:error] = "Something went wrong"
       redirect_to :back

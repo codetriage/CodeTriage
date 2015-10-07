@@ -1,21 +1,21 @@
-- unless user_signed_in?
-  .hero
-    h1.hero-title-primary Help out your favorite open source projects and become a better developer while doing it.
-    h2.hero-title-secondary Pick the your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos using CodeTriage.
-    = link_to new_user_registration_path, class: 'button'
-      = render 'github'
-      | Sign up with GitHub
-
-- if @repos_subs.present?
-  .hero
-    h1.hero-title-primary Repos you are currently helping
-  .hero-repo-list-container
-    = render 'repo_subscriptions/list', repos_subs: @repos_subs
-    = link_to 'Find additional repos', repos_path, class: 'button'
-    = link_to "Submit a Repo", new_repo_path, class: 'button'
+.hero
+  h1.hero-title-primary Help out your favorite open source projects and become a better developer while doing it.
+  h2.hero-title-secondary Pick the your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos using CodeTriage.
+  - unless user_signed_in?
+      = link_to new_user_registration_path, class: 'button'
+        = render 'github'
+        | Sign up with GitHub
 
 hr.section-break
 
-.all-repos
-  h2.all-repos-title Open source projects on GitHub that need your help.
+- if @repos_subs.present?
+  .repos-list-wrapper
+    h2.repos-list-title Repos you are currently helping
+    .hero-repo-list-container
+      = render 'repo_subscriptions/list', repos_subs: @repos_subs
+
+  hr.section-break
+
+.repos-list-wrapper
+  h2.repos-list-title Open source projects on GitHub that need your help.
   = render 'repos', repos: @repos

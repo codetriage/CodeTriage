@@ -1,23 +1,20 @@
 - if repos.blank? || repos.size == 0
-  table.table.table-striped
-    tr
-      td None
+   h3 No repos
 - else
-  table.table.table-striped
+  ul.slats-list
     - repos.each do |repo|
       - if repo["has_issues"] && !repo["private"]
-        tr
+        li.slats-item
           = form_for @repo do |f|
             = f.hidden_field :user_name, value: repo["full_name"].split("/").first
             = f.hidden_field :name, value: repo["full_name"].split("/").last
-            td
-              - if repo["fork"]
-                a title="Fork"
-                  span.icon-random
-            td= repo["full_name"]
-            td #{repo["open_issues_count"]} issues
-            td
+            .slats-hgroup
+              h3= repo["full_name"]
+
+              h4 #{repo["open_issues_count"]} issues
+
+            .slats-action
               - if Repo.exists_with_name?(repo["full_name"])
                 p Added!
               - else
-                = f.submit "Add", class: 'btn btn-mini btn-primary'
+                = f.submit "Add"

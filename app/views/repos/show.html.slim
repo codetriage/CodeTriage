@@ -1,8 +1,8 @@
-div class="repo-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @repo.issues_count > 200 && @repo.issues_count < 800}#{" low" if @repo.issues_count > 75 && @repo.issues_count < 200}"
-  header.repo-header
+div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @repo.issues_count > 200 && @repo.issues_count < 800}#{" low" if @repo.issues_count > 75 && @repo.issues_count < 200}"
+  header.subpage-content-header
     = link_to @repo.github_url
-      h1.repo-title= @repo.name
-      p.repo-url= @repo.github_url
+      h1.subpage-primary-title= @repo.name
+      p.subpage-secondary-title= @repo.github_url
       h2.repo-language= @repo.language
       p.repo-description= @repo.description
 
@@ -10,16 +10,16 @@ div class="repo-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @re
     /p= sanitize BlueCloth.new(@repo.notes).to_html
 
   .repo-body
-    section.help-triage.repo-section
+    section.help-triage.content-section
       - if @repo_sub.blank?
-        h2.repo-section-title Help Triage Issues!
+        h2.content-section-title Help Triage Issues!
         p.repo-instructions
           | When you volunteer to triage issues, you'll receive an email each day with a link to an open issue that needs to be triaged in this project.
             You'll also receive instructions on how to triage issues.
 
         = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button repo-action'
       - else
-        h2.repo-section-title Currently receiving #{@repo_sub.email_limit} issues per day.
+        h2.content-section-title Currently receiving #{@repo_sub.email_limit} issues per day.
         .repo-instructions
           = form_for(@repo_sub, html: {class: 'email-amount'}) do |f|
             label Triage more! (Or less)
@@ -31,8 +31,8 @@ div class="repo-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @re
       - if user_signed_in? && current_user.able_to_edit_repo?(@repo)
         = link_to "Edit this repo", edit_repo_path(@repo), class: 'button'
 
-    section.avatars.repo-section
-      h2.repo-section-title
+    section.avatars.content-section
+      h2.content-section-title
         = pluralize(@repo.subscribers.count, 'Subscriber')
         |  Triaging Issues
 
@@ -42,20 +42,20 @@ div class="repo-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @re
       - if (difference = @repo.subscribers.count - @subscribers.count) && difference > 0
         = link_to 'View all Subscribers' , repo_subscribers_path(full_name: @repo.full_name)
 
-    section.open-issues.repo-section
-      h2.repo-section-title #{@issues.total_entries} open issues in #{@repo.path}
+    section.open-issues.content-section
+      h2.content-section-title #{@issues.total_entries} open issues in #{@repo.path}
 
-      ul.repo-issues-list
+      ul.slats-list
         - @issues.each do |issue|
-          li.repo-issue-item
+          li.slats-item
             = render "issue"
             = link_to issue.title, issue.html_url
 
-      .digg_pagination= will_paginate @issues, container: false
+      .pagination= will_paginate @issues, container: false
 
     - if @repo_sub
       = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging', method: :delete, data: { confirm: 'Are you sure?' } do
           | Stop Triaging
 
     - if @repo_sub.blank?
-      = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button repo-footer-action'
+      = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button content-footer-action'

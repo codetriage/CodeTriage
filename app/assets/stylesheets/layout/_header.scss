@@ -16,7 +16,7 @@
 
   a {
     background-color: darken($base-background-color, 10%);
-    color: rgba($base-font-color, 0.5);
+    color: $lightest-font-color;
     display: block;
     padding: $small-spacing $base-spacing;
 

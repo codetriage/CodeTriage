@@ -1,0 +1,53 @@
+.slats-list {
+  border: $content-border;
+  font-size: 1.125rem;
+}
+
+.slats-item {
+  @include clearfix;
+  border-bottom: $content-border;
+  padding: $small-spacing;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+
+  .issue-icon {
+    fill: $lightest-font-color;
+    margin-right: $small-spacing;
+    transform: translateY(2px);
+  }
+}
+
+.slats-hgroup {
+  float: left;
+
+  h3 {
+    color: $base-font-color;
+    display: inline-block;
+  }
+
+  h4 {
+    display: inline-block;
+    font-weight: normal;
+  }
+}
+
+.slats-action {
+  float: right;
+  font-size: $small-font-size;
+  letter-spacing: 1px;
+  margin-top: 2px;
+  text-transform: uppercase;
+
+  p {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  input[type="submit"] {
+    background: none;
+    color: $action-color;
+    padding: 0;
+  }
+}
