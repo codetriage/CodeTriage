@@ -1,9 +1,16 @@
 .repo-list {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 1.25rem;
+  margin: 3rem auto 0;
   max-width: 100rem;
-  margin: 0 auto;
+  padding-top: 1.25rem;
+}
+
+.repos-list-title {
+  color: $base-font-color;
+  font-size: 1.75rem;
+  text-align: center;
+  vertical-align: top;
 }
 
 .repo-item {
@@ -97,7 +104,7 @@
 .repo-item-issues {
   color: $base-font-color;
   float: right;
-  font-size: 0.875rem;
+  font-size: $small-font-size;
   letter-spacing: 1px;
   text-transform: uppercase;
 
@@ -112,10 +119,10 @@
 }
 
 .repo-item-description {
-  color: rgba($base-font-color, 0.6);
+  color: $light-font-color;
 }
 
 .repo-item-full-name {
   @include position(absolute, null null $base-spacing null);
-  color: rgba($base-font-color, 0.4);
+  color: $lightest-font-color;
 }

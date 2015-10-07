@@ -3,17 +3,17 @@
     h1= link_to 'Login to view yor account', new_user_registration_path
 
 - if current_user && current_user == @user
-  .user-wrapper
-    section.user-details
-      h1.user-name= @user.github
-      h2.user-email= @user.email
+  .subpage-content-wrapper
+    section.subpage-content-header
+      h1.subpage-primary-title= @user.github
+      h2.subpage-secondary-title.user-email= @user.email
 
       .user-actions
         = link_to 'Delete Account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", default: "Are you sure?")}", class: 'delete-account'
         = link_to 'Edit Account'.html_safe, edit_user_path(@user), class: 'edit-account'
 
-    section.user-settings.repo-section
-      h2.section-title Settings
+    section.user-settings.content-section
+      h2.content-section-title Settings
       ul.settings-list
         li.settings-item
           h5.setting-title Your profile #{@user.public? ? "is" : "is not"} publicly visible.
@@ -30,12 +30,12 @@
           h5.setting-title Skip Issues with Pull Requests:
           p.setting #{@user.skip_issues_with_pr}
 
-    section.user-favorite-langs.repo-section
-      h2.section-title Select your favorite languages:
+    section.user-favorite-langs.content-section
+      h2.content-section-title Select your favorite languages:
       = form_for @user do |f|
         ul.all-languages-list
           - Repo.all_languages.each do |language|
             li.language-item
               = f.check_box :favorite_languages, { multiple: true }, language, nil
               = f.label language
-        p= button_tag "Save Favorite Languages", class: "button repo-footer-action"
+        p= button_tag "Save Favorite Languages", class: "button content-footer-action"

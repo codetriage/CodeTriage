@@ -1,0 +1,17 @@
+.content-section {
+  @include clearfix;
+  border-bottom: $content-border;
+  padding: $base-spacing 0;
+
+  &:last-of-type {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.content-section-title {
+  font-size: 1.375rem;
+  margin-bottom: 1rem;
+  color: $base-font-color;
+}

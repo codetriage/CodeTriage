@@ -1,60 +1,31 @@
-.user-wrapper {
-  background-color: darken($base-background-color, 5%);
-  border-radius: $base-border-radius;
-  box-shadow: 0 1px 0 lighten($base-background-color, 5%);
-  margin: $base-spacing auto 0;
-  max-width: 48rem;
-  overflow: hidden;
-  padding: $base-spacing;
-}
-
-.user-details {
-  @include clearfix;
-  background-color: $codetriage-blue;
-  margin: (-$base-spacing) (-$base-spacing) $base-spacing;
-  padding: $base-spacing;
-}
-
-.user-name {
-  color: $base-font-color;
-  font-size: 1.5rem;
-  margin-right: $small-spacing;
-  float: left;
-}
-
 .user-email {
-  color: rgba($base-font-color, 0.4);
-  margin-bottom: 0;
   margin-top: 7px;
   font-weight: normal;
-  float: left;
 }
 
 .user-actions {
-  float: right;
-  margin-top: 7px;
+  margin-top: 4px;
+
+  @include media(38rem) {
+    float: right;
+  }
 }
 
 .edit-account {
   color: $base-font-color;
-  text-transform: uppercase;
+  font-size: $small-font-size;
   letter-spacing: 1px;
   margin-left: $small-spacing;
+  text-transform: uppercase;
 }
 
 .delete-account {
-  color: rgba($base-font-color, 0.4);
-}
-
-.section-title {
-  font-size: 1.375rem;
-  margin-bottom: 1rem;
-  color: $base-font-color;
+  color: $lightest-font-color;
 }
 
 .settings-list {
   border-radius: $base-border-radius;
-  border: $repo-border;
+  border: $content-border;
 
   @include media(510px) {
     display: flex;
@@ -66,16 +37,16 @@
 
   @include media(max-width 510px) {
     &:not(:last-of-type) {
-      border-bottom: $repo-border;
+      border-bottom: $content-border;
     }
   }
 
   @include media(510px) {
-    flex-grow: 1;
     flex-basis: flex-grid(4);
+    flex-grow: 1;
 
     &:not(:last-of-type) {
-      border-right: $repo-border;
+      border-right: $content-border;
     }
   }
 }
@@ -87,7 +58,7 @@
 
 .setting {
   @include position(absolute, null 0 0);
-  border-top: $repo-border;
+  border-top: $content-border;
   display: block;
   font-weight: bold;
   letter-spacing: 1px;
@@ -95,52 +66,4 @@
   padding: $small-spacing;
   text-align: center;
   text-transform: uppercase;
-}
-
-.all-languages-list {
-  @include clearfix;
-}
-
-.language-item {
-  position: relative;
-
-  @include media(max-width 699px) {
-    @include omega(2n);
-    @include span-columns(6);
-  }
-
-  @include media(700px) {
-    @include omega(4n);
-    @include span-columns(3);
-  }
-
-  input[type='checkbox'] {
-    width: 1rem;
-    cursor: pointer;
-
-    + label {
-      cursor: pointer;
-      margin-bottom: $small-spacing;
-
-      &::before {
-        @include position(absolute, 3px null null -2px);
-        @include size(1.1rem 1rem);
-        background-color: $codetriage-blue;
-        border-radius: $base-border-radius;
-        color: $base-background-color;
-        content: "";
-        display: inline-block;
-        line-height: 1rem;
-        pointer-events: none;
-        text-align: center;
-      }
-    }
-
-    &:checked + label {
-      &::before {
-        content: "×";
-        background-color: $codetriage-green;
-      }
-    }
-  }
 }

@@ -1,6 +1,6 @@
 .hero {
   @include outer-container;
-  @include padding(4rem null 2rem);
+  padding-top: 4rem;
   text-align: center;
 
   .button {

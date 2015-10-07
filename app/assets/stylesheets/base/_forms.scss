@@ -1,5 +1,4 @@
 fieldset {
-  background-color: $secondary-background-color;
   border: $base-border;
   margin: 0 0 $small-spacing;
   padding: $base-spacing;
@@ -30,13 +29,11 @@ label {
 select[multiple=multiple] {
   background-color: $base-background-color;
   border: $base-border;
-  border-radius: $base-border-radius;
-  box-shadow: $form-box-shadow;
   box-sizing: border-box;
   font-family: $base-font-family;
   font-size: $base-font-size;
   margin-bottom: $small-spacing;
-  padding: $base-spacing / 3;
+  padding: $small-spacing;
   transition: border-color $base-duration $base-timing;
   width: 100%;
 

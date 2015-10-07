@@ -1,0 +1,18 @@
+.pagination {
+  border-color: $base-background-color;
+  border-style: solid;
+  border-width: 0 2px 2px 2px;
+  display: block;
+  text-align: center;
+
+  span,
+  em,
+  a {
+    display: inline-block;
+    padding: $small-spacing;
+
+    &:not(:last-child) {
+      border-right: $content-border;
+    }
+  }
+}

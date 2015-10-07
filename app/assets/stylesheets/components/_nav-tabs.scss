@@ -1,0 +1,40 @@
+.nav-tabs {
+  @include row;
+  border-left: $content-border;
+  border-right: $content-border;
+  border-top: $content-border;
+}
+
+.nav-tabs-item {
+  padding: $small-spacing;
+  text-align: center;
+
+  @include media(31rem) {
+    float: left;
+    width: 33.3333%;
+  }
+
+  a {
+    display: block;
+  }
+
+  &:not(:last-child) {
+    border-right: $content-border;
+  }
+
+  &.active {
+    background-color: $action-color;
+
+    a {
+      color: $base-background-color;
+    }
+  }
+}
+
+.tab-pane {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
