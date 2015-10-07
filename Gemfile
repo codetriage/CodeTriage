@@ -30,10 +30,12 @@ gem 'rack-timeout'
 gem 'unicorn'
 gem 'mail_view', '~> 1.0.2'
 gem 'valid_email'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', github: 'rails/sass-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.0.3'
 gem 'slim-rails'
+gem 'sprockets', github: 'rails/sprockets'
+gem 'sprockets-rails', github: 'rails/sprockets-rails'
 
 group :development do
   gem 'foreman'
