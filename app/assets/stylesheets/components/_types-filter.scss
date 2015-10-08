@@ -7,6 +7,12 @@
   position: relative;
   text-align: center;
   width: 26.25rem;
+
+  .down-circle {
+    @include position(absolute, 1.15rem 1rem null null);
+    fill: $action-color;
+    pointer-events: none;
+  }
 }
 
 .types-filter-label {
@@ -23,14 +29,8 @@
   cursor: pointer;
   float: right;
   padding: $small-spacing $base-spacing;
-  position: relative;
   text-align: left;
   width: 50%;
-
-  .down-circle {
-    @include position(absolute, 1.15rem 1rem null null);
-    fill: $action-color;
-  }
 }
 
 .types-filter {

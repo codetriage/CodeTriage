@@ -1,9 +1,9 @@
 - lang_index = 0
 .types-filter-wrapper
   label.types-filter-label Filter list by Language:
+  = render "down"
   a.types-filter-button 
     | Select Language
-    = render "down"
 
   ul.types-filter
     - repos.group_by(&:language).each do |lang, repos|
@@ -21,10 +21,10 @@ javascript:
     }
 
     $(".types-filter-button").click(function() {
-      $(".types-filter").slideToggle();
+      $(".types-filter").toggle();
 
       $(".types-filter > li").click(function(){
-        $(".types-filter").slideUp();
+        $(".types-filter").hide();
         $(".types-filter-button").html($(this).html());
       });
     });
