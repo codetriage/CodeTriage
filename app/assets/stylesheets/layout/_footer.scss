@@ -12,22 +12,22 @@
 }
 
 .thoughtbot-link {
-  color: $codetriage-red;
+  color: $base-font-color;
   display: block;
   margin-bottom: $base-spacing;
 
   &:hover {
-    color: shade($codetriage-red, 5%);
+    color: $codetriage-red;
   }
 }
 
 .thoughtbot-logo {
   @include size(8rem);
   display: block;
-  fill: $codetriage-red;
+  fill: $base-font-color;
   margin: 0 auto;
 
   &:hover {
-    fill: shade($codetriage-red, 5%);
+    fill: $codetriage-red;
   }
 }
