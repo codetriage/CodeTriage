@@ -39,8 +39,8 @@
 
     &:checked + label {
       &::before {
+        background-color: $white;
         content: "×";
-        background-color: $codetriage-green;
       }
     }
   }

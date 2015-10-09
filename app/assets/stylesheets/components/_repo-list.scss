@@ -18,16 +18,15 @@
   border-radius: $base-border-radius;
   box-shadow: 0 1px 0 lighten($base-background-color, 5%);
   margin-bottom: $base-spacing * 1.5;
-  min-width: 18rem;
   overflow: hidden;
   transition: all 0.25s ease-out;
   width: 100%;
 
-  @include media(700px) {
+  @include media(699px) {
     margin-right: flex-gutter();
   }
 
-  @include media(min-width 700px max-width 1000px) {
+  @include media(min-width 700px max-width 899px) {
     width: flex-grid(6);
 
     &:nth-child(2n) {
@@ -35,7 +34,7 @@
     }
   }
 
-  @include media(min-width 1000px max-width 1299px) {
+  @include media(min-width 900px max-width 1249px) {
     width: flex-grid(4);
 
     &:nth-child(3n) {
@@ -43,10 +42,18 @@
     }
   }
 
-  @include media(1300px) {
+  @include media(min-width 1250px max-width 1499px) {
     width: flex-grid(3);
 
     &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media(1500px) {
+    width: flex-grid(2.4);
+
+    &:nth-child(5n) {
       margin-right: 0;
     }
   }

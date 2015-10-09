@@ -8,6 +8,7 @@ nav.application-navigation
     - if user_signed_in?
       li.application-navigation-list-item= image_tag current_user.avatar_url, class: 'user-profile-image'
       li.application-navigation-list-item= link_to current_user.github, current_user
+      li.application-navigation-list-item= link_to "Submit Repo", new_repo_path
       li.application-navigation-list-item= link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
       li.application-navigation-list-item= link_to 'Log in', new_user_registration_path

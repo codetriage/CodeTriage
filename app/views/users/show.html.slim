@@ -14,21 +14,32 @@
 
     section.user-settings.content-section
       h2.content-section-title Settings
-      ul.settings-list
-        li.settings-item
-          h5.setting-title Your profile #{@user.public? ? "is" : "is not"} publicly visible.
-          - if @user.public?
-            = link_to "Be private", user_registration_path(user: {private: true}), method: :patch, class: "setting"
-          - else
-            = link_to "Go public", user_registration_path(user: {private: false}), method: :patch, class: "setting"
 
-        li.settings-item
-          h5.setting-title Max number of issues you want to receive per day:
-          p.setting #{@user.daily_issue_limit.presence || 'not set'}
+      ul.slats-list
+        li.slats-item
+          .slats-hgroup
+            h3 Is your account shown to everyone:
 
-        li.settings-item
-          h5.setting-title Skip Issues with Pull Requests:
-          p.setting #{@user.skip_issues_with_pr}
+          .slats-action
+            p
+              - if @user.public?
+                | Public, 
+                = link_to "Go private", user_registration_path(user: {private: true}), method: :patch
+              - else
+                | Private, 
+                = link_to "Go public", user_registration_path(user: {private: false}), method: :patch
+
+        li.slats-item
+          .slats-hgroup
+            h5.slats-title Max number of issues you want to receive per day:
+          .slats-action
+            p= @user.daily_issue_limit.presence || 'not set'
+
+        li.slats-item
+          .slats-hgroup
+            h5.slats-title Skip Issues with Pull Requests:
+          .slats-action
+            p= @user.skip_issues_with_pr
 
     section.user-favorite-langs.content-section
       h2.content-section-title Select your favorite languages:

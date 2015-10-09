@@ -7,6 +7,7 @@
   @include clearfix;
   border-bottom: $content-border;
   padding: $small-spacing;
+  display: block;
 
   &:last-of-type {
     border-bottom: 0;
@@ -20,34 +21,51 @@
 }
 
 .slats-hgroup {
-  float: left;
+  @include media(600px) {
+    float: left;
+  }
 
+  .slats-title,
   h3 {
-    color: $base-font-color;
     display: inline-block;
+    margin-right: $small-spacing;
   }
 
   h4 {
     display: inline-block;
     font-weight: normal;
+    color: $lightest-font-color;
   }
 }
 
 .slats-action {
-  float: right;
   font-size: $small-font-size;
   letter-spacing: 1px;
-  margin-top: 2px;
+  padding: $small-spacing;
   text-transform: uppercase;
+
+  @include media(max-width 599px) {
+    border-top: $content-border;
+    padding-bottom: 0;
+    margin: $small-spacing (-$small-spacing) 0;
+  }
+
+  @include media(600px) {
+    border-left: $content-border;
+    float: right;
+    margin: (-$small-spacing) (-$small-spacing) (-$small-spacing) 0;
+    min-width: 8rem;
+  }
 
   p {
     font-weight: bold;
-    margin-bottom: 0;
+    margin: 4px 0 2px;
   }
 
   input[type="submit"] {
     background: none;
     color: $action-color;
+    margin: 6px 0 7px;
     padding: 0;
   }
 }
