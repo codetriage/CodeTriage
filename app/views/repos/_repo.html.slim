@@ -1,4 +1,4 @@
-li class="repo-item #{" high" if repo.issues_count > 800}#{" medium" if repo.issues_count > 200 && repo.issues_count < 800}#{" low" if repo.issues_count > 75 && repo.issues_count < 200}"
+li class="repo-item #{ repo.weight }" data-language="#{ "#{repo.language.parameterize}#{repo.language.hash}" if repo.language }"
   = link_to repo
     header.repo-item-header
         h4.repo-item-title = repo.name
