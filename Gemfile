@@ -8,7 +8,7 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 gem 'rails', '4.2.3'
 
 gem 'puma'
-gem 'puma_auto_tune', github: "schneems/puma_auto_tune"
+gem 'puma_auto_tune'
 gem 'skylight'
 gem 'git_hub_bub'
 gem 'pg'

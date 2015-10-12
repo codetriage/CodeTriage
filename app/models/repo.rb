@@ -16,6 +16,20 @@ class Repo < ActiveRecord::Base
   before_save :set_full_name
   after_create :populate_issues!, :update_repo_info!
 
+
+  def weight
+    case issues_count
+    when 75..199
+      "low".freeze
+    when 200..799
+      "medium".freeze
+    when 800..Float::INFINITY
+      "high".freeze
+    else
+      "".freeze
+    end
+  end
+
   def subscriber_count
     users.count
   end

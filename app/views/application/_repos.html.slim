@@ -2,13 +2,14 @@
 .types-filter-wrapper
   label.types-filter-label Filter list by Language:
   = render "down"
-  a.types-filter-button 
+  a.types-filter-button
     | Select Language
 
   ul.types-filter
-    - repos.group_by(&:language).each do |lang, repos|
+    - repos.group_by(&:language).each do |lang, _|
       - unless lang == nil
-        li = link_to lang, "##{lang.parameterize}#{lang.hash}", data: { toggle: "tab" }
+        - lang_hash = "#{lang.parameterize}#{lang.hash}"
+        li = link_to lang, "##{lang_hash}", data: { toggle: "tab", language: lang_hash }
 
 ul.repo-list = render repos
 
@@ -17,15 +18,16 @@ javascript:
     var hash = document.location.hash;
 
     if (hash) {
-      $('.nav-tabs a[href='+hash+']').tab('show');
+      $(".repo-item[data-language='"+ hash + "']").show();
     }
 
     $(".types-filter-button").click(function() {
       $(".types-filter").toggle();
 
-      $(".types-filter > li").click(function(){
+      $(".types-filter > li a").click(function(){
         $(".types-filter").hide();
-        $(".types-filter-button").html($(this).html());
+        $(".repo-item").hide()
+        $(".repo-item[data-language='"+ this.getAttribute("data-language") + "']").show();
       });
     });
   });

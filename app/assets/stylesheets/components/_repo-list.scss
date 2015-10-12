@@ -1,9 +1,14 @@
 .repo-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 3rem auto 0;
-  max-width: 100rem;
+  justify-content: center;
   padding-top: 1.25rem;
+  margin: 3rem 0 0;
+
+  @include media(100rem) {
+    margin: 3rem auto 0;
+    max-width: 100rem;
+  }
 }
 
 .repos-list-title {
@@ -17,45 +22,25 @@
   background-color: darken($base-background-color, 5%);
   border-radius: $base-border-radius;
   box-shadow: 0 1px 0 lighten($base-background-color, 5%);
-  margin-bottom: $base-spacing * 1.5;
+  margin: 0 ($base-spacing / 2) ($base-spacing * 1.5);
   overflow: hidden;
   transition: all 0.25s ease-out;
   width: 100%;
 
-  @include media(699px) {
-    margin-right: flex-gutter();
-  }
-
   @include media(min-width 700px max-width 899px) {
-    width: flex-grid(6);
-
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
+    width: calc(50% - 1.5rem);
   }
 
   @include media(min-width 900px max-width 1249px) {
-    width: flex-grid(4);
-
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
+    width: calc(33% - 1.5rem);
   }
 
   @include media(min-width 1250px max-width 1499px) {
-    width: flex-grid(3);
-
-    &:nth-child(4n) {
-      margin-right: 0;
-    }
+    width: calc(25% - 1.5rem);
   }
 
   @include media(1500px) {
-    width: flex-grid(2.4);
-
-    &:nth-child(5n) {
-      margin-right: 0;
-    }
+    width: calc(20% - 1.5rem);
   }
 
   &:hover {
