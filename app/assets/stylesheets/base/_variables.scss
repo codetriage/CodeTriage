@@ -1,0 +1,59 @@
+// Typography
+$base-font-family: "canada-type-gibson", $helvetica;
+$heading-font-family: $base-font-family;
+
+// Font Sizes
+$base-font-size: 1rem;
+$small-font-size: 0.875rem;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$base-border-radius: 4px;
+$base-spacing: $base-line-height * 1rem;
+$small-spacing: $base-spacing / 2;
+$medium-spacing: $small-spacing * 1.5;
+$large-spacing: $base-spacing * 2;
+$base-z-index: 0;
+
+// Colors
+$codetriage-red: #e25443;
+$codetriage-blue: #41b0bf;
+$codetriage-yellow: #eba117;
+$codetriage-green: #5bb878;
+$dark-blue: #21314a;
+
+$dark-gray: #333;
+$medium-gray: #999;
+$light-gray: #ddd;
+$white: #fff;
+
+// Font Colors
+$base-font-color: $white;
+$light-font-color: rgba($base-font-color, 0.7);
+$lightest-font-color: rgba($base-font-color, 0.5);
+$action-color: $codetriage-blue;
+
+// Background Colors
+$base-background-color: $dark-blue;
+
+// Border
+$base-border-color: lighten($base-background-color, 10%);
+$base-border: 2px solid $base-border-color;
+$content-border: 2px solid $base-background-color;
+
+// Forms
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+// Flashes
+$alert-color: $codetriage-yellow;
+$error-color: $codetriage-red;
+$notice-color: $codetriage-blue;
+$success-color: $codetriage-green;
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease;

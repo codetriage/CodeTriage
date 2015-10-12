@@ -1,0 +1,135 @@
+.repo-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem auto 0;
+  max-width: 100rem;
+  padding-top: 1.25rem;
+}
+
+.repos-list-title {
+  color: $base-font-color;
+  font-size: 1.75rem;
+  text-align: center;
+  vertical-align: top;
+}
+
+.repo-item {
+  background-color: darken($base-background-color, 5%);
+  border-radius: $base-border-radius;
+  box-shadow: 0 1px 0 lighten($base-background-color, 5%);
+  margin-bottom: $base-spacing * 1.5;
+  overflow: hidden;
+  transition: all 0.25s ease-out;
+  width: 100%;
+
+  @include media(699px) {
+    margin-right: flex-gutter();
+  }
+
+  @include media(min-width 700px max-width 899px) {
+    width: flex-grid(6);
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media(min-width 900px max-width 1249px) {
+    width: flex-grid(4);
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media(min-width 1250px max-width 1499px) {
+    width: flex-grid(3);
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+
+  @include media(1500px) {
+    width: flex-grid(2.4);
+
+    &:nth-child(5n) {
+      margin-right: 0;
+    }
+  }
+
+  &:hover {
+    background-color: darken($base-background-color, 8%);
+    transform: translateY(-3px);
+    transition: all 0.25s ease-out;
+
+    &.high .repo-item-header {
+      background-color: shade($codetriage-red, 5%);
+    }
+
+    &.medium .repo-item-header {
+      background-color: shade($codetriage-yellow, 5%);
+    }
+
+    &.low .repo-item-header {
+      background-color: shade($codetriage-green, 5%);
+    }
+  }
+
+  a {
+    display: block;
+    padding: $base-spacing $medium-spacing 3rem;
+    position: relative;
+  }
+}
+
+.repo-item-header {
+  @include clearfix;
+  background-color: $codetriage-blue;
+  margin: (-$base-spacing) (-$medium-spacing) $small-spacing;
+  padding: $small-spacing $medium-spacing;
+
+  .high & {
+    background-color: $codetriage-red;
+  }
+
+  .medium & {
+    background-color: $codetriage-yellow;
+  }
+
+  .low & {
+    background-color: $codetriage-green;
+  }
+}
+
+.repo-item-title {
+  color: $base-font-color;
+  float: left;
+  font-size: 1.125rem;
+}
+
+.repo-item-issues {
+  color: $base-font-color;
+  float: right;
+  font-size: $small-font-size;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  .issue-icon {
+    display: inline-block;
+    fill: $base-font-color;
+    margin-right: 0.5rem;
+    position: relative;
+    top: 3px;
+    vertical-align: baseline;
+  }
+}
+
+.repo-item-description {
+  color: $light-font-color;
+}
+
+.repo-item-full-name {
+  @include position(absolute, null null $base-spacing null);
+  color: $lightest-font-color;
+}

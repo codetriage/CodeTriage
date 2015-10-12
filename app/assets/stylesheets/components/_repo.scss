@@ -1,0 +1,69 @@
+.repo-language {
+  color: $light-font-color;
+  font-size: $small-font-size;
+  font-weight: normal;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  text-transform: uppercase;
+
+  @include media(38rem) {
+    float: right;
+  }
+}
+
+.repo-description {
+  clear: both;
+  color: $light-font-color;
+  margin-bottom: 0;
+  margin-top: $small-spacing / 2;
+}
+
+.repo-instructions {
+  @include media(43em) {
+    @include span-columns(6);
+  }
+}
+
+.repo-action {
+  text-align: center;
+
+  @include media(43em) {
+    @include span-columns(6);
+    margin-right: 0;
+  }
+}
+
+.stop-triaging {
+  background-color: $codetriage-red;
+  clear: both;
+  margin-top: $base-spacing;
+  text-align: center;
+  width: 100%;
+
+  &:hover {
+    background-color: darken($codetriage-red, 5%);
+  }
+}
+
+.email-amount {
+  label {
+    font-weight: normal;
+  }
+
+  select {
+    display: inline-block;
+  }
+
+  .save-amount {
+    background: none;
+    color: $action-color;
+    display: inline-block;
+    margin-left: $small-spacing;
+    padding: 0;
+
+    &:hover {
+      background: none;
+      color: $base-font-color;
+    }
+  }
+}

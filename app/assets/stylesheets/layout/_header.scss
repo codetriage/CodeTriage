@@ -1,0 +1,33 @@
+.application-navigation {
+  @include clearfix;
+}
+
+.application-logo {
+  padding-top: 3rem;
+  text-align: center;
+}
+
+.application-navigation-list {
+  float: right;
+}
+
+.application-navigation-list-item {
+  float: left;
+
+  a {
+    background-color: darken($base-background-color, 10%);
+    color: $lightest-font-color;
+    display: block;
+    padding: $small-spacing $base-spacing;
+
+    &:hover {
+      color: $base-font-color;
+      background-color: darken($base-background-color, 15%);
+    }
+  }
+}
+
+.user-profile-image {
+  line-height: 1;
+  max-height: 3rem;
+}

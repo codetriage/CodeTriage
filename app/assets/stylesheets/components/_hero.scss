@@ -1,0 +1,51 @@
+.hero {
+  @include outer-container;
+  padding-top: 4rem;
+  text-align: center;
+
+  .button {
+    margin-top: 3rem;
+  }
+
+  .github-icon {
+    @include position(relative, 2px null null null);
+    @include size(1rem);
+    fill: $base-font-color;
+    margin-right: 1rem;
+  }
+}
+
+.hero-title-primary {
+  color: $base-font-color;
+  font-size: 2.5rem;
+  margin-bottom: $base-spacing;
+}
+
+.hero-title-secondary {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 100;
+  margin: 0 auto;
+  max-width: rem(800);
+}
+
+.hero-repo-list-container {
+  text-align: center;
+
+  .repo-list {
+    justify-content: center;
+    text-align: left;
+  }
+
+  .repo-item {
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  .button {
+    &:not(:last-of-type) {
+      margin-right: $base-spacing;
+    }
+  }
+}

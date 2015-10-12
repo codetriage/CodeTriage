@@ -1,0 +1,27 @@
+%top-bar {
+  float: left;
+  width: 25%;
+  height: 10px;
+  display: block;
+}
+
+.top-bar-red {
+  @extend %top-bar;
+  background-color: $codetriage-red;
+}
+
+.top-bar-yellow {
+  @extend %top-bar;
+  background-color: $codetriage-yellow;
+}
+
+.top-bar-blue {
+  @extend %top-bar;
+  background-color: $codetriage-blue;
+}
+
+.top-bar-green {
+  @extend %top-bar;
+  background-color: $codetriage-green;
+}
+

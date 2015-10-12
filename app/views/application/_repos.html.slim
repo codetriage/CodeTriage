@@ -1,17 +1,16 @@
 - lang_index = 0
-.row-fluid
-  ul.nav.nav-tabs.nav-stacked.span4#repo-tabs data-tabs="tabs"
+.types-filter-wrapper
+  label.types-filter-label Filter list by Language:
+  = render "down"
+  a.types-filter-button 
+    | Select Language
+
+  ul.types-filter
     - repos.group_by(&:language).each do |lang, repos|
       - unless lang == nil
         li = link_to lang, "##{lang.parameterize}#{lang.hash}", data: { toggle: "tab" }
-  .tab-content.span8
-    - repos.group_by(&:language).each do |lang, repos|
-      - unless lang == nil
-        div class="tab-pane#{" active" if lang_index == 0}" id="#{lang.parameterize}#{lang.hash}"
-          ul.unstyled.repos-list = render repos
-        - lang_index = lang_index + 1
 
-= link_to "Submit a Repo", new_repo_path, class: 'btn btn-success'
+ul.repo-list = render repos
 
 javascript:
   $(document).ready(function(){
@@ -20,4 +19,13 @@ javascript:
     if (hash) {
       $('.nav-tabs a[href='+hash+']').tab('show');
     }
+
+    $(".types-filter-button").click(function() {
+      $(".types-filter").toggle();
+
+      $(".types-filter > li").click(function(){
+        $(".types-filter").hide();
+        $(".types-filter-button").html($(this).html());
+      });
+    });
   });

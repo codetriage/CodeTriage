@@ -1,0 +1,27 @@
+.avatars-list {
+  @include row;
+
+  li {
+    margin-bottom: $small-spacing;
+
+    @include media(max-width calc(25rem - 1px)) {
+      @include omega(2n);
+      @include span-columns(6);
+    }
+
+    @include media(min-width 25rem max-width calc(43rem - 1px)) {
+      @include omega(3n);
+      @include span-columns(4);
+    }
+
+    @include media(43rem) {
+      @include omega(6n);
+      @include span-columns(2);
+    }
+  }
+}
+
+.avatar-image {
+  border-radius: $base-border-radius;
+  width: 100%;
+}

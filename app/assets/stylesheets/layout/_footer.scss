@@ -1,0 +1,33 @@
+.application-footer {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.footer-action {
+  margin-bottom: 2rem;
+}
+
+.github-numbers {
+  margin-bottom: 2rem;
+}
+
+.thoughtbot-link {
+  color: $base-font-color;
+  display: block;
+  margin-bottom: $base-spacing;
+
+  &:hover {
+    color: $codetriage-red;
+  }
+}
+
+.thoughtbot-logo {
+  @include size(8rem);
+  display: block;
+  fill: $base-font-color;
+  margin: 0 auto;
+
+  &:hover {
+    fill: $codetriage-red;
+  }
+}

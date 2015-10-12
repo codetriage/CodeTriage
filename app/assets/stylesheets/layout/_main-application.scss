@@ -1,0 +1,7 @@
+.main-application {
+  padding: $small-spacing;
+
+  @include media(26rem) {
+    padding: $base-spacing;
+  }
+}

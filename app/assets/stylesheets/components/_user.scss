@@ -1,0 +1,24 @@
+.user-email {
+  margin-top: 7px;
+  font-weight: normal;
+}
+
+.user-actions {
+  margin-top: 4px;
+
+  @include media(38rem) {
+    float: right;
+  }
+}
+
+.edit-account {
+  color: $base-font-color;
+  font-size: $small-font-size;
+  letter-spacing: 1px;
+  margin-left: $small-spacing;
+  text-transform: uppercase;
+}
+
+.delete-account {
+  color: $lightest-font-color;
+}
