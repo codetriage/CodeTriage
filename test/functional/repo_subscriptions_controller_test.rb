@@ -11,9 +11,10 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
 
   test 'successfully subscribe to a repo when signed in as mockstar' do
     sign_in users(:mockstar)
-    post :create, repo_id: repos(:issue_triage_sandbox).id
+    repo = repos(:issue_triage_sandbox)
+    post :create, repo_id: repo.id
     assert flash[:notice] == I18n.t('repo_subscriptions.subscribed')
-    assert_redirected_to repo_subscriptions_path
+    assert_redirected_to repo_path(repo)
   end
 
   test 'receive failure message when subscription did not created when signed in as mockstar' do

@@ -6,19 +6,21 @@
     | Select Language
 
   ul.types-filter
-    - repos.group_by(&:language).each do |lang, _|
+    - Repo.select("DISTINCT language").map(&:language).compact.sort.each do |lang|
       - unless lang == nil
         - lang_hash = "#{lang.parameterize}#{lang.hash}"
         li = link_to lang, "##{lang_hash}", data: { toggle: "tab", language: lang_hash }
 
-ul.repo-list = render repos
+- cache(["repo-list", repos.count, repos.maximum(:updated_at)]) do
+  ul.repo-list = render repos
 
 javascript:
   $(document).ready(function(){
     var hash = document.location.hash;
 
     if (hash) {
-      $(".repo-item[data-language='"+ hash + "']").show();
+      $(".repo-item").hide();
+      $(".repo-item[data-language='"+ hash.replace("#", "") + "']").show();
     }
 
     $(".types-filter-button").click(function() {

@@ -20,7 +20,7 @@ class Users::OmniauthCallbacksControllerTest < ActionController::TestCase
     get :github
     assert flash[:notice] == I18n.t("devise.omniauth_callbacks.bad_email_success",
                                     kind: "GitHub")
-    assert_redirected_to edit_user_path(user)
+    assert_redirected_to root_path
   end
 
   def stub_oauth_user(email)

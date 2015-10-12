@@ -1,0 +1,1 @@
+require_relative "../config/initializers/teaspoon.rb"

@@ -1,6 +1,6 @@
 - if current_user.blank?
   section.user-logged-out
-    h1= link_to 'Login to view yor account', new_user_registration_path
+    h1= link_to 'Login to view yor account', user_omniauth_authorize_path(:github)
 
 - if current_user && current_user == @user
   .subpage-content-wrapper
@@ -23,10 +23,10 @@
           .slats-action
             p
               - if @user.public?
-                | Public, 
+                | Public,
                 = link_to "Go private", user_registration_path(user: {private: true}), method: :patch
               - else
-                | Private, 
+                | Private,
                 = link_to "Go public", user_registration_path(user: {private: false}), method: :patch
 
         li.slats-item

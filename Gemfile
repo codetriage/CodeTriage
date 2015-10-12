@@ -57,7 +57,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'teaspoon'
+  gem 'teaspoon', '~> 0.7.4'
   gem 'dotenv-rails'
 end
 

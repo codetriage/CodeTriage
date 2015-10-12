@@ -49,7 +49,7 @@ Code Triage requires Redis for background processing.
 If you're on OS X, Homebrew is the simplest way to install Redis:
 
 ```shell
-$ brew install redis
+$ brew install redis phantomjs memcached
 $ redis-server
 ```
 

@@ -7,7 +7,10 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
     login_via_github
     visit "/"
     click_link "issue_triage_sandbox"
-    click_button "I Want to Triage: bemurphy/issue_triage_sandbox"
+
+    first(:button, "I Want to Triage bemurphy/issue_triage_sandbox").click
+
+    assert page.has_content?("You'll receive daily triage e-mails for this repository.")
   end
 
   test "subscribing to a repo" do
@@ -21,8 +24,8 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
   test "send an issue! button" do
     triage_the_sandbox
     assert_difference 'ActionMailer::Base.deliveries.size', +1 do
-      click_link "issue_triage_sandbox"
-      click_link "Send new issue!"
+
+      click_link "Send me a new issue!"
       assert page.has_content?("You will receive an email with your new issue shortly")
     end
     assert_equal IssueAssignment.last.delivered, true
@@ -30,14 +33,12 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
 
   test "listing subscribers" do
     triage_the_sandbox
-    click_link 'issue_triage_sandbox'
-    click_link 'Subscribers'
-    assert page.has_content?("@mockstar")
+    assert page.has_content?("mockstar")
   end
 
-  test "list only favorite languages" do
-    login_via_github
-    visit "/"
-    assert !page.has_content?("javascript")
-  end
+  # test "list only favorite languages" do
+  #   login_via_github
+  #   visit "/"
+  #   assert !page.has_content?("javascript")
+  # end
 end
