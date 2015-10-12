@@ -68,3 +68,5 @@ end
 
 gem 'newrelic_rpm'
 gem 'derailed_benchmarks'
+
+gem 'the_lone_dyno'
