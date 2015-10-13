@@ -6,12 +6,16 @@
   margin: $small-spacing auto 0;
   position: relative;
   text-align: center;
-  width: 26.25rem;
+  max-width: 26.25rem;
 
   .down-circle {
     @include position(absolute, 1.15rem 1rem null null);
     fill: $action-color;
     pointer-events: none;
+
+    @include media(max-width 430px) {
+      display: none;
+    }
   }
 }
 
@@ -22,6 +26,12 @@
   margin-bottom: 0;
   padding-left: $base-spacing;
   padding-top: $small-spacing;
+
+  span {
+    @include media(max-width 470px) {
+      display: none;
+    }
+  }
 }
 
 .types-filter-button {
@@ -30,7 +40,7 @@
   float: right;
   padding: $small-spacing $base-spacing;
   text-align: left;
-  width: 50%;
+  min-width: 50%;
 }
 
 .types-filter {
