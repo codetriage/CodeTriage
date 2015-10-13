@@ -18,6 +18,10 @@
 
   &:hover {
     color: $codetriage-red;
+
+    .thoughtbot-logo {
+      fill: $codetriage-red;
+    }
   }
 }
 
@@ -26,8 +30,4 @@
   display: block;
   fill: $base-font-color;
   margin: 0 auto;
-
-  &:hover {
-    fill: $codetriage-red;
-  }
 }
