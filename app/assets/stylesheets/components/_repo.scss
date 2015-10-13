@@ -35,10 +35,6 @@
 
 .stop-triaging {
   background-color: $codetriage-red;
-  clear: both;
-  margin-top: $base-spacing;
-  text-align: center;
-  width: 100%;
 
   &:hover {
     background-color: darken($codetriage-red, 5%);
