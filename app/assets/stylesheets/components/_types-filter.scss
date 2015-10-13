@@ -4,9 +4,9 @@
   border-radius: $base-border-radius;
   font-size: 1.125rem;
   margin: $small-spacing auto 0;
+  max-width: 26.25rem;
   position: relative;
   text-align: center;
-  max-width: 26.25rem;
 
   .down-circle {
     @include position(absolute, 1.15rem 1rem null null);
@@ -38,9 +38,9 @@
   background-color: darken($base-background-color, 5%);
   cursor: pointer;
   float: right;
+  min-width: 50%;
   padding: $small-spacing $base-spacing;
   text-align: left;
-  min-width: 50%;
 }
 
 .types-filter {

@@ -6,9 +6,6 @@ div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" med
       h2.repo-language= @repo.language
       p.repo-description= @repo.description
 
-  /- unless @repo.notes.blank?
-    /p= sanitize BlueCloth.new(@repo.notes).to_html
-
   .repo-body
     section.help-triage.content-section
       - if @repo_sub.blank?
@@ -29,7 +26,8 @@ div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" med
           | Send me a new issue!
 
       - if user_signed_in? && current_user.able_to_edit_repo?(@repo)
-        = link_to "Edit this repo", edit_repo_path(@repo), class: 'button'
+        section
+          = link_to "Edit this repo", edit_repo_path(@repo), class: 'button full-width-action'
 
     section.avatars.content-section
       h2.content-section-title
@@ -54,8 +52,8 @@ div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" med
       .pagination= will_paginate @issues, container: false
 
     - if @repo_sub
-      = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging', method: :delete, data: { confirm: 'Are you sure?' } do
+      = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging full-width-action', method: :delete, data: { confirm: 'Are you sure?' } do
           | Stop Triaging
 
     - if @repo_sub.blank?
-      = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button content-footer-action'
+      = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button full-width-action'
