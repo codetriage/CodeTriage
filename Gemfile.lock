@@ -164,6 +164,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.18.3)
+    pg_lock (0.1.1)
     puma (2.14.0)
     puma_auto_tune (0.0.1)
       get_process_mem (~> 0)
@@ -261,6 +262,8 @@ GEM
     teaspoon (0.7.9)
       railties (>= 3.2.5, < 5)
     temple (0.7.6)
+    the_lone_dyno (0.1.1)
+      pg_lock (~> 0.1.0)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
@@ -339,6 +342,7 @@ DEPENDENCIES
   slim-rails
   spring
   teaspoon (~> 0.7.4)
+  the_lone_dyno
   uglifier (>= 1.0.3)
   unicorn
   valid_email
