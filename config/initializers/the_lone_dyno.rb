@@ -12,6 +12,8 @@ TheLoneDyno.exclusive do |signal|
     puts "Got signal #{payload}"
     Tempfile.open("heap.dump") do |f|
       ObjectSpace.dump_all(output: f)
+      size = (File.size(f).to_f / 2**20).round(2)
+      puts "HeapDump Size: #{size} mb"
       ActiveRecord::Base.logger.silence do
         DataDump.create(data: File.new(f).read)
       end
