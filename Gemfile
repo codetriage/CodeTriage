@@ -9,12 +9,11 @@ gem 'rails', '4.2.3'
 
 gem 'puma'
 gem 'puma_auto_tune'
-gem 'skylight'
 gem 'git_hub_bub'
 gem 'pg'
 gem 'resque'
 gem 'resque_def'
-gem 'omniauth', github: 'schneems/omniauth', branch: 'schneems/hashie-breakup'
+gem 'omniauth'
 gem 'omniauth-github'
 gem 'will_paginate'
 gem 'httparty'
@@ -27,7 +26,6 @@ gem 'rrrretry'
 gem 'jquery-rails'
 gem 'devise'
 gem 'rack-timeout'
-gem 'unicorn'
 gem 'mail_view', '~> 1.0.2'
 gem 'valid_email'
 gem 'sass-rails', '~> 5.0.0'
@@ -59,14 +57,11 @@ end
 group :development, :test do
   gem 'teaspoon', '~> 0.7.4'
   gem 'dotenv-rails'
+  gem 'derailed_benchmarks'
 end
 
 group :production do
   gem 'rails_12factor'
 end
-
-
-gem 'newrelic_rpm'
-gem 'derailed_benchmarks'
 
 gem 'the_lone_dyno'
