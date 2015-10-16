@@ -1,6 +1,4 @@
 class Issue < ActiveRecord::Base
-  include ResqueDef
-
   OPEN   = "open"
   CLOSED = "closed"
 
@@ -86,13 +84,12 @@ class Issue < ActiveRecord::Base
 
   def self.queue_mark_old_as_closed!
     where("state = ? and updated_at < ?", OPEN, 24.hours.ago).find_each do |issue|
-      self.delay_mark_closed(issue.id)
+      begin
+        issue.update_attributes(state: CLOSED)
+      rescue => e
+        puts e.inspect
+      end
     end
-  end
-
-  resque_def(:delay_mark_closed) do |id|
-    issue = Issue.find(id)
-    issue.update_attributes(state: CLOSED)
   end
 
   private

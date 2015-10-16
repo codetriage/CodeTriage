@@ -35,7 +35,7 @@ class UserTest < ActiveSupport::TestCase
   test 'send out daily triage email' do
     User.any_instance.expects(:send_daily_triage!).at_least_once
     User.find_each do |user|
-      User.delay_send_daily_triage_email(user.id)
+      SendDailyTriageEmailJob.perform_later(user.id)
     end
   end
 

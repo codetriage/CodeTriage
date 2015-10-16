@@ -28,7 +28,7 @@ class ReposController < RepoBasedController
     if @repo.save
       @repo_sub = current_user.repo_subscriptions.create(repo: @repo)
       flash[:notice] = "Added #{@repo.to_param} for triaging"
-      RepoSubscription.background_send_triage_email(@repo_sub.id)
+      SendSingleTriageEmailJob.perform_later(@repo_sub.id)
       redirect_to @repo
     else
       response = GitHubBub.get("/user/repos", type: "owner", token: current_user.token)

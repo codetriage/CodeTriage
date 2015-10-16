@@ -1,6 +1,4 @@
 class Repo < ActiveRecord::Base
-  include ResqueDef
-
   validate :github_url_exists, on: :create
   validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
   validates :name, :user_name, presence: true
@@ -15,6 +13,10 @@ class Repo < ActiveRecord::Base
   before_validation :downcase_name, :strip_whitespaces
   before_save :set_full_name
   after_create :populate_issues!, :update_repo_info!
+
+  def populate_issues!
+    PopulateIssuesJob.perform_later(self.id)
+  end
 
 
   def weight
@@ -102,10 +104,6 @@ class Repo < ActiveRecord::Base
     File.join('repos', path, '/issues')
   end
 
-  def populate_issues!
-    background_populate_issues(self.id)
-  end
-
   def self.exists_with_name?(name)
     user_name, repo_name = name.downcase.split(?/)
     Repo.exists?(user_name: user_name, name: repo_name)
@@ -118,19 +116,6 @@ class Repo < ActiveRecord::Base
       group("repos.id").
       order("count(users.id) DESC")
   end
-
-  # This class is used by resque,
-  # by default anything you put into the perform method
-  # will be called for each object in the redis queue
-  resque_def(:background_populate_issues) do |id|
-    begin
-      repo = Repo.find(id.to_i)
-      repo.populate_multi_issues!(state: 'open')
-    rescue GitHubBub::RequestError => e
-      repo.update_attributes(github_error_msg: e.message)
-    end
-  end
-
 
   def populate_issue(options = {})
     page  = options[:page]||1
@@ -169,12 +154,7 @@ class Repo < ActiveRecord::Base
   end
 
   def update_repo_info!
-    background_update_repo_info(self.id)
-  end
-
-  resque_def(:background_update_repo_info) do |id|
-    repo = Repo.find(id)
-    repo.update_from_github
+    UpdateRepoInfoJob.perform_later(self.id)
   end
 
   def self.find_by_full_name(full_name)

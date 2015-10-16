@@ -90,4 +90,5 @@ end
 
 require 'mocha/setup'
 
-Resque.inline = true
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!

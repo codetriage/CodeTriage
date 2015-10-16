@@ -2,13 +2,13 @@ namespace :schedule do
   desc 'Sends triage emails'
   task triage_emails: :environment do
     User.find_each do |user|
-      User.delay_send_daily_triage_email(user.id)
+      SendDailyTriageEmailJob.perform_later(user.id)
     end
   end
 
   desc 'Populates github issues'
   task populate_issues: :environment do
-    Repo.find_each(&:populate_issues!)
+    Repo.find_each(&:populate_issues)
   end
 
   desc 'Marks issues as closed'
@@ -19,7 +19,9 @@ namespace :schedule do
   desc 'Sends an email to invite users to engage once a week'
   task poke_inactive: :environment do
     next unless Date.today.tuesday?
-    User.inactive.each(&:enqueue_inactive_email)
+    User.inactive.each do |user|
+      BackgroundInactiveEmailJob.perform_later(user.id)
+    end
   end
 
   task clean_inactive_repos: :environment do

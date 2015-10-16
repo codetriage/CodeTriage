@@ -1,6 +1,4 @@
 class RepoSubscription < ActiveRecord::Base
-  include ResqueDef
-
   validates  :repo_id, uniqueness: { scope: :user_id }, presence: true
   validates  :user_id, presence: true
   validates  :email_limit, numericality: { less_than: 21, greater_than: 0 }
@@ -13,15 +11,5 @@ class RepoSubscription < ActiveRecord::Base
 
   def self.for(repo_id)
     where(repo_id: repo_id).includes(:issues)
-  end
-
-  resque_def(:background_send_triage_email) do |id|
-    repo_sub = RepoSubscription.includes(:user, :repo).find(id)
-    IssueAssigner.new(repo_sub.user, [repo_sub]).assign
-    if assignment = repo_sub.user.issue_assignments.order(:created_at).eager_load(:repo_subscription)
-                            .where(repo_subscriptions: { repo_id: repo_sub.repo_id }).last
-      assignment.update!(delivered: true)
-      UserMailer.send_triage(repo: repo_sub.repo, user: repo_sub.user, assignment: assignment).deliver_now
-    end
   end
 end

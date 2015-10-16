@@ -1,7 +1,7 @@
 class IssueAssignmentsController < ApplicationController
   def create
     repo_sub = current_user.repo_subscriptions.find(params[:id])
-    repo_sub.background_send_triage_email(repo_sub.id)
+    SendSingleTriageEmailJob.perform_later(repo_sub.id)
     redirect_to :back, notice: 'You will receive an email with your new issue shortly'
   end
 

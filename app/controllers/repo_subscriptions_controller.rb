@@ -5,7 +5,7 @@ class RepoSubscriptionsController < ApplicationController
     repo = Repo.find(params[:repo_id])
     @repo_subscription = current_user.repo_subscriptions.new repo: repo
     if @repo_subscription.save
-      RepoSubscription.background_send_triage_email(@repo_subscription.id)
+      SendSingleTriageEmailJob.perform_later(@repo_subscription.id)
       redirect_to repo, notice: I18n.t('repo_subscriptions.subscribed')
     else
       flash[:error] = "Something went wrong"

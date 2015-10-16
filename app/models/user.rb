@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include ResqueDef
-
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -104,12 +102,6 @@ class User < ActiveRecord::Base
     ValidateEmail.valid?(email)
   end
 
-  resque_def(:background_inactive_email) do |id|
-    user = User.find(id.to_i)
-    return false if user.repo_subscriptions.present?
-    UserMailer.poke_inactive(user).deliver_now
-  end
-
   def days_since_last_clicked
     return 0 if last_clicked_at.blank?
     (
@@ -139,10 +131,6 @@ class User < ActiveRecord::Base
       repo_subscriptions.update_all(last_sent_at: Time.now)
       UserMailer.send_daily_triage(user: self, assignments: assignments).deliver_now
     end
-  end
-
-  resque_def(:delay_send_daily_triage_email) do |id|
-    User.find(id).send_daily_triage!
   end
 
   def favorite_language?(language)

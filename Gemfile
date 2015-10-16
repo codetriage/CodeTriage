@@ -11,8 +11,6 @@ gem 'puma'
 gem 'puma_auto_tune'
 gem 'git_hub_bub'
 gem 'pg'
-gem 'resque'
-gem 'resque_def'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'will_paginate'
@@ -65,3 +63,5 @@ group :production do
 end
 
 gem 'the_lone_dyno'
+
+gem 'sidekiq'

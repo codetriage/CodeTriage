@@ -16,12 +16,13 @@ As a non-maintainer, you can help an open source project by triaging issues. Whe
 
 ## How Does it Work?
 
-You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Resque to grab issues from GitHub's API, we then use another background task to assign users who subscribe to a repository one issue each day.
+You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Sidekiq to grab issues from GitHub's API, we then use another background task to assign users who subscribe to a repository one issue each day.
 
 
 ## Run Code Triage
 
 ### Dependencies
+
 Make sure you have bundler, then install the dependencies:
 
 ```shell
