@@ -66,3 +66,6 @@ gem 'the_lone_dyno'
 
 gem 'sidekiq'
 gem 'sinatra', :require => nil
+
+gem 'aws-sdk', '~> 2'
+
