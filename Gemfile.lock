@@ -142,6 +142,7 @@ GEM
     minitest (5.8.1)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
+    multi_fetch_fragments (0.0.17)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -316,6 +317,7 @@ DEPENDENCIES
   maildown
   mime-types (~> 2.6.1)
   mocha
+  multi_fetch_fragments
   neat
   normalize-rails
   omniauth

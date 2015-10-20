@@ -46,7 +46,7 @@ div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" med
       ul.slats-list
         - @issues.each do |issue|
           li.slats-item
-            = render "issue"
+            = warning_svg
             = link_to issue.title, issue.html_url
 
       .pagination= will_paginate @issues, container: false

@@ -18,4 +18,74 @@ hr.section-break
 
 .repos-list-wrapper
   h2.repos-list-title Open source projects on GitHub that need your help.
-  = render 'repos', repos: @repos
+  - lang_index = 0
+  .types-filter-wrapper
+    label.types-filter-label Filter list<span> by Language</span>:
+    = render "down"
+    a.types-filter-button
+      = params["language"] || "Select Language"
+
+    ul.types-filter
+      - Repo.select("DISTINCT language").map(&:language).compact.sort.each do |lang|
+        - unless lang.nil?
+          li = link_to lang, "#", data: { toggle: "tab", language: lang }
+
+  section.repo-list-with-pagination
+    = render "repos_with_pagination", repos: @repos
+
+/ = link_to user_omniauth_authorize_path(:github), class: 'button center'
+/   | Load More
+
+javascript:
+  $(document).ready(function(){
+
+    $(".types-filter-button").click(function() {
+      $(".types-filter").toggle();
+    });
+
+    $(".types-filter > li a").click(function(e){
+        e.preventDefault();
+
+        $(".types-filter").hide();
+        var language = this.getAttribute("data-language");
+        $(".types-filter-button").html(language);
+        updateQueryStringParam("language", language);
+
+        $.ajax({
+          url: document.URL,
+          headers: {
+            Accept :        "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=utf-8"
+          },
+          beforeSend: function () {
+            // go
+          },
+        }).done(function(data) {
+          $('.repo-list-with-pagination').html(data["html"]);
+        }).fail(function(data){
+          console.log(data);
+        });
+
+        return false;
+      });
+
+    function updateQueryStringParam(param, value) {
+      baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
+      urlQueryString = document.location.search;
+      var newParam = param + '=' + value,
+      params = '?' + newParam;
+
+      // If the "search" string exists, then build params from it
+      if (urlQueryString) {
+        keyRegex = new RegExp('([\?&])' + param + '[^&]*');
+        // If param exists already, update it
+        if (urlQueryString.match(keyRegex) !== null) {
+          params = urlQueryString.replace(keyRegex, "$1" + newParam);
+        } else { // Otherwise, add it to end of query string
+          params = urlQueryString + '&' + newParam;
+        }
+      }
+      window.history.replaceState({}, "", baseUrl + params);
+    };
+  });
+
