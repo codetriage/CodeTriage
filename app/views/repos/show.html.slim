@@ -1,4 +1,4 @@
-div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" medium" if @repo.issues_count > 200 && @repo.issues_count < 800}#{" low" if @repo.issues_count > 75 && @repo.issues_count < 200}"
+div class="subpage-content-wrapper #{ @repo.weight }"
   header.subpage-content-header
     = link_to @repo.github_url
       h1.subpage-primary-title= @repo.name
@@ -41,7 +41,7 @@ div class="subpage-content-wrapper #{" high" if @repo.issues_count > 800}#{" med
         = link_to 'View all Subscribers' , repo_subscribers_path(full_name: @repo.full_name)
 
     section.open-issues.content-section
-      h2.content-section-title #{@issues.total_entries} open issues in #{@repo.path}
+      h2.content-section-title #{@repo.issues_count} open issues in #{@repo.path}
 
       ul.slats-list
         - @issues.each do |issue|
