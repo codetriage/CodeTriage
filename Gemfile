@@ -68,4 +68,5 @@ gem 'sidekiq'
 gem 'sinatra', :require => nil
 
 gem 'aws-sdk', '~> 2'
+gem 'multi_fetch_fragments'
 

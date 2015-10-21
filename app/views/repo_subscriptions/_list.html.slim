@@ -1,3 +1,2 @@
 ul.repo-list
-  - @repos_subs.each do |sub|
-    = render sub.repo
+  = render @repos_subs.map(&:repo)
