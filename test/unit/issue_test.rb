@@ -105,7 +105,7 @@ class IssueTest < ActiveSupport::TestCase
       open_issues << repo.issues.create!(state: 'open')
     end
 
-    assert_equal open_issues, repo.open_issues
+    assert_equal open_issues, repo.open_issues.order(:created_at)
   end
 
 end

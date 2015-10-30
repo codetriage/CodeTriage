@@ -4,10 +4,7 @@ class Issue < ActiveRecord::Base
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
 
-  belongs_to :repo
-
-  after_save    :update_counter_cache
-  after_destroy :update_counter_cache
+  belongs_to :repo, counter_cache: true
 
   def valid_for_user?(user, skip_update = Rails.env.test?)
     unless skip_update
@@ -16,13 +13,6 @@ class Issue < ActiveRecord::Base
     end
     return false  if closed?
     return false  if pr_attached? && user.skip_issues_with_pr?
-    true
-  end
-
-  def update_counter_cache
-    return true unless self.state_changed? # only continue if state has changed
-    return true if repo.blank?
-    self.repo.force_issues_count_sync!
     true
   end
 
