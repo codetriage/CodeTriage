@@ -161,6 +161,12 @@ class Repo < ActiveRecord::Base
     Repo.find_by!(full_name: full_name)
   end
 
+  def self.not_subbed_by(target_user)
+    subscribed_repo_ids = target_user.repos.map(&:id)
+    return all if subscribed_repo_ids.blank?
+    where('id NOT IN (?)', subscribed_repo_ids)
+  end
+
   private
 
   def downcase_name
