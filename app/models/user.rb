@@ -106,7 +106,7 @@ class User < ActiveRecord::Base
     return 0 if last_clicked_at.blank?
     (
       (Time.now - last_clicked_at) / 1.day
-    ).to_i # only want whole days
+    ).ceil # only want whole days
   end
 
   def days_since_last_email
@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
     last_sent_at ||= self.created_at
     (
       (Time.now - last_sent_at) / 1.day
-    ).to_i # only want whole days
+    ).ceil # only want whole days
   end
 
   def send_daily_triage!
