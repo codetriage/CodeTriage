@@ -18,10 +18,22 @@ class Repo < ActiveRecord::Base
     PopulateIssuesJob.perform_later(self.id)
   end
 
+  def color
+    case weight
+    when "low"
+      "5bb878".freeze
+    when "medium"
+      "eba117".freeze
+    when "high"
+      "e25443".freeze
+    else
+      "lightgrey".freeze
+    end
+  end
 
   def weight
     case issues_count
-    when 75..199
+    when 0..199
       "low".freeze
     when 200..799
       "medium".freeze
