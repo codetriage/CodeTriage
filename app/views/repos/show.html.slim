@@ -31,8 +31,9 @@ div class="subpage-content-wrapper #{ @repo.weight }"
 
     section.avatars.content-section
       h2.content-section-title
-        = pluralize(@repo.subscribers.count, 'Subscriber')
-        |  Triaging Issues
+        = pluralize(@repo.subscribers.size, 'Subscriber'.pluralize())
+        a.repo-badge href="#{ repo_path(@repo) }"
+          img src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers.size}") }" /
 
       ul.avatars-list
         = render 'subscribers/avatars', subscribers: @subscribers, show_names: false
