@@ -10,6 +10,6 @@ class RepoSubscription < ActiveRecord::Base
   has_many   :issues, through: :issue_assignments
 
   def self.for(repo_id)
-    where(repo_id: repo_id).includes(:issues)
+    where(repo_id: repo_id)
   end
 end
