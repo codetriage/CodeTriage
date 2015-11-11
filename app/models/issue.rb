@@ -3,8 +3,26 @@ class Issue < ActiveRecord::Base
   CLOSED = "closed"
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
+  belongs_to :repo
 
-  belongs_to :repo, counter_cache: true
+  after_save    :update_repo_issues_count
+  after_update  :update_repo_issues_count
+  after_destroy :update_repo_issues_count_on_destroy
+
+
+  def update_repo_issues_count_on_destroy
+    repo.issues_count = repo.issues.where(state: OPEN).count
+    repo.save
+    true
+  end
+
+  def update_repo_issues_count
+    return true unless self.state_changed? # only continue if state has changed
+    return true if repo.blank?
+    repo.issues_count = repo.issues.where(state: OPEN).count
+    repo.save
+    true
+  end
 
   def valid_for_user?(user, skip_update = Rails.env.test?)
     unless skip_update
