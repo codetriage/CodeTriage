@@ -12,8 +12,8 @@
     "WEB_CONCURRENCY": "1"
   },
   "addons": [
-    "heroku-redis:premium-1",
+    "heroku-redis",
     "heroku-postgresql",
-    "memcachier:100"
+    "memcachier"
   ]
 }
