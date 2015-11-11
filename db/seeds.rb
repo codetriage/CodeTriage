@@ -6,6 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Rails.application.configure do
+  config.active_job.queue_adapter = :test
+end
+
 user = User.new(
   github:     "schneems",
   email:      "foo@example.com",
