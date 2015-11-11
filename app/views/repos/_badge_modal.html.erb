@@ -1,0 +1,30 @@
+<% code_triagers_badge_url = File.join(repo_url(@repo), "badges/users.svg") %>
+<!-- Modal -->
+<div class="modal fade" id="badgeModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h2>Badge for <%= @repo.full_name %></h2>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+      </div>
+      <div class="modal-body">
+      <select>
+        <option value="image_url" >Image URL</option>
+        <option value="markdown" >Markdown</option>
+        <option value="textile" >Textile</option>
+        <option value="rdoc" >Rdoc</option>
+      </select>
+        <textarea rows="3" id="badge-textarea" class="image_url" readonly onclick="this.focus();this.select()"><%= code_triagers_badge_url %></textarea>
+        <textarea rows="3" id="badge-textarea" class="markdown hidden" readonly readonly onclick="this.focus();this.select()">[![Code Triagers Badge](<%= code_triagers_badge_url %>)](<%= repo_url(@repo) %>)</textarea>
+        <textarea rows="3" id="badge-textarea" class="textile hidden" readonly readonly onclick="this.focus();this.select()">!<%= code_triagers_badge_url %>!:<%= repo_url(@repo) %></textarea>
+
+        <textarea rows="3" id="badge-textarea" class="rdoc hidden" readonly readonly onclick="this.focus();this.select()">{<img src='<%= code_triagers_badge_url %>' alt='Code Triagers Badge' />}[<%= repo_url(@repo) %>]</textarea>
+      </div>
+    </div>
+
+  </div>
+</div>
