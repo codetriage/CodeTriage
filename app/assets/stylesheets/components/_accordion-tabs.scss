@@ -1,0 +1,42 @@
+.accordion-tabs {
+  $large-screen: em(860) !default;
+
+  @include clearfix;
+  padding: 0;
+
+  .tab-header-and-content {
+    list-style: none;
+
+    @include media($large-screen) {
+      display: inline;
+    }
+  }
+
+  .tab-link {
+    display: block;
+    padding-right: 1em;
+
+    @include media($large-screen) {
+      display: inline-block;
+    }
+  }
+
+  .is-active {
+    color: $codetriage-red;
+  }
+
+  .tab-content {
+    display: none;
+    width: 100%;
+    margin-top: $small-spacing;
+    float: left;
+
+    &.is-open {
+      display: block;
+    }
+
+    textarea {
+      height: 3.25rem;
+    }
+  }
+}

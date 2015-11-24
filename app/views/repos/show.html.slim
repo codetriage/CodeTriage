@@ -32,14 +32,17 @@ div class="subpage-content-wrapper #{ @repo.weight }"
     section.avatars.content-section
       h2.content-section-title
         = pluralize(@repo.subscribers.size, 'Subscriber'.pluralize())
-        a.repo-badge href="#{ repo_path(@repo) }"
-          img src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers.size}") }" /
-
       ul.avatars-list
         = render 'subscribers/avatars', subscribers: @subscribers, show_names: false
 
       - if (difference = @repo.subscribers.count - @subscribers.count) && difference > 0
         = link_to 'View all Subscribers' , repo_subscribers_path(full_name: @repo.full_name)
+
+    section.content-section
+      h2.content-section-title
+        | Add a CodeTriage badge to #{@repo.name}
+        img.repo-badge src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers.size}") }" /
+      = render partial: "badge"
 
     section.open-issues.content-section
       h2.content-section-title #{@repo.issues_count} open issues in #{@repo.path}
