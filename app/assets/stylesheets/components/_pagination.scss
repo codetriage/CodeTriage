@@ -1,9 +1,13 @@
 .pagination {
   border-color: $base-background-color;
   border-style: solid;
-  border-width: 0 2px 2px 2px;
+  border-width: 2px;
   display: block;
   text-align: center;
+
+  .slats-list & {
+    border-width: 0 2px 2px 2px;
+  }
 
   span,
   em,

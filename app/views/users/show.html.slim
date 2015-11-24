@@ -8,9 +8,9 @@
       h1.subpage-primary-title= @user.github
       h2.subpage-secondary-title.user-email= @user.email
 
-      .user-actions
-        = link_to 'Delete Account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", default: "Are you sure?")}", class: 'delete-account'
-        = link_to 'Edit Account'.html_safe, edit_user_path(@user), class: 'edit-account'
+      .subpage-header-actions
+        = link_to 'Delete Account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", default: "Are you sure?")}"
+        = link_to 'Edit Account'.html_safe, edit_user_path(@user), class: 'header-primary-action'
 
     section.user-settings.content-section
       h2.content-section-title Settings
