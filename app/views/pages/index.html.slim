@@ -72,7 +72,7 @@ javascript:
     function updateQueryStringParam(param, value) {
       baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
       urlQueryString = document.location.search;
-      var newParam = param + '=' + value,
+      var newParam = param + '=' + encodeURIComponent(value),
       params = '?' + newParam;
 
       // If the "search" string exists, then build params from it
