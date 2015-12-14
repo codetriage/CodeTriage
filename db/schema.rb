@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021160718) do
+ActiveRecord::Schema.define(version: 20151214120117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "data_dumps", force: :cascade do |t|
     t.text     "data"
@@ -29,9 +30,8 @@ ActiveRecord::Schema.define(version: 20151021160718) do
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
     t.boolean  "delivered",            default: false
+    t.index ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
   end
-
-  add_index "issue_assignments", ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
 
   create_table "issues", force: :cascade do |t|
     t.integer  "comment_count"
@@ -47,11 +47,10 @@ ActiveRecord::Schema.define(version: 20151021160718) do
     t.string   "html_url"
     t.string   "state"
     t.boolean  "pr_attached",     default: false
+    t.index ["number"], name: "index_issues_on_number", using: :btree
+    t.index ["repo_id"], name: "index_issues_on_repo_id", using: :btree
+    t.index ["state"], name: "index_issues_on_state", using: :btree
   end
-
-  add_index "issues", ["number"], name: "index_issues_on_number", using: :btree
-  add_index "issues", ["repo_id"], name: "index_issues_on_repo_id", using: :btree
-  add_index "issues", ["state"], name: "index_issues_on_state", using: :btree
 
   create_table "repo_subscriptions", force: :cascade do |t|
     t.datetime "created_at"
@@ -102,11 +101,10 @@ ActiveRecord::Schema.define(version: 20151021160718) do
     t.boolean  "skip_issues_with_pr",    default: false
     t.string   "account_delete_token"
     t.datetime "last_clicked_at"
+    t.index ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["github"], name: "index_users_on_github", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["github"], name: "index_users_on_github", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
