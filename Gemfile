@@ -5,13 +5,13 @@ ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
 # Gems required in all environments
-gem 'rails', '4.2.5'
+gem 'rails', '5.0.0.beta1'
 
 gem 'puma'
 gem 'puma_auto_tune'
 gem 'git_hub_bub'
 gem 'pg'
-gem 'omniauth'
+gem 'omniauth', '1.3.1'
 gem 'omniauth-github'
 gem 'will_paginate'
 gem 'httparty'
@@ -31,7 +31,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'autoprefixer-rails'
 gem 'normalize-rails'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.0.3'
 gem 'slim-rails'
 
@@ -69,7 +69,6 @@ gem 'sinatra', :require => nil
 
 gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
-
 
 gem "bullet", :group => "development"
 
