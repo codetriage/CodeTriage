@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.2.3
+  - 2.3.0
 script:
   - RAILS_ENV=test bin/rake test
 before_script:
