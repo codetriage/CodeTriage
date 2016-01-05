@@ -1,0 +1,23 @@
+.subpage-content-wrapper
+  .subpage-content-header
+    h1.subpage-primary-title Remove a repo from CodeTriage
+
+  - if user_signed_in?
+    section.content-section
+      h2.content-section-title Repos you're collaborating with
+
+      - if @repos.blank? || @repos.size == 0
+        h3 No repos
+      - else
+        ul.slats-list
+          - @repos.each do |repo|
+            li.slats-item
+              = form_for(@repo, :method => :delete, :url => delete_repo_path(repo["full_name"], id: repo.id)) do |f|
+                = f.hidden_field :id, value: repo.id
+                .slats-hgroup
+                  h3= repo["full_name"]
+
+                  h4 #{repo["issues_count"]} issues
+
+                .slats-action
+                    = f.submit "Remove"
