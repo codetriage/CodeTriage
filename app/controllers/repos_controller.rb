@@ -51,6 +51,35 @@ class ReposController < RepoBasedController
     end
   end
 
+  def remove
+    @repos = []
+    @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
+
+    Repo.all.each do |x|
+      response = GitHubBub.get("/repos/#{Repo.first.user_name}/#{Repo.first.name}", { token: current_user.token })
+      @parsed_response = JSON.parse(response.body)
+
+      if @parsed_response["permissions"]["push"]
+        @repos.push(x)
+      end
+    end
+  end
+
+  def destroy
+    
+    repo = Repo.find(params[:id])
+    repo_subscriptions = RepoSubscription.where(repo_id: repo.id)
+
+    repo_subscriptions.each do |x|
+      user = User.find(x.user_id)
+      UserMailer.inform_remove_repo(user, repo).deliver_now!
+    end
+
+    repo.destroy                                                                    
+
+    redirect_to repos_remove_path
+  end
+
   private
 
     def repo_params
