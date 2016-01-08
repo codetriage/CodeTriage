@@ -40,6 +40,7 @@ group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'bullet', '5.0.0'
 end
 
 group :test do
@@ -73,4 +74,5 @@ gem 'multi_fetch_fragments'
 gem "bullet", :group => "development"
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
+
 gem 'oauth2', github: 'matthewrudy/oauth2', branch: 'rack2'
