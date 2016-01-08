@@ -10,6 +10,17 @@ GIT
       multi_xml (~> 0.5)
       rack (>= 1.0, < 3)
 
+GIT
+  remote: git://github.com/plataformatec/devise.git
+  revision: a321282ccc93d73f9d0f7a1319d3fcab27d25b20
+  specs:
+    devise (3.5.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -124,13 +135,6 @@ GEM
       rack (>= 1)
       rake (~> 10)
       thor (~> 0.19)
-    devise (3.5.2)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 3.2.6, < 5)
-      responders
-      thread_safe (~> 0.1)
-      warden (~> 1.2.3)
     docile (1.1.5)
     em-hiredis (0.3.0)
       eventmachine (~> 1.0)
@@ -255,8 +259,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
     redis (3.2.2)
-    responders (2.1.0)
-      railties (>= 4.2.0, < 5)
+    responders (2.1.1)
+      railties (>= 4.2.0, < 5.1)
     rrrretry (1.0.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
@@ -312,7 +316,7 @@ GEM
       activemodel
       mail (~> 2.6.1)
     vcr (2.9.3)
-    warden (1.2.3)
+    warden (1.2.4)
       rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
@@ -344,7 +348,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dalli
   derailed_benchmarks
-  devise
+  devise!
   foreman
   git_hub_bub
   httparty
