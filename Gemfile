@@ -40,6 +40,7 @@ group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'bullet', '5.0.0'
 end
 
 group :test do
@@ -69,7 +70,5 @@ gem 'sidekiq'
 
 gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
-
-gem "bullet", :group => "development"
 
 gem 'oauth2', github: 'matthewrudy/oauth2', branch: 'rack2'
