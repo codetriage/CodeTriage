@@ -318,6 +318,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   launchy
+  mail
   mail_view (~> 1.0.2)
   maildown
   mime-types (~> 2.6.1)
@@ -353,4 +354,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
