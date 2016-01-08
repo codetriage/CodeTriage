@@ -327,7 +327,7 @@ GEM
     websocket-extensions (0.1.2)
     wicked (1.2.1)
       railties (>= 3.0.7)
-    will_paginate (3.0.7)
+    will_paginate (3.1.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -383,7 +383,7 @@ DEPENDENCIES
   web-console (~> 2.0)
   webmock
   wicked
-  will_paginate
+  will_paginate (= 3.1.0)
 
 BUNDLED WITH
    1.11.2
