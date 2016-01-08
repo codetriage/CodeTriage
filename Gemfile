@@ -71,3 +71,5 @@ gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
 
 gem "bullet", :group => "development"
+
+gem 'oauth2', github: 'matthewrudy/oauth2', branch: 'rack2'
