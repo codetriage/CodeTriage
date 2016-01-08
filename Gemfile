@@ -54,7 +54,7 @@ end
 
 group :development, :test do
   gem 'teaspoon', '~> 0.7.4'
-  gem 'dotenv-rails'
+  # gem 'dotenv-rails'
   gem 'derailed_benchmarks'
 end
 
@@ -65,7 +65,7 @@ end
 gem 'the_lone_dyno'
 
 gem 'sidekiq'
-gem 'sinatra', :require => nil
+# gem 'sinatra', :require => nil
 
 gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
