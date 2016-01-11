@@ -39,7 +39,7 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'spring'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', github: "rails/web-console" #'~> 2.0'
   gem 'bullet', '5.0.0'
 end
 
