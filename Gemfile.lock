@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/jnicklas/capybara.git
+  revision: 4b3093f4bd12a682b41d8e88d3958d33e70f4662
+  specs:
+    capybara (2.6.0.dev)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+
+GIT
   remote: git://github.com/matthewrudy/oauth2.git
   revision: 030cf008d6821d475f7de44054cc50dd42597750
   branch: rack2
@@ -88,6 +99,13 @@ GIT
       thor (>= 0.18.1, < 2.0)
 
 GIT
+  remote: git://github.com/rails/record_tag_helper.git
+  revision: 0eaf03ab6a185560508f660c6f191e9ae85a3340
+  specs:
+    record_tag_helper (1.0.0)
+      actionview (>= 5.x, < 6.0)
+
+GIT
   remote: git://github.com/rails/web-console.git
   revision: 0991238f6745e0f045edc40592ac09693bfd2f36
   specs:
@@ -120,12 +138,6 @@ GEM
     bullet (5.0.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
-    capybara (2.3.0)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
     celluloid (0.17.2)
       celluloid-essentials
       celluloid-extras
@@ -352,7 +364,7 @@ DEPENDENCIES
   bluecloth
   bourbon
   bullet (= 5.0.0)
-  capybara (= 2.3.0)
+  capybara!
   coffee-rails (~> 4.1.0)
   dalli
   derailed_benchmarks
@@ -382,6 +394,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rails_autolink
+  record_tag_helper!
   rrrretry
   sass-rails (~> 5.0.0)
   sidekiq

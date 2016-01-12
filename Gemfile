@@ -44,7 +44,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '2.3.0'
+  gem 'capybara', github: 'jnicklas/capybara' # '2.5.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'webmock'
@@ -79,3 +79,5 @@ gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is use
 gem 'oauth2', github: 'matthewrudy/oauth2', branch: 'rack2'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
+
+gem 'record_tag_helper', github: 'rails/record_tag_helper'
