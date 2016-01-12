@@ -32,7 +32,8 @@ OmniAuth.config.add_mock(:github, {
   },
   extra: {
     raw_info: {
-      name: "Mock Star"
+      name:       "Mock Star",
+      avatar_url: "http://gravatar.com/avatar/default"
     }
   }
 })
@@ -83,6 +84,9 @@ module ActionDispatch
     include Capybara::DSL
 
     def login_via_github
+      # Works based off of omniauth's mock
+      # The user will be looked up from the database and updated
+      # based off of the info in the mock.
       visit "/users/auth/github"
     end
   end

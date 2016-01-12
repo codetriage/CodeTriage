@@ -75,7 +75,7 @@ class ReposController < RepoBasedController
     end
 
     def params_blank?
-      repo_params.values.any?(&:blank?)
+      repo_params.blank?
     end
 
     def cached_repos(type, options = {})

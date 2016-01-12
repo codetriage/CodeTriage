@@ -16,7 +16,7 @@ class ReposControllerTest < ActionController::TestCase
       post :create, repo: { name: 'codetriage', user_name: 'codetriage' }
     end
 
-    assert_redirected_to user_omniauth_authorize_path(:github, origin: "/repos?repo%5Bname%5D=codetriage&repo%5Buser_name%5D=codetriage")
+    assert_redirected_to user_omniauth_authorize_path(:github, origin: "/repos")
   end
 
   test 'do not send email for repo without issues' do
