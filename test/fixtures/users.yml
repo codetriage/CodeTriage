@@ -21,6 +21,8 @@ mockstar:
   private: false
   favorite_languages: [ "ruby" ]
   last_clicked_at: <%= Time.now %>
+  avatar_url: https://avatars1.githubusercontent.com/u/59744?v=3&s=460
+
 schneems:
   email: richard.schneeman@gmail.com
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
@@ -43,6 +45,8 @@ schneems:
   name: Richard Schneeman
   private: false
   last_clicked_at: <%= Time.now %>
+  avatar_url: https://avatars1.githubusercontent.com/u/59744?v=3&s=460
+
 jroes:
   email: jroes@jroes.net
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
@@ -65,6 +69,7 @@ jroes:
   name: Jonathan Roes
   private: true
   last_clicked_at: <%= Time.now %>
+  avatar_url: https://avatars1.githubusercontent.com/u/59744?v=3&s=460
 
 empty:
   email: empty@empty.com
@@ -88,3 +93,4 @@ empty:
   name: Empty
   private: false
   last_clicked_at: <%= Time.now %>
+  avatar_url: https://avatars1.githubusercontent.com/u/59744?v=3&s=460
