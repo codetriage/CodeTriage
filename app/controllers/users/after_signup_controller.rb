@@ -2,7 +2,7 @@ class Users::AfterSignupController < ApplicationController
 
   include Wicked::Wizard
 
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   steps :set_privacy
 

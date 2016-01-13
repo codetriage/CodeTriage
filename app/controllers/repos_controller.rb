@@ -2,7 +2,7 @@ require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
 class ReposController < RepoBasedController
 
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
