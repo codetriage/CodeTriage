@@ -222,7 +222,7 @@ GEM
       mime-types (>= 1.16, < 3)
     mail_view (1.0.3)
       tilt
-    maildown (1.0.4)
+    maildown (2.0.0)
       kramdown
       rails (>= 4.0.0)
     memory_profiler (0.9.6)
@@ -376,7 +376,7 @@ DEPENDENCIES
   launchy
   mail
   mail_view (~> 1.0.2)
-  maildown
+  maildown (= 2.0.0)
   mime-types (~> 2.6.1)
   mocha
   multi_fetch_fragments
