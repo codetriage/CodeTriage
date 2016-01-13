@@ -6,7 +6,7 @@ class UsersControllerTest < ActionController::TestCase
   test 'should destroy a user with the correct account_delete_token' do
 
     assert_difference "User.count", -1 do
-      delete :token_destroy, account_delete_token: users(:mockstar).account_delete_token
+      delete :token_destroy, params: { account_delete_token: users(:mockstar).account_delete_token }
     end
   end
 end
