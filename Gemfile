@@ -19,7 +19,7 @@ gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
 gem 'bluecloth'
-gem 'maildown'
+gem 'maildown', '2.0.0'
 gem 'rrrretry'
 gem 'jquery-rails'
 gem 'devise', github: 'plataformatec/devise'
@@ -56,7 +56,7 @@ end
 
 group :development, :test do
   gem 'teaspoon', '~> 0.7.4'
-  # gem 'dotenv-rails'
+  gem 'dotenv-rails', '2.1.0'
   gem 'derailed_benchmarks'
 end
 

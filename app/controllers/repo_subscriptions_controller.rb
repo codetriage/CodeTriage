@@ -1,5 +1,5 @@
 class RepoSubscriptionsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def create
     repo = Repo.find(params[:repo_id])
@@ -9,14 +9,15 @@ class RepoSubscriptionsController < ApplicationController
       redirect_to repo, notice: I18n.t('repo_subscriptions.subscribed')
     else
       flash[:error] = "Something went wrong"
-      redirect_to :back
+      redirect_to repo_path(repo)
     end
   end
 
   def destroy
     @repo_sub = current_user.repo_subscriptions.find params[:id]
+    repo = @repo_sub.repo
     @repo_sub.destroy
-    redirect_to :back
+    redirect_to repo_path(repo)
   end
 
   def update
@@ -26,7 +27,7 @@ class RepoSubscriptionsController < ApplicationController
     else
       flash[:error] = "Something went wrong"
     end
-    redirect_to :back
+    redirect_to repo_path(@repo_sub.repo)
   end
 
   private
