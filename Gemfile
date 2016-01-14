@@ -56,7 +56,7 @@ end
 
 group :development, :test do
   gem 'teaspoon', '~> 0.7.4'
-  # gem 'dotenv-rails'
+  gem 'dotenv-rails', '2.1.0'
   gem 'derailed_benchmarks'
 end
 
