@@ -73,5 +73,5 @@ gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'oauth2', github: 'matthewrudy/oauth2', branch: 'rack2'
+gem 'oauth2', github: 'intridea/oauth2'
 gem 'record_tag_helper', github: 'rails/record_tag_helper'
