@@ -67,7 +67,7 @@ class Repo < ActiveRecord::Base
   end
 
   def self.all_languages
-    self.select("language").group("language").map(&:language).reject(&:blank?)
+    self.select("language").group("language").order("language ASC").map(&:language).reject(&:blank?)
   end
 
   def self.repos_needing_help_for_user(user)
