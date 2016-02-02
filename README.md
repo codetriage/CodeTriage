@@ -14,6 +14,7 @@ Triage is an important part of open source. It can be difficult to keep up with 
 
 As a non-maintainer, you can help an open source project by triaging issues. When issues come in, they are assigned out to triage. If you get assigned an issue, you should look closely at it, and provide feedback to make a maintainer's life easier. If there is a bug reported, try to reproduce it and then give the results in the issue comments. If code is included in the issue, review the code, see if it makes sense. Code submitted should have a clear use case, be in the same style as the project, and not introduce failures into the test system. If the code is good, leave a comment explaining why you believe it is good. +1's are great, but leave no context and don't help maintainers much. If you don't like an issue you need to explain why as well. Either way leave a comment with the issue.
 
+
 ## How Does it Work?
 
 You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Sidekiq to grab issues from GitHub's API, we then use another background task to assign users who subscribe to a repository one issue each day.
@@ -21,25 +22,26 @@ You sign up to follow a repository, once a day you'll be emailed with an open is
 
 ## Run Code Triage
 
-### Dependencies
-
-Make sure you have bundler, then install the dependencies:
+Make sure you have Bundler:
 
 ```shell
 $ gem install bundler
-$ bundle install
 ```
 
-### Database
-* Create a database (default is PostgreSQL)
-* Copy database.yml and if you need, setup your own database credentials
-* Run migrations
+### Setup
+
+After cloning this repository, run the setup script:
 
 ```shell
-$ cp config/database.example.yml config/database.yml
-$ bin/rake db:create
-$ bin/rake db:migrate
+$ bin/setup
 ````
+
+This will:
+
+- Install dependencies
+- Copy a `database.yml` and if you need, setup your own database credentials
+- Copy a `.env`, setup environment variables
+- Create a database (default is PostgreSQL) and run migrations
 
 ### Install Redis
 
@@ -58,16 +60,16 @@ You now have Redis running on 6379.
 
 **Other**
 
-See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
+See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download).
 
 ### Environment
 
-If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications). The urls you are asked to provide will be something like this:
+If you want your users to sign up with GitHub, create a [GitHub Client Application](https://github.com/settings/applications). The urls you are asked to provide will be something like this:
 
 - URL: `http://localhost:3000`
 - Callback URL: `http://localhost:3000/users/auth/github/callback`
 
-Then add the credentials to your .env file:
+Then add the credentials to your `.env` file:
 
 ```shell
 $ echo GITHUB_APP_ID=foo >> .env
@@ -77,7 +79,7 @@ $ echo PORT=3000 >> .env
 
 ### Running the app
 
-Start your app using Foreman
+Start your app using Foreman:
 
 ```shell
 $ foreman start
@@ -85,17 +87,17 @@ $ foreman start
 08:19:22 worker.1 | started with pid 6348
 ```
 
-Code Triage should now be running at [http://localhost:3000](http://localhost:3000)
+Code Triage should now be running at [http://localhost:3000](http://localhost:3000).
 
 
 ## Tests
 
 ```shell
-$ bin/rake db:create RAILS_ENV=test
-$ bin/rake db:schema:load RAILS_ENV=test
+$ bin/rails db:create RAILS_ENV=test
+$ bin/rails db:schema:load RAILS_ENV=test
 ```
 
-You may need a github API token to run tests locally. You can get this by spinning your local server, clicking the "sign in" button and going through the OAuth flow.
+You may need a GitHub API token to run tests locally. You can get this by spinning your local server, clicking the "sign in" button and going through the OAuth flow.
 
 Once you've done this spin down your server and run this:
 
@@ -110,23 +112,24 @@ Make sure it shows up in your `.env`:
 > puts File.read(".env")
 ```
 
-Now you should be able to run tests
+Now you should be able to run tests:
 
 ```
-$ bin/rake test
+$ bin/rails test
 ```
+
 
 ## Writing tests
 
-If you need to mock out some github requests please use VCR. Put anything that may create an external request inside of a vcr block:
+If you need to mock out some GitHub requests please use VCR. Put anything that may create an external request inside of a vcr block:
 
-```
+```ruby
 VCR.use_cassette('my_vcr_cassette_name_here') do
   # ... code goes here
 end
 ```
 
-Make sure to name your cassette something unique. The first time you run tests you'll need to set a [record mode](https://relishapp.com/vcr/vcr/v/2-8-0/docs/record-modes). This will make a real-life request to github using your `GITHUB_API_KEY` you specified in the `.env` and record the result. The next time you run your tests it should use your "cassette" instead of actually hitting github. All secrets including your `GITHUB_API_KEY` are filtered out, so you can safely commit the resultant. When running on travis the VCR cassettes are used to eliminate/minimize actual calls to Github.
+Make sure to name your cassette something unique. The first time you run tests you'll need to set a [record mode](https://relishapp.com/vcr/vcr/v/2-8-0/docs/record-modes). This will make a real-life request to GitHub using your `GITHUB_API_KEY` you specified in the `.env` and record the result. The next time you run your tests it should use your "cassette" instead of actually hitting GitHub. All secrets including your `GITHUB_API_KEY` are filtered out, so you can safely commit the resultant. When running on travis the VCR cassettes are used to eliminate/minimize actual calls to GitHub.
 
 The benefit of using VCR over stubbing/mocking methods is that we could swap out implementations if we wanted.
 
@@ -139,11 +142,12 @@ If you need to modify a test locally and the VCR cassette doesn't have the corre
 
 Make sure to remove any record modes from your VCR cassette before committing.
 
+
 ## Flow
 
 - A user subscribes to a repo
-- Consume API: Once a day, find all the repos that haven't been updated in 24 hours, produce issue subscription.
-- Issue Assigning [repo]: Find all users subscribed to that repo that haven't been assigned an issue in 24 hours, pick a random issue that the user is not a part of and send them an email.
+- Consume API: Once a day, find all the repos that haven't been updated in 24 hours, produce issue subscription
+- Issue Assigning [repo]: Find all users subscribed to that repo that haven't been assigned an issue in 24 hours, pick a random issue that the user is not a part of and send them an email
 
 
 ## Contact
