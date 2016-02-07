@@ -5,7 +5,7 @@ ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
 # Gems required in all environments
-gem 'rails', github: "rails/rails"
+gem 'rails', '5.0.0.beta2'
 
 gem 'puma'
 gem 'puma_auto_tune'
@@ -22,7 +22,8 @@ gem 'bluecloth'
 gem 'maildown', '2.0.0'
 gem 'rrrretry'
 gem 'jquery-rails'
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
+gem 'warden', '1.2.6'
 gem 'rack-timeout'
 gem 'mail_view', '~> 1.0.2'
 gem 'valid_email'
@@ -39,12 +40,12 @@ group :development do
   gem 'foreman'
   gem 'quiet_assets'
   gem 'spring'
-  gem 'web-console', github: "rails/web-console" #'~> 2.0'
+  gem 'web-console'
   gem 'bullet', '5.0.0'
 end
 
 group :test do
-  gem 'capybara', github: 'jnicklas/capybara' # '2.5.0'
+  gem 'capybara', git: 'https://github.com/jnicklas/capybara.git' # '2.5.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'webmock'
@@ -73,5 +74,5 @@ gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'oauth2', github: 'intridea/oauth2'
-gem 'record_tag_helper', github: 'rails/record_tag_helper'
+gem 'oauth2', git: 'https://github.com/intridea/oauth2.git'
+gem 'record_tag_helper', git: 'https://github.com/rails/record_tag_helper.git'
