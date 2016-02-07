@@ -5,7 +5,7 @@ ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
 # Gems required in all environments
-gem 'rails', git: 'https://github.com/rails/rails.git'
+gem 'rails', '5.0.0.beta2'
 
 gem 'puma'
 gem 'puma_auto_tune'
