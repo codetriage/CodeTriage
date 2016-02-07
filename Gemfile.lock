@@ -300,7 +300,7 @@ GEM
       activemodel
       mail (~> 2.6.1)
     vcr (2.9.3)
-    warden (1.2.5)
+    warden (1.2.6)
       rack (>= 1.0)
     web-console (3.1.1)
       activemodel (>= 4.2)
@@ -370,6 +370,7 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   valid_email
   vcr
+  warden (= 1.2.6)
   web-console
   webmock
   wicked
