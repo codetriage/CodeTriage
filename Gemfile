@@ -5,7 +5,11 @@ ruby '2.3.0'
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
 # Gems required in all environments
-gem 'rails', '5.0.0.beta2'
+if ENV["RAILS_MASTER"] == '1'
+  gem 'rails', git: 'https://github.com/rails/rails.git'
+else
+  gem 'rails', '5.0.0.beta2'
+end
 
 gem 'puma'
 gem 'puma_auto_tune'
