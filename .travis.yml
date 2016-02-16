@@ -2,6 +2,12 @@ language: ruby
 sudo: false
 rvm:
   - 2.3.0
+env:
+  matrix:
+    - "RAILS_MASTER=0"
+    - "RAILS_MASTER=1"
+before_install:
+  - bundle install
 script:
   - RAILS_ENV=test bin/rake test
 before_script:
@@ -17,5 +23,8 @@ deploy:
   on:
     repo: codetriage/codetriage
   run: "bin/rake db:migrate"
+matrix:
+  allow_failures:
+    - env: "RAILS_MASTER=1"
 cache:
   - bundler
