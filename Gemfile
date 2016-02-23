@@ -11,8 +11,7 @@ else
   gem 'rails', '5.0.0.beta2'
 end
 
-gem 'puma'
-gem 'puma_auto_tune'
+gem 'puma', '3.0.0.rc1'
 gem 'git_hub_bub'
 gem 'pg'
 gem 'omniauth', '1.3.1'
@@ -31,10 +30,10 @@ gem 'warden', '1.2.6'
 gem 'rack-timeout'
 gem 'mail_view', '~> 1.0.2'
 gem 'valid_email'
-gem 'sass-rails', '~> 5.0.0'
+gem 'sass-rails', '6.0.0.beta1'
 gem 'bourbon'
 gem 'neat'
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '~> 6.3.3.1'
 gem 'normalize-rails'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.0.3'
@@ -78,5 +77,9 @@ gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'oauth2', git: 'https://github.com/intridea/oauth2.git'
 gem 'record_tag_helper', git: 'https://github.com/rails/record_tag_helper.git'
+
+gem 'sprockets'      , '4.0.0.beta2'
+gem 'sprockets-rails'
+
+gem 'babel-transpiler'
