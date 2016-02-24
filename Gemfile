@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
   gem 'web-console'
   gem 'bullet', '5.0.0'
+  gem 'listen'
 end
 
 group :test do
