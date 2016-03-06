@@ -72,7 +72,7 @@ end
 gem 'the_lone_dyno'
 
 gem 'sidekiq'
-# gem 'sinatra', :require => nil
+gem 'sinatra', require: nil, git: 'https://github.com/sinatra/sinatra.git'
 
 gem 'aws-sdk', '~> 2'
 gem 'multi_fetch_fragments'

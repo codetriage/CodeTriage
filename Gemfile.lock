@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/sinatra/sinatra.git
+  revision: 4c7d38eb1b2cc02ce51029f28e0c3c34ca12ccfd
+  specs:
+    sinatra (2.0.0.pre.alpha)
+      rack (= 2.0.0.alpha)
+      rack-protection (~> 1.5)
+      tilt (~> 2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -185,6 +194,8 @@ GEM
       railties (>= 3.1, < 5.0)
     rack (2.0.0.alpha)
       json
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rack-timeout (0.3.2)
@@ -347,6 +358,7 @@ DEPENDENCIES
   sass-rails (= 6.0.0.beta1)
   sidekiq
   simplecov
+  sinatra!
   slim-rails
   spring
   sprockets (= 4.0.0.beta2)
