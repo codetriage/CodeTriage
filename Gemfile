@@ -49,7 +49,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', git: 'https://github.com/jnicklas/capybara.git' # '2.5.0'
+  gem 'capybara', '2.6.2'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'webmock'

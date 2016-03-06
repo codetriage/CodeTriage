@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/jnicklas/capybara.git
-  revision: 3f5c36f1a45e0f05365539524ee17adb20a7c8d5
-  specs:
-    capybara (2.7.0.dev)
-      addressable
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
-
-GIT
   remote: https://github.com/plataformatec/devise.git
   revision: ffe9d6d406e79108cf32a2c6a1d0b3828849c40b
   specs:
@@ -85,6 +73,13 @@ GEM
     bullet (5.0.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
+    capybara (2.6.2)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -322,7 +317,7 @@ DEPENDENCIES
   bluecloth
   bourbon
   bullet (= 5.0.0)
-  capybara!
+  capybara (= 2.6.2)
   coffee-rails (~> 4.1.0)
   dalli
   derailed_benchmarks
