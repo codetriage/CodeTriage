@@ -21,13 +21,6 @@ GIT
       responders
       warden (~> 1.2.3)
 
-GIT
-  remote: https://github.com/rails/record_tag_helper.git
-  revision: 0eaf03ab6a185560508f660c6f191e9ae85a3340
-  specs:
-    record_tag_helper (1.0.0)
-      actionview (>= 5.x, < 6.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -244,6 +237,8 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    record_tag_helper (1.0.0)
+      actionview (~> 5.x)
     redis (3.2.2)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
@@ -357,7 +352,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rails_autolink
-  record_tag_helper!
+  record_tag_helper (~> 1.0)
   rrrretry
   sass-rails (= 6.0.0.beta1)
   sidekiq
