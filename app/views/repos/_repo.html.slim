@@ -1,15 +1,16 @@
-li class="repo-item #{ repo.weight }" data-language="#{ repo.language if repo.language }"
-  = link_to repo
-    header.repo-item-header
-        h4.repo-item-title = repo.name
+= cache repo do
+  li class="repo-item #{ repo.weight }" data-language="#{ repo.language if repo.language }"
+    = link_to repo
+      header.repo-item-header
+          h4.repo-item-title = repo.name
 
-        span.repo-item-issues
-          = warning_svg
-          = repo.issues_count
-          |  Issues
+          span.repo-item-issues
+            = warning_svg
+            = repo.issues_count
+            |  Issues
 
-    p.repo-item-description = raw repo.description
+      p.repo-item-description = raw repo.description
 
-    - if repo.full_name.present?
-      span.repo-item-full-name
-        | (#{repo.full_name})
+      - if repo.full_name.present?
+        span.repo-item-full-name
+          | (#{repo.full_name})
