@@ -1,2 +1,2 @@
-ul.repo-list = render partial: "repos/repo", collection: repos
+ul.repo-list = render partial: "repos/repo", collection: repos, cached: true
 .pagination= will_paginate repos, container: false
