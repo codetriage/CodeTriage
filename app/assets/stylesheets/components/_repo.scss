@@ -11,6 +11,12 @@
   }
 }
 
+.repo-badge {
+  @include media(38rem) {
+    float: right;
+  }
+}
+
 .repo-description {
   clear: both;
   color: $light-font-color;
