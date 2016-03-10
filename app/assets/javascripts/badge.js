@@ -5,7 +5,7 @@ $(function() {
       var accordionTabs = $(this).closest('.accordion-tabs');
       accordionTabs.find('.is-open').removeClass('is-open').hide();
 
-      $(this).next().toggleClass('is-open').toggle();
+      $(this).next().toggleClass('is-open').show();
       accordionTabs.find('.is-active').removeClass('is-active');
       $(this).addClass('is-active');
     } else {
