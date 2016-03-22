@@ -1,0 +1,22 @@
+require 'atomic'
+
+array = Atomic.new([])
+
+threads = []
+def insert_into_array(array, value, threads)
+  threads << Thread.new do
+    array.update{|v|
+      puts "== Running Update"
+      v << value
+    }
+  end
+end
+
+
+insert_into_array(array, 1, threads)
+insert_into_array(array, 2, threads)
+insert_into_array(array, 3, threads)
+
+threads.map(&:join)
+
+puts array.value

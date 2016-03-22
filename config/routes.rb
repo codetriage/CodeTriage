@@ -11,6 +11,7 @@ CodeTriage::Application.routes.draw do
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
+  resources   :doc_methods
 
   devise_for :users, skip: [:registration],
     :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
