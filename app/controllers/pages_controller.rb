@@ -17,12 +17,17 @@ class PagesController < ApplicationController
       format.json do
         htmlForPage = render_to_string(partial: "repos_with_pagination", locals: {repos: @repos}, formats: ['html'])
         render json: { html: htmlForPage }.to_json
-      end
-    end
+      end    end
   end
 
   def letsencrypt
-    render text: "YHJqgvWCjAQ5TDdjGeH60RfvlZQY_CvqwFKyu94PkTQ.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
+    render text: "DkLDpTLqhJKCl6SL7jJVbFSxWOuFJwry0K3UN2bJmqk.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
+  end
+
+
+
+  def letsencryptwww
+    render text: ""
   end
 
 
