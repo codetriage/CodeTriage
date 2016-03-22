@@ -27,7 +27,7 @@ class PagesController < ApplicationController
 
 
   def letsencryptwww
-    render text: ""
+    render text: "T2BMOklX7iIflqShN8o14d-mjsySpiy9jDKDD-oPquc.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
   end
 
 

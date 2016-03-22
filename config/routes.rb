@@ -3,7 +3,7 @@ require 'sidekiq/web'
 CodeTriage::Application.routes.draw do
 
   get ".well-known/acme-challenge/DkLDpTLqhJKCl6SL7jJVbFSxWOuFJwry0K3UN2bJmqk" => "pages#letsencrypt"
-  get ".well-known/acme-challenge/" => "pages#letsencryptwww"
+  get ".well-known/acme-challenge/T2BMOklX7iIflqShN8o14d-mjsySpiy9jDKDD-oPquc" => "pages#letsencryptwww"
 
 
   authenticate :user, lambda { |u| u.admin? } do
