@@ -21,6 +21,11 @@ class PagesController < ApplicationController
     end
   end
 
+  def letsencrypt
+    render text: "O_VqccnDEyUDzgZelAPBVOQGmWNTcPrywUMkE5G3c9w.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
+  end
+
+
   def valid_params
     params.permit(:language, :per_page, :page)
   end
