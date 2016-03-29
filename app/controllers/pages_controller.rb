@@ -10,6 +10,7 @@ class PagesController < ApplicationController
 
     if user_signed_in?
       @repos_subs = current_user.repo_subscriptions.page(valid_params[:page]).per_page( valid_params[:per_page] || 50).includes(:repo)
+      @repos = @repos.not_subscribed_by(current_user)
     end
 
     respond_to do |format|
@@ -20,6 +21,8 @@ class PagesController < ApplicationController
       end
     end
   end
+
+  private
 
   def valid_params
     params.permit(:language, :per_page, :page)
