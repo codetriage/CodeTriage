@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321152204) do
+ActiveRecord::Schema.define(version: 20160404173429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,16 +26,15 @@ ActiveRecord::Schema.define(version: 20160321152204) do
   create_table "doc_assignments", force: :cascade do |t|
     t.integer  "repo_id"
     t.integer  "repo_subscription_id"
-    t.integer  "user_id"
     t.integer  "doc_method_id"
     t.integer  "doc_class_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "clicked",              default: false
   end
 
   add_index "doc_assignments", ["repo_id"], name: "index_doc_assignments_on_repo_id", using: :btree
   add_index "doc_assignments", ["repo_subscription_id"], name: "index_doc_assignments_on_repo_subscription_id", using: :btree
-  add_index "doc_assignments", ["user_id"], name: "index_doc_assignments_on_user_id", using: :btree
 
   create_table "doc_classes", force: :cascade do |t|
     t.integer  "repo_id"

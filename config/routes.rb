@@ -38,7 +38,9 @@ CodeTriage::Application.routes.draw do
 
   resources   :issue_assignments
 
-  get "/issue_assignments/:id/users/:user_id/click", to: "issue_assignments#click_redirect", as: :issue_click
+  get "/issue_assignments/:id/users/:user_id/click",  to: "issue_assignments#click_issue_redirect", as: :issue_click
+  get "/doc_methods/:id/users/:user_id/click",        to: "doc_methods#click_method_redirect",      as: :doc_method_click
+  get "/doc_methods/:id/users/:user_id/source_click", to: "doc_methods#click_source_redirect",      as: :doc_source_click
 
   resources   :repo_subscriptions
 

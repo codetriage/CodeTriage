@@ -44,4 +44,14 @@ namespace :schedule do
       ::UserMailer.invalid_token(user).deliver
     end
   end
+
+  desc "pulls in files from repos and adds them to the database"
+  task process_repos: :environment do
+    Repo.find_each(&:background_populate_docs!)
+  end
+
+  desc "sends all users a method or class of a repo they are following"
+  task user_send_doc: :environment do
+    User.find_each(&:background_subscribe_docs!)
+  end
 end
