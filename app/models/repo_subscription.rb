@@ -17,8 +17,17 @@ class RepoSubscription < ActiveRecord::Base
   before_save :set_read_write
 
   def set_read_write
-    self.read  = false if read_limit  == 0
-    self.write = false if write_limit == 0
+    if read_limit.blank? || read_limit.zero?
+      self.read = false
+    else
+      self.read = true
+    end
+
+    if write_limit.blank? || write_limit.zero?
+      self.write = false
+    else
+      self.write = true
+    end
   end
 
   def self.ready_for_docs
