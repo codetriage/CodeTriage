@@ -17,7 +17,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     repo = repos(:rails_rails)
     sign_in users(:mockstar)
     RepoSubscription.any_instance.stubs(:save).returns false
-    post :create, params: { repo_id: repo.id }
+    post :create, params: { repo_subscription: { repo_id: repo.id } }
     assert_equal flash[:error], "Something went wrong"
     assert_redirected_to repo_path(repo)
   end
@@ -50,7 +50,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     sign_in users(:schneems)
     patch :update, params: { id: repo_subscription.id,
                              repo_subscription: { email_limit: 12 } }
-    assert_equal flash[:success], "Email preferences updated!"
+    assert_equal flash[:success], "Preferences updated!"
     assert_redirected_to repo_path(repo_subscription.repo)
   end
 

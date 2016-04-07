@@ -8,7 +8,7 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
     visit "/"
     click_link "issue_triage_sandbox"
 
-    first(:button, "I Want to Triage bemurphy/issue_triage_sandbox").click
+    first(:button, "Triage Issues").click
 
     assert page.has_content?("You'll receive daily triage e-mails for this repository.")
   end

@@ -15,6 +15,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
             You'll also receive instructions on how to triage issues.
 
         = wanna_triage_button(@repo, html_class: "repo-action")
+
       - else
         h2.content-section-title Currently receiving #{@repo_sub.email_limit} issues per day.
         .repo-instructions
