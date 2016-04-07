@@ -8,7 +8,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
   test 'successfully subscribe to a repo when signed in as mockstar' do
     sign_in users(:mockstar)
     repo = repos(:issue_triage_sandbox)
-    post :create, params: { repo_id: repo.id }
+    post :create, params: { repo_subscription: { repo_id: repo.id } }
     assert flash[:notice] == I18n.t('repo_subscriptions.subscribed')
     assert_redirected_to repo_path(repo)
   end
