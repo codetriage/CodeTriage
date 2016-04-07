@@ -28,6 +28,8 @@ class RepoSubscription < ActiveRecord::Base
     else
       self.write = true
     end
+
+    true
   end
 
   def self.ready_for_docs
