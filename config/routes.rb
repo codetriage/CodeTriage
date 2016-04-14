@@ -4,7 +4,7 @@ CodeTriage::Application.routes.draw do
 
 
   ENV.each do |var|
-    next unless var.starts_with?("ACME_TOKEN_")
+    next unless var.start_with?("ACME_TOKEN_")
     value = var.split('_')[2..-1]
     get ".well-known/acme-challenge/#{ ENV["ACME_TOKEN_#{value}"] }" => proc { [200, {}, [ ENV["ACME_KEY_#{value}"] ] ] }
   end
