@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 CodeTriage::Application.routes.draw do
 
+  get ".well-known/acme-challenge/#{ ENV["ACME_TOKEN"] }" => proc { [200, {}, [ ENV["ACME_KEY"] ] ] }
+
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
