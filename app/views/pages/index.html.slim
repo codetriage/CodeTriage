@@ -50,6 +50,7 @@ javascript:
         var language = this.getAttribute("data-language");
         $(".types-filter-button").html(language);
         updateQueryStringParam("language", language);
+        removeQueryStringParam("page");
 
         $.ajax({
           url: document.URL,
@@ -69,8 +70,22 @@ javascript:
         return false;
       });
 
+    function baseUrl() {
+      return [location.protocol, '//', location.host, location.pathname].join('');
+    }
+
+    function removeQueryStringParam(param) {
+      var urlQueryString = document.location.search;
+
+      if (urlQueryString) {
+        keyRegex = new RegExp('&?' + param + '[^&]*');
+        params = urlQueryString.replace(keyRegex, '');
+      }
+
+      window.history.replaceState({}, '', baseUrl() + params);
+    }
+
     function updateQueryStringParam(param, value) {
-      baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
       urlQueryString = document.location.search;
       var newParam = param + '=' + encodeURIComponent(value),
       params = '?' + newParam;
@@ -85,7 +100,7 @@ javascript:
           params = urlQueryString + '&' + newParam;
         }
       }
-      window.history.replaceState({}, "", baseUrl + params);
+      window.history.replaceState({}, "", baseUrl() + params);
     };
   });
 

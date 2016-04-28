@@ -19,4 +19,11 @@ class PagesControllerTest < ActionController::TestCase
     get :index
     assert_nil assigns(:repos_subs), 'not assigns to repos_subs'
   end
+
+  test "cache control for headers" do
+    get :index
+    assert_equal("no-cache, no-store, max-age=0, must-revalidate", @response.headers["Cache-Control"])
+    assert_equal("no-cache", @response.headers["Pragma"])
+    assert_equal("Fri, 01 Jan 1990 00:00:00 GMT", @response.headers["Expires"])
+  end
 end

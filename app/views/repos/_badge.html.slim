@@ -1,0 +1,23 @@
+- code_triagers_badge_url = File.join(repo_url(@repo), "badges/users.svg")
+
+ul.accordion-tabs
+  li.tab-header-and-content
+    a.is-active.tab-link href="javascript:void(0)" Image URL
+    .tab-content.is-open
+      textarea
+        = code_triagers_badge_url
+  li.tab-header-and-content
+    a.tab-link href="javascript:void(0)" Markdown
+    .tab-content
+      textarea
+        | [![Code Triagers Badge](#{code_triagers_badge_url})](#{repo_url(@repo)})
+  li.tab-header-and-content
+    a.tab-link href="javascript:void(0)" Textile
+    .tab-content
+      textarea
+        | !#{code_triagers_badge_url}!:#{repo_url(@repo)}
+  li.tab-header-and-content
+    a.tab-link href="javascript:void(0)" Rdoc
+    .tab-content
+      textarea
+        | {<img src='#{code_triagers_badge_url}' alt='Code Triagers Badge' />}[#{repo_url(@repo)}]

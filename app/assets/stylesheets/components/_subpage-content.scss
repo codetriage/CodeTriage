@@ -39,6 +39,31 @@
   }
 }
 
+.subpage-header-actions {
+  margin-top: 4px;
+
+  @include media(38rem) {
+    float: right;
+  }
+
+  a {
+    color: $lightest-font-color;
+
+    &:focus,
+    &:hover {
+      color: rgba($lightest-font-color, 0.3);
+    }
+  }
+
+  .header-primary-action {
+    color: $base-font-color;
+    font-size: $small-font-size;
+    letter-spacing: 1px;
+    margin-left: $small-spacing;
+    text-transform: uppercase;
+  }
+}
+
 .subpage-primary-title {
   color: $base-font-color;
   font-size: 1.5rem;
