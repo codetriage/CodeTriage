@@ -13,8 +13,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         p.repo-instructions
           | When you volunteer to triage issues, you'll receive an email each day with a link to an open issue that needs to be triaged in this project.
             You'll also receive instructions on how to triage issues.
-
-        = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button repo-action'
+        = wanna_triage_button(@repo, html_class: "repo-action")
       - else
         h2.content-section-title Currently receiving #{@repo_sub.email_limit} issues per day.
         .repo-instructions
@@ -60,4 +59,4 @@ div class="subpage-content-wrapper #{ @repo.weight }"
           | Stop Triaging
 
     - if @repo_sub.blank?
-      = button_to "I Want to Triage #{@repo.path}", repo_subscriptions_path(repo_id: @repo.id), class: 'button full-width-action'
+      = wanna_triage_button(@repo, html_class: "full-width-action")
