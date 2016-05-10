@@ -83,3 +83,6 @@ gem 'sprockets'      , '4.0.0.beta2'
 gem 'sprockets-rails'
 
 gem 'babel-transpiler'
+
+
+gem 'scout_apm', '~> 2.0.x'
