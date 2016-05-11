@@ -1,0 +1,132 @@
+<style>
+/* prepare the selectors to add a stroke to */
+.stroke-single {
+   -webkit-text-stroke: 1px black;
+   color: white;
+   text-shadow:
+   3px  3px 0 #000,
+  -1px -1px 0 #000,
+   1px -1px 0 #000,
+  -1px  1px 0 #000,
+   1px  1px 0 #000;
+}
+
+#videoContainer, #photoDisplay, #videoElement{
+  position: relative;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #FFF;
+  font-size: 20em;
+  transform: translate(-50%, -50%);
+}
+
+.takePhoto {
+  width: 100%;
+  padding: 5em;
+}
+
+
+</style>
+
+
+
+<div class="hero">
+  <h1 class="hero-title-primary">
+    Show Maintainers Love
+  </h1>
+
+  <h2 class="hero-title-secondary">
+    Grab a piece of paper and write out why you're thankful for a maintainer (sharpie works the best). Snap a pic and to turn it into a digital postcard you can send out.
+  </h2>
+  <br>
+
+  <section class="repo-list-with-pagination">
+      <div id="videoContainer" >
+        <video autoplay="true" id="videoElement">
+        </video>
+        <div class="imageCaptureError">
+          <h3>There was an error enabling your webcam</h3>
+          <p>Upload an image instead</p>
+          <input type="file" class="">
+        </div>
+        <div class="videoOverlay stroke-single" >
+        </div>
+      </div>
+
+    <a href="#" class="takePhoto" id="takePhoto"><%= image_tag("photo.svg") %></a>
+
+    <hr class="section-break">
+
+    <canvas id="photoDisplay">
+    </canvas>
+  </section>
+</div>
+
+
+<script type="text/javascript">
+  function startWebCam(video_element) {
+
+    navigator.getUserMedia = navigator.getUserMedia       ||
+                             navigator.webkitGetUserMedia ||
+                             navigator.mozGetUserMedia    ||
+                             navigator.msGetUserMedia     ||
+                             navigator.oGetUserMedia;
+
+    function handleVideo(stream) {
+      video_element.src = window.URL.createObjectURL(stream);
+    }
+
+    function videoError(e) {
+      $(".imageCaptureError").show();
+      $("#videoElement").hide();
+
+      $("#takePhoto").off('click');
+      console.log(e);
+    }
+
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({video: true}, handleVideo, videoError);
+    } else {
+      videoError("Browser not supported?");
+    }
+  }
+
+
+   var video_element = document.querySelector("#videoElement");
+
+  if (video_element) {
+    startWebCam(video_element)
+
+    $("#takePhoto").click(function() {
+
+      videoOverlay = document.querySelector(".videoOverlay")
+      videoOverlay.innerHTML = "3"
+      setTimeout(function(){
+        videoOverlay.innerHTML = "2"
+        setTimeout(function(){
+          videoOverlay.innerHTML = "1"
+          setTimeout(function(){
+            videoOverlay.innerHTML = ""
+            var screenshot_element   = document.querySelector("#photoDisplay");
+            var screen_shot_contents = screenshot_element.getContext('2d');
+            screen_shot_contents.drawImage(video_element, 0, 0, screenshot_element.width, screenshot_element.height);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+
+    })
+  }
+
+
+
+  //convert to desired file format
+  // var dataURI = canvas.toDataURL('image/jpeg'); // can also use 'image/png'
+</script>

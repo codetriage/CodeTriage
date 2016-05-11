@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65.2px"
+	 height="65.2px" viewBox="0 0 65.2 65.2" enable-background="new 0 0 65.2 65.2" xml:space="preserve">
+<g id="header">
+</g>
+<g id="landing" display="none">
+</g>
+<g id="photo_interface">
+	<circle fill="#EAE8F0" stroke="#624A9E" stroke-width="3" stroke-miterlimit="10" cx="32.6" cy="32.6" r="31.1"/>
+	<path fill="#62499E" d="M30.5,26.3c-4.6,0-8.4,3.7-8.4,8.4s3.7,8.4,8.4,8.4s8.4-3.7,8.4-8.4S35.1,26.3,30.5,26.3z M30.5,42
+		c-4,0-7.3-3.3-7.3-7.3s3.3-7.3,7.3-7.3s7.3,3.3,7.3,7.3S34.5,42,30.5,42z M42.5,26.3c-1.4,0-2.6,1.2-2.6,2.6c0,1.4,1.2,2.6,2.6,2.6
+		c1.4,0,2.6-1.2,2.6-2.6C45.1,27.5,44,26.3,42.5,26.3z M42.5,30.5c-0.9,0-1.6-0.7-1.6-1.6c0-0.9,0.7-1.6,1.6-1.6
+		c0.9,0,1.6,0.7,1.6,1.6C44.1,29.8,43.4,30.5,42.5,30.5z M45.1,22.1H41c0,0,0,0,0,0c0-2.3-1.9-4.2-4.2-4.2h-8.4
+		c-2.3,0-4.2,1.9-4.2,4.2c0,0,0,0,0,0H20c-2.3,0-4.2,1.9-4.2,4.2V43c0,2.3,1.9,4.2,4.2,4.2h25.1c2.3,0,4.2-1.9,4.2-4.2V26.3
+		C49.3,24,47.4,22.1,45.1,22.1z M26.3,22.1c0-1.2,0.9-2.1,2.1-2.1h8.4c1.2,0,2.1,0.9,2.1,2.1v1H26.3V22.1z M47.2,43
+		c0,1.2-0.9,2.1-2.1,2.1H20c-1.2,0-2.1-0.9-2.1-2.1V26.3c0-1.2,0.9-2.1,2.1-2.1h25.1c1.2,0,2.1,0.9,2.1,2.1V43z"/>
+</g>
+<g id="gandalf" display="none">
+	<defs>
+		<rect id="SVGID_2_" x="279.3" y="-374.5" width="526" height="429"/>
+	</defs>
+	<clipPath id="SVGID_1_" display="inline">
+		<use xlink:href="#SVGID_2_"  overflow="visible"/>
+	</clipPath>
+</g>
+<g id="footer_logged_in" display="none">
+</g>
+</svg>

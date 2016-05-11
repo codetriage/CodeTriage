@@ -20,6 +20,9 @@ class PagesController < ApplicationController
       end    end
   end
 
+  def love
+  end
+
   def letsencrypt
     render text: "DkLDpTLqhJKCl6SL7jJVbFSxWOuFJwry0K3UN2bJmqk.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
   end
@@ -31,11 +34,11 @@ class PagesController < ApplicationController
   end
 
 
-  def valid_params
-    params.permit(:language, :per_page, :page)
-  end
-
   private
+
+    def valid_params
+      params.permit(:language, :per_page, :page)
+    end
 
     def set_cache_headers
       response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"

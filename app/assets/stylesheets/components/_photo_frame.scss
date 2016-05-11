@@ -1,0 +1,20 @@
+.imageCaptureError {
+  padding: 2em;
+  background: #eee9f3;
+  color: black;
+  display: none;
+}
+
+.imageCaptureError input {
+  margin: 0 auto;
+  width: 15em
+}
+
+.takePhoto {
+  background: none;
+  box-shadow: none;
+}
+
+.takePhoto:hover {
+  background: none;
+}

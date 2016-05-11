@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '~> 2.3.1'
 
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
@@ -83,3 +83,9 @@ gem 'sprockets'      , '4.0.0.beta2'
 gem 'sprockets-rails'
 
 gem 'babel-transpiler'
+
+gem 'pretty_backtrace'
+
+
+gem 'imgurapi'
+

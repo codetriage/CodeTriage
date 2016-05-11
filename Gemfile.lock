@@ -131,6 +131,8 @@ GEM
       json (~> 1.8)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
+    imgurapi (3.0.0)
+      faraday
     jmespath (1.1.3)
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
@@ -188,6 +190,8 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.18.3)
+    pretty_backtrace (0.1.3)
+      debug_inspector (~> 0.0.1)
     puma (3.0.0.rc1)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -331,6 +335,7 @@ DEPENDENCIES
   foreman
   git_hub_bub
   httparty
+  imgurapi
   jquery-rails
   launchy
   listen
@@ -344,6 +349,7 @@ DEPENDENCIES
   omniauth (= 1.3.1)
   omniauth-github
   pg
+  pretty_backtrace
   puma (= 3.0.0.rc1)
   quiet_assets
   rack-timeout
@@ -372,5 +378,8 @@ DEPENDENCIES
   wicked
   will_paginate (= 3.1.0)
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.12.3

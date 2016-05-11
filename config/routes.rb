@@ -20,6 +20,8 @@ CodeTriage::Application.routes.draw do
   #   get 'sign_out', to: 'users/omniauth_callbacks#passthru', as: :destroy_user_session
   # end
 
+  get 'love' => 'love#index'
+
   as :user do
     get   'users/edit' => 'users#edit',   as: :edit_user_registration
     patch 'users'      => 'users#update', as: :user_registration
