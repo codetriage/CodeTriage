@@ -170,7 +170,7 @@ class Repo < ActiveRecord::Base
   end
 
   def self.find_by_full_name(full_name)
-    Repo.includes(:issues).find_by!(full_name: full_name)
+    Repo.find_by!(full_name: full_name)
   end
 
   private
