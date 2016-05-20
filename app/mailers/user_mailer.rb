@@ -37,6 +37,12 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage auth failure")
   end
 
+  def inform_remove_repo(user, repo)
+    @user = user
+    @repo = repo
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: @repo.name + " Removal from Code Triage")
+  end
+
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
   def spam(user, options = {})
@@ -84,6 +90,13 @@ class UserMailer < ActionMailer::Base
     def poke_inactive
       user = User.last
       ::UserMailer.poke_inactive(user)
+    end
+
+    def inform_remove_repo
+      repo = Repo.last
+      repo_subscription = RepoSubscription.where(repo_id: repo.id).first
+      user = User.find(repo_subscription.user_id)
+      ::UserMailer.inform_remove_repo(user, repo)  
     end
   end
 

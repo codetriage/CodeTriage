@@ -50,6 +50,8 @@ CodeTriage::Application.routes.draw do
   scope format: false do
     resources :repos, only: %w[index new create]
 
+    get 'repos/remove' => 'repos#remove'
+
     scope '*full_name' do
       constraints full_name: REPO_PATH_PATTERN do
         get   '/badges/:badge_type(.:format)', to: 'badges#show',       as: 'badge'
@@ -57,6 +59,7 @@ CodeTriage::Application.routes.draw do
         get   '/',              to: 'repos#show',        as: 'repo'
         patch '/',              to: 'repos#update',      as:  nil
         get   '/edit',          to: 'repos#edit',        as: 'edit_repo'
+        delete '/',             to: 'repos#destroy',     as: 'delete_repo'
         get   '/subscribers',   to: 'subscribers#show',  as: 'repo_subscribers'
       end
     end

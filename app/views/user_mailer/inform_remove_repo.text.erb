@@ -1,0 +1,8 @@
+Hello <%= @user.github %>,
+
+This is to inform you that <%= @repo.name %> which you are subscribed to has been removed from Code Triage.
+
+If you want to continue contributing on this repo via codetriage, you may contact the collaborators of the repository by visiting https://github.com/<%=@repo.full_name%>
+
+Sincerely,
+<%= link_to "@schneems", "http://twitter.com/schneems" %>
