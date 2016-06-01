@@ -35,4 +35,9 @@
       background-color: $action-color;
     }
   }
+
+  &.inactive {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 }

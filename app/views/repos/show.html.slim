@@ -31,7 +31,11 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       - if @repo_sub.blank? || (@repo_sub.write.blank? && @repo_sub.read.blank?)
         p.repo-instructions
           | Receive a documented method or class from your favorite GitHub repos in your inbox every day. If you're really pro, receive undocumented methods or classes and supercharge your commit history.
-        = link_to_or_log_in(text: "Triage Docs", path: repo_subscriptions_path(id: @repo_sub.try(:id), repo_subscription: { repo_id: @repo.id, read: true, write: true,  read_limit: 3, write_limit: 3, email_limit: @repo_sub.try(:email_limit) || 0 }), html_class: "repo-action")
+        - if @repo.can_doctor_docs?
+          = link_to_or_log_in(text: "Triage Docs", path: repo_subscriptions_path(id: @repo_sub.try(:id), repo_subscription: { repo_id: @repo.id, read: true, write: true,  read_limit: 3, write_limit: 3, email_limit: @repo_sub.try(:email_limit) || 0 }), html_class: "repo-action")
+        - else
+          = link_to "#{@repo.language} not yet supported", '#', class: "button inactive repo-action"
+
       - else
           .repo-instructions
             = form_for(@repo_sub, html: {class: 'email-amount'}) do |f|
