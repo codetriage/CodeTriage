@@ -11,7 +11,7 @@ else
   gem 'rails', '5.0.0.rc1'
 end
 
-gem 'puma', '3.0.0.rc1'
+gem 'puma', '~> 3.x'
 gem 'git_hub_bub'
 gem 'pg'
 gem 'omniauth', '1.3.1'
