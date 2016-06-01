@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     DocMailerMaker.new(self, subscriptions) {|sub| sub.ready_for_next? }.deliver
   end
 
-  def background_subscibe_docs!
+  def background_subscribe_docs!
     SubscribeUserToDocs.perform_later(self.id)
   end
 
