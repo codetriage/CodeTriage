@@ -17,6 +17,8 @@ class ReposController < RepoBasedController
   def show
     @repo        = find_repo(params)
     @issues      = @repo.open_issues.order("created_at DESC").page(params[:page]).per_page(params[:per_page]||20)
+    @docs        = @repo.doc_methods.order("created_at DESC").page(params[:page]).per_page(params[:per_page]||20)
+
     @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
     @subscribers = @repo.subscribers.public_profile.limit(27)
   end

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
 
   has_many :repo_subscriptions, dependent: :destroy
+  has_many :repo_assignments, through: :repo_subscriptions
   has_many :repos, through: :repo_subscriptions
 
   has_many :issue_assignments, through: :repo_subscriptions
@@ -22,6 +23,15 @@ class User < ActiveRecord::Base
 
   delegate :for, to: :repo_subscriptions, prefix: true
   before_save :set_default_last_clicked_at
+
+  def subscribe_docs!
+    subscriptions = self.repo_subscriptions.order('RANDOM()').load
+    DocMailerMaker.new(self, subscriptions) {|sub| sub.ready_for_next? }.deliver
+  end
+
+  def background_subscibe_docs!
+    SubscribeUserToDocs.perform_later(self.id)
+  end
 
   def set_default_last_clicked_at
     self.last_clicked_at ||= Time.now
@@ -141,4 +151,4 @@ class User < ActiveRecord::Base
     favorite_languages && !favorite_languages.empty?
   end
 
-  end
+end

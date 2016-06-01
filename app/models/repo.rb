@@ -1,3 +1,5 @@
+require 'docs_doctor/parsers/ruby/yard'
+
 class Repo < ActiveRecord::Base
   validate :github_url_exists, on: :create
   validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
@@ -7,16 +9,50 @@ class Repo < ActiveRecord::Base
   has_many :repo_subscriptions
   has_many :users, through: :repo_subscriptions
   has_many :subscribers, through: :repo_subscriptions, source: :user
-
+  has_many :doc_classes, dependent: :destroy
+  has_many :doc_methods, dependent: :destroy
   delegate :open_issues, to: :issues
 
   before_validation :downcase_name, :strip_whitespaces
   before_save :set_full_name
-  after_create :populate_issues!, :update_repo_info!
+  after_create :background_populate_issues!, :update_repo_info!, :background_populate_docs!
 
-  def populate_issues!
+  CLASS_FOR_DOC_LANGUAGE = { "Ruby" => DocsDoctor::Parsers::Ruby::Yard }
+
+  def can_doctor_docs?
+    CLASS_FOR_DOC_LANGUAGE[self.language]
+  end
+
+  def populate_docs!
+    return unless can_doctor_docs?
+
+    fetcher = GithubFetcher.new(full_name)
+    self.update!(commit_sha: fetcher.commit_sha)
+    parser  = Repo::CLASS_FOR_DOC_LANGUAGE[self.language].new(fetcher.clone)
+    parser.process
+    parser.store(self)
+  end
+
+  def background_populate_issues!
     PopulateIssuesJob.perform_later(self.id)
   end
+
+  def background_populate_docs!
+    PopulateDocsJob.perform_later(self.id)
+  end
+
+  def methods_missing_docs
+    doc_methods.where(doc_methods: {doc_comments_count: 0})
+  end
+
+  def methods_with_docs
+    doc_methods.where("doc_comments_count > 0")
+  end
+
+  def classes_missing_docs
+    doc_classes.where(doc_classes: {doc_comments_count: 0})
+  end
+
 
   def color
     case weight
