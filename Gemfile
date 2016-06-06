@@ -86,3 +86,6 @@ gem 'babel-transpiler'
 
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
+
+gem 'rollbar'
+gem 'oj', '~> 2.12.14'
