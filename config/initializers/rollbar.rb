@@ -3,6 +3,7 @@ Rollbar.configure do |config|
   # To disable in specific environments, set config.enabled=false.
 
   config.access_token = ENV['ROLLBAR_ACCESS_TOKEN']
+
   config.use_sidekiq
 
   # Here we'll disable in 'test':
