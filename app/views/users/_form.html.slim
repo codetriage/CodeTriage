@@ -5,6 +5,12 @@
       span.add-on
         i.icon-envelope
       = f.text_field :email, class: 'text_field'
+  = f.label :email_frequency, t("activerecord.attributes.user.email_frequency", default: "Email Frequency"), class: "label label-info"
+  .controld
+    .input-preprend
+      span.add-on
+        i.icon-envelope
+      = f.select :email_frequency, options_for_select([ ["Daily", "daily"], ["Once a week", "once_a_week"], ["Twice a week", "twice_a_week"], ["Once a month", "once_a_month"] ]), class: 'select'
   = f.label :daily_issue_limit, t("activerecord.attributes.user.daily_issue_limit", default: "Max # of issues you want to receive per day"), class: "label label-info"
   .input
     = f.number_field :daily_issue_limit, class: 'number_field', min: 0
