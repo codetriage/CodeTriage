@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404173429) do
+ActiveRecord::Schema.define(version: 20160606060546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,9 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "clicked",              default: false
+    t.index ["repo_id"], name: "index_doc_assignments_on_repo_id", using: :btree
+    t.index ["repo_subscription_id"], name: "index_doc_assignments_on_repo_subscription_id", using: :btree
   end
-
-  add_index "doc_assignments", ["repo_id"], name: "index_doc_assignments_on_repo_id", using: :btree
-  add_index "doc_assignments", ["repo_subscription_id"], name: "index_doc_assignments_on_repo_subscription_id", using: :btree
 
   create_table "doc_classes", force: :cascade do |t|
     t.integer  "repo_id"
@@ -45,9 +44,8 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.integer  "line"
     t.string   "path"
     t.string   "file"
+    t.index ["repo_id"], name: "index_doc_classes_on_repo_id", using: :btree
   end
-
-  add_index "doc_classes", ["repo_id"], name: "index_doc_classes_on_repo_id", using: :btree
 
   create_table "doc_comments", force: :cascade do |t|
     t.integer  "doc_class_id"
@@ -55,10 +53,9 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.text     "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["doc_class_id"], name: "index_doc_comments_on_doc_class_id", using: :btree
+    t.index ["doc_method_id"], name: "index_doc_comments_on_doc_method_id", using: :btree
   end
-
-  add_index "doc_comments", ["doc_class_id"], name: "index_doc_comments_on_doc_class_id", using: :btree
-  add_index "doc_comments", ["doc_method_id"], name: "index_doc_comments_on_doc_method_id", using: :btree
 
   create_table "doc_methods", force: :cascade do |t|
     t.integer  "repo_id"
@@ -72,9 +69,8 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.boolean  "skip_write",         default: false
     t.boolean  "active",             default: true
     t.boolean  "skip_read",          default: false
+    t.index ["repo_id"], name: "index_doc_methods_on_repo_id", using: :btree
   end
-
-  add_index "doc_methods", ["repo_id"], name: "index_doc_methods_on_repo_id", using: :btree
 
   create_table "issue_assignments", force: :cascade do |t|
     t.integer  "issue_id"
@@ -83,9 +79,8 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.integer  "repo_subscription_id"
     t.boolean  "clicked",              default: false
     t.boolean  "delivered",            default: false
+    t.index ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
   end
-
-  add_index "issue_assignments", ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
 
   create_table "issues", force: :cascade do |t|
     t.integer  "comment_count"
@@ -101,11 +96,10 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.string   "html_url",        limit: 255
     t.string   "state",           limit: 255
     t.boolean  "pr_attached",                 default: false
+    t.index ["number"], name: "index_issues_on_number", using: :btree
+    t.index ["repo_id"], name: "index_issues_on_repo_id", using: :btree
+    t.index ["state"], name: "index_issues_on_state", using: :btree
   end
-
-  add_index "issues", ["number"], name: "index_issues_on_number", using: :btree
-  add_index "issues", ["repo_id"], name: "index_issues_on_repo_id", using: :btree
-  add_index "issues", ["state"], name: "index_issues_on_state", using: :btree
 
   create_table "opro_auth_grants", force: :cascade do |t|
     t.string   "code",                    limit: 255
@@ -183,11 +177,11 @@ ActiveRecord::Schema.define(version: 20160404173429) do
     t.boolean  "skip_issues_with_pr",                default: false
     t.string   "account_delete_token",   limit: 255
     t.datetime "last_clicked_at"
+    t.string   "email_frequency"
+    t.index ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["github"], name: "index_users_on_github", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["github"], name: "index_users_on_github", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

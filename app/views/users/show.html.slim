@@ -28,6 +28,11 @@
               - else
                 | Private,
                 = link_to "Go public", user_registration_path(user: {private: false}), method: :patch
+        li.slats-item
+          .slats-hgroup
+            h5.slats-title Email frequency:
+          .slats-action
+            p= @user.email_frequency.presence || 'not set'
 
         li.slats-item
           .slats-hgroup

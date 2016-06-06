@@ -4,8 +4,9 @@
 # more emails. Less active users should get fewer emails so that it's less annoying.
 class EmailDecider
 
-  def initialize(last_clicked_days_ago)
+  def initialize(last_clicked_days_ago, user_frequency="")
     @last_clicked_days_ago = last_clicked_days_ago
+    @user_frequency = user_frequency
   end
 
   def skip?(last_sent_days_ago)
@@ -15,7 +16,7 @@ class EmailDecider
   # send an email if you've clicked one in the last 3 days
   # back down to twice a week if they've not clicked in the last 7
   def now?(last_sent_days_ago)
-    case frequency_of_send_rate
+    case user_frequency_or_calculated_frequency
     when :daily
       true
     when :once_a_week
@@ -32,6 +33,10 @@ class EmailDecider
   end
 
   private
+    def user_frequency_or_calculated_frequency
+      @user_frequency.present? ? @user_frequency.to_sym : frequency_of_send_rate
+    end
+
     def frequency_of_send_rate
       case @last_clicked_days_ago
       when 0..3
