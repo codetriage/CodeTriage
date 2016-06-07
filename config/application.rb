@@ -18,5 +18,8 @@ module CodeTriage
     config.assets.initialize_on_precompile = false
     # Set i18n.enforce_available_locales to true
     config.i18n.enforce_available_locales = true
+
+    config.force_ssl = ENV["APPLICATION_HOST"]
+    config.middleware.insert_after ActionDispatch::SSL, Rack::CanonicalHost, ENV["APPLICATION_HOST"] if ENV["APPLICATION_HOST"]
   end
 end

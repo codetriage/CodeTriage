@@ -194,6 +194,9 @@ GEM
       railties (>= 3.1, < 5.0)
     rack (2.0.0.alpha)
       json
+    rack-canonical-host (0.2.2)
+      addressable (> 0, < 3)
+      rack (>= 1.0.0, < 3)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -354,6 +357,7 @@ DEPENDENCIES
   pg
   puma (~> 3.x)
   quiet_assets
+  rack-canonical-host
   rack-timeout
   rails (= 5.0.0.rc1)
   rails-controller-testing
