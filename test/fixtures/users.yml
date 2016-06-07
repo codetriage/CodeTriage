@@ -22,6 +22,7 @@ mockstar:
   favorite_languages: [ "ruby" ]
   last_clicked_at: <%= Time.now %>
   avatar_url: http://gravatar.com/avatar/default
+  email_frequency: daily
 
 schneems:
   email: richard.schneeman@gmail.com
@@ -46,6 +47,7 @@ schneems:
   private: false
   last_clicked_at: <%= Time.now %>
   avatar_url: http://gravatar.com/avatar/default
+  email_frequency: daily
 
 jroes:
   email: jroes@jroes.net
@@ -70,6 +72,7 @@ jroes:
   private: true
   last_clicked_at: <%= Time.now %>
   avatar_url: http://gravatar.com/avatar/default
+  email_frequency: daily
 
 empty:
   email: empty@empty.com
@@ -94,3 +97,4 @@ empty:
   private: false
   last_clicked_at: <%= Time.now %>
   avatar_url: http://gravatar.com/avatar/default
+  email_frequency: daily

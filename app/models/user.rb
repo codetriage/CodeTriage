@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email,    allow_blank: true, if: :email_changed?
   validates_length_of     :password, within:  8..128, allow_blank: true
   validates :github, presence: true, uniqueness: true
+  validates :email_frequency, inclusion: { in: EmailDecider::USER_STATES.map(&:to_s) , message: "Not a valid frequency, pick from #{ EmailDecider::USER_STATES }" }
 
   # Setup accessible (or protected) attributes for your model
 
@@ -129,7 +130,7 @@ class User < ActiveRecord::Base
 
   def send_daily_triage!
     return false if repo_subscriptions.blank?
-    skip = EmailDecider.new(days_since_last_clicked).skip?(days_since_last_email)
+    skip = EmailDecider.new(days_since_last_clicked, minimum_frequency: email_frequency).skip?(days_since_last_email)
     puts "User #{github}: skip: #{skip.inspect}, days_since_last_clicked: #{days_since_last_clicked}, days_since_last_email: #{days_since_last_email}"
     return false if skip
 
