@@ -12,6 +12,8 @@ class EmailDeciderTest < ActiveSupport::TestCase
     day_ago               = rand(last_clicked_days_ago)
     clicked_ago           = valid_values.sample
     assert EmailDecider.new(day_ago).now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
+    # Use user email frequency settings
+    refute EmailDecider.new(day_ago, "once_a_week").now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}, 'once_a_week').now?(#{clicked_ago}) to be false, was not"
 
     # wait
     last_clicked_days_ago = 4..6
