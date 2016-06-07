@@ -54,7 +54,7 @@ CodeTriage::Application.routes.draw do
     resources :repos, only: %w[index new create]
 
     scope '*full_name' do
-      constraints full_name: %r{[-_.a-zA-Z0-9]+/[-_.a-zA-Z0-9]+} do
+      constraints full_name: /[-_a-zA-Z0-9]+\/[-_\.a-zA-Z0-9]+/ do
         get   '/badges/:badge_type(.:format)', to: 'badges#show',       as: 'badge'
 
         get   '/',              to: 'repos#show',        as: 'repo'

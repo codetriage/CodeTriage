@@ -3,6 +3,7 @@ require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 class ReposController < RepoBasedController
 
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :default_format
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
@@ -54,6 +55,9 @@ class ReposController < RepoBasedController
   end
 
   private
+    def default_format
+      request.format = "html"
+    end
 
     def repo_params
       params.require(:repo).permit(
