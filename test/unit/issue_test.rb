@@ -22,6 +22,12 @@ class IssueTest < ActiveSupport::TestCase
     end
   end
 
+  test 'issue with extra long title' do
+    issue = issues(:issue_five_extra_long_title)
+
+    assert_equal true, issue.valid?
+  end
+
   test "permitted state values" do
     issue = Issue.new
 
