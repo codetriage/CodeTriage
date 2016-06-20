@@ -53,3 +53,15 @@ issue_triage_sandbox_issue:
   html_url: https://github.com/sinatra/sinatra/issues/1
   state: open
 
+issue_five_extra_long_title:
+  id: 5
+  comment_count:
+  url: https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/1
+  last_touched_at: 2012-11-10 22:20:24.000000000 Z
+  number: 1
+  created_at: 2012-11-10 23:23:45.281189000 Z
+  updated_at: 2012-11-10 23:23:45.281189000 Z
+  repo: issue_triage_sandbox
+  title: <%= rand(36**257).to_s(36) %>
+  html_url: https://github.com/sinatra/sinatra/issues/1
+  state: open
