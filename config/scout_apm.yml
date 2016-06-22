@@ -1,0 +1,11 @@
+defaults: &defaults
+  name: codetriage
+  key: <%= ENV['SCOUT_KEY'] %>
+  monitor: <%= true if ENV['SCOUT_MONITOR'] %>
+
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults
