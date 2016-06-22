@@ -259,7 +259,7 @@ GEM
       sass (~> 3.4)
       sprockets (~> 4.x)
       sprockets-rails (< 4.0)
-    scout_apm (2.0.0.pre)
+    scout_apm (2.0.0.pre3)
       rusage (~> 0.2.0)
     sidekiq (4.0.2)
       concurrent-ruby (~> 1.0)
