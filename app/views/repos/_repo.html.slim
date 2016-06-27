@@ -9,7 +9,7 @@
             = repo.issues_count
             |  Issues
 
-      p.repo-item-description = raw repo.description
+      p.repo-item-description = repo.description
 
       - if repo.full_name.present?
         span.repo-item-full-name
