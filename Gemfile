@@ -30,7 +30,10 @@ gem 'warden', '1.2.6'
 gem 'rack-timeout'
 gem 'mail_view', '~> 1.0.2'
 gem 'valid_email'
-gem 'sass-rails', '6.0.0.beta1'
+# gem 'sass-rails', '6.0.0.beta1'
+gem 'sassc-rails', github: "schneems/sassc-rails", branch: "schneems/sprockets4"
+gem 'sassc'
+
 gem 'bourbon'
 gem 'neat'
 gem 'autoprefixer-rails', '~> 6.3.3'
@@ -91,3 +94,5 @@ gem 'rollbar'
 gem 'oj', '~> 2.12.14'
 gem 'rack-canonical-host'
 
+
+gem 'stackprof'

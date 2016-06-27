@@ -6,7 +6,6 @@ require File.expand_path('../config/application', __FILE__)
 
 CodeTriage::Application.load_tasks
 
-
 task "assets:profile" do
   puts "=============="
 
