@@ -1,4 +1,17 @@
 GIT
+  remote: git://github.com/schneems/sassc-rails.git
+  revision: d69fda199d3f9ddd18b337137dd5bc057bc6a22a
+  branch: schneems/sprockets4
+  specs:
+    sassc-rails (1.2.1)
+      railties (>= 4.0.0)
+      sass
+      sassc (~> 1.9)
+      sprockets (> 2.11)
+      sprockets-rails
+      tilt
+
+GIT
   remote: https://github.com/sinatra/sinatra.git
   revision: 4c7d38eb1b2cc02ce51029f28e0c3c34ca12ccfd
   specs:
@@ -254,11 +267,10 @@ GEM
     rusage (0.2.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
-    sass-rails (6.0.0.beta1)
-      railties (>= 4.0.0, < 5.0)
-      sass (~> 3.4)
-      sprockets (~> 4.x)
-      sprockets-rails (< 4.0)
+    sassc (1.10.0)
+      bundler
+      ffi (~> 1.9.6)
+      sass (>= 3.3.0)
     scout_apm (2.0.0.pre3)
       rusage (~> 0.2.0)
     sidekiq (4.0.2)
@@ -287,6 +299,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    stackprof (0.2.9)
     teaspoon (0.7.9)
       railties (>= 3.2.5, < 5)
     temple (0.7.6)
@@ -368,7 +381,8 @@ DEPENDENCIES
   record_tag_helper (~> 1.0)
   rollbar
   rrrretry
-  sass-rails (= 6.0.0.beta1)
+  sassc
+  sassc-rails!
   scout_apm (~> 2.0.x)
   sidekiq
   simplecov
@@ -377,6 +391,7 @@ DEPENDENCIES
   spring
   sprockets (= 4.0.0.beta2)
   sprockets-rails
+  stackprof
   teaspoon (~> 0.7.4)
   the_lone_dyno
   uglifier (>= 1.0.3)
