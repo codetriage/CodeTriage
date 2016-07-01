@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20160613220116) do
     t.boolean  "skip_issues_with_pr",    default: false
     t.string   "account_delete_token"
     t.datetime "last_clicked_at"
-    t.string   "email_frequency"
+    t.string   "email_frequency",        default: "daily"
     t.index ["account_delete_token"], name: "index_users_on_account_delete_token", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["github"], name: "index_users_on_github", unique: true, using: :btree
