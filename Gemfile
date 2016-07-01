@@ -8,7 +8,7 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.0.0.rc2'
+  gem 'rails', '5.0.0'
 end
 
 gem 'puma', '~> 3.x'
@@ -44,7 +44,6 @@ gem 'slim-rails'
 
 group :development do
   gem 'foreman'
-  gem 'quiet_assets'
   gem 'spring'
   gem 'web-console'
   gem 'bullet', '5.0.0'
@@ -63,7 +62,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'teaspoon', '~> 0.7.4'
+  gem 'teaspoon'
   gem 'dotenv-rails', '2.1.0'
   gem 'derailed_benchmarks'
 end
@@ -75,7 +74,7 @@ end
 gem 'the_lone_dyno'
 
 gem 'sidekiq'
-gem 'sinatra', require: nil, git: 'https://github.com/sinatra/sinatra.git'
+# gem 'sinatra', require: nil, git: 'https://github.com/sinatra/sinatra.git'
 
 gem 'aws-sdk', '~> 2'
 
