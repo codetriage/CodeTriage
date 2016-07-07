@@ -155,7 +155,6 @@ GEM
     kramdown (1.9.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    libv8 (5.0.71.48.3)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
@@ -173,8 +172,6 @@ GEM
     method_source (0.8.2)
     mime-types (2.6.2)
     mini_portile2 (2.1.0)
-    mini_racer (0.1.4)
-      libv8 (~> 5.0, < 5.1.11)
     minitest (5.9.0)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
@@ -368,7 +365,6 @@ DEPENDENCIES
   mail_view (~> 1.0.2)
   maildown (= 2.0.0)
   mime-types (~> 2.6.1)
-  mini_racer
   mocha
   neat
   normalize-rails
