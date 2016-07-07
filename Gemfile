@@ -97,7 +97,5 @@ gem 'rack-canonical-host'
 
 gem 'stackprof'
 
-gem 'mini_racer'
-
 gem 'bootscale', require: false
 
