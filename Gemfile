@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.4.0'
 
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
@@ -91,7 +91,7 @@ gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
 gem 'rollbar'
-gem 'oj', '~> 2.12.14'
+gem 'oj', '~> 2.16'
 gem 'rack-canonical-host'
 
 
