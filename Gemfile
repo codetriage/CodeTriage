@@ -8,7 +8,7 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.0.0'
+  gem 'rails', github: "rails/rails", branch: "5-0-stable" # https://github.com/rails/rails/pull/25602#issuecomment-229715887
 end
 
 gem 'puma', '~> 3.x'
@@ -89,7 +89,7 @@ gem 'babel-transpiler'
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
-gem 'rollbar'
+gem 'rollbar', github: 'rollbar/rollbar-gem', branch: 'move-log_methods-to-public' # https://github.com/rollbar/rollbar-gem/issues/496
 gem 'oj', '~> 2.16'
 gem 'rack-canonical-host'
 
