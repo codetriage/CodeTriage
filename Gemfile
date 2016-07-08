@@ -95,3 +95,6 @@ gem 'rack-canonical-host'
 
 
 gem 'stackprof'
+
+gem 'bootscale', require: false
+

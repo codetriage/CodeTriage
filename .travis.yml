@@ -7,6 +7,7 @@ env:
     - "RAILS_MASTER=0"
     - "RAILS_MASTER=1"
 before_install:
+  - gem install bundler -v 1.12.5
   - bundle install
 script:
   - RAILS_ENV=test bin/rake test

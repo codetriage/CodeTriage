@@ -15,5 +15,13 @@
     "heroku-redis",
     "heroku-postgresql",
     "memcachier"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
   ]
 }

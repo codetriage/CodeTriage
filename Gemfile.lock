@@ -68,6 +68,7 @@ GEM
     bcrypt (3.1.11)
     benchmark-ips (2.3.0)
     bluecloth (2.2.0)
+    bootscale (0.5.2)
     bourbon (4.2.5)
       sass (~> 3.4)
       thor (~> 0.19)
@@ -326,6 +327,7 @@ DEPENDENCIES
   aws-sdk (~> 2)
   babel-transpiler
   bluecloth
+  bootscale
   bourbon
   bullet (= 5.0.0)
   capybara (= 2.6.2)

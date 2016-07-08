@@ -21,5 +21,9 @@ module CodeTriage
 
     config.force_ssl = ENV["APPLICATION_HOST"]
     config.middleware.insert_after ActionDispatch::SSL, Rack::CanonicalHost, ENV["APPLICATION_HOST"] if ENV["APPLICATION_HOST"]
+
+    initializer :regenerate_require_cache, before: :load_environment_config do
+      Bootscale.regenerate
+    end
   end
 end
