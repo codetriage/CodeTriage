@@ -22,14 +22,12 @@ div class="subpage-content-wrapper #{ @repo.weight }"
           = form_for(@repo_sub, html: { class: 'email-amount'} ) do |f|
             label Triage more issues! (Or less)
             => f.select :email_limit, (0..20)
-            = f.submit "Save", class: 'save-amount'
-            
+            = f.submit "Save", class: 'save-amount'            
         - if (@repo_sub.email_limit > 0)
           = link_to issue_assignments_path(id: @repo_sub.id), class: 'button repo-action', method: :post do
             | Send me a new issue!
 
-    section.help-triage.content-section
-      
+    section.help-triage.content-section  
       - if @repo_sub.blank? || (@repo_sub.write.blank? && @repo_sub.read.blank?)
         h2.content-section-title Triage Docs!
         p.repo-instructions
