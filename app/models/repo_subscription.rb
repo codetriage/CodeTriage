@@ -5,7 +5,7 @@ class RepoSubscription < ActiveRecord::Base
 
   validates  :repo_id, uniqueness: { scope: :user_id }, presence: true
   validates  :user_id, presence: true
-  validates  :email_limit, numericality: { less_than: 21, greater_than: 0 }
+  validates  :email_limit, numericality: { less_than: 21, greater_than_or_equal_to: 0 }
 
   belongs_to :repo
   belongs_to :user
