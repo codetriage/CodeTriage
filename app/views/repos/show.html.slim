@@ -21,14 +21,15 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         .repo-instructions
           = form_for(@repo_sub, html: { class: 'email-amount'} ) do |f|
             label Triage more issues! (Or less)
-            => f.select :email_limit, (1..20)
-            = f.submit "Save", class: 'save-amount'
-        = link_to issue_assignments_path(id: @repo_sub.id), class: 'button repo-action', method: :post do
-          | Send me a new issue!
+            => f.select :email_limit, (0..20)
+            = f.submit "Save", class: 'save-amount'            
+        - if (@repo_sub.email_limit > 0)
+          = link_to issue_assignments_path(id: @repo_sub.id), class: 'button repo-action', method: :post do
+            | Send me a new issue!
 
-    section.help-triage.content-section
-      h2.content-section-title Triage Docs!
+    section.help-triage.content-section  
       - if @repo_sub.blank? || (@repo_sub.write.blank? && @repo_sub.read.blank?)
+        h2.content-section-title Triage Docs!
         p.repo-instructions
           | Receive a documented method or class from your favorite GitHub repos in your inbox every day. If you're really pro, receive undocumented methods or classes and supercharge your commit history.
         - if @repo.can_doctor_docs?
@@ -37,6 +38,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
           = link_to "#{@repo.language} not yet supported", '#', class: "button inactive repo-action"
 
       - else
+          h2.content-section-title Currently receiving #{@repo_sub.write_limit + @repo_sub.read_limit} docs per day.
           .repo-instructions
             = form_for(@repo_sub, html: {class: 'email-amount'}) do |f|
               label Triage more docs! (Or less)

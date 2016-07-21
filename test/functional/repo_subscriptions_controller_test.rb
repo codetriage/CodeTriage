@@ -58,7 +58,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     repo_subscription = repo_subscriptions(:schneems_to_triage)
     sign_in users(:schneems)
     patch :update, params: { id: repo_subscription.id,
-                             repo_subscription: { email_limit: 0 } }
+                             repo_subscription: { email_limit: -1 } }
     assert_equal flash[:error], "Something went wrong"
     assert_redirected_to repo_path(repo_subscription.repo)
   end
