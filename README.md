@@ -77,7 +77,7 @@ $ echo PORT=3000 >> .env
 
 ### Running the app
 
-Start your app using Foreman
+Start your app using [Heroku Local](https://devcenter.heroku.com/articles/heroku-local)
 
 ```shell
 $ heroku local
@@ -85,7 +85,7 @@ $ heroku local
 12:00:04 AM worker.1 |  INFO: Booting Sidekiq with redis options {:url=>nil}
 ```
 
-Code Triage should now be running at [http://localhost:5000](http://localhost:5000)
+Code Triage should now be running at [http://localhost:3000](http://localhost:3000)
 
 
 ## Tests
