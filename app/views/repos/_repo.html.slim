@@ -5,6 +5,9 @@
           h4.repo-item-title = repo.name
 
           span.repo-item-issues
+            = star_svg
+            = repo.stars_count
+            |  Stars
             = warning_svg
             = repo.issues_count
             |  Issues

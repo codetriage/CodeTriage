@@ -100,10 +100,10 @@
   letter-spacing: 1px;
   text-transform: uppercase;
 
-  .issue-icon {
+  .issue-icon, .star-icon {
     display: inline-block;
     fill: $base-font-color;
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
     position: relative;
     top: 3px;
     vertical-align: baseline;
