@@ -8,9 +8,11 @@
           = form_for @repo do |f|
             = f.hidden_field :user_name, value: repo["full_name"].split("/").first
             = f.hidden_field :name, value: repo["full_name"].split("/").last
+            = f.hidden_field :stars_count, value: repo["stargazers_count"]
             .slats-hgroup
               h3= repo["full_name"]
 
+              h4 #{repo["stargazers_count"]}  stars,
               h4 #{repo["open_issues_count"]} issues
 
             .slats-action

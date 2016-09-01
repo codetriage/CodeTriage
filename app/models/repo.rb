@@ -194,6 +194,7 @@ class Repo < ActiveRecord::Base
     resp = GitHubBub.get(repo_path).json_body
     self.language    = resp['language']
     self.description = resp['description']
+    self.stars_count = resp['stargazers_count']
     self.save
   end
 

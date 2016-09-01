@@ -2,12 +2,15 @@
   li class="repo-item #{ repo.weight }" data-language="#{ repo.language if repo.language }"
     = link_to repo
       header.repo-item-header
-          h4.repo-item-title = repo.name
-
-          span.repo-item-issues
-            = warning_svg
-            = repo.issues_count
-            |  Issues
+        h4.repo-item-title = repo.name
+        br
+        span.repo-item-issues
+          = star_svg
+          = repo.stars_count
+          |  Stars
+          = warning_svg
+          = repo.issues_count
+          |  Issues
 
       p.repo-item-description = repo.description
 

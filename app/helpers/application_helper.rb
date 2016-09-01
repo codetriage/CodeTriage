@@ -7,6 +7,12 @@ module ApplicationHelper
     </svg>
   }.html_safe
 
+  STAR_SVG = %Q{
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 16 16" class="star-icon">
+      <polygon fill="white" stroke="white" stroke-width="2" points="8,3 12,13 3,7 13,7 4,13" />
+    </svg>
+  }.html_safe
+
 
   def flash_class(level)
     case level
@@ -18,5 +24,9 @@ module ApplicationHelper
 
   def warning_svg
     WARNING_SVG
+  end
+
+  def star_svg
+    STAR_SVG
   end
 end

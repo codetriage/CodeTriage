@@ -65,6 +65,7 @@ class ReposController < RepoBasedController
         :name,
         :user_name,
         :issues_count,
+        :stars_count,
         :language,
         :description,
         :full_name

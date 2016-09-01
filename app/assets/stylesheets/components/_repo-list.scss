@@ -95,18 +95,21 @@
 
 .repo-item-issues {
   color: $base-font-color;
-  float: right;
+  float: left;
   font-size: $small-font-size;
   letter-spacing: 1px;
   text-transform: uppercase;
 
-  .issue-icon {
+  .issue-icon, .star-icon {
     display: inline-block;
     fill: $base-font-color;
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
     position: relative;
     top: 3px;
     vertical-align: baseline;
+  }
+  .issue-icon {
+    margin-left: 0.7rem;
   }
 }
 
