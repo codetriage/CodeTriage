@@ -4,6 +4,7 @@ class Issue < ActiveRecord::Base
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
   belongs_to :repo
+  has_many :labels, class_name: :IssueLabel, dependent: :delete_all
 
   after_save    :update_repo_issues_count
   after_update  :update_repo_issues_count
@@ -82,12 +83,22 @@ class Issue < ActiveRecord::Base
   end
 
   def update_from_github_hash!(issue_hash)
+    labels = issue_hash['labels'].map{|l| label_from_github_hash l}
     self.update_attributes(title:           issue_hash['title'],
                            url:             issue_hash['url'],
                            last_touched_at: DateTime.parse(issue_hash['updated_at']),
                            state:           issue_hash['state'],
+                           labels:          labels,
+                           label_count:     labels.length,
                            html_url:        issue_hash['html_url'],
                            pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
+  end
+
+  def label_from_github_hash(label_hash)
+    IssueLabel.new(
+      repo_id: repo_id,
+      issue_id: id,
+      name: label_hash.fetch('name'))
   end
 
   def self.queue_mark_old_as_closed!
