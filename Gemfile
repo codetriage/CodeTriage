@@ -99,3 +99,4 @@ gem 'stackprof'
 gem 'bootscale', require: false
 
 
+gem 'rbtrace'

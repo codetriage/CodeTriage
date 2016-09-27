@@ -166,6 +166,7 @@ GEM
     minitest (5.9.0)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
+    msgpack (1.0.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -240,6 +241,10 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    rbtrace (0.4.8)
+      ffi (>= 1.0.6)
+      msgpack (>= 0.4.3)
+      trollop (>= 1.16.2)
     record_tag_helper (1.0.0)
       actionview (~> 5.x)
     redis (3.2.2)
@@ -290,6 +295,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
+    trollop (2.1.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -360,6 +366,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rails_autolink
+  rbtrace
   record_tag_helper (~> 1.0)
   rollbar
   rrrretry
@@ -389,4 +396,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.1
