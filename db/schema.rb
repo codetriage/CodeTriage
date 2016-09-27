@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160827073041) do
+ActiveRecord::Schema.define(version: 20160927195642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160827073041) do
     t.boolean  "clicked",              default: false
     t.boolean  "delivered",            default: false
     t.index ["delivered"], name: "index_issue_assignments_on_delivered", using: :btree
+    t.index ["repo_subscription_id"], name: "index_issue_assignments_on_repo_subscription_id", using: :btree
   end
 
   create_table "issues", force: :cascade do |t|
