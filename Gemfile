@@ -85,7 +85,7 @@ gem 'aws-sdk', '~> 2'
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
 gem 'record_tag_helper', '~> 1.0'
 
-gem 'sprockets'      , '4.0.0.beta2'
+gem 'sprockets', '4.0.0.beta4'
 gem 'sprockets-rails'
 
 gem 'babel-transpiler'
@@ -104,3 +104,6 @@ gem 'bootscale', require: false
 
 
 gem 'rbtrace'
+
+gem 'tunemygc'
+
