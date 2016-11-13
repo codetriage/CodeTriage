@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/schneems/sassc-rails.git
+  remote: https://github.com/schneems/sassc-rails.git
   revision: d69fda199d3f9ddd18b337137dd5bc057bc6a22a
   branch: schneems/sprockets4
   specs:
