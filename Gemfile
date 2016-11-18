@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
+git_source :github do |name|
+  "https://github.com/#{name}.git"
+end
+
 gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
 # Gems required in all environments
