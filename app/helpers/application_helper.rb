@@ -29,4 +29,10 @@ module ApplicationHelper
   def star_svg
     STAR_SVG
   end
+
+  # Render custom or default meta
+  # tags inside the header
+  def render_meta_tags
+    content_for?(:meta_tags) ? content_for(:meta_tags) : render('default_meta_tags'.freeze)
+  end
 end
