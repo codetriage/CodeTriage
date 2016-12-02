@@ -1,11 +1,10 @@
 # Be sure to restart your server when you modify this file.
 #
 # This file contains migration options to ease your Rails 5.0 upgrade.
-# They will be removed in the next major Rails version.
 #
 # Once upgraded flip defaults one by one to migrate to the new default.
 #
-# Read the Rails 5.0 release notes for more info on each option.
+# Read the Guide for Upgrading Ruby on Rails for more info on each option.
 
 # Enable per-form CSRF tokens. Next major version defaults to true.
 Rails.application.config.action_controller.per_form_csrf_tokens = true
