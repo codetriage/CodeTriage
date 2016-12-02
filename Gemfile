@@ -12,7 +12,7 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.0.0'
+  gem 'rails', '5.0.1.rc1'
 end
 
 gem 'puma', '~> 3.x'
