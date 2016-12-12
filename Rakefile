@@ -16,12 +16,14 @@ end
 
 
 
+# $ bundle exec rake assets:bench ; cd  ~/documents/projects/sprockets; git co -; cd -; bundle exec rake assets:bench
 task "assets:bench" do
   measure = []
 
   50.times do
+    `rm -rf tmp/cache/assets/sprockets/v4.0/ ; rm -rf public/assets; touch tmp;`
     measure << Benchmark.measure do
-      `rm -rf tmp/cache/assets/sprockets/v4.0/ ; rm -rf public/assets; touch tmp; time RAILS_ENV=production bundle exec rake assets:precompile`
+      `time env RAILS_ENV=production bundle exec rake assets:precompile`
     end.real
   end
   puts "================ DONE ================"
