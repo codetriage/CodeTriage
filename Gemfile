@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.3'
+ruby '> 2.3', '< 2.5'
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -21,7 +21,6 @@ gem 'pg'
 gem 'omniauth', '1.3.1'
 gem 'omniauth-github'
 gem 'will_paginate', '3.1.0'
-gem 'httparty'
 gem 'dalli'
 gem 'wicked'
 gem 'rails_autolink'
@@ -93,8 +92,9 @@ gem 'babel-transpiler'
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
-gem 'rollbar', '>= 2.13.2'
-gem 'oj', '~> 2.12.14'
+
+gem 'rollbar'
+gem 'oj'
 gem 'rack-canonical-host'
 
 gem 'stackprof'
