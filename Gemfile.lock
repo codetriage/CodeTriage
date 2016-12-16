@@ -389,7 +389,7 @@ DEPENDENCIES
   yard
 
 RUBY VERSION
-   ruby 2.3.3p222
+   ruby 2.4.0p-1
 
 BUNDLED WITH
    1.13.6
