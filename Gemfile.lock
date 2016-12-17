@@ -83,13 +83,13 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    coffee-rails (4.1.1)
+    coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.1.x)
+      railties (>= 4.0.0, < 5.2.x)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.10.0)
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
     crack (0.4.2)
@@ -167,7 +167,7 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     msgpack (1.0.0)
-    multi_json (1.11.2)
+    multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     neat (1.7.2)
@@ -248,7 +248,7 @@ GEM
     redis (3.2.2)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
-    rollbar (2.7.1)
+    rollbar (2.13.3)
       multi_json
     rrrretry (1.0.0)
     rusage (0.2.0)
@@ -336,7 +336,7 @@ DEPENDENCIES
   bourbon
   bullet (= 5.0.0)
   capybara (= 2.6.2)
-  coffee-rails (~> 4.1.0)
+  coffee-rails (~> 4.2.0)
   dalli
   derailed_benchmarks
   devise (= 4.0.0.rc1)
@@ -367,7 +367,7 @@ DEPENDENCIES
   rails_autolink
   rbtrace
   record_tag_helper (~> 1.0)
-  rollbar
+  rollbar (>= 2.13.2)
   rrrretry
   sassc
   sassc-rails!
