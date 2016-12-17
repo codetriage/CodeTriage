@@ -97,13 +97,7 @@ gem 'rollbar'
 gem 'oj', '~> 2.12.14'
 gem 'rack-canonical-host'
 
-
 gem 'stackprof'
-
 gem 'bootscale', require: false
-
-
 gem 'rbtrace'
-
 gem 'tunemygc'
-
