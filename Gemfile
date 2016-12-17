@@ -42,7 +42,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'autoprefixer-rails', '~> 6.3.3'
 gem 'normalize-rails'
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 4.2.0'
 gem 'uglifier', '>= 1.0.3'
 gem 'slim-rails'
 
@@ -93,7 +93,7 @@ gem 'babel-transpiler'
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
-gem 'rollbar'
+gem 'rollbar', '>= 2.13.2'
 gem 'oj', '~> 2.12.14'
 gem 'rack-canonical-host'
 
