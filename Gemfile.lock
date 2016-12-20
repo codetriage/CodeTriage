@@ -363,7 +363,7 @@ DEPENDENCIES
   rails_autolink
   rbtrace
   record_tag_helper (~> 1.0)
-  rollbar (>= 2.13.2)
+  rollbar
   rrrretry
   sassc
   sassc-rails!
