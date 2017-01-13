@@ -71,6 +71,7 @@
 .repo-item-header {
   @include clearfix;
   background-color: $codetriage-blue;
+  border-radius: $base-border-radius $base-border-radius 0 0;
   margin: (-$base-spacing) (-$medium-spacing) $small-spacing;
   padding: $small-spacing $medium-spacing;
 
