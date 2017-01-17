@@ -11,6 +11,7 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 # Gems required in all environments
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
+  gem 'arel', git: 'https://github.com/rails/arel.git'
 else
   gem 'rails', '5.0.1.rc2'
 end
