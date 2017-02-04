@@ -20,6 +20,19 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
     assert page.has_content?('User successfully updated')
   end
 
+  test 'updating the user email_frequency' do
+    @user = users(:mockstar)
+    login_as(@user, scope: :user)
+    visit edit_user_path(@user)
+    select 'Twice a week', from: 'Email Frequency'
+    click_button 'Save'
+    assert page.has_content?('User successfully updated')
+    visit edit_user_path(@user)
+    assert page.has_select?('Email Frequency', selected: 'Twice a week')
+    @user.reload
+    assert_equal @user.email_frequency, 'twice_a_week'
+  end
+
   test 'updating the user daily_issue_limit' do
     @user = users(:mockstar)
     login_as(@user, scope: :user)
