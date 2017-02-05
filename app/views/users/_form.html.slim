@@ -6,11 +6,11 @@
         i.icon-envelope
       = f.text_field :email, class: 'text_field'
   = f.label :email_frequency, t("activerecord.attributes.user.email_frequency", default: "Email Frequency"), class: "label label-info"
-  .controld
+  .controls
     .input-preprend
       span.add-on
         i.icon-envelope
-      = f.select :email_frequency, options_for_select( EmailDecider::USER_STATES.map {|value| [ value.humanize, value ] } ), class: 'select'
+      = f.select :email_frequency, options_for_select( EmailDecider::USER_STATES.map {|value| [ value.humanize, value ] }, f.object.email_frequency), class: 'select'
       p When you're busy we try to send you less emails, if that's not good enough set your frequency here. For example if you set "twice a week" you won't receive more than 2 emails a week.
   = f.label :daily_issue_limit, t("activerecord.attributes.user.daily_issue_limit", default: "Max # of issues you want to receive per day"), class: "label label-info"
   .input
