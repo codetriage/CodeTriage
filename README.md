@@ -38,8 +38,8 @@ $ bundle install
 ```shell
 $ cp config/database.example.yml config/database.yml
 $ bin/rake db:create
-$ bin/rake db:migrate
-````
+$ bin/rake db:schema:load
+```
 
 ### Install Redis
 
