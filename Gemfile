@@ -50,7 +50,7 @@ group :development do
   gem 'foreman'
   gem 'spring'
   gem 'web-console'
-  gem 'bullet', '5.0.0'
+  gem 'bullet', '5.5.0'
   gem 'listen'
 end
 
