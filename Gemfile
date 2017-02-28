@@ -13,7 +13,7 @@ if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
   gem 'arel', git: 'https://github.com/rails/arel.git'
 else
-  gem 'rails', '5.0.1.rc2'
+  gem 'rails', '5.1.0.beta1'
 end
 
 gem 'puma', '~> 3.x'
