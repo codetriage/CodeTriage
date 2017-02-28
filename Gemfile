@@ -100,6 +100,7 @@ gem 'rack-canonical-host'
 # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
 gem 'sentry-raven' # , github: "getsentry/raven-ruby"
 
+
 gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
