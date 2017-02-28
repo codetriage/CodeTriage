@@ -1,14 +1,14 @@
 language: ruby
 sudo: false
 rvm:
-  - 2.4.0-rc1
+  - 2.4.0
 
 env:
   matrix:
     - "RAILS_MASTER=0"
     - "RAILS_MASTER=1"
 before_install:
-  - gem install bundler -v 1.12.5
+  - gem install bundler --no-document
   - bundle install
 script:
   - RAILS_ENV=test bin/rake test
