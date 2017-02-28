@@ -1,4 +1,4 @@
-class RepoIssueCounterCache < ActiveRecord::Migration
+class RepoIssueCounterCache < ActiveRecord::Migration[4.2]
   def up
     unless column_exists?(:repos, :issues_count)
       add_column :repos, :issues_count, :integer, default: 0, null: false

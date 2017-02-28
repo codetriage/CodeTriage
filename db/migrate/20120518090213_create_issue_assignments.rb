@@ -1,4 +1,4 @@
-class CreateIssueAssignments < ActiveRecord::Migration
+class CreateIssueAssignments < ActiveRecord::Migration[4.2]
   def change
     create_table :issue_assignments do |t|
       t.integer     :user_id
