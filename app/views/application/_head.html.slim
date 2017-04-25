@@ -8,8 +8,6 @@ head
 
   = stylesheet_link_tag "application", media: "all"
 
-  script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
-
   link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"
   link rel="icon" href="/favicon.ico" type="image/x-icon"
 
@@ -18,4 +16,4 @@ head
 
   = render_meta_tags
 
-  = javascript_include_tag "application"
+  = javascript_include_tag "application", async: true

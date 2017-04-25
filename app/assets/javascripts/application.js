@@ -19,3 +19,4 @@
 //= require bootstrap
 //= require global
 //= require badge.js
+//= require homepage.js
