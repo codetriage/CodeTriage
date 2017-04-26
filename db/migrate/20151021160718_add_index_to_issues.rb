@@ -1,4 +1,4 @@
-class AddIndexToIssues < ActiveRecord::Migration
+class AddIndexToIssues < ActiveRecord::Migration[4.2]
   def change
     add_index :issues, :state
     add_index :issues, :number
