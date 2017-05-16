@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_action do
+    if current_user && current_user.admin?
+      Rack::MiniProfiler.authorize_request
+    end
+  end
+
   def authenticate_user!
     redirect_to user_omniauth_authorize_path(:github, origin: request.fullpath) unless user_signed_in?
   end
