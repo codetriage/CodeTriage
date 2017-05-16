@@ -197,6 +197,8 @@ GEM
     rack-canonical-host (0.2.2)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
+    rack-mini-profiler (0.10.2)
+      rack (>= 1.2.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rack-timeout (0.3.2)
@@ -356,6 +358,7 @@ DEPENDENCIES
   pg
   puma (~> 3.x)
   rack-canonical-host
+  rack-mini-profiler
   rack-timeout
   rails (= 5.0.1.rc2)
   rails-controller-testing

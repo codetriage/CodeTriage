@@ -69,6 +69,7 @@ group :development, :test do
   gem 'teaspoon'
   gem 'dotenv-rails', '2.1.0'
   gem 'derailed_benchmarks'
+  gem 'rack-mini-profiler'
 end
 
 group :production do
