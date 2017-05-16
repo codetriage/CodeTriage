@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_action do
+    puts current_user.inspect
+    puts current_user.admin?
     if current_user && current_user.admin?
       Rack::MiniProfiler.authorize_request
     end
