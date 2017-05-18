@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    redirect_to user_omniauth_authorize_path(:github, origin: request.fullpath) unless user_signed_in?
+    redirect_to user_github_omniauth_authorize_path(origin: request.fullpath) unless user_signed_in?
   end
 
   def after_sign_in_path_for(resource)

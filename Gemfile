@@ -13,7 +13,7 @@ if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
   gem 'arel', git: 'https://github.com/rails/arel.git'
 else
-  gem 'rails', '5.0.1.rc2'
+  gem 'rails', '5.1.1'
 end
 
 gem 'puma', '~> 3.x'
@@ -29,7 +29,7 @@ gem 'bluecloth'
 gem 'maildown', '2.0.0'
 gem 'rrrretry'
 gem 'jquery-rails'
-gem 'devise', '4.0.0.rc1'
+gem 'devise'
 gem 'warden', '1.2.6'
 gem 'rack-timeout'
 gem 'mail_view', '~> 1.0.2'
@@ -50,7 +50,7 @@ group :development do
   gem 'foreman'
   gem 'spring'
   gem 'web-console'
-  gem 'bullet', '5.0.0'
+  gem 'bullet'
   gem 'listen'
 end
 
@@ -67,9 +67,10 @@ end
 
 group :development, :test do
   gem 'teaspoon'
-  gem 'dotenv-rails', '2.1.0'
+  gem 'dotenv-rails'
   gem 'derailed_benchmarks'
   gem 'faker', require: false
+  gem 'pry'
 end
 
 gem 'rack-mini-profiler'

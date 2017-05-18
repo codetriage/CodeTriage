@@ -1,6 +1,6 @@
 - if current_user.blank?
   section.user-logged-out
-    h1= link_to 'Login to view yor account', user_omniauth_authorize_path(:github)
+    h1= link_to 'Login to view yor account', user_github_omniauth_authorize_path
 
 - if current_user && current_user == @user
   .subpage-content-wrapper

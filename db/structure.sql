@@ -44,7 +44,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: data_dumps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: data_dumps; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE data_dumps (
@@ -75,7 +75,7 @@ ALTER SEQUENCE data_dumps_id_seq OWNED BY data_dumps.id;
 
 
 --
--- Name: issue_assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: issue_assignments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE issue_assignments (
@@ -109,7 +109,7 @@ ALTER SEQUENCE issue_assignments_id_seq OWNED BY issue_assignments.id;
 
 
 --
--- Name: issues; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: issues; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE issues (
@@ -150,7 +150,7 @@ ALTER SEQUENCE issues_id_seq OWNED BY issues.id;
 
 
 --
--- Name: opro_auth_grants; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: opro_auth_grants; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE opro_auth_grants (
@@ -187,7 +187,7 @@ ALTER SEQUENCE opro_auth_grants_id_seq OWNED BY opro_auth_grants.id;
 
 
 --
--- Name: opro_client_apps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: opro_client_apps; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE opro_client_apps (
@@ -222,7 +222,7 @@ ALTER SEQUENCE opro_client_apps_id_seq OWNED BY opro_client_apps.id;
 
 
 --
--- Name: repo_subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: repo_subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE repo_subscriptions (
@@ -256,7 +256,7 @@ ALTER SEQUENCE repo_subscriptions_id_seq OWNED BY repo_subscriptions.id;
 
 
 --
--- Name: repos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: repos; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE repos (
@@ -294,7 +294,7 @@ ALTER SEQUENCE repos_id_seq OWNED BY repos.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
@@ -303,7 +303,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -413,7 +413,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: data_dumps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: data_dumps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY data_dumps
@@ -421,7 +421,7 @@ ALTER TABLE ONLY data_dumps
 
 
 --
--- Name: issue_assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: issue_assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY issue_assignments
@@ -429,7 +429,7 @@ ALTER TABLE ONLY issue_assignments
 
 
 --
--- Name: issues_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: issues_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY issues
@@ -437,7 +437,7 @@ ALTER TABLE ONLY issues
 
 
 --
--- Name: opro_auth_grants_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: opro_auth_grants_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY opro_auth_grants
@@ -445,7 +445,7 @@ ALTER TABLE ONLY opro_auth_grants
 
 
 --
--- Name: opro_client_apps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: opro_client_apps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY opro_client_apps
@@ -453,7 +453,7 @@ ALTER TABLE ONLY opro_client_apps
 
 
 --
--- Name: repo_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: repo_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY repo_subscriptions
@@ -461,7 +461,7 @@ ALTER TABLE ONLY repo_subscriptions
 
 
 --
--- Name: repos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: repos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY repos
@@ -469,7 +469,7 @@ ALTER TABLE ONLY repos
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -477,63 +477,63 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_issue_assignments_on_delivered; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_issue_assignments_on_delivered; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_issue_assignments_on_delivered ON issue_assignments USING btree (delivered);
 
 
 --
--- Name: index_issues_on_number; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_issues_on_number; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_issues_on_number ON issues USING btree (number);
 
 
 --
--- Name: index_issues_on_repo_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_issues_on_repo_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_issues_on_repo_id ON issues USING btree (repo_id);
 
 
 --
--- Name: index_issues_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_issues_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_issues_on_state ON issues USING btree (state);
 
 
 --
--- Name: index_users_on_account_delete_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_account_delete_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_users_on_account_delete_token ON users USING btree (account_delete_token);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_github; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_github; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_github ON users USING btree (github);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
