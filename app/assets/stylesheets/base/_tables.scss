@@ -3,7 +3,7 @@ table {
   font-feature-settings: "kern", "liga", "tnum";
   margin: $small-spacing 0;
   table-layout: fixed;
-  width: 100%;
+  // width: 100%; // Breaks rack-mini-profiler
 }
 
 th {
