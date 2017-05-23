@@ -71,11 +71,6 @@ group :development, :test do
   gem 'derailed_benchmarks'
 end
 
-group :production do
-  gem 'rails_12factor'
-end
-
-
 gem 'rack-mini-profiler'
 
 gem 'the_lone_dyno'
