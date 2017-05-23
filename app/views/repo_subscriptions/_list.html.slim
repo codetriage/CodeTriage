@@ -1,2 +1,2 @@
 ul.repo-list
-  = render @repos_subs.map(&:repo)
+  = render partial: "repos/repo", collection: @repos_subs.map(&:repo), cached: true
