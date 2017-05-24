@@ -110,6 +110,7 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.3)
     docile (1.1.5)
     dotenv (2.1.0)
     dotenv-rails (2.1.0)
@@ -245,6 +246,19 @@ GEM
     rollbar (2.13.3)
       multi_json
     rrrretry (1.0.0)
+    rspec (3.6.0)
+      rspec-core (~> 3.6.0)
+      rspec-expectations (~> 3.6.0)
+      rspec-mocks (~> 3.6.0)
+    rspec-core (3.6.0)
+      rspec-support (~> 3.6.0)
+    rspec-expectations (3.6.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.6.0)
+    rspec-mocks (3.6.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.6.0)
+    rspec-support (3.6.0)
     rusage (0.2.0)
     safe_yaml (1.0.4)
     sass (3.4.19)
@@ -270,7 +284,13 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (~> 3.0)
-    spring (1.4.0)
+    spring (2.0.1)
+      activesupport (>= 4.2)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
+    spring-watcher-listen (2.0.1)
+      listen (>= 2.7, < 4.0)
+      spring (>= 1.2, < 3.0)
     sprockets (4.0.0.beta4)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -339,7 +359,7 @@ DEPENDENCIES
   git_hub_bub
   jquery-rails
   launchy
-  listen
+  listen (~> 3.0.5)
   mail
   mail_view (~> 1.0.2)
   maildown (= 2.0.0)
@@ -362,13 +382,16 @@ DEPENDENCIES
   record_tag_helper (~> 1.0)
   rollbar
   rrrretry
+  rspec
   sassc
   sassc-rails!
   scout_apm (~> 2.0.x)
   sidekiq
   simplecov
   slim-rails
-  spring
+  spring (= 2.0.1)
+  spring-commands-rspec
+  spring-watcher-listen (~> 2.0.0)
   sprockets (= 4.0.0.beta4)
   sprockets-rails
   stackprof
@@ -386,7 +409,7 @@ DEPENDENCIES
   yard
 
 RUBY VERSION
-   ruby 2.4.0p0
+   ruby 2.4.1p111
 
 BUNDLED WITH
    1.14.6
