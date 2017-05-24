@@ -24,5 +24,13 @@
     {
       "url": "heroku/ruby"
     }
-  ]
+  ],
+
+  "environments": {
+    "test": {
+      "buildpacks": [
+       {"url": "https://github.com/heroku/heroku-buildpack-ruby#schneems/debug-bad-ruby"}
+      ]
+    }
+  }
 }
