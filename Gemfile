@@ -48,7 +48,7 @@ gem 'slim-rails'
 
 group :development do
   gem 'foreman'
-  gem 'spring'
+  gem 'spring', '1.4.0'
   gem 'web-console'
   gem 'bullet', '5.0.0'
 end
