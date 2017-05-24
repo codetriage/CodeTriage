@@ -100,3 +100,5 @@ gem 'stackprof'
 gem 'bootscale', require: false
 gem 'rbtrace'
 gem 'tunemygc'
+
+gem 'rspec'
