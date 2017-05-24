@@ -51,7 +51,6 @@ group :development do
   gem 'spring'
   gem 'web-console'
   gem 'bullet', '5.0.0'
-  gem 'listen'
 end
 
 group :test do
@@ -101,5 +100,8 @@ gem 'bootscale', require: false
 gem 'rbtrace'
 gem 'tunemygc'
 
+gem "listen", "~> 3.0.5"
 gem 'rspec'
 gem "spring-commands-rspec"
+gem "spring-watcher-listen", "~> 2.0.0"
+
