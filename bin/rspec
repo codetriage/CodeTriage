@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
-begin
-  load File.expand_path('../spring', __FILE__)
-rescue LoadError => e
-  raise unless e.message.include?('spring')
+
+unless ENV["HEROKU_TEST_RUN_ID"]
+  begin
+    load File.expand_path('../spring', __FILE__)
+  rescue LoadError => e
+    raise unless e.message.include?('spring')
+  end
 end
 # frozen_string_literal: true
 #
