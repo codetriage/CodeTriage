@@ -284,7 +284,8 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (~> 3.0)
-    spring (1.4.0)
+    spring (2.0.1)
+      activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     spring-watcher-listen (2.0.1)
@@ -388,7 +389,7 @@ DEPENDENCIES
   sidekiq
   simplecov
   slim-rails
-  spring
+  spring (= 2.0.1)
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.0)
   sprockets (= 4.0.0.beta4)
