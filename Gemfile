@@ -102,3 +102,4 @@ gem 'rbtrace'
 gem 'tunemygc'
 
 gem 'rspec'
+gem "spring-commands-rspec"
