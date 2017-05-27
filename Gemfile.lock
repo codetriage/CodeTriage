@@ -118,6 +118,8 @@ GEM
     erubis (2.7.0)
     excon (0.45.4)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
@@ -335,6 +337,7 @@ DEPENDENCIES
   derailed_benchmarks
   devise (= 4.0.0.rc1)
   dotenv-rails (= 2.1.0)
+  faker
   foreman
   git_hub_bub
   jquery-rails

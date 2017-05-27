@@ -5,36 +5,47 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
 
 Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
-user = User.new(
-  github:     "schneems",
-  email:      "foo@example.com",
-  avatar_url: "https://avatars.githubusercontent.com/u/59744?v=3"
-)
-user.save(validate: false)
-repo = user.repos.new(
-  :user_name     => "schneems",
-  :name          => "wicked",
-  :issues_count  => 30,
-  :language      => "Ruby",
-  :description   => "A library or something",
-  :full_name     => "schneems/wicked"
-)
-repo.save(validate: false)
+100.times do
+  printf "."
+  begin
+    username = Faker::Internet.user_name.gsub(".", "-")
+    user = User.new(
+      github:     username,
+      email:      Faker::Internet.email,
+      avatar_url: Faker::Avatar.image
+    )
+    user.save(validate: false)
 
-repo.subscribers << user
+    name = Faker::Hipster.word
+    repo = user.repos.new(
+      :user_name     => username,
+      :name          => name,
+      :issues_count  => rand(30),
+      :language      => %w[Ruby PHP Go Javascript Java Swift].sample,
+      :description   => Faker::Lorem.paragraph(1, true, 4),
+      :full_name     => "#{username}/#{name}"
+    )
+    repo.save(validate: false)
 
-100.times do |i|
-  issue = repo.issues.new(
-    number:     i,
-    updated_at: Time.now,
-    title:      "H3y did you know about #{i}",
-    state:      "open",
-    html_url:   "https://github.com/schneems/wicked/issues/#{i}"
-  )
-  issue.save
+    repo.subscribers << user
+
+    rand(10).times do |i|
+      issue = repo.issues.new(
+        number:     i,
+        updated_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
+        title:      Faker::Lorem.paragraph(1, true, 2),
+        state:      "open",
+        html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
+      )
+      issue.save
+    end
+  rescue # unique constraints, etc who cares
+    next
+  end
 end
