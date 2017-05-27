@@ -1,5 +1,11 @@
 language: ruby
+dist: trusty
 sudo: false
+cache: bundler
+
+branches:
+  only: [master]
+
 rvm:
   - 2.4.1
 
@@ -28,5 +34,3 @@ deploy:
 matrix:
   allow_failures:
     - env: "RAILS_MASTER=1"
-cache:
-  - bundler
