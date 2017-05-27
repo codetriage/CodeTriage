@@ -93,4 +93,3 @@ end
 require 'mocha/setup'
 
 require 'sidekiq/testing'
-Sidekiq::Testing.inline!

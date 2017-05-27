@@ -32,11 +32,11 @@ class UserTest < ActiveSupport::TestCase
     assert !u.able_to_edit_repo?(r2)
   end
 
+  # TODO: move to a job test, this does not test user.rb code
   test 'send out daily triage email' do
-    User.any_instance.expects(:send_daily_triage!).at_least_once
-    User.find_each do |user|
-      SendDailyTriageEmailJob.perform_later(user.id)
-    end
+    User.any_instance.expects(:send_daily_triage!).once
+    user = User.first
+    SendDailyTriageEmailJob.new.perform(user.id)
   end
 
   test 'send_daily_triage!' do
