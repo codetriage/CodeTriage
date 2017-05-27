@@ -14,7 +14,12 @@ task "assets:profile" do
   end
 end
 
+Rake::Task["test"].clear
+task :test do
+  $: << Dir.pwd + "/test"
 
+  Minitest.rake_run(["test"])
+end
 
 # $ bundle exec rake assets:bench ; cd  ~/documents/projects/sprockets; git co -; cd -; bundle exec rake assets:bench
 task "assets:bench" do

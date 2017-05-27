@@ -98,6 +98,6 @@ gem 'oj'
 gem 'rack-canonical-host'
 
 gem 'stackprof'
-gem 'bootscale', require: false
+gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'tunemygc'
