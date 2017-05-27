@@ -1,9 +1,11 @@
 require 'test_helper'
 
 class EmailDeciderTest < ActiveSupport::TestCase
-  test "decides email frequency" do
-    seed_array = (1..350).to_a # max value has to be divisible by the multiplier of th higest used value i.e. 10_000/30.0
-
+  def seed_array
+    @seed_array ||= (1..350).to_a # max value has to be divisible by the multiplier of th higest used value i.e. 10_000/30.0
+  end
+  
+  test "decides daily email frequency" do
     # Daily
     last_clicked_days_ago = 0..3
     multiplier            = 1
@@ -14,7 +16,9 @@ class EmailDeciderTest < ActiveSupport::TestCase
     assert EmailDecider.new(day_ago).now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     # Use user email frequency settings
     refute EmailDecider.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}, 'once_a_week').now?(#{clicked_ago}) to be false, was not"
+  end
 
+  test "wait" do
     # wait
     last_clicked_days_ago = 4..6
     multiplier            = 1
@@ -23,8 +27,9 @@ class EmailDeciderTest < ActiveSupport::TestCase
     day_ago               = rand(last_clicked_days_ago)
     bad_clicked_ago       = invalid_values.sample
     assert EmailDecider.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailDecider.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
+  end
 
-
+  test "twice a week" do
     # twice a week
     last_clicked_days_ago = 7..13
     multiplier            = 3
@@ -35,7 +40,9 @@ class EmailDeciderTest < ActiveSupport::TestCase
     bad_clicked_ago        = invalid_values.sample
     assert EmailDecider.new(day_ago).now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailDecider.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailDecider.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
+  end
 
+  test "once a week" do
     # once a week
     last_clicked_days_ago = 14..30
     multiplier            = 7
@@ -46,7 +53,9 @@ class EmailDeciderTest < ActiveSupport::TestCase
     bad_clicked_ago        = invalid_values.sample
     assert EmailDecider.new(day_ago).now?(clicked_ago), "Expected  EmailDecider.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailDecider.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailDecider.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
+  end
 
+  test "once a month" do
     # once a month
     last_clicked_days_ago = 31..10_000
     multiplier            = 30
