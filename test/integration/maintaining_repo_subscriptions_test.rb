@@ -1,6 +1,7 @@
 require "test_helper"
 
 class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
+  include ActiveJob::TestHelper
   fixtures :repos
 
   def triage_the_sandbox
@@ -14,21 +15,18 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
   end
 
   test "subscribing to a repo" do
-    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
+    assert_enqueued_jobs 1, only: SendSingleTriageEmailJob do
       triage_the_sandbox
       assert page.has_content?("issue_triage_sandbox")
     end
-    assert_equal IssueAssignment.last.delivered, true
   end
 
   test "send an issue! button" do
     triage_the_sandbox
-    assert_difference 'ActionMailer::Base.deliveries.size', +1 do
-
+    assert_enqueued_jobs 1, only: SendSingleTriageEmailJob do
       click_link "Send me a new issue!"
       assert page.has_content?("You will receive an email with your new issue shortly")
     end
-    assert_equal IssueAssignment.last.delivered, true
   end
 
   test "listing subscribers" do

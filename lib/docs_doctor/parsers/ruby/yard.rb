@@ -45,13 +45,13 @@ module DocsDoctor
             method = repo.doc_methods.where(name: obj.name, path: obj.path).first_or_initialize
             method.assign_attributes(line: obj.line, file: obj.file, skip_write: skip_write, skip_read: skip_read) # line and file will change, do not want to accidentally create duplicate methods
             unless method.save
-              puts "Could not store YARD object, missing one or more properties: #{method.errors.inspect}"
+              Rails.logger.debug "Could not store YARD object, missing one or more properties: #{method.errors.inspect}"
               return false
             end
 
             method.doc_comments.where(comment: obj.docstring).first_or_create if obj.docstring.present?
           else
-            puts "Skipping storing non-method: #{obj.inspect}"
+            Rails.logger.debug "Skipping storing non-method: #{obj.inspect}"
             return true
           end
         end
@@ -67,7 +67,9 @@ module DocsDoctor
           # yard.use_cache = false'
 
           Dir.chdir(root_path) do
-            yard.run(root_path.to_s)
+            YARD::Logger.instance.enter_level(Logger::FATAL) do
+              yard.run(root_path.to_s)
+            end
           end
 
           @yard_objects = YARD::Registry.all
@@ -78,5 +80,3 @@ module DocsDoctor
     end
   end
 end
-
-

@@ -95,7 +95,7 @@ class Issue < ActiveRecord::Base
       begin
         issue.update_attributes(state: CLOSED)
       rescue => e
-        puts e.inspect
+        logger.debug e.inspect
       end
     end
   end

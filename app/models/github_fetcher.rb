@@ -6,7 +6,7 @@ class GithubFetcher
   end
 
   def clone
-    `cd #{dir} && git clone #{clone_url}`
+    `cd #{dir} && git clone #{clone_url} 2>&1`
     return dir
   end
 

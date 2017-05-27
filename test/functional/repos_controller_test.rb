@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ReposControllerTest < ActionController::TestCase
   include Devise::TestHelpers
+  include ActiveJob::TestHelper
 
   fixtures :users, :repos
 
@@ -21,12 +22,14 @@ class ReposControllerTest < ActionController::TestCase
 
   test 'do not send email for repo without issues' do
     sign_in users(:mockstar)
-    UserMailer.any_instance.expects(:send_triage).once
-    VCR.use_cassette "create_repo_refinery", record: :once do
-      post :create, params: { repo: { name: 'refinerycms', user_name: 'refinery' } }
-    end
-    VCR.use_cassette "create_repo_without_issues", record: :once do
-      post :create, params: { repo: { name: 'scene-hub-v2', user_name: 'chrisccerami' } }
+
+    assert_enqueued_jobs 2, only: SendSingleTriageEmailJob do
+      VCR.use_cassette "create_repo_refinery", record: :once do
+        post :create, params: { repo: { name: 'refinerycms', user_name: 'refinery' } }
+      end
+      VCR.use_cassette "create_repo_without_issues", record: :once do
+        post :create, params: { repo: { name: 'scene-hub-v2', user_name: 'chrisccerami' } }
+      end
     end
   end
 
