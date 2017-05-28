@@ -1,8 +1,5 @@
-class UpdateRepoInfoJob < ActiveJob::Base
-  queue_as :default
-
-  def perform(id)
-    repo = Repo.find(id)
+class UpdateRepoInfoJob < ApplicationJob
+  def perform(repo)
     repo.update_from_github
   end
 end

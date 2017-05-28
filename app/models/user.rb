@@ -29,11 +29,7 @@ class User < ActiveRecord::Base
     subscriptions = self.repo_subscriptions.order('RANDOM()').load
     DocMailerMaker.new(self, subscriptions) {|sub| sub.ready_for_next? }.deliver
   end
-
-  def background_subscribe_docs!
-    SubscribeUserToDocs.perform_later(self.id)
-  end
-
+  
   def set_default_last_clicked_at
     self.last_clicked_at ||= Time.now
   end
@@ -128,22 +124,6 @@ class User < ActiveRecord::Base
     ).ceil # only want whole days
   end
 
-  def send_daily_triage!
-    return false if repo_subscriptions.blank?
-    skip = EmailDecider.new(days_since_last_clicked, minimum_frequency: email_frequency).skip?(days_since_last_email)
-    logger.debug "User #{github}: skip: #{skip.inspect}, days_since_last_clicked: #{days_since_last_clicked}, days_since_last_email: #{days_since_last_email}"
-    return false if skip
-
-    IssueAssigner.new(self, repo_subscriptions).assign
-    ids         = repo_subscriptions.pluck(:id)
-    assignments = IssueAssignment.where(repo_subscription_id: ids).where(delivered: false).limit(daily_issue_limit)
-    if assignments.present?
-      assignments.update_all(delivered: true)
-      repo_subscriptions.update_all(last_sent_at: Time.now)
-      UserMailer.send_daily_triage(user: self, assignments: assignments).deliver_now
-    end
-  end
-
   def favorite_language?(language)
     favorite_languages.include? language if favorite_languages
   end
@@ -152,4 +132,14 @@ class User < ActiveRecord::Base
     favorite_languages && !favorite_languages.empty?
   end
 
+  def issue_assignments_to_deliver(assign: true)
+    issue_assigner.assign! if assign
+    issue_assignments.where(delivered: false).limit(daily_issue_limit)
+  end
+
+  private
+
+  def issue_assigner
+    @issue_assigner ||= IssueAssigner.new(self, repo_subscriptions)
+  end
 end

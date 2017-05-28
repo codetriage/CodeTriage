@@ -1,6 +1,4 @@
-class SubscribeUserToDocs < ActiveJob::Base
-  queue_as :default
-
+class SubscribeUserToDocs < ApplicationJob
   def perform(id)
     User.find(id).subscribe_docs!
   end

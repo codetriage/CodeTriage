@@ -21,7 +21,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     issue.save
 
     Issue.any_instance.stubs(:valid_for_user?).returns(true)
-    IssueAssigner.new(user, [repo_sub]).assign
+    IssueAssigner.new(user, [repo_sub]).assign!
     assert_equal 1, user.issues.count
   end
 
@@ -54,7 +54,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     repo_sub.issue_assignments.create(issue: assigned_issue)
 
     Issue.any_instance.stubs(:valid_for_user?).returns(true)
-    IssueAssigner.new(user, [repo_sub]).assign
+    IssueAssigner.new(user, [repo_sub]).assign!
     assert_equal 2, user.issues.count
   end
 
@@ -76,7 +76,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     VCR.use_cassette('open_issue') do
       Issue.any_instance.stubs(:valid_for_user?).returns(true)
-      IssueAssigner.new(user, [repo_sub]).assign
+      IssueAssigner.new(user, [repo_sub]).assign!
       assert_equal 1, user.issue_assignments.count
     end
   end
@@ -98,7 +98,7 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
                        number:          9001)
     sub = user.repo_subscriptions.create(repo: repo,
                                    email_limit: 2)
-    IssueAssigner.new(user, user.repo_subscriptions).assign
+    IssueAssigner.new(user, user.repo_subscriptions).assign!
     assert_equal 2, sub.issue_assignments.count
   end
 
