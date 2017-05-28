@@ -14,8 +14,6 @@ task "assets:profile" do
   end
 end
 
-
-
 # $ bundle exec rake assets:bench ; cd  ~/documents/projects/sprockets; git co -; cd -; bundle exec rake assets:bench
 task "assets:bench" do
   measure = []
@@ -28,4 +26,53 @@ task "assets:bench" do
   end
   puts "================ DONE ================"
   puts measure.join("\n")
+end
+
+# overrides for bootsnap to eliminate relative paths
+# TODO Rails 5.1 add test:system
+%w[
+  test test:prepare test:generators test:models test:helpers
+  test:controllers test:mailers test:integration test:jobs
+  test:units test:functionals
+].each { |task| Rake::Task[task].clear }
+
+task :test do
+  $: << Rails.root.to_s + "/test"
+
+  if ENV.key?("TEST")
+    Minitest.rake_run([ENV["TEST"]])
+  else
+    # TODO: Rails 5.1 Minitest.rake_run(["test"], ["test/system/**/*"])
+    Minitest.rake_run(["test"])
+  end
+end
+
+namespace :test do
+  ["models", "helpers", "controllers", "mailers", "integration", "jobs"].each do |name|
+    task name => "test:prepare" do
+      $: << Rails.root.to_s + "/test"
+      Minitest.rake_run(["test/#{name}"])
+    end
+  end
+
+  task generators: "test:prepare" do
+    $: << Rails.root.to_s + "/test"
+    Minitest.rake_run(["test/lib/generators"])
+  end
+
+  task units: "test:prepare" do
+    $: << Rails.root.to_s + "/test"
+    Minitest.rake_run(["test/models", "test/helpers", "test/unit"])
+  end
+
+  task functionals: "test:prepare" do
+    $: << Rails.root.to_s + "/test"
+    Minitest.rake_run(["test/controllers", "test/mailers", "test/functional"])
+  end
+
+  desc "Run system tests only"
+  task system: "test:prepare" do
+    $: << Rails.root.to_s + "/test"
+    Minitest.rake_run(["test/system"])
+  end
 end
