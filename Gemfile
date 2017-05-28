@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '> 2.3', '< 2.5'
+ruby "~> 2.4.1"
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -48,10 +48,9 @@ gem 'slim-rails'
 
 group :development do
   gem 'foreman'
-  gem 'spring'
+  gem 'spring', '2.0.1'
   gem 'web-console'
   gem 'bullet', '5.0.0'
-  gem 'listen'
 end
 
 group :test do
@@ -101,3 +100,9 @@ gem 'stackprof'
 gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'tunemygc'
+
+gem "listen", "~> 3.0.5"
+gem 'rspec'
+gem "spring-commands-rspec"
+gem "spring-watcher-listen", "~> 2.0.0"
+
