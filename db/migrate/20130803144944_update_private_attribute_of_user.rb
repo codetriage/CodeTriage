@@ -1,4 +1,4 @@
-class UpdatePrivateAttributeOfUser < ActiveRecord::Migration
+class UpdatePrivateAttributeOfUser < ActiveRecord::Migration[4.2]
   def change
     change_column :users, :private, :boolean, default: false
     # Update existing users. Set :private to false if it is nil

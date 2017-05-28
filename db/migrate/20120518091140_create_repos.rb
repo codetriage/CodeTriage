@@ -1,4 +1,4 @@
-class CreateRepos < ActiveRecord::Migration
+class CreateRepos < ActiveRecord::Migration[4.2]
   def change
     create_table :repos do |t|
       t.string   "name"

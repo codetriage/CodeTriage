@@ -56,13 +56,13 @@ class UserTest < ActiveSupport::TestCase
 
   test "account_delete_token should be created on first use" do
     u = User.new
-    assert_equal nil, u[:account_delete_token]
+    assert_nil u[:account_delete_token]
     assert_not_equal nil, u.account_delete_token
   end
 
   test "account_delete_token should be saved unless it is a new record" do
     u = User.new(email: "test@example.com", github: "abcabc123")
-    assert_equal nil, u.tap(&:account_delete_token).updated_at
+    assert_nil u.tap(&:account_delete_token).updated_at
 
     u.account_delete_token = nil
     u.save

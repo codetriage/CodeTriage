@@ -3,7 +3,7 @@
   = cache(:hero_title, expires_in: 1.hour) do
     h2.hero-title-secondary Pick your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{Repo.count} open source repos using CodeTriage.
   - unless user_signed_in?
-      = link_to user_omniauth_authorize_path(:github), class: 'button'
+      = link_to user_github_omniauth_authorize_path, class: 'button'
         = render 'github'
         | Sign up with GitHub
 
@@ -35,5 +35,5 @@ hr.section-break
   section.repo-list-with-pagination
     = render "repos_with_pagination", repos: @repos
 
-/ = link_to user_omniauth_authorize_path(:github), class: 'button center'
+/ = link_to user_github_omniauth_authorize_path, class: 'button center'
 /   | Load More

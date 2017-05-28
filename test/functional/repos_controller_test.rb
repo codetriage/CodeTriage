@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ReposControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
   include ActiveJob::TestHelper
 
   fixtures :users, :repos
@@ -17,7 +17,7 @@ class ReposControllerTest < ActionController::TestCase
       post :create, params: { repo: { name: 'codetriage', user_name: 'codetriage' } }
     end
 
-    assert_redirected_to user_omniauth_authorize_path(:github, origin: "/repos")
+    assert_redirected_to user_github_omniauth_authorize_path(origin: "/repos")
   end
 
   test 'do not send email for repo without issues' do

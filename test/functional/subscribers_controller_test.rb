@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SubscribersControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   fixtures :users, :repos
 
