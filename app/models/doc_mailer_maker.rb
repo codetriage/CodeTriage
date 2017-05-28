@@ -24,7 +24,7 @@ class DocMailerMaker
   def assign_docs(&send_next)
     subs.flat_map do |sub|
       if !send_next.call(sub)
-        logger.debug "Filtered: #{sub.inspect}"
+        Rails.logger.debug "Filtered: #{sub.inspect}"
         next
       end
 
@@ -56,7 +56,7 @@ class DocMailerMaker
 
   def deliver
     if write_docs.blank? && read_docs.blank?
-      logger.debug "No docs to send"
+      Rails.logger.debug "No docs to send"
       return false
     end
     mail.deliver
