@@ -34,11 +34,11 @@ class Repo < ActiveRecord::Base
   end
 
   def background_populate_issues!
-    PopulateIssuesJob.perform_later(self.id)
+    PopulateIssuesJob.perform_later(self)
   end
 
   def background_populate_docs!
-    PopulateDocsJob.perform_later(self.id)
+    PopulateDocsJob.perform_later(self)
   end
 
   def methods_missing_docs
@@ -202,15 +202,15 @@ class Repo < ActiveRecord::Base
     File.join 'repos', path
   end
 
-  def update_repo_info!
-    UpdateRepoInfoJob.perform_later(self.id)
-  end
-
   def self.find_by_full_name(full_name)
     Repo.find_by!(full_name: full_name)
   end
 
   private
+
+  def update_repo_info!
+    UpdateRepoInfoJob.perform_later(self)
+  end
 
   def downcase_name
     self.name.downcase!

@@ -7,7 +7,7 @@ class IssueAssigner
     @subscriptions = subscriptions
   end
 
-  def assign
+  def assign!
     subscriptions.each do |sub|
       sub.email_limit.times.map do
         assign_issue_for_sub(sub)
@@ -50,4 +50,3 @@ class IssueAssigner
       end
     end
 end
-

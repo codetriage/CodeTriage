@@ -2,4 +2,4 @@
 
 one:
   repo_subscription: schneems_to_triage
-
+  issue: issue_one

@@ -1,8 +1,5 @@
-class PopulateDocsJob < ActiveJob::Base
-  queue_as :default
-
-  def perform(id)
-    repo = Repo.find(id.to_i)
+class PopulateDocsJob < ApplicationJob
+  def perform(repo)
     repo.populate_docs!
   end
 end
