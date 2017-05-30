@@ -9,7 +9,7 @@ class BadgesController < ApplicationController
       key   = repo.cache_key + "/badges/".freeze + count
 
       unless svg = Rails.cache.read(key)
-        result = Excon.get("https://img.shields.io/badge/code%20triagers-#{count}-#{repo.color}.svg")
+        result = Excon.get("https://img.shields.io/badge/code%20helpers-#{count}-#{repo.color}.svg")
         raise ActionController::RoutingError.new('Not Found') unless result.status == 200
         svg = result.body
         Rails.cache.write(key, result.body, expires_in: 1.day)
@@ -20,7 +20,7 @@ class BadgesController < ApplicationController
 
     response.headers["Cache-Control"] = "public max-age=3600" # one hour
     respond_to do |format|
-      format.svg { render text: svg }
+      format.svg { render plain: svg }
     end
   end
 
