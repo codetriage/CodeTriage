@@ -16,7 +16,7 @@ namespace :schedule do
 
   desc 'Sends an email to invite users to engage once a week'
   task poke_inactive: :environment do
-    return unless Date.today.tuesday?
+    next unless Date.today.tuesday?
     User.inactive.find_each(batch_size: 100) do |user|
       BackgroundInactiveEmailJob.perform_later(user)
     end
@@ -33,7 +33,7 @@ namespace :schedule do
   end
 
   task warn_invalid_token: :environment do
-    return unless Date.today.thursday?
+    next unless Date.today.thursday?
     User.where(token: nil).find_each(batch_size: 100) do |user|
       UserMailer.invalid_token(user).deliver_later
     end
