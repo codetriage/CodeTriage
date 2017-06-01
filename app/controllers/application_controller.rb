@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  before_action do
+    if current_user
+      Raven.user_context email: current_user.email, id: current_user.id, username: current_user.github
+    end
+  end
+
   def authenticate_user!
     redirect_to user_github_omniauth_authorize_path(origin: request.fullpath) unless user_signed_in?
   end
