@@ -20,3 +20,11 @@
 //= require global
 //= require badge.js
 //= require homepage.js
+//= require raven.js
+
+Raven.config("<%= ENV['SENTRY_DSN_PUBLIC'] %>", {
+  release: "<%= Raven.configuration.release %>",
+  environment: "<%= Rails.env %>",
+}).install();
+
+console.log(Raven.isSetup());
