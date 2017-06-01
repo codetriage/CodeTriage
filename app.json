@@ -16,8 +16,11 @@
     "heroku-postgresql",
     "memcachier"
   ],
-  "stack": "heroku-16",
+  "stack": "cedar-14",
   "buildpacks": [
+    {
+      "url": "https://github.com/mojodna/heroku-buildpack-jemalloc.git#v3.6.0"
+    },
     {
       "url": "heroku/nodejs"
     },
