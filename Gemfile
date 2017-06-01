@@ -94,7 +94,7 @@ gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
 
-gem 'rollbar'
+gem 'sentry-raven'
 gem 'oj'
 gem 'rack-canonical-host'
 

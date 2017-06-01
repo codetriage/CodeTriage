@@ -251,8 +251,6 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
-    rollbar (2.13.3)
-      multi_json
     rrrretry (1.0.0)
     rusage (0.2.0)
     safe_yaml (1.0.4)
@@ -263,6 +261,8 @@ GEM
       sass (>= 3.3.0)
     scout_apm (2.0.0.pre3)
       rusage (~> 0.2.0)
+    sentry-raven (2.5.1)
+      faraday (>= 0.7.6, < 1.0)
     sidekiq (4.0.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -372,11 +372,11 @@ DEPENDENCIES
   rails_autolink
   rbtrace
   record_tag_helper (~> 1.0)
-  rollbar
   rrrretry
   sassc
   sassc-rails!
   scout_apm (~> 2.0.x)
+  sentry-raven
   sidekiq
   simplecov
   slim-rails
