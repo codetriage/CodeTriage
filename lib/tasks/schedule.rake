@@ -27,8 +27,20 @@ namespace :schedule do
   end
 
   task check_user_auth: :environment do
+    # API may be down
+    response          = Excon.get("https://status.github.com/api/status.json").body
+    github_api_status = JSON.parse(response)["status"]
+    next unless github_api_status == "good"
+
     User.where.not(token: nil).find_each(batch_size: 100) do |user|
-      user.update_attributes(token: nil) unless user.auth_is_valid?
+      # Check multiple times if token is not valid
+      # if token is valid once, go to next user
+      next if user.auth_is_valid?
+      next if user.auth_is_valid?
+      next if user.auth_is_valid?
+
+      # Archive bad token
+      user.update_attributes(token: nil, old_token: user.token)
     end
   end
 
