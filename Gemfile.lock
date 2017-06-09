@@ -305,7 +305,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.5)
-    timecop (0.8.1)
     trollop (2.1.2)
     tunemygc (1.0.68)
     tzinfo (1.2.3)
@@ -396,7 +395,6 @@ DEPENDENCIES
   stackprof
   teaspoon
   the_lone_dyno
-  timecop
   tunemygc
   uglifier (>= 1.0.3)
   valid_email
@@ -412,4 +410,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.15.0
+   1.15.1

@@ -64,7 +64,6 @@ group :test do
   gem 'mocha', require: false
   gem 'simplecov', require: false
   gem 'rails-controller-testing'
-  gem 'timecop'
 end
 
 group :development, :test do
