@@ -12,10 +12,21 @@
         i.icon-envelope
       = f.select :email_frequency, options_for_select( EmailDecider::USER_STATES.map {|value| [ value.humanize, value ] }, f.object.email_frequency), class: 'select'
       p When you're busy we try to send you less emails, if that's not good enough set your frequency here. For example if you set "twice a week" you won't receive more than 2 emails a week.
+  
+  = f.label :email_time_of_day, t("activerecord.attributes.user.email_time_of_day", default: "Email time of day"), class: "label label-info"
+  .controls
+    .input-preprend
+      span.add-on
+        i.icon-envelope
+      = f.select :email_time_of_day, 
+          options_for_select(available_times_of_day.map { |time| [time.to_formatted_s(:time_only_with_zone), time.to_formatted_s(:iso8601)] }, f.object.email_time_of_day&.to_formatted_s(:iso8601)),
+          class: 'select'
+  
   = f.label :daily_issue_limit, t("activerecord.attributes.user.daily_issue_limit", default: "Max # of issues you want to receive per day"), class: "label label-info"
   .input
     = f.number_field :daily_issue_limit, class: 'number_field', min: 0
     p If you're getting too many issues, limit the maximum number you want to get in your inbox at one time. To disable submit an empty value.
+  
   = f.check_box :skip_issues_with_pr, class: 'checkbox'
   => f.label :skip_issues_with_pr, t("activerecord.attributes.user.skip_issues_with_pr", default: "Skip Pull requests"), class: "label label-info"
   p By default we send you a combination of issues and pull request, check this box to only get Issues.

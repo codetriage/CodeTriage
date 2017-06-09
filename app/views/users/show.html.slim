@@ -36,6 +36,12 @@
 
         li.slats-item
           .slats-hgroup
+            h5.slats-title Email time of day:
+          .slats-action
+            p= (@user.email_time_of_day && local_time(@user.email_time_of_day, '%H:%M %Z')) || 'not set'
+            
+        li.slats-item
+          .slats-hgroup
             h5.slats-title Max number of issues you want to receive per day:
           .slats-action
             p= @user.daily_issue_limit.presence || 'not set'

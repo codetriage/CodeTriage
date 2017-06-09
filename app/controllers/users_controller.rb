@@ -63,6 +63,7 @@ class UsersController < ApplicationController
         :name,
         :daily_issue_limit,
         :email_frequency,
+        :email_time_of_day,
         :skip_issues_with_pr,
         favorite_languages: []
         )
