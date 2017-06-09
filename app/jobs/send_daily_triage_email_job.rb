@@ -1,6 +1,6 @@
 class SendDailyTriageEmailJob < ApplicationJob
   def perform(user)
-    return false if !user.repo_subscriptions.any? || skip_daily_email?(user)
+    return false if !user.repo_subscriptions.any? || skip_daily_email?(user) || before_email_time_of_day?(user)
 
     send_daily_triage!(user)
   end
@@ -27,5 +27,15 @@ class SendDailyTriageEmailJob < ApplicationJob
 
   def email_decider(user)
     @email_decider ||= EmailDecider.new(user.days_since_last_clicked, minimum_frequency: user.email_frequency)
+  end
+
+  DEFAULT_EMAIL_TIME_OF_DAY = Time.utc(2000, 1, 1, 17, 00, 0)
+
+  def before_email_time_of_day?(user)
+    Time.current.strftime( "%H%M%S" ) < email_time_of_day_or_default(user).strftime( "%H%M%S" )
+  end
+
+  def email_time_of_day_or_default(user)
+    user.email_time_of_day || DEFAULT_EMAIL_TIME_OF_DAY
   end
 end
