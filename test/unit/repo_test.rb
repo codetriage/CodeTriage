@@ -47,7 +47,7 @@ class RepoTest < ActiveSupport::TestCase
   test "#all_languages does not contain empty string" do
     VCR.use_cassette "create_repo_refinery", record: :once do
       Repo.create user_name: 'Refinery', name: "RefineryCMS", language: ""
-      refute Repo.all_languages.include? ""
+      assert_not Repo.all_languages.include? ""
     end
   end
 
@@ -70,7 +70,7 @@ class RepoTest < ActiveSupport::TestCase
 
   test "check existence of repo by its name and user's name" do
     assert Repo.exists_with_name?("bemurphy/issue_triage_sandbox")
-    refute Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
+    assert_not Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
   end
 
   test "#api_issues_path returns issues path with Github api" do
@@ -91,7 +91,7 @@ class RepoTest < ActiveSupport::TestCase
     user.repo_subscriptions.create(repo: repo, email_limit: 2)
     order_of_repos_by_name        = Repo.order(:name).pluck(:name)
     order_of_repos_by_subscribers = Repo.order_by_subscribers
-    refute order_of_repos_by_subscribers.pluck(:name) == order_of_repos_by_name
+    assert_not order_of_repos_by_subscribers.pluck(:name) == order_of_repos_by_name
     assert_equal order_of_repos_by_subscribers.first.name, repo.name
   end
 end

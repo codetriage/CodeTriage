@@ -11,12 +11,12 @@ class UserTest < ActiveSupport::TestCase
     private_user   = users(:jroes)
 
     # Sanity check for fixture state
-    refute user.private
+    assert_not user.private
     assert private_user.private
 
     result = User.public_profile
 
-    refute_includes result, private_user
+    assert_not_includes result, private_user
     assert_includes result, user
   end
 
@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
     assert u.able_to_edit_repo?(r)
 
     r2 = Repo.new(user_name: "neilmiddleton")
-    refute u.able_to_edit_repo?(r2)
+    assert_not u.able_to_edit_repo?(r2)
   end
 
   test 'valid_email? is true when valid' do
@@ -34,13 +34,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'valid_email? is false when bad' do
-    refute User.new(email: 'a really bad e-mail address').valid_email?
+    assert_not User.new(email: 'a really bad e-mail address').valid_email?
   end
 
   test "user favorite_language?" do
     u = User.new(favorite_languages: [ "ruby" ])
     assert u.favorite_language?("ruby")
-    refute u.favorite_language?("java")
+    assert_not u.favorite_language?("java")
   end
 
   test "user has_favorite_languages?" do
@@ -48,7 +48,7 @@ class UserTest < ActiveSupport::TestCase
     assert u.has_favorite_languages?
 
     u = User.new(favorite_languages: [] )
-    refute u.has_favorite_languages?
+    assert_not u.has_favorite_languages?
   end
 
   test "account_delete_token should be created on first use" do
