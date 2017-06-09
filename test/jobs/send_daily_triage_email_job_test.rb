@@ -22,7 +22,6 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'does not deliver if email should be skipped' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
-    def @job.before_email_time_of_day?(*); false; end
     def @job.skip_daily_email?(*); true; end
 
     assert_not @job.perform(@user)
