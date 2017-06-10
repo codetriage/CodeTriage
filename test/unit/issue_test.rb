@@ -38,7 +38,7 @@ class IssueTest < ActiveSupport::TestCase
     assert issue.valid?
 
     issue.state = "bogus"
-    refute issue.valid?
+    assert_not issue.valid?
   end
 
   test "valid_for_user?" do
@@ -49,7 +49,7 @@ class IssueTest < ActiveSupport::TestCase
 
     # should be false if a closed issue
     issue.stubs(:closed?).returns(true)
-    refute issue.valid_for_user?(user, false), "Issue: #{issue.inspect} expected to be closed"
+    assert_not issue.valid_for_user?(user, false), "Issue: #{issue.inspect} expected to be closed"
 
     # should be true with an open issue with no comments from the current user
     issue.stubs(:closed?).returns(false)
@@ -58,7 +58,7 @@ class IssueTest < ActiveSupport::TestCase
     # should be false with comments from the current user
 
     issue.stubs(:commenting_users).returns(["mockstar", "bar"])
-    refute issue.valid_for_user?(user, false)
+    assert_not issue.valid_for_user?(user, false)
   end
 
   test "valid_for_user? when has open issue and user skipped with PR" do
@@ -68,7 +68,7 @@ class IssueTest < ActiveSupport::TestCase
 
     issue.stubs(:pr_attached?).returns(true)
     user.stubs(:skip_issues_with_pr?).returns(true)
-    refute issue.valid_for_user?(user)
+    assert_not issue.valid_for_user?(user)
   end
 
   test "valid_for_user? when has open issue and user has not skipped issues with PR" do

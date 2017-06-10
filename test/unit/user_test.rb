@@ -1,26 +1,23 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
   test '#github_url returns github url' do
-    assert User.new(github: 'jroes').github_url == 'https://github.com/jroes'
+    github_url = User.new(github: 'jroes').github_url
+    assert_equal 'https://github.com/jroes', github_url
   end
 
   test 'public scope should only return public users' do
     user           = users(:mockstar)
-    repo           = Repo.new
-    repo.user_name = 'schneems'
-    repo.name      = 'sextant'
+    private_user   = users(:jroes)
 
-    VCR.use_cassette('update_repo_info:schneems/sextant', ) do
-      repo.save
-    end
+    # Sanity check for fixture state
+    assert_not user.private
+    assert private_user.private
 
-    assert_difference("Repo.find(#{repo.id}).users.public_profile.size", 1) do
-      repo_sub      = user.repo_subscriptions.new
-      repo_sub.repo = repo
-      repo_sub.save
-    end
+    result = User.public_profile
+
+    assert_not_includes result, private_user
+    assert_includes result, user
   end
 
   test 'able_to_edit_repo allows the correct rights' do
@@ -29,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
     assert u.able_to_edit_repo?(r)
 
     r2 = Repo.new(user_name: "neilmiddleton")
-    assert !u.able_to_edit_repo?(r2)
+    assert_not u.able_to_edit_repo?(r2)
   end
 
   test 'valid_email? is true when valid' do
@@ -37,13 +34,13 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'valid_email? is false when bad' do
-    assert !User.new(email: 'a really bad e-mail address').valid_email?
+    assert_not User.new(email: 'a really bad e-mail address').valid_email?
   end
 
   test "user favorite_language?" do
     u = User.new(favorite_languages: [ "ruby" ])
     assert u.favorite_language?("ruby")
-    assert !u.favorite_language?("java")
+    assert_not u.favorite_language?("java")
   end
 
   test "user has_favorite_languages?" do
@@ -51,7 +48,7 @@ class UserTest < ActiveSupport::TestCase
     assert u.has_favorite_languages?
 
     u = User.new(favorite_languages: [] )
-    assert !u.has_favorite_languages?
+    assert_not u.has_favorite_languages?
   end
 
   test "account_delete_token should be created on first use" do
@@ -71,7 +68,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user assignments to deliver updates assignments" do
-    user = User.first
+    user = users(:mockstar)
     mock = Minitest::Mock.new
     mock.expect(:assign!, true)
     user.instance_variable_set(:@issue_assigner, mock)
