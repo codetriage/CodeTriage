@@ -32,7 +32,7 @@ class SendDailyTriageEmailJob < ApplicationJob
   DEFAULT_EMAIL_TIME_OF_DAY = Time.utc(2000, 1, 1, 17, 00, 0)
 
   def before_email_time_of_day?(user)
-    Time.current.strftime( "%H%M%S" ) < email_time_of_day_or_default(user).strftime( "%H%M%S" )
+    Time.current.change(year: 2000, month: 1, day: 1) < email_time_of_day_or_default(user)
   end
 
   def email_time_of_day_or_default(user)
