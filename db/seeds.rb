@@ -11,10 +11,10 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
-100.times do
+1000.times do
   printf "."
   begin
-    username = Faker::Internet.user_name.gsub(".", "-")
+    username = Faker::Internet.user_name.gsub(".", "-") + rand(999).to_s
     user = User.new(
       github:     username,
       email:      Faker::Internet.email,
