@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
 
+raise "You do not have a Redis server running" unless Sidekiq.redis { |r| r.echo "Alive" }
+
 Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
