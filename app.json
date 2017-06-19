@@ -4,7 +4,8 @@
   "website": "https://www.codetriage.com/",
   "repository": "https://github.com/codetriage/codetriage",
   "scripts":{
-    "postdeploy":"rake db:schema:load db:migrate db:seed"
+    "postdeploy":"DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+ rake db:schema:load db:migrate db:seed"
   },
   "env":{
     "DEVISE_SECRET_KEY": "foo",
