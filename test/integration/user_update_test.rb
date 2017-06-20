@@ -55,6 +55,19 @@ class UserUpdateTest < ActionDispatch::IntegrationTest
     assert_nil @user.daily_issue_limit
   end
 
+  test 'updating the user email_time_of_day' do
+    @user = users(:mockstar)
+    login_as(@user, scope: :user)
+    visit edit_user_path(@user)
+    select '05:00 UTC', from: 'Email time of day'
+    click_button 'Save'
+    assert page.has_content?('User successfully updated')
+    visit edit_user_path(@user)
+    assert page.has_select?('Email time of day', selected: '05:00 UTC')
+    @user.reload
+    assert_equal @user.email_time_of_day, '2000-01-01 05:00:00 UTC'
+  end
+
   test 'updating the users skip_issues_with_pr setting to true' do
     @user = users(:mockstar)
     login_as(@user, scope: :user)

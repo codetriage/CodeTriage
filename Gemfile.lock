@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/basecamp/local_time.git
+  revision: 7cf181e6b066d94557ca065773ddc9890f0ca2b0
+  branch: 2-0
+  specs:
+    local_time (1.0.4)
+      coffee-rails
+
+GIT
   remote: https://github.com/schneems/sassc-rails.git
   revision: d69fda199d3f9ddd18b337137dd5bc057bc6a22a
   branch: schneems/sprockets4
@@ -351,6 +359,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen
+  local_time!
   mail
   mail_view (~> 1.0.2)
   maildown (= 2.0.0)
@@ -401,4 +410,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.14.6
+   1.15.1

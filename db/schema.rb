@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20170619152237) do
     t.boolean "skip_issues_with_pr", default: false
     t.string "account_delete_token", limit: 255
     t.datetime "last_clicked_at"
+    t.time "email_time_of_day"
     t.string "email_frequency", default: "daily"
     t.string "old_token"
     t.index ["account_delete_token"], name: "index_users_on_account_delete_token"
