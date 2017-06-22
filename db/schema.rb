@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619152237) do
+ActiveRecord::Schema.define(version: 20170622201545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20170619152237) do
     t.string "html_url", limit: 255
     t.string "state", limit: 255
     t.boolean "pr_attached", default: false
+    t.index ["created_at"], name: "index_issues_on_created_at", where: "((state)::text = 'open'::text)"
     t.index ["number"], name: "index_issues_on_number"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
     t.index ["state"], name: "index_issues_on_state"
@@ -182,9 +183,9 @@ ActiveRecord::Schema.define(version: 20170619152237) do
     t.boolean "skip_issues_with_pr", default: false
     t.string "account_delete_token", limit: 255
     t.datetime "last_clicked_at"
-    t.time "email_time_of_day"
     t.string "email_frequency", default: "daily"
     t.string "old_token"
+    t.time "email_time_of_day"
     t.index ["account_delete_token"], name: "index_users_on_account_delete_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["github"], name: "index_users_on_github", unique: true
