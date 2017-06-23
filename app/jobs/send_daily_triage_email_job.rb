@@ -1,6 +1,6 @@
 class SendDailyTriageEmailJob < ApplicationJob
   def perform(user)
-    return false if !user.repo_subscriptions.any? || skip_daily_email?(user) || before_email_time_of_day?(user)
+    return false if before_email_time_of_day?(user) || !user.repo_subscriptions.any? || skip_daily_email?(user)
 
     send_daily_triage!(user)
   end
