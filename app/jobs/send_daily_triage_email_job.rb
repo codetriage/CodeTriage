@@ -1,6 +1,6 @@
 class SendDailyTriageEmailJob < ApplicationJob
   def perform(user)
-    return false if !user.repo_subscriptions.any? || skip_daily_email?(user) || before_email_time_of_day?(user)
+    return false if !user.repo_subscriptions.any? || email_sent_in_last_24_hours?(user) || skip_daily_email?(user) || before_email_time_of_day?(user)
 
     send_daily_triage!(user)
   end
@@ -17,6 +17,10 @@ class SendDailyTriageEmailJob < ApplicationJob
     assignments.update_all(delivered: true)
     user.repo_subscriptions.update_all(last_sent_at: Time.now)
     mail
+  end
+
+  def email_sent_in_last_24_hours?(user)
+    user.repo_subscriptions.where("last_sent_at >= ?", 24.hours.ago).any?
   end
 
   def skip_daily_email?(user)
