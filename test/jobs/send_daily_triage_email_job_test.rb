@@ -61,6 +61,16 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
     end
   end
 
+  test 'when run multiple times a day, it does not deliver again' do
+    def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+    def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
+
+    Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.hour) do
+      @job.perform(@user)
+      assert_not @job.perform(@user)
+    end
+  end
+
   private
 
   def time_preference_for_today(time)
