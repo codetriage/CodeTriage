@@ -1,6 +1,6 @@
 class DocMethod < ActiveRecord::Base
   belongs_to :repo
-  has_many   :doc_comments, dependent: :destroy
+  has_many   :doc_comments, dependent: :destroy, counter_cache: :doc_comments_count
 
   validates :raw_file, :name, :path, presence: true
 
@@ -16,6 +16,10 @@ class DocMethod < ActiveRecord::Base
 
   def self.with_docs
     where("doc_comments_count > 0")
+  end
+
+  def missing_docs?
+    doc_comments_count.zero?
   end
 
   def raw_file
