@@ -25,6 +25,4 @@ class ReposTest < ActionController::TestCase
       {controller: "repos", action: "show", full_name: "angular/angular.js"},
     )
   end
-
-
 end
