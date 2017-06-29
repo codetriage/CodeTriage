@@ -83,7 +83,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
                   = warning_svg
                   = link_to issue.title, issue.html_url
 
-            .pagination= will_paginate @issues, container: false
+            .pagination= will_paginate @issues, total_entries: @repo.issues_count, container: false
         li.tab-header-and-content
           a.tab-link href="javascript:void(0)" Docs
           .tab-content
