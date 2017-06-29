@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627024417) do
+ActiveRecord::Schema.define(version: 20170629151616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20170627024417) do
     t.integer "stars_count", default: 0
     t.index ["issues_count"], name: "index_repos_on_issues_count"
     t.index ["language"], name: "index_repos_on_language"
+    t.index ["name", "user_name"], name: "index_repos_on_name_and_user_name", unique: true
     t.index ["name"], name: "index_repos_on_name"
     t.index ["user_name"], name: "index_repos_on_user_name"
   end

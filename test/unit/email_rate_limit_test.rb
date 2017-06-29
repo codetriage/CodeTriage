@@ -15,7 +15,7 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     clicked_ago           = valid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     # Use user email frequency settings
-    assert_not EmailRateLimit.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago)
+    assert_not EmailRateLimit.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'once_a_week').now?(#{clicked_ago}) to be false, was not"
   end
 
   test "wait" do
