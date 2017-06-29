@@ -30,7 +30,7 @@ class SendDailyTriageEmailJob < ApplicationJob
   end
 
   def email_decider(user)
-    @email_decider ||= EmailDecider.new(user.days_since_last_clicked, minimum_frequency: user.email_frequency)
+    EmailRateLimit.new(user.days_since_last_clicked, minimum_frequency: user.email_frequency)
   end
 
   DEFAULT_EMAIL_TIME_OF_DAY = Time.utc(2000, 1, 1, 17, 00, 0)
