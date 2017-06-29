@@ -2,7 +2,7 @@
 # We look at two parameters, the last day the user clicked on a link and the
 # last day we sent them an email. The idea is that we should send more active users
 # more emails. Less active users should get fewer emails so that it's less annoying.
-class EmailDecider
+class EmailRateLimit
   USER_STATES = ["daily", "twice_a_week", "once_a_week", "once_a_month"]
 
   def initialize(last_clicked_days_ago, minimum_frequency: nil)
