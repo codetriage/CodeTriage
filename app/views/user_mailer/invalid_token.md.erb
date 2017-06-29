@@ -1,13 +1,46 @@
 Hello @<%= @user.github %>,
 
-Your GitHub token for Code Triage is returning a non-success status. This can happen if you've changed authentication credentials for GitHub or if you revoke API access.
+## What?
 
-If you intended to revoke access, and don't want to receive any more Code Triage emails please [Delete Your Account](<%= token_delete_user_url(@user.account_delete_token) %>).
+Your GitHub token for CodeTriage is returning a non-success status.
 
-If you would like to continue receiving CodeTriage emails, please [Log in](<%= root_url %>) and re-authorize your GitHub token by pressing "sign in" and accepting any GitHub prompts.
+## Why?
 
-If you've believe you've already re-authorized your account but are still getting this email please open a [GitHub Issue](https://github.com/codetriage/codetriage/issues) and we can look into it.
+This can happen if you've changed authentication credentials for GitHub or if you revoke API access.
 
+In June of 2017 there was an API outage on GitHub that caused some tokens to falsely be cleared. As a result your account token may have been cleared accidentally. We are sorry for this and as a preventative measure we [hardened this token checking and clearing code](https://github.com/codetriage/codetriage/pull/560).
+
+## How to fix?
+
+It takes less than 30 seconds to fix this issue with your account.
+
+- Please visit [CodeTriage](<%= root_url %>) then click "Log in". This will re-authorize your GitHub token. You may have to accept GitHub prompts.
+
+That's it. If you're already logged in:
+
+- Click "log out" first then, press "sign in".
+
+If you do not reauthorize CodeTriage on GitHub you will continue to get this email asking you to re-authorize your token. This will happen until you follow these instructions, or the heat death of the universe. Which ever comes first.
+
+## Why do you even need my token?
+
+If we don't use authenticated API requests then we're limited to 5,000 API requests on GitHub. Not just for you, but total. When you authorize a token on CodeTriage we use that to pull data such as new issues. To put that number in perspective that's greater than the currently open issues on [kubernetes](https://www.codetriage.com/kubernetes/kubernetes).
+
+By re-authorizing your token on CodeTriage, we can continue to bring you quality issues and documentation. Also you'll avoid getting this reminder email again.
+
+## I already did but I'm still getting these bloody emails
+
+If you've tried signing out and then in again, but are still getting these emails please open a [GitHub Issue](https://github.com/codetriage/codetriage/issues) and we can look into it.
+
+## Is this a phishing attack?
+
+You can [see the contents of this email in the open source CodeTriage repo](https://github.com/codetriage/codetriage/blob/master/app/views/user_mailer/invalid_token.md.erb). We only ever ask for permission [to view your email from GitHub](https://github.com/codetriage/codetriage/blob/master/config/initializers/devise.rb#L206), which we clearly already have. If you're still cautious (good for you), manually visit CodeTriage yourself and then log out and then log in.
+
+If you're curious, you can see [where we send these emails out](https://github.com/codetriage/codetriage/blob/master/lib/tasks/schedule.rake#L47-L52).
+
+## I don't wanna, you can't make me
+
+If you intended to revoke access, and don't want to receive any more Code Triage emails ever, please [remove your account](<%= token_delete_user_url(@user.account_delete_token) %>).
 
 - - -
 
@@ -15,4 +48,4 @@ Go forth and make the world a better place
 
 [@schneems](http://twitter.com/schneems)
 
-[Delete Account](<%= token_delete_user_url(@user.account_delete_token) %>)
+[remove account](<%= token_delete_user_url(@user.account_delete_token) %>)

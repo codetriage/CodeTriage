@@ -48,5 +48,5 @@ If the issue goes stale, leave a comment asking if it is still a problem. If you
 
 <p><%= link_to "Send another #{@repo.path} issue", repo_url(@repo) %></p>
 <p><%= link_to "Unsubscribe: #{@repo.path}", repo_url(@repo) %></p>
-<p><%= link_to "Delete Account", token_delete_user_url(@user.account_delete_token) %></p>
+<p><%= link_to "Remove Account", token_delete_user_url(@user.account_delete_token) %></p>
 <p><%= link_to 'Help triage more repos at codetriage.com', root_url %></p>
