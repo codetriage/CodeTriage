@@ -2,7 +2,8 @@ require 'docs_doctor/parsers/ruby/yard'
 
 class Repo < ActiveRecord::Base
   validate :github_url_exists, on: :create
-  validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
+
+  # Now done at the DB level # validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
   validates :name, :user_name, presence: true
 
   has_many :issues
