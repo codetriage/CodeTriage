@@ -226,5 +226,4 @@ class Repo < ActiveRecord::Base
     self.name.strip!
     self.user_name.strip!
   end
-
 end
