@@ -24,7 +24,8 @@ class IssueAssigner
                 FROM
                   issues
                 WHERE
-                  repo_id = '#{sub.repo_id}'
+                  repo_id = '#{sub.repo_id}' and
+                  state   = '#{Issue::OPEN}'
                   AND id NOT IN (
                     SELECT
                       issue_id
