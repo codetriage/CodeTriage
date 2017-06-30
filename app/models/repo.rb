@@ -167,8 +167,8 @@ class Repo < ActiveRecord::Base
   end
 
   def populate_issue(options = {})
-    page  = options[:page]||1
-    state = options[:state]||"open"
+    page     = options[:page]  || 1
+    state    = options[:state] || "open"
     response = GitHubBub.get(api_issues_path, state:     state,
                                               page:      page,
                                               sort:      'comments',
