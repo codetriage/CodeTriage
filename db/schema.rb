@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629233102) do
+ActiveRecord::Schema.define(version: 20170630002100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20170629233102) do
     t.integer "write_limit"
     t.integer "read_limit"
     t.index ["repo_id"], name: "index_repo_subscriptions_on_repo_id"
+    t.index ["user_id"], name: "index_repo_subscriptions_on_user_id"
   end
 
   create_table "repos", id: :serial, force: :cascade do |t|
@@ -197,4 +198,5 @@ ActiveRecord::Schema.define(version: 20170629233102) do
   end
 
   add_foreign_key "repo_subscriptions", "repos"
+  add_foreign_key "repo_subscriptions", "users"
 end
