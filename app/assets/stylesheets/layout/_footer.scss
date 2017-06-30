@@ -8,26 +8,37 @@
 }
 
 .github-numbers {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-.thoughtbot-link {
+.credits-link {
   color: $base-font-color;
   display: block;
-  margin-bottom: $base-spacing;
+  margin-bottom: 1rem;
+  padding: 1rem;
 
   &:hover {
     color: $codetriage-red;
 
-    .thoughtbot-logo {
+    .credits-logo {
       fill: $codetriage-red;
     }
   }
 }
 
-.thoughtbot-logo {
-  @include size(8rem);
+.credits-logo {
+  @include size(11rem);
   display: block;
   fill: $base-font-color;
   margin: 0 auto;
+}
+
+.credits {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heroku-logo {
+  padding: 1rem;
 }
