@@ -29,4 +29,3 @@ Raven.config("<%= ENV['SENTRY_DSN_PUBLIC'] %>", {
   environment: "<%= Rails.env %>",
 }).install();
 
-console.log(Raven.isSetup());
