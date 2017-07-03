@@ -28,7 +28,14 @@ class Repo < ActiveRecord::Base
     return unless can_doctor_docs?
 
     fetcher = GithubFetcher.new(full_name)
-    self.update!(commit_sha: fetcher.commit_sha)
+    commit_sha = begin
+      fetcher.commit_sha
+    rescue GitHubBub::RequestError
+      false
+    end
+    return unless commit_sha
+
+    self.update!(commit_sha: commit_sha)
     parser  = Repo::CLASS_FOR_DOC_LANGUAGE[self.language].new(fetcher.clone)
     parser.process
     parser.store(self)
