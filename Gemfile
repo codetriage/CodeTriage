@@ -94,7 +94,6 @@ gem 'babel-transpiler'
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
-
 gem 'sentry-raven'
 gem 'oj'
 gem 'rack-canonical-host'
