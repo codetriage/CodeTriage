@@ -3,10 +3,11 @@ require 'rails_autolink'
 class UserMailer < ActionMailer::Base
   include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"
+  before_action :set_user,
+                :abort_if_no_email
 
-  def send_daily_triage(options = {})
-    @user        = options[:user]
-    @assignments = options[:assignments]
+  def send_daily_triage(user:, assignments:)
+    @assignments = assignments
     @max_days    = 2
     subject = ""
     @days   = @user.days_since_last_clicked
@@ -15,41 +16,33 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
-  def daily_docs(options = {})
-    @user       = options[:user]
-    @write_docs = options[:write_docs]
-    @read_docs  = options[:read_docs]
+  def daily_docs(user:, write_docs:, read_docs:)
+    @write_docs = write_docs
+    @read_docs  = read_docs
     count       = (@write_docs.try(:count) || 0) + (@read_docs.try(:count) || 0)
     subject     = "Check out #{count} Open Source #{"Doc".pluralize(count)}"
     mail(to: @user.email, subject: subject)
   end
 
-  def send_triage(options = {})
-    raise "no assignment" unless assignment =  options[:assignment]
-    @user  = options[:user]
-    @repo  = options[:repo]
+  def send_triage(user:, assignment:, repo:)
+    @repo  = repo
     @issue = assignment.issue
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
   end
 
-  def poke_inactive(user)
-    @user        = user
+  def poke_inactive(user:)
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
     @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage misses you")
   end
 
-  def invalid_token(user)
-    @user = user
+  def invalid_token(user:)
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage auth failure")
   end
 
-
   # general purpose mailer for sending out admin communications, only use from one off tasks
-  def spam(user, options = {})
-    @user    = user
-    @message = options[:message]
+  def spam(user:, message:)
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
   end
 
@@ -57,7 +50,7 @@ class UserMailer < ActionMailer::Base
 
     def invalid_token
       user = User.last
-      ::UserMailer.invalid_token(user)
+      ::UserMailer.invalid_token(user: user)
     end
 
     # Pull data from existing fixtures
@@ -65,7 +58,7 @@ class UserMailer < ActionMailer::Base
       user    = User.last
       message = "Hey, we just launched something big http://google.com"
       subject = "Big launch"
-      ::UserMailer.spam(user, message: message, subject: subject)
+      ::UserMailer.spam(user: user, message: message, subject: subject)
     end
 
     def send_triage
@@ -91,7 +84,7 @@ class UserMailer < ActionMailer::Base
 
     def poke_inactive
       user = User.last
-      ::UserMailer.poke_inactive(user)
+      ::UserMailer.poke_inactive(user: user)
     end
 
     def daily_docs
@@ -107,4 +100,13 @@ class UserMailer < ActionMailer::Base
     end
   end
 
+  private
+
+  def set_user
+    @user = user
+  end
+
+  def abort_if_no_email
+    return false if user.email.blank?
+  end
 end

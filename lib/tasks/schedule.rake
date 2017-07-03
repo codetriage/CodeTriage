@@ -47,7 +47,7 @@ namespace :schedule do
   task warn_invalid_token: :environment do
     next unless Date.today.thursday?
     User.where(token: nil).find_each(batch_size: 100) do |user|
-      UserMailer.invalid_token(user).deliver_later
+      UserMailer.invalid_token(user: user).deliver_later
     end
   end
 
