@@ -309,7 +309,6 @@ GEM
     trashed (3.2.6)
       statsd-ruby (~> 1.1)
     trollop (2.1.2)
-    tunemygc (1.0.68)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -399,7 +398,6 @@ DEPENDENCIES
   teaspoon
   the_lone_dyno
   trashed
-  tunemygc
   uglifier (>= 1.0.3)
   valid_email
   vcr

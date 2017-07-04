@@ -101,5 +101,4 @@ gem 'rack-canonical-host'
 gem 'stackprof'
 gem 'bootsnap', require: false
 gem 'rbtrace'
-gem 'tunemygc'
 gem 'trashed'
