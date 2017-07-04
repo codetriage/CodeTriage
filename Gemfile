@@ -79,7 +79,7 @@ gem 'rack-mini-profiler'
 gem 'the_lone_dyno'
 
 gem 'sidekiq'
-# gem 'sinatra', require: nil, git: 'https://github.com/sinatra/sinatra.git'
+gem 'sinatra'
 
 gem 'aws-sdk', '~> 2'
 
