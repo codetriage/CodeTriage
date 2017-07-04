@@ -3,10 +3,9 @@ require 'rails_autolink'
 class UserMailer < ActionMailer::Base
   include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"
-  before_action :set_user,
-                :abort_if_no_email
 
   def send_daily_triage(user:, assignments:)
+    return unless set_and_check_user(user)
     @assignments = assignments
     @max_days    = 2
     subject = ""
@@ -17,6 +16,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def daily_docs(user:, write_docs:, read_docs:)
+    return unless set_and_check_user(user)
     @write_docs = write_docs
     @read_docs  = read_docs
     count       = (@write_docs.try(:count) || 0) + (@read_docs.try(:count) || 0)
@@ -25,12 +25,14 @@ class UserMailer < ActionMailer::Base
   end
 
   def send_triage(user:, assignment:, repo:)
+    return unless set_and_check_user(user)
     @repo  = repo
     @issue = assignment.issue
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
   end
 
   def poke_inactive(user:)
+    return unless set_and_check_user(user)
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
     @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
@@ -38,11 +40,13 @@ class UserMailer < ActionMailer::Base
   end
 
   def invalid_token(user:)
+    return unless set_and_check_user(user)
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage auth failure")
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
   def spam(user:, message:)
+    return unless set_and_check_user(user)
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
   end
 
@@ -102,11 +106,8 @@ class UserMailer < ActionMailer::Base
 
   private
 
-  def set_user
+  def set_and_check_user(user)
     @user = user
-  end
-
-  def abort_if_no_email
-    return false if user.email.blank?
+    !@user.email.blank?
   end
 end
