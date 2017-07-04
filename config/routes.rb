@@ -1,4 +1,4 @@
-# require 'sidekiq/web'
+require 'sidekiq/web'
 
 CodeTriage::Application.routes.draw do
 
@@ -9,7 +9,7 @@ CodeTriage::Application.routes.draw do
   end
 
   authenticate :user, lambda { |u| u.admin? } do
-    # mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => '/sidekiq'
   end
   resources   :doc_methods
 
