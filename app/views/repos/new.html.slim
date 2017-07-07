@@ -25,10 +25,10 @@
         .tab-pane.active#own
           = render 'shared/add_repos_list', repos: @own_repos
 
-        .tab-pane.active#starred
+        .tab-pane#starred
           = render 'shared/add_repos_list', repos: @starred_repos
 
-        .tab-pane.active#watched
+        .tab-pane#watched
           = render 'shared/add_repos_list', repos: @watched_repos
 
   section.content-section
