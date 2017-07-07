@@ -33,3 +33,4 @@ public/assets
 
 # ignore vendor/bundle
 vendor/bundle
+tags

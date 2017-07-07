@@ -97,6 +97,11 @@ $ bin/rake db:schema:load RAILS_ENV=test
 
 You may need a github API token to run tests locally. You can get this by spinning your local server, clicking the "sign in" button and going through the OAuth flow.
 
+Note you may need to create your own app on GitHub for CodeTriage
+[here](https://github.com/settings/developers), and replace the values
+previously set (via the above) for `GITHUB_APP_ID` and `GITHUB_APP_SECRET` in
+order to complete the OAuth flow locally.
+
 Once you've done this spin down your server and run this:
 
 ```
