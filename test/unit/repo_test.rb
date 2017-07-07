@@ -74,9 +74,9 @@ class RepoTest < ActiveSupport::TestCase
     assert_not Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
   end
 
-  test "#api_issues_path returns issues path with Github api" do
+  test "fetcher.api_issues_path returns issues path with Github api" do
     repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
-    assert_equal "repos/codetriage/codetriage/issues", repo.api_issues_path
+    assert_equal "repos/codetriage/codetriage/issues", repo.fetcher.api_issues_path
   end
 
   test "search_by returns repo by name and user_name" do

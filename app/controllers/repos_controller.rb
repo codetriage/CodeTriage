@@ -34,8 +34,7 @@ class ReposController < RepoBasedController
       SendSingleTriageEmailJob.perform_later(@repo_sub.id)
       redirect_to @repo
     else
-      response = GitHubBub.get("/user/repos", type: "owner", token: current_user.token)
-      @own_repos = response.json_body
+      @own_repos = GithubFetcher::Repo.repos_for(current_user.token, 'repos', type: 'owner')
       render :new
     end
   end
@@ -85,10 +84,9 @@ class ReposController < RepoBasedController
       repo_params.blank?
     end
 
-    def cached_repos(type, options = {})
-      Rails.cache.fetch("user/#{type}/#{current_user.id}", expires_in: 30.minutes) do
-        repos_response = GitHubBub.get("/user/#{type}", { token: current_user.token }.merge(options))
-        SortedRepoCollection.new(repos_response.json_body)
+    def cached_repos(kind, options = {})
+      Rails.cache.fetch("user/#{kind}/#{current_user.id}", expires_in: 30.minutes) do
+        SortedRepoCollection.new(GithubFetcher::Repo.repos_for(current_user.token, kind, options))
       end
     end
 end

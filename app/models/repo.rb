@@ -1,10 +1,9 @@
 require 'docs_doctor/parsers/ruby/yard'
 
 class Repo < ActiveRecord::Base
-  validate :github_url_exists, on: :create
-
   # Now done at the DB level # validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
   validates :name, :user_name, presence: true
+  validate :github_url_exists, on: :create
 
   has_many :issues
   has_many :repo_subscriptions
@@ -24,18 +23,15 @@ class Repo < ActiveRecord::Base
     CLASS_FOR_DOC_LANGUAGE[self.language]
   end
 
+  def fetcher
+    @fetcher ||= GithubFetcher::Repo.new(path)
+  end
+
   def populate_docs!
     return unless can_doctor_docs?
+    return unless fetcher.commit_sha
 
-    fetcher = GithubFetcher.new(full_name)
-    commit_sha = begin
-      fetcher.commit_sha
-    rescue GitHubBub::RequestError
-      false
-    end
-    return unless commit_sha
-
-    self.update!(commit_sha: commit_sha)
+    self.update!(commit_sha: fetcher.commit_sha)
     parser  = Repo::CLASS_FOR_DOC_LANGUAGE[self.language].new(fetcher.clone)
     parser.process
     parser.store(self)
@@ -142,22 +138,12 @@ class Repo < ActiveRecord::Base
     self.where("issues_count > 0")
   end
 
-  def github_url_exists
-    GitHubBub.get(api_issues_path, page: 1, sort: 'comments', direction: 'desc')
-  rescue GitHubBub::RequestError
-    errors.add(:expiration_date, "cannot reach api.github.com/#{api_issues_path} perhaps github is down, or you mistyped something?")
-  end
-
   def github_url
     File.join('https://github.com', path)
   end
 
   def path
     "#{user_name}/#{name}"
-  end
-
-  def api_issues_path
-    File.join('repos', path, '/issues')
   end
 
   def self.exists_with_name?(name)
@@ -173,37 +159,12 @@ class Repo < ActiveRecord::Base
       order("count(users.id) DESC")
   end
 
-  def populate_issue(options = {})
-    page     = options[:page]  || 1
-    state    = options[:state] || "open"
-    response = GitHubBub.get(api_issues_path, state:     state,
-                                              page:      page,
-                                              sort:      'comments',
-                                              direction: 'desc')
-    response.json_body.each do |issue_hash|
-      logger.info "Issue: number: #{issue_hash['number']}, updated_at: #{issue_hash['updated_at']}"
-      Issue.find_or_create_from_hash!(issue_hash, self)
-    end
-    response
-  end
-
-
-  def populate_multi_issues!(options = {})
-    options[:state] ||= "open"
-    options[:page]  ||= 1
-    response = populate_issue(options)
-    until response.last_page?
-      options[:page] += 1
-      response = populate_issue(options)
-    end
-  end
-
   def update_from_github
-    resp = GitHubBub.get(repo_path).json_body
-    self.language    = resp['language']
-    self.description = resp['description']
-    self.stars_count = resp['stargazers_count']
-    self.save
+    self.update(
+      language: fetcher.json['language'],
+      description: fetcher.json['description'],
+      stars_count: fetcher.json['stargazers_count'],
+    )
   end
 
   def repo_path
@@ -232,5 +193,14 @@ class Repo < ActiveRecord::Base
   def strip_whitespaces
     self.name.strip!
     self.user_name.strip!
+  end
+
+  def github_url_exists
+    unless fetcher.issues.exists?
+      errors.add(
+        :expiration_date,
+        "cannot reach api.github.com/#{fetcher.api_issues_path} perhaps github is down, or you mistyped something?"
+      )
+    end
   end
 end
