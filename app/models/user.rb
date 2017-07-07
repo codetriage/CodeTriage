@@ -34,8 +34,12 @@ class User < ActiveRecord::Base
     self.last_clicked_at ||= Time.now
   end
 
+  def fetcher
+    @fetcher ||= GithubFetcher::User.new(self)
+  end
+
   def auth_is_valid?
-    GitHubBub.valid_token?(token)
+    fetcher.valid?
   end
 
   def self.random
@@ -85,7 +89,7 @@ class User < ActiveRecord::Base
   end
 
   def github_json
-    GitHubBub.get(api_path, token: self.token).json_body
+    fetcher.json
   end
 
   def fetch_avatar_url
@@ -99,10 +103,6 @@ class User < ActiveRecord::Base
 
   def github_url
     "https://github.com/#{github}"
-  end
-
-  def api_path
-    "/user"
   end
 
   def valid_email?

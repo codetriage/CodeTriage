@@ -37,7 +37,7 @@ class GitHubAuthenticator
 
   def github_email
     return auth_email if auth_email.present?
-    GitHubBub.get("/user/emails", token: token).json_body.first
+    GithubFetcher::User.new(token).emails.first
   end
 
   def github_params
