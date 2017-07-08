@@ -16,11 +16,11 @@ class Issue < ActiveRecord::Base
   end
 
   def fetcher
-    @fetcher ||= GithubFetcher::Issue.new(self)
+    @fetcher ||= GithubFetcher::Issue.new(owner_name, repo_name, number)
   end
 
   def update_issue!
-    update_from_github_hash!(fetcher.issue_json)
+    update_from_github_hash!(fetcher.as_json)
   end
 
   def self.closed
@@ -52,7 +52,7 @@ class Issue < ActiveRecord::Base
   end
 
   def commenting_users
-    fetcher.commenters.sort
+    fetcher.commenters_as_json.sort
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)

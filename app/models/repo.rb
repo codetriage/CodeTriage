@@ -24,7 +24,11 @@ class Repo < ActiveRecord::Base
   end
 
   def fetcher
-    @fetcher ||= GithubFetcher::Repo.new(path)
+    @fetcher ||= GithubFetcher::Repo.new(user_name: user_name, name: name)
+  end
+
+  def issues_fetcher
+    @issues_fetcher ||= GithubFetcher::Issues.new(user_name: user_name, name: name)
   end
 
   def populate_docs!
@@ -56,7 +60,6 @@ class Repo < ActiveRecord::Base
   def classes_missing_docs
     doc_classes.where(doc_classes: {doc_comments_count: 0})
   end
-
 
   def color
     case weight
@@ -160,10 +163,11 @@ class Repo < ActiveRecord::Base
   end
 
   def update_from_github
+    fetcher_json = fetcher.as_json
     self.update(
-      language: fetcher.json['language'],
-      description: fetcher.json['description'],
-      stars_count: fetcher.json['stargazers_count'],
+      language: fetcher_json.fetch('language', language),
+      description: fetcher_json.fetch('description', description),
+      stars_count: fetcher_json.fetch('stargazers_count', stars_count),
     )
   end
 
@@ -196,7 +200,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url_exists
-    unless fetcher.issues.exists?
+    unless issues_fetcher.exists?
       errors.add(
         :expiration_date,
         "cannot reach api.github.com/#{fetcher.api_issues_path} perhaps github is down, or you mistyped something?"

@@ -1,18 +1,17 @@
 module GithubFetcher
-  class Issue
-    attr_reader :api_path
-
-    def initialize(issue)
-      @api_path = "/repos/#{issue.owner_name}/#{issue.repo_name}/issues/#{issue.number}"
+  class Issue < Resource
+    def initialize(owner_name:, repo_name:, number:)
+      @api_path = "/repos/#{owner_name}/#{repo_name}/issues/#{number}"
+      super({})
     end
 
-    def issue_json
-      GitHubBub.get(api_path).json_body
-    end
-
-    def commenters
-      response = GitHubBub.get(File.join(api_path, "/comments")).json_body
-      response.collect{ |comment| comment["user"]["login"] }.uniq
+    def commenters_as_json
+      begin
+        response = GitHubBub.get(File.join(api_path, "/comments")).json_body
+        response.collect{ |comment| comment["user"]["login"] }.uniq
+      rescue GitHubBub::RequestError
+        []
+      end
     end
   end
 end

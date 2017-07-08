@@ -1,27 +1,16 @@
 module GithubFetcher
-  class User
-    attr_reader :token
-
-    def initialize(token)
-      @token = token
-    end
-
-    def json
-      GitHubBub.get(api_path, token: token).json_body
+  class User < Resource
+    def initialize
+      super
+      @api_path = '/user'
     end
 
     def valid?
-      GitHubBub.valid_token?(token)
-    end
-
-    def emails
-      GitHubBub.get("/user/emails", token: token).json_body
-    end
-
-    private
-
-    def api_path
-      "/user"
+      begin
+        GitHubBub.valid_token?(@options[:token])
+      rescue GitHubBub::RequestError
+        null_response
+      end
     end
   end
 end

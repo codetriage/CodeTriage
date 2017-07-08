@@ -34,8 +34,16 @@ class User < ActiveRecord::Base
     self.last_clicked_at ||= Time.now
   end
 
+  def repos_of(kind, options = {})
+    GithubFetcher::Repo.repos_for(token, kind, options)
+  end
+
+  def own_repositories
+    GithubFetcher::Repo.repos_for(token, 'repos', type: 'owner')
+  end
+
   def fetcher
-    @fetcher ||= GithubFetcher::User.new(self)
+    @fetcher ||= GithubFetcher::User.new(token: token)
   end
 
   def auth_is_valid?

@@ -1,6 +1,6 @@
 module GithubFetcher
   class Repo
-    attr_accessor :repo_path
+    attr_reader :repo_path
 
     def initialize(full_name)
       @full_name = full_name
@@ -22,29 +22,12 @@ module GithubFetcher
       return dir
     end
 
-    def json
-      @json ||= GitHubBub.get(repo_path).json_body
-    end
-
-    def issues(state = 'open', page = 1)
-      begin
-        IssuesResponse.new(GitHubBub.get(
-          api_issues_path,
-          state:     state,
-          page:      page,
-          sort:      'comments',
-          direction: 'desc'
-        ))
-      rescue GitHubBub::RequestError => e
-        if repo = ::Repo.where(full_name: @full_name).first
-          repo.update_attributes(github_error_msg: e.message)
-        end
-        NullIssueResponse.new # return empty enumerable interface
-      end
-    end
-
-    def api_issues_path
-      File.join('repos', @full_name, '/issues')
+    def as_json
+      @json ||= begin
+                  GitHubBub.get(repo_path).json_body
+                rescue GitHubBub::RequestError
+                  {}
+                end
     end
 
     def self.repos_for(token, kind, options)
