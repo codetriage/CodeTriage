@@ -11,6 +11,7 @@ module GithubFetcher
       super({})
     end
 
+    # TODO - make distinct resource?
     def commenters_as_json
       begin
         response = GitHubBub.get(File.join(api_path, "/comments")).json_body

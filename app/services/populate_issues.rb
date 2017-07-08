@@ -1,13 +1,16 @@
 class PopulateIssues
+  # TODO - test
   def self.call(repo, state = 'open')
     new(repo, state).populate_multi_issues!
   end
 
+  # TODO - test
   def initialize(repo, state)
     @repo = repo
     @state = state
   end
 
+  # TODO - test
   def populate_multi_issues!
     page = 1
     while populate_issues(page)
