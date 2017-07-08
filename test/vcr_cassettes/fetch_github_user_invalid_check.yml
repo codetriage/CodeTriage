@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<GITHUB_APP_ID>:<GITHUB_APP_SECRET>@api.github.com/applications/<GITHUB_APP_ID>/tokens/asdf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - 0ce48bcbccef6adc6728a8ac8ffadee9
+      Authorization:
+      - Basic OGQ5NGRhNTAyZmVmOTBmMDRhMWU6MzMyZmQ1M2NiZGE3Y2VhNGZkMDBlNmRkNmQwOWQ2OTNjNjQzYTg3NQ==
+  response:
+    status:
+      code: 404
+      message: ''
+    headers:
+      Date:
+      - Sat, 08 Jul 2017 22:18:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '77'
+      Server:
+      - GitHub.com
+      Status:
+      - 404 Not Found
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4998'
+      X-Ratelimit-Reset:
+      - '1499555846'
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.015278'
+      X-Github-Request-Id:
+      - C355:2B2EB:2DA5AA:3A8F1A:59615A3B
+    body:
+      encoding: UTF-8
+      string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3"}'
+    http_version: 
+  recorded_at: Sat, 08 Jul 2017 22:18:36 GMT
+recorded_with: VCR 2.9.3

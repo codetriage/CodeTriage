@@ -30,9 +30,11 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "update repo info from github error" do
-    VCR.use_cassette "repo_info_error", allow_playback_repeats: true do
-      repo = Repo.new user_name: 'codetriage', name: 'codetriage'
-      assert_raise(GitHubBub::RequestError) { repo.update_from_github }
+    repo = Repo.new user_name: 'codetriage', name: 'codetriage'
+    repo.stub(:issues_fetcher, -> { OpenStruct.new(error?: true, api_path: '123') }) do
+      repo.update_from_github
+      assert_equal repo.errors.messages[:expiration_date].first,
+        "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?"
     end
   end
 

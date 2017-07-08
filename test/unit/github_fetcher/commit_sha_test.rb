@@ -21,9 +21,11 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
 
   test "#as_json returns json" do
     fetcher = fetcher(repos(:scene_hub_v2))
+    commit_message ="Fixed geojson method in band model"
 
     VCR.use_cassette "fetcher_commit_sha" do
-      assert_equal fetcher.as_json, {}, fetcher.as_json
+      assert_nothing_raised { fetcher.as_json }
+      assert_equal fetcher.as_json['commit']['message'], commit_message, fetcher.as_json
     end
   end
 
@@ -36,7 +38,7 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
 
   test "#commit_sha returns the sha branch" do
     fetcher = fetcher(repos(:scene_hub_v2))
-    expected_sha = ""
+    expected_sha = "12dd603a7ea29fe2cb4ec7394d48c6efd4cad653"
 
     VCR.use_cassette "fetcher_commit_sha" do
       assert_equal fetcher.commit_sha, expected_sha
