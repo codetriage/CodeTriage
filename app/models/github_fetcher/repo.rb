@@ -13,21 +13,27 @@ module GithubFetcher
       as_json['default_branch']
     end
 
+    # TODO - does this really belong here? Seems like it (and Repo#populate_docs!)
+    #   should move into a service class
     def clone
       `cd #{dir} && git clone #{clone_url} 2>&1`
       return dir
     end
 
+    # TODO - make create new instance, use as_json interface
+    # TODO - tests
     def self.repos_for(token, kind, options)
       GitHubBub.get("/user/#{kind}", { token: token }.merge(options)).json_body
     end
 
     private
 
+    # TODO - moves w/ clone
     def dir
       @dir ||= Dir.mktmpdir
     end
 
+    # TODO - moves w/ clone
     def clone_url
       as_json["clone_url"]
     end

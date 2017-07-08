@@ -42,7 +42,8 @@ class GitHubAuthenticatorTest < ActiveSupport::TestCase
       .returns emails
 
     user = GitHubAuthenticator.authenticate oauth
-    assert user.persisted?, "User is not persisted but was expected to be #{ user.inspect }\n #{ user.errors.full_messages }"
+    assert user.persisted?, "User is not persisted but was expected to be "\
+      "#{ user.inspect }\n #{ user.errors.full_messages }"
     assert_equal 'john.doe@example.com', user.email
   end
 

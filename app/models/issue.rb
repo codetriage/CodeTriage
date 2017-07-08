@@ -16,7 +16,11 @@ class Issue < ActiveRecord::Base
   end
 
   def fetcher
-    @fetcher ||= GithubFetcher::Issue.new(owner_name, repo_name, number)
+    @fetcher ||= GithubFetcher::Issue.new(
+      owner_name: owner_name,
+      repo_name: repo_name,
+      number: number,
+    )
   end
 
   def update_issue!

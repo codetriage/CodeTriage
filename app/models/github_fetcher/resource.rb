@@ -10,12 +10,8 @@ module GithubFetcher
 
     # Generally not over-riden
     def as_json
-      response.json_body
+      @as_json ||= response.json_body
     end
-
-    private
-
-    attr_reader :api_path, :options
 
     # Generally not over-riden
     def response
@@ -26,6 +22,10 @@ module GithubFetcher
                       null_response(e)
                     end
     end
+
+    private
+
+    attr_reader :api_path, :options
 
     # Sometimes over-ridden to use the error
     def null_response(error)
