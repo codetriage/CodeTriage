@@ -17,7 +17,7 @@ class GithubFetcher::EmailTest < ActiveSupport::TestCase
         token: OmniAuth.config.mock_auth[:github][:credentials][:token]
       )
 
-      assert email_fetcher.as_json == [
+      assert_equal email_fetcher.as_json, [
         {"email"=>"dmragone@gmail.com", "primary"=>true, "verified"=>true, "visibility"=>"public"},
         {"email"=>"david.ragone@hired.com", "primary"=>false, "verified"=>true, "visibility"=>nil}
       ], "Failed: Got #{email_fetcher.as_json}"
@@ -28,7 +28,7 @@ class GithubFetcher::EmailTest < ActiveSupport::TestCase
     VCR.use_cassette "bad_fetch_emails" do
       email_fetcher = GithubFetcher::Email.new(token: 'asdf')
 
-      assert email_fetcher.as_json == [{}]
+      assert_equal email_fetcher.as_json, [{}]
     end
   end
 end

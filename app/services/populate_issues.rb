@@ -29,13 +29,13 @@ class PopulateIssues
   attr_reader :repo, :state
 
   def populate_issues(page)
-    response = fetcher(page).response
+    json = fetcher(page).as_json
 
-    if response.respond_to(:error)
-      repo.update_attributes(github_error_msg: response.error)
+    if json.respond_to(:error_message)
+      repo.update_attributes(github_error_msg: response.error_message)
       false
     else
-      response.json_body.each do |issue_hash|
+      json.each do |issue_hash|
         logger.info "Issue: number: #{issue_hash['number']}, "\
                     "updated_at: #{issue_hash['updated_at']}"
         Issue.find_or_create_from_hash!(issue_hash, repo)

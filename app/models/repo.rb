@@ -31,11 +31,19 @@ class Repo < ActiveRecord::Base
     @issues_fetcher ||= GithubFetcher::Issues.new(user_name: user_name, name: name)
   end
 
+  def commit_sha_fetcher
+    @commit_sha_fetcher ||= GithubFetcher::Repo.new(
+      user_name: user_name,
+      name: name,
+      default_branch: fetcher.default_branch
+    )
+  end
+
   def populate_docs!
     return unless can_doctor_docs?
-    return unless fetcher.commit_sha
+    return unless commit_sha_fetcher.commit_sha
 
-    self.update!(commit_sha: fetcher.commit_sha)
+    self.update!(commit_sha: commit_sha_fetcher.commit_sha)
     parser  = Repo::CLASS_FOR_DOC_LANGUAGE[self.language].new(fetcher.clone)
     parser.process
     parser.store(self)
@@ -163,11 +171,11 @@ class Repo < ActiveRecord::Base
   end
 
   def update_from_github
-    fetcher_json = fetcher.as_json
+    json = fetcher.as_json
     self.update(
-      language: fetcher_json.fetch('language', language),
-      description: fetcher_json.fetch('description', description),
-      stars_count: fetcher_json.fetch('stargazers_count', stars_count),
+      language: json.fetch('language', language),
+      description: json.fetch('description', description),
+      stars_count: json.fetch('stargazers_count', stars_count),
     )
   end
 

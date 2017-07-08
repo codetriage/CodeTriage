@@ -29,14 +29,14 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
     fetcher = issue_fetcher(issues(:issue_one))
 
     VCR.use_cassette "fetch_issue" do
-      assert fetcher.as_json['title'] == 'first test issue', fetcher.as_json
+      assert_equal fetcher.as_json['title'], 'first test issue', fetcher.as_json
     end
   end
 
   test "#as_json returns {} when error" do
     GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
       fetcher = issue_fetcher(issues(:issue_one))
-      assert fetcher.as_json['title'] == nil, fetcher.as_json
+      assert_nil fetcher.as_json['title'], fetcher.as_json
     end
   end
 
@@ -46,7 +46,7 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
     fetcher = issue_fetcher(issue)
 
     VCR.use_cassette "fetch_issue_commenters" do
-      assert fetcher.commenters_as_json == ["rtomayko"], fetcher.commenters_as_json
+      assert_equal fetcher.commenters_as_json, ["rtomayko"], fetcher.commenters_as_json
     end
   end
 
@@ -56,7 +56,7 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
       issue.repo = repos(:sinatra_sinatra) # For some reason, this isn't set :/
       fetcher = issue_fetcher(issue)
 
-      assert fetcher.commenters_as_json == []
+      assert_equal fetcher.commenters_as_json, []
     end
   end
 end

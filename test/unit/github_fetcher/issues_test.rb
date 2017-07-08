@@ -26,10 +26,10 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
 
     VCR.use_cassette "rails_rails_fetch_issues" do
       as_json = fetcher.as_json
-      assert as_json.size == 30, as_json
-      assert as_json.first['title'] == "Missing helper file helpers//Users/xxxx/"\
+      assert_equal as_json.size, 30, as_json
+      assert_equal as_json.first['title'], "Missing helper file helpers//Users/xxxx/"\
         "Sites/xxxx/app/helpers/application_helper.rb_helper.rb"
-      assert as_json.last['title'] == "Provide a default Content Security Policy "\
+      assert_equal as_json.last['title'], "Provide a default Content Security Policy "\
         "(CSP) that is lenient yet secure"
     end
   end
@@ -40,10 +40,10 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
 
     VCR.use_cassette "rails_rails_fetch_issues_page_two" do
       as_json = fetcher.as_json
-      assert as_json.size == 30, as_json
-      assert as_json.first['title'] == "Give clients a way to refer to ActionDispatch "\
+      assert_equal as_json.size, 30, as_json
+      assert_equal as_json.first['title'], "Give clients a way to refer to ActionDispatch "\
         "middleware classes without triggering an early load of ActionDispatch"
-      assert as_json.last['title'] == "default_scope breaks chained having "\
+      assert_equal as_json.last['title'], "default_scope breaks chained having "\
         "statements in rails4"
     end
   end

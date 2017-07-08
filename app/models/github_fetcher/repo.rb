@@ -1,33 +1,21 @@
 module GithubFetcher
-  class Repo
-    attr_reader :repo_path
-
-    def initialize(full_name)
-      @full_name = full_name
-      @repo_path = File.join("/repos/", full_name)
+  class Repo < Resource
+    def initialize(options)
+      @api_path = File.join(
+        'repos',
+        options.delete(:user_name),
+        options.delete(:name),
+      )
+      super
     end
 
-    def commit_sha
-      @commit_sha ||= begin
-        ::GitHubBub.get(
-          File.join(repo_path, 'commits', repo_json['default_branch'])
-        ).json_body['sha']
-      rescue GitHubBub::RequestError
-        nil
-      end
+    def default_branch
+      as_json['default_branch']
     end
 
     def clone
       `cd #{dir} && git clone #{clone_url} 2>&1`
       return dir
-    end
-
-    def as_json
-      @json ||= begin
-                  GitHubBub.get(repo_path).json_body
-                rescue GitHubBub::RequestError
-                  {}
-                end
     end
 
     def self.repos_for(token, kind, options)
@@ -40,16 +28,13 @@ module GithubFetcher
       @dir ||= Dir.mktmpdir
     end
 
+    def clone_url
+      as_json["clone_url"]
+    end
+
+    # TODO - this appears to be uncalled... remove? or do we need it and should use it?
     def cleanup
       FileUtils.remove_entry(dir)
-    end
-
-    def clone_url
-      repo_json["clone_url"]
-    end
-
-    def repo_json
-      @repo_json ||= ::GitHubBub.get(repo_path).json_body
     end
   end
 end

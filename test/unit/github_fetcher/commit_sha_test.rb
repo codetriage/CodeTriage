@@ -1,8 +1,12 @@
 require 'test_helper'
 
-class GithubFetcher::RepoTest < ActiveSupport::TestCase
+class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
   def fetcher(repo)
-    GithubFetcher::Repo.new(user_name: repo.user_name, name: repo.name)
+    GithubFetcher::CommitSha.new(
+      user_name: repo.user_name,
+      name: repo.name,
+      default_branch: 'master'
+    )
   end
 
   test "quacks like a GithubFetcher::Resource" do
@@ -15,20 +19,11 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
     end
   end
 
-  test "#as_json doesn't raise errors" do
-    fetcher = fetcher(repos(:scene_hub_v2))
-
-    VCR.use_cassette "create_repo_without_issues" do
-      assert_nothing_raised { fetcher.as_json }
-    end
-  end
-
   test "#as_json returns json" do
     fetcher = fetcher(repos(:scene_hub_v2))
-    expected_clone_url = "https://github.com/chrisccerami/scene-hub-v2.git"
 
-    VCR.use_cassette "create_repo_without_issues" do
-      assert_equal fetcher.as_json['clone_url'], expected_clone_url, fetcher.as_json
+    VCR.use_cassette "fetcher_commit_sha" do
+      assert_equal fetcher.as_json, {}, fetcher.as_json
     end
   end
 
@@ -36,23 +31,22 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
     GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
       assert_equal fetcher.as_json, {}
-      assert_nil fetcher.as_json['clone_url'], fetcher.as_json
     end
   end
 
-  test "#default_branch returns the default branch" do
+  test "#commit_sha returns the sha branch" do
     fetcher = fetcher(repos(:scene_hub_v2))
-    expected_default_branch = "master"
+    expected_sha = ""
 
-    VCR.use_cassette "create_repo_without_issues" do
-      assert_equal fetcher.default_branch, expected_default_branch
+    VCR.use_cassette "fetcher_commit_sha" do
+      assert_equal fetcher.commit_sha, expected_sha
     end
   end
 
-  test "default_branch returns nil when error" do
+  test "#commit_sha returns nil when error" do
     GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
-      assert_nil fetcher.default_branch
+      assert_nil fetcher.commit_sha
     end
   end
 end

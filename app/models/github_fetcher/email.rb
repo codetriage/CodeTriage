@@ -7,8 +7,8 @@ module GithubFetcher
 
     private
 
-    def null_response
-      GitHubBub::Response.new(body: [{}].to_json)
+    def null_response_body
+      [{}]
     end
   end
 end
