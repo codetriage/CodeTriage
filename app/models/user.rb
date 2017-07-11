@@ -34,16 +34,29 @@ class User < ActiveRecord::Base
     self.last_clicked_at ||= Time.now
   end
 
-  def repos_of(kind, options = {})
-    GithubFetcher::Repo.repos_for(token, kind, options)
+  # TODO - test
+  def own_repos_json(per_page = 100)
+    repos_fetcher(GithubFetcher::Repos::OWNED, token: token, per_page: per_page.to_s).as_json
   end
 
-  def own_repositories
-    GithubFetcher::Repo.repos_for(token, 'repos', type: 'owner')
+  # TODO - test
+  def starred_repos_json
+    repos_fetcher(GithubFetcher::Repos::STARRED, token: token).as_json
   end
 
+  # TODO - test
+  def subscribed_repos_json
+    repos_fetcher(GithubFetcher::Repos::SUBSCRIBED, token: token).as_json
+  end
+
+  # TODO - test
   def fetcher
     @fetcher ||= GithubFetcher::User.new(token: token)
+  end
+
+  # TODO - test?
+  def repos_fetcher(kind, options = {})
+    GithubFetcher::Repos.new({ token: token, kind: kind }.merge(options))
   end
 
   def auth_is_valid?

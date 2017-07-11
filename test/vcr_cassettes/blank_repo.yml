@@ -320,7 +320,7 @@ http_interactions:
   recorded_at: Thu, 06 Jul 2017 20:04:39 GMT
 - request:
     method: get
-    uri: https://api.github.com/user/repos?type=owner
+    uri: https://api.github.com/user/repos?per_page=100&type=owner
     body:
       encoding: UTF-8
       string: '{"type":"owner"}'

@@ -20,12 +20,6 @@ module GithubFetcher
       return dir
     end
 
-    # TODO - make create new instance, use as_json interface
-    # TODO - tests
-    def self.repos_for(token, kind, options)
-      GitHubBub.get("/user/#{kind}", { token: token }.merge(options)).json_body
-    end
-
     private
 
     # TODO - moves w/ clone
