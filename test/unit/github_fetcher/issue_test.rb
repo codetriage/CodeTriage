@@ -39,24 +39,4 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
       assert_nil fetcher.as_json['title'], fetcher.as_json
     end
   end
-
-  test "#commenters_as_json returns list of unique comments" do
-    issue = issues(:issue_three)
-    issue.repo = repos(:sinatra_sinatra) # For some reason, this isn't set :/
-    fetcher = issue_fetcher(issue)
-
-    VCR.use_cassette "fetch_issue_commenters" do
-      assert_equal fetcher.commenters_as_json, ["rtomayko"], fetcher.commenters_as_json
-    end
-  end
-
-  test "#commenters_as_json returns [] when error" do
-    GitHubBub.stub(:get, -> (_) { raise GitHubBub::RequestError }) do
-      issue = issues(:issue_three)
-      issue.repo = repos(:sinatra_sinatra) # For some reason, this isn't set :/
-      fetcher = issue_fetcher(issue)
-
-      assert_equal fetcher.commenters_as_json, []
-    end
-  end
 end
