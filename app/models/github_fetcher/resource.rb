@@ -26,7 +26,6 @@ module GithubFetcher
                     end
     end
 
-    # TODO - test
     def error?
       # Ensure API request has been made (by calling `as_json` before returning
       #   error if it happened. `as_json` should always evaluate truthily, but

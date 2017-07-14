@@ -16,12 +16,6 @@ class GithubFetcher::IssueCommentsTest < ActiveSupport::TestCase
     assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
-  test "#as_json doesn't raise errors" do
-    VCR.use_cassette "fetch_issue_comments" do
-      assert_nothing_raised { comments_fetcher.as_json }
-    end
-  end
-
   test "#as_json returns list of comments" do
     first_comment_url = "https://api.github.com/repos/sinatra/sinatra/issues/comments/5"
 

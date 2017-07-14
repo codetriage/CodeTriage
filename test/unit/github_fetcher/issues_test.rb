@@ -9,12 +9,6 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
     assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
-  test "#as_json doesn't raise errors" do
-    VCR.use_cassette "issue_triage_sandbox_fetch_issues" do
-      assert_nothing_raised { fetcher(repos(:issue_triage_sandbox)).as_json }
-    end
-  end
-
   test "#as_json returns first page of open issues, sorted by comments desc (by default)" do
     fetcher = fetcher(repos(:rails_rails))
 
@@ -60,6 +54,13 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
     fetcher = fetcher(repos(:rails_rails))
     GitHubBub.stub(:get, -> (_, _) { OpenStruct.new(last_page?: false) } ) do
       assert fetcher.more_issues?
+    end
+  end
+
+  test "#error?" do
+    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+      fetcher = fetcher(repos(:rails_rails))
+      assert fetcher.error?
     end
   end
 end

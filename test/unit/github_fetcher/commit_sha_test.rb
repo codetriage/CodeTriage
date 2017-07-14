@@ -18,7 +18,6 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
     commit_message ="Fixed geojson method in band model"
 
     VCR.use_cassette "fetcher_commit_sha" do
-      assert_nothing_raised { fetcher.as_json }
       assert_equal fetcher.as_json['commit']['message'], commit_message, fetcher.as_json
     end
   end
