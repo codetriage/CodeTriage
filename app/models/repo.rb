@@ -23,7 +23,6 @@ class Repo < ActiveRecord::Base
     CLASS_FOR_DOC_LANGUAGE[self.language]
   end
 
-  # TODO - test
   def fetcher
     @fetcher ||= GithubFetcher::Repo.new(user_name: user_name, name: name)
   end
@@ -32,7 +31,6 @@ class Repo < ActiveRecord::Base
     fetcher.as_json
   end
 
-  # TODO - test
   def issues_fetcher(page: 1, state: 'open')
     @issues_fetcher ||= GithubFetcher::Issues.new(
       user_name: user_name,
@@ -42,16 +40,14 @@ class Repo < ActiveRecord::Base
     )
   end
 
-  # TODO - test
   def commit_sha_fetcher
-    @commit_sha_fetcher ||= GithubFetcher::Repo.new(
+    @commit_sha_fetcher ||= GithubFetcher::CommitSha.new(
       user_name: user_name,
       name: name,
       default_branch: fetcher.default_branch
     )
   end
 
-  # TODO - test
   def populate_docs!
     return unless can_doctor_docs?
     return unless commit_sha_fetcher.commit_sha
@@ -221,8 +217,6 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url_exists
-    # TODO - use fetcher's error info if we have it; not sure why we're going here :/
-    # TODO - consider making error something that is stored/accessible on all fetchers
     if issues_fetcher.error?
       errors.add(
         :expiration_date,

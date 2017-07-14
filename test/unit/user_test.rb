@@ -77,4 +77,30 @@ class UserTest < ActiveSupport::TestCase
 
     mock.verify
   end
+
+  test "#own_repos_json" do
+    VCR.use_cassette "fetcher_owned_repos_for_user_first_100" do
+      assert_equal users(:mockstar).own_repos_json.last['name'], 'writings'
+    end
+  end
+
+  test "#starred_repos_json" do
+    VCR.use_cassette "fetcher_starred_repos_for_user" do
+      assert_equal users(:mockstar).starred_repos_json.first['full_name'], 'tscanlin/next-blog'
+    end
+  end
+
+  test "#subscribed_repos_json" do
+    VCR.use_cassette "fetcher_subscribed_repos_for_user" do
+      assert_equal users(:mockstar).subscribed_repos_json.first['full_name'], 'thoughtbot/suspenders'
+    end
+  end
+
+  test "#fetcher" do
+    assert users(:mockstar).fetcher.is_a? GithubFetcher::User
+  end
+
+  test "#repos_fetcher" do
+    assert users(:mockstar).repos_fetcher(GithubFetcher::Repos::OWNED).is_a? GithubFetcher::Repos
+  end
 end

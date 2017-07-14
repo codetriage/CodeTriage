@@ -97,4 +97,20 @@ class RepoTest < ActiveSupport::TestCase
     assert_not order_of_repos_by_subscribers.pluck(:name) == order_of_repos_by_name
     assert_equal order_of_repos_by_subscribers.first.name, repo.name
   end
+
+  test "#fetcher" do
+    assert repos(:rails_rails).fetcher.is_a? GithubFetcher::Repo
+  end
+
+  test "#issues_fetcher" do
+    assert repos(:rails_rails).issues_fetcher.is_a? GithubFetcher::Issues
+  end
+
+  test "#commit_sha_fetcher" do
+    assert repos(:rails_rails).commit_sha_fetcher.is_a? GithubFetcher::CommitSha
+  end
+
+  test "#populate_docs!" do
+    # TODO
+  end
 end

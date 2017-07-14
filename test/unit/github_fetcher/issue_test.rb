@@ -13,12 +13,6 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
     assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
-  test "#as_json doesn't raise errors" do
-    VCR.use_cassette "fetch_issue" do
-      assert_nothing_raised { issue_fetcher(issues(:issue_one)).as_json }
-    end
-  end
-
   test "#as_json includes issue details" do
     fetcher = issue_fetcher(issues(:issue_one))
 
