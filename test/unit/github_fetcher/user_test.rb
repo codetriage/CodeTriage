@@ -31,9 +31,7 @@ class GithubFetcher::UserTest < ActiveSupport::TestCase
 
   test "#valid? returns true if user token is valid" do
     VCR.use_cassette "fetch_github_user_valid_check" do
-      user_fetcher = GithubFetcher::User.new(
-        token: OmniAuth.config.mock_auth[:github][:credentials][:token]
-      )
+      user_fetcher = GithubFetcher::User.new(token: ENV['GITHUB_API_KEY'])
 
       assert user_fetcher.valid?
     end
