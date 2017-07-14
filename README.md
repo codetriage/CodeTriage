@@ -72,6 +72,7 @@ Then add the credentials to your .env file:
 ```shell
 $ echo GITHUB_APP_ID=foo >> .env
 $ echo GITHUB_APP_SECRET=bar >> .env
+$ echo GITHUB_API_KEY=baz >> .env
 $ echo PORT=3000 >> .env
 ```
 
