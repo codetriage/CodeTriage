@@ -17,10 +17,14 @@ class Repo < ActiveRecord::Base
   before_save :set_full_name
   after_create :background_populate_issues!, :update_repo_info!, :background_populate_docs!
 
-  CLASS_FOR_DOC_LANGUAGE = { "Ruby" => DocsDoctor::Parsers::Ruby::Yard }
+  CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
+
+  def class_for_doc_language
+    CLASS_FOR_DOC_LANGUAGE[self.language.downcase]
+  end
 
   def can_doctor_docs?
-    CLASS_FOR_DOC_LANGUAGE[self.language]
+    class_for_doc_language.present?
   end
 
   def fetcher
@@ -53,7 +57,7 @@ class Repo < ActiveRecord::Base
     return unless commit_sha_fetcher.commit_sha
 
     self.update!(commit_sha: commit_sha_fetcher.commit_sha)
-    parser  = Repo::CLASS_FOR_DOC_LANGUAGE[self.language].new(fetcher.clone)
+    parser = class_for_doc_language.new(fetcher.clone)
     parser.process
     parser.store(self)
   end

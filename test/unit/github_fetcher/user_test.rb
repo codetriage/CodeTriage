@@ -2,7 +2,7 @@ require 'test_helper'
 
 class GithubFetcher::UserTest < ActiveSupport::TestCase
   test "quacks like a GithubFetcher::Resource" do
-    assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
+    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: 'asdf')
   end
 
   test "#as_json returns user json" do
@@ -31,9 +31,7 @@ class GithubFetcher::UserTest < ActiveSupport::TestCase
 
   test "#valid? returns true if user token is valid" do
     VCR.use_cassette "fetch_github_user_valid_check" do
-      user_fetcher = GithubFetcher::User.new(
-        token: OmniAuth.config.mock_auth[:github][:credentials][:token]
-      )
+      user_fetcher = GithubFetcher::User.new(token: ENV['GITHUB_API_KEY'])
 
       assert user_fetcher.valid?
     end

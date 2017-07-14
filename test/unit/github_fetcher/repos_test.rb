@@ -11,7 +11,7 @@ class GithubFetcher::ReposTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
+    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: 'asdf')
   end
 
   test "#as_json returns json" do
