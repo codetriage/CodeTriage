@@ -28,6 +28,10 @@ class Repo < ActiveRecord::Base
     @fetcher ||= GithubFetcher::Repo.new(user_name: user_name, name: name)
   end
 
+  def fetcher_json
+    fetcher.as_json
+  end
+
   # TODO - test
   def issues_fetcher(page: 1, state: 'open')
     @issues_fetcher ||= GithubFetcher::Issues.new(

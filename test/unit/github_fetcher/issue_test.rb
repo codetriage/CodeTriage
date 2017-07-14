@@ -10,13 +10,7 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    fetcher = issue_fetcher(issues(:issue_one))
-    GithubFetcher::Resource.instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
-    GithubFetcher::Resource.private_instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
+    assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
   test "#as_json doesn't raise errors" do

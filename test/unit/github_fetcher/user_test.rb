@@ -2,13 +2,7 @@ require 'test_helper'
 
 class GithubFetcher::UserTest < ActiveSupport::TestCase
   test "quacks like a GithubFetcher::Resource" do
-    fetcher = GithubFetcher::User.new(token: 'asdf')
-    GithubFetcher::Resource.instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
-    GithubFetcher::Resource.private_instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
+    assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
   test "#as_json returns user json" do
@@ -57,7 +51,6 @@ class GithubFetcher::UserTest < ActiveSupport::TestCase
     GitHubBub.stub(:valid_token?, -> (_) { raise GitHubBub::RequestError }) do
       user_fetcher = GithubFetcher::User.new(token: 'asdf')
 
-      assert_nothing_raised { user_fetcher.valid? }
       assert_not user_fetcher.valid?
     end
   end

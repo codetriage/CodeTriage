@@ -23,6 +23,14 @@ class Issue < ActiveRecord::Base
     )
   end
 
+  def comments_fetcher
+    @fetcher ||= GithubFetcher::IssueComments.new(
+      owner_name: owner_name,
+      repo_name: repo_name,
+      number: number,
+    )
+  end
+
   def update_issue!
     update_from_github_hash!(fetcher.as_json)
   end
@@ -56,7 +64,7 @@ class Issue < ActiveRecord::Base
   end
 
   def commenting_users
-    fetcher.commenters_as_json.sort
+    comments_fetcher.commenters.sort
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)

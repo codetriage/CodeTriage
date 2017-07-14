@@ -16,7 +16,6 @@ module GithubFetcher
       super
     end
 
-    # TODO - test
     def more_issues?
       !response.last_page?
     end

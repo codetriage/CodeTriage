@@ -6,21 +6,7 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    fetcher = fetcher(repos(:issue_triage_sandbox))
-    GithubFetcher::Resource.instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
-    GithubFetcher::Resource.private_instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
-  end
-
-  test "#as_json doesn't raise errors" do
-    fetcher = fetcher(repos(:scene_hub_v2))
-
-    VCR.use_cassette "create_repo_without_issues" do
-      assert_nothing_raised { fetcher.as_json }
-    end
+    assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
   test "#as_json returns json" do

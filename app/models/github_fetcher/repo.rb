@@ -14,7 +14,7 @@ module GithubFetcher
     end
 
     # TODO - does this really belong here? Seems like it (and Repo#populate_docs!)
-    #   should move into a service class
+    #   should move into the PopulateDocs job
     def clone
       `cd #{dir} && git clone #{clone_url} 2>&1`
       return dir

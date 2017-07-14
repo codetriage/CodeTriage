@@ -6,13 +6,7 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    fetcher = fetcher(repos(:issue_triage_sandbox))
-    GithubFetcher::Resource.instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
-    GithubFetcher::Resource.private_instance_methods(false).each do |method|
-      assert fetcher.respond_to? method, "Failed to respond_to? #{method}"
-    end
+    assert GithubFetcher::User.new(token: 'asdf').kind_of? GithubFetcher::Resource
   end
 
   test "#as_json doesn't raise errors" do
@@ -45,6 +39,27 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
         "middleware classes without triggering an early load of ActionDispatch"
       assert_equal as_json.last['title'], "default_scope breaks chained having "\
         "statements in rails4"
+    end
+  end
+
+  test "#as_json returns {} when error" do
+    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+      fetcher = fetcher(repos(:rails_rails))
+      assert_equal fetcher.as_json, {}
+    end
+  end
+
+  test "#more_issues? is true when it's the last page" do
+    fetcher = fetcher(repos(:rails_rails))
+    GitHubBub.stub(:get, -> (_, _) { OpenStruct.new(last_page?: true) } ) do
+      assert_not fetcher.more_issues?
+    end
+  end
+
+  test "#more_issues? is false when it's not the last page" do
+    fetcher = fetcher(repos(:rails_rails))
+    GitHubBub.stub(:get, -> (_, _) { OpenStruct.new(last_page?: false) } ) do
+      assert fetcher.more_issues?
     end
   end
 end
