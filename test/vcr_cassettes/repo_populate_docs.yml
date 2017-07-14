@@ -1,0 +1,190 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/rails/rails
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - f33077ef1d43a552120f432e5c31dccf
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Fri, 14 Jul 2017 05:29:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '5293'
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4987'
+      X-Ratelimit-Reset:
+      - '1500012712'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept-Encoding
+      Etag:
+      - '"e4be6e53eededa1d848e5840e99f747f"'
+      Last-Modified:
+      - Fri, 14 Jul 2017 02:49:31 GMT
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.045563'
+      X-Served-By:
+      - e724c57ebb9961c772a91e2dd7421c8d
+      X-Github-Request-Id:
+      - E12A:1CEA1:34A7D:42C1A:596856BE
+    body:
+      encoding: UTF-8
+      string: '{"id":8514,"name":"rails","full_name":"rails/rails","owner":{"login":"rails","id":4223,"avatar_url":"https://avatars5.githubusercontent.com/u/4223?v=4","gravatar_id":"","url":"https://api.github.com/users/rails","html_url":"https://github.com/rails","followers_url":"https://api.github.com/users/rails/followers","following_url":"https://api.github.com/users/rails/following{/other_user}","gists_url":"https://api.github.com/users/rails/gists{/gist_id}","starred_url":"https://api.github.com/users/rails/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rails/subscriptions","organizations_url":"https://api.github.com/users/rails/orgs","repos_url":"https://api.github.com/users/rails/repos","events_url":"https://api.github.com/users/rails/events{/privacy}","received_events_url":"https://api.github.com/users/rails/received_events","type":"Organization","site_admin":false},"private":false,"html_url":"https://github.com/rails/rails","description":"Ruby
+        on Rails","fork":false,"url":"https://api.github.com/repos/rails/rails","forks_url":"https://api.github.com/repos/rails/rails/forks","keys_url":"https://api.github.com/repos/rails/rails/keys{/key_id}","collaborators_url":"https://api.github.com/repos/rails/rails/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/rails/rails/teams","hooks_url":"https://api.github.com/repos/rails/rails/hooks","issue_events_url":"https://api.github.com/repos/rails/rails/issues/events{/number}","events_url":"https://api.github.com/repos/rails/rails/events","assignees_url":"https://api.github.com/repos/rails/rails/assignees{/user}","branches_url":"https://api.github.com/repos/rails/rails/branches{/branch}","tags_url":"https://api.github.com/repos/rails/rails/tags","blobs_url":"https://api.github.com/repos/rails/rails/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/rails/rails/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/rails/rails/git/refs{/sha}","trees_url":"https://api.github.com/repos/rails/rails/git/trees{/sha}","statuses_url":"https://api.github.com/repos/rails/rails/statuses/{sha}","languages_url":"https://api.github.com/repos/rails/rails/languages","stargazers_url":"https://api.github.com/repos/rails/rails/stargazers","contributors_url":"https://api.github.com/repos/rails/rails/contributors","subscribers_url":"https://api.github.com/repos/rails/rails/subscribers","subscription_url":"https://api.github.com/repos/rails/rails/subscription","commits_url":"https://api.github.com/repos/rails/rails/commits{/sha}","git_commits_url":"https://api.github.com/repos/rails/rails/git/commits{/sha}","comments_url":"https://api.github.com/repos/rails/rails/comments{/number}","issue_comment_url":"https://api.github.com/repos/rails/rails/issues/comments{/number}","contents_url":"https://api.github.com/repos/rails/rails/contents/{+path}","compare_url":"https://api.github.com/repos/rails/rails/compare/{base}...{head}","merges_url":"https://api.github.com/repos/rails/rails/merges","archive_url":"https://api.github.com/repos/rails/rails/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/rails/rails/downloads","issues_url":"https://api.github.com/repos/rails/rails/issues{/number}","pulls_url":"https://api.github.com/repos/rails/rails/pulls{/number}","milestones_url":"https://api.github.com/repos/rails/rails/milestones{/number}","notifications_url":"https://api.github.com/repos/rails/rails/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/rails/rails/labels{/name}","releases_url":"https://api.github.com/repos/rails/rails/releases{/id}","deployments_url":"https://api.github.com/repos/rails/rails/deployments","created_at":"2008-04-11T02:19:47Z","updated_at":"2017-07-14T02:49:31Z","pushed_at":"2017-07-14T05:07:46Z","git_url":"git://github.com/rails/rails.git","ssh_url":"git@github.com:rails/rails.git","clone_url":"https://github.com/rails/rails.git","svn_url":"https://github.com/rails/rails","homepage":"http://rubyonrails.org","size":151024,"stargazers_count":36306,"watchers_count":36306,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":false,"has_pages":false,"forks_count":14807,"mirror_url":null,"open_issues_count":1196,"forks":14807,"open_issues":1196,"watchers":36306,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true},"organization":{"login":"rails","id":4223,"avatar_url":"https://avatars5.githubusercontent.com/u/4223?v=4","gravatar_id":"","url":"https://api.github.com/users/rails","html_url":"https://github.com/rails","followers_url":"https://api.github.com/users/rails/followers","following_url":"https://api.github.com/users/rails/following{/other_user}","gists_url":"https://api.github.com/users/rails/gists{/gist_id}","starred_url":"https://api.github.com/users/rails/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rails/subscriptions","organizations_url":"https://api.github.com/users/rails/orgs","repos_url":"https://api.github.com/users/rails/repos","events_url":"https://api.github.com/users/rails/events{/privacy}","received_events_url":"https://api.github.com/users/rails/received_events","type":"Organization","site_admin":false},"network_count":14807,"subscribers_count":2430}'
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 05:29:34 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/rails/rails/commits/master
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - f33077ef1d43a552120f432e5c31dccf
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Fri, 14 Jul 2017 05:29:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '6536'
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4986'
+      X-Ratelimit-Reset:
+      - '1500012712'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      Etag:
+      - '"67c3f4c6d6fde4ee908d4970568ea697"'
+      Last-Modified:
+      - Fri, 14 Jul 2017 01:38:10 GMT
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.041331'
+      X-Github-Request-Id:
+      - E12B:1CEA2:B2994:E24EC:596856BE
+    body:
+      encoding: UTF-8
+      string: '{"sha":"c1f9fa8c69590222fac43d58bf64ef4a1225d7ce","commit":{"author":{"name":"Ryuta
+        Kamizono","email":"kamipo@gmail.com","date":"2017-07-14T01:38:10Z"},"committer":{"name":"GitHub","email":"noreply@github.com","date":"2017-07-14T01:38:10Z"},"message":"Merge
+        pull request #29786 from willnet/remove-javascript_link_tag-options\n\n[ci
+        skip]Remove options of javascript_link_tag and stylesheet_link_tag in guides","tree":{"sha":"25ced6e1affdc7422d1f3dee2cc2c2a23251fe45","url":"https://api.github.com/repos/rails/rails/git/trees/25ced6e1affdc7422d1f3dee2cc2c2a23251fe45"},"url":"https://api.github.com/repos/rails/rails/git/commits/c1f9fa8c69590222fac43d58bf64ef4a1225d7ce","comment_count":0},"url":"https://api.github.com/repos/rails/rails/commits/c1f9fa8c69590222fac43d58bf64ef4a1225d7ce","html_url":"https://github.com/rails/rails/commit/c1f9fa8c69590222fac43d58bf64ef4a1225d7ce","comments_url":"https://api.github.com/repos/rails/rails/commits/c1f9fa8c69590222fac43d58bf64ef4a1225d7ce/comments","author":{"login":"kamipo","id":12642,"avatar_url":"https://avatars3.githubusercontent.com/u/12642?v=3","gravatar_id":"","url":"https://api.github.com/users/kamipo","html_url":"https://github.com/kamipo","followers_url":"https://api.github.com/users/kamipo/followers","following_url":"https://api.github.com/users/kamipo/following{/other_user}","gists_url":"https://api.github.com/users/kamipo/gists{/gist_id}","starred_url":"https://api.github.com/users/kamipo/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/kamipo/subscriptions","organizations_url":"https://api.github.com/users/kamipo/orgs","repos_url":"https://api.github.com/users/kamipo/repos","events_url":"https://api.github.com/users/kamipo/events{/privacy}","received_events_url":"https://api.github.com/users/kamipo/received_events","type":"User","site_admin":false},"committer":{"login":"web-flow","id":19864447,"avatar_url":"https://avatars7.githubusercontent.com/u/19864447?v=4","gravatar_id":"","url":"https://api.github.com/users/web-flow","html_url":"https://github.com/web-flow","followers_url":"https://api.github.com/users/web-flow/followers","following_url":"https://api.github.com/users/web-flow/following{/other_user}","gists_url":"https://api.github.com/users/web-flow/gists{/gist_id}","starred_url":"https://api.github.com/users/web-flow/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/web-flow/subscriptions","organizations_url":"https://api.github.com/users/web-flow/orgs","repos_url":"https://api.github.com/users/web-flow/repos","events_url":"https://api.github.com/users/web-flow/events{/privacy}","received_events_url":"https://api.github.com/users/web-flow/received_events","type":"User","site_admin":false},"parents":[{"sha":"472f39f781e5ebf5dcb19bb432572ba68dfcceca","url":"https://api.github.com/repos/rails/rails/commits/472f39f781e5ebf5dcb19bb432572ba68dfcceca","html_url":"https://github.com/rails/rails/commit/472f39f781e5ebf5dcb19bb432572ba68dfcceca"},{"sha":"17170cea436c3020bb4a9a6a80b5748288081827","url":"https://api.github.com/repos/rails/rails/commits/17170cea436c3020bb4a9a6a80b5748288081827","html_url":"https://github.com/rails/rails/commit/17170cea436c3020bb4a9a6a80b5748288081827"}],"stats":{"total":32,"additions":0,"deletions":32},"files":[{"sha":"e5f4e0ec303cc09c6560f755fe1cd3e7d6abb898","filename":"guides/source/action_view_overview.md","status":"modified","additions":0,"deletions":32,"changes":32,"blob_url":"https://github.com/rails/rails/blob/c1f9fa8c69590222fac43d58bf64ef4a1225d7ce/guides/source/action_view_overview.md","raw_url":"https://github.com/rails/rails/raw/c1f9fa8c69590222fac43d58bf64ef4a1225d7ce/guides/source/action_view_overview.md","contents_url":"https://api.github.com/repos/rails/rails/contents/guides/source/action_view_overview.md?ref=c1f9fa8c69590222fac43d58bf64ef4a1225d7ce","patch":"@@
+        -464,25 +464,6 @@ Returns an HTML script tag for each of the sources provided.
+        You can pass in the\n javascript_include_tag \"common\" # => <script src=\"/assets/common.js\"></script>\n
+        ```\n \n-If the application does not use the asset pipeline, to include the
+        jQuery JavaScript library in your application, pass `:defaults` as the source.
+        When using `:defaults`, if an `application.js` file exists in your `app/assets/javascripts`
+        directory, it will be included as well.\n-\n-```ruby\n-javascript_include_tag
+        :defaults\n-```\n-\n-You can also include all JavaScript files in the `app/assets/javascripts`
+        directory using `:all` as the source.\n-\n-```ruby\n-javascript_include_tag
+        :all\n-```\n-\n-You can also cache multiple JavaScript files into one file,
+        which requires less HTTP connections to download and can better be compressed
+        by gzip (leading to faster transfers). Caching will only happen if `ActionController::Base.perform_caching`
+        is set to true (which is the case by default for the Rails production environment,
+        but not for the development environment).\n-\n-```ruby\n-javascript_include_tag
+        :all, cache: true # =>\n-  <script src=\"/javascripts/all.js\"></script>\n-```\n-\n
+        #### javascript_path\n \n Computes the path to a JavaScript asset in the `app/assets/javascripts`
+        directory. If the source filename has no extension, `.js` will be appended.
+        Full paths from the document root will be passed through. Used internally
+        by `javascript_include_tag` to build the script path.\n@@ -507,19 +488,6 @@
+        Returns a stylesheet link tag for the sources specified as arguments. If you
+        don\n stylesheet_link_tag \"application\" # => <link href=\"/assets/application.css\"
+        media=\"screen\" rel=\"stylesheet\" />\n ```\n \n-You can also include all
+        styles in the stylesheet directory using `:all` as the source:\n-\n-```ruby\n-stylesheet_link_tag
+        :all\n-```\n-\n-You can also cache multiple stylesheets into one file, which
+        requires less HTTP connections and can better be compressed by gzip (leading
+        to faster transfers). Caching will only happen if ActionController::Base.perform_caching
+        is set to true (which is the case by default for the Rails production environment,
+        but not for the development environment).\n-\n-```ruby\n-stylesheet_link_tag
+        :all, cache: true\n-# => <link href=\"/assets/all.css\" media=\"screen\" rel=\"stylesheet\"
+        />\n-```\n-\n #### stylesheet_path\n \n Computes the path to a stylesheet
+        asset in the `app/assets/stylesheets` directory. If the source filename has
+        no extension, `.css` will be appended. Full paths from the document root will
+        be passed through. Used internally by stylesheet_link_tag to build the stylesheet
+        path."}]}'
+    http_version: 
+  recorded_at: Fri, 14 Jul 2017 05:29:34 GMT
+recorded_with: VCR 2.9.3
