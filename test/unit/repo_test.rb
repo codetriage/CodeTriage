@@ -107,7 +107,9 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "#commit_sha_fetcher" do
-    assert repos(:rails_rails).commit_sha_fetcher.is_a? GithubFetcher::CommitSha
+    VCR.use_cassette "create_repo_without_issues" do
+      assert repos(:scene_hub_v2).commit_sha_fetcher.is_a? GithubFetcher::CommitSha
+    end
   end
 
   test "#populate_docs!" do
