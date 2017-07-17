@@ -11,7 +11,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       - if @repo_sub.blank?
         h2.content-section-title Triage Issues!
         p.repo-instructions
-          | When you volunteer to triage issues, you'll receive an email each day with a link to an open issue that needs to be triaged in this project.
+          | When you volunteer to triage issues, you'll receive an email each day with a link to an open issue that needs help in this project.
             You'll also receive instructions on how to triage issues.
 
         = link_to_or_log_in(text: "Triage Issues", path: repo_subscriptions_path(repo_subscription: { repo_id: @repo.id, email_limit: 3}), html_class: "repo-action")
@@ -94,7 +94,6 @@ div class="subpage-content-wrapper #{ @repo.weight }"
                   = link_to doc.path, doc
 
             .pagination= will_paginate @docs, container: false
-
 
     - if @repo_sub
       = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging full-width-action', method: :delete, data: { confirm: 'Are you sure?' } do
