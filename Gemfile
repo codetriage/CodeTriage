@@ -94,7 +94,8 @@ gem 'babel-transpiler'
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
-gem 'sentry-raven'
+# @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
+gem 'sentry-raven', github: "getsentry/raven-ruby"
 gem 'oj'
 gem 'rack-canonical-host'
 
