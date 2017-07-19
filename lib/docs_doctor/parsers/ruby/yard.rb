@@ -75,6 +75,9 @@ module DocsDoctor
           @yard_objects = YARD::Registry.all
           YARD::Registry.delete_from_disk
           YARD::Registry.clear
+        rescue SystemStackError
+          Rails.logger.debug "Yard blew up while trying to read from #{root_path}"
+          return false
         end
       end
     end
