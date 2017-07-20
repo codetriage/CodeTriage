@@ -18,6 +18,16 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+class ActionDispatch::IntegrationTest
+  # https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
+  include Warden::Test::Helpers
+  Warden.test_mode!
+
+  setup do
+    logout(:user)
+  end
+end
+
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:github, {
   uid: 'mockstar',

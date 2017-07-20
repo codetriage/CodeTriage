@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class UserUnsubscribeTest < ActionDispatch::IntegrationTest
-
-  # https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
-  include Warden::Test::Helpers
-  Warden.test_mode!
-
   test 'unsubscribing successfully' do
     @user = users(:mockstar)
     token = @user.account_delete_token
