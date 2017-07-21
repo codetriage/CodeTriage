@@ -1,11 +1,6 @@
 require 'test_helper'
 
 class UserUpdateTest < ActionDispatch::IntegrationTest
-
-  # https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
-  include Warden::Test::Helpers
-  Warden.test_mode!
-
   test "routing" do
     user = users(:mockstar)
     assert_routing user_path(user), { controller: 'users', action: 'show', id: user.id.to_s }
