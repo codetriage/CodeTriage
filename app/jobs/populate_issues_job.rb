@@ -5,8 +5,6 @@ class PopulateIssuesJob < ApplicationJob
     populate_multi_issues!
   end
 
-  attr_reader :repo, :state
-
   def populate_multi_issues!
     page = 1
     while populate_issues(page)

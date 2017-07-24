@@ -10,7 +10,7 @@ module GithubFetcher
       @options = options
     end
 
-    # Generally not over-riden
+    # Generally not over-ridden
     def as_json
       @as_json ||= response.json_body
     end

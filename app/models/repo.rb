@@ -188,7 +188,7 @@ class Repo < ActiveRecord::Base
     self.update(
       language: json.fetch('language', language),
       description: json.fetch('description', description),
-      stars_count: json.fetch('stargazers_count', stars_count),
+      stars_count: json.fetch('stargazers_count', stars_count)
     )
   end
 
