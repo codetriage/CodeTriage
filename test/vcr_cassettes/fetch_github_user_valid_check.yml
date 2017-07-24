@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<GITHUB_APP_ID>:<GITHUB_APP_SECRET>@api.github.com/applications/<GITHUB_APP_ID>/tokens/<GITHUB_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - 328d278197724c714650d718d717ae38
+      Authorization:
+      - Basic OGQ5NGRhNTAyZmVmOTBmMDRhMWU6MzMyZmQ1M2NiZGE3Y2VhNGZkMDBlNmRkNmQwOWQ2OTNjNjQzYTg3NQ==
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sat, 08 Jul 2017 22:17:26 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1400'
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1499555846'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Accept-Encoding, Accept-Encoding
+      Etag:
+      - '"6c7abc7c36c65be5ce8368ac35088146"'
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.030320'
+      X-Served-By:
+      - 15bc4ab707db6d6b474783868c7cc828
+      X-Github-Request-Id:
+      - C316:2B2E4:13E6A:1B1F7:596159F5
+    body:
+      encoding: UTF-8
+      string: '{"id":113219755,"url":"https://api.github.com/authorizations/113219755","app":{"name":"codetriage-davidragone","url":"http://localhost:3000","client_id":"<GITHUB_APP_ID>"},"token":"<GITHUB_API_KEY>","hashed_token":"f4ff0827eb406e73fc079754a102c054457b3c4fcdaf94e6eb4bc56a9fe60260","token_last_eight":"cb2d7628","note":null,"note_url":null,"created_at":"2017-07-06T16:02:42Z","updated_at":"2017-07-06T16:02:43Z","scopes":["user:email"],"fingerprint":null,"user":{"login":"DavidRagone","id":1452099,"avatar_url":"https://avatars1.githubusercontent.com/u/1452099?v=3","gravatar_id":"","url":"https://api.github.com/users/DavidRagone","html_url":"https://github.com/DavidRagone","followers_url":"https://api.github.com/users/DavidRagone/followers","following_url":"https://api.github.com/users/DavidRagone/following{/other_user}","gists_url":"https://api.github.com/users/DavidRagone/gists{/gist_id}","starred_url":"https://api.github.com/users/DavidRagone/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/DavidRagone/subscriptions","organizations_url":"https://api.github.com/users/DavidRagone/orgs","repos_url":"https://api.github.com/users/DavidRagone/repos","events_url":"https://api.github.com/users/DavidRagone/events{/privacy}","received_events_url":"https://api.github.com/users/DavidRagone/received_events","type":"User","site_admin":false}}'
+    http_version: 
+  recorded_at: Sat, 08 Jul 2017 22:17:26 GMT
+recorded_with: VCR 2.9.3

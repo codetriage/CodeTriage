@@ -9,9 +9,9 @@ class ReposController < RepoBasedController
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
     @repo_sub = RepoSubscription.new
     if user_signed_in?
-      @own_repos     = cached_repos 'repos', type: 'owner', per_page: '100'
-      @starred_repos = cached_repos 'starred'
-      @watched_repos = cached_repos 'subscriptions'
+      @own_repos     = cached_repos 'repos', current_user.own_repos_json
+      @starred_repos = cached_repos 'starred', current_user.starred_repos_json
+      @watched_repos = cached_repos 'subscriptions', current_user.subscribed_repos_json
     end
   end
 
@@ -34,8 +34,7 @@ class ReposController < RepoBasedController
       SendSingleTriageEmailJob.perform_later(@repo_sub.id)
       redirect_to @repo
     else
-      response = GitHubBub.get("/user/repos", type: "owner", token: current_user.token)
-      @own_repos = response.json_body
+      @own_repos = current_user.own_repos_json
       render :new
     end
   end
@@ -85,10 +84,9 @@ class ReposController < RepoBasedController
       repo_params.blank?
     end
 
-    def cached_repos(type, options = {})
-      Rails.cache.fetch("user/#{type}/#{current_user.id}", expires_in: 30.minutes) do
-        repos_response = GitHubBub.get("/user/#{type}", { token: current_user.token }.merge(options))
-        SortedRepoCollection.new(repos_response.json_body)
+    def cached_repos(kind, repos_json)
+      Rails.cache.fetch("user/#{kind}/#{current_user.id}", expires_in: 30.minutes) do
+        SortedRepoCollection.new(repos_json)
       end
     end
 end

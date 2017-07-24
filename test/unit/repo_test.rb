@@ -30,9 +30,11 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "update repo info from github error" do
-    VCR.use_cassette "repo_info_error", allow_playback_repeats: true do
-      repo = Repo.new user_name: 'codetriage', name: 'codetriage'
-      assert_raise(GitHubBub::RequestError) { repo.update_from_github }
+    repo = Repo.new user_name: 'codetriage', name: 'codetriage'
+    repo.stub(:issues_fetcher, -> { OpenStruct.new(error?: true, api_path: '123') }) do
+      repo.update_from_github
+      assert_equal repo.errors.messages[:expiration_date].first,
+        "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?"
     end
   end
 
@@ -74,9 +76,9 @@ class RepoTest < ActiveSupport::TestCase
     assert_not Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
   end
 
-  test "#api_issues_path returns issues path with Github api" do
+  test "issues_fetcher.api_path (private method) returns issues path with Github api" do
     repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
-    assert_equal "repos/codetriage/codetriage/issues", repo.api_issues_path
+    assert_equal "repos/codetriage/codetriage/issues", repo.issues_fetcher.send(:api_path)
   end
 
   test "search_by returns repo by name and user_name" do
@@ -94,5 +96,34 @@ class RepoTest < ActiveSupport::TestCase
     order_of_repos_by_subscribers = Repo.order_by_subscribers
     assert_not order_of_repos_by_subscribers.pluck(:name) == order_of_repos_by_name
     assert_equal order_of_repos_by_subscribers.first.name, repo.name
+  end
+
+  test "#fetcher" do
+    assert repos(:rails_rails).fetcher.is_a? GithubFetcher::Repo
+  end
+
+  test "#issues_fetcher" do
+    assert repos(:rails_rails).issues_fetcher.is_a? GithubFetcher::Issues
+  end
+
+  test "#commit_sha_fetcher" do
+    VCR.use_cassette "create_repo_without_issues" do
+      assert repos(:scene_hub_v2).commit_sha_fetcher.is_a? GithubFetcher::CommitSha
+    end
+  end
+
+  test "#populate_docs!" do
+    repo = repos(:rails_rails)
+
+    VCR.use_cassette "repo_populate_docs" do
+      double = 'double'
+      DocsDoctor::Parsers::Ruby::Yard.stub(:new, -> (_) { double }) do
+        double.expects(:process)
+        double.expects(:store)
+        assert_nil repo.commit_sha
+        repo.populate_docs!
+        assert_not_nil repo.commit_sha
+      end
+    end
   end
 end

@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/chrisccerami/scene-hub-v2/commits/master
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - c517259282cb3f1600e121f462c3dafb
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sat, 08 Jul 2017 22:01:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '4216'
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4998'
+      X-Ratelimit-Reset:
+      - '1499554868'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      Etag:
+      - '"f52e905e707a19071f936f2f619392fe"'
+      Last-Modified:
+      - Wed, 21 Jan 2015 22:08:37 GMT
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.107547'
+      X-Github-Request-Id:
+      - FB2F:2B2EA:689D7E:86646A:59615626
+    body:
+      encoding: UTF-8
+      string: '{"sha":"12dd603a7ea29fe2cb4ec7394d48c6efd4cad653","commit":{"author":{"name":"Chris
+        C Cerami","email":"chrisccerami@gmail.com","date":"2015-01-21T22:08:37Z"},"committer":{"name":"Chris
+        C Cerami","email":"chrisccerami@gmail.com","date":"2015-01-21T22:08:37Z"},"message":"Fixed
+        geojson method in band model","tree":{"sha":"2d4f086132dfd592e4d30f5b72bc18d6fed6eae9","url":"https://api.github.com/repos/chrisccerami/scene-hub-v2/git/trees/2d4f086132dfd592e4d30f5b72bc18d6fed6eae9"},"url":"https://api.github.com/repos/chrisccerami/scene-hub-v2/git/commits/12dd603a7ea29fe2cb4ec7394d48c6efd4cad653","comment_count":0},"url":"https://api.github.com/repos/chrisccerami/scene-hub-v2/commits/12dd603a7ea29fe2cb4ec7394d48c6efd4cad653","html_url":"https://github.com/chrisccerami/scene-hub-v2/commit/12dd603a7ea29fe2cb4ec7394d48c6efd4cad653","comments_url":"https://api.github.com/repos/chrisccerami/scene-hub-v2/commits/12dd603a7ea29fe2cb4ec7394d48c6efd4cad653/comments","author":{"login":"chrisccerami","id":7838511,"avatar_url":"https://avatars1.githubusercontent.com/u/7838511?v=3","gravatar_id":"","url":"https://api.github.com/users/chrisccerami","html_url":"https://github.com/chrisccerami","followers_url":"https://api.github.com/users/chrisccerami/followers","following_url":"https://api.github.com/users/chrisccerami/following{/other_user}","gists_url":"https://api.github.com/users/chrisccerami/gists{/gist_id}","starred_url":"https://api.github.com/users/chrisccerami/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/chrisccerami/subscriptions","organizations_url":"https://api.github.com/users/chrisccerami/orgs","repos_url":"https://api.github.com/users/chrisccerami/repos","events_url":"https://api.github.com/users/chrisccerami/events{/privacy}","received_events_url":"https://api.github.com/users/chrisccerami/received_events","type":"User","site_admin":false},"committer":{"login":"chrisccerami","id":7838511,"avatar_url":"https://avatars1.githubusercontent.com/u/7838511?v=3","gravatar_id":"","url":"https://api.github.com/users/chrisccerami","html_url":"https://github.com/chrisccerami","followers_url":"https://api.github.com/users/chrisccerami/followers","following_url":"https://api.github.com/users/chrisccerami/following{/other_user}","gists_url":"https://api.github.com/users/chrisccerami/gists{/gist_id}","starred_url":"https://api.github.com/users/chrisccerami/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/chrisccerami/subscriptions","organizations_url":"https://api.github.com/users/chrisccerami/orgs","repos_url":"https://api.github.com/users/chrisccerami/repos","events_url":"https://api.github.com/users/chrisccerami/events{/privacy}","received_events_url":"https://api.github.com/users/chrisccerami/received_events","type":"User","site_admin":false},"parents":[{"sha":"8e499b4ad89e5f964f188697beb9f36cc3976f1f","url":"https://api.github.com/repos/chrisccerami/scene-hub-v2/commits/8e499b4ad89e5f964f188697beb9f36cc3976f1f","html_url":"https://github.com/chrisccerami/scene-hub-v2/commit/8e499b4ad89e5f964f188697beb9f36cc3976f1f"}],"stats":{"total":4,"additions":2,"deletions":2},"files":[{"sha":"ef4593695a87a1df01e155ac87a5634153fcd618","filename":"app/models/band.rb","status":"modified","additions":2,"deletions":2,"changes":4,"blob_url":"https://github.com/chrisccerami/scene-hub-v2/blob/12dd603a7ea29fe2cb4ec7394d48c6efd4cad653/app/models/band.rb","raw_url":"https://github.com/chrisccerami/scene-hub-v2/raw/12dd603a7ea29fe2cb4ec7394d48c6efd4cad653/app/models/band.rb","contents_url":"https://api.github.com/repos/chrisccerami/scene-hub-v2/contents/app/models/band.rb?ref=12dd603a7ea29fe2cb4ec7394d48c6efd4cad653","patch":"@@
+        -30,7 +30,7 @@ def find_marker_size(venue)\n   end\n \n   def geojson\n-    geojson
+        = []\n+    geojson = Array.new\n     shows = self.shows\n     shows.each do
+        |show|\n       venue = show.venue\n@@ -46,7 +46,7 @@ def geojson\n           :''marker-line-color''
+        => ''#FF389C'',\n           :''marker-fill'' => ''#FF389C'',\n           :''marker-symbol''
+        => ''music'',\n-          :''marker-size'' => ''#{find_marker_size(venue)}''\n+          :''marker-size''
+        => \"#{find_marker_size(venue)}\"\n         }\n       }\n     end"}]}'
+    http_version: 
+  recorded_at: Sat, 08 Jul 2017 22:01:13 GMT
+recorded_with: VCR 2.9.3

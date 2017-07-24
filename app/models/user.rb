@@ -34,8 +34,28 @@ class User < ActiveRecord::Base
     self.last_clicked_at ||= Time.now
   end
 
+  def own_repos_json(per_page = 100)
+    repos_fetcher(GithubFetcher::Repos::OWNED, token: token, per_page: per_page.to_s).as_json
+  end
+
+  def starred_repos_json
+    repos_fetcher(GithubFetcher::Repos::STARRED, token: token).as_json
+  end
+
+  def subscribed_repos_json
+    repos_fetcher(GithubFetcher::Repos::SUBSCRIBED, token: token).as_json
+  end
+
+  def fetcher
+    @fetcher ||= GithubFetcher::User.new(token: token)
+  end
+
+  def repos_fetcher(kind, options = {})
+    GithubFetcher::Repos.new({ token: token, kind: kind }.merge(options))
+  end
+
   def auth_is_valid?
-    GitHubBub.valid_token?(token)
+    fetcher.valid?
   end
 
   def self.random
@@ -85,7 +105,7 @@ class User < ActiveRecord::Base
   end
 
   def github_json
-    GitHubBub.get(api_path, token: self.token).json_body
+    fetcher.json
   end
 
   def fetch_avatar_url
@@ -99,10 +119,6 @@ class User < ActiveRecord::Base
 
   def github_url
     "https://github.com/#{github}"
-  end
-
-  def api_path
-    "/user"
   end
 
   def valid_email?

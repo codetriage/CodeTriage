@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - c517259282cb3f1600e121f462c3dafb
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Sat, 08 Jul 2017 22:01:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1255'
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1499554868'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept-Encoding
+      Etag:
+      - '"0a3234ddb0b37829d7035faa4f8b8f6c"'
+      Last-Modified:
+      - Fri, 07 Jul 2017 17:38:07 GMT
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.040523'
+      X-Served-By:
+      - a474937f3b2fa272558fa6dc951018ad
+      X-Github-Request-Id:
+      - FB2E:2B2EA:689C7A:86630F:59615622
+    body:
+      encoding: UTF-8
+      string: '{"login":"DavidRagone","id":1452099,"avatar_url":"https://avatars1.githubusercontent.com/u/1452099?v=3","gravatar_id":"","url":"https://api.github.com/users/DavidRagone","html_url":"https://github.com/DavidRagone","followers_url":"https://api.github.com/users/DavidRagone/followers","following_url":"https://api.github.com/users/DavidRagone/following{/other_user}","gists_url":"https://api.github.com/users/DavidRagone/gists{/gist_id}","starred_url":"https://api.github.com/users/DavidRagone/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/DavidRagone/subscriptions","organizations_url":"https://api.github.com/users/DavidRagone/orgs","repos_url":"https://api.github.com/users/DavidRagone/repos","events_url":"https://api.github.com/users/DavidRagone/events{/privacy}","received_events_url":"https://api.github.com/users/DavidRagone/received_events","type":"User","site_admin":false,"name":"David
+        Ragone","company":"@hired ","blog":"https://davidragone.com","location":"San
+        Francisco","email":"dmragone@gmail.com","hireable":null,"bio":"Software Engineer
+        turned Engineering Manager @hired ","public_repos":28,"public_gists":15,"followers":57,"following":31,"created_at":"2012-02-19T21:39:35Z","updated_at":"2017-07-07T17:38:07Z"}'
+    http_version: 
+  recorded_at: Sat, 08 Jul 2017 22:01:10 GMT
+recorded_with: VCR 2.9.3

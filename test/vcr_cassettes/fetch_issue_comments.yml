@@ -1,0 +1,75 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/sinatra/sinatra/issues/1/comments
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - f6d76cf34f660923f0fa42d8bc72a3f6
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Date:
+      - Wed, 12 Jul 2017 02:15:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1180'
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1499829317'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      Etag:
+      - '"ddf829a3e3ec27d7a4ead983ef5b633f"'
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - public_repo, repo
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.058090'
+      X-Github-Request-Id:
+      - DB73:2B2E9:1098AF0:1561DC0:59658634
+    body:
+      encoding: UTF-8
+      string: '[{"url":"https://api.github.com/repos/sinatra/sinatra/issues/comments/5","html_url":"https://github.com/sinatra/sinatra/issues/1#issuecomment-5","issue_url":"https://api.github.com/repos/sinatra/sinatra/issues/1","id":5,"user":{"login":"rtomayko","id":404,"avatar_url":"https://avatars0.githubusercontent.com/u/404?v=3","gravatar_id":"","url":"https://api.github.com/users/rtomayko","html_url":"https://github.com/rtomayko","followers_url":"https://api.github.com/users/rtomayko/followers","following_url":"https://api.github.com/users/rtomayko/following{/other_user}","gists_url":"https://api.github.com/users/rtomayko/gists{/gist_id}","starred_url":"https://api.github.com/users/rtomayko/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rtomayko/subscriptions","organizations_url":"https://api.github.com/users/rtomayko/orgs","repos_url":"https://api.github.com/users/rtomayko/repos","events_url":"https://api.github.com/users/rtomayko/events{/privacy}","received_events_url":"https://api.github.com/users/rtomayko/received_events","type":"User","site_admin":false},"created_at":"2009-03-06T21:35:42Z","updated_at":"2009-03-06T21:35:42Z","body":"+1\n"}]'
+    http_version: 
+  recorded_at: Wed, 12 Jul 2017 02:15:17 GMT
+recorded_with: VCR 2.9.3

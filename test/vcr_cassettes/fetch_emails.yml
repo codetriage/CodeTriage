@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/emails
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - fc9eb390f7f72f7958b9434183723b47
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 08 Jul 2017 02:23:16 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '170'
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4995'
+      X-Ratelimit-Reset:
+      - '1499483764'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding
+      Etag:
+      - '"32348b797484013004ca697c96dc3376"'
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - user, user:email
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - default-src 'none'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Runtime-Rack:
+      - '0.022868'
+      X-Served-By:
+      - 10ea50bffaded85949561216def301f3
+      X-Github-Request-Id:
+      - F655:1DE4:35C305:53EFBC:59604214
+    body:
+      encoding: UTF-8
+      string: '[{"email":"dmragone@gmail.com","primary":true,"verified":true,"visibility":"public"},{"email":"david.ragone@hired.com","primary":false,"verified":true,"visibility":null}]'
+    http_version: 
+  recorded_at: Sat, 08 Jul 2017 02:23:16 GMT
+recorded_with: VCR 2.9.3

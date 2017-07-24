@@ -15,9 +15,24 @@ class Issue < ActiveRecord::Base
     true
   end
 
+  def fetcher
+    @fetcher ||= GithubFetcher::Issue.new(
+      owner_name: owner_name,
+      repo_name: repo_name,
+      number: number,
+    )
+  end
+
+  def comments_fetcher
+    @fetcher ||= GithubFetcher::IssueComments.new(
+      owner_name: owner_name,
+      repo_name: repo_name,
+      number: number,
+    )
+  end
+
   def update_issue!
-    response = GitHubBub.get(api_path).json_body
-    self.update_from_github_hash!(response)
+    update_from_github_hash!(fetcher.as_json)
   end
 
   def self.closed
@@ -44,17 +59,12 @@ class Issue < ActiveRecord::Base
     self.repo.user_name
   end
 
-  def api_path
-    "/repos/#{owner_name}/#{repo_name}/issues/#{number}"
-  end
-
   def public_url
     "https://github.com/repos/#{repo.user_name}/#{repo.name}/issues/#{number}"
   end
 
   def commenting_users
-    response = GitHubBub.get(File.join(api_path, "/comments")).json_body
-    response.collect{|comment| comment["user"]["login"]}.uniq.sort
+    comments_fetcher.commenters.sort
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
