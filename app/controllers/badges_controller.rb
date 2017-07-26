@@ -9,7 +9,7 @@ class BadgesController < ApplicationController
       key   = repo.cache_key + "/badges/".freeze + count
 
       unless svg = Rails.cache.read(key)
-        conn = Excon.get(
+        result = Excon.get(
           "https://img.shields.io/badge/code%20helpers-#{count}-#{repo.color}.svg",
           read_timeout: 3,
           idempotent: true
