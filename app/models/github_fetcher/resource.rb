@@ -1,7 +1,7 @@
 module GithubFetcher
   # Base class for resources accessible via GitHubBub
   class Resource
-    attr_reader :error_message
+    attr_reader :error_message, :page
 
     # Often over-ridden by subclasses in order to set @api_path. When over-ridden,
     #   it's preferable to call `super` so as to set options as below (and get any
@@ -15,7 +15,7 @@ module GithubFetcher
       @as_json ||= response.json_body
     end
 
-    # Generally not over-riden
+    # Generally not over-ridden
     def response
       @response ||= begin
                       GitHubBub.get(api_path, options)
@@ -31,6 +31,17 @@ module GithubFetcher
       #   error if it happened. `as_json` should always evaluate truthily, but
       #   @error will be false unless there's an error in the API request
       as_json && @error
+    end
+
+    def page=(number)
+      @response = nil
+      @as_json = nil
+      options[:page] = number
+      @page = number
+    end
+
+    def last_page?
+      response.last_page?
     end
 
     private

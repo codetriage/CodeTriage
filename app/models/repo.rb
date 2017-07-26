@@ -35,12 +35,10 @@ class Repo < ActiveRecord::Base
     fetcher.as_json
   end
 
-  def issues_fetcher(page: 1, state: 'open')
+  def issues_fetcher
     @issues_fetcher ||= GithubFetcher::Issues.new(
       user_name: user_name,
-      name: name,
-      page: page,
-      state: state,
+      name: name
     )
   end
 
