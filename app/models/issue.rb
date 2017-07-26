@@ -24,7 +24,7 @@ class Issue < ActiveRecord::Base
   end
 
   def comments_fetcher
-    @fetcher ||= GithubFetcher::IssueComments.new(
+    @comments_fetcher ||= GithubFetcher::IssueComments.new(
       owner_name: owner_name,
       repo_name: repo_name,
       number: number,
