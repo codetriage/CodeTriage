@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def token_destroy
-    @user = User.find_by(account_delete_token: params[:account_delete_token])
+    @user = User.find_by!(account_delete_token: params[:account_delete_token])
     @user.destroy
     redirect_to root_url, notice: "Successfully removed your user account"
   end
