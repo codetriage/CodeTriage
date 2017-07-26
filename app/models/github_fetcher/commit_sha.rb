@@ -1,6 +1,6 @@
 module GithubFetcher
   class CommitSha < Resource
-    def initialize(user_name:, name:, default_branch:)
+    def initialize(user_name:, name:, default_branch: "master")
       @api_path = File.join(
         'repos',
         user_name,
