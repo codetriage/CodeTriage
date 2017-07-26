@@ -20,7 +20,7 @@ class Repo < ActiveRecord::Base
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
 
   def class_for_doc_language
-    CLASS_FOR_DOC_LANGUAGE[self.language.downcase]
+    language && CLASS_FOR_DOC_LANGUAGE[language.downcase]
   end
 
   def can_doctor_docs?
