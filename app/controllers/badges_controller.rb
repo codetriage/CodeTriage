@@ -9,7 +9,11 @@ class BadgesController < ApplicationController
       key   = repo.cache_key + "/badges/".freeze + count
 
       unless svg = Rails.cache.read(key)
-        result = Excon.get("https://img.shields.io/badge/code%20helpers-#{count}-#{repo.color}.svg")
+        conn = Excon.get(
+          "https://img.shields.io/badge/code%20helpers-#{count}-#{repo.color}.svg",
+          read_timeout: 3,
+          idempotent: true
+        )
         raise ActionController::RoutingError.new('Not Found') unless result.status == 200
         svg = result.body
         Rails.cache.write(key, result.body, expires_in: 1.day)
