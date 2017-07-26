@@ -7,6 +7,7 @@ class EmailFrequency
   # More frequent has a higher index, less frequent a lower index. The index is
   #   used to compare the frequencies.
   FREQUENCIES = [
+    # Wait is the _least_ frequent; used when a user has not yet clicked an email link, so we shouldn't send again (yet)
     WAIT         = "wait",
     ONCE_A_MONTH = "once_a_month",
     ONCE_A_WEEK  = "once_a_week",
