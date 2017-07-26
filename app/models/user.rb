@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
       update_attribute(:account_delete_token, account_delete_token) unless new_record?
     end
 
-    super
+    self[:account_delete_token]
   end
 
   def enqueue_inactive_email
