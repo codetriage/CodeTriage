@@ -15,9 +15,5 @@ module GithubFetcher
 
       super
     end
-
-    def more_issues?
-      !response.last_page?
-    end
   end
 end

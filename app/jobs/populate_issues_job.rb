@@ -1,7 +1,6 @@
 class PopulateIssuesJob < ApplicationJob
   def perform(repo)
     @repo = repo
-    @state = 'open'
     populate_multi_issues!
   end
 
@@ -14,14 +13,11 @@ class PopulateIssuesJob < ApplicationJob
 
   private
 
-  def fetcher(page)
-    repo.issues_fetcher(page: page, state: state)
-  end
-
-  attr_reader :repo, :state
+  attr_reader :repo
 
   def populate_issues(page)
-    fetcher = fetcher(page)
+    fetcher = repo.issues_fetcher
+    fetcher.page = page
     json = fetcher.as_json
 
     if fetcher.error?
@@ -33,7 +29,7 @@ class PopulateIssuesJob < ApplicationJob
                     "updated_at: #{issue_hash['updated_at']}"
         Issue.find_or_create_from_hash!(issue_hash, repo)
       end
-      fetcher.more_issues?
+      !fetcher.last_page?
     end
   end
 end
