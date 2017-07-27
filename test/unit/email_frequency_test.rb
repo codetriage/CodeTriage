@@ -23,12 +23,4 @@ class EmailFrequencyTest < ActiveSupport::TestCase
   test "less than" do
     assert EmailFrequency.new("twice_a_week") < EmailFrequency.new("daily")
   end
-
-  test "#more_often? synonym of >" do
-    assert EmailFrequency.new("daily").more_often? EmailFrequency.new("twice_a_week")
-  end
-
-  test "#less_often? synonmym of <" do
-    assert EmailFrequency.new("twice_a_week").less_often? EmailFrequency.new("daily")
-  end
 end

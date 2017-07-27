@@ -52,16 +52,6 @@ class EmailFrequency
     frequency_description == other.frequency_description
   end
 
-  # Alias of `>`, used for easier code comprehension
-  def more_often?(other)
-    self > other
-  end
-
-  # Alias of `<`, used for easier code comprehension
-  def less_often?(other)
-    self < other
-  end
-
   def to_s
     frequency_description
   end
