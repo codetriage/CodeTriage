@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170630192013) do
+ActiveRecord::Schema.define(version: 20170801021151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 20170630192013) do
     t.string "avatar_url", limit: 255, default: "http://gravatar.com/avatar/default"
     t.boolean "private", default: false
     t.string "favorite_languages", array: true
-    t.integer "daily_issue_limit"
+    t.integer "daily_issue_limit", default: 50
     t.boolean "skip_issues_with_pr", default: false
     t.string "account_delete_token", limit: 255
     t.datetime "last_clicked_at"
