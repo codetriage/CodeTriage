@@ -16,7 +16,7 @@ class SendDailyTriageEmailJob < ApplicationJob
   end
 
   def send_email(user, assignments)
-    mail = UserMailer.send_daily_triage(user: user, assignments: assignments).deliver_later
+    mail = UserMailer.send_daily_triage(user_id: user.id, assignment_ids: assignments.pluck(:id)).deliver_later
     assignments.update_all(delivered: true)
     user.repo_subscriptions.update_all(last_sent_at: Time.now)
     mail

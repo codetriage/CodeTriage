@@ -4,7 +4,10 @@ class UserMailer < ActionMailer::Base
   include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"
 
-  def send_daily_triage(user:, assignments:)
+  def send_daily_triage(user_id:, assignment_ids:)
+    user = User.find(user_id)
+    assignments = IssueAssignment.find(assignment_ids)
+
     return unless set_and_check_user(user)
     @assignments = assignments
     @max_days    = 2
@@ -83,7 +86,7 @@ class UserMailer < ActionMailer::Base
         sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
         assignments << sub.issue_assignments.first_or_create!(issue_id: issue.id)
       end
-      ::UserMailer.send_daily_triage(user: user, assignments: assignments)
+      ::UserMailer.send_daily_triage(user: user.id, assignments: assignments.map(&:id))
     end
 
     def poke_inactive
