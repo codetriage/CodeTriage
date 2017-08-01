@@ -28,6 +28,12 @@ class ActionDispatch::IntegrationTest
   end
 end
 
+class ActionMailer::MessageDelivery
+  def deliver_later
+    deliver_now
+  end
+end
+
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:github, {
   uid: 'mockstar',

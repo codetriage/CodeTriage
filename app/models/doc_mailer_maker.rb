@@ -76,6 +76,6 @@ class DocMailerMaker
       Rails.logger.debug "No docs to send"
       return false
     end
-    mail.deliver
+    mail.deliver_later
   end
 end

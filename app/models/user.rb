@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   def subscribe_docs!
     subscriptions = self.repo_subscriptions.order('RANDOM()').load
-    DocMailerMaker.new(self, subscriptions) {|sub| sub.ready_for_next? }.deliver
+    DocMailerMaker.new(self, subscriptions) {|sub| sub.ready_for_next? }.deliver_later
   end
 
   def set_default_last_clicked_at
