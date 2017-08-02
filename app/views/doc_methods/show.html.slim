@@ -35,7 +35,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       pre
         |
           # Make a new branch
-          $ git co -b #{ @branch }
+          $ git checkout -b #{ @branch }
 
           # Commit to git
           $ git add #{ @doc.file }
