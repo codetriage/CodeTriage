@@ -78,4 +78,12 @@ class DocMailerMaker
     end
     mail.deliver_later
   end
+
+  def deliver_later
+    if write_docs.blank? && read_docs.blank?
+      Rails.logger.debug "No docs to send"
+      return false
+    end
+    mail.deliver_later
+  end
 end
