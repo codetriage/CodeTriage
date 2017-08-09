@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/basecamp/local_time.git
-  revision: 7cf181e6b066d94557ca065773ddc9890f0ca2b0
-  branch: 2-0
-  specs:
-    local_time (1.0.4)
-      coffee-rails
-
-GIT
   remote: https://github.com/getsentry/raven-ruby.git
   revision: b8d8e30206e809cdc6ebe79ff7abe8b6f1392753
   specs:
@@ -165,6 +157,7 @@ GEM
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
+    local_time (2.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.5)
@@ -376,7 +369,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen
-  local_time!
+  local_time (= 2.0)
   mail
   mail_view (~> 1.0.2)
   maildown (= 2.0.0)
