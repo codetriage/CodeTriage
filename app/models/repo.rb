@@ -112,7 +112,7 @@ class Repo < ActiveRecord::Base
 
   # pulls out number of issues divided by number of subscribers
   def self.order_by_need
-     joins(:repo_subscriptions).order("issues_count::float/COUNT(repo_subscriptions.repo_id) DESC").group("repos.id")
+    joins(:repo_subscriptions).order("issues_count::float/COUNT(repo_subscriptions.repo_id) DESC").group("repos.id")
   end
 
   # these repos have no subscribers and have no buisness being in our database
@@ -141,7 +141,7 @@ class Repo < ActiveRecord::Base
   end
 
   def force_issues_count_sync!
-     self.update_attributes(issues_count: self.issues.where(state: "open").count)
+    self.update_attributes(issues_count: self.issues.where(state: "open").count)
   end
 
   def to_param
