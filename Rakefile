@@ -76,3 +76,19 @@ namespace :test do
     Minitest.rake_run(["test/system"])
   end
 end
+
+namespace :rubocop do
+  require 'rubocop/rake_task'
+  options = ['--rails','--display-cop-names']
+
+  desc 'Run RuboCop on new git files against aster'
+  RuboCop::RakeTask.new(:new) do |task|
+    task.patterns = `git diff --name-only HEAD $(git merge-base HEAD master)`.split("\n")
+    task.options = options
+  end
+
+  desc 'Run RuboCop on all files'
+  RuboCop::RakeTask.new(:all) do |task|
+    task.options = options
+  end
+end
