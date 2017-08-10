@@ -44,7 +44,7 @@ class CreateDocsDoctorIntegration < ActiveRecord::Migration[5.0]
       t.integer  "line"
       t.datetime "created_at"
       t.datetime "updated_at"
-      t.integer  "doc_comments_count", default: 0,     null: false
+      t.integer  "doc_comments_count", default: 0, null: false
       t.string   "path"
       t.string   "file"
       t.boolean  "skip_write",         default: false

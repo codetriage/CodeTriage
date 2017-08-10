@@ -104,7 +104,7 @@ class IssueTest < ActiveSupport::TestCase
 
   test "open_issues" do
     open_issues = []
-    repo  = repos("rails_rails")
+    repo = repos("rails_rails")
     repo.issues.new(state: 'closed')
 
     2.times do

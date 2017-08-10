@@ -21,20 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 14
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Layout/ExtraSpacing:
-  Exclude:
-    - 'app/models/user.rb'
-    - 'config.ru'
-    - 'config/routes.rb'
-    - 'db/migrate/20140524120051_add_click_to_issue_assignment.rb'
-    - 'db/migrate/20160321152204_create_docs_doctor_integration.rb'
-    - 'db/migrate/20160404140129_add_click_to_doc_assignments.rb'
-    - 'test/unit/email_rate_limit_test.rb'
-    - 'test/unit/issue_test.rb'
-
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: SupportedStyles, IndentationWidth.
