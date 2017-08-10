@@ -21,12 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Layout/BlockEndNewline:
-  Exclude:
-    - 'test/unit/github_fetcher/issue_comments_test.rb'
-
 # Offense count: 5
 # Cop supports --auto-correct.
 Layout/ClosingParenthesisIndentation:

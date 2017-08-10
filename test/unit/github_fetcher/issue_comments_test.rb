@@ -36,7 +36,8 @@ class GithubFetcher::IssueCommentsTest < ActiveSupport::TestCase
       { "id"=>5, "user"=> { "login"=>"rtomayko", "id"=>404 } },
       { "id"=>6, "user"=> { "login"=>"rtomayko", "id"=>404 } },
       { "id"=>7, "user"=> { "login"=>"DavidRagone", "id"=>22345 } },
-    ] }) do
+    ]
+    }) do
       assert_equal fetcher.commenters, ['rtomayko', 'DavidRagone']
     end
   end
