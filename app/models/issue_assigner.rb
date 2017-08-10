@@ -17,6 +17,7 @@ class IssueAssigner
   end
 
   private
+
     def assign_issue_for_sub(sub)
       issue = Issue.find_by_sql(<<-SQL
                 SELECT

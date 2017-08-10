@@ -54,6 +54,7 @@ class ReposController < RepoBasedController
   end
 
   private
+
     def default_format
       request.format = "html"
     end

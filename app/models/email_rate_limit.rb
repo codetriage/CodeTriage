@@ -34,6 +34,7 @@ class EmailRateLimit
   end
 
   private
+
     # When a user provides a default frequency use that value
     # For instance if a user has "twice_a_week" selected as a default yet we calculate their
     # send rate as "daily" the higher value will be used i.e. "twice_a_week". If however

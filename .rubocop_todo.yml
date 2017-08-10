@@ -21,14 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 3
-# Cop supports --auto-correct.
-Layout/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'app/controllers/repos_controller.rb'
-    - 'app/models/email_rate_limit.rb'
-    - 'app/models/issue_assigner.rb'
-
 # Offense count: 8
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
