@@ -34,7 +34,7 @@ class RepoTest < ActiveSupport::TestCase
     repo.stub(:issues_fetcher, -> { OpenStruct.new(error?: true, api_path: '123') }) do
       repo.update_from_github
       assert_equal repo.errors.messages[:expiration_date].first,
-        "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?"
+                   "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?"
     end
   end
 

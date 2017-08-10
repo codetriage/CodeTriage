@@ -21,19 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, IndentationWidth.
-# SupportedStyles: with_first_parameter, with_fixed_indentation
-Layout/AlignParameters:
-  Exclude:
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'bin/puma'
-    - 'bin/pumactl'
-    - 'test/unit/github_fetcher/repos_test.rb'
-    - 'test/unit/github_fetcher/user_test.rb'
-    - 'test/unit/repo_test.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/BlockEndNewline:

@@ -21,8 +21,8 @@ class GithubFetcher::ReposTest < ActiveSupport::TestCase
 
     VCR.use_cassette "fetcher_starred_repos_for_user" do
       assert_equal fetcher.as_json.first['full_name'],
-        expected_first_repo_name,
-        fetcher.as_json.first
+                   expected_first_repo_name,
+                   fetcher.as_json.first
       assert_equal fetcher.as_json.count, 30, fetcher.as_json.count
     end
   end
