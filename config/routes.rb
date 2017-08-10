@@ -14,7 +14,7 @@ CodeTriage::Application.routes.draw do
   resources   :doc_methods
 
   devise_for :users, skip: [:registration],
-    :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+                     :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # devise_scope(:user) do
   #   get 'sign_in',  to: 'users/omniauth_callbacks#passthru', as: :new_user_session
