@@ -18,7 +18,7 @@ before_install:
   - bundle install
 script:
   - RAILS_ENV=test bin/rake test
-  - bin/rake rubocop:new
+  - bin/rake rubocop:all
 before_script:
   - cp config/database.example.yml config/database.yml
   - psql -c 'create database triage_test;' -U postgres
