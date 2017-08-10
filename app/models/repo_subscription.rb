@@ -71,6 +71,7 @@ class RepoSubscription < ActiveRecord::Base
   def doc_methods
     DocMethod.where(id: doc_assignments.map(&:doc_method_id))
   end
+
   def self.for(repo_id)
     where(repo_id: repo_id)
   end

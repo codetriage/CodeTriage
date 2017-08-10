@@ -31,19 +31,6 @@ Layout/ClosingParenthesisIndentation:
     - 'app/controllers/users_controller.rb'
     - 'app/models/issue_assigner.rb'
 
-# Offense count: 13
-# Cop supports --auto-correct.
-# Configuration parameters: AllowAdjacentOneLineDefs, NumberOfEmptyLines.
-Layout/EmptyLineBetweenDefs:
-  Exclude:
-    - 'app/controllers/badges_controller.rb'
-    - 'app/controllers/issue_assignments_controller.rb'
-    - 'app/controllers/pages_controller.rb'
-    - 'app/models/doc_comment.rb'
-    - 'app/models/repo_subscription.rb'
-    - 'lib/docs_doctor/loader.rb'
-    - 'test/jobs/send_daily_triage_email_job_test.rb'
-
 # Offense count: 20
 # Cop supports --auto-correct.
 Layout/EmptyLines:

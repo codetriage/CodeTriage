@@ -5,7 +5,6 @@ class IssueAssignmentsController < ApplicationController
     redirect_to repo_path(repo_sub.repo), notice: 'You will receive an email with your new issue shortly'
   end
 
-
   # get "/issue_assignments/:id/users/:user_id/click/:created_at", to: "issue_assignments#click"
   def click_issue_redirect
     assignment = IssueAssignment.find(params[:id])

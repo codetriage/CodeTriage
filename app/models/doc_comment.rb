@@ -10,7 +10,6 @@ class DocComment < ActiveRecord::Base
     doc_method_id.present?
   end
 
-
   def doc_class?
     doc_class_id.present?
   end
