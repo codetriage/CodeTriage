@@ -86,6 +86,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # rubocop:disable Style/ConditionalAssignment
   if ENV["MEMCACHIER_SERVERS"]
     config.cache_store = :dalli_store,
                         (ENV["MEMCACHIER_SERVERS"] || "").split(","),
@@ -98,4 +99,5 @@ Rails.application.configure do
     else
       config.cache_store = :dalli_store
     end
+  # rubocop:enable Style/ConditionalAssignment
 end
