@@ -25,7 +25,6 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     assert_equal 1, user.issues.count
   end
 
-
   test "the get_issue_for_triage for user with existing issue assignments" do
     user          = users(:empty)
     repo          = repos(:rails_rails)
@@ -102,7 +101,6 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     assert_equal 2, sub.issue_assignments.count
   end
 
-
   test ".subscriptions_for a repo" do
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
@@ -119,6 +117,5 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     assert_equal [sub1], user.repo_subscriptions_for(repo.id)
   end
-
 
 end

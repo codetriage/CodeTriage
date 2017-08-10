@@ -2,7 +2,6 @@ class RepoSubscription < ActiveRecord::Base
   DEFAULT_READ_LIMIT  = 3
   DEFAULT_WRITE_LIMIT = 3
 
-
   validates  :repo_id, uniqueness: { scope: :user_id }, presence: true
   validates  :user_id, presence: true
   validates  :email_limit, numericality: { less_than: 21, greater_than_or_equal_to: 0 }

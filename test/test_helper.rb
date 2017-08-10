@@ -59,7 +59,6 @@ VCR.configure do |c|
   end
 end
 
-
 # Provide default configuration.
 #
 # You can override various configuration directives defined here by using arguments with the teaspoon command.

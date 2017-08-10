@@ -31,24 +31,6 @@ Layout/ClosingParenthesisIndentation:
     - 'app/controllers/users_controller.rb'
     - 'app/models/issue_assigner.rb'
 
-# Offense count: 20
-# Cop supports --auto-correct.
-Layout/EmptyLines:
-  Exclude:
-    - 'app/controllers/badges_controller.rb'
-    - 'app/controllers/issue_assignments_controller.rb'
-    - 'app/controllers/pages_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/doc_comment.rb'
-    - 'app/models/repo_subscription.rb'
-    - 'config/puma.rb'
-    - 'db/migrate/20120222223509_devise_create_users.rb'
-    - 'db/migrate/20160321152204_create_docs_doctor_integration.rb'
-    - 'lib/docs_doctor/loader.rb'
-    - 'lib/docs_doctor/task.rb'
-    - 'test/test_helper.rb'
-    - 'test/unit/repo_subscriptions_test.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundAccessModifier:
