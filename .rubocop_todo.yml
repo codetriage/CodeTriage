@@ -21,13 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 6
-# Cop supports --auto-correct.
-# Configuration parameters: SupportedStyles, IndentationWidth.
-# SupportedStyles: special_inside_parentheses, consistent, align_brackets
-Layout/IndentArray:
-  EnforcedStyle: consistent
-
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: SupportedStyles, IndentationWidth.
