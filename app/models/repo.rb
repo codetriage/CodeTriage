@@ -176,9 +176,9 @@ class Repo < ActiveRecord::Base
   def self.order_by_subscribers
     joins("LEFT OUTER JOIN repo_subscriptions
            ON repo_subscriptions.repo_id = repos.id
-           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id").
-      group("repos.id").
-      order("count(users.id) DESC")
+           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id")
+      .group("repos.id")
+      .order("count(users.id) DESC")
   end
 
   def update_from_github
