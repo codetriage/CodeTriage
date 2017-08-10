@@ -35,7 +35,7 @@ class Users::AfterSignupController < ApplicationController
         :name,
         :favorite_languages,
         :daily_issue_limit
-        )
+      )
     end
 
 end

@@ -66,6 +66,6 @@ class UsersController < ApplicationController
         :email_time_of_day,
         :skip_issues_with_pr,
         favorite_languages: []
-        )
+      )
     end
 end

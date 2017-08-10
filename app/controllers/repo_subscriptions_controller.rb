@@ -46,6 +46,6 @@ class RepoSubscriptionsController < ApplicationController
         :write_limit,
         :read,
         :read_limit
-        )
+      )
     end
 end

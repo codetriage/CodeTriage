@@ -21,16 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 5
-# Cop supports --auto-correct.
-Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - 'app/controllers/repo_subscriptions_controller.rb'
-    - 'app/controllers/repos_controller.rb'
-    - 'app/controllers/users/after_signup_controller.rb'
-    - 'app/controllers/users_controller.rb'
-    - 'app/models/issue_assigner.rb'
-
 # Offense count: 3
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundAccessModifier:

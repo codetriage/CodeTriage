@@ -39,7 +39,7 @@ class IssueAssigner
                 LIMIT
                   1
                 SQL
-              ).first
+                               ).first
 
       return false if issue.blank?
       if issue.valid_for_user?(user)

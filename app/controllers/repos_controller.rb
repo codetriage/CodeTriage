@@ -68,7 +68,7 @@ class ReposController < RepoBasedController
         :language,
         :description,
         :full_name
-        )
+      )
     end
 
     def parse_params_for_repo_info
