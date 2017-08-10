@@ -3,11 +3,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     @user = GitHubAuthenticator.authenticate(request.env["omniauth.auth"], current_user)
     if @user.persisted?
-      if @user.valid_email?
-        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: "GitHub"
-      else
-        flash[:notice] = I18n.t "devise.omniauth_callbacks.bad_email_success", kind: "GitHub"
-      end
+      flash[:notice] = if @user.valid_email?
+                         I18n.t "devise.omniauth_callbacks.success", kind: "GitHub"
+                       else
+                         I18n.t "devise.omniauth_callbacks.bad_email_success", kind: "GitHub"
+                       end
 
       sign_in_and_redirect @user, event: :authentication
     else
