@@ -54,39 +54,39 @@ class ReposController < RepoBasedController
 
   private
 
-    def default_format
-      request.format = "html"
-    end
+  def default_format
+    request.format = "html"
+  end
 
-    def repo_params
-      params.require(:repo).permit(
-        :notes,
-        :name,
-        :user_name,
-        :issues_count,
-        :stars_count,
-        :language,
-        :description,
-        :full_name
-      )
-    end
+  def repo_params
+    params.require(:repo).permit(
+      :notes,
+      :name,
+      :user_name,
+      :issues_count,
+      :stars_count,
+      :language,
+      :description,
+      :full_name
+    )
+  end
 
-    def parse_params_for_repo_info
-      if params[:url]
-        params[:url].match(/^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/)
-        params[:repo] ||= {}
-        params[:repo][:user_name] = $1.to_s
-        params[:repo][:name] = $2.to_s
-      end
+  def parse_params_for_repo_info
+    if params[:url]
+      params[:url].match(/^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/)
+      params[:repo] ||= {}
+      params[:repo][:user_name] = $1.to_s
+      params[:repo][:name] = $2.to_s
     end
+  end
 
-    def params_blank?
-      repo_params.blank?
-    end
+  def params_blank?
+    repo_params.blank?
+  end
 
-    def cached_repos(kind, repos_json)
-      Rails.cache.fetch("user/#{kind}/#{current_user.id}", expires_in: 30.minutes) do
-        SortedRepoCollection.new(repos_json)
-      end
+  def cached_repos(kind, repos_json)
+    Rails.cache.fetch("user/#{kind}/#{current_user.id}", expires_in: 30.minutes) do
+      SortedRepoCollection.new(repos_json)
     end
+  end
 end

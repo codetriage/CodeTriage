@@ -17,7 +17,8 @@ class PagesController < ApplicationController
       format.json do
         htmlForPage = render_to_string(partial: "repos_with_pagination", locals: {repos: @repos}, formats: ['html'])
         render json: { html: htmlForPage }.to_json
-      end    end
+      end
+    end
   end
 
   def letsencrypt
@@ -34,9 +35,9 @@ class PagesController < ApplicationController
 
   private
 
-    def set_cache_headers
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 end
