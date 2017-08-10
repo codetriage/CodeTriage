@@ -21,14 +21,6 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 13
-# Cop supports --auto-correct.
-Layout/LeadingCommentSpace:
-  Exclude:
-    - 'app/models/doc_mailer_maker.rb'
-    - 'test/teaspoon_env.rb'
-    - 'test/test_helper.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Layout/MultilineBlockLayout:

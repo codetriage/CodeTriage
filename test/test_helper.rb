@@ -68,22 +68,22 @@ end
 
 Teaspoon.setup do |config|
   # Driver / Server
-  #config.driver           = "phantomjs" # available: phantomjs, selenium
-  #config.server           = nil # defaults to Rack::Server
+  # config.driver           = "phantomjs" # available: phantomjs, selenium
+  # config.server           = nil # defaults to Rack::Server
 
   # Behaviors
-  #config.server_timeout   = 20 # timeout for starting the server
-  #config.server_port      = nil # defaults to any open port unless specified
-  #config.fail_fast        = true # abort after the first failing suite
+  # config.server_timeout   = 20 # timeout for starting the server
+  # config.server_port      = nil # defaults to any open port unless specified
+  # config.fail_fast        = true # abort after the first failing suite
 
   # Output
-  #config.formatters       = "dot" # available: dot, tap, tap_y, swayze_or_oprah
-  #config.suppress_log     = false # suppress logs coming from console[log/error/debug]
-  #config.color            = true
+  # config.formatters       = "dot" # available: dot, tap, tap_y, swayze_or_oprah
+  # config.suppress_log     = false # suppress logs coming from console[log/error/debug]
+  # config.color            = true
 
   # Coverage (requires istanbul -- https://github.com/gotwarlost/istanbul)
-  #config.coverage         = true
-  #config.coverage_reports = "text,html,cobertura"
+  # config.coverage         = true
+  # config.coverage_reports = "text,html,cobertura"
 end
 
 module ActionDispatch
