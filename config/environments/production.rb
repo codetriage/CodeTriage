@@ -89,13 +89,13 @@ Rails.application.configure do
   # rubocop:disable Style/ConditionalAssignment
   if ENV["MEMCACHIER_SERVERS"]
     config.cache_store = :dalli_store,
-                        (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                        {:username => ENV["MEMCACHIER_USERNAME"],
-                         :password => ENV["MEMCACHIER_PASSWORD"],
-                         :failover => true,
-                         :socket_timeout => 1.5,
-                         :socket_failure_delay => 0.2
-                        }
+                         (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                         {:username => ENV["MEMCACHIER_USERNAME"],
+                          :password => ENV["MEMCACHIER_PASSWORD"],
+                          :failover => true,
+                          :socket_timeout => 1.5,
+                          :socket_failure_delay => 0.2
+                         }
     else
       config.cache_store = :dalli_store
     end

@@ -23,12 +23,6 @@ Bundler/OrderedGems:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Layout/AlignArray:
-  Exclude:
-    - 'config/environments/production.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
 # Configuration parameters: EnforcedHashRocketStyle, SupportedHashRocketStyles, EnforcedColonStyle, SupportedColonStyles, EnforcedLastArgumentHashStyle, SupportedLastArgumentHashStyles.
 # SupportedHashRocketStyles: key, separator, table
 # SupportedColonStyles: key, separator, table
