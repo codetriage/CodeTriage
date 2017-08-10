@@ -117,5 +117,4 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
 
     assert_equal [sub1], user.repo_subscriptions_for(repo.id)
   end
-
 end

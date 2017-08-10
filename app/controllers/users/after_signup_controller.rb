@@ -1,5 +1,4 @@
 class Users::AfterSignupController < ApplicationController
-
   include Wicked::Wizard
 
   before_action :authenticate_user!
@@ -37,5 +36,4 @@ class Users::AfterSignupController < ApplicationController
         :daily_issue_limit
       )
     end
-
 end

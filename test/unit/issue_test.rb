@@ -113,5 +113,4 @@ class IssueTest < ActiveSupport::TestCase
 
     assert_equal open_issues, repo.open_issues.order(:created_at)
   end
-
 end

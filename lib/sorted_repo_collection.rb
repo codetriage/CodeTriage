@@ -12,5 +12,4 @@ class SortedRepoCollection
   def size
     @repos.length
   end
-
 end
