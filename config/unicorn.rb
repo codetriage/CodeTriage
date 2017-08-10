@@ -11,7 +11,6 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
     Rails.logger.info('Disconnected from ActiveRecord')
   end
-
 end
 
 after_fork do |server, worker|

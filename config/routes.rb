@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 
 CodeTriage::Application.routes.draw do
-
   ENV.each do |var, _|
     next unless var.start_with?("ACME_TOKEN_")
     number = var.sub(/ACME_TOKEN_/, '')
