@@ -96,8 +96,8 @@ Rails.application.configure do
                           :socket_timeout => 1.5,
                           :socket_failure_delay => 0.2
                          }
-    else
-      config.cache_store = :dalli_store
-    end
+  else
+    config.cache_store = :dalli_store
+  end
   # rubocop:enable Style/ConditionalAssignment
 end
