@@ -66,8 +66,6 @@ on_worker_boot do
       signal.watch do |payload|
         puts "Got signal #{payload}"
         Tempfile.open("heap.dump") do |f|
-
-
           ObjectSpace.dump_all(output: f)
           f.close
 

@@ -30,21 +30,21 @@ end
 
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(:github, {
-  uid: 'mockstar',
-  credentials: {
-    token: ENV['GITHUB_API_KEY'] || "d401116495671f0a0ceca9276e677eff"
-  },
-  email: "mockstar@example.com",
-  info: {
-    nickname: 'mockstar'
-  },
-  extra: {
-    raw_info: {
-      name:       "Mock Star",
-      avatar_url: "http://gravatar.com/avatar/default"
-    }
-  }
-})
+                           uid: 'mockstar',
+                           credentials: {
+                             token: ENV['GITHUB_API_KEY'] || "d401116495671f0a0ceca9276e677eff"
+                           },
+                           email: "mockstar@example.com",
+                           info: {
+                             nickname: 'mockstar'
+                           },
+                           extra: {
+                             raw_info: {
+                               name:       "Mock Star",
+                               avatar_url: "http://gravatar.com/avatar/default"
+                             }
+                           }
+                         })
 
 VCR.configure do |c|
   # This 'allow' should be temporary, work towards covering
@@ -59,7 +59,6 @@ VCR.configure do |c|
   end
 end
 
-
 # Provide default configuration.
 #
 # You can override various configuration directives defined here by using arguments with the teaspoon command.
@@ -69,22 +68,22 @@ end
 
 Teaspoon.setup do |config|
   # Driver / Server
-  #config.driver           = "phantomjs" # available: phantomjs, selenium
-  #config.server           = nil # defaults to Rack::Server
+  # config.driver           = "phantomjs" # available: phantomjs, selenium
+  # config.server           = nil # defaults to Rack::Server
 
   # Behaviors
-  #config.server_timeout   = 20 # timeout for starting the server
-  #config.server_port      = nil # defaults to any open port unless specified
-  #config.fail_fast        = true # abort after the first failing suite
+  # config.server_timeout   = 20 # timeout for starting the server
+  # config.server_port      = nil # defaults to any open port unless specified
+  # config.fail_fast        = true # abort after the first failing suite
 
   # Output
-  #config.formatters       = "dot" # available: dot, tap, tap_y, swayze_or_oprah
-  #config.suppress_log     = false # suppress logs coming from console[log/error/debug]
-  #config.color            = true
+  # config.formatters       = "dot" # available: dot, tap, tap_y, swayze_or_oprah
+  # config.suppress_log     = false # suppress logs coming from console[log/error/debug]
+  # config.color            = true
 
   # Coverage (requires istanbul -- https://github.com/gotwarlost/istanbul)
-  #config.coverage         = true
-  #config.coverage_reports = "text,html,cobertura"
+  # config.coverage         = true
+  # config.coverage_reports = "text,html,cobertura"
 end
 
 module ActionDispatch

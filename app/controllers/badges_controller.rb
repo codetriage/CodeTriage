@@ -28,7 +28,6 @@ class BadgesController < ApplicationController
     end
   end
 
-
   def permitted
     params.permit(:full_name, :badge_type)
   end

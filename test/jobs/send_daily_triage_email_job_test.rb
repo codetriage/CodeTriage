@@ -8,6 +8,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'send out daily triage email' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+
     def @job.before_email_time_of_day?(*); false; end
 
     assert_enqueued_jobs 1 do
@@ -17,6 +18,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'does not deliver if no subscriptions' do
     def @user.issue_assignments_to_deliver; []; end
+
     def @job.before_email_time_of_day?(*); false; end
 
     assert_not @job.perform(@user)
@@ -24,6 +26,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'does not deliver if email should be skipped' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+
     def @job.skip_daily_email?(*); true; end
 
     assert_not @job.perform(@user)
@@ -49,6 +52,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'when email_time_of_day set, it delivers after preferred time of day' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+
     def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
 
     Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.hour) do
@@ -60,6 +64,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'when email_time_of_day set, it does not deliver before preferred time of day' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+
     def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
 
     Time.stub(:now, time_preference_for_today(@user.email_time_of_day) - 1.hour) do
@@ -69,6 +74,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
   test 'when run multiple times a day, it does not deliver again' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+
     def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
 
     Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.hour) do

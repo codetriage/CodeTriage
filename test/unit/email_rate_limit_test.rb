@@ -37,7 +37,7 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     invalid_values        = last_clicked_days_ago.to_a - valid_values
     day_ago               = rand(last_clicked_days_ago)
     clicked_ago           = valid_values.sample
-    bad_clicked_ago        = invalid_values.sample
+    bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
   end
@@ -50,7 +50,7 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     invalid_values        = last_clicked_days_ago.to_a - valid_values
     day_ago               = rand(last_clicked_days_ago)
     clicked_ago           = valid_values.sample
-    bad_clicked_ago        = invalid_values.sample
+    bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
   end
@@ -63,7 +63,7 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     invalid_values        = last_clicked_days_ago.to_a - valid_values
     day_ago               = rand(last_clicked_days_ago)
     clicked_ago           = valid_values.sample
-    bad_clicked_ago        = invalid_values.sample
+    bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
   end

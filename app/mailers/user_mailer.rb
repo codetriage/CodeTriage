@@ -54,7 +54,6 @@ class UserMailer < ActionMailer::Base
   end
 
   class Preview < MailView
-
     def invalid_token
       user = User.last
       ::UserMailer.invalid_token(user: user)

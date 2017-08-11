@@ -13,7 +13,6 @@ module ApplicationHelper
     </svg>
   }.html_safe
 
-
   def flash_class(level)
     case level
     when :notice then 'info'

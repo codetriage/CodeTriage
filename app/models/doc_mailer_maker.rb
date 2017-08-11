@@ -59,7 +59,7 @@ class DocMailerMaker
     @write_docs.compact
   end
 
-  #Modifies accessor +read_docs+ to compact on access.
+  # Modifies accessor +read_docs+ to compact on access.
   def read_docs
     @read_docs.compact
   end

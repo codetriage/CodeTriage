@@ -106,5 +106,4 @@ class Issue < ActiveRecord::Base
     return false if pull_request_hash.blank?
     pull_request_hash.values.uniq != [nil]
   end
-
 end

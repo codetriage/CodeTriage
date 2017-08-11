@@ -38,14 +38,14 @@ class RepoSubscriptionsController < ApplicationController
 
   private
 
-    def repo_subscription_params
-      params.require(:repo_subscription).permit(
-        :repo_id,
-        :email_limit,
-        :write,
-        :write_limit,
-        :read,
-        :read_limit
-        )
-    end
+  def repo_subscription_params
+    params.require(:repo_subscription).permit(
+      :repo_id,
+      :email_limit,
+      :write,
+      :write_limit,
+      :read,
+      :read_limit
+    )
+  end
 end

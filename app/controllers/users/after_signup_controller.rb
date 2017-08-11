@@ -1,5 +1,4 @@
 class Users::AfterSignupController < ApplicationController
-
   include Wicked::Wizard
 
   before_action :authenticate_user!
@@ -19,23 +18,22 @@ class Users::AfterSignupController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(
-        :private,
-        :email,
-        :password,
-        :password_confirmation,
-        :remember_me,
-        :zip,
-        :phone_number,
-        :twitter,
-        :github,
-        :github_access_token,
-        :avatar_url,
-        :name,
-        :favorite_languages,
-        :daily_issue_limit
-        )
-    end
-
+  def user_params
+    params.require(:user).permit(
+      :private,
+      :email,
+      :password,
+      :password_confirmation,
+      :remember_me,
+      :zip,
+      :phone_number,
+      :twitter,
+      :github,
+      :github_access_token,
+      :avatar_url,
+      :name,
+      :favorite_languages,
+      :daily_issue_limit
+    )
+  end
 end

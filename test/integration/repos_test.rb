@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ReposTest < ActionController::TestCase
-
   test "regular repo routes" do
     assert_routing(
       'rails/rails',

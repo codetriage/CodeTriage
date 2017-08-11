@@ -46,6 +46,5 @@ class GitHubAuthenticatorTest < ActiveSupport::TestCase
       "#{ user.inspect }\n #{ user.errors.full_messages }"
     assert_equal 'john.doe@example.com', user.email
   end
-
 end
 
