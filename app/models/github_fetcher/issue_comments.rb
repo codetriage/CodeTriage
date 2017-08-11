@@ -13,7 +13,7 @@ module GithubFetcher
     end
 
     def commenters
-      as_json.collect{ |comment| comment["user"]["login"] }.uniq
+      as_json.collect { |comment| comment["user"]["login"] }.uniq
     end
   end
 end

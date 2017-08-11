@@ -6,7 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 require "rubocop/rake_task"
 
 RuboCop::RakeTask.new(:rubocop) do |task|
-  task.options = ['--rails','--display-cop-names']
+  task.options = ['--rails', '--display-cop-names']
 end
 
 CodeTriage::Application.load_tasks

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     begin
       uparams = user_params
     rescue ActionController::ParameterMissing
-      uparams = {favorite_languages: []}
+      uparams = { favorite_languages: [] }
     end
 
     @user = current_user

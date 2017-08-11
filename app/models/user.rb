@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email,    allow_blank: true, if: :email_changed?
   validates_length_of     :password, within: 8..128, allow_blank: true
   validates :github, presence: true, uniqueness: true
-  validates :email_frequency, inclusion: { in: EmailRateLimit::USER_STATES.map(&:to_s) + [nil] , message: "Not a valid frequency, pick from #{ EmailRateLimit::USER_STATES }" }
+  validates :email_frequency, inclusion: { in: EmailRateLimit::USER_STATES.map(&:to_s) + [nil], message: "Not a valid frequency, pick from #{EmailRateLimit::USER_STATES}" }
 
   # Setup accessible (or protected) attributes for your model
 
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   def subscribe_docs!
     subscriptions = self.repo_subscriptions.order('RANDOM()').load
-    DocMailerMaker.new(self, subscriptions) {|sub| sub.ready_for_next? }.deliver_later
+    DocMailerMaker.new(self, subscriptions) { |sub| sub.ready_for_next? }.deliver_later
   end
 
   def set_default_last_clicked_at

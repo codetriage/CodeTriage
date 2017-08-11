@@ -69,7 +69,7 @@ class Repo < ActiveRecord::Base
   end
 
   def methods_missing_docs
-    doc_methods.where(doc_methods: {doc_comments_count: 0})
+    doc_methods.where(doc_methods: { doc_comments_count: 0 })
   end
 
   def methods_with_docs
@@ -77,7 +77,7 @@ class Repo < ActiveRecord::Base
   end
 
   def classes_missing_docs
-    doc_classes.where(doc_classes: {doc_comments_count: 0})
+    doc_classes.where(doc_classes: { doc_comments_count: 0 })
   end
 
   def color

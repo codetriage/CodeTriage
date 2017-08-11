@@ -50,21 +50,21 @@ class RepoSubscription < ActiveRecord::Base
 
   def unassigned_read_doc_methods(limit = self.read_limit)
     repo.methods_with_docs
-         .active
-         .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
-         .where(skip_read: false)
-         .order("random()")
-         .limit(limit || DEFAULT_READ_LIMIT)
+        .active
+        .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
+        .where(skip_read: false)
+        .order("random()")
+        .limit(limit || DEFAULT_READ_LIMIT)
   end
 
   def unassigned_write_doc_methods(limit = self.write_limit)
     doc_method_ids = self.doc_methods.map(&:id) + [-1]
     repo.methods_missing_docs
-         .active
-         .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
-         .where(skip_write: false)
-         .order("random()")
-         .limit(limit || DEFAULT_WRITE_LIMIT)
+        .active
+        .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
+        .where(skip_write: false)
+        .order("random()")
+        .limit(limit || DEFAULT_WRITE_LIMIT)
   end
 
   def doc_methods

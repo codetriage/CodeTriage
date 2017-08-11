@@ -2,7 +2,7 @@ class DocComment < ActiveRecord::Base
   belongs_to :doc_method, counter_cache: true
   belongs_to :doc_class, counter_cache: true
 
-  validates :comment, uniqueness: {scope: [:doc_method_id, :doc_class_id]}
+  validates :comment, uniqueness: { scope: [:doc_method_id, :doc_class_id] }
   validates :comment, presence:   true
 
   def doc_method?

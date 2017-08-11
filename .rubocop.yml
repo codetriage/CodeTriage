@@ -64,3 +64,54 @@ Layout/LeadingCommentSpace:
 
 Layout/MultilineBlockLayout:
  Enabled: true
+
+Layout/MultilineHashBraceLayout:
+ Enabled: true
+
+Layout/MultilineMethodCallBraceLayout:
+ Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+ Enabled: true
+
+Layout/SpaceAfterComma:
+ Enabled: true
+
+Layout/SpaceAroundEqualsInParameterDefault:
+ Enabled: true
+
+Layout/SpaceAroundOperators:
+ Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+ Enabled: true
+
+Layout/SpaceBeforeComma:
+ Enabled: true
+
+Layout/SpaceBeforeFirstArg:
+ Enabled: true
+
+Layout/SpaceInLambdaLiteral:
+ Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+ Enabled: true
+
+Layout/SpaceInsideBrackets:
+ Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+ Enabled: true
+
+Layout/SpaceInsideParens:
+ Enabled: true
+
+Layout/SpaceInsideStringInterpolation:
+ Enabled: true
+
+Layout/TrailingBlankLines:
+ Enabled: true
+
+Layout/TrailingWhitespace:
+ Enabled: true

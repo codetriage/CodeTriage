@@ -11,7 +11,7 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
     job = PopulateIssuesJob.new
     job.instance_variable_set(:@repo, repos(:rails_rails))
     job.instance_variable_set(:@state, 'open')
-    job.stub(:populate_issues, -> (page) { called += 1; page.in? [1,2] }) do
+    job.stub(:populate_issues, ->(page) { called += 1; page.in? [1, 2] }) do
       job.populate_multi_issues!
     end
     assert_equal called, 3

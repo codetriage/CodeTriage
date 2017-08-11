@@ -38,16 +38,16 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user favorite_language?" do
-    u = User.new(favorite_languages: [ "ruby" ])
+    u = User.new(favorite_languages: ["ruby"])
     assert u.favorite_language?("ruby")
     assert_not u.favorite_language?("java")
   end
 
   test "user has_favorite_languages?" do
-    u = User.new(favorite_languages: [ "ruby" ] )
+    u = User.new(favorite_languages: ["ruby"])
     assert u.has_favorite_languages?
 
-    u = User.new(favorite_languages: [] )
+    u = User.new(favorite_languages: [])
     assert_not u.has_favorite_languages?
   end
 

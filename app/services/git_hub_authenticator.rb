@@ -50,8 +50,9 @@ class GitHubAuthenticator
 
   def user_params
     github_params.merge(
-      password: Devise.friendly_token[0,20],
+      password: Devise.friendly_token[0, 20],
       name:     auth.extra.raw_info.name,
-      email:    github_email)
+      email:    github_email
+    )
   end
 end

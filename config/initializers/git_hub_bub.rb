@@ -4,8 +4,8 @@ GitHubBub::Request.send(:remove_const, :USER_AGENT)
 GitHubBub::Request.send(:remove_const, :RETRIES)
 
 GitHubBub::Request::GITHUB_VERSION = 'vnd.github.v3.full+json'
-GitHubBub::Request::USER_AGENT     ='codetriage'
-GitHubBub::Request::RETRIES        = 3
+GitHubBub::Request::USER_AGENT = 'codetriage'
+GitHubBub::Request::RETRIES = 3
 
 # Auth all non authed requests (due to github request limits)
 GitHubBub::Request.set_before_callback do |request|

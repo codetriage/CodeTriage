@@ -1,5 +1,5 @@
 # tested max in production is 9
-WEB_CONCURRENCY = Integer(ENV['WEB_CONCURRENCY']|| 2)
+WEB_CONCURRENCY = Integer(ENV['WEB_CONCURRENCY'] || 2)
 
 worker_processes WEB_CONCURRENCY
 timeout 30

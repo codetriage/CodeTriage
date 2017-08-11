@@ -7,7 +7,7 @@ class DocMethod < ActiveRecord::Base
   include ActiveRecord::CounterCache
 
   def self.missing_docs
-    where(doc_methods: {doc_comments_count: 0})
+    where(doc_methods: { doc_comments_count: 0 })
   end
 
   def self.active

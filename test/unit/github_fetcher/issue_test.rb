@@ -22,7 +22,7 @@ class GithubFetcher::IssueTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns {} when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = issue_fetcher(issues(:issue_one))
       assert_nil fetcher.as_json['title'], fetcher.as_json
     end

@@ -19,7 +19,7 @@ class GithubFetcher::UserTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns {} when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       user_fetcher = GithubFetcher::User.new(
         token: OmniAuth.config.mock_auth[:github][:credentials][:token]
       )
@@ -46,7 +46,7 @@ class GithubFetcher::UserTest < ActiveSupport::TestCase
   end
 
   test "#valid? returns false when API error occurs" do
-    GitHubBub.stub(:valid_token?, -> (_) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:valid_token?, ->(_) { raise GitHubBub::RequestError }) do
       user_fetcher = GithubFetcher::User.new(token: 'asdf')
 
       assert_not user_fetcher.valid?
