@@ -3,6 +3,11 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require File.expand_path('../config/application', __FILE__)
+require "rubocop/rake_task"
+
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.options = ['--rails','--display-cop-names']
+end
 
 CodeTriage::Application.load_tasks
 
@@ -77,18 +82,4 @@ namespace :test do
   end
 end
 
-namespace :rubocop do
-  require 'rubocop/rake_task'
-  options = ['--rails','--display-cop-names']
-
-  desc 'Run RuboCop on new git files against aster'
-  RuboCop::RakeTask.new(:new) do |task|
-    task.patterns = `git diff --name-only HEAD $(git merge-base HEAD master)`.split("\n")
-    task.options = options
-  end
-
-  desc 'Run RuboCop on all files'
-  RuboCop::RakeTask.new(:all) do |task|
-    task.options = options
-  end
-end
+task default: [:rubocop, :test]
