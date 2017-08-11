@@ -7,8 +7,6 @@ namespace :docs do
   end
 end
 
-
-
 # parser = DocsDoctor::Parser.new('ruby/rdoc', '4.0.0')
 # parser.add_files("/Users/schneems/Documents/projects/rails/activesupport/lib/active_support/core_ext/string/strip.rb")
 # parser.go!

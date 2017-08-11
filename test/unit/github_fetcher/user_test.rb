@@ -13,8 +13,8 @@ class GithubFetcher::UserTest < ActiveSupport::TestCase
       )
 
       assert_equal user_fetcher.as_json['login'],
-        expected_user_login,
-        "Failed: Got #{user_fetcher.as_json}"
+                   expected_user_login,
+                   "Failed: Got #{user_fetcher.as_json}"
     end
   end
 

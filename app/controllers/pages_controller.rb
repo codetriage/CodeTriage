@@ -17,19 +17,17 @@ class PagesController < ApplicationController
       format.json do
         htmlForPage = render_to_string(partial: "repos_with_pagination", locals: {repos: @repos}, formats: ['html'])
         render json: { html: htmlForPage }.to_json
-      end    end
+      end
+    end
   end
 
   def letsencrypt
     render text: "DkLDpTLqhJKCl6SL7jJVbFSxWOuFJwry0K3UN2bJmqk.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
   end
 
-
-
   def letsencryptwww
     render text: "T2BMOklX7iIflqShN8o14d-mjsySpiy9jDKDD-oPquc.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
   end
-
 
   def valid_params
     params.permit(:language, :per_page, :page)
@@ -37,9 +35,9 @@ class PagesController < ApplicationController
 
   private
 
-    def set_cache_headers
-      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-      response.headers["Pragma"] = "no-cache"
-      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
-    end
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
 end

@@ -1,5 +1,4 @@
 class GithubUrlFromBasePathLine
-
   def initialize(base, commit_sha, path, line)
     @base = base
     @commit_sha = commit_sha

@@ -34,34 +34,35 @@ class EmailRateLimit
   end
 
   private
-    # When a user provides a default frequency use that value
-    # For instance if a user has "twice_a_week" selected as a default yet we calculate their
-    # send rate as "daily" the higher value will be used i.e. "twice_a_week". If however
-    # they are inactive and calculated frequency is "once_a_month" we will use that instead.
-    # The highest duration wins between user supplied and calculated
-    def minimum_calculated_frequency
-      return frequency_of_send_rate if @minimum_frequency.blank?
-      return frequency_of_send_rate if !USER_STATES.include?(frequency_of_send_rate)
 
-      if USER_STATES.index(@minimum_frequency) > USER_STATES.index(frequency_of_send_rate)
-        @minimum_frequency
-      else
-        frequency_of_send_rate
-      end
-    end
+  # When a user provides a default frequency use that value
+  # For instance if a user has "twice_a_week" selected as a default yet we calculate their
+  # send rate as "daily" the higher value will be used i.e. "twice_a_week". If however
+  # they are inactive and calculated frequency is "once_a_month" we will use that instead.
+  # The highest duration wins between user supplied and calculated
+  def minimum_calculated_frequency
+    return frequency_of_send_rate if @minimum_frequency.blank?
+    return frequency_of_send_rate if !USER_STATES.include?(frequency_of_send_rate)
 
-    def frequency_of_send_rate
-      case @last_clicked_days_ago
-      when 0..3
-        "daily"
-      when 7..13
-        "twice_a_week"
-      when 14..30
-        "once_a_week"
-      when 31..Float::INFINITY
-        "once_a_month"
-      else
-        "wait"
-      end
+    if USER_STATES.index(@minimum_frequency) > USER_STATES.index(frequency_of_send_rate)
+      @minimum_frequency
+    else
+      frequency_of_send_rate
     end
+  end
+
+  def frequency_of_send_rate
+    case @last_clicked_days_ago
+    when 0..3
+      "daily"
+    when 7..13
+      "twice_a_week"
+    when 14..30
+      "once_a_week"
+    when 31..Float::INFINITY
+      "once_a_month"
+    else
+      "wait"
+    end
+  end
 end

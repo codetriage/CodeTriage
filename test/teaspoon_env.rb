@@ -1,5 +1,4 @@
 Teaspoon.configure do |config|
-
   # This determines where the Teaspoon routes will be mounted. Changing this to "/jasmine" would allow you to browse to
   # http://localhost:3000/jasmine to run your specs.
   config.mount_at = "/jstest"
@@ -24,7 +23,6 @@ Teaspoon.configure do |config|
   #   - in the browser: http://localhost/teaspoon/[suite_name]
   #   - from the command line: rake teaspoon suite=[suite_name]
   config.suite do |suite|
-
     # You can specify a file matcher and all matching files will be loaded when the suite is run. It's important that
     # these files are serve-able from sprockets.
     #
@@ -54,13 +52,11 @@ Teaspoon.configure do |config|
       coverage.ignore = [%r{/lib/ruby/gems/}, %r{/vendor/assets/}, %r{/support/}, %r{/(.+)_helper.}]
       # coverage.ignore << "jquery.min.js" # excludes jquery from coverage reports
     end
-
   end
 
   # Example suite. Since we're just filtering to files already within the root test/javascripts, these files will also
   # be run in the default suite -- but can be focused into a more specific suite.
-  #config.suite :targeted do |suite|
+  # config.suite :targeted do |suite|
   #  suite.matcher = "test/javascripts/targeted/*_spec.{js,js.coffee,coffee}"
-  #end
-
+  # end
 end if defined?(Teaspoon) && Teaspoon.respond_to?(:setup) # let Teaspoon be undefined outside of development/test/asset groups

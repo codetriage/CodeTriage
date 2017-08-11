@@ -1,5 +1,4 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
   def github
     @user = GitHubAuthenticator.authenticate(request.env["omniauth.auth"], current_user)
     if @user.persisted?
@@ -14,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session["devise.github_data"] = request.env["omniauth.auth"].delete("extra")
       flash[:error]  = no_email_error if request.env["omniauth.auth"].info.email.blank?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.failure",
-                       kind: "GitHub", reason: "Invalid credentials" if flash[:error].blank?
+                              kind: "GitHub", reason: "Invalid credentials" if flash[:error].blank?
       redirect_to root_path
     end
   end

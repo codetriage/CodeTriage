@@ -104,7 +104,7 @@ class IssueTest < ActiveSupport::TestCase
 
   test "open_issues" do
     open_issues = []
-    repo  = repos("rails_rails")
+    repo = repos("rails_rails")
     repo.issues.new(state: 'closed')
 
     2.times do
@@ -113,5 +113,4 @@ class IssueTest < ActiveSupport::TestCase
 
     assert_equal open_issues, repo.open_issues.order(:created_at)
   end
-
 end

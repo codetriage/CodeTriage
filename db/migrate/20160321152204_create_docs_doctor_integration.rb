@@ -35,7 +35,6 @@ class CreateDocsDoctorIntegration < ActiveRecord::Migration[5.0]
       t.datetime "updated_at"
     end
 
-
     add_index "doc_comments", ["doc_class_id"], name: "index_doc_comments_on_doc_class_id", using: :btree
     add_index "doc_comments", ["doc_method_id"], name: "index_doc_comments_on_doc_method_id", using: :btree
 
@@ -45,7 +44,7 @@ class CreateDocsDoctorIntegration < ActiveRecord::Migration[5.0]
       t.integer  "line"
       t.datetime "created_at"
       t.datetime "updated_at"
-      t.integer  "doc_comments_count", default: 0,     null: false
+      t.integer  "doc_comments_count", default: 0, null: false
       t.string   "path"
       t.string   "file"
       t.boolean  "skip_write",         default: false
@@ -54,7 +53,6 @@ class CreateDocsDoctorIntegration < ActiveRecord::Migration[5.0]
     end
 
     add_index "doc_methods", ["repo_id"], name: "index_doc_methods_on_repo_id", using: :btree
-
 
     add_column :repo_subscriptions, :write, :boolean, default: false
     add_column :repo_subscriptions, :read,  :boolean, default: false

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :omniauthable
 
   validates_uniqueness_of :email,    allow_blank: true, if: :email_changed?
-  validates_length_of     :password, within:  8..128, allow_blank: true
+  validates_length_of     :password, within: 8..128, allow_blank: true
   validates :github, presence: true, uniqueness: true
   validates :email_frequency, inclusion: { in: EmailRateLimit::USER_STATES.map(&:to_s) + [nil] , message: "Not a valid frequency, pick from #{ EmailRateLimit::USER_STATES }" }
 

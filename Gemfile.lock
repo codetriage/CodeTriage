@@ -409,7 +409,7 @@ DEPENDENCIES
   record_tag_helper (~> 1.0)
   redis-namespace
   rrrretry
-  rubocop
+  rubocop (= 0.49.1)
   sassc
   sassc-rails!
   scout_apm (~> 2.0.x)

@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 
 CodeTriage::Application.routes.draw do
-
   ENV.each do |var, _|
     next unless var.start_with?("ACME_TOKEN_")
     number = var.sub(/ACME_TOKEN_/, '')
@@ -11,10 +10,10 @@ CodeTriage::Application.routes.draw do
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
-  resources   :doc_methods
+  resources :doc_methods
 
   devise_for :users, skip: [:registration],
-    :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+                     :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # devise_scope(:user) do
   #   get 'sign_in',  to: 'users/omniauth_callbacks#passthru', as: :new_user_session
@@ -42,7 +41,7 @@ CodeTriage::Application.routes.draw do
   get "/doc_methods/:id/users/:user_id/click",        to: "doc_methods#click_method_redirect",      as: :doc_method_click
   get "/doc_methods/:id/users/:user_id/source_click", to: "doc_methods#click_source_redirect",      as: :doc_source_click
 
-  resources   :repo_subscriptions
+  resources :repo_subscriptions
 
   if Rails.env.development?
     mount UserMailer::Preview => 'mail_view'
@@ -55,10 +54,10 @@ CodeTriage::Application.routes.draw do
 
     scope '*full_name' do
       constraints full_name: /[-_a-zA-Z0-9]+\/[-_\.a-zA-Z0-9]+/ do
-        get   '/badges/:badge_type(.:format)', to: 'badges#show',       as: 'badge'
+        get   '/badges/:badge_type(.:format)', to: 'badges#show', as: 'badge'
 
         get   '/',              to: 'repos#show',        as: 'repo'
-        patch '/',              to: 'repos#update',      as:  nil
+        patch '/',              to: 'repos#update',      as: nil
         get   '/edit',          to: 'repos#edit',        as: 'edit_repo'
         get   '/subscribers',   to: 'subscribers#show',  as: 'repo_subscribers'
       end

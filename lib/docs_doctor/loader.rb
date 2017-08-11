@@ -23,7 +23,6 @@ module DocsDoctor
       [__dir__, 'parsers', lang, name_extension].join('/')
     end
 
-
     def load_parser
       case lang
       when "ruby"

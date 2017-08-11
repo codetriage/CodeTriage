@@ -1,1 +1,63 @@
-inherit_from: .rubocop_todo.yml
+AllCops:
+  DisabledByDefault: true
+  TargetRubyVersion: 2.4.1
+  DisplayCopNames: true
+  StyleGuideCopsOnly: false
+  Exclude:
+    - 'tmp/**/*'
+    - 'db/schema.rb'
+    - 'vendor/**/*'
+
+Layout/AlignArray:
+ Enabled: true
+
+Layout/AlignHash:
+ Enabled: true
+
+Layout/AlignParameters:
+ Enabled: true
+
+Layout/BlockEndNewline:
+ Enabled: true
+
+Layout/ClosingParenthesisIndentation:
+ Enabled: true
+
+Layout/DotPosition:
+ Enabled: true
+
+Layout/ElseAlignment:
+ Enabled: true
+
+Layout/EmptyLineBetweenDefs:
+ Enabled: true
+
+Layout/EmptyLines:
+ Enabled: true
+
+Layout/EmptyLinesAroundAccessModifier:
+ Enabled: true
+
+Layout/EmptyLinesAroundBlockBody:
+ Enabled: true
+
+Layout/EmptyLinesAroundClassBody:
+ Enabled: true
+
+Layout/ExtraSpacing:
+ Enabled: true
+
+Layout/IndentArray:
+ Enabled: true
+
+Layout/IndentHash:
+ Enabled: true
+
+Layout/IndentationConsistency:
+ Enabled: true
+
+Layout/IndentationWidth:
+ Enabled: true
+
+Layout/LeadingCommentSpace:
+ Enabled: true

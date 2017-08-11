@@ -5,11 +5,9 @@ class DocComment < ActiveRecord::Base
   validates :comment, uniqueness: {scope: [:doc_method_id, :doc_class_id]}
   validates :comment, presence:   true
 
-
   def doc_method?
     doc_method_id.present?
   end
-
 
   def doc_class?
     doc_class_id.present?

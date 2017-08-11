@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def show
@@ -47,25 +46,25 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(
-        :private,
-        :email,
-        :password,
-        :password_confirmation,
-        :remember_me,
-        :zip,
-        :phone_number,
-        :twitter,
-        :github,
-        :github_access_token,
-        :avatar_url,
-        :name,
-        :daily_issue_limit,
-        :email_frequency,
-        :email_time_of_day,
-        :skip_issues_with_pr,
-        favorite_languages: []
-        )
-    end
+  def user_params
+    params.require(:user).permit(
+      :private,
+      :email,
+      :password,
+      :password_confirmation,
+      :remember_me,
+      :zip,
+      :phone_number,
+      :twitter,
+      :github,
+      :github_access_token,
+      :avatar_url,
+      :name,
+      :daily_issue_limit,
+      :email_frequency,
+      :email_time_of_day,
+      :skip_issues_with_pr,
+      favorite_languages: []
+    )
+  end
 end
