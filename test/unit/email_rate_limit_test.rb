@@ -10,7 +10,6 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     last_clicked_days_ago = 0..3
     multiplier            = 1
     valid_values          = seed_array.map { |n| n * multiplier }
-    invalid_values        = last_clicked_days_ago.to_a - valid_values
     day_ago               = rand(last_clicked_days_ago)
     clicked_ago           = valid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"

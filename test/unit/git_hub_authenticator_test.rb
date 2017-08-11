@@ -2,7 +2,6 @@ require 'test_helper'
 
 class GitHubAuthenticatorTest < ActiveSupport::TestCase
   test "updates existing user params" do
-    user  = users(:mockstar)
     oauth = OmniAuth::AuthHash.new(
       info: { email: 'mockstar@example.com', nickname: 'johndoe' },
       extra: { raw_info: { name: 'John Doe', avatar_url: 'avatar.png' } },

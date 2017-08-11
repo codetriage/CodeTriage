@@ -115,3 +115,21 @@ Layout/TrailingBlankLines:
 
 Layout/TrailingWhitespace:
  Enabled: true
+
+Lint/AssignmentInCondition:
+ Enabled: true
+
+Lint/EndAlignment:
+ Enabled: true
+
+Lint/ScriptPermission:
+ Enabled: true
+
+Lint/UnusedBlockArgument:
+ Enabled: true
+
+Lint/UnusedMethodArgument:
+ Enabled: true
+
+Lint/UselessAssignment:
+ Enabled: true

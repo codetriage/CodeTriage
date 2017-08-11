@@ -9,7 +9,7 @@ class GitHubAuthenticator
   end
 
   def authenticate
-    if user = find_user
+    if (user = find_user)
       user.update_attributes!(github_params)
       user
     else

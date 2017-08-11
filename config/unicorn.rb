@@ -5,7 +5,7 @@ worker_processes WEB_CONCURRENCY
 timeout 30
 preload_app true
 
-before_fork do |server, worker|
+before_fork do |_server, _worker|
   # Replace with MongoDB or whatever
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.connection.disconnect!
@@ -13,7 +13,7 @@ before_fork do |server, worker|
   end
 end
 
-after_fork do |server, worker|
+after_fork do |_server, _worker|
   # Replace with MongoDB or whatever
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection

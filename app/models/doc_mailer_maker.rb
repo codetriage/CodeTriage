@@ -8,9 +8,9 @@
 class DocMailerMaker
   attr_accessor :user, :subs, :write_docs, :read_docs
 
-  READY_FOR_NEXT_DEFAULT = Proc.new { |s| true }
+  READY_FOR_NEXT_DEFAULT = Proc.new { |_s| true }
 
-  def initialize(user, subs, options = {}, &send_next)
+  def initialize(user, subs, _options = {}, &send_next)
     @user       = user
     @subs       = subs
     @write_docs = []

@@ -58,7 +58,6 @@ class RepoSubscription < ActiveRecord::Base
   end
 
   def unassigned_write_doc_methods(limit = self.write_limit)
-    doc_method_ids = self.doc_methods.map(&:id) + [-1]
     repo.methods_missing_docs
         .active
         .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)

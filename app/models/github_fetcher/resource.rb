@@ -49,7 +49,7 @@ module GithubFetcher
     attr_reader :api_path, :options
 
     # Sometimes over-ridden to use the error
-    def null_response(error)
+    def null_response(_error)
       GitHubBub::Response.new(body: null_response_body.to_json)
     end
 

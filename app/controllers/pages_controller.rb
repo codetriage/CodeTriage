@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def index
     @repos = Repo.with_some_issues
-    if language = valid_params[:language] || current_user.try(:favorite_languages)
+    if (language = valid_params[:language] || current_user.try(:favorite_languages))
       @repos = @repos.where(language: language)
     end
     @repos = @repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
