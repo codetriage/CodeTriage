@@ -24,12 +24,6 @@ Bundler/OrderedGems:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Layout/MultilineBlockLayout:
-  Exclude:
-    - 'test/unit/github_fetcher/issue_comments_test.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 # SupportedStyles: symmetrical, new_line, same_line
 Layout/MultilineHashBraceLayout:

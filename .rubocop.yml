@@ -61,3 +61,6 @@ Layout/IndentationWidth:
 
 Layout/LeadingCommentSpace:
  Enabled: true
+
+Layout/MultilineBlockLayout:
+ Enabled: true
