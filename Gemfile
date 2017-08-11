@@ -72,7 +72,7 @@ group :development, :test do
   gem 'derailed_benchmarks'
   gem 'faker', require: false
   gem 'pry'
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.49.1', require: false
 end
 
 gem 'rack-mini-profiler'
