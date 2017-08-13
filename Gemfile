@@ -10,69 +10,69 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 
 # Gems required in all environments
 if ENV["RAILS_MASTER"] == '1'
-  gem 'rails', git: 'https://github.com/rails/rails.git'
   gem 'arel', git: 'https://github.com/rails/arel.git'
+  gem 'rails', git: 'https://github.com/rails/rails.git'
 else
   gem 'rails', '5.1.1'
 end
 
-gem 'puma', '~> 3.x'
+gem 'bluecloth'
+gem 'dalli'
+gem 'devise'
 gem 'git_hub_bub'
-gem 'pg'
+gem 'jquery-rails'
+gem 'local_time', '2.0'
+gem 'mail_view', '~> 1.0.2'
+gem 'maildown', '2.0.0'
 gem 'omniauth', '1.3.1'
 gem 'omniauth-github'
-gem 'will_paginate', '3.1.0'
-gem 'local_time', '2.0'
-gem 'dalli'
-gem 'wicked'
-gem 'rails_autolink'
-gem 'bluecloth'
-gem 'maildown', '2.0.0'
-gem 'rrrretry'
-gem 'jquery-rails'
-gem 'devise'
-gem 'warden', '1.2.6'
+gem 'pg'
+gem 'puma', '~> 3.x'
 gem 'rack-timeout'
-gem 'mail_view', '~> 1.0.2'
+gem 'rails_autolink'
+gem 'rrrretry'
 gem 'valid_email'
+gem 'warden', '1.2.6'
+gem 'wicked'
+gem 'will_paginate', '3.1.0'
 # gem 'sass-rails', '6.0.0.beta1'
-gem 'sassc-rails', github: "schneems/sassc-rails", branch: "schneems/sprockets4"
 gem 'sassc'
+gem 'sassc-rails', github: "schneems/sassc-rails", branch: "schneems/sprockets4"
 
-gem 'bourbon'
-gem 'neat'
 gem 'autoprefixer-rails', '~> 6.3.3'
-gem 'normalize-rails'
+gem 'bourbon'
 gem 'coffee-rails', '~> 4.2.0'
-gem 'uglifier', '>= 1.0.3'
+gem 'neat'
+gem 'normalize-rails'
 gem 'slim-rails'
+gem 'uglifier', '>= 1.0.3'
 
 group :development do
+  gem 'bullet'
   gem 'foreman'
+  gem 'listen'
   gem 'spring'
   gem 'web-console'
-  gem 'bullet'
-  gem 'listen'
 end
 
 group :test do
   gem 'capybara', '2.6.2'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
-  gem 'webmock'
-  gem 'vcr'
   gem 'mocha', require: false
-  gem 'simplecov', require: false
   gem 'rails-controller-testing'
+  gem 'simplecov', require: false
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development, :test do
-  gem 'teaspoon'
-  gem 'dotenv-rails'
   gem 'derailed_benchmarks'
+  gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', '0.49.1', require: false
+  gem 'teaspoon'
 end
 
 gem 'rack-mini-profiler'
@@ -96,12 +96,12 @@ gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
 # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
-gem 'sentry-raven', github: "getsentry/raven-ruby"
 gem 'oj'
 gem 'rack-canonical-host'
+gem 'sentry-raven', github: "getsentry/raven-ruby"
 
-gem 'stackprof'
 gem 'bootsnap', require: false
 gem 'rbtrace'
-gem 'trashed'
 gem 'redis-namespace'
+gem 'stackprof'
+gem 'trashed'

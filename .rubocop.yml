@@ -133,3 +133,10 @@ Lint/UnusedMethodArgument:
 
 Lint/UselessAssignment:
  Enabled: true
+
+# Disable cause we always try to use Rails with last version and master
+Bundler/DuplicatedGem:
+ Enabled: false
+
+Bundler/OrderedGems:
+ Enabled: true
