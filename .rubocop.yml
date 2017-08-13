@@ -146,3 +146,6 @@ Performance/RedundantBlockCall:
 
 Performance/RedundantMatch:
   Enabled: true
+
+Performance/StringReplacement:
+  Enabled: true

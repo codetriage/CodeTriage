@@ -40,14 +40,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 8
 
-
-# Offense count: 2
-# Cop supports --auto-correct.
-Performance/StringReplacement:
-  Exclude:
-    - 'db/seeds.rb'
-    - 'lib/docs_doctor/loader.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 Performance/TimesMap:
