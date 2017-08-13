@@ -73,7 +73,7 @@ class ReposController < RepoBasedController
 
   def parse_params_for_repo_info
     if params[:url]
-      params[:url].match(/^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/)
+      params[:url] =~ /^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/
       params[:repo] ||= {}
       params[:repo][:user_name] = $1.to_s
       params[:repo][:name] = $2.to_s

@@ -143,3 +143,6 @@ Bundler/OrderedGems:
 
 Performance/RedundantBlockCall:
   Enabled: true
+
+Performance/RedundantMatch:
+  Enabled: true

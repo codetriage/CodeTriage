@@ -17,7 +17,7 @@ module DocsDoctor
 
         def root_path
           root_path = Pathname.new(base_path).expand_path
-          if root_path.to_s.match(/\.rb+$/)
+          if root_path.to_s =~ /\.rb+$/
             root_path.dirname
           else
             root_path
