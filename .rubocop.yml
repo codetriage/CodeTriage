@@ -140,3 +140,6 @@ Bundler/DuplicatedGem:
 
 Bundler/OrderedGems:
  Enabled: true
+
+Performance/RedundantBlockCall:
+  Enabled: true

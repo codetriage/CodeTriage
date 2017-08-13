@@ -31,9 +31,9 @@ class DocMailerMaker
   end
 
   # Assigns documentation tasks to a subscription
-  def assign_docs(&send_next)
+  def assign_docs()
     subs.flat_map do |sub|
-      if !send_next.call(sub)
+      if !yield(sub)
         Rails.logger.debug "Filtered: #{sub.inspect}"
         next
       end
