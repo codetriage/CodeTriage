@@ -40,12 +40,6 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 8
 
-# Offense count: 1
-# Cop supports --auto-correct.
-Performance/TimesMap:
-  Exclude:
-    - 'app/models/issue_assigner.rb'
-
 # Offense count: 9
 # Cop supports --auto-correct.
 Rails/ApplicationRecord:

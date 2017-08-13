@@ -149,3 +149,6 @@ Performance/RedundantMatch:
 
 Performance/StringReplacement:
   Enabled: true
+
+Performance/TimesMap:
+  Enabled: true
