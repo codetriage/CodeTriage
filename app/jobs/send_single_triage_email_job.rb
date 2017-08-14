@@ -1,6 +1,8 @@
 class SendSingleTriageEmailJob < ApplicationJob
   def perform(id)
     repo_sub = RepoSubscription.includes(:user, :repo).find(id)
+    return unless repo_sub
+    
     IssueAssigner.new(repo_sub.user, [repo_sub]).assign!
     if assignment(repo_sub)
       assignment.update!(delivered: true)
