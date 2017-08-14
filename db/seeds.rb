@@ -14,7 +14,7 @@ end
 100.times do
   printf "."
   begin
-    username = Faker::Internet.user_name.gsub(".", "-")
+    username = Faker::Internet.user_name.tr(".", "-")
     user = User.new(
       github:     username,
       email:      Faker::Internet.email,

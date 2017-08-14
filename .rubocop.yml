@@ -61,3 +61,94 @@ Layout/IndentationWidth:
 
 Layout/LeadingCommentSpace:
  Enabled: true
+
+Layout/MultilineBlockLayout:
+ Enabled: true
+
+Layout/MultilineHashBraceLayout:
+ Enabled: true
+
+Layout/MultilineMethodCallBraceLayout:
+ Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+ Enabled: true
+
+Layout/SpaceAfterComma:
+ Enabled: true
+
+Layout/SpaceAroundEqualsInParameterDefault:
+ Enabled: true
+
+Layout/SpaceAroundOperators:
+ Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+ Enabled: true
+
+Layout/SpaceBeforeComma:
+ Enabled: true
+
+Layout/SpaceBeforeFirstArg:
+ Enabled: true
+
+Layout/SpaceInLambdaLiteral:
+ Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+ Enabled: true
+
+Layout/SpaceInsideBrackets:
+ Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+ Enabled: true
+
+Layout/SpaceInsideParens:
+ Enabled: true
+
+Layout/SpaceInsideStringInterpolation:
+ Enabled: true
+
+Layout/TrailingBlankLines:
+ Enabled: true
+
+Layout/TrailingWhitespace:
+ Enabled: true
+
+Lint/AssignmentInCondition:
+ Enabled: true
+
+Lint/EndAlignment:
+ Enabled: true
+
+Lint/ScriptPermission:
+ Enabled: true
+
+Lint/UnusedBlockArgument:
+ Enabled: true
+
+Lint/UnusedMethodArgument:
+ Enabled: true
+
+Lint/UselessAssignment:
+ Enabled: true
+
+# Disable cause we always try to use Rails with last version and master
+Bundler/DuplicatedGem:
+ Enabled: false
+
+Bundler/OrderedGems:
+ Enabled: true
+
+Performance/RedundantBlockCall:
+  Enabled: true
+
+Performance/RedundantMatch:
+  Enabled: true
+
+Performance/StringReplacement:
+  Enabled: true
+
+Performance/TimesMap:
+  Enabled: true

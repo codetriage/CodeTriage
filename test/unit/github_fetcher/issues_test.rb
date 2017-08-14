@@ -53,7 +53,7 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns {} when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:rails_rails))
       assert_equal fetcher.as_json, {}
     end
@@ -61,20 +61,20 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
 
   test "#last_page is true when it's the last page" do
     fetcher = fetcher(repos(:rails_rails))
-    GitHubBub.stub(:get, -> (_, _) { OpenStruct.new(last_page?: true) } ) do
+    GitHubBub.stub(:get, ->(_, _) { OpenStruct.new(last_page?: true) }) do
       assert fetcher.last_page?
     end
   end
 
   test "#last_page is false when it's not the last page" do
     fetcher = fetcher(repos(:rails_rails))
-    GitHubBub.stub(:get, -> (_, _) { OpenStruct.new(last_page?: false) } ) do
+    GitHubBub.stub(:get, ->(_, _) { OpenStruct.new(last_page?: false) }) do
       assert_not fetcher.last_page?
     end
   end
 
   test "#error?" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:rails_rails))
       assert fetcher.error?
     end

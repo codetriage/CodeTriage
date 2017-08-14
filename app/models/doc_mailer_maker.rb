@@ -8,9 +8,9 @@
 class DocMailerMaker
   attr_accessor :user, :subs, :write_docs, :read_docs
 
-  READY_FOR_NEXT_DEFAULT = Proc.new {|s| true }
+  READY_FOR_NEXT_DEFAULT = Proc.new { |_s| true }
 
-  def initialize(user, subs, options = {}, &send_next)
+  def initialize(user, subs, _options = {}, &send_next)
     @user       = user
     @subs       = subs
     @write_docs = []
@@ -31,9 +31,9 @@ class DocMailerMaker
   end
 
   # Assigns documentation tasks to a subscription
-  def assign_docs(&send_next)
+  def assign_docs()
     subs.flat_map do |sub|
-      if !send_next.call(sub)
+      if !yield(sub)
         Rails.logger.debug "Filtered: #{sub.inspect}"
         next
       end

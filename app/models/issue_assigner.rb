@@ -9,7 +9,7 @@ class IssueAssigner
 
   def assign!
     subscriptions.each do |sub|
-      sub.email_limit.times.map do
+      Array.new(sub.email_limit) do
         assign_issue_for_sub(sub)
       end
     end

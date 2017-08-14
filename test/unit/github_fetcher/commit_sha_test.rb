@@ -15,7 +15,7 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
 
   test "#as_json returns json" do
     fetcher = fetcher(repos(:scene_hub_v2))
-    commit_message ="Fixed geojson method in band model"
+    commit_message = "Fixed geojson method in band model"
 
     VCR.use_cassette "fetcher_commit_sha" do
       assert_equal fetcher.as_json['commit']['message'], commit_message, fetcher.as_json
@@ -23,7 +23,7 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns {} when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
       assert_equal fetcher.as_json, {}
     end
@@ -39,7 +39,7 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
   end
 
   test "#commit_sha returns nil when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
       assert_nil fetcher.commit_sha
     end

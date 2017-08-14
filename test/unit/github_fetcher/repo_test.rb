@@ -19,7 +19,7 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns {} when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
       assert_equal fetcher.as_json, {}
       assert_nil fetcher.as_json['clone_url'], fetcher.as_json
@@ -36,7 +36,7 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
   end
 
   test "default_branch returns nil when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
       assert_nil fetcher.default_branch
     end

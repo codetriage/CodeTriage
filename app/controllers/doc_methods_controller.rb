@@ -6,7 +6,7 @@ class DocMethodsController < ApplicationController
     # http://stackoverflow.com/questions/3651860/which-characters-are-illegal-within-a-branch-name
     @username = current_user.present? ? current_user.github : "<your name>"
 
-    @branch   = "#{ @username }/update-docs-#{ @doc.path }-for-pr".gsub(/:|~|\^|\\|\.\./, "_")
+    @branch   = "#{@username}/update-docs-#{@doc.path}-for-pr".gsub(/:|~|\^|\\|\.\./, "_")
   end
 
   def click_method_redirect

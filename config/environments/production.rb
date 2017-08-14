@@ -48,7 +48,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -86,18 +86,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # rubocop:disable Style/ConditionalAssignment
   if ENV["MEMCACHIER_SERVERS"]
-    config.cache_store = :dalli_store,
-                         (ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                         {:username => ENV["MEMCACHIER_USERNAME"],
-                          :password => ENV["MEMCACHIER_PASSWORD"],
-                          :failover => true,
-                          :socket_timeout => 1.5,
-                          :socket_failure_delay => 0.2
-                         }
+    config.cache_store = [:dalli_store, (ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                          { :username => ENV["MEMCACHIER_USERNAME"],
+                            :password => ENV["MEMCACHIER_PASSWORD"],
+                            :failover => true,
+                            :socket_timeout => 1.5,
+                            :socket_failure_delay => 0.2 }]
   else
     config.cache_store = :dalli_store
   end
-  # rubocop:enable Style/ConditionalAssignment
 end

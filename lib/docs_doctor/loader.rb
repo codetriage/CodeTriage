@@ -45,7 +45,7 @@ module DocsDoctor
     end
 
     def pretty_version
-      version.to_s.gsub('.', '_')
+      version.to_s.tr('.', '_')
     end
   end
 end

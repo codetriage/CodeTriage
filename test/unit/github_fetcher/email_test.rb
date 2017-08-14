@@ -12,8 +12,8 @@ class GithubFetcher::EmailTest < ActiveSupport::TestCase
       )
 
       assert_equal email_fetcher.as_json, [
-        {"email"=>"dmragone@gmail.com", "primary"=>true, "verified"=>true, "visibility"=>"public"},
-        {"email"=>"david.ragone@hired.com", "primary"=>false, "verified"=>true, "visibility"=>nil}
+        { "email" => "dmragone@gmail.com", "primary" => true, "verified" => true, "visibility" => "public" },
+        { "email" => "david.ragone@hired.com", "primary" => false, "verified" => true, "visibility" => nil }
       ], "Failed: Got #{email_fetcher.as_json}"
     end
   end

@@ -4,6 +4,6 @@ unless Rails.env.production?
   end
 
   Sidekiq.configure_client do |config|
-    config.redis = { url: ENV["REDIS_URL"], namespace: "codetriage-sidekiq"}
+    config.redis = { url: ENV["REDIS_URL"], namespace: "codetriage-sidekiq" }
   end
 end

@@ -57,18 +57,18 @@ class RepoTest < ActiveSupport::TestCase
   # CI can switch the ordering of these repos, but we dont care about ordering,
   # so use set intersection
   test "repos needing help when user has ruby language" do
-    repos = Repo.repos_needing_help_for_user(User.new( favorite_languages: [ "ruby" ])).map(&:path)
-    assert_operator [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" ], "&", repos
+    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: ["ruby"])).map(&:path)
+    assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra"], "&", repos
   end
 
   test "repos needing help when user has no languages" do
-    repos = Repo.repos_needing_help_for_user(User.new( favorite_languages: [ ])).map(&:path)
-    assert_operator [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" , "andrewrk/groovebasin"], "&", repos
+    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: [])).map(&:path)
+    assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra", "andrewrk/groovebasin"], "&", repos
   end
 
   test "repos needing help when user is null" do
     repos = Repo.repos_needing_help_for_user(nil).map(&:path)
-    assert_operator [ "bemurphy/issue_triage_sandbox", "sinatra/sinatra" , "andrewrk/groovebasin"], "&", repos
+    assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra", "andrewrk/groovebasin"], "&", repos
   end
 
   test "check existence of repo by its name and user's name" do
@@ -117,7 +117,7 @@ class RepoTest < ActiveSupport::TestCase
 
     VCR.use_cassette "repo_populate_docs" do
       double = 'double'
-      DocsDoctor::Parsers::Ruby::Yard.stub(:new, -> (_) { double }) do
+      DocsDoctor::Parsers::Ruby::Yard.stub(:new, ->(_) { double }) do
         double.expects(:process)
         double.expects(:store)
         assert_nil repo.commit_sha

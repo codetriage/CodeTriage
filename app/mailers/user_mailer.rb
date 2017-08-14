@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
     @max_days    = 2
     subject = ""
     @days   = @user.days_since_last_clicked
-    subject << "[#{ time_ago_in_words(@days.days.ago).humanize }] " if @days > @max_days
+    subject << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
     subject << "Help Triage #{@assignments.size} Open Source #{"Issue".pluralize(@assignments.size)}"
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
@@ -48,7 +48,7 @@ class UserMailer < ActionMailer::Base
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
-  def spam(user:, message:)
+  def spam(user:)
     return unless set_and_check_user(user)
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
   end
@@ -62,9 +62,8 @@ class UserMailer < ActionMailer::Base
     # Pull data from existing fixtures
     def send_spam
       user    = User.last
-      message = "Hey, we just launched something big http://google.com"
       subject = "Big launch"
-      ::UserMailer.spam(user: user, message: message, subject: subject)
+      ::UserMailer.spam(user: user, subject: subject)
     end
 
     def send_triage

@@ -25,18 +25,19 @@ class GithubFetcher::IssueCommentsTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns [] when error" do
-    GitHubBub.stub(:get, -> (_,_) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       assert_equal comments_fetcher.as_json, {}
     end
   end
 
   test "#commenters returns list of unique commenters" do
     fetcher = comments_fetcher
-    fetcher.stub(:as_json, -> { [
-                   { "id"=>5, "user"=> { "login"=>"rtomayko", "id"=>404 } },
-                   { "id"=>6, "user"=> { "login"=>"rtomayko", "id"=>404 } },
-                   { "id"=>7, "user"=> { "login"=>"DavidRagone", "id"=>22345 } },
-                 ]
+    fetcher.stub(:as_json, -> {
+      [
+        { "id" => 5, "user" => { "login" => "rtomayko", "id" => 404 } },
+        { "id" => 6, "user" => { "login" => "rtomayko", "id" => 404 } },
+        { "id" => 7, "user" => { "login" => "DavidRagone", "id" => 22345 } },
+      ]
     }) do
       assert_equal fetcher.commenters, ['rtomayko', 'DavidRagone']
     end

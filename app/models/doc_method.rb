@@ -7,7 +7,7 @@ class DocMethod < ActiveRecord::Base
   include ActiveRecord::CounterCache
 
   def self.missing_docs
-    where(doc_methods: {doc_comments_count: 0})
+    where(doc_methods: { doc_comments_count: 0 })
   end
 
   def self.active
@@ -28,7 +28,7 @@ class DocMethod < ActiveRecord::Base
 
   def file
     return nil if raw_file.blank?
-    absolute, match, relative = raw_file.partition(/(\/|^)#{repo.name}\//)
+    _absolute, _match, relative = raw_file.partition(/(\/|^)#{repo.name}\//)
     return relative
   end
 

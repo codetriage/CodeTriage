@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class GithubFetcher::ReposTest < ActiveSupport::TestCase
-  def fetcher(kind, options={})
+  def fetcher(kind, options = {})
     GithubFetcher::Repos.new(
       {
         token: OmniAuth.config.mock_auth[:github][:credentials][:token],
@@ -66,7 +66,7 @@ class GithubFetcher::ReposTest < ActiveSupport::TestCase
   end
 
   test "#as_json returns {} when error" do
-    GitHubBub.stub(:get, -> (_, _) { raise GitHubBub::RequestError }) do
+    GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher('starred')
       assert_equal fetcher.as_json, {}
     end

@@ -18,7 +18,6 @@ class PopulateIssuesJob < ApplicationJob
   def populate_issues(page)
     fetcher = repo.issues_fetcher
     fetcher.page = page
-    json = fetcher.as_json
 
     if fetcher.error?
       repo.update_attributes(github_error_msg: fetcher.error_message)
