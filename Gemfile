@@ -95,7 +95,6 @@ gem 'babel-transpiler'
 gem 'scout_apm', '~> 2.0.x'
 gem 'yard'
 
-
 gem 'oj'
 gem 'rack-canonical-host'
 # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
