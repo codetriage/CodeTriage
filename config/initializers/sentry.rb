@@ -1,3 +1,3 @@
 Raven.configure do |config|
-  config.excluded_exceptions += ["ActiveJob::DeserializationError", "Sidekiq::Shutdown"]
+  config.excluded_exceptions += ["Sidekiq::Shutdown"]
 end
