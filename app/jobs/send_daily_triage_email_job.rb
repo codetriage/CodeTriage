@@ -3,7 +3,7 @@ class SendDailyTriageEmailJob < ApplicationJob
     return false if before_email_time_of_day?(user)
     return false if user.repo_subscriptions.empty?
     return false if email_sent_in_last_24_hours?(user)
-    return false if skip_daily_email?(user)
+    return false if emails_rate_limited?(user)
 
     send_daily_triage!(user)
   end
@@ -26,7 +26,7 @@ class SendDailyTriageEmailJob < ApplicationJob
     user.repo_subscriptions.where("last_sent_at >= ?", 24.hours.ago).any?
   end
 
-  def skip_daily_email?(user)
+  def emails_rate_limited?(user)
     skip = email_decider(user).skip?(user.days_since_last_email)
     logger.debug "User #{user.github}: skip: #{skip.inspect}, days_since_last_clicked: #{user.days_since_last_clicked}, days_since_last_email: #{user.days_since_last_email}"
     skip
