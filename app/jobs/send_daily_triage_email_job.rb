@@ -23,7 +23,7 @@ class SendDailyTriageEmailJob < ApplicationJob
   end
 
   def email_sent_in_last_24_hours?(user)
-    user.repo_subscriptions.where("last_sent_at >= ?", 24.hours.ago).any?
+    user.repo_subscriptions.where("last_sent_at > ?", 24.hours.ago).any?
   end
 
   def skip_daily_email?(user)

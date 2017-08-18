@@ -50,12 +50,12 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
     end
   end
 
-  test 'when email_time_of_day set, it delivers after preferred time of day' do
+  test 'when email_time_of_day set, it delivers at preferred time of day' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
 
     def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
 
-    Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.hour) do
+    Time.stub(:now, time_preference_for_today(@user.email_time_of_day)) do
       assert_enqueued_jobs 1 do
         @job.perform(@user)
       end
