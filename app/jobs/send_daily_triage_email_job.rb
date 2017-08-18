@@ -27,12 +27,12 @@ class SendDailyTriageEmailJob < ApplicationJob
   end
 
   def emails_rate_limited?(user)
-    skip = email_decider(user).skip?(user.days_since_last_email)
+    skip = email_rate_limiter(user).skip?(user.days_since_last_email)
     logger.debug "User #{user.github}: skip: #{skip.inspect}, days_since_last_clicked: #{user.days_since_last_clicked}, days_since_last_email: #{user.days_since_last_email}"
     skip
   end
 
-  def email_decider(user)
+  def email_rate_limiter(user)
     EmailRateLimit.new(user.days_since_last_clicked, minimum_frequency: user.email_frequency)
   end
 
