@@ -17,12 +17,4 @@ class GithubFetcher::EmailTest < ActiveSupport::TestCase
       ], "Failed: Got #{email_fetcher.as_json}"
     end
   end
-
-  test "#as_json returns null response when bad request" do
-    VCR.use_cassette "bad_fetch_emails" do
-      email_fetcher = GithubFetcher::Email.new(token: 'asdf')
-
-      assert_equal email_fetcher.as_json, [{}]
-    end
-  end
 end

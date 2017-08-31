@@ -22,14 +22,14 @@ module GithubFetcher
                       response.rate_limit_sleep!
                       unless response.success?
                         @error         = true
-                        @error_message = "Expecting a 2.x.x response but status was #{response.status}"
+                        @error_message = "Expecting a 2.x.x response but status was #{response.status} body:\n#{response.body}"
                         response       = null_response(response.body, status: response.status)
                       end
                       response
                     rescue => e
                       @error = e
                       @error_message = e.message
-                      null_response(e)
+                      null_response
                     end
     end
 
@@ -56,8 +56,9 @@ module GithubFetcher
     attr_reader :api_path, :options
 
     # Sometimes over-ridden to use the error
-    def null_response(_error, status: nil)
-      GitHubBub::Response.new(body: null_response_body.to_json, status: status)
+    def null_response(_error = nil, status: nil)
+      body = _error || null_response_body.to_json
+      GitHubBub::Response.new(body: body, status: status)
     end
 
     # Sometimes over-ridden to set a specific response when GitHubBub API call
