@@ -68,7 +68,8 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
 
   test "#last_page is false when it's not the last page" do
     fetcher = fetcher(repos(:rails_rails))
-    GitHubBub.stub(:get, ->(_, _) { OpenStruct.new(last_page?: false) }) do
+    GitHubBub.stub(:get, -> (_, _) { OpenStruct.new(last_page?: false, :success? => true) } ) do
+      assert_not fetcher.error?
       assert_not fetcher.last_page?
     end
   end

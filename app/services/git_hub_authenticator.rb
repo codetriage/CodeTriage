@@ -37,7 +37,11 @@ class GitHubAuthenticator
 
   def github_email
     return auth_email if auth_email.present?
-    GithubFetcher::Email.new(token: token).as_json.first
+    fetcher = GithubFetcher::Email.new(token: token)
+    if fetcher.error?
+      raise fetcher.error_message
+    end
+    fetcher.as_json.first
   end
 
   def github_params

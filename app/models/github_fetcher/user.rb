@@ -6,11 +6,9 @@ module GithubFetcher
     end
 
     def valid?
-      begin
-        GitHubBub.valid_token?(@options[:token])
-      rescue GitHubBub::RequestError
-        false
-      end
+      response = GitHubBub.valid_token?(@options[:token])
+      response.rate_limit_sleep! if response
+      response
     end
   end
 end

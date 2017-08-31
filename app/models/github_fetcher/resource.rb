@@ -18,8 +18,15 @@ module GithubFetcher
     # Generally not over-ridden
     def response
       @response ||= begin
-                      GitHubBub.get(api_path, options)
-                    rescue GitHubBub::RequestError => e
+                      response = GitHubBub.get(api_path, options)
+                      response.rate_limit_sleep!
+                      unless response.success?
+                        @error         = true
+                        @error_message = "Expecting a 2.x.x response but status was #{response.status}"
+                        response       = null_response(response.body, status: response.status)
+                      end
+                      response
+                    rescue => e
                       @error = e
                       @error_message = e.message
                       null_response(e)
@@ -49,8 +56,8 @@ module GithubFetcher
     attr_reader :api_path, :options
 
     # Sometimes over-ridden to use the error
-    def null_response(_error)
-      GitHubBub::Response.new(body: null_response_body.to_json)
+    def null_response(_error, status: nil)
+      GitHubBub::Response.new(body: null_response_body.to_json, status: status)
     end
 
     # Sometimes over-ridden to set a specific response when GitHubBub API call

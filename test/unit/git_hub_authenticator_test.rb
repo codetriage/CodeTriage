@@ -36,7 +36,7 @@ class GitHubAuthenticatorTest < ActiveSupport::TestCase
       credentials: { token: '123qwe' }
     )
 
-    emails = Struct.new(:json_body).new ['john.doe@example.com']
+    emails = Struct.new(:json_body, :success?, :rate_limit_sleep!).new(['john.doe@example.com'], true)
     GitHubBub.expects(:get).with("/user/emails", token: '123qwe')
              .returns emails
 
