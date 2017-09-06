@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/heroku/trashed
+  revision: 25d014280fcc5beba9e19f3bb4bdf9ade545a212
+  branch: background-reporter
+  specs:
+    trashed (3.2.6)
+      statsd-ruby (~> 1.1)
+
+GIT
   remote: https://github.com/schneems/sassc-rails.git
   revision: d69fda199d3f9ddd18b337137dd5bc057bc6a22a
   branch: schneems/sprockets4
@@ -324,8 +332,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.5)
-    trashed (3.2.6)
-      statsd-ruby (~> 1.1)
     trollop (2.1.2)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
@@ -419,7 +425,7 @@ DEPENDENCIES
   stackprof
   teaspoon
   the_lone_dyno
-  trashed
+  trashed!
   uglifier (>= 1.0.3)
   valid_email
   vcr
@@ -434,4 +440,4 @@ RUBY VERSION
    ruby 2.4.0p0
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

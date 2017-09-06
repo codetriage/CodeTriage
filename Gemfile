@@ -104,4 +104,4 @@ gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
 gem 'stackprof'
-gem 'trashed'
+gem 'trashed', git: "https://github.com/heroku/trashed", branch: "background-reporter"
