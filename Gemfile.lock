@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/heroku/trashed
-  revision: 25d014280fcc5beba9e19f3bb4bdf9ade545a212
+  revision: 54f4138b3263b0c5687a67628af27bddb14bb267
   branch: background-reporter
   specs:
     trashed (3.2.6)
