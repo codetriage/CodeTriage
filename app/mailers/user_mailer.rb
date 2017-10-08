@@ -6,10 +6,11 @@ class UserMailer < ActionMailer::Base
 
   def send_daily_triage(user_id:, assignment_ids:)
     user = User.find(user_id)
-    assignments = IssueAssignment.find(assignment_ids)
-
     return unless set_and_check_user(user)
-    @assignments = assignments
+
+    @assignments =
+      IssueAssignment.includes(:issue, :user, :repo).find(assignment_ids)
+
     @max_days    = 2
     subject = ""
     @days   = @user.days_since_last_clicked
