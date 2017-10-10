@@ -72,7 +72,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
 
 
     section.open-issues.content-section
-      h2.content-section-title= "Help out"
+      h2.content-section-title#help-out= "Help out"
       ul.accordion-tabs
         li.tab-header-and-content
           a.is-active.tab-link href="javascript:void(0)" Issues
@@ -83,7 +83,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
                   = warning_svg
                   = link_to issue.title, issue.html_url
 
-            .pagination= will_paginate @issues, total_entries: @repo.issues_count, container: false
+            .pagination= will_paginate @issues, total_entries: @repo.issues_count, container: false, params: { anchor: 'help-out' }
         li.tab-header-and-content
           a.tab-link href="javascript:void(0)" Docs
           .tab-content
