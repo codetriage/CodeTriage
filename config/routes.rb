@@ -25,6 +25,8 @@ CodeTriage::Application.routes.draw do
     patch 'users'      => 'users#update', as: :user_registration
   end
 
+  get 'help' => 'pages#help'
+
   root to: "pages#index"
 
   namespace :users do
