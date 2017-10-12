@@ -63,18 +63,17 @@ See the Download page on Redis.io for steps to install on other systems: [http:/
 
 ### Environment
 
-If you want your users to sign up with Github, create a [GitHub Client Application](https://github.com/settings/applications). The urls you are asked to provide will be something like this:
+If you want your users to sign up with Github, register a [GitHub a new OAuth Application](https://github.com/settings/applications/new). The urls you are asked to provide will be something like this:
 
-- URL: `http://localhost:3000`
-- Callback URL: `http://localhost:3000/users/auth/github/callback`
+- URL: `http://localhost:5000`
+- Callback URL: `http://localhost:5000/users/auth/github/callback`
 
 Then add the credentials to your .env file:
 
 ```shell
 $ echo GITHUB_APP_ID=foo >> .env
 $ echo GITHUB_APP_SECRET=bar >> .env
-$ echo GITHUB_API_KEY=baz >> .env
-$ echo PORT=3000 >> .env
+$ echo PORT=5000 >> .env
 ```
 
 ### Running the app
@@ -87,7 +86,7 @@ $ heroku local -f Procfile.development
 12:00:04 AM worker.1 |  INFO: Booting Sidekiq with redis options {:url=>nil}
 ```
 
-Code Triage should now be running at [http://localhost:3000](http://localhost:3000)
+Code Triage should now be running at [http://localhost:5000](http://localhost:5000)
 
 
 ## Tests
