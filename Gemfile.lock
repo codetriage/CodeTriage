@@ -290,7 +290,7 @@ GEM
       sass (>= 3.3.0)
     scout_apm (2.0.0.pre3)
       rusage (~> 0.2.0)
-    sentry-raven (2.6.3)
+    sentry-raven (2.7.1)
       faraday (>= 0.7.6, < 1.0)
     sidekiq (4.0.2)
       concurrent-ruby (~> 1.0)
