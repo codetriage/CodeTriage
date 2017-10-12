@@ -13,7 +13,7 @@ if ENV["RAILS_MASTER"] == '1'
   gem 'arel', git: 'https://github.com/rails/arel.git'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.1.1'
+  gem 'rails', '5.1.3'
 end
 
 gem 'bluecloth'
@@ -99,6 +99,7 @@ gem 'oj'
 gem 'rack-canonical-host'
 # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
 gem 'sentry-raven' # , github: "getsentry/raven-ruby"
+
 
 gem 'bootsnap', require: false
 gem 'rbtrace'
