@@ -1,4 +1,6 @@
 class BadgesController < ApplicationController
+  rescue_from(Excon::Errors::Timeout, with: :render_503)
+
   def show
     repo = Repo.where(full_name: permitted[:full_name]).first
     raise ActionController::RoutingError.new('Not Found') if repo.blank?
@@ -28,7 +30,13 @@ class BadgesController < ApplicationController
     end
   end
 
+  private
+
   def permitted
     params.permit(:full_name, :badge_type)
+  end
+
+  def render_503
+    head :service_unavailable
   end
 end
