@@ -49,10 +49,10 @@ task :test do
   $: << Rails.root.to_s + "/test"
 
   if ENV.key?("TEST")
-    Minitest.rake_run([ENV["TEST"]])
+    Rails::TestUnit::Runner.rake_run([ENV["TEST"]])
   else
-    # TODO: Rails 5.1 Minitest.rake_run(["test"], ["test/system/**/*"])
-    Minitest.rake_run(["test"])
+    # TODO: Rails 5.1 Rails::TestUnit::Runner.rake_run(["test"], ["test/system/**/*"])
+    Rails::TestUnit::Runner.rake_run(["test"])
   end
 end
 
@@ -60,29 +60,29 @@ namespace :test do
   ["models", "helpers", "controllers", "mailers", "integration", "jobs"].each do |name|
     task name => "test:prepare" do
       $: << Rails.root.to_s + "/test"
-      Minitest.rake_run(["test/#{name}"])
+      Rails::TestUnit::Runner.rake_run(["test/#{name}"])
     end
   end
 
   task generators: "test:prepare" do
     $: << Rails.root.to_s + "/test"
-    Minitest.rake_run(["test/lib/generators"])
+    Rails::TestUnit::Runner.rake_run(["test/lib/generators"])
   end
 
   task units: "test:prepare" do
     $: << Rails.root.to_s + "/test"
-    Minitest.rake_run(["test/models", "test/helpers", "test/unit"])
+    Rails::TestUnit::Runner.rake_run(["test/models", "test/helpers", "test/unit"])
   end
 
   task functionals: "test:prepare" do
     $: << Rails.root.to_s + "/test"
-    Minitest.rake_run(["test/controllers", "test/mailers", "test/functional"])
+    Rails::TestUnit::Runner.rake_run(["test/controllers", "test/mailers", "test/functional"])
   end
 
   desc "Run system tests only"
   task system: "test:prepare" do
     $: << Rails.root.to_s + "/test"
-    Minitest.rake_run(["test/system"])
+    Rails::TestUnit::Runner.rake_run(["test/system"])
   end
 end
 
