@@ -11,10 +11,12 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     multiplier            = 1
     valid_values          = seed_array.map { |n| n * multiplier }
     day_ago               = rand(last_clicked_days_ago)
-    clicked_ago           = valid_values.sample
-    assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
+    clicked_ago           = valid_values.reject { |int| (int % 7).zero? }.sample
+    assert EmailRateLimit.new(day_ago).now?(clicked_ago),
+      "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     # Use user email frequency settings
-    assert_not EmailRateLimit.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'once_a_week').now?(#{clicked_ago}) to be false, was not"
+    assert_not EmailRateLimit.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago),
+      "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'once_a_week').now?(#{clicked_ago}) to be false, was not"
   end
 
   test "wait" do
