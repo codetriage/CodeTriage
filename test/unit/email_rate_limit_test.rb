@@ -12,9 +12,10 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     valid_values          = seed_array.map { |n| n * multiplier }
     day_ago               = rand(last_clicked_days_ago)
     clicked_ago           = valid_values.sample
+
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     # Use user email frequency settings
-    assert_not EmailRateLimit.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'once_a_week').now?(#{clicked_ago}) to be false, was not"
+    assert EmailRateLimit.new(day_ago, minimum_frequency: "daily").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'daily').now?(#{clicked_ago}) to be true, was not"
   end
 
   test "wait" do
@@ -39,6 +40,9 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
+
+    # Use user email frequency settings
+    assert EmailRateLimit.new(day_ago, minimum_frequency: "twice_a_week").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'twice_a_week').now?(#{clicked_ago}) to be true, was not"
   end
 
   test "once a week" do
@@ -52,6 +56,9 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
+
+    # Use user email frequency settings
+    assert EmailRateLimit.new(day_ago, minimum_frequency: "once_a_week").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'once_a_week').now?(#{clicked_ago}) to be true, was not"
   end
 
   test "once a month" do
@@ -65,5 +72,8 @@ class EmailRateLimitTest < ActiveSupport::TestCase
     bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
+
+    # Use user email frequency settings
+    assert EmailRateLimit.new(day_ago, minimum_frequency: "once_a_month").now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}, minimum_frequency: 'once_a_month').now?(#{clicked_ago}) to be true, was not"
   end
 end
