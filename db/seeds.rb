@@ -14,7 +14,7 @@ end
 100.times do
   printf "."
   begin
-    username = Faker::Internet.user_name.tr(".", "-")
+    username = Faker::Internet.user_name.tr(".", "-") + rand(10_000).to_s
     user = User.new(
       github:     username,
       email:      Faker::Internet.email,
@@ -22,7 +22,7 @@ end
     )
     user.save(validate: false)
 
-    name = Faker::Hipster.word
+    name = Faker::Name.first_name.tr(" ", "-") + rand(10_000).to_s
     repo = user.repos.new(
       :user_name     => username,
       :name          => name,
@@ -43,9 +43,9 @@ end
         state:      "open",
         html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
       )
-      issue.save
+      issue.save!
     end
-  rescue # unique constraints, etc who cares
+  rescue PG::Error # unique constraints, etc who cares
     next
   end
 end

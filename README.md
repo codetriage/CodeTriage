@@ -38,11 +38,10 @@ $ bundle install
 
 ```shell
 $ cp config/database.example.yml config/database.yml
-$ bin/rake db:create
-$ bin/rake db:schema:load
+$ bin/setup
 ```
 
-### Install Redis
+### Install Dependencies
 
 Code Triage requires Redis for background processing.
 
@@ -52,14 +51,16 @@ If you're on OS X, Homebrew is the simplest way to install Redis:
 
 ```shell
 $ brew install redis phantomjs memcached
-$ redis-server
+$ brew services start redis
+$ brew services start memcached
 ```
 
-You now have Redis running on 6379.
+You now have Redis running on 6379 and memcached running on some other port.
 
 **Other**
 
 See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
+
 
 ### Environment
 
