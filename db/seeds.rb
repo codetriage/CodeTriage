@@ -22,7 +22,7 @@ end
     )
     user.save(validate: false)
 
-    name = Faker::Hipster.word
+    name = Faker::Hipster.word.gsub(/\W/, '')
     repo = user.repos.new(
       :user_name     => username,
       :name          => name,
