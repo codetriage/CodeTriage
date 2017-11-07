@@ -103,6 +103,5 @@ gem 'sentry-raven' # , github: "getsentry/raven-ruby"
 gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
-gem 'stackprof'
 gem 'barnes', git: "https://github.com/heroku/barnes"
-
+gem 'stackprof'
