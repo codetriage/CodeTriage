@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '> 2.3', '< 2.5'
+ruby '> 2.4', '< 2.6'
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -103,5 +103,5 @@ gem 'sentry-raven' # , github: "getsentry/raven-ruby"
 gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
+gem 'barnes', git: "https://github.com/heroku/barnes"
 gem 'stackprof'
-gem 'trashed', git: "https://github.com/heroku/trashed", branch: "background-reporter"

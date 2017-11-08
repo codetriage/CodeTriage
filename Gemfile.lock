@@ -1,9 +1,8 @@
 GIT
-  remote: https://github.com/heroku/trashed
-  revision: 54f4138b3263b0c5687a67628af27bddb14bb267
-  branch: background-reporter
+  remote: https://github.com/heroku/barnes
+  revision: e26e9fcb2b70b904c82fb16729afdf5b1f952270
   specs:
-    trashed (3.2.6)
+    barnes (0.0.1)
       statsd-ruby (~> 1.1)
 
 GIT
@@ -372,6 +371,7 @@ DEPENDENCIES
   autoprefixer-rails (~> 6.3.3)
   aws-sdk (~> 2)
   babel-transpiler
+  barnes!
   bluecloth
   bootsnap
   bourbon
@@ -427,7 +427,6 @@ DEPENDENCIES
   stackprof
   teaspoon
   the_lone_dyno
-  trashed!
   uglifier (>= 1.0.3)
   valid_email
   vcr
@@ -439,7 +438,7 @@ DEPENDENCIES
   yard
 
 RUBY VERSION
-   ruby 2.4.0p0
+   ruby 2.4.2p198
 
 BUNDLED WITH
    1.15.4
