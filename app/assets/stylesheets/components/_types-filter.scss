@@ -54,6 +54,9 @@
   padding: $base-spacing;
   text-align: left;
   z-index: 1;
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  column-count: 4;
 
   @include media(730px) {
     left: -33%;
@@ -70,7 +73,6 @@
   }
 
   li {
-    float: left;
     margin-right: $small-spacing;
     width: 150px;
   }
