@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 ruby '> 2.4', '< 2.6'
 
 git_source :github do |name|
@@ -87,7 +92,7 @@ gem 'aws-sdk', '~> 2'
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
 gem 'record_tag_helper', '~> 1.0'
 
-gem 'sprockets', '4.0.0.beta5'
+gem 'sprockets', github: "rails/sprockets"
 gem 'sprockets-rails'
 
 gem 'babel-transpiler'
