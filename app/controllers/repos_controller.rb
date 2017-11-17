@@ -15,6 +15,8 @@ class ReposController < RepoBasedController
   end
 
   def show
+    clean_pagination_params
+
     @repo        = find_repo(params)
     @issues      = @repo.open_issues.order("created_at DESC").page(params[:page]).per_page(params[:per_page] || 20)
     @docs        = @repo.doc_methods.order("created_at DESC").page(params[:page]).per_page(params[:per_page] || 20)
@@ -82,6 +84,13 @@ class ReposController < RepoBasedController
 
   def params_blank?
     repo_params.blank?
+  end
+
+  def clean_pagination_params
+    [:page, :per_page].each do |p|
+      params[p] = params[p].to_i
+      params[p] = nil if params[p].zero?
+    end
   end
 
   def cached_repos(kind, repos_json)
