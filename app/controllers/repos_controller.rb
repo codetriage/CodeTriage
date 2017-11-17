@@ -7,11 +7,6 @@ class ReposController < RepoBasedController
   def new
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
     @repo_sub = RepoSubscription.new
-    if user_signed_in?
-      @own_repos     = cached_repos 'repos', current_user.own_repos_json
-      @starred_repos = cached_repos 'starred', current_user.starred_repos_json
-      @watched_repos = cached_repos 'subscriptions', current_user.subscribed_repos_json
-    end
   end
 
   def show
@@ -50,6 +45,21 @@ class ReposController < RepoBasedController
     else
       render :edit
     end
+  end
+
+  def list
+    @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
+    if user_signed_in?
+      case params[:show]
+      when 'own'
+        @repos = cached_repos 'repos', current_user.own_repos_json
+      when 'starred'
+        @repos = cached_repos 'starred', current_user.starred_repos_json
+      when 'watched'
+        @repos = cached_repos 'subscriptions', current_user.subscribed_repos_json
+      end
+    end
+    render layout: nil
   end
 
   private
