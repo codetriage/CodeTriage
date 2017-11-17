@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
     return unless set_and_check_user(user)
     @repo  = repo
     @issue = assignment.issue
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.path} on GitHub")
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.full_name} on GitHub")
   end
 
   def poke_inactive(user:)
