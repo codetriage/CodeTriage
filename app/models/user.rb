@@ -58,8 +58,11 @@ class User < ActiveRecord::Base
     fetcher.valid?
   end
 
+  @@max_id = nil
   def self.random
-    order("RANDOM()")
+    @@max_id = self.maximum(:id) if @@max_id.nil?
+
+    where("id >= ?", Random.new.rand(1..@@max_id))
   end
 
   # users that are not subscribed to any repos
