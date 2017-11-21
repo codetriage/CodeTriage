@@ -23,13 +23,13 @@
 
       .tab-content
         .tab-pane.active#own
-          = render 'shared/add_repos_list', repos: @own_repos
+          = render_async list_repos_path(show: :own)
 
         .tab-pane#starred
-          = render 'shared/add_repos_list', repos: @starred_repos
+          = render_async list_repos_path(show: :starred)
 
         .tab-pane#watched
-          = render 'shared/add_repos_list', repos: @watched_repos
+          = render_async list_repos_path(show: :watched)
 
   section.content-section
     h2.content-section-title Add another repo by pasting the full repo URL
