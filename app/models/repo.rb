@@ -124,8 +124,11 @@ class Repo < ActiveRecord::Base
     where("repos.id not in (?)", ids)
   end
 
+  @@max_id = nil
   def self.rand
-    order("random()")
+    @@max_id = self.maximum(:id) if @@max_id.nil?
+
+    where("id >= ?", Random.new.rand(1..@@max_id))
   end
 
   def self.all_languages
