@@ -152,6 +152,9 @@ class User < ActiveRecord::Base
   end
 
   def issue_assignments_to_deliver(assign: true)
+    prior_assignments = issue_assignments.where(delivered: false).limit(daily_issue_limit)
+    return prior_assignments unless prior_assignments.blank?
+
     issue_assigner.assign! if assign
     issue_assignments.where(delivered: false).limit(daily_issue_limit)
   end
