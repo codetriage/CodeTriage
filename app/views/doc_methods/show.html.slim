@@ -8,7 +8,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
 
   .repo-body
     section.help-triage.content-section
-      h2.content-section-title= link_to @doc.path, @doc.to_github + "falksdjflaksdjflkasdjf"
+      h2.content-section-title= link_to @doc.to_github
 
       - if comment = @doc.doc_comments.first
         p
