@@ -9,6 +9,7 @@ class PopulateIssuesJob < ApplicationJob
     while populate_issues(page)
       page += 1
     end
+    @repo.force_issues_count_sync!
   end
 
   private

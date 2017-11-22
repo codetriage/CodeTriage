@@ -144,7 +144,7 @@ class Repo < ActiveRecord::Base
   end
 
   def force_issues_count_sync!
-    self.update_attributes(issues_count: self.issues.where(state: "open").count)
+    self.update!(issues_count: self.issues.where(state: "open").count)
   end
 
   def to_param

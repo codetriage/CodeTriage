@@ -3,7 +3,7 @@ class Issue < ActiveRecord::Base
   CLOSED = "closed"
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
-  belongs_to :repo, counter_cache: true
+  belongs_to :repo
 
   def valid_for_user?(user, skip_update = Rails.env.test?)
     unless skip_update

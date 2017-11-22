@@ -12,6 +12,9 @@ namespace :schedule do
   desc 'Marks issues as closed'
   task mark_closed: :environment do
     Issue.queue_mark_old_as_closed!
+    Repo.find_each(batch_size: 100) do |repo|
+      repo.force_issues_count_sync!
+    end
   end
 
   desc 'Sends an email to invite users to engage once a week'
