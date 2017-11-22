@@ -148,7 +148,7 @@ class Repo < ActiveRecord::Base
   end
 
   def to_param
-    path
+    full_name
   end
 
   def self.order_by_issue_count
@@ -164,11 +164,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url
-    File.join('https://github.com', path)
-  end
-
-  def path
-    "#{user_name}/#{name}"
+    File.join('https://github.com', full_name)
   end
 
   def self.exists_with_name?(name)
