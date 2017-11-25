@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170801021151) do
+ActiveRecord::Schema.define(version: 20171125012313) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 20170801021151) do
     t.string "html_url", limit: 255
     t.string "state", limit: 255
     t.boolean "pr_attached", default: false
+    t.index ["id"], name: "index_issues_on_id", where: "((state)::text = 'open'::text)"
     t.index ["number"], name: "index_issues_on_number"
     t.index ["repo_id", "created_at"], name: "index_issues_on_repo_id_and_created_at", where: "((state)::text = 'open'::text)"
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
