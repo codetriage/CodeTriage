@@ -10,7 +10,7 @@ class BadgesController < ApplicationController
 
     case permitted[:badge_type]
     when "users"
-      count = repo.users.count
+      count = repo.subscribers_count
       svg = make_shield(name: "code helpers", count: count, color_b: repo.color)
     else
       raise ActionController::RoutingError.new('Not Found')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125202301) do
+ActiveRecord::Schema.define(version: 20171125212307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(version: 20171125202301) do
     t.text "github_error_msg"
     t.string "commit_sha"
     t.integer "stars_count", default: 0
+    t.integer "subscribers_count", default: 0
     t.index ["full_name"], name: "index_repos_on_full_name"
     t.index ["issues_count"], name: "index_repos_on_issues_count"
     t.index ["language"], name: "index_repos_on_language"

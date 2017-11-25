@@ -1,9 +1,9 @@
 div class="subpage-content-wrapper #{ @repo.weight }"
   header.subpage-content-header
-    h1.subpage-primary-title #{ @repo.subscribers.count } #{ @repo.name } Subscribers
+    h1.subpage-primary-title #{ @repo.subscribers_count } #{ @repo.name } Subscribers
     .subpage-header-actions
       = link_to @repo, class: "header-primary-action"
-        | Back to 
+        | Back to
         = @repo.name
 
   ul.avatars-list = render 'avatars', subscribers: @subscribers, show_names: true
