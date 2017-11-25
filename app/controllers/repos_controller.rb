@@ -12,16 +12,16 @@ class ReposController < RepoBasedController
   def show
     record_count = 10
     @repo   = find_repo(params)
-    @issues = @repo.open_issues.limit(record_count)
+    @issues = @repo.open_issues.select(:id, :title, :html_url).limit(record_count)
     @issues = paginate(@issues, after:  params[:issues_after],
                                 before: params[:issues_before])
 
-    @docs   = @repo.doc_methods.limit(record_count)
+    @docs   = @repo.doc_methods.select(:id, :doc_comments_count, :path).limit(record_count)
     @docs   = paginate(@docs, after:  params[:docs_after],
                               before: params[:docs_before])
 
     @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
-    @subscribers = @repo.subscribers.public_profile.limit(27)
+    @subscribers = @repo.subscribers.public_profile.select(:avatar_url, :github).limit(27)
   end
 
   def create
