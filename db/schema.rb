@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125013319) do
+ActiveRecord::Schema.define(version: 20171125202301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20171125013319) do
     t.boolean "skip_write", default: false
     t.boolean "active", default: true
     t.boolean "skip_read", default: false
-    t.index ["repo_id", "created_at"], name: "index_doc_methods_on_repo_id_and_created_at"
+    t.index ["repo_id", "id"], name: "index_doc_methods_on_repo_id_and_id"
     t.index ["repo_id", "name", "path"], name: "index_doc_methods_on_repo_id_and_name_and_path"
     t.index ["repo_id"], name: "index_doc_methods_on_repo_id"
   end
