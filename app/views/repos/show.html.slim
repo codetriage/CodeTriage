@@ -74,7 +74,13 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         li.tab-header-and-content
           a.tab-link href="javascript:void(0)" class=(params[:docs_before] || params[:docs_after] ? "" : "is-active") Issues
           .tab-content class=(params[:docs_before] || params[:docs_after] ? "" : "is-open")
-            - if @issues.all.length > 0
+            - if @issues.each && @issues.empty?
+              ul.slats-list
+                - if params[:issues_before] || params[:issues_after]
+                  li.slats-item Oops, no more open issues in that direction, try going back.
+                - else
+                  li.slats-item No open issues
+            - else
               ul.slats-list
                 - @issues.each do |issue|
                   li.slats-item
@@ -85,28 +91,11 @@ div class="subpage-content-wrapper #{ @repo.weight }"
                   | ← Previous
                 a.previous_page href=repo_path(full_name: @repo.full_name, issues_after: @issues.last.id)+"#help-out"
                   | Next →
-            - else
-              ul.slats-list
-                - if params[:issues_before] || params[:issues_after]
-                  li.slats-item Oops, no more open issues in that direction, try going back.
-                - else
-                  li.slats-item No open issues
 
         li.tab-header-and-content
           a.tab-link href="javascript:void(0)" class=(params[:docs_before] || params[:docs_after] ? "is-active" : "") Docs
           .tab-content class=(params[:docs_before] || params[:docs_after] ? "is-open" : "")
-            - if @docs.all.length > 0
-              ul.slats-list
-                - @docs.each do |doc|
-                  li.slats-item
-                  = doc.missing_docs? ? warning_svg : "<span class='issue-icon'>🚀</span>".html_safe
-                  = link_to doc.path, doc
-              .pagination
-                a.previous_page href=repo_path(full_name: @repo.full_name, docs_before: @docs.first.id)+"#help-out"
-                  | ← Previous
-                a.previous_page href=repo_path(full_name: @repo.full_name, docs_after: @docs.last.id)+"#help-out"
-                  | Next →
-            - else
+            - if @docs.each && @docs.empty?
               ul.slats-list
                 - if params[:docs_before] || params[:docs_after]
                   li.slats-item Oops, no more docs in that direction, try going back.
@@ -116,6 +105,17 @@ div class="subpage-content-wrapper #{ @repo.weight }"
                   - else
                     li.slats-item = "#{@repo.language} not yet supported"
 
+            - else
+              ul.slats-list
+                - @docs.each do |doc|
+                  li.slats-item
+                    = doc.missing_docs? ? warning_svg : "<span class='issue-icon'>🚀</span>".html_safe
+                    = link_to doc.path, doc
+              .pagination
+                a.previous_page href=repo_path(full_name: @repo.full_name, docs_before: @docs.first.id)+"#help-out"
+                  | ← Previous
+                a.previous_page href=repo_path(full_name: @repo.full_name, docs_after: @docs.last.id)+"#help-out"
+                  | Next →
     - if @repo_sub
       = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging full-width-action', method: :delete, data: { confirm: 'Are you sure?' } do
           | Stop Triaging
