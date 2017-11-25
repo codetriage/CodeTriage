@@ -219,8 +219,12 @@ GEM
     parallel (1.11.2)
     parser (2.4.0.0)
       ast (~> 2.2)
+    pdf-core (0.7.0)
     pg (0.18.3)
     powerpack (0.1.1)
+    prawn (2.2.2)
+      pdf-core (~> 0.7.0)
+      ttfunk (~> 1.5)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -230,7 +234,7 @@ GEM
     rack-canonical-host (0.2.2)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
-    rack-mini-profiler (0.10.5)
+    rack-mini-profiler (0.10.7)
       rack (>= 1.2.0)
     rack-protection (2.0.0)
       rack
@@ -340,6 +344,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     trollop (2.1.2)
+    ttfunk (1.5.1)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
@@ -407,6 +412,7 @@ DEPENDENCIES
   omniauth (= 1.3.1)
   omniauth-github
   pg
+  prawn
   pry
   puma (~> 3.x)
   rack-canonical-host
@@ -449,4 +455,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.15.4
+   1.16.0

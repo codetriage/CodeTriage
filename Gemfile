@@ -111,3 +111,4 @@ gem 'rbtrace'
 gem 'redis-namespace'
 gem 'barnes', git: "https://github.com/heroku/barnes"
 gem 'stackprof'
+gem 'prawn'
