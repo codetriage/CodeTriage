@@ -10,9 +10,15 @@ class ReposController < RepoBasedController
   end
 
   def show
-    @repo        = find_repo(params)
-    @issues      = @repo.open_issues.order("created_at DESC").page(params[:page]).per_page(params[:per_page] || 20)
-    @docs        = @repo.doc_methods.order("created_at DESC").page(params[:page]).per_page(params[:per_page] || 20)
+    record_count = 10
+    @repo   = find_repo(params)
+    @issues = @repo.open_issues.limit(record_count)
+    @issues = paginate(@issues, after:  params[:issues_after],
+                                before: params[:issues_before])
+
+    @docs   = @repo.doc_methods.limit(record_count)
+    @docs   = paginate(@docs, after:  params[:docs_after],
+                              before: params[:docs_before])
 
     @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
     @subscribers = @repo.subscribers.public_profile.limit(27)
@@ -64,6 +70,21 @@ class ReposController < RepoBasedController
 
   private
 
+  def paginate(element, after: nil, before: nil)
+    if after
+      element = element.where("id < ?", after)
+      element = element.order("id DESC")
+    elsif before
+      element = element.where("id > ?", before)
+      element = element.order("id ASC")
+      element = element.reverse
+    else
+      element = element.order("id DESC")
+    end
+
+    element
+  end
+
   def default_format
     request.format = "html"
   end
@@ -77,7 +98,7 @@ class ReposController < RepoBasedController
       :stars_count,
       :language,
       :description,
-      :full_name
+      :full_name,
     )
   end
 

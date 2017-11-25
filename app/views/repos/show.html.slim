@@ -68,32 +68,53 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         img.repo-badge src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers.size}") }" /
       = render partial: "badge"
 
-
-
-
     section.open-issues.content-section
       h2.content-section-title#help-out= "Help out"
       ul.accordion-tabs
         li.tab-header-and-content
-          a.is-active.tab-link href="javascript:void(0)" Issues
-          .tab-content.is-open
-            ul.slats-list
-              - @issues.each do |issue|
-                li.slats-item
-                  = warning_svg
-                  = link_to issue.title, issue.html_url
+          a.tab-link href="javascript:void(0)" class=(params[:docs_before] || params[:docs_after] ? "" : "is-active") Issues
+          .tab-content class=(params[:docs_before] || params[:docs_after] ? "" : "is-open")
+            - if @issues.all.length > 0
+              ul.slats-list
+                - @issues.each do |issue|
+                  li.slats-item
+                    = warning_svg
+                    = link_to issue.title, issue.html_url
+              .pagination
+                a.previous_page href=repo_path(full_name: @repo.full_name, issues_before: @issues.first.id)+"#help-out"
+                  | ← Previous
+                a.previous_page href=repo_path(full_name: @repo.full_name, issues_after: @issues.last.id)+"#help-out"
+                  | Next →
+            - else
+              ul.slats-list
+                - if params[:issues_before] || params[:issues_after]
+                  li.slats-item Oops, no more open issues in that direction, try going back.
+                - else
+                  li.slats-item No open issues
 
-            .pagination= will_paginate @issues, total_entries: @repo.issues_count, container: false, params: { anchor: 'help-out' }
         li.tab-header-and-content
-          a.tab-link href="javascript:void(0)" Docs
-          .tab-content
-            ul.slats-list
-              - @docs.each do |doc|
-                li.slats-item
+          a.tab-link href="javascript:void(0)" class=(params[:docs_before] || params[:docs_after] ? "is-active" : "") Docs
+          .tab-content class=(params[:docs_before] || params[:docs_after] ? "is-open" : "")
+            - if @docs.all.length > 0
+              ul.slats-list
+                - @docs.each do |doc|
+                  li.slats-item
                   = doc.missing_docs? ? warning_svg : "<span class='issue-icon'>🚀</span>".html_safe
                   = link_to doc.path, doc
-
-            .pagination= will_paginate @docs, container: false
+              .pagination
+                a.previous_page href=repo_path(full_name: @repo.full_name, docs_before: @docs.first.id)+"#help-out"
+                  | ← Previous
+                a.previous_page href=repo_path(full_name: @repo.full_name, docs_after: @docs.last.id)+"#help-out"
+                  | Next →
+            - else
+              ul.slats-list
+                - if params[:docs_before] || params[:docs_after]
+                  li.slats-item Oops, no more docs in that direction, try going back.
+                - else
+                  - if @repo.can_doctor_docs?
+                    li.slats-item No docs
+                  - else
+                    li.slats-item = "#{@repo.language} not yet supported"
 
     - if @repo_sub
       = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging full-width-action', method: :delete, data: { confirm: 'Are you sure?' } do
