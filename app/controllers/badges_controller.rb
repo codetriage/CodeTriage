@@ -24,7 +24,10 @@ class BadgesController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
 
-    response.headers["Cache-Control"] = "public max-age=3600" # one hour
+    # Doesn't matter because rails sets an etag :(
+    # https://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age
+    expires_in 1.hour, :public => true
+
     respond_to do |format|
       format.svg { render plain: svg }
     end
