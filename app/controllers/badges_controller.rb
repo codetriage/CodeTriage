@@ -16,9 +16,16 @@ class BadgesController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
 
-    # Doesn't matter because rails sets an etag :(
+    # Set Cache-Control header
+    expires_in 1.hour, public: true
+
+    # When an ETag header is sent, the Cache-Control header is not respected
     # https://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age
-    expires_in 1.hour, :public => true
+    #
+    # The `fresh_wen` method sets the 'Last-Modified' which forces ETag
+    # to not be added by Rack::Etag
+    # https://github.com/rack/rack/blob/ab008307cbb805585449145966989d5274fbe1e4/lib/rack/etag.rb#L59
+    fresh_when last_modified: repo.updated_at, public: true
 
     respond_to do |format|
       format.svg { render plain: svg }
