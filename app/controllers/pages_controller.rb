@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def index
     @repos = Repo.with_some_issues
+                 .select(:updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
       @repos = @repos.where(language: language)
     end

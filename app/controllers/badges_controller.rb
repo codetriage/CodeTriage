@@ -5,7 +5,9 @@ class BadgesController < ApplicationController
   private_constant :SHIELD_PDF
 
   def show
-    repo = Repo.where(full_name: permitted[:full_name]).first
+    repo = Repo.where(full_name: permitted[:full_name])
+               .select(:subscribers_count, :issues_count, :updated_at)
+               .first
     raise ActionController::RoutingError.new('Not Found') if repo.blank?
 
     case permitted[:badge_type]
