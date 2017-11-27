@@ -73,10 +73,11 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       h2.content-section-title#help-out= "Help out"
       ul.accordion-tabs
         li.tab-header-and-content
-          a.tab-link href="javascript:void(0)" class=(@issues_pagination ? "is-active" : "") Issues
-          .tab-content class=(@issues_pagination ? "is-open" : "" )
+          a.tab-link href="javascript:void(0)" class=(@docs_pagination ? "" : "is-active") Issues
+          .tab-content class=(@docs_pagination ? "" : "is-open" )
             - cache_if(!@issues_pagination,  [@repo, "issues"]) do
               = render partial: "issues"
+
         li.tab-header-and-content
           a.tab-link href="javascript:void(0)" class=(@docs_pagination ? "is-active" : "") Docs
           .tab-content class=(@docs_pagination ? "is-open" : "")
