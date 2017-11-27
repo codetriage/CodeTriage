@@ -1,0 +1,21 @@
+- if @docs.each && @docs.empty?
+  ul.slats-list
+    - if params[:docs_before] || params[:docs_after]
+      li.slats-item Oops, no more docs in that direction, try going back.
+    - else
+      - if @repo.can_doctor_docs?
+        li.slats-item No docs
+      - else
+        li.slats-item = "#{@repo.language} not yet supported"
+
+- else
+  ul.slats-list
+    - @docs.each do |doc|
+      li.slats-item
+        = doc.missing_docs? ? warning_svg : "<span class='issue-icon'>🚀</span>".html_safe
+        = link_to doc.path, doc
+  .pagination
+    a.previous_page href=repo_path(full_name: @repo.full_name, docs_before: @docs.first.id)+"#help-out"
+      | ← Previous
+    a.previous_page href=repo_path(full_name: @repo.full_name, docs_after: @docs.last.id)+"#help-out"
+      | Next →

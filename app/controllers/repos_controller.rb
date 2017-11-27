@@ -22,6 +22,9 @@ class ReposController < RepoBasedController
 
     @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
     @subscribers = @repo.subscribers.public_profile.select(:avatar_url, :github).limit(27)
+
+    @docs_pagination   = params[:docs_after]   || params[:docs_before]
+    @issues_pagination = params[:issues_after] || params[:issues_before]
   end
 
   def create

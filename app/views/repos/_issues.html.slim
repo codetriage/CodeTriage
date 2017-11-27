@@ -1,0 +1,17 @@
+- if @issues.each && @issues.empty?
+  ul.slats-list
+    - if params[:issues_before] || params[:issues_after]
+      li.slats-item Oops, no more open issues in that direction, try going back.
+    - else
+      li.slats-item No open issues
+- else
+  ul.slats-list
+    - @issues.each do |issue|
+      li.slats-item
+        = warning_svg
+        = link_to issue.title, issue.html_url
+  .pagination
+    a.previous_page href=repo_path(full_name: @repo.full_name, issues_before: @issues.first.id)+"#help-out"
+      | ← Previous
+    a.previous_page href=repo_path(full_name: @repo.full_name, issues_after: @issues.last.id)+"#help-out"
+      | Next →
