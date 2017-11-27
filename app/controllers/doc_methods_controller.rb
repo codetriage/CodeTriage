@@ -1,7 +1,11 @@
 class DocMethodsController < ApplicationController
   def show
-    @doc  = DocMethod.find(params[:id])
-    @repo = @doc.repo
+    @doc     = DocMethod.where(id: params[:id])
+                        .select(:id, :repo_id, :path, :line, :file)
+                        .includes(:repo)
+                        .first
+    @comment = @doc.doc_comments.select(:comment).first
+    @repo    = @doc.repo
 
     # http://stackoverflow.com/questions/3651860/which-characters-are-illegal-within-a-branch-name
     @username = current_user.present? ? current_user.github : "<your name>"
