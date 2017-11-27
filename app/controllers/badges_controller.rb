@@ -24,13 +24,22 @@ class BadgesController < ApplicationController
     # When an ETag header is sent, the Cache-Control header is not respected
     # https://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age
     #
-    # The `fresh_wen` method sets the 'Last-Modified' which forces ETag
+    # The `fresh_when` method sets the 'Last-Modified' which forces ETag
     # to not be added by Rack::Etag
     # https://github.com/rack/rack/blob/ab008307cbb805585449145966989d5274fbe1e4/lib/rack/etag.rb#L59
-    fresh_when last_modified: repo.updated_at, public: true
-
+    # fresh_when last_modified: repo.updated_at, public: true
+    #
+    # That didn't work because setting 'Last-Modified' header forces
+    # some requests to check that the end point is not "stale", this in turn
+    # causes a double render error because a "HEAD" request already has
+    # an empty body. Also this second "stale" request would still result
+    # in a DB query which we want to avoid.
+    #
+    # We can instead bypass the Rack::ETag behavior by using the 203 response
+    # https://github.com/rack/rack/blob/master/lib/rack/etag.rb#L50
+    #
     respond_to do |format|
-      format.svg { render plain: svg }
+      format.svg { render plain: svg, status: 203 }
     end
   end
 
