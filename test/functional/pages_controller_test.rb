@@ -31,5 +31,6 @@ class PagesControllerTest < ActionController::TestCase
     sign_out users(:mockstar)
     get :index
     assert_equal("max-age=43200, public", response.headers["Cache-Control"])
+    raise "do not merge until https://github.com/codetriage/codetriage/pull/660#issuecomment-347992241 is addressed"
   end
 end
