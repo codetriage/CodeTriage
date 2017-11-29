@@ -2,8 +2,6 @@ class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
   def index
-    expires_in 12.hours, public: true unless current_user
-
     @repos = Repo.with_some_issues
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
@@ -39,8 +37,12 @@ class PagesController < ApplicationController
   private
 
   def set_cache_headers
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    if current_user
+      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+      response.headers["Pragma"] = "no-cache"
+      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    else
+      expires_in 12.hours, public: true
+    end
   end
 end
