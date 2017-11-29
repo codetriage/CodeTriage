@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/codetriage/codetriage.svg?branch=master)](http://travis-ci.org/codetriage/codetriage)
 [![Code Climate](http://img.shields.io/codeclimate/github/codetriage/codetriage.svg)](https://codeclimate.com/github/codetriage/codetriage)
-[![Code Helpers Badge](https://codetriage.com/codetriage/codetriage/badges/users.svg)](https://codetriage.com/codetriage/codetriage)
+[![Code Helpers Badge](https://www.codetriage.com/codetriage/codetriage/badges/users.svg)](https://codetriage.com/codetriage/codetriage)
 
 ## What is Triage?
 
