@@ -1,5 +1,7 @@
 class DocMethodsController < ApplicationController
   def show
+    expires_in 24.hours, public: true unless current_user
+
     @doc     = DocMethod.where(id: params[:id])
                         .select(:id, :repo_id, :path, :line, :file)
                         .includes(:repo)

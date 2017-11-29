@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
   def index
+    expires_in 12.hours, public: true unless current_user
+
     @repos = Repo.with_some_issues
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))

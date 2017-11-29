@@ -10,6 +10,8 @@ class ReposController < RepoBasedController
   end
 
   def show
+    expires_in 12.hours, public: true unless current_user
+
     record_count = 10
     @repo   = find_repo(params)
     @issues = @repo.open_issues.select(:id, :title, :html_url).limit(record_count)
