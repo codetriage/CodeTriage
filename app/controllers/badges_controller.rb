@@ -43,7 +43,7 @@ class BadgesController < ApplicationController
     # https://github.com/rack/rack/blob/master/lib/rack/etag.rb#L50
     #
     respond_to do |format|
-      format.svg { render plain: svg, status: 203 }
+      format.svg { render plain: svg, status: 200 }
     end
   end
 
