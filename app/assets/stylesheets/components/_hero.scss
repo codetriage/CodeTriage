@@ -3,8 +3,12 @@
   padding-top: 4rem;
   text-align: center;
 
-  .button {
+  .button, .actions {
     margin-top: 3rem;
+  }
+
+  .actions * + * {
+    margin-left: 1rem;
   }
 
   .github-icon {
