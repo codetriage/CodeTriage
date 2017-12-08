@@ -57,17 +57,17 @@ class RepoTest < ActiveSupport::TestCase
   # CI can switch the ordering of these repos, but we dont care about ordering,
   # so use set intersection
   test "repos needing help when user has ruby language" do
-    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: ["ruby"])).map(&:path)
+    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: ["ruby"])).map(&:full_name)
     assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra"], "&", repos
   end
 
   test "repos needing help when user has no languages" do
-    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: [])).map(&:path)
+    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: [])).map(&:full_name)
     assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra", "andrewrk/groovebasin"], "&", repos
   end
 
   test "repos needing help when user is null" do
-    repos = Repo.repos_needing_help_for_user(nil).map(&:path)
+    repos = Repo.repos_needing_help_for_user(nil).map(&:full_name)
     assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra", "andrewrk/groovebasin"], "&", repos
   end
 

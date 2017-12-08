@@ -50,7 +50,11 @@ CodeTriage::Application.routes.draw do
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
   scope format: false do
-    resources :repos, only: %w[index new create]
+    resources :repos, only: %w[index new create] do
+      collection do
+        get :list
+      end
+    end
 
     scope '*full_name' do
       constraints full_name: /[-_a-zA-Z0-9]+\/[-_\.a-zA-Z0-9]+/ do

@@ -51,6 +51,7 @@ gem 'neat'
 gem 'normalize-rails'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.0.3'
+gem 'render_async', '~> 1.1', '>= 1.1.2'
 
 group :development do
   gem 'bullet'
@@ -110,3 +111,4 @@ gem 'rbtrace'
 gem 'redis-namespace'
 gem 'barnes', git: "https://github.com/heroku/barnes"
 gem 'stackprof'
+gem 'prawn'

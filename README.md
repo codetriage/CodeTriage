@@ -2,7 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/codetriage/codetriage.svg?branch=master)](http://travis-ci.org/codetriage/codetriage)
 [![Code Climate](http://img.shields.io/codeclimate/github/codetriage/codetriage.svg)](https://codeclimate.com/github/codetriage/codetriage)
-[![Code Helpers Badge](https://codetriage.com/codetriage/codetriage/badges/users.svg)](https://codetriage.com/codetriage/codetriage)
+[![Code Helpers Badge](https://www.codetriage.com/codetriage/codetriage/badges/users.svg)](https://codetriage.com/codetriage/codetriage)
 
 ## What is Triage?
 
@@ -65,15 +65,15 @@ See the Download page on Redis.io for steps to install on other systems: [http:/
 
 If you want your users to sign up with Github, register a [GitHub a new OAuth Application](https://github.com/settings/applications/new). The urls you are asked to provide will be something like this:
 
-- URL: `http://localhost:5000`
-- Callback URL: `http://localhost:5000/users/auth/github/callback`
+- URL: `http://localhost:3000`
+- Callback URL: `http://localhost:3000/users/auth/github/callback`
 
 Then add the credentials to your .env file:
 
 ```shell
 $ echo GITHUB_APP_ID=foo >> .env
 $ echo GITHUB_APP_SECRET=bar >> .env
-$ echo PORT=5000 >> .env
+$ echo PORT=3000 >> .env
 ```
 
 ### Running the app
@@ -86,7 +86,7 @@ $ heroku local -f Procfile.development
 12:00:04 AM worker.1 |  INFO: Booting Sidekiq with redis options {:url=>nil}
 ```
 
-Code Triage should now be running at [http://localhost:5000](http://localhost:5000)
+Code Triage should now be running at [http://localhost:3000](http://localhost:3000)
 
 
 ## Tests

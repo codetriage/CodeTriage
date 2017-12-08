@@ -28,7 +28,7 @@ class DocMethod < ActiveRecord::Base
 
   def file
     return nil if raw_file.blank?
-    _absolute, _match, relative = raw_file.partition(/(\/|^)#{repo.name}\//)
+    _absolute, _match, relative = raw_file.partition(/(\/|^)#{repo.name}\//i)
     return relative
   end
 

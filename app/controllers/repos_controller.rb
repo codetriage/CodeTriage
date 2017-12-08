@@ -7,22 +7,25 @@ class ReposController < RepoBasedController
   def new
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
     @repo_sub = RepoSubscription.new
-    if user_signed_in?
-      @own_repos     = cached_repos 'repos', current_user.own_repos_json
-      @starred_repos = cached_repos 'starred', current_user.starred_repos_json
-      @watched_repos = cached_repos 'subscriptions', current_user.subscribed_repos_json
-    end
   end
 
   def show
     clean_pagination_params
+    record_count = 10
+    @repo   = find_repo(params)
+    @issues = @repo.open_issues.select(:id, :title, :html_url).limit(record_count)
+    @issues = paginate(@issues, after:  params[:issues_after],
+                                before: params[:issues_before])
 
-    @repo        = find_repo(params)
-    @issues      = @repo.open_issues.order("created_at DESC").page(params[:page]).per_page(params[:per_page] || 20)
-    @docs        = @repo.doc_methods.order("created_at DESC").page(params[:page]).per_page(params[:per_page] || 20)
+    @docs   = @repo.doc_methods.select(:id, :doc_comments_count, :path).limit(record_count)
+    @docs   = paginate(@docs, after:  params[:docs_after],
+                              before: params[:docs_before])
 
     @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
-    @subscribers = @repo.subscribers.public_profile.limit(27)
+    @subscribers = @repo.subscribers.public_profile.select(:avatar_url, :github).limit(27)
+
+    @docs_pagination   = params[:docs_after]   || params[:docs_before]
+    @issues_pagination = params[:issues_after] || params[:issues_before]
   end
 
   def create
@@ -54,7 +57,37 @@ class ReposController < RepoBasedController
     end
   end
 
+  def list
+    @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
+    if user_signed_in?
+      case params[:show]
+      when 'own'
+        @repos = cached_repos 'repos', current_user.own_repos_json
+      when 'starred'
+        @repos = cached_repos 'starred', current_user.starred_repos_json
+      when 'watched'
+        @repos = cached_repos 'subscriptions', current_user.subscribed_repos_json
+      end
+    end
+    render layout: nil
+  end
+
   private
+
+  def paginate(element, after: nil, before: nil)
+    if after
+      element = element.where("id < ?", after)
+      element = element.order("id DESC")
+    elsif before
+      element = element.where("id > ?", before)
+      element = element.order("id ASC")
+      element = element.reverse
+    else
+      element = element.order("id DESC")
+    end
+
+    element
+  end
 
   def default_format
     request.format = "html"
@@ -69,7 +102,7 @@ class ReposController < RepoBasedController
       :stars_count,
       :language,
       :description,
-      :full_name
+      :full_name,
     )
   end
 
