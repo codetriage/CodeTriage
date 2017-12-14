@@ -20,6 +20,12 @@
   &:hover {
     color: $codetriage-red;
 
+    transform: translateY(-4px);
+    transition: all 0.25s ease-out;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+        transform: scale(1.1);
+
     .credits-logo {
       fill: $codetriage-red;
     }
