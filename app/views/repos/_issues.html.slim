@@ -8,7 +8,7 @@
   ul.slats-list
     - @issues.each do |issue|
       li.slats-item
-        = warning_svg
+        span.half-opacity.warning-svg.issue-icon
         = link_to issue.title, issue.html_url
   .pagination
     a.previous_page href=repo_path(full_name: @repo.full_name, issues_before: @issues.first.id)+"#help-out"

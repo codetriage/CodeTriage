@@ -69,3 +69,14 @@
     padding: 0;
   }
 }
+
+.warning-svg {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: asset-data-url("warning.svg");
+}
+
+.half-opacity {
+  opacity: 0.5;
+}

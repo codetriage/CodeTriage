@@ -12,7 +12,10 @@
   ul.slats-list
     - @docs.each do |doc|
       li.slats-item
-        = doc.missing_docs? ? warning_svg : "<span class='issue-icon'>🚀</span>".html_safe
+        - if doc.missing_docs?
+          span.half-opacity.warning-svg.issue-icon
+        - else
+          = "<span class='issue-icon'>🚀</span>".html_safe
         = link_to doc.path, doc
   .pagination
     a.previous_page href=repo_path(full_name: @repo.full_name, docs_before: @docs.first.id)+"#help-out"
