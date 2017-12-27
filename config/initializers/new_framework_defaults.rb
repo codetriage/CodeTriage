@@ -17,6 +17,3 @@ ActiveSupport.to_time_preserves_timezone = true
 
 # Require `belongs_to` associations by default. Next major version defaults to true.
 Rails.application.config.active_record.belongs_to_required_by_default = false
-
-# Do not halt callback chains when a callback returns false. Next major version defaults to false.
-ActiveSupport.halt_callback_chains_on_return_false = true
