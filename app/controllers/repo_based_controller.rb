@@ -6,6 +6,6 @@ class RepoBasedController < ApplicationController
     end
 
     def find_repo(options)
-      Repo.find_by_full_name(options[:full_name])
+      Repo.find_by_full_name(options[:full_name].downcase)
     end
 end
