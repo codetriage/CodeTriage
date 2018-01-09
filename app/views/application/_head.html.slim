@@ -15,7 +15,7 @@ head
   <script src="//use.typekit.net/vyg4pus.js"></script>
   <script>try{Typekit.load({ async: true  });}catch(e){}</script>
 
-  = render_meta_tags
+  meta name="description" content="#{ @meta_description || 'The easiest way to get started contributing to open source projects.' }"
 
   = javascript_include_tag "application", async: true
 
