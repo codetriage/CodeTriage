@@ -320,6 +320,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    skylight (1.5.0)
+      activesupport (>= 3.0.0)
     slim (3.0.8)
       temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
@@ -434,6 +436,7 @@ DEPENDENCIES
   sidekiq
   simplecov
   sinatra
+  skylight
   slim-rails
   spring
   sprockets!
