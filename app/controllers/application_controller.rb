@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_title(val)
+    @meta_title = val
+  end
+
   def authenticate_user!
     redirect_to user_github_omniauth_authorize_path(origin: request.fullpath) unless user_signed_in?
   end

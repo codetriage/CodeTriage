@@ -12,6 +12,8 @@ class ReposController < RepoBasedController
   def show
     record_count = 10
     @repo   = find_repo(params)
+    set_title("Help Contribute to #{@repo.full_name} - #{@repo.language}")
+
     @issues = @repo.open_issues.select(:id, :title, :html_url).limit(record_count)
     @issues = paginate(@issues, after:  params[:issues_after],
                                 before: params[:issues_before])

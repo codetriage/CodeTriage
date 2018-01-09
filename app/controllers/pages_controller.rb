@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
   def index
+    set_title("Get Help Contributing to Open Source Projects")
+
     @repos = Repo.with_some_issues
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))

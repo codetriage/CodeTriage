@@ -7,6 +7,8 @@ class DocMethodsController < ApplicationController
     @comment = @doc.doc_comments.select(:comment).first
     @repo    = @doc.repo
 
+    set_title("Help Writing docs #{@doc.path} - #{@repo.full_name}")
+
     # http://stackoverflow.com/questions/3651860/which-characters-are-illegal-within-a-branch-name
     @username = current_user.present? ? current_user.github : "<your name>"
 
