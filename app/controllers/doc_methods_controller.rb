@@ -11,7 +11,7 @@ class DocMethodsController < ApplicationController
     @username = current_user.present? ? current_user.github : "<your name>"
     @branch   = "#{@username}/update-docs-#{@doc.path}-for-pr".gsub(/:|~|\^|\\|\.\./, "_")
 
-    set_title("Help Writing docs #{@doc.path} - #{@repo.full_name} #{@repo.lang}")
+    set_title("Help Writing docs #{@doc.path} - #{@repo.full_name} #{@repo.language}")
     set_description("#{@doc.missing_docs? ? 'Write' : 'Read'} docs for #{@repo.name} starting with #{@doc.path}.")
   end
 
