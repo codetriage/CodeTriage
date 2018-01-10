@@ -25,6 +25,9 @@ class ReposController < RepoBasedController
 
     @docs_pagination   = params[:docs_after]   || params[:docs_before]
     @issues_pagination = params[:issues_after] || params[:issues_before]
+
+    set_title("Help Contribute to #{@repo.full_name} - #{@repo.language}")
+    set_description("Discover the easiest way to get started contributing to #{@repo.name} with our free community tools. #{@repo.subscribers_count} developers and counting")
   end
 
   def create

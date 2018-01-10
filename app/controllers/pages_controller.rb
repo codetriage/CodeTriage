@@ -2,6 +2,9 @@ class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
   def index
+    set_title("Get Help Contributing to Open Source Projects")
+    set_description("Discover the easiest way to get started contributing to open source. Over #{number_with_delimiter(cached_user_count, delimiter: ',')} devs are helping #{number_with_delimiter(cached_repo_count, delimiter: ',')} projects with our free, community developed tools")
+
     @repos = Repo.with_some_issues
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
@@ -20,6 +23,14 @@ class PagesController < ApplicationController
         render json: { html: htmlForPage }.to_json
       end
     end
+  end
+
+  private def cached_repo_count
+    @@cached_repo_count ||= Repo.count
+  end
+
+  private def cached_user_count
+    @cached_user_count ||= User.count
   end
 
   def letsencrypt
