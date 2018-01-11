@@ -27,6 +27,8 @@ CodeTriage::Application.routes.draw do
 
   root to: "pages#index"
 
+  get 'what' => "pages#what"
+
   namespace :users do
     resources :after_signup
   end
