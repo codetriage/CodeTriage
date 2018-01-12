@@ -1,0 +1,92 @@
+<div class="subpage-content-wrapper low what-page">
+  <header class="subpage-content-header">
+    <h1 class="subpage-primary-title">What is CodeTriage?</h1>
+    <p class="repo-description">Free community tools for contributing to Open Source projects</p>
+  </header>
+  <p>
+    You want to contribute to Open Source, great! But how do you get started? CodeTriage helps by picking a handful of open issues and delivering them directly to your inbox. After you sign up for CodeTriage, you pick the repos you want to help with, and we periodically send you issues. If you get busy we have an algorithm that helps to back off the issue load so that you don't get overwhelmed.
+  </p>
+  <p>
+    Contributing to Open Source takes new skills and requires building a habit of involvement. Developing new habits can be a scary or difficult task. For example, another simple habit that some people find hard, is flossing their teeth. Flossing every tooth, every day, is a daunting goal to many people. One way to make the task easier is to break it down into smaller goals. For example to floss only one tooth each day. Of course this is a silly goal, it’s almost too simple. You might also be thinking by the time you have floss in your hands and around a tooth, it's trivial to floss all of them. That’s the point. Once we’ve made a small change successfully, a bigger change becomes much easier. This theory of small, approachable goals is what CodeTriage uses to make Open Source contribution accessible.
+  </p>
+  <blockquote>
+    <p>
+      <%= cache(:what_help_numbers, expires_in: 1.hour) do %>
+        We've helped <%= number_with_delimiter(User.count, delimiter: ',') %> developers contribute to <%= number_with_delimiter(Repo.count, delimiter: ',') %> Open Source projects
+      <% end %>
+    </p>
+  </blockquote>
+  <br />
+  <center>
+    <%= link_to "Discover a new way to contribute", user_github_omniauth_authorize_path, class: 'button' %>
+  </center>
+  <br />
+  <p>
+  We believe Open Source should be sustainable and maintainable. We also believe you can help.
+  </p>
+  <p>
+    What do you do with the issues in your inbox when you get them? To understand this, it helps to understand the origins of the CodeTriage app.
+  </p>
+  <blockquote>
+    <p>
+    Not only does CodeTriage help with Open Source, it <a href="http://github.com/codetriage/codetriage">is Open Source itself</a>, and of course you can <a href="http://github.com/codetriage/codetriage">subscribe to CodeTriage on CodeTriage</a>.
+    </p>
+  </blockquote>
+  <p>
+    <h2>## History</h2>
+  </p>
+  <p>
+    The creator of CodeTriage, <a href="https://www.schneems.com/">Richard Schneeman</a>, was surprised to learn one day that the Ruby on Rails core team (of about 7 or so people) were responsible for handling ALL the issues opened on the Rails GitHub repo. At the time, there were about 700 or so issues. These maintainers are hugely valuable to the project due to their depth of knowledge, however keeping up with issues was taking a huge amount of time. Would you rather these highly specialized maintainers spend their time developing new features and actually fix bugs, or would you want them to spend their days responding to hundreds of issues? Asking for simple questions like "what version of Rails are you using?", and "can you provide an example app?", and "is this fixed on master?”.
+  </p>
+  <p>
+    While asking these questions might only take 5 or 10 minutes of time, the sheer volume of issues per maintainer was unreasonable. This was highlighted by the herculean efforts of another developer <a href="https://twitter.com/steveklabnik">Steve Klabnik</a>, who went through every single issue and responded to all of them in a marathon session spanning multiple days. The effort got him accolades and commit access to the Rails repo. While he deserves the praise, the efforts were ultimately unsustainable.
+  </p>
+  <p>
+    Instead of one developer responding to hundreds of issues, it makes more sense to democratize the process and spread the load around. What if we could have hundreds of developers each only reviewing a handfull of issues. That's why CodeTriage was created.
+  </p>
+  <br />
+  <center>
+    <%= link_to "Get started now", user_github_omniauth_authorize_path, class: 'button' %>
+  </center>
+  <br />
+  <p>
+    How well has the system worked? Could responding to an issue or two at a time really help that much?
+  </p>
+  <p>
+    <h2>## Results</h2>
+  </p>
+  <p>
+    Richard first built a minimum viable system for only the Rails repository and started using it to respond to one issue at a time. Very quickly the core team recognized his efforts and gave him commit access to be a part of their newly formed "issue team". With this early success, the platform was opened up to the general public, and others reported similar success. With continued engagement, others reported deeper involvement with projects, some even getting commit access. While it might seem like commenting "can you give us an example app please" couldn't be that impactful, it's been shown time and time again to be very valuable to maintainers as well as individual contributors.
+  </p>
+  <p>
+    The name of "<a href="https://en.wikipedia.org/wiki/Triage">Triage</a>" comes from the French word "trier", meaning to separate. In a hospital before you're seen by a doctor, you will first be visited by a triage nurse. This person makes sure that a patient is seen by the appropriate department or specialist. This lets the specialist focus on what they are good at and means people get the care they need quickly. The person in charge of triage does not need to know how to treat or solve every problem, but rather they need to know just enough to ensure they are seen by someone who does.
+  </p>
+  <p>
+    In the same way, CodeTriage invites you to take on this task of triaging open source issues. The service will give you a few ideas of common ways to help move issues forwards. You can also read <a href="https://opensource.com/life/16/8/how-get-bugs-fixed-open-source-software">How to fix a bug in open source software</a>. You don’t need to know how to solve the issues, you just need to move them forwards. As you find yourself interacting with issues over time, your comfort with the code will grow and you can transition to fixing bugs, and contributing features if you want. Everyone needs somewhere to start, and starting with issues is a great introduction to an Open Source project.
+  </p>
+  <br />
+  <center>
+    <%= link_to "Explore Open Source with CodeTriage", user_github_omniauth_authorize_path, class: 'button' %>
+  </center>
+  <br />
+    <p>
+      <h2>## Future</h2>
+    </p>
+  <p>
+    If you ask most people the biggest needs of Open Source, you'll likely hear "issues" or "bugs". You'll also likely hear a resounding chorus of "we need more docs". That's why we added an experimental feature that helps people find areas where they can write documentation.
+  </p>
+  <p>
+    The documentation feature is enabled on Ruby language repositories on CodeTriage (support for other languages is being rolled out). A developer can currently choose to receive a number of documented methods to "read" and review, as well as undocumented methods that might need docs.
+  </p>
+  <p>
+    CodeTriage is all about helping people get started and get more involved in Open Source. The service is a volunteer (and Open Source) effort. A huge thank you to <a href="https://github.com/codetriage/codetriage/graphs/contributors">all our contributors!</a>. If you have ideas for tools that can help people make impactful contributions to open source please let us know with an <a href="https://github.com/codetriage/codetriage/issues">issue</a>.
+  </p>
+  <p>
+    If you're not a <%= link_to "CodeTriage member already", user_github_omniauth_authorize_path %>, what are you waiting for? <%= link_to "Discover how to make your Open Source journey approachable and sustainable", user_github_omniauth_authorize_path %>. Get started!
+  </p>
+  <br />
+  <center>
+    <%= link_to "Start Contributing Today", user_github_omniauth_authorize_path, class: 'button' %>
+  </center>
+  <br />
+</div>
