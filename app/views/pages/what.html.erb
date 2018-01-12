@@ -11,7 +11,9 @@
   </p>
   <blockquote>
     <p>
-      We've helped <%= number_with_delimiter(User.count, delimiter: ',') %> developers contribute to <%= number_with_delimiter(Repo.count, delimiter: ',') %> Open Source projects
+      <%= cache(:what_help_numbers, expires_in: 1.hour) do %>
+        We've helped <%= number_with_delimiter(User.count, delimiter: ',') %> developers contribute to <%= number_with_delimiter(Repo.count, delimiter: ',') %> Open Source projects
+      <% end %>
     </p>
   </blockquote>
   <br />
