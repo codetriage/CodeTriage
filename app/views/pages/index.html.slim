@@ -1,6 +1,6 @@
 .hero
   h1.hero-title-primary Help out your favorite open source projects and become a better developer while doing it.
-  = cache(:hero_title, expires_in: 1.hour) do
+  = cache(:hero_title_secondary, expires_in: 1.hour) do
     h2.hero-title-secondary Pick your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{number_with_delimiter(Repo.count, delimiter: ',')} open source repos using CodeTriage.
     h2.hero-title-secondary =link_to "What is CodeTriage?", what_path
 

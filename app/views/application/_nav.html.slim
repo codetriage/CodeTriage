@@ -11,7 +11,9 @@ nav.application-navigation
       li.application-navigation-list-item= link_to "Submit Repo", new_repo_path
       li.application-navigation-list-item= link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
+      li.application-navigation-list-item= link_to 'About', what_path
       li.application-navigation-list-item= link_to 'Log in', user_github_omniauth_authorize_path
+      li.application-navigation-list-item= link_to 'Sign Up', user_github_omniauth_authorize_path
 
 h1.application-logo
   = link_to root_path
