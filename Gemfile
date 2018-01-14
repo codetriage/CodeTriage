@@ -42,7 +42,7 @@ gem 'wicked'
 gem 'will_paginate', '3.1.0'
 # gem 'sass-rails', '6.0.0.beta1'
 gem 'sassc'
-gem 'sassc-rails', github: "schneems/sassc-rails", branch: "schneems/sprockets4"
+gem 'sassc-rails'
 
 gem 'autoprefixer-rails', '~> 6.3.3'
 gem 'bourbon'
