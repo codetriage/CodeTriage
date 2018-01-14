@@ -18,12 +18,19 @@ class BadgesController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
 
+    # Show pages use a count param to bust cache
+    if params[:count]
+      expire_time = 24.hours
+    else
+      expire_time = 1.hours
+    end
+
     # Set Cache-Control header
-    expires_in 1.hour, public: true
+    expires_in expire_time, public: true
 
     # Firefox requires an `Expires` header
     # https://stackoverflow.com/questions/10518493/why-does-firefox-not-appear-to-be-caching-images
-    request.headers["Expires"] = 1.hour.from_now
+    request.headers["Expires"] = expire_time.from_now
 
     # When an ETag header is sent, the Cache-Control header is not respected
     # https://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age
