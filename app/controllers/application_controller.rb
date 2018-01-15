@@ -18,8 +18,9 @@ class ApplicationController < ActionController::Base
     @meta_description = val
   end
 
-  ##
-  # Defines the value of #meta_title
+  #
+  # Defines the HTML title for the entire site.  If the title is
+  # unset or nil, the value "CodeTriage" will be used.
   #
   # val - The string value to be set (may be nil).
   def set_title(val)
