@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     @meta_description = val
   end
 
+  ##
+  # Defines the value of #meta_title
+  #
+  # val - The string value to be set (may be nil).
   def set_title(val)
     @meta_title = val
   end
