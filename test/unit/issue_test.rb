@@ -116,4 +116,19 @@ class IssueTest < ActiveSupport::TestCase
 
     assert_equal open_issues, repo.open_issues.order(:created_at)
   end
+
+  test "create labels_from_github" do
+    label_hash = {
+                    "id" => 66,
+                    "url" => "https://api.github.com/repos/test/this_is_a_tes/labels/accepted",
+                    "name" => "accepted",
+                    "color" => "FCB400",
+                    "default" => false
+                }
+    repo  = repos("rails_rails")
+    issue = repo.issues.create(state: "open", number: 7)
+    issue.label_from_github(label_hash)
+
+    assert_equal issue.labels.count, 1
+  end
 end
