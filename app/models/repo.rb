@@ -20,6 +20,11 @@ class Repo < ActiveRecord::Base
 
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
 
+  scope :with_label_name_like, lambda { |name|
+    sanitized_name = ActiveRecord::Base.send(:sanitize_sql, name.downcase)
+    joins(:labels).where("lower(labels.name) LIKE ?", "#{sanitized_name}")
+  }
+
   def class_for_doc_language
     language && CLASS_FOR_DOC_LANGUAGE[language.downcase]
   end

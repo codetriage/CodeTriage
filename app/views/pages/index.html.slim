@@ -33,6 +33,17 @@ hr.section-break
           - unless lang.nil?
             li = link_to lang, "#", data: { toggle: "tab", language: lang }
 
+  .labels-filter-wrapper
+    label.labels-filter-label Filter list<span> by Label</span>:
+    = render "down"
+    a.labels-filter-button
+      = params["label"] || "Select Label"
+
+    ul.labels-filter
+      - Label.select("DISTINCT name").map(&:name).compact.sort.each do |labl|
+        - unless labl.nil?
+          li = link_to labl, "#", data: { toggle: "tab", label: labl }
+
   section.repo-list-with-pagination
     = render "repos_with_pagination", repos: @repos
 

@@ -12,6 +12,7 @@ $(document).ready(function(){
     $(".types-filter-button").html(language);
     updateQueryStringParam("language", language);
     removeQueryStringParam("page");
+    removeQueryStringParam("label");
 
     $.ajax({
       url: document.URL,
@@ -21,6 +22,42 @@ $(document).ready(function(){
       },
       beforeSend: function () {
         // go
+        console.log(document.URL)
+      },
+    }).done(function(data) {
+      $('.repo-list-with-pagination').html(data["html"]);
+    }).fail(function(data){
+      console.log(data);
+    });
+
+    return false;
+  });
+})
+
+$(document).ready(function(){
+  $(".labels-filter-button").click(function() {
+    $(".labels-filter").toggle();
+  });
+
+  $(".labels-filter > li a").click(function(e){
+    e.preventDefault();
+
+    $(".labels-filter").hide();
+    var label = this.getAttribute("data-label");
+    $(".labels-filter-button").html(label);
+    updateQueryStringParam("label", label);
+    removeQueryStringParam("page");
+    removeQueryStringParam("language");
+
+  $.ajax({
+      url: document.URL,
+      headers: {
+        Accept :        "application/json; charset=utf-8",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      beforeSend: function () {
+        // go
+        console.log(document.URL)
       },
     }).done(function(data) {
       $('.repo-list-with-pagination').html(data["html"]);
