@@ -11,6 +11,7 @@ class Repo < ActiveRecord::Base
   has_many :subscribers, through: :repo_subscriptions, source: :user
   has_many :doc_classes, dependent: :destroy
   has_many :doc_methods, dependent: :destroy
+  has_many :labels, dependent: :destroy
   delegate :open_issues, to: :issues
 
   before_validation :downcase_name, :strip_whitespaces

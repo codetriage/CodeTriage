@@ -4,6 +4,8 @@ class Issue < ActiveRecord::Base
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
   belongs_to :repo
+  has_many :issue_labels
+  has_many :labels, through: :issue_labels
 
   def valid_for_user?(user, skip_update = Rails.env.test?)
     unless skip_update
@@ -74,6 +76,7 @@ class Issue < ActiveRecord::Base
 
   def update_from_github_hash!(issue_hash)
     last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
+    labels = issue_hash['labels'].map { |l| label_from_github(l) }
 
     self.update_attributes(title:           issue_hash['title'],
                            url:             issue_hash['url'],
@@ -81,6 +84,11 @@ class Issue < ActiveRecord::Base
                            state:           issue_hash['state'],
                            html_url:        issue_hash['html_url'],
                            pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
+  end
+
+
+  def label_from_github(label_hash)
+    labels.create(name: label_hash.fetch("name"), repo_id: repo_id)
   end
 
   def self.queue_mark_old_as_closed!
