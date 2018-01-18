@@ -33,6 +33,10 @@ end
     )
     repo.save(validate: false)
 
+    rand(10).times do |i|
+      repo.labels.create(name: Faker::Hipster.word.gsub(/\W/, ''))
+    end
+
     repo.subscribers << user
 
     rand(10).times do |i|
@@ -44,6 +48,10 @@ end
         html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
       )
       issue.save
+
+      repo.labels.sample(5).map do |label|
+        issue.labels << label
+      end
     end
   rescue # unique constraints, etc who cares
     next
