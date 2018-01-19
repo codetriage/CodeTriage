@@ -12,7 +12,6 @@ $(document).ready(function(){
     $(".types-filter-button").html(language);
     updateQueryStringParam("language", language);
     removeQueryStringParam("page");
-    removeQueryStringParam("label");
 
     $.ajax({
       url: document.URL,
@@ -22,7 +21,6 @@ $(document).ready(function(){
       },
       beforeSend: function () {
         // go
-        console.log(document.URL)
       },
     }).done(function(data) {
       $('.repo-list-with-pagination').html(data["html"]);
@@ -47,8 +45,6 @@ $(document).ready(function(){
     $(".labels-filter-button").html(label);
     updateQueryStringParam("label", label);
     removeQueryStringParam("page");
-    removeQueryStringParam("language");
-
   $.ajax({
       url: document.URL,
       headers: {
@@ -57,7 +53,6 @@ $(document).ready(function(){
       },
       beforeSend: function () {
         // go
-        console.log(document.URL)
       },
     }).done(function(data) {
       $('.repo-list-with-pagination').html(data["html"]);
