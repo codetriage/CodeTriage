@@ -128,10 +128,9 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test ".with_label_name_like" do
-  	repo = repos(:rails_rails)
-  	label1 = repo.labels.create(name: "bug")
-  	label2 = repo.labels.create(name: "Bug")
+  	 repo = repos(:rails_rails)
+  	 repo.labels.create(name: "Bug")
 
-  	assert_includes Repo.with_label_name_like("bug"), repo
+  	 assert_includes Repo.with_label_name_like("bug"), repo
   end
 end

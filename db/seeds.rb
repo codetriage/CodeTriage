@@ -33,9 +33,7 @@ end
     )
     repo.save(validate: false)
 
-    rand(10).times do |i|
-      repo.labels.create(name: Faker::Hipster.word.gsub(/\W/, ''))
-    end
+    rand(10).times { repo.labels.create(name: Faker::Hipster.word.gsub(/\W/, '')) }
 
     repo.subscribers << user
 

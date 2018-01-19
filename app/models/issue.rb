@@ -76,7 +76,7 @@ class Issue < ActiveRecord::Base
 
   def update_from_github_hash!(issue_hash)
     last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
-    labels = issue_hash['labels'].map { |l| label_from_github(l) }
+    issue_hash['labels'].map { |l| label_from_github(l) }
 
     self.update_attributes(title:           issue_hash['title'],
                            url:             issue_hash['url'],
@@ -85,7 +85,6 @@ class Issue < ActiveRecord::Base
                            html_url:        issue_hash['html_url'],
                            pr_attached:     pr_attached_with_issue?(issue_hash['pull_request']))
   end
-
 
   def label_from_github(label_hash)
     labels.create(name: label_hash.fetch("name"), repo_id: repo_id)
