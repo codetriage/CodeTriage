@@ -7,7 +7,6 @@ class CreateLabels < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :labels, %w[name], unique: true, using: :btree
     add_index :labels, %w[name repo_id], unique: true, using: :btree
   end
 end

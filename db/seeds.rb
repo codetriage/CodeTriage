@@ -11,6 +11,8 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
+default_labels = %w(bug accepted help_wanted in_progress duplicate in_review question)
+
 100.times do
   printf "."
   begin
@@ -33,7 +35,7 @@ end
     )
     repo.save(validate: false)
 
-    rand(10).times { repo.labels.create(name: Faker::Hipster.word.gsub(/\W/, '')) }
+    default_labels.sample(rand(5)).map { |label| repo.labels.create(name: label) }
 
     repo.subscribers << user
 
@@ -47,7 +49,7 @@ end
       )
       issue.save
 
-      repo.labels.sample(5).map do |label|
+      repo.labels.sample(3).map do |label|
         issue.labels << label
       end
     end
