@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125212307) do
+ActiveRecord::Schema.define(version: 20180118115838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,12 @@ ActiveRecord::Schema.define(version: 20171125212307) do
     t.index ["repo_subscription_id"], name: "index_issue_assignments_on_repo_subscription_id"
   end
 
+  create_table "issue_labels", force: :cascade do |t|
+    t.integer "issue_id"
+    t.integer "label_id"
+    t.index ["issue_id", "label_id"], name: "index_issue_labels_on_issue_id_and_label_id"
+  end
+
   create_table "issues", id: :serial, force: :cascade do |t|
     t.integer "comment_count"
     t.string "url", limit: 255
@@ -103,6 +109,14 @@ ActiveRecord::Schema.define(version: 20171125212307) do
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
     t.index ["state"], name: "index_issues_on_state"
+  end
+
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "repo_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "repo_id"], name: "index_labels_on_name_and_repo_id", unique: true
   end
 
   create_table "opro_auth_grants", id: :serial, force: :cascade do |t|
