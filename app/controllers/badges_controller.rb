@@ -1,5 +1,4 @@
 class BadgesController < ApplicationController
-
   def show
     repo = Repo.where(full_name: permitted[:full_name])
                .select(:subscribers_count, :issues_count, :updated_at)
