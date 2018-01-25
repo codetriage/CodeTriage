@@ -1,7 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
-  ##
   # Renders the about page view
   def what
     render "what"
