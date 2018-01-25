@@ -1,8 +1,4 @@
 class BadgesController < ApplicationController
-  SHIELD_PDF = Prawn::Document.new
-  SHIELD_PDF.font("Helvetica-Bold")
-  SHIELD_PDF.font_size = 10.858
-  private_constant :SHIELD_PDF
 
   def show
     repo = Repo.where(full_name: permitted[:full_name])
@@ -13,7 +9,7 @@ class BadgesController < ApplicationController
     case permitted[:badge_type]
     when "users"
       count = repo.subscribers_count
-      svg = make_shield(name: "code helpers", count: count, color_b: repo.color)
+      svg   = make_shield(name: "code helpers", count: count, color_b: repo.color)
     else
       raise ActionController::RoutingError.new('Not Found')
     end
@@ -42,6 +38,7 @@ class BadgesController < ApplicationController
     # We can instead bypass the Rack::ETag behavior by using the 203 response
     # https://github.com/rack/rack/blob/master/lib/rack/etag.rb#L50
     #
+    # But a 203 makes GitHub's CDN service choke :(
     respond_to do |format|
       format.svg { render plain: svg, status: 200 }
     end
@@ -53,9 +50,16 @@ class BadgesController < ApplicationController
     var
   end
 
+  def width_of(string)
+    pdf = Prawn::Document.new
+    pdf.font("Helvetica-Bold")
+    pdf.font_size = 12.2
+    pdf.width_of(string.to_s)
+  end
+
   def make_shield(name:, count:, color_a: "555", color_b: "4c1", logo_width: 0, logo_padding: 0)
-    name_width  = (SHIELD_PDF.width_of(name.to_s) + 10).to_f
-    count_width = (SHIELD_PDF.width_of(count.to_s) + 10).to_f
+    name_width  = (width_of(name) + 10).to_f
+    count_width = (width_of(count) + 10).to_f
     total_width = name_width + count_width
     svg = <<~EOS
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="#{total_width}" height="20">
