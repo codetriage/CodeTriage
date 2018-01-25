@@ -61,6 +61,7 @@ CodeTriage::Application.routes.draw do
     scope '*full_name' do
       constraints full_name: /[-_a-zA-Z0-9]+\/[-_\.a-zA-Z0-9]+/ do
         get   '/badges/:badge_type(.:format)', to: 'badges#show', as: 'badge'
+        get   'info(.:format)',           to: 'api_info#show'
 
         get   '/',              to: 'repos#show',        as: 'repo'
         patch '/',              to: 'repos#update',      as: nil
