@@ -38,14 +38,6 @@ class PagesController < ApplicationController
     @cached_user_count ||= User.count
   end
 
-  def letsencrypt
-    render text: "DkLDpTLqhJKCl6SL7jJVbFSxWOuFJwry0K3UN2bJmqk.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
-  end
-
-  def letsencryptwww
-    render text: "T2BMOklX7iIflqShN8o14d-mjsySpiy9jDKDD-oPquc.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
-  end
-
   def valid_params
     params.permit(:language, :per_page, :page)
   end
