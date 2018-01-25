@@ -8,7 +8,7 @@ class PagesController < ApplicationController
   end
 
   def index
-    set_title("Get Help Contributing to Open Source Projects")
+    set_title("Get Started Contributing to Open Source Projects")
     set_description("Discover the easiest way to get started contributing to open source. Over #{number_with_delimiter(cached_user_count, delimiter: ',')} devs are helping #{number_with_delimiter(cached_repo_count, delimiter: ',')} projects with our free, community developed tools")
 
     @repos = Repo.with_some_issues
