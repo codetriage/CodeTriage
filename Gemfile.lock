@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/getsentry/raven-ruby.git
+  revision: 6d7b01bf01fdb10b69fabab637d018a770b09885
+  specs:
+    sentry-raven (2.7.1)
+      faraday (>= 0.7.6, < 1.0)
+
+GIT
   remote: https://github.com/heroku/barnes
   revision: e26e9fcb2b70b904c82fb16729afdf5b1f952270
   specs:
@@ -302,8 +309,6 @@ GEM
       sprockets-rails
       tilt
     scout_apm (2.3.1)
-    sentry-raven (2.7.1)
-      faraday (>= 0.7.6, < 1.0)
     sidekiq (4.0.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -430,7 +435,7 @@ DEPENDENCIES
   sassc
   sassc-rails
   scout_apm (~> 2.3.x)
-  sentry-raven
+  sentry-raven!
   sidekiq
   simplecov
   sinatra
