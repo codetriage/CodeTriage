@@ -3,8 +3,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
     h1.subpage-primary-title #{ @repo.subscribers_count } #{ @repo.name } Subscribers
     .subpage-header-actions
       = link_to @repo, class: "header-primary-action"
-        | Back to
-        = @repo.name
+        | Back to #{@repo.name}
 
   ul.avatars-list = render 'avatars', subscribers: @subscribers, show_names: true
   = will_paginate @subscribers
