@@ -1,7 +1,24 @@
-.alert.alert-error
-  | Are you sure you want to delete your account and stop receiving triage emails at
-  strong= @user.email
-  | ?
-= form_for @user, url: token_delete_user_path(@user.account_delete_token), method: :delete, html_options: { class: "form form-horizontal" } do |f|
-  = f.submit "Yes, Delete My Account", class: "btn btn-danger"
-  = link_to "No, Cancel", root_url, class: "btn"
+section.subpage-content-wrapper.high
+  header.subpage-content-header
+    h1.subpage-primary-title Delete Account?
+    p.subpage-secondary-title This cannot be undone.
+
+  .repo-body
+    - if @lonely_repos.present?
+      section.help-triage.content-section
+        | If you delete your account these CodeTriage repos will have no subscribers and will be removed as well.
+        ul.bullets
+          - @lonely_repos.each do |repo|
+            li= link_to repo.full_name, repo_path(repo)
+
+    section.help-triage.content-section
+      | If you have feedback for the project, please
+      = link_to " open up an issue on GitHub", "https://github.com/codetriage/codetriage/issues"
+      | .
+
+    section.help-triage.content-section
+      = form_for @user, url: token_delete_user_path(@user.account_delete_token), method: :delete, html_options: { class: "form form-horizontal danger" } do |f|
+        = link_to "Cancel", root_url, class: "button"
+        | &nbsp;
+        | &nbsp;
+        = f.submit "💀 Delete My Account", class: "btn btn-danger", data: { confirm: 'This cannot be undone, are you sure?' }
