@@ -21,4 +21,4 @@ section.subpage-content-wrapper.high
         = link_to "Cancel", root_url, class: "button"
         | &nbsp;
         | &nbsp;
-        = f.submit "💀 Delete My Account", class: "btn btn-danger", data: { confirm: 'This cannot be undone, are you sure?' }
+        = f.submit "💀 Delete My Account", class: "btn btn-danger", id: "destroy_user", data: { confirm: 'This cannot be undone, are you sure?' }
