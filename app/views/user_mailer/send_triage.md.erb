@@ -1,0 +1,74 @@
+Hello <%= @user.github %>,
+
+<% if @create %>
+## Repo added to CodeTriage!
+
+Thank you for adding <%= @repo.full_name %> to CodeTriage. If you want to get more people helping out with this repo, we suggest adding a badge to the repo's readme
+
+<%= "[![Code Triagers Badge](#{File.join(repo_url(@repo), "badges/users.svg")})](#{repo_url(@repo)})" %>
+
+Here is the markdown:
+
+```
+<%= "[![Code Triagers Badge](#{File.join(repo_url(@repo), "badges/users.svg")})](#{repo_url(@repo)})" %>
+```
+
+If you have a "contributing section" or docs on helping, it helps to put a sentence or two encouraging people to subscribe to your repo:
+
+```
+If you're interested in getting involved with <%= @repo.name %>, the easiest
+way to start <%= "[contributing to this open source project is with CodeTriage](#{repo_url(@repo)})" %>. You'll get
+sent issues and bug reports to your inbox where you can "triage" them at your
+own pace. Eventually you'll be able to move to contributing docs and pull
+requests. For more info read <%= "[What is CodeTriage?](#{what_url})" %>
+```
+
+The more people you have subscribed to this repo on CodeTriage, the more help it will get.
+
+---
+<% end %>
+
+## You subscribed to <%= @repo.name %> on CodeTriage!
+
+You signed up to help triage GitHub issues on
+<%= "[#{@repo.full_name}](#{@repo.github_url})" %>. That's pretty awesome.
+
+What's next? You'll get issues sent to your inbox periodically like this one:
+
+### <%= "##{@issue.number}" if @issue.number %> <%= "[#{@issue.title}](#{@issue.html_url})" %>
+
+The rate at which we send emails backs off automatically when you get busy. You can also set you prefered email rate in your user settings.
+
+What do you do with an issue when it gets in your inbox? Try to triage it.
+
+## How To Triage?
+
+First, carefully read over the issue, title, and description, if there are any comments read over all the comments, carefully. If a member of this repo is engaging actively there is no need to do anything, leaving a comment in the issue would just add to the clutter.
+
+If the issue hasn't been updated in awhile, or if no one has commented consider the issue, if it is a bug try to reproduce it. If it is a pull request consider what an alternate implementation might look like. If there is something you don't understand about the issue and feel others will have that same question please leave your question in the comments. Be as descriptive as possible. Comments like "I don't understand this" are not helpful and counter productive. A better comment might be "Can you help me understand a use case for this?".
+
+If you can reproduce the issue or you believe it is a good pull request, add a comment and say why you think that is. Try to stay positive while triaging issues, ask questions before you downvote something. If you do decide to 👍 or 👎 on an issue, leave a comment as to why you feel that way. Issues are for social coding, if you help someone make better issues, you're helping the community.
+
+If the issue goes stale, leave a comment asking if it is still a problem. If you get no response for a number of days, you can leave another comment suggesting to the repo owner that they should close the issue.
+
+Read more about [Fixing Open Source Issues via Triage](https://opensource.com/life/16/8/how-get-bugs-fixed-open-source-software).
+
+## Goals of Triage
+
+- Help share the weight of maintaining a project
+- Minimize un-needed issues
+- Prevent stale issues
+- Encourage productive communication
+- Teach good citizenship
+- To become a better coder
+
+Go forth and make the world a better place
+
+Sincerely,
+
+[schneems](https://www.schneems.com)
+
+---
+
+- <%= "[Help triage more repos at CodeTriage.com](#{root_url})" %>
+- <%= "[Remove account](#{token_delete_user_url(@user.account_delete_token)})" %>

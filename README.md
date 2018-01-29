@@ -1,4 +1,4 @@
-## Code Triage
+## CodeTriage
 
 [![Build Status](https://secure.travis-ci.org/codetriage/codetriage.svg?branch=master)](http://travis-ci.org/codetriage/codetriage)
 [![Code Climate](http://img.shields.io/codeclimate/github/codetriage/codetriage.svg)](https://codeclimate.com/github/codetriage/codetriage)
@@ -20,7 +20,7 @@ As a non-maintainer, you can help an open source project by triaging issues. Whe
 You sign up to follow a repository, once a day you'll be emailed with an open issue from that repository, and instructions on how to triage the issue in a helpful way. In the background we use Sidekiq to grab issues from GitHub's API, we then use another background task to assign users who subscribe to a repository one issue each day.
 
 
-## Run Code Triage
+## Run CodeTriage
 
 ### Dependencies
 
@@ -44,7 +44,7 @@ $ bin/rake db:schema:load
 
 ### Install Redis
 
-Code Triage requires Redis for background processing.
+CodeTriage requires Redis for background processing.
 
 **Homebrew**
 
@@ -86,7 +86,7 @@ $ heroku local -f Procfile.development
 12:00:04 AM worker.1 |  INFO: Booting Sidekiq with redis options {:url=>nil}
 ```
 
-Code Triage should now be running at [http://localhost:3000](http://localhost:3000)
+CodeTriage should now be running at [http://localhost:3000](http://localhost:3000)
 
 
 ## Tests

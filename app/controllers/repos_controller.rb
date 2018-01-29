@@ -37,7 +37,7 @@ class ReposController < RepoBasedController
     if @repo.save
       @repo_sub = current_user.repo_subscriptions.create(repo: @repo)
       flash[:notice] = "Added #{@repo.to_param} for triaging"
-      SendSingleTriageEmailJob.perform_later(@repo_sub.id)
+      SendSingleTriageEmailJob.perform_later(@repo_sub.id, create: true)
       redirect_to @repo
     else
       @own_repos = current_user.own_repos_json
