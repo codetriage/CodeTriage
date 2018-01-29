@@ -116,8 +116,8 @@ class ReposController < RepoBasedController
       params[:repo][:name]      = $2.to_s
     else
       url_array = params[:url].split("/")
-      params[:repo][:name]      = url_array.pop
-      params[:repo][:user_name] = url_array.pop
+      params[:repo][:name]      = url_array.pop || ""
+      params[:repo][:user_name] = url_array.pop || ""
     end
   end
 
