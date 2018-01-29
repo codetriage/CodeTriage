@@ -37,7 +37,7 @@ class ReposController < RepoBasedController
     if @repo.save
       @repo_sub = current_user.repo_subscriptions.create(repo: @repo)
       flash[:notice] = "Added #{@repo.to_param} for triaging"
-      SendSingleTriageEmailJob.perform_later(@repo_sub.id)
+      SendSingleTriageEmailJob.perform_later(@repo_sub.id, create: true)
       redirect_to @repo
     else
       @own_repos = current_user.own_repos_json
@@ -109,11 +109,15 @@ class ReposController < RepoBasedController
   end
 
   def parse_params_for_repo_info
-    if params[:url]
-      params[:url] =~ /^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/
-      params[:repo] ||= {}
+    return unless params[:url]
+    params[:repo] ||= {}
+    if params[:url] =~ /^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/
       params[:repo][:user_name] = $1.to_s
-      params[:repo][:name] = $2.to_s
+      params[:repo][:name]      = $2.to_s
+    else
+      url_array = params[:url].split("/")
+      params[:repo][:name]      = url_array.pop || ""
+      params[:repo][:user_name] = url_array.pop || ""
     end
   end
 

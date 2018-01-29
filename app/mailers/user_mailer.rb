@@ -28,11 +28,12 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: subject)
   end
 
-  def send_triage(user:, assignment:, repo:)
+  def send_triage(user:, assignment:, repo:, create: false)
     return unless set_and_check_user(user)
+    @create = create
     @repo  = repo
     @issue = assignment.issue
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Help Triage #{@repo.full_name} on GitHub")
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "[CodeTriage] Help triage #{@repo.full_name}")
   end
 
   def poke_inactive(user:)
@@ -40,12 +41,12 @@ class UserMailer < ActionMailer::Base
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
     @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage misses you")
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage misses you")
   end
 
   def invalid_token(user:)
     return unless set_and_check_user(user)
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "Code Triage auth failure")
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage auth failure")
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
@@ -65,6 +66,15 @@ class UserMailer < ActionMailer::Base
       user    = User.last
       subject = "Big launch"
       ::UserMailer.spam(user: user, subject: subject)
+    end
+
+    def send_triage_create
+      user  = User.last
+      repo  = Repo.order("random()").first
+      issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first!
+      sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
+      assignment = sub.issue_assignments.first_or_create!(issue_id: issue.id)
+      ::UserMailer.send_triage(user: user, repo: repo, assignment: assignment, create: true)
     end
 
     def send_triage
