@@ -62,7 +62,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '2.6.2'
+  gem 'capybara', '2.17.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'mocha', require: false
@@ -112,3 +112,5 @@ gem 'barnes', git: "https://github.com/heroku/barnes"
 gem 'stackprof'
 gem 'prawn'
 gem 'skylight'
+
+gem 'minitest', '5.10.3'

@@ -9,7 +9,7 @@
       h2.subpage-secondary-title.user-email= @user.email
 
       .subpage-header-actions
-        = link_to 'Delete Account'.html_safe, user_path(@user), method: "delete", confirm: "#{t("web-app-theme.confirm", default: "Are you sure?")}"
+        = link_to 'Delete Account'.html_safe, token_delete_user_url(@user.account_delete_token)
         = link_to 'Edit Account'.html_safe, edit_user_path(@user), class: 'header-primary-action'
 
     section.user-settings.content-section
@@ -39,7 +39,7 @@
             h5.slats-title Email time of day:
           .slats-action
             p= (@user.email_time_of_day && local_time(@user.email_time_of_day, '%H:%M %Z')) || 'not set'
-            
+
         li.slats-item
           .slats-hgroup
             h5.slats-title Max number of issues you want to receive per day:

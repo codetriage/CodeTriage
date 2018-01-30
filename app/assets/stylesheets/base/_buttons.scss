@@ -1,3 +1,11 @@
+input[type="submit"].btn-danger {
+  background-color: $codetriage-red;
+
+  &:hover {
+    background-color: shade($codetriage-red, 20%);
+  }
+}
+
 .button,
 #{$all-buttons} {
   appearance: none;
@@ -41,3 +49,4 @@
     opacity: 0.5;
   }
 }
+
