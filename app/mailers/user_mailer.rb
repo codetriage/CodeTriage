@@ -8,15 +8,38 @@ class UserMailer < ActionMailer::Base
     user = User.find(user_id)
     return unless set_and_check_user(user)
 
-    @assignments =
-      IssueAssignment.includes(:issue, :user, :repo).find(assignment_ids)
+    @sub_hashes = {}
+    subscriptions = RepoSubscription
+      .joins(:issue_assignments)
+      .where("issue_assignments.id" => assignment_ids)
+      .includes(:repo)
+      .select(:id, :repo_id)
 
-    @max_days    = 2
-    subject = ""
-    @days   = @user.days_since_last_clicked
-    subject << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
-    subject << "Help Triage #{@assignments.size} Open Source #{"Issue".pluralize(@assignments.size)}"
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
+    subscriptions.each do |sub|
+      @sub_hashes[sub.id] ||= {}
+      @sub_hashes[sub.id][:repo] = sub.repo
+      @sub_hashes[sub.id][:assignments] ||= []
+      @sub_hashes
+    end
+
+    assignments = IssueAssignment
+     .where(id: assignment_ids)
+     .select(:id, :repo_subscription_id, :issue_id)
+
+    assignments.each do |assignment|
+      @sub_hashes[assignment.repo_subscription_id][:assignments] << assignment
+    end
+
+    @max_days = 2
+    subject   = ""
+    @days     = @user.days_since_last_clicked
+    subject   << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
+    subject   << "Help Triage #{assignment_ids.size} Open Source #{"Issue".pluralize(assignment_ids.size)}"
+    mail(
+      to:       @user.email,
+      reply_to: "noreply@codetriage.com",
+      subject:  subject
+    )
   end
 
   def daily_docs(user:, write_docs:, read_docs:)
@@ -89,13 +112,21 @@ class UserMailer < ActionMailer::Base
     def send_daily_triage
       user        = User.last
       assignments = []
-      rand(1..5).times do
-        repo  = Repo.order("random()").first
-        issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first
-        sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
-        assignments << sub.issue_assignments.first_or_create!(issue_id: issue.id)
+      repo_count = rand(3..5)
+      repos      = Repo.order("random()").where("issues_count > 0").first(repo_count)
+      repos.each do |repo|
+        issue_count = rand(3..5)
+        issue_count.times.each do |i|
+          issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first
+          next if issue.nil?
+
+          sub   = RepoSubscription.first_or_create!(user_id: user.id, repo_id: repo.id)
+          assignment = sub.issue_assignments.where(issue_id: issue.id).first_or_create!
+          assignments << assignment
+        end
       end
-      ::UserMailer.send_daily_triage(user: user.id, assignments: assignments.map(&:id))
+
+      ::UserMailer.send_daily_triage(user_id: user.id, assignment_ids: assignments.map(&:id))
     end
 
     def poke_inactive

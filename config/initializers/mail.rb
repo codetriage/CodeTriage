@@ -7,3 +7,6 @@ ActionMailer::Base.smtp_settings = {
   domain: 'codetriage.com'
 }
 ActionMailer::Base.delivery_method ||= :smtp
+
+
+Maildown.allow_indentation = true

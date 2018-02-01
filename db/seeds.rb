@@ -38,6 +38,7 @@ end
     rand(10).times do |i|
       issue = repo.issues.new(
         number:     i,
+        last_touched_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         updated_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         title:      Faker::Lorem.paragraph(1, true, 2),
         state:      "open",
@@ -45,7 +46,21 @@ end
       )
       issue.save
     end
-  rescue # unique constraints, etc who cares
+
+    # if repo.language == "Ruby"
+    #   rand(10).times do |i|
+    #     issue = repo.doc_methods.new(
+    #       name:       Faker::Hipster.word.gsub(/\W/, ''),
+    #       line:       rand(0..300),
+    #       title:      Faker::Lorem.paragraph(1, true, 2),
+    #       state:      "open",
+    #       html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
+    #     )
+    #     issue.save
+    #   end
+    # end
+  rescue => e # unique constraints, etc who cares
+    puts "Error generating seed: #{e}, skipping to next seed"
     next
   end
 end

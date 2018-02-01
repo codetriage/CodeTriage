@@ -1,24 +1,30 @@
 Hello @<%= @user.github %>,
 
 <% if @days > @max_days %>
-It's been [<%= @days %> days] since you've clicked on a codetriage.com link, let's keep those issue counts down.
+It's been [<%= @days %> days] since you've clicked on a CodeTriage.com link, let's keep those issue counts down.
 <% end %>
 Here are some issues you should check out:
 
-<% @assignments.each do |assignment| %>
-### <%= "##{assignment.issue.number}" if assignment.issue.number %> <%= link_to assignment.issue.title, issue_click_url(assignment.id, assignment.user.id ) %>
+<% @sub_hashes.each do |id, sub_hash| %>
 
-<%= "[#{assignment.repo.full_name}](#{repo_url(assignment.repo)})" %>
-<%= time_ago_in_words assignment.issue.last_touched_at %> ago
+  ## <%= "[#{sub_hash[:repo].full_name}](#{repo_url(sub_hash[:repo])})" %>
 
-- - -
+  <% sub_hash[:assignments].each do |assignment| %>
 
+    ### <%= "##{assignment.issue.number}" if assignment.issue.number %> <%= link_to assignment.issue.title, issue_click_url(assignment.id, assignment.user.id ) %>
+
+    Last touched <%= time_ago_in_words assignment.issue.last_touched_at %> ago
+
+  <% end %>
+  ---
 <% end %>
 
-Go forth and make the world a better place
+Go forth and make the world a better place!
 
-[@schneems](https://www.schneems.com)
+Sincerly,
 
-[Help triage more repos at codetriage.com](<%= root_url%>)
+[Schneems](https://www.schneems.com)
+
+[Help triage more repos at CodeTriage.com](<%= root_url %>)
 
 [Remove Account](<%= token_delete_user_url(@user.account_delete_token) %>)
