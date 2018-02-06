@@ -28,6 +28,8 @@ class DocMethodsController < ApplicationController
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
       redirect_to :root
     end
+  rescue => e
+    handle_development_click(error: e, url: doc_method_url(doc))
   end
 
   def click_source_redirect
@@ -43,5 +45,18 @@ class DocMethodsController < ApplicationController
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
       redirect_to :root
     end
+  rescue => e
+    puts "blaksdjflaksdjflkj"
+    handle_development_click(error: e, url: doc.to_github)
+  end
+
+  private def handle_development_click(error: , url:)
+    puts Rails.env.development?
+    raise error unless Rails.env.development?
+
+    flash[:error] = error.inspect
+    puts error.message
+    puts error.backtrace
+    redirect_to url
   end
 end

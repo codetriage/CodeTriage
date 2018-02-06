@@ -11,6 +11,9 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
+repo = Repo.create!(user_name: "rails", name: "sprockets", language: "Ruby")
+PopulateDocsJob.perform_now(repo)
+
 100.times do
   printf "."
   begin
@@ -46,19 +49,6 @@ end
       )
       issue.save
     end
-
-    # if repo.language == "Ruby"
-    #   rand(10).times do |i|
-    #     issue = repo.doc_methods.new(
-    #       name:       Faker::Hipster.word.gsub(/\W/, ''),
-    #       line:       rand(0..300),
-    #       title:      Faker::Lorem.paragraph(1, true, 2),
-    #       state:      "open",
-    #       html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
-    #     )
-    #     issue.save
-    #   end
-    # end
   rescue => e # unique constraints, etc who cares
     puts "Error generating seed: #{e}, skipping to next seed"
     next
