@@ -1,0 +1,29 @@
+
+.readme.contributing>div{
+    max-height:250px;
+    overflow:auto
+}
+.readme .markdown-body,.readme .plain{
+    padding:45px;
+    word-wrap:break-word;
+    background-color:#fff;
+    border:1px solid #ddd;
+    border-bottom-right-radius:3px;
+    border-bottom-left-radius:3px
+}
+.readme .plain pre{
+    font-size:15px;
+    white-space:pre-wrap
+}
+.file .readme .markdown-body{
+    padding:45px;
+    border:0;
+    border-radius:0
+}
+.file .readme table[data-table-type="yaml-metadata"]{
+    font-size:12px;
+    line-height:1
+}
+.file .readme table[data-table-type="yaml-metadata"] table{
+    margin:0
+}

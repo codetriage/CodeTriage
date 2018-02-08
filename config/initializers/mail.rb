@@ -7,3 +7,5 @@ ActionMailer::Base.smtp_settings = {
   domain: 'codetriage.com'
 }
 ActionMailer::Base.delivery_method ||= :smtp
+
+Maildown.enable_layouts = true

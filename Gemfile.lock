@@ -171,7 +171,7 @@ GEM
       mime-types (>= 1.16, < 4)
     mail_view (1.0.3)
       tilt
-    maildown (2.0.2)
+    maildown (2.0.3)
       actionmailer (>= 4.0.0)
       kramdown
     memory_profiler (0.9.10)
@@ -355,7 +355,7 @@ GEM
     tilt (2.0.8)
     trollop (2.1.2)
     ttfunk (1.5.1)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (2.7.2)
       execjs (>= 0.3.0)
@@ -413,7 +413,7 @@ DEPENDENCIES
   local_time (= 2.0)
   mail
   mail_view (~> 1.0.2)
-  maildown (= 2.0.2)
+  maildown (= 2.0.3)
   mime-types (~> 2.6.1)
   minitest (= 5.10.3)
   mocha

@@ -1,0 +1,24 @@
+@import "github/markdown-body";
+@import "github/readme";
+
+
+.markdown-body pre, .markdown-body code {
+  margin-left: 2.2em;
+}
+
+.markdown-body code {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  display: block;
+  white-space: pre;
+
+
+}
+
+.markdown-body code:first-line {
+    line-height: 0px;
+}
