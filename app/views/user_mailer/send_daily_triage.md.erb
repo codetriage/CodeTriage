@@ -7,33 +7,33 @@ Here are some issues you should check out:
 
 <% @sub_hashes.each do |id, sub_hash| %>
 
+##<%= sub_hash[:repo].full_name %>
 
 <% if sub_hash[:assignments].present? %>
-### Issues (<%= "[#{sub_hash[:repo].full_name}](#{repo_url(sub_hash[:repo])})" %>)
+### Issues
 <% end %>
-<% sub_hash[:assignments].each do |assignment| %>
 
-- **<%= "##{assignment.issue.number}" if assignment.issue.number %>** <%= link_to assignment.issue.title, issue_click_url(assignment.id, assignment.user.id ) %> (<%= time_ago_in_words assignment.issue.last_touched_at %> ago)
+<% sub_hash[:assignments].each do |assignment| %>
+**<%= link_to("#{sub_hash[:repo].full_name}##{assignment.issue.number}", issue_click_url(assignment.id, assignment.user.id )) if assignment.issue.number %>** <%= assignment.issue.title %> (<%= time_ago_in_words assignment.issue.last_touched_at %> ago)
 
 <% end %>
 
 <% if sub_hash[:read_docs].present? || sub_hash[:write_docs].present? %>
-### Docs (<%= "[#{sub_hash[:repo].full_name}](#{repo_url(sub_hash[:repo])})" %>)
+### Docs
 <% end %>
-<% sub_hash[:read_docs].each do |doc| %>
-- [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
 
-```
-<%= doc.doc_comments.first.try(:comment) %>
-```
+<% sub_hash[:read_docs].each do |doc| %>
+⇢ [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
+
+<%= doc.doc_comments.first.try(:md_safe_comment_block) %>
 
 <% end %>
 <% sub_hash[:write_docs].each do |doc| %>
-- [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
+⇢ [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
 
-```
-⚠ Needs Docs ⚠
-```
+~~~
+<%= DocMethod::NeedsDocs %>
+~~~
 
 <% end %>
 

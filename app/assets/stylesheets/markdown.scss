@@ -2,10 +2,6 @@
 @import "github/readme";
 
 
-.markdown-body pre, .markdown-body code {
-  margin-left: 2.2em;
-}
-
 .markdown-body code {
   padding: 16px;
   overflow: auto;
@@ -15,10 +11,19 @@
   border-radius: 3px;
   display: block;
   white-space: pre;
-
-
 }
 
 .markdown-body code:first-line {
     line-height: 0px;
+}
+
+.footer {
+  margin: 0 auto;
+
+  .logo-wrapper {
+    padding: 3em;
+    margin: 0 auto;
+    width: 200px;
+    height: 56px;
+  }
 }
