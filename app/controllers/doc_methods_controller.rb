@@ -1,8 +1,9 @@
 class DocMethodsController < ApplicationController
   def show
-    @doc     = DocMethod.find(params[:id])
+    @doc     = DocMethod.where(id: params[:id])
                         .select(:id, :repo_id, :path, :line, :file, :doc_comments_count)
                         .includes(:repo)
+                        .first
     @comment = @doc.doc_comments.select(:comment).first
     @repo    = @doc.repo
 
