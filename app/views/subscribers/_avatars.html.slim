@@ -1,3 +1,4 @@
-= content_tag_for(:li, subscribers) do |subscriber|
-  => link_to subscriber.github_url, title: "@#{subscriber.github}" do
-    = image_tag subscriber.avatar_url, alt: subscriber.github, class: 'avatar-image'
+- subscribers.each do |subscriber|
+  li.user
+    => link_to subscriber.github_url, title: "@#{subscriber.github}" do
+      = image_tag subscriber.avatar_url, alt: subscriber.github, class: 'avatar-image'
