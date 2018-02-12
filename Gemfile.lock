@@ -326,6 +326,8 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.0)
       tilt (~> 2.0)
+    sitemap_generator (6.0.1)
+      builder (~> 3.0)
     skylight (1.5.0)
       activesupport (>= 3.0.0)
     slim (3.0.8)
@@ -443,6 +445,7 @@ DEPENDENCIES
   sidekiq
   simplecov
   sinatra
+  sitemap_generator
   skylight
   slim-rails
   spring

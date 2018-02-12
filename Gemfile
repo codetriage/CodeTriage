@@ -114,3 +114,4 @@ gem 'prawn'
 gem 'skylight'
 
 gem 'minitest', '5.10.3'
+gem 'sitemap_generator'
