@@ -47,7 +47,7 @@ SitemapGenerator::Sitemap.create do
     add repo_path(repo), lastmod: repo.updated_at
   end
 
-  DocMethod.find_each do |m|
-    add doc_method_path(m), lastmod: m.updated_at
-  end
+  # DocMethod.find_each do |m|
+  #   add doc_method_path(m), lastmod: m.updated_at
+  # end
 end
