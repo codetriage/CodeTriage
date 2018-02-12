@@ -78,7 +78,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       section.content-section
         h2.content-section-title
           | Add a CodeTriage badge to #{@repo.name}
-          img.repo-badge src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers_count}") }" /
+          img.repo-badge alt="CodeTriage badge for #{@repo.full_name}" src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers_count}") }" /
         = render partial: "badge"
 
     section.open-issues.content-section
