@@ -1,4 +1,11 @@
 namespace :schedule do
+
+  desc 'sitemaps'
+  task 'sitemap' do
+    next unless Date.today.sunday?
+    Rake::Task['sitemap:refresh'].invoke
+  end
+
   desc 'Sends triage emails'
   task triage_emails: :environment do
     User.find_each(batch_size: 100) { |user| SendDailyTriageEmailJob.perform_later(user) }

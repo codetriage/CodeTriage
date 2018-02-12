@@ -14,6 +14,7 @@ if ENV['BUCKETEER_BUCKET_NAME']
   SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 end
 
+SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.default_host = "https://www.codetriage.com"
 
 SitemapGenerator::Sitemap.create do
@@ -46,7 +47,7 @@ SitemapGenerator::Sitemap.create do
     add repo_path(repo), lastmod: repo.updated_at
   end
 
-  DocMethod.find_each do |m|
-    add doc_method_path(m), lastmod: m.updated_at
-  end
+  # DocMethod.find_each do |m|
+  #   add doc_method_path(m), lastmod: m.updated_at
+  # end
 end
