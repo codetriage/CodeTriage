@@ -1,7 +1,7 @@
 namespace :schedule do
 
   desc 'sitemaps'
-  task 'sitemap' do
+  task sitemap: :environment do
     next unless Date.today.sunday?
     Rake::Task['sitemap:refresh'].invoke
   end
