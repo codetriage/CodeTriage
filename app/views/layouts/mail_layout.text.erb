@@ -1,4 +1,5 @@
-TEXT LAYOUT
-
 <%= yield %>
 
+<% if @user %>
+[Remove Account](<%= token_delete_user_url(@user.account_delete_token) %>)
+<% end %>

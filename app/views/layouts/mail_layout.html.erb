@@ -8,5 +8,12 @@
     <div class="logo-wrapper">
       <%= link_to image_tag(asset_url('logo-dark-text.svg')), root_url %>
     </div>
+    <div class="footer-links">
+      <% if @user %>
+        <%= link_to "Remove Account", token_delete_user_url(@user.account_delete_token) %>
+        |
+      <% end %>
+      <%= link_to "CodeTriage.com", root_url %>
+    </div>
   </div>
 </div>

@@ -66,9 +66,10 @@ class UserMailer < ActionMailer::Base
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
-  def spam(user:)
+  def spam(user:, subject: , message:)
     return unless set_and_check_user(user)
-    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: options[:subject])
+    @message = message
+    mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
   class Preview < MailView
@@ -81,7 +82,8 @@ class UserMailer < ActionMailer::Base
     def send_spam
       user    = User.last
       subject = "Big launch"
-      ::UserMailer.spam(user: user, subject: subject)
+      message = "hello world"
+      ::UserMailer.spam(user: user, subject: subject, message: message)
     end
 
     def send_triage_create
