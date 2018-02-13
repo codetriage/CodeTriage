@@ -6,56 +6,22 @@ class UserMailer < ActionMailer::Base
 
   layout "mail_layout"
 
-  def send_daily_triage(user_id:, assignment_ids:, read_doc_ids: [], write_doc_ids: [])
+  def send_daily_triage(
+      user_id:,
+      assignment_ids:,
+      read_doc_ids:    [],
+      write_doc_ids:   []
+    )
+
     user = User.find(user_id)
     return unless set_and_check_user(user)
 
-    @sub_hashes = {}
-    subscriptions = RepoSubscription
-      .joins(:issue_assignments)
-      .where("issue_assignments.id" => assignment_ids)
-      .includes(:repo)
-      .select(:id, :repo_id)
-
-    repo_id_to_sub = {}
-
-    subscriptions.each do |sub|
-      repo_id_to_sub[sub.repo.id] = sub.id
-
-      @sub_hashes[sub.id] ||= {}
-      @sub_hashes[sub.id][:repo] = sub.repo
-      @sub_hashes[sub.id][:assignments] ||= []
-      @sub_hashes[sub.id][:read_docs]   ||= []
-      @sub_hashes[sub.id][:write_docs]  ||= []
-      @sub_hashes
-    end
-
-    assignments = IssueAssignment
-     .where(id: assignment_ids)
-     .select(:id, :repo_subscription_id, :issue_id)
-
-    write_docs = DocMethod
-      .where(id: write_doc_ids)
-      .select(:id, :repo_id, :line, :file, :path)
-
-    read_docs = DocMethod
-      .where(id: read_doc_ids)
-      .select(:id, :repo_id, :line, :file, :path)
-
-    assignments.each do |assignment|
-      @sub_hashes[assignment.repo_subscription_id][:assignments] << assignment
-    end
-
-    write_docs.each do |doc|
-      sub_id = repo_id_to_sub[doc.repo_id]
-      @sub_hashes[sub_id][:write_docs] << doc
-    end
-
-    read_docs.each do |doc|
-      sub_id = repo_id_to_sub[doc.repo_id]
-      @sub_hashes[sub_id][:read_docs] << doc
-    end
-
+    @grouped_issues_docs = MailBuilder::GroupedIssuesDocs.new(
+      user_id:        user_id,
+      assignment_ids: assignment_ids,
+      read_doc_ids:   read_doc_ids,
+      write_doc_ids:  write_doc_ids
+    )
 
     @max_days = 2
     subject   = ""
@@ -136,18 +102,28 @@ class UserMailer < ActionMailer::Base
       ::UserMailer.send_triage(user: user, repo: repo, assignment: assignment)
     end
 
-    def send_daily_triage
-      write_docs = DocMethod.order("RANDOM()").missing_docs.first(rand(0..8))
-      read_docs  = DocMethod.order("RANDOM()").with_docs.first(rand(0..8))
+    def send_daily_triage_mixed
+      write_docs = DocMethod.order("RANDOM()").includes(:repo).missing_docs.first(rand(0..8))
+      read_docs  = DocMethod.order("RANDOM()").includes(:repo).with_docs.first(rand(0..8))
 
-      write_docs = DocMethod.order("RANDOM()").first(rand(0..8)) if write_docs.blank?
-      read_docs  = DocMethod.order("RANDOM()").first(rand(0..8)) if read_docs.blank?
+      write_docs = DocMethod.order("RANDOM()").includes(:repo).first(rand(0..8)) if write_docs.blank?
+      read_docs  = DocMethod.order("RANDOM()").includes(:repo).first(rand(0..8)) if read_docs.blank?
 
+      # write_docs = DocMethod.where(id: [530, 10751, 335]).includes(:repo)
+      # read_docs  = DocMethod.where(id: [8286, 8551, 1399, 9489]).includes(:repo)
 
       user        = User.last
       assignments = []
       repo_count = rand(3..5)
       repos      = (write_docs + read_docs).map(&:repo)
+
+
+      (write_docs + read_docs).each do |doc|
+        RepoSubscription.where(
+          user_id: user.id,
+          repo_id: doc.repo.id
+        ).first_or_create!
+      end
 
       repos.each do |repo|
         issue_count = rand(3..5)
@@ -155,17 +131,51 @@ class UserMailer < ActionMailer::Base
           issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first
           next if issue.nil?
 
-          sub   = RepoSubscription.where(user_id: user.id, repo_id: repo.id).first_or_create!
+          sub   = RepoSubscription.where(
+            user_id: user.id,
+            repo_id: repo.id
+          ).first_or_create!
           assignment = sub.issue_assignments.where(issue_id: issue.id).first_or_create!
           assignments << assignment
         end
       end
 
+      # ::UserMailer.send_daily_triage(
+      #   user_id:        173,
+      #   assignment_ids: [93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93],
+      #   write_doc_ids:  [530, 10751, 335],
+      #   read_doc_ids:   [8286, 8551, 1399, 9489]
+      # )
       ::UserMailer.send_daily_triage(
         user_id:        user.id,
         assignment_ids: assignments.map(&:id),
-        write_doc_ids:     write_docs.map(&:id),
-        read_doc_ids:      read_docs.map(&:id)
+        write_doc_ids:  write_docs.map(&:id),
+        read_doc_ids:   read_docs.map(&:id)
+      )
+    end
+
+    def send_daily_triage_issues_only
+      issue_count = rand(3..5)
+      user        = User.last
+      assignments = []
+
+      issue_count.times.each do |i|
+        issue = Issue
+          .where(state: "open")
+          .where.not(number: nil)
+          .order("RANDOM()")
+          .first
+
+        next if issue.nil?
+
+        sub        = RepoSubscription.where(user_id: user.id, repo_id: issue.repo.id).first_or_create!
+        assignment = sub.issue_assignments.where(issue_id: issue.id).first_or_create!
+        assignments << assignment
+      end
+
+      ::UserMailer.send_daily_triage(
+        user_id:        user.id,
+        assignment_ids: assignments.map(&:id)
       )
     end
 

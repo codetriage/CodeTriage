@@ -3,42 +3,42 @@ Hello @<%= @user.github %>,
 <% if @days > @max_days %>
 It's been [<%= @days %> days] since you've clicked on a CodeTriage.com link, let's keep those issue counts down.
 <% end %>
-Here are some issues you should check out:
 
-<% @sub_hashes.each do |id, sub_hash| %>
+Here are some <%= @grouped_issues_docs.actions %> you should check out:
 
-##<%= sub_hash[:repo].full_name %>
+<% @grouped_issues_docs.each do |group| %>
 
-<% if sub_hash[:assignments].present? %>
-### Issues
-<% end %>
+##<%= group.repo.full_name %>
 
-<% sub_hash[:assignments].each do |assignment| %>
-**<%= link_to("#{sub_hash[:repo].full_name}##{assignment.issue.number}", issue_click_url(assignment.id, assignment.user.id )) if assignment.issue.number %>** <%= assignment.issue.title %> (<%= time_ago_in_words assignment.issue.last_touched_at %> ago)
+<% group.assignments.each do |assignment| %>
+**<%= link_to("#{group.repo.full_name}##{assignment.issue.number}", issue_click_url(assignment.id, assignment.user.id )) if assignment.issue.number %>** <%= assignment.issue.title %> (<%= time_ago_in_words assignment.issue.last_touched_at %> ago)
 
 <% end %>
 
-<% if sub_hash[:read_docs].present? || sub_hash[:write_docs].present? %>
+<% if group.any_docs? %>
 ### Docs
 <% end %>
 
-<% sub_hash[:read_docs].each do |doc| %>
+<% group.read_docs.each do |doc| %>
 ⇢ [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
 
-<%= doc.doc_comments.first.try(:md_safe_comment_block) %>
+<pre>
+<%= group.comment_for_doc(doc).try(:md_safe_comment_block) || DocMethod::NeedsDocs %>
+</pre>
 
 <% end %>
-<% sub_hash[:write_docs].each do |doc| %>
+<% group.write_docs.each do |doc| %>
 ⇢ [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
 
-~~~
+<pre>
 <%= DocMethod::NeedsDocs %>
-~~~
+</pre>
+
+<% end %>
 
 <% end %>
 
 ---
-<% end %>
 
 Go forth and make the world a better place!
 
