@@ -48,13 +48,12 @@ module MailBuilder
   # returns the subscription ID for that repo.
   #
   class GroupedIssuesDocs
-
     attr_accessor :any_docs, :any_issues
 
     alias :any_docs?   :any_docs
     alias :any_issues? :any_issues
 
-    def initialize(user_id:, assignment_ids:, read_doc_ids: [], write_doc_ids: [])
+    def initialize(user_id:, assignment_ids: [], read_doc_ids: [], write_doc_ids: [])
       @sub_hashes        = {}
       @repo_id_to_sub    = {}
       @doc_comments_hash = {}
@@ -184,6 +183,10 @@ module MailBuilder
 
     def comment_for_doc(doc)
       @doc_comments_hash[doc.id]
+    end
+
+    def count
+      @sub_hashes.length
     end
   end
 end

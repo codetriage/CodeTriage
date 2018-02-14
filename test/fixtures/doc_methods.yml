@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+rails_doc:
+  repo: rails_rails
+  name: "Foo#baz"
+  line: 9
+  path: "/path/here/rails"
+  file: "baz.rb"
+  created_at: 2013-10-29 21:09:48.351554000 Z
+  updated_at: 2013-10-29 21:09:48.351554000 Z
