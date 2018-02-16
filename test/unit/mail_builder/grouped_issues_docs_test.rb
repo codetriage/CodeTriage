@@ -80,8 +80,11 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     end
   end
 
-  test "foo bar" do
-    subscription  = repo_subscriptions(:write_doc_only)
+  test "issue and a doc for same repo" do
+    subscription  = repo_subscriptions(:schneems_to_triage)
+    assignment    = issue_assignments(:one)
+
+    assert_equal assignment.repo_subscription, subscription
     # write_doc_only
 
     expected_repo = subscription.repo
@@ -90,16 +93,17 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     assert_equal expected_repo, repos(:issue_triage_sandbox)
 
     group = MailBuilder::GroupedIssuesDocs.new(
-      user_id:       user.id,
-      write_doc_ids: [doc.id]
+      user_id:        user.id,
+      assignment_ids: [assignment.id],
+      write_doc_ids:  [doc.id]
     )
-    assert_equal true,  group.any_docs?
-    assert_equal false, group.any_issues?
-    assert_equal 1,     group.count
+    assert_equal true, group.any_docs?
+    assert_equal true, group.any_issues?
+    assert_equal 1,    group.count
 
     group.each do |g|
       assert_equal expected_repo, g.repo
-      assert_equal [],            g.assignments
+      assert_equal [assignment],  g.assignments
       assert_equal [],            g.read_docs
       assert_equal [doc],         g.write_docs
     end
