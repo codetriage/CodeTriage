@@ -38,11 +38,13 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
   end
 
   test 'destroy a subscription' do
+    before_count = RepoSubscription.count
     repo_subscription = repo_subscriptions(:schneems_to_triage)
     sign_in users(:schneems)
     delete :destroy, params: { id: repo_subscription.id }
+
     assert_redirected_to repo_path(repo_subscription.repo)
-    assert_equal 1, RepoSubscription.count
+    assert_equal before_count - 1, RepoSubscription.count
   end
 
   test 'update subscription limit when email limit is valid' do
