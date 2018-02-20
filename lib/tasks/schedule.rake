@@ -1,5 +1,4 @@
 namespace :schedule do
-
   desc 'sitemaps'
   task sitemap: :environment do
     next unless Date.today.sunday?

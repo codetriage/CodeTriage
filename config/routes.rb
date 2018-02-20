@@ -1,7 +1,6 @@
 require 'sidekiq/web'
 
 CodeTriage::Application.routes.draw do
-
   sitemap_url = File.join("https://#{ENV['BUCKETEER_BUCKET_NAME']}.s3.amazonaws.com/", "sitemaps", "sitemap.xml.gz")
   get 'sitemap.xml.gz', to: redirect(sitemap_url)
 
