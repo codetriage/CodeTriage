@@ -183,8 +183,8 @@ class Repo < ActiveRecord::Base
   def update_from_github
     json = fetcher.as_json
     self.update(
-      language: json.fetch('language', language),
-      description: json.fetch('description', description),
+      language:    json.fetch('language', language),
+      description: json.fetch('description', description).first(255),
       stars_count: json.fetch('stargazers_count', stars_count)
     )
   end

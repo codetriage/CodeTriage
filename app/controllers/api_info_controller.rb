@@ -12,6 +12,7 @@ class ApiInfoController < RepoBasedController
     respond_to do |format|
       format.json do
         render json: {
+          stars_count:       @repo.stars_count,
           subscriber_count:  count,
           added_by_username: added_by,
           time_ago:          time_ago_in_words(@repo.created_at),
