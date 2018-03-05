@@ -9,9 +9,11 @@ class UserMailer < ActionMailer::Base
   def send_daily_triage(
       user_id:,
       assignment_ids:,
-      read_doc_ids:    [],
-      write_doc_ids:   []
+      read_doc_ids: [],
+      write_doc_ids: []
     )
+
+    raise "foo"
 
     user = User.find(user_id)
     return unless set_and_check_user(user)

@@ -18,6 +18,14 @@ class DocMailerMaker
     assign_docs(&(send_next || READY_FOR_NEXT_DEFAULT))
   end
 
+  def empty?
+    !any?
+  end
+
+  def any?
+    @write_docs.present? || @read_docs.present?
+  end
+
   # Updates documentation task metadata (+last_sent_at+) and assigns the doc to
   # the subscription.
   def assign_doc_to_subscription(doc, sub)
