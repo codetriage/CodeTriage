@@ -111,9 +111,6 @@ class UserMailer < ActionMailer::Base
       write_docs = DocMethod.order("RANDOM()").includes(:repo).first(rand(0..8)) if write_docs.blank?
       read_docs  = DocMethod.order("RANDOM()").includes(:repo).first(rand(0..8)) if read_docs.blank?
 
-      # write_docs = DocMethod.where(id: [530, 10751, 335]).includes(:repo)
-      # read_docs  = DocMethod.where(id: [8286, 8551, 1399, 9489]).includes(:repo)
-
       user        = User.last
       assignments = []
       repos       = (write_docs + read_docs).map(&:repo)
@@ -140,12 +137,6 @@ class UserMailer < ActionMailer::Base
         end
       end
 
-      # ::UserMailer.send_daily_triage(
-      #   user_id:        173,
-      #   assignment_ids: [93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93, 93],
-      #   write_doc_ids:  [530, 10751, 335],
-      #   read_doc_ids:   [8286, 8551, 1399, 9489]
-      # )
       ::UserMailer.send_daily_triage(
         user_id:        user.id,
         assignment_ids: assignments.map(&:id),

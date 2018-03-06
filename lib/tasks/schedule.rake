@@ -68,11 +68,4 @@ namespace :schedule do
       PopulateDocsJob.perform_later(repo)
     end
   end
-
-  # desc "sends all users a method or class of a repo they are following"
-  # task user_send_doc: :environment do
-  #   User.find_each(batch_size: 100) do |user|
-  #     SubscribeUserToDocs.perform_later(user)
-  #   end
-  # end
 end

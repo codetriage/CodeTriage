@@ -46,12 +46,10 @@ class DocMethodsController < ApplicationController
       redirect_to :root
     end
   rescue => e
-    puts "blaksdjflaksdjflkj"
     handle_development_click(error: e, url: doc.to_github)
   end
 
   private def handle_development_click(error:, url:)
-    puts Rails.env.development?
     raise error unless Rails.env.development?
 
     flash[:error] = error.inspect

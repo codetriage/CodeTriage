@@ -16,7 +16,6 @@ class SendDailyTriageEmailJob < ApplicationJob
     docs = DocMailerMaker.new(user, subscriptions)
 
     return if assignments.empty? && docs.empty?
-
     send_email(
       user:          user,
       assignments:   assignments,
