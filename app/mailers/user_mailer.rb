@@ -13,8 +13,6 @@ class UserMailer < ActionMailer::Base
       write_doc_ids: []
   )
 
-    raise "foo"
-
     user = User.find(user_id)
     return unless set_and_check_user(user)
 
