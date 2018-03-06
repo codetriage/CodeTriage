@@ -8,7 +8,7 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     assert_equal false, group.any_docs?
     assert_equal false, group.any_issues?
     assert_equal 0,     group.count
-    group.each {|g| raise "there should be nothing to iterate" }
+    group.each { raise "there should be nothing to iterate" }
   end
 
   test "only an assignment" do
@@ -107,5 +107,31 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
       assert_equal [],            g.read_docs
       assert_equal [doc],         g.write_docs
     end
+  end
+
+  test "two issues from different repos" do
+    assignments = []
+    user        = users(:schneems)
+    assignments << issue_assignments(:one)
+    assignments << issue_assignments(:schneems_to_rails)
+
+    group = MailBuilder::GroupedIssuesDocs.new(
+      user_id:        user.id,
+      assignment_ids: assignments.map(&:id)
+    )
+    assert_equal false, group.any_docs?
+    assert_equal true, group.any_issues?
+    assert_equal 2,    group.count
+
+    group.each do |g|
+      expected_assignment = assignments.shift
+      expected_repo       = expected_assignment.repo
+      assert_equal expected_repo,         g.repo
+      assert_equal [expected_assignment], g.assignments
+      assert_equal [],                    g.read_docs
+      assert_equal [],                    g.write_docs
+    end
+
+    assert_equal [], assignments
   end
 end

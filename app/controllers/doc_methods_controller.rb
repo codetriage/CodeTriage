@@ -50,7 +50,7 @@ class DocMethodsController < ApplicationController
     handle_development_click(error: e, url: doc.to_github)
   end
 
-  private def handle_development_click(error: , url:)
+  private def handle_development_click(error:, url:)
     puts Rails.env.development?
     raise error unless Rails.env.development?
 

@@ -57,7 +57,7 @@ module MailBuilder
       @sub_hashes        = {}
       @repo_id_to_sub    = {}
       @doc_comments_hash = {}
-      @error_hash        = Hash.new { raise "must call within each"}
+      @error_hash        = Hash.new { raise "must call within each" }
       @active_hash       = @error_hash
 
       self.any_docs   = read_doc_ids.present? || write_doc_ids.present?
@@ -65,35 +65,35 @@ module MailBuilder
 
       ## Issue assignments
       assignments = IssueAssignment
-       .where(id: assignment_ids)
-       .includes(:issue)
-       .select(:id, :repo_subscription_id, :issue_id)
+                    .where(id: assignment_ids)
+                    .includes(:issue)
+                    .select(:id, :repo_subscription_id, :issue_id)
 
       ## Docs
       docs = DocMethod
-        .where(id: write_doc_ids + read_doc_ids)
-        .select(:id, :repo_id, :line, :file, :path)
+             .where(id: write_doc_ids + read_doc_ids)
+             .select(:id, :repo_id, :line, :file, :path)
 
       ## Comments
       doc_comments = DocComment
-        .where(doc_method_id: docs.map(&:id).uniq)
-        .select(:comment, :doc_method_id)
+                     .where(doc_method_id: docs.map(&:id).uniq)
+                     .select(:comment, :doc_method_id)
 
       ## Subscriptions
       doc_repo_ids = docs.map(&:repo_id).uniq
       subscriptions = RepoSubscription
-        .where(user_id: user_id)
-        .where(repo_id: doc_repo_ids)
-        .includes(:repo)
-        .select(:id, :repo_id)
+                      .where(user_id: user_id)
+                      .where(repo_id: doc_repo_ids)
+                      .includes(:repo)
+                      .select(:id, :repo_id)
 
       subscriptions += RepoSubscription
-        .joins(:issue_assignments)
-        .where("issue_assignments.id" => assignment_ids)
-        .where(user_id: user_id)
-        .where.not(repo_id: doc_repo_ids)
-        .includes(:repo)
-        .select(:id, :repo_id)
+                       .joins(:issue_assignments)
+                       .where("issue_assignments.id" => assignment_ids)
+                       .where(user_id: user_id)
+                       .where.not(repo_id: doc_repo_ids)
+                       .includes(:repo)
+                       .select(:id, :repo_id)
 
       subscriptions.uniq!
 
@@ -111,7 +111,7 @@ module MailBuilder
         @repo_id_to_sub[sub.repo.id] = sub.id
 
         @sub_hashes[sub.id] ||= {}
-        @sub_hashes[sub.id][:repo]        = sub.repo
+        @sub_hashes[sub.id][:repo] = sub.repo
         @sub_hashes[sub.id][:assignments] ||= []
         @sub_hashes[sub.id][:read_docs]   ||= []
         @sub_hashes[sub.id][:write_docs]  ||= []
@@ -125,7 +125,7 @@ module MailBuilder
       end
     end
 
-    def store_docs!(write_doc_ids:, docs: , doc_comments: )
+    def store_docs!(write_doc_ids:, docs:, doc_comments:)
       write_docs = []
       read_docs  = []
       docs.each do |doc|

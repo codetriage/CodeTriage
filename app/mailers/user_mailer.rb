@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
       assignment_ids:,
       read_doc_ids: [],
       write_doc_ids: []
-    )
+  )
 
     raise "foo"
 
@@ -68,7 +68,7 @@ class UserMailer < ActionMailer::Base
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
-  def spam(user:, subject: , message:)
+  def spam(user:, subject:, message:)
     return unless set_and_check_user(user)
     @message = message
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
@@ -118,9 +118,7 @@ class UserMailer < ActionMailer::Base
 
       user        = User.last
       assignments = []
-      repo_count = rand(3..5)
-      repos      = (write_docs + read_docs).map(&:repo)
-
+      repos       = (write_docs + read_docs).map(&:repo)
 
       (write_docs + read_docs).each do |doc|
         RepoSubscription.where(
@@ -131,11 +129,11 @@ class UserMailer < ActionMailer::Base
 
       repos.each do |repo|
         issue_count = rand(3..5)
-        issue_count.times.each do |i|
+        issue_count.times.each do
           issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first
           next if issue.nil?
 
-          sub   = RepoSubscription.where(
+          sub = RepoSubscription.where(
             user_id: user.id,
             repo_id: repo.id
           ).first_or_create!
@@ -163,12 +161,12 @@ class UserMailer < ActionMailer::Base
       user        = User.last
       assignments = []
 
-      issue_count.times.each do |i|
+      issue_count.times.each do
         issue = Issue
-          .where(state: "open")
-          .where.not(number: nil)
-          .order("RANDOM()")
-          .first
+                .where(state: "open")
+                .where.not(number: nil)
+                .order("RANDOM()")
+                .first
 
         next if issue.nil?
 
