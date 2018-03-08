@@ -27,7 +27,14 @@ class UserMailer < ActionMailer::Base
     subject   = ""
     @days     = @user.days_since_last_clicked
     subject   << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
-    subject   << "Help Triage #{assignment_ids.size} Open Source #{"Issue".pluralize(assignment_ids.size)}"
+
+    if @grouped_issues_docs.any_issues
+      subject << "Help Triage #{assignment_ids.size} Open Source #{"Issue".pluralize(assignment_ids.size)}"
+    else
+      doc_size = read_doc_ids.length + write_doc_ids.length
+      subject << "Help Triage #{doc_size} Open Source #{"Doc".pluralize(doc_size)}"
+    end
+
     mail(
       to:       @user.email,
       reply_to: "noreply@codetriage.com",
