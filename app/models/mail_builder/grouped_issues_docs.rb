@@ -176,8 +176,8 @@ module MailBuilder
     end
 
     def actions
-      "issues" if !self.any_docs
-      "docs"   if !self.any_issues
+      return "issues" if !self.any_docs
+      return "docs"   if !self.any_issues
       "issues and docs"
     end
 
