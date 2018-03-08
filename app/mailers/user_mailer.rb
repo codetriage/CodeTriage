@@ -26,7 +26,7 @@ class UserMailer < ActionMailer::Base
     @max_days = 2
     subject   = ""
     @days     = @user.days_since_last_clicked
-    subject   << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
+    subject << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
 
     if @grouped_issues_docs.any_issues
       subject << "Help Triage #{assignment_ids.size} Open Source #{"Issue".pluralize(assignment_ids.size)}"

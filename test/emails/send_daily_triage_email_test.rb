@@ -19,7 +19,7 @@ class UserMailerTest < ActionMailer::TestCase
     assert_match /## bemurphy\/issue_triage_sandbox/, triage_email_text
 
     # Issue number one
-    assert_match /bemurphy\/issue_triage_sandbox#1/,                    triage_email_text
+    assert_match /bemurphy\/issue_triage_sandbox#1/, triage_email_text
   end
 
   test "sends docs" do
