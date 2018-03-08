@@ -8,7 +8,7 @@ Here are some <%= @grouped_issues_docs.actions %> you should check out:
 
 <% @grouped_issues_docs.each do |group| %>
 
-##<%= group.repo.full_name %>
+## <%= group.repo.full_name %>
 
 <% group.assignments.each do |assignment| %>
 **<%= link_to("#{group.repo.full_name}##{assignment.issue.number}", issue_click_url(assignment.id, assignment.user.id )) if assignment.issue.number %>** <%= assignment.issue.title %> (<%= time_ago_in_words assignment.issue.last_touched_at %> ago)
