@@ -13,14 +13,13 @@ class UserMailerTest < ActionMailer::TestCase
     triage_email = ActionMailer::Base.deliveries.last
     triage_email_text = triage_email.text_part.to_s
 
-    assert_match /Help Triage 2 Open Source Issues/, triage_email.subject
+    assert_match /Help Triage 1 Open Source Issue/, triage_email.subject
 
     # Repo groups
-    assert_match /## rails\/rails/,                   triage_email_text
     assert_match /## bemurphy\/issue_triage_sandbox/, triage_email_text
 
     # Issue number one
-    assert_match /rails\/rails#1/,                    triage_email_text
+    assert_match /bemurphy\/issue_triage_sandbox#1/,                    triage_email_text
   end
 
   test "sends docs" do
