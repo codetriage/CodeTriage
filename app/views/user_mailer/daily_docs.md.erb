@@ -15,10 +15,7 @@ Hi @<%= @user.github %>,
 ## Read Docs
 
 <% @read_docs.sort_by {|d| d.repo.full_name }.each do |doc| %>
-**<%= doc.repo.full_name %>** ([source](<%= doc.to_github %>)): [<%= doc.path %>](<%= doc_method_url doc %>)
-
-<%= doc_method_click_url(doc.id, @user.id) %>
-<%= doc_source_click_url(doc.id, @user.id) %>
+**<%= doc.repo.full_name %>** ([source](<%= doc_source_click_url(doc.id, @user.id) %>)): [<%= doc.path %>](<%= doc_method_click_url(doc.id, @user.id) %>)
 
 <pre>
 <%= doc.doc_comments.first.try(:comment) %>
@@ -34,5 +31,3 @@ Go forth and make the world a better place
 [Richard Schneeman](https://www.schneems.com)
 
 [Help doctor more docs at codetriage.com](<%= root_url%>)
-
-[Remove Account](<%= token_delete_user_url(@user.account_delete_token) %>)

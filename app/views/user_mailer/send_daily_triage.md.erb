@@ -1,24 +1,47 @@
 Hello @<%= @user.github %>,
 
 <% if @days > @max_days %>
-It's been [<%= @days %> days] since you've clicked on a codetriage.com link, let's keep those issue counts down.
-<% end %>
-Here are some issues you should check out:
-
-<% @assignments.each do |assignment| %>
-### <%= "##{assignment.issue.number}" if assignment.issue.number %> <%= link_to assignment.issue.title, issue_click_url(assignment.id, assignment.user.id ) %>
-
-<%= "[#{assignment.repo.full_name}](#{repo_url(assignment.repo)})" %>
-<%= time_ago_in_words assignment.issue.last_touched_at %> ago
-
-- - -
-
+It's been [<%= @days %> days] since you've clicked on a CodeTriage.com link, let's keep those issue counts down.
 <% end %>
 
-Go forth and make the world a better place
+Here are some <%= @grouped_issues_docs.actions %> you should check out:
 
-[@schneems](https://www.schneems.com)
+<% @grouped_issues_docs.each do |group| %>
 
-[Help triage more repos at codetriage.com](<%= root_url%>)
+## <%= group.repo.full_name %>
 
-[Remove Account](<%= token_delete_user_url(@user.account_delete_token) %>)
+<% group.assignments.each do |assignment| %>
+**<%= link_to("#{group.repo.full_name}##{assignment.issue.number}", issue_click_url(assignment.id, assignment.user.id )) if assignment.issue.number %>** <%= assignment.issue.title %> (<%= time_ago_in_words assignment.issue.last_touched_at %> ago)
+
+<% end %>
+
+<% if group.any_docs? %>
+### Docs
+<% end %>
+
+<% group.read_docs.each do |doc| %>
+⇢ [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
+
+<pre>
+<%= group.comment_for_doc(doc).try(:md_safe_comment_block) || DocMethod::NeedsDocs %>
+</pre>
+
+<% end %>
+<% group.write_docs.each do |doc| %>
+⇢ [<%= doc.path %>](<%= doc_method_url doc %>) ([source](<%= doc.to_github %>))
+
+<pre>
+<%= DocMethod::NeedsDocs %>
+</pre>
+
+<% end %>
+
+<% end %>
+
+---
+
+Go forth and make the world a better place!
+
+Sincerly,
+
+[Schneems](https://www.schneems.com)

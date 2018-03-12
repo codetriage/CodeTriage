@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+issue_triage_doc:
+  repo: issue_triage_sandbox
+  name: "Foo#baz"
+  line: 9
+  path: "/path/here/issue_triage"
+  file: "baz.rb"
+  created_at: 2013-10-29 21:09:48.351554000 Z
+  updated_at: 2013-10-29 21:09:48.351554000 Z

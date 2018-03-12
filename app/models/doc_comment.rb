@@ -9,6 +9,12 @@ class DocComment < ActiveRecord::Base
     doc_method_id.present?
   end
 
+  def md_safe_comment_block
+    md = comment
+    md = DocMethod::NeedsDocs if md.blank?
+    md
+  end
+
   def doc_class?
     doc_class_id.present?
   end

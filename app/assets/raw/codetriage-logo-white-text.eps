@@ -1,0 +1,2046 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%APL_DSC_Encoding: UTF8
+%APLProducer: (Version 10.13.2 (Build 17C205) Quartz PS Context)
+%%Title: (Unknown)
+%%Creator: (Unknown)
+%%CreationDate: (Unknown)
+%%For: (Unknown)
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
+%%Pages: 1
+%%BoundingBox: 0 0 237 73
+%%EndComments
+%%BeginProlog
+%%BeginFile: cg-pdf.ps
+%%Copyright: Copyright 2000-2004 Apple Computer Incorporated.
+%%Copyright: All Rights Reserved.
+currentpacking true setpacking
+/cg_md 141 dict def
+cg_md begin
+/L3? languagelevel 3 ge def
+/bd{bind def}bind def
+/ld{load def}bd
+/xs{exch store}bd
+/xd{exch def}bd
+/cmmtx matrix def
+mark
+/sc/setcolor
+/scs/setcolorspace
+/dr/defineresource
+/fr/findresource
+/T/true
+/F/false
+/d/setdash
+/w/setlinewidth
+/J/setlinecap
+/j/setlinejoin
+/M/setmiterlimit
+/i/setflat
+/rc/rectclip
+/rf/rectfill
+/rs/rectstroke
+/f/fill
+/f*/eofill
+/sf/selectfont
+/s/show
+%/as/ashow
+/xS/xshow
+/yS/yshow
+/xyS/xyshow
+/S/stroke
+/m/moveto
+/l/lineto
+/c/curveto
+/h/closepath
+/n/newpath
+/q/gsave
+/Q/grestore
+counttomark 2 idiv
+%dup (number of ld's = )print == flush	% *** how many 
+{ld}repeat pop
+/SC{	% CSname
+    /ColorSpace fr scs
+}bd
+/sopr /setoverprint where{pop/setoverprint}{/pop}ifelse ld
+/soprm /setoverprintmode where{pop/setoverprintmode}{/pop}ifelse ld
+/cgmtx matrix def
+/sdmtx{cgmtx currentmatrix pop}bd
+/CM {cgmtx setmatrix}bd		% pop the ctm: our gstate ctm on host is now identity
+/cm {cmmtx astore CM concat}bd	% reset the matrix and then concat
+/W{clip newpath}bd
+/W*{eoclip newpath}bd
+
+statusdict begin product end dup (HP) anchorsearch{
+    pop pop pop	% pop off the search results
+    true
+}{
+    pop	% previous search result
+   (hp) anchorsearch{
+	pop pop true
+    }{
+	pop false
+    }ifelse
+}ifelse
+
+{	% HP is the product: we use this method of stroking because of a bug in their clone printers with certain T3 fonts
+    { 
+	{ % charCode Wx Wy
+	    pop pop % charCode
+	    (0)dup 0 4 -1 roll put
+	    F charpath
+	}cshow
+    }
+}{
+    {F charpath}
+}ifelse
+/cply exch bd
+/cps {cply stroke}bd
+/pgsave 0 def
+/bp{/pgsave save store}bd
+/ep{pgsave restore showpage}def		% dont' bind
+/re{4 2 roll m 1 index 0 rlineto 0 exch rlineto neg 0 rlineto h}bd
+
+/scrdict 10 dict def
+/scrmtx matrix def
+/patarray 0 def
+/createpat{patarray 3 1 roll put}bd
+/makepat{
+scrmtx astore pop
+gsave
+initgraphics
+CM 
+patarray exch get
+scrmtx
+makepattern
+grestore
+setpattern
+}bd
+
+/cg_BeginEPSF{
+    userdict save/cg_b4_Inc_state exch put
+    userdict/cg_endepsf/cg_EndEPSF load put
+    count userdict/cg_op_count 3 -1 roll put 
+    countdictstack dup array dictstack userdict/cg_dict_array 3 -1 roll put
+    3 sub{end}repeat
+    /showpage {} def
+    0 setgray 0 setlinecap 1 setlinewidth 0 setlinejoin
+    10 setmiterlimit [] 0 setdash newpath
+    false setstrokeadjust false setoverprint	% don't use F
+}bd
+/cg_EndEPSF{
+  countdictstack 3 sub { end } repeat
+  cg_dict_array 3 1 index length 3 sub getinterval
+  {begin}forall
+  count userdict/cg_op_count get sub{pop}repeat
+  userdict/cg_b4_Inc_state get restore
+  F setpacking
+}bd
+
+/cg_biproc{currentfile/RunLengthDecode filter}bd
+/cg_aiproc{currentfile/ASCII85Decode filter/RunLengthDecode filter}bd
+/ImageDataSource 0 def
+L3?{
+    /cg_mibiproc{pop pop/ImageDataSource{cg_biproc}def}bd
+    /cg_miaiproc{pop pop/ImageDataSource{cg_aiproc}def}bd
+}{
+    /ImageBandMask 0 def
+    /ImageBandData 0 def
+    /cg_mibiproc{
+	string/ImageBandMask xs
+	string/ImageBandData xs
+	/ImageDataSource{[currentfile/RunLengthDecode filter dup ImageBandMask/readstring cvx
+	    /pop cvx dup ImageBandData/readstring cvx/pop cvx]cvx bind}bd
+    }bd
+    /cg_miaiproc{	
+	string/ImageBandMask xs
+	string/ImageBandData xs
+	/ImageDataSource{[currentfile/ASCII85Decode filter/RunLengthDecode filter
+	    dup ImageBandMask/readstring cvx
+	    /pop cvx dup ImageBandData/readstring cvx/pop cvx]cvx bind}bd
+    }bd
+}ifelse
+/imsave 0 def
+/BI{save/imsave xd mark}bd
+/EI{imsave restore}bd
+/ID{
+counttomark 2 idiv
+dup 2 add	% leave room for imagetype and imagematrix
+dict begin
+{def} repeat
+pop		% remove mark
+/ImageType 1 def
+/ImageMatrix[Width 0 0 Height neg 0 Height]def
+currentdict dup/ImageMask known{ImageMask}{F}ifelse exch
+% currentdict on stack
+L3?{
+    dup/MaskedImage known
+    { 
+	pop
+	<<
+	    /ImageType 3
+	    /InterleaveType 2
+	    /DataDict currentdict
+	    /MaskDict
+	    <<  /ImageType 1
+		/Width Width
+		/Height Height
+		/ImageMatrix ImageMatrix
+		/BitsPerComponent 1
+		/Decode [0 1]
+		currentdict/Interpolate known
+		{/Interpolate Interpolate}if
+	    >>
+	>>
+    }if
+}if
+exch
+{imagemask}{image}ifelse	
+end	% pop imagedict from dict stack
+}bd
+
+/cguidfix{statusdict begin mark version end
+{cvr}stopped{cleartomark 0}{exch pop}ifelse
+2012 lt{dup findfont dup length dict begin
+{1 index/FID ne 2 index/UniqueID ne and
+{def} {pop pop} ifelse}forall
+currentdict end definefont pop
+}{pop}ifelse
+}bd
+/t_array 0 def
+/t_i 0 def
+/t_c 1 string def
+/x_proc{ % x y
+    exch t_array t_i get add exch moveto
+    /t_i t_i 1 add store
+}bd
+/y_proc{ % x y
+    t_array t_i get add moveto
+    /t_i t_i 1 add store
+}bd
+/xy_proc{
+        % x y
+	t_array t_i 2 copy 1 add get 3 1 roll get 
+	4 -1 roll add 3 1 roll add moveto
+	/t_i t_i 2 add store
+}bd
+/sop 0 def		% don't bind sop
+/cp_proc/x_proc ld 	% default moveto proc is for xwidths only
+/base_charpath		% string array
+{
+    /t_array xs
+    /t_i 0 def
+    { % char
+	t_c 0 3 -1 roll put
+        currentpoint
+	t_c cply sop
+        cp_proc
+    }forall
+    /t_array 0 def
+}bd
+/sop/stroke ld		% default sop is stroke. Done here so we don't bind in /base_charpath 
+
+% default sop is stroke
+/nop{}def
+/xsp/base_charpath ld
+/ysp{/cp_proc/y_proc ld base_charpath/cp_proc/x_proc ld}bd
+/xysp{/cp_proc/xy_proc ld base_charpath/cp_proc/x_proc ld}bd
+/xmp{/sop/nop ld /cp_proc/x_proc ld base_charpath/sop/stroke ld}bd
+/ymp{/sop/nop ld /cp_proc/y_proc ld base_charpath/sop/stroke ld}bd
+/xymp{/sop/nop ld /cp_proc/xy_proc ld base_charpath/sop/stroke ld}bd
+/refnt{ % newname encoding fontname
+findfont dup length dict copy dup
+/Encoding 4 -1 roll put 
+definefont pop
+}bd
+/renmfont{ % newname fontname
+findfont dup length dict copy definefont pop
+}bd
+
+L3? dup dup{save exch}if
+
+% languagelevel2 ONLY code goes here
+
+/Range 0 def
+/DataSource 0 def
+/val 0 def
+/nRange 0 def
+/mulRange 0 def
+/d0 0 def
+/r0 0 def
+/di 0 def
+/ri 0 def
+/a0 0 def
+/a1 0 def
+/r1 0 def
+/r2 0 def
+/dx 0 def
+/Nsteps 0 def
+/sh3tp 0 def
+/ymax 0 def
+/ymin 0 def
+/xmax 0 def
+/xmin 0 def
+
+/setupFunEval % funDict -- 	% this calculates and sets up a function dict for evaulation.
+{
+    begin
+	/nRange Range length 2 idiv store
+	/mulRange   % precompute the range data needed to map a sample value from the table to a range value
+		    % this data looks like [ range0mul range0min range1mul range1min ... rangeN-1mul rangeN-1min ]
+	[ 
+	    0 1 nRange 1 sub
+	    { % index
+		    2 mul/nDim2 xd		% 2*dimension# we are dealing with
+		    Range nDim2 get		% ymin
+		    Range nDim2 1 add get	% ymin ymax 
+		    1 index sub			% ymin (ymax-ymin)
+						% xmin = 0, xmax = 255 (2^bitspersample - 1)
+		    255 div			% ymin (ymax-ymin)/(xmax - xmin)
+		    exch			% (ymax-ymin)/(xmax - xmin) ymin
+	    }for
+	]store
+    end
+}bd
+
+/FunEval % val1 fundict -> comp1 comp2 ... compN
+{
+    begin
+	% the value passed in is the base index into the table
+	nRange mul /val xd	% compute the actual index to the table
+				% since there are nRange entries per base index
+	0 1 nRange 1 sub
+	{
+	    dup 2 mul/nDim2 xd % dim
+	    val	% base value to use to do our lookup
+	    add DataSource exch get %  lookedupval
+	    mulRange nDim2 get mul 	% lookedupval*(ymax-ymin)/(xmax-xmin)
+	    mulRange nDim2 1 add get % lookedupval*(ymax-ymin)/(xmax-xmin) ymin
+	    add % interpolated result
+	}for	% comp1 comp2 ... compN
+    end
+}bd
+
+/max % a b -> max(a, b)
+{
+	2 copy lt
+	{exch pop}{pop}ifelse
+}bd
+
+/sh2
+{	% emulation of shading type 2. Assumes shading dictionary is top dictionary on the dict stack
+	/Coords load aload pop 	% x0 y0 x1 y1
+	3 index 3 index translate	% origin is now at beginning point of shading
+					% x0 y0 x1 y1
+	3 -1 roll sub	% x0 x1 y1-y0
+	3 1 roll exch 	% y1-y0 x1 x0
+	sub				% y1-y0 x1-x0
+	2 copy
+	dup mul exch dup mul add sqrt	% length of segment between two points
+	dup
+	scale  
+	atan	% atan (dy/dx)
+	%dup (rotation angle = )print ==
+	rotate		% now line between 0,0 and 1,0 is the line perpendicular to which the axial lines are drawn					
+	
+	/Function load setupFunEval	% may need to setup function dictionary by calling setupFunEval
+	
+	% this is now specific to axial shadings. Compute the maximum bounds to fill
+	clippath {pathbbox}stopped {0 0 0 0}if newpath 	% x0 y0 x1 y1
+	/ymax xs
+	/xmax xs
+	/ymin xs
+	/xmin xs
+	currentdict/Extend known
+	{
+		/Extend load 0 get
+		{	
+			0/Function load FunEval sc	% evaluate the function to get a color and set it
+			xmin ymin xmin abs ymax ymin sub rectfill
+		}if
+	}if
+	% paint the rects. The sampling frequency is that of our table
+	/Nsteps/Function load/Size get 0 get 1 sub store
+	/dx 1 Nsteps div store
+	gsave
+		/di ymax ymin sub store
+		/Function load
+		% loop Nsteps + 1 times, incrementing the index by 1 each time
+		0 1 Nsteps
+		{
+			1 index FunEval sc
+			0 ymin dx di rectfill
+			dx 0 translate
+		}for
+		pop	% pop our function
+	grestore	% origin is back to start point
+	currentdict/Extend known
+	{
+		/Extend load 1 get
+		{	
+			Nsteps/Function load FunEval sc	% last element
+			1 ymin xmax 1 sub abs ymax ymin sub rectfill
+		}if
+	}if
+}bd
+
+/shp	% this paints our shape for shading type 3
+{	% x1 r1 x0 r0 -
+	4 copy
+
+	% fill interior arc
+	dup 0 gt{
+		0 exch a1 a0 arc
+	}{
+		pop 0 moveto
+	}ifelse
+
+	dup 0 gt{
+		0 exch a0 a1 arcn
+	}{
+		pop 0 lineto
+	}ifelse
+	
+	fill
+
+	% fill exterior arc
+	dup 0 gt{
+		0 exch a0 a1 arc
+	}{
+		pop 0 moveto
+	}ifelse
+
+	dup 0 gt{
+		0 exch a1 a0 arcn
+	}{
+		pop 0 lineto
+	}ifelse
+	
+	fill
+}bd
+
+/calcmaxs
+{	% calculate maximum distance vector from origin to corner points
+	% of bbox
+	xmin dup mul ymin dup mul add sqrt		% (xmin2 + ymin2)
+	xmax dup mul ymin dup mul add sqrt		% (xmax2 + ymin2)
+	xmin dup mul ymax dup mul add sqrt		% (xmin2 + ymax2)
+	xmax dup mul ymax dup mul add sqrt		% (xmax2 + ymax2)
+	max max max								% maximum value
+}bd
+
+/sh3
+{	% emulation of shading type 3. Assumes shading dictionary is top dictionary on the dict stack
+	/Coords load aload pop 	% x0 y0 r1 x1 y1 r2
+	5 index 5 index translate	% origin is now at first circle origin
+	3 -1 roll 6 -1 roll sub		% y0 r1 y1 r2 dx
+	3 -1 roll 5 -1 roll sub		% r1 r2 dx dy
+	2 copy dup mul exch dup mul add sqrt
+	/dx xs						% r1 r2 dx dy
+	2 copy 0 ne exch 0 ne or
+	{
+		% r1 r2 dx dy
+		exch atan rotate	% we are now rotated so dy is zero and positive values of dx move us as expected
+	}{
+		pop pop
+	}ifelse
+	% r1 r2		
+	/r2 xs
+	/r1 xs
+	/Function load 
+	dup/Size get 0 get 1 sub	% this is the size of our table minus 1
+	/Nsteps xs		% at some point we should optimize this better so NSteps is based on needed steps for the device
+	setupFunEval		% may need to setup function dictionary by calling setupFunEval
+	% determine the case:
+	% case 0: circle1 inside circle2
+	% case 1: circle 2 inside circle 1
+	% case 2: r1 = r2 
+	% case 3: r1 != r2
+	dx r2 add r1 lt{
+		% circle 2 inside of circle 1
+		0 
+	}{
+		dx r1 add r2 le
+		{ % circle 1 inside of circle 2
+			1
+		}{ % circles don't contain each other
+			r1 r2 eq
+			{	% equal
+				2
+			}{ % r1 != r2
+				3
+			}ifelse		
+		}ifelse
+	}ifelse
+	/sh3tp xs		% sh3tp has the number of our different cases
+	clippath {pathbbox}stopped {0 0 0 0}if 
+	newpath 	% x0 y0 x1 y1
+	/ymax xs
+	/xmax xs
+	/ymin xs
+	/xmin xs
+
+	% Arc angle atan( sqrt((dx*dx + dy*dy) - dr*dr), dr)
+	dx dup mul r2 r1 sub dup mul sub dup 0 gt
+	{
+		sqrt r2 r1 sub atan
+		/a0 exch 180 exch sub store 
+		/a1 a0 neg store 
+	}{
+		pop
+		/a0 0 store
+		/a1 360 store		
+	}ifelse		
+
+	currentdict/Extend known
+	{
+		/Extend load 0 get r1 0 gt and	% no need to extend if the radius of the first end is 0
+		{	
+			0/Function load FunEval sc	% evaluate the function to get a color and set it
+			% case 0: circle1 inside circle2
+			% case 1: circle 2 inside circle 1
+			% case 2: circles don't contain each other and r1 == r2
+			% case 3: circles don't contain each other and r1 != r2
+			{ 
+				{	% case 0
+					dx 0 r1 360 0 arcn
+					xmin ymin moveto
+					xmax ymin lineto
+					xmax ymax lineto
+					xmin ymax lineto
+					xmin ymin lineto
+					eofill		% for the bigger radius we fill everything except our circle
+				}
+				{	% case 1
+					r1 0 gt{0 0 r1 0 360 arc fill}if
+				}
+				{	% case 2
+					% r1 == r2, extend 0
+					% r3 = r, x3 = -(abs(minx) + r), x1 = 0
+				
+					% x(i+1) r(i+1) x(i) r(i) shp
+					0 r1 xmin abs r1 add neg r1 shp
+				}
+				{	% case 3
+					% no containment, r1 != r2
+				
+					r2 r1 gt{	% the endpoint we are drawing is that with a circle of zero radius
+						% x(i+1) r(i+1) x(i) r(i) shp
+						0 r1
+						r1 neg r2 r1 sub div dx mul	% this is point of beginning circle
+						0	% point of ending circle
+						shp	% takes x(i+1) r(i+1) x(i) r(i)
+					}{	% the first circle is the bigger of the two
+						% we find a circle on our line which is outside the bbox in the
+						% negative direction
+						% x(i+1) r(i+1) x(i) r(i) shp
+						0 r1 calcmaxs	% 0 r1 maxs
+						dup
+						% calculating xs: (-(maxs+r2)*x2)/(x2-(r1-r2))
+						r2 add dx mul dx r1 r2 sub sub div
+						neg				% maxs xs'
+						exch 1 index	% xs' maxs xs'
+						abs exch sub
+						shp
+					}ifelse
+				} 
+			}sh3tp get exec	% execute the extend at beginning proc for our shading type
+		}if
+	}if
+
+	% now do the shading
+	/d0 0 store
+	/r0 r1 store
+	/di dx Nsteps div store
+	/ri r2 r1 sub Nsteps div store 
+	/Function load 
+	0 1 Nsteps
+	{	% function t(i)
+		1 index FunEval sc
+		d0 di add r0 ri add d0 r0 shp
+		{
+		% fill interior arc
+		d0 0 r0 a1 a0 arc
+		d0 di add 0 r0 ri add a0 a1 arcn
+		fill
+		
+		% fill exterior arc
+		d0 0 r0 a0 a1 arc
+		d0 di add 0 r0 ri add a1 a0 arcn
+		fill
+		}pop
+		
+		% advance to next
+		/d0 d0 di add store
+		/r0 r0 ri add store
+	}for
+	pop	% pop our function dict
+
+	% handle Extend
+	currentdict/Extend known
+	{
+		/Extend load 1 get r2 0 gt and	% no need to extend if the radius of the last end is 0
+		{	
+			Nsteps/Function load FunEval sc	% last element
+			% case 0: circle1 inside circle2
+			% case 1: circle 2 inside circle 1
+			% case 2: circles don't contain each other and r1 == r2
+			% case 3: circles don't contain each other and r1 != r2
+			{ 
+				{
+					dx 0 r2 0 360 arc fill
+				} 
+				{
+					dx 0 r2 360 0 arcn
+					xmin ymin moveto
+					xmax ymin lineto
+					xmax ymax lineto
+					xmin ymax lineto
+					xmin ymin lineto
+					eofill		% for the bigger radius we fill everything except our circle
+				} 
+				{	% r1 == r2, extend 1
+					% r3 = r, x3 = (abs(xmax) + r), x1 = dx
+					% x(i+1) r(i+1) x(i) r(i) shp
+					xmax abs r1 add r1 dx r1 shp
+				}	
+				{	% no containment, r1 != r2
+			
+					r2 r1 gt{
+						% we find a circle on our line which is outside the bbox in the
+						% positive direction
+						% x(i+1) r(i+1) x(i) r(i) shp
+						calcmaxs dup	% maxs maxs
+						% calculating xs: ((maxs+r1)*x2)/(x2-(r2-r1))
+						r1 add dx mul dx r2 r1 sub sub div	% maxs xs
+						exch 1 index	% xs maxs xs
+						exch sub
+						dx r2
+						shp
+					}{	% the endpoint we are drawing is that with a circle of zero radius
+						% x(i+1) r(i+1) x(i) r(i) shp
+						r1 neg r2 r1 sub div dx mul	% this is point of ending circle
+						0		% radius of ending circle
+						dx 		% point of starting circle
+						r2		% radius of starting circle
+						shp
+					}ifelse
+				}
+			}			
+			sh3tp get exec	% execute the extend at end proc for our shading type
+		}if
+	}if
+}bd
+/sh		% emulation of shfill operator for type 2 and type 3 shadings based on type 0 functions
+{	% shadingDict --
+	begin
+		/ShadingType load dup dup 2 eq exch 3 eq or
+		{	% shadingtype
+			gsave
+				newpath
+				/ColorSpace load scs
+				currentdict/BBox known
+				{
+					/BBox load aload pop	% llx lly urx ury
+					2 index sub				% llx lly urx ury-lly
+					3 index					% llx lly urx ury-lly llx
+					3 -1 roll exch sub 
+					exch rectclip
+				}if
+				2 eq
+				{sh2}{sh3}ifelse
+			grestore
+		}{
+			% shadingtype
+			pop 
+			(DEBUG: shading type unimplemented\n)print flush
+		}ifelse
+	end
+}bd
+
+% end of language level 2 ONLY code
+
+{restore}if not dup{save exch}if
+% languagelevel3 ONLY code goes here
+	L3?{	% we do these loads conditionally or else they will fail on a level 2 printer
+		/sh/shfill ld
+		/csq/clipsave ld
+		/csQ/cliprestore ld
+	}if
+{restore}if
+
+%currentdict dup maxlength exch length sub (number of extra slots in md = )print == flush	% *** how many entries are free
+end
+setpacking
+% count 0 ne { pstack(***extras on stack during prolog execution***\n)print flush}if	% *** BARK if anything is left on stack
+%%EndFile
+%%EndProlog
+%%BeginSetup
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 0 0 237 73
+%%BeginPageSetup
+cg_md begin
+bp
+sdmtx
+[ /CIEBasedABC 4 dict dup begin 
+/WhitePoint [ 0.9505 1.0000 1.0891 ] def 
+/DecodeABC [ 
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000001010101010101010101010101
+0101010101010101010101010101010101010101010101020202020202020202
+0202020202020202020202020202020202030303030303030303030303030303
+0303030303030304040404040404040404040404040404040404050505050505
+0505050505050505050506060606060606060606060606060607070707070707
+0707070707070708080808080808080808080808090909090909090909090909
+0a0a0a0a0a0a0a0a0a0a0a0b0b0b0b0b0b0b0b0b0b0b0c0c0c0c0c0c0c0c0c0c
+0d0d0d0d0d0d0d0d0d0d0e0e0e0e0e0e0e0e0e0f0f0f0f0f0f0f0f0f10101010
+1010101010111111111111111112121212121212121313131313131313141414
+1414141414151515151515151616161616161616171717171717171818181818
+18181919191919191a1a1a1a1a1a1a1b1b1b1b1b1b1c1c1c1c1c1c1c1d1d1d1d
+1d1d1e1e1e1e1e1e1f1f1f1f1f1f202020202020212121212121222222222223
+2323232323242424242425252525252526262626262727272727282828282829
+292929292a2a2a2a2a2b2b2b2b2b2c2c2c2c2c2d2d2d2d2d2e2e2e2e2e2f2f2f
+2f2f303030303131313131323232323333333333343434343535353535363636
+36373737373838383839393939393a3a3a3a3b3b3b3b3c3c3c3c3d3d3d3d3e3e
+3e3e3f3f3f3f4040404041414141424242424343434444444445454545464646
+4647474748484848494949494a4a4a4b4b4b4b4c4c4c4d4d4d4d4e4e4e4f4f4f
+4f50505051515151525252535353535454545555555656565657575758585859
+59595a5a5a5a5b5b5b5c5c5c5d5d5d5e5e5e5f5f5f6060606061616162626263
+63636464646565656666666767676868686969696a6a6a6b6b6b6c6c6d6d6d6e
+6e6e6f6f6f707070717171727273737374747475757576767677777878787979
+797a7a7b7b7b7c7c7c7d7d7e7e7e7f7f7f808081818182828283838484848585
+86868687878888888989898a8a8b8b8b8c8c8d8d8d8e8e8f8f90909091919292
+9293939494949595969697979798989999999a9a9b9b9c9c9c9d9d9e9e9f9f9f
+a0a0a1a1a2a2a3a3a3a4a4a5a5a6a6a6a7a7a8a8a9a9aaaaabababacacadadae
+aeafafb0b0b0b1b1b2b2b3b3b4b4b5b5b6b6b6b7b7b8b8b9b9bababbbbbcbcbd
+bdbebebebfbfc0c0c1c1c2c2c3c3c4c4c5c5c6c6c7c7c8c8c9c9cacacbcbcccc
+cdcdcececfcfd0d0d1d1d2d2d3d3d4d4d5d5d6d6d7d7d8d8d9d9dadadbdcdcdd
+dddededfdfe0e0e1e1e2e2e3e3e4e4e5e6e6e7e7e8e8e9e9eaeaebebecededee
+eeefeff0f0f1f1f2f3f3f4f4f5f5f6f6f7f8f8f9f9fafafbfcfcfdfdfefeffff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000001010101010101010101010101
+0101010101010101010101010101010101010101010101020202020202020202
+0202020202020202020202020202020202030303030303030303030303030303
+0303030303030304040404040404040404040404040404040404050505050505
+0505050505050505050506060606060606060606060606060607070707070707
+0707070707070708080808080808080808080808090909090909090909090909
+0a0a0a0a0a0a0a0a0a0a0a0b0b0b0b0b0b0b0b0b0b0b0c0c0c0c0c0c0c0c0c0c
+0d0d0d0d0d0d0d0d0d0d0e0e0e0e0e0e0e0e0e0f0f0f0f0f0f0f0f0f10101010
+1010101010111111111111111112121212121212121313131313131313141414
+1414141414151515151515151616161616161616171717171717171818181818
+18181919191919191a1a1a1a1a1a1a1b1b1b1b1b1b1c1c1c1c1c1c1c1d1d1d1d
+1d1d1e1e1e1e1e1e1f1f1f1f1f1f202020202020212121212121222222222223
+2323232323242424242425252525252526262626262727272727282828282829
+292929292a2a2a2a2a2b2b2b2b2b2c2c2c2c2c2d2d2d2d2d2e2e2e2e2e2f2f2f
+2f2f303030303131313131323232323333333333343434343535353535363636
+36373737373838383839393939393a3a3a3a3b3b3b3b3c3c3c3c3d3d3d3d3e3e
+3e3e3f3f3f3f4040404041414141424242424343434444444445454545464646
+4647474748484848494949494a4a4a4b4b4b4b4c4c4c4d4d4d4d4e4e4e4f4f4f
+4f50505051515151525252535353535454545555555656565657575758585859
+59595a5a5a5a5b5b5b5c5c5c5d5d5d5e5e5e5f5f5f6060606061616162626263
+63636464646565656666666767676868686969696a6a6a6b6b6b6c6c6d6d6d6e
+6e6e6f6f6f707070717171727273737374747475757576767677777878787979
+797a7a7b7b7b7c7c7c7d7d7e7e7e7f7f7f808081818182828283838484848585
+86868687878888888989898a8a8b8b8b8c8c8d8d8d8e8e8f8f90909091919292
+9293939494949595969697979798989999999a9a9b9b9c9c9c9d9d9e9e9f9f9f
+a0a0a1a1a2a2a3a3a3a4a4a5a5a6a6a6a7a7a8a8a9a9aaaaabababacacadadae
+aeafafb0b0b0b1b1b2b2b3b3b4b4b5b5b6b6b6b7b7b8b8b9b9bababbbbbcbcbd
+bdbebebebfbfc0c0c1c1c2c2c3c3c4c4c5c5c6c6c7c7c8c8c9c9cacacbcbcccc
+cdcdcececfcfd0d0d1d1d2d2d3d3d4d4d5d5d6d6d7d7d8d8d9d9dadadbdcdcdd
+dddededfdfe0e0e1e1e2e2e3e3e4e4e5e6e6e7e7e8e8e9e9eaeaebebecededee
+eeefeff0f0f1f1f2f3f3f4f4f5f5f6f6f7f8f8f9f9fafafbfcfcfdfdfefeffff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000001010101010101010101010101
+0101010101010101010101010101010101010101010101020202020202020202
+0202020202020202020202020202020202030303030303030303030303030303
+0303030303030304040404040404040404040404040404040404050505050505
+0505050505050505050506060606060606060606060606060607070707070707
+0707070707070708080808080808080808080808090909090909090909090909
+0a0a0a0a0a0a0a0a0a0a0a0b0b0b0b0b0b0b0b0b0b0b0c0c0c0c0c0c0c0c0c0c
+0d0d0d0d0d0d0d0d0d0d0e0e0e0e0e0e0e0e0e0f0f0f0f0f0f0f0f0f10101010
+1010101010111111111111111112121212121212121313131313131313141414
+1414141414151515151515151616161616161616171717171717171818181818
+18181919191919191a1a1a1a1a1a1a1b1b1b1b1b1b1c1c1c1c1c1c1c1d1d1d1d
+1d1d1e1e1e1e1e1e1f1f1f1f1f1f202020202020212121212121222222222223
+2323232323242424242425252525252526262626262727272727282828282829
+292929292a2a2a2a2a2b2b2b2b2b2c2c2c2c2c2d2d2d2d2d2e2e2e2e2e2f2f2f
+2f2f303030303131313131323232323333333333343434343535353535363636
+36373737373838383839393939393a3a3a3a3b3b3b3b3c3c3c3c3d3d3d3d3e3e
+3e3e3f3f3f3f4040404041414141424242424343434444444445454545464646
+4647474748484848494949494a4a4a4b4b4b4b4c4c4c4d4d4d4d4e4e4e4f4f4f
+4f50505051515151525252535353535454545555555656565657575758585859
+59595a5a5a5a5b5b5b5c5c5c5d5d5d5e5e5e5f5f5f6060606061616162626263
+63636464646565656666666767676868686969696a6a6a6b6b6b6c6c6d6d6d6e
+6e6e6f6f6f707070717171727273737374747475757576767677777878787979
+797a7a7b7b7b7c7c7c7d7d7e7e7e7f7f7f808081818182828283838484848585
+86868687878888888989898a8a8b8b8b8c8c8d8d8d8e8e8f8f90909091919292
+9293939494949595969697979798989999999a9a9b9b9c9c9c9d9d9e9e9f9f9f
+a0a0a1a1a2a2a3a3a3a4a4a5a5a6a6a6a7a7a8a8a9a9aaaaabababacacadadae
+aeafafb0b0b0b1b1b2b2b3b3b4b4b5b5b6b6b6b7b7b8b8b9b9bababbbbbcbcbd
+bdbebebebfbfc0c0c1c1c2c2c3c3c4c4c5c5c6c6c7c7c8c8c9c9cacacbcbcccc
+cdcdcececfcfd0d0d1d1d2d2d3d3d4d4d5d5d6d6d7d7d8d8d9d9dadadbdcdcdd
+dddededfdfe0e0e1e1e2e2e3e3e4e4e5e6e6e7e7e8e8e9e9eaeaebebecededee
+eeefeff0f0f1f1f2f3f3f4f4f5f5f6f6f7f8f8f9f9fafafbfcfcfdfdfefeffff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+] def 
+/MatrixABC [ 0.4124 0.2126 0.0193 0.3576 0.7151 0.1192 0.1805 0.0722 0.9508 ] def 
+/RangeLMN [ 0.0 0.9505 0.0 1.0000 0.0 1.0891 ] def 
+end ] /Cs1 exch/ColorSpace dr pop
+/CIEBasedDEFG/ColorSpaceFamily resourcestatus{pop pop false}{true}ifelse{[/DeviceCMYK]}{ [ /CIEBasedDEFG 7 dict dup begin 
+/WhitePoint [ 0.9642 1.0000 0.8249 ] def 
+/DecodeDEFG [ 
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+0002040507080a0b0c0d0f1011121315161718191a1b1c1e1f20212223252627
+28292a2b2d2e2f3031323334353738393a3b3c3d3e3f4142434445464748494a
+4c4d4e4f5051525354555658595a5b5c5d5e5f6061626364666768696a6b6c6d
+6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d
+8e8f90919293949596979898999a9b9c9d9e9fa0a1a2a3a4a5a6a7a7a8a9aaab
+acadaeafb0b1b2b3b4b5b5b6b7b8b9babbbcbdbebfc0c1c1c2c3c4c5c6c7c8c9
+cacbcccdcececfd0d1d2d3d4d5d6d7d8d8d9dadbdcdddedfe0e0e1e2e3e4e5e6
+e7e7e8e9eaebececedeeeff0f1f2f2f3f4f5f6f7f7f8f9fafbfbfcfdfefeffff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+000103050607080a0b0c0d0e0f10111213141415161718191a1b1c1d1e1f2021
+22232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f4041
+42434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f6061
+63646565666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f8081
+8283848585868788898a8b8c8d8e8f90919293939495969798999a9b9c9d9e9f
+a0a1a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbe
+bfc0c1c2c3c4c5c6c7c8c9cacbcccdcecfd0d1d2d4d5d6d7d8d9dadbdcdddedf
+e0e1e2e3e4e5e6e7e8e9eaebeceeeff0f1f2f3f4f5f6f7f8f9fafbfcfdfeffff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+000203050608090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122
+23242425262728292a2b2c2d2e2f303132333435363738393a3a3b3c3d3e3f40
+4142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f60
+6162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f80
+8182838485868788898a8a8b8c8d8e8f909192939495969798999a9b9c9d9e9f
+a0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b3b4b5b6b7b8b9babbbdbebfc0c1
+c2c3c4c6c7c8c9cacbcccecfd0d1d2d3d4d5d7d8d9dadbdcdddedfe0e1e2e3e4
+e5e6e7e8e9eaebecedeeeff0f1f2f3f4f5f5f6f7f8f9fafafbfcfdfdfefeffff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+00010305060708090a0b0c0d0e0f10111213131415161718191a1b1c1d1e1f20
+202122232425262728292a2a2b2c2d2e2f30313233343536373838393a3b3c3d
+3e3f40414243444546474849494a4b4c4d4e4f505152535455565758595a5b5c
+5c5d5e5f606162636465666768696a6a6b6c6d6e6f7071727374757576777879
+7a7b7c7d7e7f7f80818283848586878888898a8b8c8d8e8f9090919293949596
+9798999a9a9b9c9d9e9fa0a1a2a3a4a5a6a7a7a8a9aaabacadaeafb0b1b2b3b4
+b5b6b7b8b9babbbcbebfc0c1c2c3c4c5c6c7c8c9cacccdcecfd0d1d2d3d5d6d7
+d8d9dadbdddedfe0e1e3e4e5e6e8e9eaecedeef0f1f2f4f5f7f8f9fafcfdfeff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div } bind 
+] def 
+/Table [ 9 9 9 9 
+[ [ < ff8080e57f7fcc7f7eb27f7e987f7e7d7f7e627f7e44807f1f8180
+fc7e8be47e89ca7e88b17e86977e857c7e84607f83437f831d8083
+fa7d97e27d94c97d91af7d8f957d8d7b7d8b5f7e89417e881c7f88
+f87ca2e07c9ec77c9bae7c97947c947a7d915e7d8f407d8d1a7e8b
+f77baede7ba9c67ba4ac7ba0937b9c787c985d7c953f7d92197d8e
+f57abadd7ab4c47aaeab7aa9917ba4777b9f5c7c9b3e7c98187c90
+f47ac6dc7abfc37ab8aa7ab2907aac767ba75b7ba23e7c9f177c8f
+f379d2da79cac279c2a979bb8f7ab4767aae5b7ba93d7ba4167b8f
+f279dfd979d5c179cca879c48f79bd757ab75a7bb13c7ba9157a8e
+> 
+< ed897ed6887dbe877da6867d8e857d74847d5a847d3d847e188680
+eb8789d58687bd8586a584858c84847383835983833c8382168584
+e98693d38591bc848fa4838d8b838b7283895782883b8287158487
+e8859ed1849bba8398a283958a829271829056828e3a828c14838a
+e684aad083a5b982a1a1829d88819a70819656819339819213828c
+e584b5ce83b0b782aaa081a68781a16e819d55809a38809812818c
+e483c0cd82bab681b49e81ae8680a96e80a45480a037809e11818b
+e383cccc82c5b581be9e80b78680b16d80ac5380a83780a310808b
+e282d8cb81d0b481c89d80c18580ba6c7fb4537fb0367fa5107f8a
+> 
+< dd927cc7907cb18e7c9a8d7c838b7c6b8a7c52897d36897e118b7f
+db9186c68f85b08d84998b83828a826a8982518882358882108a83
+d99091c48e8eae8c8c988a8b8189896988885087873487870e8986
+d88f9bc38d98ad8b95978a9280889068878e4f878c33868c0e8889
+d68ea6c18ca2ac8a9e95899b7e88976787954e86923286910d8788
+d58db0c08bacaa8aa79488a37d879f66869b4d85983285970c8688
+d48dbbbf8bb6a989b09388ab7d87a76586a24d859f31859d0c8588
+d38cc6be8bc0a989ba9287b47c86af6485aa4c85a73184a10b8587
+d28cd2bd8acaa889c39287bd7b86b76485b24c84ae3084a00b8487
+> 
+< cc9b7bb8997ba3967b8e947b79927b62907b4a8e7c2f8e7d0a907f
+cb9a84b79883a395828d9382789181618f81498d812e8d81098e83
+c9998eb6978ca1948a8c9289779088608e87488d862d8c86098d85
+c89898b49695a093938b9190768f8e5f8d8d478c8b2c8b8b088c85
+c798a2b3959e9f939b8a9098748e955e8d93468b912c8b91088b85
+c697acb294a89e92a48990a0748e9d5d8c9a468b972b8a97078a85
+c597b6b194b19d92ad888fa8738da45d8ca1458a9e2b8a9b078985
+c496c1b194bb9c91b6878fb0728dac5c8ba8458aa62a899c078984
+c396ccb093c59c91bf878fb9718db45c8bb1448aac2a899c078884
+> 
+< bda57aaaa27a969f7a839c7a6e997a59967b42947c27937c04937f
+bba483a9a182969e81829a816d9880589580419380279381049282
+baa38ca8a08b959d89819a886c9787579486409285269286049082
+b9a395a69f93939c9180998f6b968d56948c40928b25918b038f82
+b8a29fa69e9c929b997f98966b95945593923f9190259091038e82
+b7a1a9a59ea5929ba17e989e6a959b5592983e9097259096038d82
+b6a1b2a49dae919aa97d97a56994a254929f3e909e248f98038d82
+b6a0bca39db7909ab27d97ad6994a95492a73d90a4248f98038c82
+b5a0c7a39dc19099bb7c96b66894b25391af3d8fa9248e98038c82
+> 
+< aeaf799cab798aa77977a47964a07a4f9d7a3a9a7b209a7c00957f
+acaf829baa8189a68076a380639f804f9c80399a801f9981009480
+abae8b9aa98988a58876a286629e864e9b853899851f9886009380
+abad9399a99187a58f75a18d629d8c4d9a8b38988a1e978b009280
+aaac9c98a89986a49774a094619d924d9a913797901e9790009180
+a9aca598a7a286a39e73a09b609c994c99973797961e9694009080
+a8abaf97a7aa85a3a6739fa3609ca04c999e36969d1d9594009080
+a8abb897a7b385a3ae729faa5f9ba74b98a53696a21d9594008f80
+a7abc296a6bc84a2b7729eb25f9baf4b98ad3695a41d9594008f80
+> 
+< 9fba798eb5797db0796cac795aa87946a47a31a17b17a27b009180
+9eb9818eb4807db0806bab7f59a77f46a37f31a07f17a180009080
+9db8898db3887caf866baa8559a68545a284309f8417a086008f80
+9db7928cb38f7cae8d6aa98c58a58b45a18a309f8a179f8a008f80
+9cb79a8cb2977bad956aa99357a49144a190309e90179e8e008e80
+9cb6a28bb19f7aad9c69a89957a49744a0962f9d96179d8f008e80
+9bb6ab8bb1a77aaca469a8a157a39e44a09d2f9c9c179c8f008e80
+9bb5b48bb0af7aacab68a7a856a3a5439fa42f9ca0179c8f008d80
+9ab5bd8ab0b87aabb368a7af56a2ad439faa2f9ca0179b8f008d80
+> 
+< 91c57982bf7872ba7861b57850b0793eac7929a97a0fab7b008d80
+91c48081be7f71b97f61b47e50af7e3dab7e29a87f0fa980008c80
+90c38881be8771b88560b3844fae843daa8429a7840fa884008c80
+90c29080bd8e70b78c60b28b4fad8a3da98928a6890fa789008c80
+90c19880bc9570b69360b1914eac903ca88f28a59010a58a008c80
+8fc1a080bb9d70b69a5fb1984eac963ca79528a49510a48a008c80
+8fc0a87fbba470b5a15fb09e4eab9d3ca79c28a39a10a48b008c80
+8fc0b07fbaac6fb5a85fafa54eaba43ca6a228a39b10a38b008b80
+8ebfb97fbab46fb4b05fafac4eaaab3ca6a728a29b10a28b008b80
+> 
+< 84d07875ca7866c47857be7846b97835b57920b27907b27b008980
+84cf8075c97f66c37e56bd7e46b87e34b37e20b07e08b07f008a80
+84ce8775c88666c28456bc8446b78334b28321af8308af83008a80
+84cd8f75c78d66c18b56bb8a46b68934b18821ae8909ad86008a80
+84cc9675c69466c09156ba9046b58f34b08e21ad8f09ac86008a80
+84cb9e75c59b66bf9856b99646b49534af9521ac940aab86008a80
+83cba575c4a266be9f56b89c46b39b35ae9b21ab960aaa87008a80
+83caad75c4a966bea656b8a346b2a235ada022aa970aa987008a80
+83cab575c3b066bdac56b7aa46b2a835ada422a9970ba887008a80
+> 
+] [ < f27b79da7b79c27b79aa7c7a917c7a777d7b5c7d7b3f7e7c1b7f7d
+f07984d97a83c17a83a97a82907b81767c815b7c813e7d80197e80
+ee7890d7788ebf798ca7798a8e7a89757b875a7b863d7c85177c85
+ec769cd57798be7895a678938d7990737a8e597a8c3c7b8a167b88
+ea76a7d476a3bc779fa4779b8b7898727995587a923b7a8f157a8c
+e975b3d275aebb76a9a377a48a77a071789c5779983a7a9514798d
+e874bfd175b8b975b2a276ad8977a87078a356789e39799c13788d
+e774cbd074c3b975bda175b68876b06f77aa5578a63978a112788c
+e674d7cf74cfb874c7a075bf8776b86f77b25578ae3878a612778c
+> 
+< e18477cc8378b583789e82798782796e827a55827b39827b13847c
+e08282ca8281b481819d81808681806d8180548180378180128380
+de818dc9808bb3808a9c80888480876c8086538085368084118184
+dc8098c77f95b17f939a7f90837f8e6b7f8c527f8b357f89108087
+db7fa3c67e9fb07e9c997e99827e966a7e93517e90357e8f0f7f8a
+da7eaec47eaaae7da5987da1817d9d697d9a507d97347e950e7e89
+d87db9c37db4ad7daf977daa807da5687da14f7d9d337d9b0d7d89
+d87dc5c27dbfac7cb8967cb27f7cad677ca84e7ca4337da00d7d89
+d77dd1c27cc9ac7cc2957cbb7e7cb5667cb04e7cac327ca20c7c88
+> 
+< d18d76bd8b77a98a779389787d88786687794d877a32877b0c897c
+d08b80bc8a80a7897f92887f7c877f64867f4c867f31867f0b8780
+ce8a8bbb8989a688889187877a86866385854b85843085840b8683
+cd8995b98893a587908f868e79858d62848b4a848a2f84890a8486
+cc889fb8879ca386998e859678849461849149838f2e838e098386
+ca88aab786a6a285a28d849e77839b6083984882952e8295098386
+c987b5b686b0a185ab8c84a77683a260829f48829c2d829a088286
+c987bfb585baa084b48b83af7582aa5f82a64781a32d819e088185
+c886cbb485c4a084be8a83b87582b35e82ae4781aa2c819e088185
+> 
+< c29675af94769c9276879077728f775d8d78458c792b8c7a068c7c
+c0957fae937e9b917e878f7e728d7e5c8c7e448b7e2a8b7e068b80
+bf9488ad9287999086858e85708c845b8b84438a83298a83058a83
+be9392ab9190988f8e848d8c6f8b8b5a8a8a438989288988058883
+bd929caa9099978e97838c946e8b9259899042888e28888e058783
+bc91a6a98fa2968d9f828c9c6d8a99588996418894278794048683
+bb91b0a88fac958da8818ba46d8aa057889d41879b278798048683
+ba90bba88eb6948cb1818bac6c89a85788a44087a226869a048582
+ba90c5a78ec0948cba808ab46b89b05687ad4086a8268699048582
+> 
+< b2a074a19d758f9a757c98766895775393783d927923927901907c
+b19f7da09c7d8e997d7b977d67947d53927d3c917d22917e018e7f
+b09e879f9b858d98847a96846793835291833c9082229083018d80
+af9d909e9a8e8c978c79958b6692895191883b8f88218f88008c80
+ae9c999d99978b969478949265929050908e3a8e8d218e8e008b80
+ad9ba39c989f8a969c7793996491974f8f953a8d94208d92008a80
+ad9bac9b98a88995a47793a163909e4f8f9b398d9b208d95008980
+ac9ab69b98b18995ad7692a96390a54e8ea3398da1208c95008980
+ac9ac09a97bb8895b67592b16290ad4e8eab388ca61f8c95008880
+> 
+< a4aa7493a67482a37571a0755e9d764a9a773598781b9978008d7f
+a3a97c93a57c82a27c709f7c5d9c7c4a997c34977d1a987d008c80
+a2a88592a48481a1836f9e825d9b824998823496821a9782008b80
+a1a78e91a38c80a08a6e9d895c9a884897873395871a9688008a80
+a0a69690a3947f9f926e9c905b998e48968d33958d19958c008980
+a0a69f8fa29c7e9f9a6d9b975a9895479693329493199490008980
+9fa5a88fa2a57e9ea26c9b9e5a989c47959a32939a199391008880
+9fa5b28ea1ae7d9eaa6c9aa65997a34695a232939f199391008880
+9ea4bb8ea1b77d9db26b9aae5997ab4694a93192a1189290008780
+> 
+< 95b57386b07476ac7465a87554a57641a2772c9f7712a277008980
+95b47c86af7b76ab7b65a77b53a47b41a07c2c9e7c12a07c008880
+94b38485ae8375aa8264a68153a381409f812c9d81129f82008880
+94b28c84ad8a74a98964a58852a287409e862b9c86129e86008780
+93b19484ad9274a89063a48e52a18d3f9e8c2b9b8c129c8a008780
+93b09c83ac9a73a89763a49551a0933f9d922b9b93129b8c008680
+92b0a583aba273a79f62a39c51a09a3f9c992b9a98129b8c008680
+92afae83abaa73a7a662a3a3519fa13e9ca02a999c129a8c008680
+91afb782abb372a6ae62a2ab509fa93e9ba62a999c12998c008580
+> 
+< 88bf7379ba736ab6745bb1744aad7538aa7624a8760aaa77008680
+88bf7b79ba7a6ab57a5ab07a4aac7a38a87b24a67b0aa87c008580
+87bd8279b8816ab4815aaf8049ab8038a78024a5800aa681008580
+87bc8a79b78969b3875aae8649aa8637a68523a4860ba585008580
+87bc9278b79069b28e59ad8d49a98c37a58b23a38c0ba387008480
+86bb9a78b69769b19559ac9348a89237a49123a2910ba287008480
+86baa278b59f68b09c59ac9a48a79837a49823a1960ba187008480
+86baaa77b5a768b0a359aba148a79f37a39f23a0980ba087008480
+86bab377b4af68afab58aba848a6a737a2a423a0980ba088008480
+> 
+< 7bcb726dc5735fc07350bb7440b6742fb3751bb17503b077008380
+7bca7a6dc47a5fbf7950ba7940b57a2fb17a1bb07a04ae7c008380
+7bc9816dc3805fbe8050b97f40b47f2fb07f1bae7f04ac80008380
+7bc7896dc2875fbd8650b78540b3852faf841bad8505aa83008380
+7bc6906dc18e5ebc8c50b68b40b18a2fad8a1bab8b05a983008380
+7bc6976dc0955ebb9350b59140b0902fac911caa9005a783008380
+7bc59f6dbf9c5eba9a50b59840b0972fac971ca99306a684008380
+7ac5a76dbfa35eb9a150b49f40af9e2fab9c1ca89306a584008380
+7ac4af6dbeab5fb9a850b3a640aea42faaa01ca89306a584008380
+> 
+] [ < e67673d07773b97874a278758a7976717a77577b783b7c79167d79
+e4747ece757eb7767da0777d88787d70797d567a7d3a7a7e157b7d
+e27289cc7488b675879f76858777856e7884557883387982137982
+e07195ca7292b473909d748e86758c6d768a547789377887127885
+de70a0c9719db372999c73968474936c769153778e37778c117789
+dd6facc770a7b171a39a729f83749b6b759852769536769210768b
+dc6eb7c670b2b071ad9972a88273a36a749f51759b3576990f758a
+db6ec3c56fbdaf70b79871b18172ab6973a65075a234759e0f758a
+da6ecec56fc7ae70c09771ba8072b36873ae5074aa3474a30e748a
+> 
+< d67f71c17f72ac7f73977f74807f75687f76507f783480790f8179
+d47d7cc07d7cab7d7c957d7c7f7d7c677e7c4f7e7d337f7d0e807d
+d37b87bf7c86aa7c85947c847d7c83667d834e7d82327d820d7e81
+d17a92bd7a90a87a8e937b8c7c7b8a657c894d7c88317c870c7d84
+cf799cbb799aa77997917a947b7a92647b8f4c7b8d307b8c0b7c87
+ce78a7ba78a4a579a090799c7a7999637a964b7a93307b920b7b87
+cd77b2b978aea478a98f78a57979a162799d4a7a9a2f7a980a7a87
+cc77bdb877b8a477b38e78ad7878a96179a44979a12e799d0a7a86
+cc77c9b877c3a377bc8d77b67778b16178ac4979a82e799f097986
+> 
+< c68870b38771a086728c85737685756084764884772d8478088679
+c5867ab2857a9f857b8b847b75837b5f837c47837c2c837c08847d
+c48584b184849e83838983827482825e82814682812b8281078381
+c2838fb0838d9c828b88828a7381895d81884581872b8186078184
+c18299ae82969b81948781927280905c808e45808c2a808c068084
+c081a3ad81a09a809d86809a717f975b7f94447f92297f92067f84
+bf81aeac80aa9980a6857fa2707f9e5a7f9b437e99297e97057f84
+be80b8ac80b4987faf847faa6f7ea6597ea2437ea0287e9b057e83
+be80c3ab7fbe977fb8837eb36e7eae597eaa427ea7287d9b057e83
+> 
+< b7916fa68f70948e72808c736c8b74578a75408976268a77038a79
+b68f79a58e79938c797f8b7a6b8a7a56897b40887b25887b02887d
+b58e82a48d82928b817e8a816a89815588803f8780248780028780
+b48d8ca28b8b908a897d89886988875487863e8686248685028581
+b38c96a18a948f89927c889068878e53868c3d858b23858b028481
+b28ba0a08a9d8e889a7b87976786955385933c8491238491018381
+b18aaa9f89a68d88a37a869f67859c5284993c8498228495018381
+b08ab49f88b08d87ab7a86a76685a35184a03b839f228397018281
+b08abe9e88b98c87b47985af6584ab5184a83b83a5218396018281
+> 
+< a89a6f9898708796717594726292734e9074388f751e9076008a7b
+a799789797788695787493796191794d8f7a388e7a1e8f7b00887e
+a6988196968085938073918061907f4d8e7f378d7f1d8d7f008780
+a5978a959489849288729087608f864c8d85368c851c8c85008680
+a5969394939183918f718f8e5f8e8c4b8c8b368b8a1c8b8a008580
+a4959c94939a839197718f955e8d934a8b91358a901c8a8f008480
+a394a69392a382909f708e9c5d8c9a4a8b98358a971b8a92008380
+a294af9292ac8190a86f8ea45d8ca1498a9f34899d1b8992008280
+a294b99291b5818fb06f8dac5c8ba9498aa73489a21b8992008280
+> 
+< 9aa46e8ba16f7b9e706a9c7158997345977430967515987500867e
+99a3778aa0777a9d77699b785798784496792f9579159679008580
+99a27f899f7f7a9c7f69997e57977e44957e2f947e15957f008480
+98a188899e87799b866898855696844394842e9284159484008380
+97a090889d8f789a8d67978c55958b42938a2e9289149389008280
+969f99879c977799956697935594914292902e919014928d008180
+969fa2879c9f77999d66969a5494984191962d909614918d008180
+959eab869ba87698a46596a154939f41919e2d8f9b14908d008080
+959eb4869bb17698ad6595a95393a74191a52d8f9e14908d008080
+> 
+< 8caf6e7eab6f6fa8705fa4714ea1723c9f73279d740da073008280
+8cae767eaa766fa6765fa3774ea0773b9d78279c780d9e78008180
+8bad7e7da97d6ea57d5ea27d4d9f7d3b9c7d279b7d0d9d7e008180
+8bab867ca8856da4845da1834d9e833b9b83269a830d9b83008080
+8aaa8e7ca78d6da38b5da08a4c9d893a9a882699880d9a87008080
+8aaa967ba6946ca3925c9f914c9c8f3a998e26988f0d9988008080
+89a99f7ba59c6ca29a5c9e984b9b963999952697940d9888008080
+89a9a77ba5a46ba1a15b9e9f4b9b9d39989c2596990d9788008080
+89a8b07aa5ad6ba1a95b9da64a9aa43998a22596990d9688008080
+> 
+< 7fb96d71b56e63b16f54ad7044aa7133a7721ea67205a773008080
+7fb97571b47563b07554ac7644a97632a6771ea57706a578008080
+7eb77c71b37c63af7c54ab7c44a77c32a47c1ea37c06a37d008080
+7eb68471b28362ae8253aa8243a68232a3811ea28206a181008080
+7eb58c70b18a62ad8953a98843a58732a2871ea188069f84008080
+7db49470b09262ac9053a88f43a48e31a18d1ea08d079e84008080
+7db49b70b09961ab9752a79542a39431a0941e9f92079d84008080
+7db3a36fafa161ab9e52a79c42a39b31a09a1e9e94079c85008080
+7db3ac6fafa961aaa652a6a342a2a2319f9f1e9d94079b85008080
+> 
+< 72c56c65c06d58bc6e49b76f3ab47029b17114b17000ab74008080
+72c47465bf7458bb7449b6753ab27529af7615af7500a978008080
+72c37b65be7b58b97a49b57a3ab17b29ad7b15ad7b00a77d008080
+72c18265bd8157b88149b3803aaf8029ac8015ac8001a580008080
+72c08a65bc8857b78749b2863aae8629ab8615aa8601a481008080
+72bf9165bb8f57b68e49b18d3aad8c29aa8c16a98b01a281008080
+72bf9865ba9657b59549b0933aac9229a99316a88f02a181008080
+72bea065b99e57b49b49b09a3aab9929a89816a78f02a081008080
+71bea865b9a557b4a349afa13aaba029a79c16a68f029f81008080
+> 
+] [ < d9716cc5726eaf746f9975718276726a7774527875367976127a76
+d76f77c37078ae727898737981747969767a50777a35787b10787a
+d56d83c16f82ac70819672818073806874804f758034767f0f777f
+d46b8ebf6d8caa6f8a9570897e72886773874e74853375840e7583
+d26a99be6c96a96d94936f917d708f66728d4d738b32748a0e7486
+d169a4bc6ba1a86c9d926e9a7c6f976571944c729131738f0d7389
+d068afbb6aaba66ba7916da27b6f9e64709b4c71973172960c7388
+cf68bbbb69b6a66bb0906cab7a6ea6636fa24b719e30719b0c7288
+ce67c6ba69c0a56aba8f6cb4796dae626fa94a70a630709f0c7188
+> 
+< ca796bb77a6da37a6e8f7b70797b71627c734a7d742f7d760b7f76
+c87776b67876a279778d7978787a78617a79497b7a2e7c7a0a7d7a
+c77680b47680a177808c787f76787f60797f487a7f2e7a7f097c7e
+c5748bb3758a9f76888b76877577865f78854779842d7984097a82
+c47396b174939e749189758f74768d5e778c46788a2c7889087985
+c372a0b0739d9c739a8874977375955d76924677902b778f087885
+c271abaf72a79b73a38773a072749c5c75994576962b7695077885
+c170b6ae71b19a72ad8673a87174a45b75a044759d2a759a077785
+c070c1ae71bc9a72b68572b17073ac5b74a84475a52a759c077684
+> 
+< bb826aaa826c97816e84816f6f81715a8172438174298275058376
+ba8074a980759680768380776e807759807842807928807904827a
+b97f7ea77e7e957e7e827e7e6d7e7e587e7e417f7e277f7e04807e
+b77d88a67d87947d86807d866c7d85577d84407d83267e83047f81
+b67c92a57c91927c8f7f7c8d6b7c8c567c8a3f7c89257d89037e82
+b57b9da37b9a917b987e7b956a7b93557b913f7c8f257c8f037d82
+b47aa7a37aa4907aa07d7a9d697a9a547b973e7b95247b94037c82
+b37ab1a27aad8f79a97c7aa5687aa1547a9e3e7a9c247a98037b82
+b379bca179b78f79b27c79ad6879a95379a63d7aa3247998027b82
+> 
+< ac8b699c8a6b8b896d79886f6687705187723b8773218774008777
+ab8a739c88748a88757887766586765186773b857820867800857b
+aa887c9a877c89867d77857d64857d50847d3a847d20847d00837e
+a986869986858885857684846383834f83833983821f8382008280
+a8858f98848e87848d75838b62828a4e82893882881f8288008180
+a784999783978683957482936181914d818f38818e1e818d008080
+a684a39683a085829d73819a6081984d80953780941e8092008080
+a683ad9682a98481a67281a260809f4c809c377f9b1d7f94008080
+a583b79582b38481ae7280aa5f80a64b7fa4367fa11d7f94008080
+> 
+< 9e95698f936b7f916c6e906e5c8e6f498d71338d72198e7200837a
+9d93728f91737f90746d8e755b8d75488c76338b77188d7700817e
+9d927b8e907b7e8e7b6d8d7b5a8c7c478b7c328a7c188b7c008080
+9c90848c8f837c8d836c8c82598a82468982318981188a81008080
+9b8f8d8c8d8c7b8c8a6b8a89598988468887318887178887008080
+9a8e968b8d947b8b926a8a9058888f45878d30878d17878c008080
+998d9f8a8c9d7a8a9a69899857889644879430869316868f008080
+998da8898ba5798aa268889f57879d44869b2f859a16858f008080
+988db2898bae7989ab6888a75687a44386a22f859f16858f008080
+> 
+< 909e68829c6a739a6c63976d52966f3f94702b937110967100807d
+909d71829b727398736396745194753f93752a9276109475008080
+8f9c7981997a72977a62957a51937a3e917b2a917b10937b008080
+8e9a828098817196816194815092803e9080298f800f9180008080
+8e998a7f97897095886093874f91873d8f86298e860f9085008080
+8d98937f969170949060928e4f908d3d8e8c298d8c0f8e89008080
+8c989b7e95996f93975f91954e8f933c8d92288c920f8d8a008080
+8c97a47e95a26f939f5e909c4e8e9a3c8d99288c980f8c8a008080
+8c97ad7d94aa6e92a75e90a44d8ea23b8ca0288b9b0f8b8a008080
+> 
+< 83a96876a56968a36b58a06c489e6e369c6f229b70089d70008080
+83a77075a47167a172589f73489c73369a74229a75089b75008080
+82a67875a37867a078579d79479b7936997921987a08997a008080
+82a58074a280669f7f579c7f479a7f35987f21977f08977f008080
+81a48873a187659e86569b85469885359785219685089583008080
+80a39073a08f659d8d569a8c46988b34968a21958b089485008080
+80a298729f96649c95559993459791349591219490089386008080
+80a2a0729f9e649c9c55999a459698349498209395089286008080
+7fa1a9729ea6649ba45498a14596a033939e209296089186008080
+> 
+< 76b36769b0695cac6a4ea96c3ea66d2da46e18a56e01a270008080
+76b26f69af705cab704da8713ea5722da37318a37301a075008080
+76b17669ad775caa774da6773ea3782da17818a178029d7a008080
+75b07e68ac7e5ba87d4da57d3da27d2ca07d18a07d029b7e008080
+75ae8568ab855ba7844ca4833da1832c9f83189e83029a81008080
+74ae8d68aa8c5aa68b4ca38a3da0892c9e89189d89039882008080
+74ad9567a9935aa6924ca2903c9f8f2c9d90189c8e039782008080
+74ac9d67a99b5aa5994ba2973c9e962b9c96189b90039682008080
+74aca567a8a35aa4a04ba19e3c9e9d2b9b9b189a90039582008080
+> 
+< 6abf665dbb6850b76943b46a34b06b23af6c0eb16b009f73008080
+69be6e5dba6e50b66f43b27034af7123ad710eae70009d78008080
+69bc755db87550b47543b07634ad7623ab760fac76009c7c008080
+69bb7c5db77c50b37b42af7b34ac7b23a97b0faa7b009b7f008080
+69ba835db68250b28242ae8134aa8123a8810fa981009a80008080
+69b98a5db58950b18842ad8833a98723a7870fa786009980008080
+69b8915db49050b08f42ac8e33a88d23a68e10a68a009880008080
+69b7995db39750af9642ab9533a79423a59310a58a009880008080
+68b7a05db39f50ae9d42aa9c33a79b23a49810a48b009780008080
+> 
+] [ < cd6c66b96e68a56f6a90716c7b726e6474704c75723176730d7873
+cb6971b86b72a46d738f6f747971756372764b73773074780c7677
+c9677cb6697ca26b7c8e6d7c786f7c62707c4a727d2f737d0c747c
+c76587b46886a16a858c6b84776d83606f834971822e71810b7380
+c66492b366909f688e8b6a8c756c8b5f6e89486f882e70870a7284
+c4639db1659a9e6797896995746b925e6d90476e8e2d6e8c0a7187
+c361a8b064a49d66a088689d736a9a5d6c96466d942c6d920a7086
+c261b3b063ae9c65aa8767a57269a15c6b9e466c9a2c6c98097086
+c260bdaf62b89b64b38766ae7268a95c6aa5456ca22b6c9c097086
+> 
+< be7465ad75679a766986776b72786d5c796f457a712b7a73077d73
+bd726fab73719974728575737176745b77754478762a7977067b78
+bb707aaa717a97727a84737b6f747b5a757b43767c29777c06797c
+ba6e84a86f849670838272826e7382597482427581287581067880
+b86c8fa76e8d946f8c81708a6d7189587388417487277486057783
+b76b99a56c97936e95806f926c709057728e40738d27728c057683
+b66aa4a46ca1926d9e7f6e9a6b6f97567195407293267192057783
+b569aea46baa916ca67e6da36a6f9f55709c3f7199267096047783
+b569b9a36ab4916baf7d6dab696ea6556fa33f70a1257099047783
+> 
+< b07c64a07d678f7d697c7d6b687d6d547e6f3e7e71247f72018174
+af7a6e9f7b708d7b717b7b72677c73537c753d7d76237d76017f78
+ae78789d79798c79797a7a7a667a7a527b7a3c7b7b227c7b017e7c
+ac77829c77828b78817878816579815179803b7a80217a80017d7f
+ab758c9b768b89768a7777896477875078863a7886217885017e80
+aa74969a759488759276769063768e4f778d3a778b20778b007e80
+a973a099749d87749b7575986275954e7693397692207690007e80
+a872aa9873a78773a37474a062759d4e759a3876991f7594007e80
+a872b49772b08673ac7473a86174a44d75a138759f1f7495007e80
+> 
+< a2856493856683846872846a5f846c4b836e3684701c8570008076
+a1836d92836f8282707182715e82734b82743582751b837500807a
+a081769181778181787081785d80794a807935807a1b817a00807e
+9f8080907f80807f806f7f7f5c7f7f497f7f347f7f1a7f7f008080
+9e7e898f7e887f7e876d7e875b7e86487e85337e851a7e85008080
+9d7d928e7d917e7d906c7d8e5a7d8c477d8b337d8a197c8a008080
+9c7c9c8d7c9a7d7c986c7c955a7c93477c92327c91197b8e008080
+9b7ba58c7ba37c7ba06b7b9d597b9a467b98327b97197a90008080
+9b7baf8c7bac7b7ba86a7aa5587aa2467aa0317a9d187990008080
+> 
+< 948f63868d65778c68678b6a568a6c438a6d2e8a6f138c6f00807a
+948d6c868b6d778a6f6689705589724288732d8874138a7300807d
+938b75858a767689766588775487784187782d8679138878008080
+92897d84887e74877e64867e53867e41857e2c857e12867e008080
+9188868387867386856385855284844084842c8483128483008080
+90878f82868e73858d63848c52838a3f838a2b8289128388008080
+8f86988185977284956283935182913f82902b819011828c008080
+8f85a181849f71839d61829a5082983e81962a819611818b008080
+8e85aa8084a87183a56182a250819f3e819e2a809b11808b008080
+> 
+< 8798637a96656c94675c93694c926b3a916c25916e0b936d00807d
+86966b79956d6b936e5c916f4b9071398f72258f720b9172008080
+8695737893746a91755b90764b8e76398d77258d770b8e77008080
+85937c77917c69907c5a8e7c4a8d7c388c7c248c7c0b8c7d008080
+849284779084688f83598d83498c82388b82248a820a8a81008080
+83918c768f8b688e8a598c89498b88378a882389880a8986008080
+839095758e93678d92588b90488a8f37898e23888e0a8887008080
+828f9d758e9c678c99588a974789963688952387940a8787008080
+828fa6758da4668ca1578a9f47889d36879c2287970a8687008080
+> 
+< 7aa2626ea064609d66529b68429a6a30986b1c996c03986c00807f
+79a16a6d9e6b609c6d519a6e42986f3097701c9771049671008080
+799f726c9d735f9a735198744196753095751c9675049377008080
+789e7a6c9b7a5e997a50977a40957b2f947b1b947b04917c008080
+789c816b9a815e98814f96814094802f92801b9280048f80008080
+779b896a99895d97884f95873f93872f91861b9187048e83008080
+779a916a98905d968f4e948e3f928d2e908c1b908c048d83008080
+769a996a98985c95964e93953f91932e8f931b8f91048c83008080
+7699a26a97a05c959e4e929c3e909b2e8f991b8e92048b83008080
+> 
+< 6ead6162aa6355a76547a56738a36827a26a12a46900986e008080
+6dac6961a96a54a66b47a36d38a16e27a06f12a26e009773008080
+6daa7061a77154a47246a273379f73279e7412a073009578008080
+6ca87860a67853a37846a078379e79269c79129e7800947c008080
+6ca77f60a47f53a17f459f7f379c7e269b7e129c7e009280008080
+6ba6865fa38653a085459e85369b84269a84129b84009180008080
+6ba58e5fa28d529f8c459d8b369a8b26998b129989009080008080
+6ba5965fa294529f93449c9236999125989112988c009080008080
+6aa49d5fa19c529e9a449b9936999825979612978c008f80008080
+> 
+< 61b86055b56249b2643caf652dad671cad6708ae67009372008080
+61b76755b46949b16a3cae6b2dab6c1cab6c08ac6c009277008080
+60b66e55b26f49af703cac712da9711da97109a97100907b008080
+60b47555b17648ad763caa762da8771da77709a777008f7f008080
+60b27c54af7c48ac7c3ba97c2da67c1da57c09a57d008e80008080
+60b18354ae8348ab833ba7822da5821da4820aa382008d80008080
+5fb08b54ad8a48aa893ba6892da4881da2890aa286008d80008080
+5fb09254ac9148a9903ba58f2da38f1da18e0aa187008c80008080
+5faf9954ac9848a8973ba5962da2961da1930aa087008c80008080
+> 
+] [ < c1675fae69629b6b65886d67736e6a5d706c46726f2c73700a7671
+bf646aad666c9a686e866a6f726c715c6e724570742b7075097475
+bd6175ab6476996676856877706a785b6c79446e792b6e7a08727a
+bb5f80a9618097647f83667f6f697f5a6b7f436c7f2a6c7e08717e
+b95d8ba860899562888265876e6786596985426b84296b84087282
+b85b95a65e9394619181638f6d668d58688c42698a286989077285
+b75aa0a55d9d935f9a8062976c649557679241689028688f077385
+b659aba55ca7925ea37f61a06b639c566699406797276695077384
+b658b5a45bb1925eac7e60a86a63a45665a040669e276599077484
+> 
+< b36e5fa270629171647e72676a746955756c3f766e26776f047b71
+b16c69a16d6b906f6d7d706e6972705573723e7473257574037975
+b069739f6b748e6d757b6e766870775371783d727824727903797a
+ae677e9e697e8c6b7e7a6c7e676e7e526f7e3d717e23707e037a7e
+ad65889c67878b6986796b85666c85516e843c6f83236f83037a81
+ab64929b66908a678f78698d656b8c506d8a3b6e89226d89027a82
+aa629c9a649a896697776895646a93506b913a6d8f226b8e027b81
+aa61a69963a38865a076679d63699a4f6b973a6c96216a93027b81
+a961b19963ad8765a97566a56268a14e6a9e396b9c216996027b81
+> 
+< a5775e9677618678647479666179694e7a6b387b6d1e7c6e008072
+a4746895756a85766c73766e60776f4d78713779721e7973008077
+a372729473738374747274755f75764c76773777771d777800807b
+a16f7b92717c82727c71737c5e747c4b757d36757d1c757d00807e
+a06e85916f858170846f71845d72834a73833574821c7382008080
+9f6c8f906d8e7f6f8c6e708b5c718a4972893472881b7188008080
+9e6b998f6c977f6d956d6f935b709148718f34718e1b708d008080
+9d6aa28e6ba07e6d9d6d6e9a5b6f984870963370951b6f91008080
+9d69ac8e6ba97d6ca56c6da25a6e9f476f9d336f9b1a6e92008080
+> 
+< 987f5e8a7f617b7f636a7f66587f6845806b30806c16826d008076
+977d67897d697a7d6b697d6d577d6e447e70307e71167f7100807a
+967a70887b72787b73687b74567c75447c762f7c76157d7600807d
+95787986797a77797a67797b567a7b437a7b2f7b7c157b7b008080
+9377838577827677826678825578814279812e7981147981008080
+92758c84768b75768a6577895477884177872d7887147786008080
+92749583759474759264759053768f41768d2d768d14768b008080
+91739e83749c74749a6375985275954076942c769313758d008080
+9072a88273a57373a263749f52749c40759b2c759913748d008080
+> 
+< 8b885d7e87606f87636086654f86683d866a28866b0e886b008079
+8a86667d85686e856a5f846c4e846e3c846f2884700d866f00807d
+89846f7c83706d83715e82724d82743b82742782750d8374008080
+8882777a81786c81795d81794d817a3b817a27817a0d817a008080
+8780807980806b7f805c7f804c7f803a7f80267f800d7f7f008080
+867f89797e886b7e885b7e874b7e86397e86267e850d7e84008080
+857d92787d916a7d8f5b7d8e4a7d8d397d8c257c8c0c7d88008080
+857d9a777c99697c975a7c954a7c93387c92257b920c7c88008080
+847ca3777ca1697c9f597b9c497b9a387b99257b970c7b88008080
+> 
+< 7e915d719060648f62558e65458d67348d691f8e6a068e6a00807c
+7d8f65718e67638d69558c6b458b6c338b6e1f8c6e068b6e00807f
+7c8d6d708c6f628b70548a71448a723389731f8a73068974008080
+7b8b756f8a766189775389774388783287781e8878068779008080
+7a8a7e6e897e61887e52877e43867e32867e1e867e06857e008080
+7a88866d88856087855286844285843184841e8484068482008080
+79878e6d878d5f868c51858b42848a31838a1e838a068284008080
+7987966c86955f85945084924183913082901d828f068184008080
+78869f6c859d5e849b5083994182983082971d8193068184008080
+> 
+< 719b5c65995f5998614b96633c95662a956716976700936900807f
+709a646598665896684a95693b936b2a936c16956c00906e008080
+70986c64966d58946e4a936f3b92712a9171169271008e74008080
+6f96736394745793754991763a9076298f77159076008c79008080
+6e947b63937b56917c48907c3a8e7c298e7c158f7c008a7d008080
+6e9383629183559082488e82398d82298c82158d82008980008080
+6d928b61908a558f89478d89398c88288b88158b88018780008080
+6d9193619092558e91478c8f388b8e288a8f158a8c018680008080
+6c909b618f99548d98478c96388a9528899514898e018680008080
+> 
+< 65a65b5aa45e4da26040a062319f64209f650ba165008d6d008080
+64a46359a2644da066409e68319c69209c6a0c9e69008b72008080
+64a26a59a06b4d9e6c3f9c6e319b6f209a6f0c9c6f008a77008080
+63a171589e724c9c733f9a733199742098740c9a7400897b008080
+639f78579d794b9b793e997930977a20977a0c987a00877f008080
+629e80579c804b99803e978030967f20957f0c9680008680008080
+629d87579b874b98863e96862f95861f94860c9485008580008080
+619c8f569a8e4a988d3d958c2f948c1f938c0c9388008580008080
+619b965699964a97943d95932f93931f92910c9188008480008080
+> 
+< 59b15a4eaf5c42ad5e35ab6027a96215ab6203a963008871008080
+58b0614dad6342ab6435a96627a76715a86703a668008776008080
+58ae684dac6941a96a35a76b27a56c16a66c04a36d00867a008080
+57ac6f4caa6f41a77034a57126a37116a47104a17200857e008080
+57aa764ca87641a57634a37726a17716a277049f78008480008080
+56a97d4ca77d40a47d34a27d26a07d16a07d049c7e008380008080
+56a8844ca68440a38334a183269f83169f83059b82008280008080
+56a78b4ca58a40a28a349f89269e89159e89059983008280008080
+56a7924ca49240a191349f90269d90169c8d059883008180008080
+> 
+] [ < b56159a3635d9266607f68636b6a66576c69416e6b276e6d06746e
+b35d64a260669063687e656b6a686d566a6f406b71276c72067573
+b15a6fa05d708f60717c63726965745467753f6976266977067578
+af57799e5b798d5e7a7b607a68637b53657b3e677b25667b05767c
+ad55839d58838c5b82795e826661825264813d6581246481057680
+ac538e9b568d8a5a8b785d8a655f895162883c6487246286057683
+ab51989a5596895894775b92645e9051618e3c628d23608c057783
+aa50a39a54a089579d775a9a645d97505f953b6193235f91057783
+a94fad9953a98856a57659a1635c9e505e9b3b609a235e96057783
+> 
+< a86859986a5c876c5f766e62636f654f71683a726b20726c017d6e
+a66563976765866968756b6a626d6c4e6e6e397070207071017e73
+a4626d95646f856670736871616a734d6c74386d751f6d75017e78
+a35f779362788364787266795f68794c6a7a376b7a1e6a7a007e7c
+a15d819260818262817064805e66804b6880366a801e6880007e7f
+a05b8b915e8a8160896f63885d65874a67863668851d6685007e80
+9f5995905c93805f916f61905d638e4a658c35668b1d658b007e80
+9e589f8f5b9c7f5e9a6e60975c62954964933565921d6490007e80
+9e57a98e5aa67e5da26d5f9f5b619c48639a3464981c6393007e80
+> 
+< 9b70588c715c7d725f6c74625a756547766832776a19776b008072
+996d628b6e657c70676b716959726b46746d32746f18746f008076
+986a6c8a6c6d7b6d6f6a6f7058707246717331727418727400807a
+976875886976796b77696c77576e78456f79307079176f7900807e
+95657f87677f78697f676a7f566c7f446d7f306e7f176e7e008080
+946388866588776787666986556a85436c852f6c84166c84008080
+93629285649076668f66678d55698c426a8b2f6b8a166b89008080
+92619b8463997565976566955468934269912e6a91166a8d008080
+9260a48462a274649f64659c53679a4168982e699715698e008080
+> 
+< 8e785881795c72795f627a62527b643f7b672b7c69107e69008076
+8d756180766471776661786851786a3e796c2a7a6e107b6d00807a
+8c736a7e746c70746e60756f5076713e77722a777310797200807d
+8a70737d71746f72755f73764f74773d7577297578107677008080
+896e7c7c6f7d6e707d5e717d4e727d3c737d28737d0f757d008080
+886c857b6d856d6e855d70844d71833b71832871830f7382008080
+876b8e7a6c8d6c6d8c5d6e8b4c6f8a3b70892770890f7287008080
+876a97796b966b6c945c6d924c6e913a6f8f276f8f0f718a008080
+8669a0796a9e6b6b9c5b6c994b6d973a6e96276e950e7089008080
+> 
+< 81815875815b67815e588161488164378266228367088467008079
+807e60747e63667e65587f67487f69367f6b22806c08816c00807d
+7f7c69737c6b657c6c577c6e477d6f357d71217e71087f71008080
+7e7971727a72647a74567a74467b75357b76217b76087d77008080
+7d777a70787a63787b55787b45797b34797c21797c087b7c008080
+7c7582707682627682547782447782337881207781087a81008080
+7b748b6f758a62758a537589447688337687207688087885008080
+7b73936e739261749153749043758e32758e1f748e087785008080
+7a729c6e739a6073995273974374953274951f7392087785008080
+> 
+< 758a5769895a5c895d4e89603f88632d8965198a65018a6700807c
+74885f6887625b87644d86663e86682d866a19886a02876b00807f
+7385676785695b846b4d846c3d846e2d846f19856f028571008080
+72836f6683715982724c82733d82742c8274188374028376008080
+7181776581785980794b80793c80792b807a18807a02817b008080
+707f7f647f80587f804a7f803c7e7f2b7e7f187e7f027f7f008080
+6f7e88647e87577e874a7d863b7d862b7d85177d86027e81008080
+6f7d90637d8f577d8e497c8d3a7c8c2a7c8c177b8b027d81008080
+6e7c98637c97567c95497b943a7b932a7b92177a8f027c81008080
+> 
+< 6994575d935951925c44915f3591612491630f946300886900807e
+68925e5d9160519063438f65358e67248f680f916700866e008080
+678f665c8e67508d69438d6b348c6c238c6d0f8e6c008473008080
+668d6d5b8c6e4f8b70428b71338a72238a720f8b72008278008080
+658b755a8a764e89764189773388772388770f897700817c008080
+64897c59897d4e887d41877d32877d22867d0f877d008080008080
+6488845987844d87844086833285832285830f8583008080008080
+63878c59868b4d868b40858a32848922848a0e8387008080008080
+6386945886934c85923f84913183902282900e828a008080008080
+> 
+< 5c9e55529d58469c5b399a5d2b9a5f1a9b60069c6100836d008080
+5c9c5d519b5f4699613998632b98651a9965069865008272008080
+5b9a645099654597673996692a956a1a966a07956a008077008080
+5a986b50966c44956d38946e2a936f19946f07927000807b008080
+5a96724f95734493743792742a917519927507907500807f008080
+5994794f937a43927a37907a29907a19907a078d7b008080008080
+5893814e9281439081368f80298e80198e80078c80008080008080
+5892884e9188428f87368e87288d87188d87078a84008080008080
+58918f4e908f428f8e368d8d288c8d188c8c078985008080008080
+> 
+< 50aa5446a8563ba7592ea55b20a55c0ea85d00a060008071008080
+4fa85b45a65d3aa55f2ea36020a3620ea562009d65008075008080
+4fa66145a4633aa2652ea16620a1670ea267009a6900807a008080
+4ea46844a26939a06b2d9f6c1f9e6c0ea06c00986f00807d008080
+4ea26f44a070399e712d9d711f9c710e9d71009675008080008080
+4da076439e76389d772c9b771f9a770e9b7700937a008080008080
+4d9f7d439d7d389b7d2c9a7d1f997d0e997d00927e008080008080
+4d9e84439c84389a842c99831f98830e9883009080008080008080
+4c9d8b439b8b38998b2c988a1f968a0e9788008f80008080008080
+> 
+] [ < a95a53995d5788605b77635e6465625068653b696823696a03796c
+a7565e985960875c63765f666362694f656b3a666d22656f037971
+a5526896566a85596c745c6e625f6f4e6271396473216274037976
+a34f72945373845674735975605d764d5f7739617821607803797a
+a24c7d92507d82537d71577d5f5a7d4c5d7d385f7e205d7e037a7e
+a04987914d868151857055855e58844b5b84375d83205b83037a82
+9f4791904b90804f8e6f538d5d568b4b598a375b891f5a89037a82
+9e459b8f4a997f4e966f51945d55924a589036598f1f598e037a82
+9d44a58f48a27f4d9f6e509c5c54994a57973658961e5892037a82
+> 
+< 9d62538e64577e665b6e685e5c6a61496c65346e671b6d6900806d
+9b5e5d8d60607d63636d65655b676848696a346b6d1b6a6e008072
+9a5a678b5d697c5f6b6b626d5a646f4766703368721a6772008077
+985671895a727a5d736a5f745962754664763265771a657700807b
+96547a88577b795a7b695d7c585f7c45627c31637c19637c00807f
+955184875584785883685b83575d83446082316082196182008080
+944f8e86538d77568c67598a565c89445e88305f88186088008080
+934d98855196765494665792555a90435c8f305d8e185f8c008080
+924ca184509f75539c665699555997435b952f5c94185e90008080
+> 
+< 916953836b57746c5a656e5e5470614171642d7267137367008071
+8f655c82675f736962646b65536d67406e6a2c6f6c13706c008076
+8e626680646872666a62686c526a6e406b6f2c6c71136e7100807a
+8c5e6f7f61707063726165735067743f69752b6976126c7600807e
+8b5c787d5e796f617960637a50657a3e677b2a677b126a7b008080
+8a59827c5c826e5e815f61814f63813d65812a6581116881008080
+89578b7b5a8a6d5d895e5f884e61873c6387296386116786008080
+8855947b58936d5b915d5e8f4d608e3c618d29618d11668a008080
+87549d7a579b6c5a995d5c974d5f953b6093295f9311658b008080
+> 
+< 8571537872566a735a5b745d4b75603977632577650b7a66008075
+836d5c776f5f6970615a71644a736638746925746a0b776a008079
+826a64756c67686d69596e6b49706c38716e24716f0b756f00807d
+81676d74696f676a70586c71486d73376e74246e740b7374008080
+7f6476736677656878576978476b79366c79236c7a0b717a008080
+7e627f72647f64667f56677f46697f366a7f22697f0a707f008080
+7d60887162876464875566864667853568852267850a6e84008080
+7d5e9070608f63628e55648d45668c34678b22658b0a6d87008080
+7c5d99705f986261965463944564923465922164910a6e87008080
+> 
+< 7879526d7a56607b59517b5d427c60307d621c7e64048064008079
+77765b6b775e5f7760507863417965307a671c7b68047e6900807c
+7673636a74655d75674f756940766b2f776d1c776d047b6e00807f
+75706b69716d5c726e4f73703f74712f74721b7472047974008080
+746d74686e755b6f764e70763f71772e72781b7178047879008080
+736b7c676c7d5a6d7d4d6e7d3e6f7d2e707d1a6f7d04787e008080
+726984666a845a6c844c6d843d6e832d6e831a6d83047882008080
+71678d66698c596a8b4b6b8a3d6c8a2c6c891a6b89047883008080
+7166956568945869934b6a913c6b902c6b90196a8e047882008080
+> 
+< 6c825261825555825947835c38835f27846112866100836500807c
+6b7f5a607f5d54805f47806238806427816612826600816a00807f
+6a7c625f7c64537d66467d68377d6a267e6b127f6b00806f008080
+6979695e7a6b527a6d457a6e367b6f267b70127c70008074008080
+6876715d7772517873447874367975257976117975008079008080
+6774795c757a50767a43767b35767b25777b11777b00807e008080
+6672815b73814f7481437481347581247581117581008080008080
+6671895b72894f7388427388347387247387117486008080008080
+6570915a71904e718f42728e34728e24728e11738a008080008080
+> 
+< 608c51568b544a8b573d8b5a2f8b5d1e8d5e098e5f00806900807e
+5f895855895b49885e3c88602e88621d8963098a6300806e008080
+5e86605486624886643c86662e86681d8668098768008073008080
+5d836753836947836b3b836c2d836d1c846e09846e008078008080
+5c806f5281704681713a81722c81731c817309817300807c008080
+5b7e76517f77467f78397f782c7f781c7f78097f79008080008080
+5b7c7e507d7e457d7e397d7e2b7d7e1b7d7e097d7f008080008080
+5a7b85507b85457c85397b842b7b841b7b85097c83008080008080
+5a7a8d507a8d447a8c387a8b2b7a8b1b798b097b86008080008080
+> 
+< 5496504a95533f955633955824955b12985b01945d00806d008080
+5393574993593e925c32925e249260129460019162008071008080
+52915e4890603e8f62318f64238f65129165028d67008076008080
+528e65488d663d8d68318c69238d6a128e6a028a6c00807b008080
+518b6c478b6d3c8a6e308a6f228a70118b6f02887200807f008080
+5089734689743b88752f8875228875118975028678008080008080
+4f877a46877b3b877b2f867b22867b11867b02847d008080008080
+4f86814586813a85812f8581218581118581028381008080008080
+4e85894585893a84882f8488218388118387028181008080008080
+> 
+< 48a24e3ea15134a05328a05619a15708a35800915f008070008080
+479f543d9e57339e59279d5b199e5c089f5d008e64008075008080
+469d5b3d9c5d329b5f269a61189b61089b62008c69008079008080
+469a623c996331986526986618986708986700896e00807d008080
+4597683b976a31966b25956c17966c08956c008774008080008080
+44956f3b9570309471259371179471089272008679008080008080
+4493763a9377309277249277179277088f7800847d008080008080
+43927d3a917d30917d24907d17907d088d7e008380008080008080
+4391843a90842f9084248f84178f84088c83008280008080008080
+> 
+] [ < 9e534d8f5752805a566f5d5a5d605e4a62623664651e6367017d6b
+9c4e588e525b7e555e6e59615c5c65495f6735606a1d606c017d6f
+9a49628c4d647c51676c55695b586b485b6d345c6f1d5d71017d74
+98456c8a496d7b4d6f6b51715955724758733359751c5a76017d79
+974176884677794a77694e7858527946557a33567a1c587b017d7d
+953d80874280784780684b80574f804552803253801b5780017d80
+943a8a864089774588684987574d874550863251861b5586017d81
+923894853d9276429067478f564b8d444e8c314f8c1b548b017c81
+92369d843b9b764198674696564a94444d92314d921a538f017c81
+> 
+< 935a4d855d52765f5666625a55645d4367612f686416696600806d
+91555783585a755b5e655e615461644263672e646916666a008072
+8f5061825463735766645a68535d6a415f6d2d606e15636f008077
+8d4c6a80506c71546e62576f525a71405c722d5d7415617400807b
+8c48747e4c757050766154775157783f59782c5979145f7900807e
+8a457e7d497e6f4d7e60517e50547e3e577e2b567f145e7f008080
+8942877c47876e4b865f4f854f52853e54842b5484145d84008080
+883f907b448f6d498e5f4d8c4f508b3d528a2b528a145d89008080
+873e9a7b43986d47955e4b934e4f923d51912a5091135e8d008080
+> 
+< 88614e7a64526c66565d68594d6a5d3b6b60276c630e7064008071
+865c57795f5a6b615d5c64604c66633a68662768680e6e68008076
+845860775b626a5e655b60674b626a3a646c26646d0e6b6d00807a
+82546976576b685a6d5a5d6e4a5f703961712560720d697200807e
+815072745373675774585a75495c76385e77255d780d6978008080
+7f4d7b73507c66547c57577c48597c375b7d245a7d0d697e008080
+7e4a84724e846551845754834757833759832458830d6983008080
+7e478d714c8c644f8b56528a4755893657892456890d6987008080
+7d4696714a94644e9355519146549036558f23558f0c6a88008080
+> 
+< 7c694e706b51626c55546e59446f5c3371601f7162077763008075
+7a64566e665961685d536a60436c62326d651f6d67077467008079
+79605f6d626160646452666642686832696a1e696b07746c00807d
+775c676b5e695e616b51636d42656e3166701e6571077471008080
+7658706a5b715d5e725060744162753063751d6276067477008080
+7455796958795c5b7a4f5d7a405f7b30607b1d607b06747c008080
+7352816855815b58814e5b813f5d812f5d811d5e81067481008080
+73508a6753895b56884d59883f5b872e5b871c5c87067484008080
+724e926751915a54904d578e3e598d2e598d1c5b8d067484008080
+> 
+< 70714d6572515873554a75583b765c2a775e167860007e62008078
+6f6c55636e59576f5c49715f3b72612a7364167464007e6700807c
+6d685d626a60566c63486d653a6e67296f69157069007e6c00807f
+6c6466606668546869476a6b396b6d286c6e156d6e007e71008080
+6a616e5f636f536570466772386873286873156a73017e77008080
+695e765e6077526277456478376579276579146879017e7b008080
+685b7e5d5d7e52607f45617f37637f27627f14667f017e7f008080
+6859865d5b86515e86445f85366185266085146585017d80008080
+67578e5c5a8e505c8d445e8c365f8b265e8b136489017e80008080
+> 
+< 647a4d597a504e7b54417c57327d5a217e5d0c805d00806500807b
+6375545876584c775b40785d317960217a620c7c6200806a00807e
+61715c57725f4b74613f75633075652076670c796700806f008080
+606d64566f664a70683e716930726b1f726c0c766c008074008080
+5f6a6b556c6d496d6e3d6e6f2f6f701f6f710b7371008079008080
+5e6773546974486a753c6b762e6c761f6b760b717700807d008080
+5d647b53667b48687c3b697c2e697c1e697c0b6f7d008080008080
+5c62835264834766833b67822d67821d66820b6e82008080008080
+5c608a52628a4664893a65892d65881d65890b6d86008080008080
+> 
+< 58834c4e834f43845337845628855917875a04875b00806900807e
+577f534d7f5642805936805c28815e16835f04846000806d008080
+567b5a4c7c5d417c5f357d61277e63167e64048065008073008080
+5577614b7863407965347967267a68157a69047d6a008078008080
+5474694a756a3f766c33766d25776e15776e047b6f00807c008080
+5371704972713e7372327473257473157473047975008080008080
+526e78486f783d707931717924717914727904787b008080008080
+516c7f476d7f3d6e7f316f7f246f7f14707f047880008080008080
+516a86476c863c6d86316d85246d85146e85047882008080008080
+> 
+< 4c8d4a438d4e388d512c8d541e8f560c915600895c00806c008080
+4b8951428954378a572b8a591d8b5b0c8d5b008660008071008080
+4a855841865a36865d2a865f1c87600b8860008365008076008080
+49825f4082613583632a83641c84650b846500806a00807a008080
+487e663f7f67347f6929806a1b806a0b816a00807000807e008080
+477b6d3e7c6e337d6f287d701a7d700b7e70008076008080008080
+4679743d7a75337a75277b761a7a760a7c7600807b008080008080
+46767b3c787b32787b27787c19787b0a7a7c00807f008080008080
+4574823c76823277822777821a76820a7882008080008080008080
+> 
+< 40994837984b2d984e219951129c5203995400845f008070008080
+3f954f3695512c9554209656119857039559008164008075008080
+3e92553592572b925a1f925b10945c02905e008069008079008080
+3d8e5b348e5d2a8e5f1e8f600f9061028d6300806e00807d008080
+3c8b62338b64298b651d8c660f8d66028968008074008080008080
+3b876932886a28886b1d896b0f896b02876e008079008080008080
+3b85703185702786711c86710e867102847400807d008080008080
+3a82773183772784771c84770e847702837a008080008080008080
+3a807e30817e27827e1b827e0e827e02817e008080008080008080
+> 
+] ] ] def 
+/DecodeABC [ 
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+00ff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div  100 mul 16 add 116 div } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+00ff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div  256 mul 128 sub } bind 
+
+{ 1.0 0.0 3 -1 roll 1 index 1 index le { exch pop} { pop } ifelse 
+ 1 index 1 index ge { exch pop } { pop } ifelse < 
+00ff
+>  dup length 1 sub 3 -1 roll mul dup dup floor cvi exch ceiling 
+ cvi 3 index exch get 4 -1 roll 3 -1 roll get
+ dup 3 1 roll sub 3 -1 roll dup floor cvi sub mul add 255 div  256 mul 128 sub } bind 
+] def 
+/MatrixABC [ 1 1 1 0.002 0 0 0 0 -0.005] def 
+/RangeLMN [ 0.1379 2 0.1379 2 0.1379 2 ] def 
+/DecodeLMN [ {  dup 0.206897 ge { 3 exp } { 0.1379310 sub 7.787 div } ifelse 0.9642  mul} bind {  dup 0.206897 ge { 3 exp } { 0.1379310 sub 7.787 div } ifelse 1.0000  mul} bind {  dup 0.206897 ge { 3 exp } { 0.1379310 sub 7.787 div } ifelse 0.8249  mul} bind ] def 
+end ] }ifelse /Cs2 exch/ColorSpace dr pop
+%%EndPageSetup
+/Cs1 SC
+q
+0 0 237 73 rc
+237 0 0 73 0 0 cm
+BI
+/Width 711
+/Height 219
+/BitsPerComponent 8
+/Decode[
+0 1
+0 1
+0 1
+]
+/DataSource cg_aiproc
+ID
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$XT*kO
+JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$XT*kOJcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcC<$JcDhOJcC<$JcC<$JcC<$
+JcC<$JcC<$JcC<$JcC<$JcC<$XT*e
+~> %APLeod
+EI
+Q
+/Cs2 SC
+0 0.80200005 0.73200005 0 sc
+T soprm
+q
+0.26803586 0 236.46391 73 rc
+49.916435 66.590553 m
+37.421597 66.590553 l
+34.864288 66.590553 32.784481 64.510742 32.784481 61.953438 c
+32.784481 43.622746 l
+32.784481 41.066441 34.864288 38.98563 37.421597 38.98563 c
+49.916435 38.98563 l
+52.47374 38.98563 54.55455 41.066441 54.55455 43.622746 c
+54.55455 61.953438 l
+54.55455 64.510742 52.47374 66.590553 49.916435 66.590553 c
+f
+0 0 0 0 sc
+79.50737 13.172424 m
+78.281662 11.910753 75.726357 9.8808918 70.789551 9.8808918 c
+63.683037 9.8808918 58.115902 14.57195 58.115902 22.344763 c
+58.115902 30.152538 63.752964 34.808636 70.789551 34.808636 c
+75.761314 34.808636 78.456474 32.742809 79.086815 32.076511 c
+77.336655 27.385454 l
+76.881134 27.981825 74.290863 29.9058 71.105217 29.9058 c
+67.008537 29.9058 63.857853 27.175674 63.857853 22.449652 c
+63.857853 17.723631 67.148384 15.026471 71.105217 15.026471 c
+74.115051 15.026471 76.285767 16.217216 77.617363 17.583778 c
+h
+f
+89.80162 23.465181 m
+87.315239 23.465181 85.880753 21.539209 85.880753 18.983902 c
+85.880753 16.426596 87.315239 14.502622 89.80162 14.502622 c
+92.252037 14.502622 93.722488 16.426596 93.722488 18.983902 c
+93.722488 21.539209 92.252037 23.465181 89.80162 23.465181 c
+89.80162 9.9164524 m
+84.339371 9.9164524 80.207726 13.311876 80.207726 18.879013 c
+80.207726 24.446148 84.339371 27.876535 89.80162 27.876535 c
+95.262871 27.876535 99.35955 24.446148 99.35955 18.879013 c
+99.35955 13.311876 95.262871 9.9164524 89.80162 9.9164524 c
+f
+110.66833 23.465181 m
+108.25288 23.465181 106.60761 21.6441 106.60761 18.983902 c
+106.60761 16.321705 108.25288 14.502622 110.66833 14.502622 c
+113.08379 14.502622 114.69409 16.321705 114.69409 18.983902 c
+114.69409 21.6441 113.08379 23.465181 110.66833 23.465181 c
+120.12138 10.301047 m
+114.79898 10.301047 l
+114.83395 12.576651 l
+114.72906 12.541687 l
+113.43442 10.790532 111.3686 9.9164524 109.05803 9.9164524 c
+104.05131 9.9164524 100.89963 13.836323 100.89963 18.913975 c
+100.89963 23.98963 104.05131 27.876535 109.05803 27.876535 c
+112.20871 27.876535 113.95987 26.300196 114.51928 25.461079 c
+114.51928 34.458603 l
+120.12138 34.458603 l
+h
+f
+134.65048 20.768423 m
+134.61552 22.344763 133.46074 24.234772 131.11421 24.234772 c
+128.80363 24.234772 127.61389 22.41469 127.54397 20.768423 c
+h
+139.79706 17.583778 m
+127.508 17.583778 l
+127.75375 15.096397 129.64375 13.976577 131.91936 13.976577 c
+134.16 13.976577 136.12093 14.956545 137.1019 15.622843 c
+139.30757 12.715904 l
+138.74716 12.297347 136.47057 9.916853 131.11421 9.916853 c
+125.79281 9.916853 121.90691 13.207387 121.90691 18.914375 c
+121.90691 24.620365 126.10848 27.876936 131.2191 27.876936 c
+136.33072 27.876936 139.86798 24.480513 139.86798 19.438824 c
+139.86798 18.59771 139.79706 17.583778 139.79706 17.583778 c
+f
+154.85289 29.977322 m
+148.62146 29.977322 l
+148.62146 10.301047 l
+142.94843 10.301047 l
+142.94843 29.977322 l
+136.717 29.977322 l
+136.717 34.458603 l
+154.85289 34.458603 l
+h
+f
+164.061 22.414789 m
+163.81526 22.414789 l
+163.5006 22.589605 162.76537 22.834347 161.7854 22.834347 c
+160.52473 22.834347 159.61469 22.135084 159.19414 21.573675 c
+158.77357 21.015263 158.31905 19.894444 158.31905 17.968473 c
+158.31905 10.30055 l
+152.71695 10.30055 l
+152.71695 27.560369 l
+158.31905 27.560369 l
+158.28409 25.109951 l
+158.35402 25.109951 l
+159.33398 27.000957 160.76947 27.877035 162.62552 27.877035 c
+163.7803 27.877035 164.37567 27.560369 164.37567 27.560369 c
+h
+f
+171.76239 10.301149 m
+166.16029 10.301149 l
+166.16029 27.560968 l
+171.76239 27.560968 l
+h
+168.96133 29.555868 m
+167.07133 29.555868 165.7767 30.711651 165.7767 32.462807 c
+165.7767 34.177002 167.07133 35.367748 168.96133 35.367748 c
+170.85336 35.367748 172.14799 34.177002 172.14799 32.462807 c
+172.14799 30.711651 170.85336 29.555868 168.96133 29.555868 c
+f
+185.27725 17.898445 m
+182.51117 17.723629 l
+180.79597 17.653704 179.78004 16.917479 179.78004 15.622842 c
+179.78004 14.292244 180.86591 13.487092 182.40628 13.487092 c
+183.91269 13.487092 184.92662 14.467059 185.27725 15.061434 c
+h
+190.84439 10.300448 m
+185.48703 10.300448 l
+185.38214 12.12153 l
+184.64691 11.386304 183.2464 9.9158535 180.44534 9.9158535 c
+177.39955 9.9158535 174.17894 11.56112 174.17894 15.413063 c
+174.17894 19.263008 177.71422 20.558643 180.90086 20.698496 c
+185.24229 20.873312 l
+185.24229 21.259905 l
+185.24229 23.078989 183.94765 24.023993 181.70702 24.023993 c
+179.50034 24.023993 177.29466 23.044025 176.41959 22.484613 c
+174.94913 26.125778 l
+176.41959 26.861004 179.11574 27.876934 182.33635 27.876934 c
+185.55696 27.876934 187.41301 27.140711 188.77856 25.881037 c
+190.10916 24.620365 190.84439 22.939135 190.84439 20.034195 c
+h
+f
+202.88779 23.500145 m
+200.4024 23.500145 198.82706 21.679064 198.82706 19.333534 c
+198.82706 16.953041 200.4024 15.131959 202.88779 15.131959 c
+205.37317 15.131959 206.91354 16.953041 206.91354 19.333534 c
+206.91354 21.679064 205.37317 23.500145 202.88779 23.500145 c
+212.34084 13.801361 m
+212.34084 10.091269 211.39482 7.9205551 209.7146 6.3442149 c
+208.03436 4.7688746 205.7238 3.6140909 201.76697 3.6140909 c
+197.77617 3.6140909 194.59053 5.2953205 193.39978 6.1693997 c
+195.71034 9.9164534 l
+196.72627 9.1452656 199.35152 7.9555182 201.66208 7.9555182 c
+203.97365 7.9555182 205.12843 8.6907444 205.7238 9.3200808 c
+206.31917 9.9863787 206.7737 11.211089 206.7737 12.751467 c
+206.7737 13.311876 l
+206.70377 13.311876 l
+205.65387 11.945316 203.97365 10.861458 201.27748 10.861458 c
+197.04094 10.861458 193.11908 13.801361 193.11908 19.368498 c
+193.11908 24.934633 197.04094 27.876535 201.27748 27.876535 c
+204.18242 27.876535 205.82869 26.546936 206.73872 25.354193 c
+206.80865 25.354193 l
+206.73872 27.559868 l
+212.34084 27.559868 l
+h
+f
+226.6252 20.768423 m
+226.59024 22.344763 225.43546 24.234772 223.08893 24.234772 c
+220.77835 24.234772 219.58861 22.41469 219.51868 20.768423 c
+h
+231.77177 17.583778 m
+219.48273 17.583778 l
+219.72847 15.096397 221.61847 13.976577 223.89407 13.976577 c
+226.13472 13.976577 228.09564 14.956545 229.07661 15.622843 c
+231.28229 12.715904 l
+230.72188 12.297347 228.44528 9.916853 223.08893 9.916853 c
+217.76753 9.916853 213.88162 13.207387 213.88162 18.914375 c
+213.88162 24.620365 218.08319 27.876936 223.19382 27.876936 c
+228.30544 27.876936 231.8427 24.480513 231.8427 19.438824 c
+231.8427 18.59771 231.77177 17.583778 231.77177 17.583778 c
+f
+0.021000002 0.38900003 0.99900007 0 sc
+37.422096 36.545105 m
+33.519207 36.545105 30.343552 39.719761 30.343552 43.62265 c
+30.343552 56.839729 l
+28.154858 56.839729 l
+25.597551 56.839729 23.517742 54.759918 23.517742 52.202614 c
+23.517742 33.871922 l
+23.517742 31.313616 25.597551 29.233807 28.154858 29.233807 c
+40.649696 29.233807 l
+43.206005 29.233807 45.286812 31.313616 45.286812 33.871922 c
+45.286812 36.545105 l
+h
+f
+0.66500002 0.059000004 0.17200001 0 sc
+18.887423 17.041948 m
+14.984533 17.041948 11.808879 20.218601 11.808879 24.12149 c
+11.808879 37.33857 l
+9.6201839 37.33857 l
+7.0618792 37.33857 4.98207 35.257759 4.98207 32.699455 c
+4.98207 14.370762 l
+4.98207 11.812457 7.0618792 9.7316484 9.6201839 9.7316484 c
+22.114023 9.7316484 l
+24.671329 9.7316484 26.752138 11.812457 26.752138 14.370762 c
+26.752138 17.041948 l
+h
+f
+0.61000001 0 0.66500002 0 sc
+28.15436 26.792778 m
+24.251471 26.792778 21.076815 29.969431 21.076815 33.872322 c
+21.076815 47.089397 l
+18.887121 47.089397 l
+16.329815 47.089397 14.250006 45.008591 14.250006 42.450287 c
+14.250006 24.121592 l
+14.250006 21.563286 16.329815 19.482477 18.887121 19.482477 c
+31.38196 19.482477 l
+33.939266 19.482477 36.020077 21.563286 36.020077 24.121592 c
+36.020077 26.792778 l
+h
+f
+ep
+end

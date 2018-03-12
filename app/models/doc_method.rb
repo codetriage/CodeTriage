@@ -1,4 +1,6 @@
 class DocMethod < ActiveRecord::Base
+  NeedsDocs = "⚠ Needs Docs ⚠".freeze
+
   belongs_to :repo
   has_many   :doc_comments, dependent: :destroy, counter_cache: :doc_comments_count
 

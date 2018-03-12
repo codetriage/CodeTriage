@@ -11,6 +11,9 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
+repo = Repo.create!(user_name: "rails", name: "sprockets", language: "Ruby")
+PopulateDocsJob.perform_now(repo)
+
 100.times do
   printf "."
   begin
@@ -38,6 +41,7 @@ end
     rand(10).times do |i|
       issue = repo.issues.new(
         number:     i,
+        last_touched_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         updated_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         title:      Faker::Lorem.paragraph(1, true, 2),
         state:      "open",
@@ -45,7 +49,8 @@ end
       )
       issue.save
     end
-  rescue # unique constraints, etc who cares
+  rescue => e # unique constraints, etc who cares
+    puts "Error generating seed: #{e}, skipping to next seed"
     next
   end
 end
