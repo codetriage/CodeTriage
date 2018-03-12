@@ -1,7 +1,6 @@
 @import "github/markdown-body";
 @import "github/readme";
 
-
 .footer {
   margin: 0 auto;
 
@@ -10,6 +9,11 @@
     margin: 0 auto;
     width: 200px;
     height: 56px;
+  }
+
+  .logo-wrapper img {
+    width: 100%;
+    height: 100%;
   }
 }
 
