@@ -44,9 +44,7 @@ CodeTriage::Application.routes.draw do
 
   resources :repo_subscriptions
 
-  if Rails.env.development?
-    mount UserMailer::Preview => 'mail_view'
-  end
+  get 'mail_view', to: redirect('rails/mailers')
 
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
