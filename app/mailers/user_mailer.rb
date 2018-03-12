@@ -78,9 +78,8 @@ class UserMailer < ActionMailer::Base
     @message = message
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
-  private
 
-  def set_and_check_user(user)
+  private def set_and_check_user(user)
     @user = user
     !@user.email.blank?
   end
