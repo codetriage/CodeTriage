@@ -20,6 +20,8 @@ class UserMailerTest < ActionMailer::TestCase
     send_email(user)
     triage_email = ActionMailer::Base.deliveries.last
     triage_email_text = triage_email.text_part.to_s
+    assert_equal 2, triage_email.parts.size
+    assert_equal "multipart/alternative", triage_email.mime_type
 
     assert_match /Help Triage 1 Open Source Issue/, triage_email.subject
 
@@ -35,6 +37,8 @@ class UserMailerTest < ActionMailer::TestCase
     send_email(user)
     triage_email = ActionMailer::Base.deliveries.last
     triage_email_text = triage_email.text_part.to_s
+    assert_equal 2, triage_email.parts.size
+    assert_equal "multipart/alternative", triage_email.mime_type
 
     assert_match /Help Triage 1 Open Source Doc/, triage_email.subject
 

@@ -1,27 +1,27 @@
 Hi @<%= @user.github %>,
 
 <% if @write_docs.present? %>
-## Write Docs
+  ## Write Docs
 
-<% @write_docs.sort_by {|d| d.repo.full_name }.each do |doc| %>
-**<%= doc.repo.full_name %>** ([source](<%= doc.to_github %>)): [<%= doc.path %>](<%= doc_method_url doc %>)
+  <% @write_docs.sort_by {|d| d.repo.full_name }.each do |doc| %>
+    **<%= doc.repo.full_name %>** ([source](<%= doc.to_github %>)): [<%= doc.path %>](<%= doc_method_url doc %>)
 
-<% end %>
+  <% end %>
 <% end %>
 
 
 <% if @read_docs.present? %>
 
-## Read Docs
+  ## Read Docs
 
-<% @read_docs.sort_by {|d| d.repo.full_name }.each do |doc| %>
-**<%= doc.repo.full_name %>** ([source](<%= doc_source_click_url(doc.id, @user.id) %>)): [<%= doc.path %>](<%= doc_method_click_url(doc.id, @user.id) %>)
+  <% @read_docs.sort_by {|d| d.repo.full_name }.each do |doc| %>
+    **<%= doc.repo.full_name %>** ([source](<%= doc_source_click_url(doc.id, @user.id) %>)): [<%= doc.path %>](<%= doc_method_click_url(doc.id, @user.id) %>)
 
-<pre>
-<%= doc.doc_comments.first.try(:comment) %>
-</pre>
+  <pre>
+    <%= doc.doc_comments.first.try(:comment) %>
+  </pre>
 
-<% end %>
+  <% end %>
 <% end %>
 
 --
