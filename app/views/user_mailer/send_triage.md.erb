@@ -1,29 +1,28 @@
 Hello <%= @user.github %>,
 
 <% if @create %>
-## Repo added to CodeTriage!
+  ## Repo added to CodeTriage!
 
-Thank you for adding <%= @repo.full_name %> to CodeTriage. If you want to get more people helping out with this repo, we suggest adding a badge to the repo's readme. Here is the markdown:
+  Thank you for adding <%= @repo.full_name %> to CodeTriage. If you want to get more people helping out with this repo, we suggest adding a badge to the repo's readme. Here is the markdown:
 
-```
-<%= "[![Open Source Helpers badge](#{File.join(repo_url(@repo), "badges/users.svg")})](#{repo_url(@repo)})" %>
-```
+  <pre>
+  <%= "[![Open Source Helpers badge](#{File.join(repo_url(@repo), "badges/users.svg")})](#{repo_url(@repo)})" %>
+  </pre>
 
-You can view an the badge on the [CodeTriage page for <%= @repo.name %>](<%= repo_url @repo %>).
+  You can view an the badge on the [CodeTriage page for <%= @repo.name %>](<%= repo_url @repo %>).
 
-If <%= @repo.name %> has a "contributing section" or docs on helping, it helps to put a sentence or two encouraging people to subscribe to your repo:
+  If <%= @repo.name %> has a "contributing section" or docs on helping such as `contributing.md`, it helps to put a sentence or two encouraging people to subscribe to your repo:
 
-<pre>
-If you're interested in getting involved with <%= @repo.name %>, the easiest
-way to start <%= "[contributing to this open source project is with CodeTriage](#{repo_url(@repo)})" %>. You'll get
-sent issues and bug reports to your inbox where you can "triage" them at your
-own pace. Eventually you'll be able to move to contributing docs and pull
-requests. For more info read <%= "[What is CodeTriage?](#{what_url})" %>.
-</pre>
+  <pre>
+    You can triage issues which may include reproducing bug reports
+     or asking for vital information, such as version numbers or
+     reproduction instructions. If you would like to start triaging
+      issues, one easy way to get started is to [subscribe to <%= @repo.name %> on CodeTriage](<%= repo_url(@repo) %>).
+  </pre>
 
-The more people you have subscribed to this repo on CodeTriage, the more help it will get on this project. The more 👀's the better.
+  The more people you have subscribed to this repo on CodeTriage, the more help it will get on this project. The more 👀's the better.
 
----
+  ---
 <% end %>
 
 ## You subscribed to <%= @repo.name %> on CodeTriage!

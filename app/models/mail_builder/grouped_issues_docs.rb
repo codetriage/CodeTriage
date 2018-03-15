@@ -48,20 +48,16 @@ module MailBuilder
   # returns the subscription ID for that repo.
   #
   class GroupedIssuesDocs
-    attr_accessor :any_docs, :any_issues
-
-    alias :any_docs?   :any_docs
-    alias :any_issues? :any_issues
-
     def initialize(user_id:, assignment_ids: [], read_doc_ids: [], write_doc_ids: [])
+      @active            = false
       @sub_hashes        = {}
       @repo_id_to_sub    = {}
       @doc_comments_hash = {}
       @error_hash        = Hash.new { raise "must call within each" }
       @active_hash       = @error_hash
 
-      self.any_docs   = read_doc_ids.present? || write_doc_ids.present?
-      self.any_issues = assignment_ids.present?
+      @any_docs   = read_doc_ids.present? || write_doc_ids.present?
+      @any_issues = assignment_ids.present?
 
       ## Issue assignments
       assignments = IssueAssignment
@@ -153,8 +149,10 @@ module MailBuilder
 
     def each
       @sub_hashes.each do |_, hash|
+        @active      = true
         @active_hash = hash
         yield self
+        @active      = false
         @active_hash = @error_hash
       end
     end
@@ -174,6 +172,19 @@ module MailBuilder
     def write_docs
       @active_hash[:write_docs]
     end
+
+    def any_docs
+      return @any_docs if !@active
+      return read_docs.any? || write_docs.any?
+    end
+
+    def any_issues
+      return @any_issues if !@active
+      return assignments.any?
+    end
+
+    alias :any_docs?   :any_docs
+    alias :any_issues? :any_issues
 
     def actions
       return "issues" if !self.any_docs

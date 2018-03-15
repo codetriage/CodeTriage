@@ -8,5 +8,5 @@ ActionMailer::Base.smtp_settings = {
 }
 ActionMailer::Base.delivery_method ||= :smtp
 
-Maildown.enable_layouts = true
+Maildown.allow_indentation = true
 Premailer::Rails.config.merge!(generate_text_part: false)
