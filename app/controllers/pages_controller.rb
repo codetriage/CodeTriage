@@ -1,8 +1,25 @@
 class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
+  # Renders the about page view
+  def what
+    render "what"
+  end
+
+  def privacy
+    render "privacy"
+  end
+
+  def support
+    render "support"
+  end
+
   def index
+    set_title("Get Started Contributing to Open Source Projects")
+    set_description("Discover the easiest way to get started contributing to open source. Over #{number_with_delimiter(cached_user_count, delimiter: ',')} devs are helping #{number_with_delimiter(cached_repo_count, delimiter: ',')} projects with our free, community developed tools")
+
     @repos = Repo.with_some_issues
+                 .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
       @repos = @repos.where(language: language)
     end
@@ -21,12 +38,12 @@ class PagesController < ApplicationController
     end
   end
 
-  def letsencrypt
-    render text: "DkLDpTLqhJKCl6SL7jJVbFSxWOuFJwry0K3UN2bJmqk.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
+  private def cached_repo_count
+    @@cached_repo_count ||= Repo.count
   end
 
-  def letsencryptwww
-    render text: "T2BMOklX7iIflqShN8o14d-mjsySpiy9jDKDD-oPquc.YM5-pJAz5TdroNkLacqIn4LhTFEBP1lWeELIdWCckyk"
+  private def cached_user_count
+    @cached_user_count ||= User.count
   end
 
   def valid_params

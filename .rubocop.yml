@@ -139,7 +139,7 @@ Bundler/DuplicatedGem:
  Enabled: false
 
 Bundler/OrderedGems:
- Enabled: true
+ Enabled: false
 
 Performance/RedundantBlockCall:
   Enabled: true

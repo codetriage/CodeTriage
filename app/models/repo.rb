@@ -124,8 +124,11 @@ class Repo < ActiveRecord::Base
     where("repos.id not in (?)", ids)
   end
 
+  @@max_id = nil
   def self.rand
-    order("random()")
+    @@max_id = self.maximum(:id) if @@max_id.nil?
+
+    where("id >= ?", Random.new.rand(1..@@max_id))
   end
 
   def self.all_languages
@@ -141,11 +144,11 @@ class Repo < ActiveRecord::Base
   end
 
   def force_issues_count_sync!
-    self.update_attributes(issues_count: self.issues.where(state: "open").count)
+    self.update!(issues_count: self.issues.where(state: "open").count)
   end
 
   def to_param
-    path
+    full_name
   end
 
   def self.order_by_issue_count
@@ -161,11 +164,7 @@ class Repo < ActiveRecord::Base
   end
 
   def github_url
-    File.join('https://github.com', path)
-  end
-
-  def path
-    "#{user_name}/#{name}"
+    File.join('https://github.com', full_name)
   end
 
   def self.exists_with_name?(name)
@@ -173,19 +172,11 @@ class Repo < ActiveRecord::Base
     Repo.exists?(user_name: user_name, name: repo_name)
   end
 
-  def self.order_by_subscribers
-    joins("LEFT OUTER JOIN repo_subscriptions
-           ON repo_subscriptions.repo_id = repos.id
-           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id")
-      .group("repos.id")
-      .order("count(users.id) DESC")
-  end
-
   def update_from_github
     json = fetcher.as_json
     self.update(
-      language: json.fetch('language', language),
-      description: json.fetch('description', description),
+      language:    json.fetch('language', language),
+      description: json.fetch('description', description)&.first(255),
       stars_count: json.fetch('stargazers_count', stars_count)
     )
   end

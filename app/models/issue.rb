@@ -3,7 +3,7 @@ class Issue < ActiveRecord::Base
   CLOSED = "closed"
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
-  belongs_to :repo, counter_cache: true
+  belongs_to :repo
 
   def valid_for_user?(user, skip_update = Rails.env.test?)
     unless skip_update
@@ -84,13 +84,8 @@ class Issue < ActiveRecord::Base
   end
 
   def self.queue_mark_old_as_closed!
-    where("state = ? and updated_at < ?", OPEN, 24.hours.ago).find_each do |issue|
-      begin
-        issue.update_attributes(state: CLOSED)
-      rescue => e
-        logger.debug e.inspect
-      end
-    end
+    where("state = ? and updated_at < ?", OPEN, 24.hours.ago)
+      .update_all(state: CLOSED)
   end
 
   private

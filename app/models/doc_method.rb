@@ -1,4 +1,6 @@
 class DocMethod < ActiveRecord::Base
+  NeedsDocs = "⚠ Needs Docs ⚠".freeze
+
   belongs_to :repo
   has_many   :doc_comments, dependent: :destroy, counter_cache: :doc_comments_count
 
@@ -28,7 +30,7 @@ class DocMethod < ActiveRecord::Base
 
   def file
     return nil if raw_file.blank?
-    _absolute, _match, relative = raw_file.partition(/(\/|^)#{repo.name}\//)
+    _absolute, _match, relative = raw_file.partition(/(\/|^)#{repo.name}\//i)
     return relative
   end
 

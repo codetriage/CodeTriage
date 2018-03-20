@@ -12,8 +12,8 @@
     "WEB_CONCURRENCY": "1"
   },
   "addons": [
-    "heroku-redis",
-    "heroku-postgresql",
+    "heroku-postgresql:in-dyno",
+    "heroku-redis:in-dyno",
     "memcachier"
   ],
   "stack": "cedar-14",

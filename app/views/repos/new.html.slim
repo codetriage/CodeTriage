@@ -5,6 +5,13 @@
   .subpage-content-header
     h1.subpage-primary-title Add a new repo to CodeTriage
 
+  section.content-section
+    h2.content-section-title Add another repo by pasting the full repo URL
+
+    = form_tag repos_path, { class: "new_repo", id: "new_repo_from_url" } do
+      => text_field_tag :url, nil, placeholder: 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field'
+      = submit_tag nil, value: "Add Repo", class: 'button full-width-action', id: 'createRepo'
+
   - if user_signed_in?
     section.content-section
       h2.content-section-title Your repos
@@ -23,17 +30,10 @@
 
       .tab-content
         .tab-pane.active#own
-          = render 'shared/add_repos_list', repos: @own_repos
+          = render_async list_repos_path(show: :own)
 
         .tab-pane#starred
-          = render 'shared/add_repos_list', repos: @starred_repos
+          = render_async list_repos_path(show: :starred)
 
         .tab-pane#watched
-          = render 'shared/add_repos_list', repos: @watched_repos
-
-  section.content-section
-    h2.content-section-title Add another repo by pasting the full repo URL
-
-    = form_tag repos_path, { class: "new_repo", id: "new_repo_from_url" } do
-      => text_field_tag :url, nil, placeholder: 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field'
-      = submit_tag nil, value: "Add Repo", class: 'button full-width-action', id: 'createRepo'
+          = render_async list_repos_path(show: :watched)

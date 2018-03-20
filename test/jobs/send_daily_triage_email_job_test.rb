@@ -11,7 +11,8 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
 
     def @job.before_email_time_of_day?(*); false; end
 
-    assert_enqueued_jobs 1 do
+    # {:job=>ActionMailer::DeliveryJob, :args=>["UserMailer", "send_daily_triage", "deliver_now", {"user_id"=>110871456, "assignment_ids"=>[980190962], "write_doc_ids"=>[], "read_doc_ids"=>[], "_aj_symbol_keys"=>["user_id", "assignment_ids", "write_doc_ids", "read_doc_ids"]}], :queue=>"mailers"}.
+    assert_enqueued_with(job: ActionMailer::DeliveryJob, queue: "mailers") do
       @job.perform(@user)
     end
   end
@@ -50,12 +51,12 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
     end
   end
 
-  test 'when email_time_of_day set, it delivers after preferred time of day' do
+  test 'when email_time_of_day set, it delivers at preferred time of day' do
     def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
 
     def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
 
-    Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.hour) do
+    Time.stub(:now, time_preference_for_today(@user.email_time_of_day)) do
       assert_enqueued_jobs 1 do
         @job.perform(@user)
       end
@@ -80,6 +81,26 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
     Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.hour) do
       @job.perform(@user)
       assert_not @job.perform(@user)
+    end
+  end
+
+  test 'when preference changed, sends at preferred time next day' do
+    def @user.issue_assignments_to_deliver; IssueAssignment.all.limit(1); end
+
+    def @user.email_time_of_day; Time.utc(2000, 1, 1, 18, 0, 0); end
+
+    Time.stub(:now, time_preference_for_today(@user.email_time_of_day)) do
+      assert_enqueued_jobs 1 do
+        assert @job.perform(@user)
+      end
+    end
+
+    def @user.email_time_of_day; Time.utc(2000, 1, 1, 04, 0, 0); end
+
+    Time.stub(:now, time_preference_for_today(@user.email_time_of_day) + 1.day) do
+      assert_enqueued_jobs 1 do
+        assert @job.perform(@user)
+      end
     end
   end
 

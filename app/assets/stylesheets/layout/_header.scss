@@ -7,6 +7,14 @@
   text-align: center;
 }
 
+.application-logo-image {
+  background: asset-data-url("logo.svg");
+  width: 200px;
+  height: 56px;
+  margin: 0 auto;
+  display: block;
+}
+
 .application-navigation-list {
   float: right;
 }

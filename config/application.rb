@@ -2,7 +2,6 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-require 'trashed/railtie'
 require 'statsd'
 
 # Require the gems listed in Gemfile, including any gems
@@ -11,8 +10,6 @@ Bundler.require(*Rails.groups)
 
 module CodeTriage
   class Application < Rails::Application
-    config.trashed.statsd = Statsd.new('localhost', ENV["PORT"]) if ENV["PORT"]
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -26,5 +23,6 @@ module CodeTriage
 
     config.force_ssl = ENV["APPLICATION_HOST"]
     config.middleware.insert_after ActionDispatch::SSL, Rack::CanonicalHost, ENV["APPLICATION_HOST"] if ENV["APPLICATION_HOST"]
+    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
   end
 end

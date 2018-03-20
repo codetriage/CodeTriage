@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ActionView::Helpers::NumberHelper
   protect_from_forgery
 
   before_action do
@@ -11,6 +12,14 @@ class ApplicationController < ActionController::Base
     if current_user
       Raven.user_context email: current_user.email, id: current_user.id, username: current_user.github
     end
+  end
+
+  def set_description(val)
+    @meta_description = val
+  end
+
+  def set_title(val)
+    @meta_title = val
   end
 
   def authenticate_user!

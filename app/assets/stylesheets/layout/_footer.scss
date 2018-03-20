@@ -7,8 +7,11 @@
   margin-bottom: 2rem;
 }
 
-.github-numbers {
+.housekeeping {
   margin-bottom: 1rem;
+  a {
+    margin: 0 0.5em;
+  }
 }
 
 .credits-link {
@@ -19,6 +22,12 @@
 
   &:hover {
     color: $codetriage-red;
+
+    transform: translateY(-4px);
+    transition: all 0.25s ease-out;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+        transform: scale(1.1);
 
     .credits-logo {
       fill: $codetriage-red;

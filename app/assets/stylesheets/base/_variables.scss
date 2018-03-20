@@ -5,6 +5,7 @@ $heading-font-family: $base-font-family;
 // Font Sizes
 $base-font-size: 1rem;
 $small-font-size: 0.875rem;
+$larger-font-size: 1.10rem;
 
 // Line height
 $base-line-height: 1.5;
@@ -32,6 +33,7 @@ $white: #fff;
 
 // Font Colors
 $base-font-color: $white;
+$off-white-font-color: rgba($base-font-color, 0.8);
 $light-font-color: rgba($base-font-color, 0.7);
 $lightest-font-color: rgba($base-font-color, 0.5);
 $action-color: $codetriage-blue;

@@ -1,5 +1,6 @@
 .hero {
-  @include outer-container;
+  max-width: 55em;
+  margin: 0 auto;
   padding-top: 4rem;
   text-align: center;
 

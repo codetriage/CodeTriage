@@ -24,8 +24,58 @@ mockstar:
   avatar_url: http://gravatar.com/avatar/default
   email_frequency: daily
 
+foo_user:
+  email: foo@example.com
+  encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at:
+  sign_in_count: 1
+  current_sign_in_at: 2012-11-10 23:53:33.202139000 Z
+  last_sign_in_at: 2012-11-10 23:53:33.202139000 Z
+  current_sign_in_ip: 68.5.230.247
+  last_sign_in_ip: 68.5.230.247
+  created_at: 2012-11-10 23:53:33.147175000 Z
+  updated_at: 2012-11-10 23:53:33.203388000 Z
+  zip:
+  phone_number:
+  twitter:
+  github: foo_user
+  github_access_token:
+  admin:
+  name: foo user
+  private: false
+  last_clicked_at: <%= Time.now %>
+  avatar_url: http://gravatar.com/avatar/default
+  email_frequency: daily
+
+bar_user:
+  email: bar@example.com
+  encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at:
+  sign_in_count: 1
+  current_sign_in_at: 2012-11-10 23:53:33.202139000 Z
+  last_sign_in_at: 2012-11-10 23:53:33.202139000 Z
+  current_sign_in_ip: 68.5.230.247
+  last_sign_in_ip: 68.5.230.247
+  created_at: 2012-11-10 23:53:33.147175000 Z
+  updated_at: 2012-11-10 23:53:33.203388000 Z
+  zip:
+  phone_number:
+  twitter:
+  github: bar_user
+  github_access_token:
+  admin:
+  name: bar user
+  private: false
+  last_clicked_at: <%= Time.now %>
+  avatar_url: http://gravatar.com/avatar/default
+  email_frequency: daily
+
 schneems:
-  email: richard.schneeman@gmail.com
+  email: richard.schneeman@example.com
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
   reset_password_token:
   reset_password_sent_at:
@@ -50,7 +100,7 @@ schneems:
   email_frequency: daily
 
 jroes:
-  email: jroes@jroes.net
+  email: jroes@example.net
   encrypted_password: $2a$10$TeiE6ilu6whHHf0bT7GkweHuwpIxsnneUnueqllj4qn5I42Eys3jO
   reset_password_token:
   reset_password_sent_at:

@@ -57,17 +57,17 @@ class RepoTest < ActiveSupport::TestCase
   # CI can switch the ordering of these repos, but we dont care about ordering,
   # so use set intersection
   test "repos needing help when user has ruby language" do
-    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: ["ruby"])).map(&:path)
+    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: ["ruby"])).map(&:full_name)
     assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra"], "&", repos
   end
 
   test "repos needing help when user has no languages" do
-    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: [])).map(&:path)
+    repos = Repo.repos_needing_help_for_user(User.new(favorite_languages: [])).map(&:full_name)
     assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra", "andrewrk/groovebasin"], "&", repos
   end
 
   test "repos needing help when user is null" do
-    repos = Repo.repos_needing_help_for_user(nil).map(&:path)
+    repos = Repo.repos_needing_help_for_user(nil).map(&:full_name)
     assert_operator ["bemurphy/issue_triage_sandbox", "sinatra/sinatra", "andrewrk/groovebasin"], "&", repos
   end
 
@@ -86,16 +86,6 @@ class RepoTest < ActiveSupport::TestCase
       repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
       assert_equal [repo], Repo.search_by('refinerycms', 'refinery')
     end
-  end
-
-  test "order by subscribers count" do
-    user  = users(:mockstar)
-    repo  = repos(:rails_rails)
-    user.repo_subscriptions.create(repo: repo, email_limit: 2)
-    order_of_repos_by_name        = Repo.order(:name).pluck(:name)
-    order_of_repos_by_subscribers = Repo.order_by_subscribers
-    assert_not order_of_repos_by_subscribers.pluck(:name) == order_of_repos_by_name
-    assert_equal order_of_repos_by_subscribers.first.name, repo.name
   end
 
   test "#fetcher" do

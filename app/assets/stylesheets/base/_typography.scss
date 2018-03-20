@@ -54,3 +54,10 @@ picture {
   margin: 0;
   max-width: 100%;
 }
+
+blockquote {
+  padding: 0 1em;
+  border-left: 0.25em solid $codetriage-yellow;
+  margin: 1em 0;
+  color: $lightest-font-color;
+}

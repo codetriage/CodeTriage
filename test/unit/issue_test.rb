@@ -15,10 +15,13 @@ class IssueTest < ActiveSupport::TestCase
       issue.state = 'open'
       issue.html_url = "http://schneems.com"
       issue.save
+
+      repo.force_issues_count_sync!
     end
 
     assert_difference("Repo.find(#{repo.id}).issues_count", -1) do
       repo.issues.destroy_all
+      repo.force_issues_count_sync!
     end
   end
 
