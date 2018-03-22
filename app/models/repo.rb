@@ -164,8 +164,8 @@ class Repo < ActiveRecord::Base
   end
 
   def self.without_user_subscriptions(user_id)
-    user_subscribed_repos = RepoSubscription.where(user_id: user_id).select(:repo_id)
-    self.where('id not in (?)', user_subscribed_repos)
+    user_subscribed_repo_ids = RepoSubscription.where(user_id: user_id).select(:repo_id)
+    self.where.not(id: user_subscribed_repo_ids)
   end
 
   def github_url
