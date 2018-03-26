@@ -31,7 +31,7 @@ gem 'maildown', '3.0.1'
 gem 'omniauth', '~> 1.6.0'
 gem 'omniauth-github'
 gem 'pg'
-gem 'puma', '~> 3.x'
+gem 'puma', github: 'puma/puma'
 gem 'rack-timeout'
 gem 'rails_autolink'
 gem 'rrrretry'
@@ -107,7 +107,7 @@ gem 'sentry-raven', github: "getsentry/raven-ruby" # @nateberkopec uses CodeTria
 gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
-gem 'barnes', git: "https://github.com/heroku/barnes"
+gem 'barnes', git: "https://github.com/heroku/barnes", branch: 'schneems/blacklog'
 gem 'stackprof'
 gem 'prawn'
 gem 'skylight'
