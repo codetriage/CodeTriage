@@ -7,10 +7,18 @@ GIT
 
 GIT
   remote: https://github.com/heroku/barnes
-  revision: e26e9fcb2b70b904c82fb16729afdf5b1f952270
+  revision: f821193074c46a8e6015ad7f12f8b11764be0fb0
+  branch: schneems/blacklog
   specs:
-    barnes (0.0.1)
+    barnes (0.0.3)
+      multi_json (~> 1)
       statsd-ruby (~> 1.1)
+
+GIT
+  remote: https://github.com/puma/puma.git
+  revision: a4c7648d7580031719a8035028802894f9a07950
+  specs:
+    puma (3.11.3)
 
 GIT
   remote: https://github.com/rails/sprockets.git
@@ -185,7 +193,7 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     msgpack (1.2.4)
-    multi_json (1.12.2)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mustermann (1.0.2)
@@ -234,7 +242,6 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (3.0.1)
-    puma (3.11.3)
     rack (2.0.4)
     rack-canonical-host (0.2.2)
       addressable (> 0, < 3)
@@ -433,7 +440,7 @@ DEPENDENCIES
   prawn
   premailer-rails
   pry
-  puma (~> 3.x)
+  puma!
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
