@@ -116,4 +116,14 @@ class RepoTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test '.without_user_subscriptions' do
+    user = users(:schneems)
+    subscribed_repo = user.repo_subscriptions.first
+    unsubscribed_repo = repos(:sinatra_sinatra)
+
+    repos = Repo.without_user_subscriptions(user.id).to_a
+    assert_not repos.include?(subscribed_repo)
+    assert repos.include?(unsubscribed_repo)
+  end
 end

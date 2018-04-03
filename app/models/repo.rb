@@ -163,6 +163,11 @@ class Repo < ActiveRecord::Base
     self.where("issues_count > 0")
   end
 
+  def self.without_user_subscriptions(user_id)
+    user_subscribed_repo_ids = RepoSubscription.where(user_id: user_id).select(:repo_id)
+    self.where.not(id: user_subscribed_repo_ids)
+  end
+
   def github_url
     File.join('https://github.com', full_name)
   end
