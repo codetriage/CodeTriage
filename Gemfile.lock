@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/heroku/barnes
-  revision: c38e6b0beba73afda46811311a18bac2a89b8941
+  revision: 31ea480b1c273c91fa80918e05640e02109b5814
   branch: schneems/blacklog
   specs:
     barnes (0.0.3)
