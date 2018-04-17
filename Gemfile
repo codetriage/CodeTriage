@@ -18,7 +18,7 @@ if ENV["RAILS_MASTER"] == '1'
   gem 'arel', git: 'https://github.com/rails/arel.git'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
- gem 'rails', '5.2.0.beta2'
+ gem 'rails', '5.2.0'
 end
 
 gem 'bluecloth'
@@ -114,5 +114,4 @@ gem 'skylight'
 
 gem 'minitest', '5.10.3'
 gem 'sitemap_generator'
-
 gem 'premailer-rails'
