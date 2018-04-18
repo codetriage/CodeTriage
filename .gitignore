@@ -34,3 +34,5 @@ public/assets
 # ignore vendor/bundle
 vendor/bundle
 tags
+
+config/secrets.yml.key
