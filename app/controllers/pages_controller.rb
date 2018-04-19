@@ -39,7 +39,9 @@ class PagesController < ApplicationController
     end
   end
 
-  private def description
+  private
+
+  def description
     Rails.cache.fetch("pages#index/description", expires_in: 1.hour) do
       "Discover the easiest way to get started contributing to open source. " \
       "Over #{number_with_delimiter(User.count, delimiter: ',')} devs are " \
@@ -51,8 +53,6 @@ class PagesController < ApplicationController
   def valid_params
     params.permit(:language, :per_page, :page)
   end
-
-  private
 
   def set_cache_headers
     response.headers["Cache-Control"] = "no-cache, no-store"
