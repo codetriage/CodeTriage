@@ -6,19 +6,20 @@ GIT
       faraday (>= 0.7.6, < 1.0)
 
 GIT
-  remote: https://github.com/heroku/barnes
-  revision: 31ea480b1c273c91fa80918e05640e02109b5814
-  branch: schneems/blacklog
+  remote: https://github.com/heroku/barnes.git
+  revision: 1ab70a6da89c6994f730a60e8d05f7eb27d147aa
+  branch: schneems/puma-pool-capacity
   specs:
-    barnes (0.0.3)
+    barnes (0.0.4)
       multi_json (~> 1)
       statsd-ruby (~> 1.1)
 
 GIT
   remote: https://github.com/puma/puma.git
-  revision: a4c7648d7580031719a8035028802894f9a07950
+  revision: ae5c94f728e5fc72c290d6de9c45c7e7744d94cd
+  branch: schneems/waiting
   specs:
-    puma (3.11.3)
+    puma (3.11.4)
 
 GIT
   remote: https://github.com/rails/sprockets.git
