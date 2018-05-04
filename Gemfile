@@ -116,4 +116,3 @@ gem 'sitemap_generator'
 gem 'premailer-rails'
 
 gem 'barnes', github: "heroku/barnes", branch: "schneems/puma-pool-capacity"
-
