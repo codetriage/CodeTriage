@@ -1,7 +1,8 @@
 div class="subpage-content-wrapper #{ @repo.weight }"
   - if current_user.blank?
     .hero
-      h1.hero-title-primary= "The easiest way to get started contributing to Open Source #{@repo.language.downcase} projects like #{@repo.name}"
+      h1.hero-title-primary= "The easiest way to get started contributing to Open Source #{@repo.language&.downcase} projects like #{@repo.name}"
+
       = cache(:hero_secondary_title_repo_show, expires_in: 1.hour) do
         h2.hero-title-secondary Pick your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{number_with_delimiter(Repo.count, delimiter: ',')} open source repos using CodeTriage. #{link_to "What is CodeTriage?", what_path}.
 
@@ -77,7 +78,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       section.content-section
         h2.content-section-title
           | Add a CodeTriage badge to #{@repo.name}
-          img.repo-badge src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers_count}") }" /
+          img.repo-badge alt="CodeTriage badge for #{@repo.full_name}" src="#{ File.join(repo_path(@repo), "badges/users.svg?count=#{@repo.subscribers_count}") }" /
         = render partial: "badge"
 
     section.open-issues.content-section

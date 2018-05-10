@@ -1,11 +1,8 @@
 require 'sidekiq/web'
 
 CodeTriage::Application.routes.draw do
-  ENV.each do |var, _|
-    next unless var.start_with?("ACME_TOKEN_")
-    number = var.sub(/ACME_TOKEN_/, '')
-    get ".well-known/acme-challenge/#{ENV["ACME_TOKEN_#{number}"]}" => proc { [200, {}, [ENV["ACME_KEY_#{number}"]]] }
-  end
+  sitemap_url = File.join("https://#{ENV['BUCKETEER_BUCKET_NAME']}.s3.amazonaws.com/", "sitemaps", "sitemap.xml.gz")
+  get 'sitemap.xml.gz', to: redirect(sitemap_url)
 
   authenticate :user, lambda { |u| u.admin? } do
     mount Sidekiq::Web => '/sidekiq'
@@ -27,7 +24,9 @@ CodeTriage::Application.routes.draw do
 
   root to: "pages#index"
 
-  get 'what' => "pages#what"
+  get 'what'    => "pages#what"
+  get 'privacy' => "pages#privacy"
+  get 'support' => 'pages#support'
 
   namespace :users do
     resources :after_signup
@@ -45,9 +44,7 @@ CodeTriage::Application.routes.draw do
 
   resources :repo_subscriptions
 
-  if Rails.env.development?
-    mount UserMailer::Preview => 'mail_view'
-  end
+  get 'mail_view', to: redirect('rails/mailers')
 
   # format: false gives us rails 3.0 style routes so angular/angular.js is interpreted as
   # user_name: "angular", name: "angular.js" instead of using the "js" as a format
@@ -61,6 +58,7 @@ CodeTriage::Application.routes.draw do
     scope '*full_name' do
       constraints full_name: /[-_a-zA-Z0-9]+\/[-_\.a-zA-Z0-9]+/ do
         get   '/badges/:badge_type(.:format)', to: 'badges#show', as: 'badge'
+        get   'info(.:format)',           to: 'api_info#show'
 
         get   '/',              to: 'repos#show',        as: 'repo'
         patch '/',              to: 'repos#update',      as: nil

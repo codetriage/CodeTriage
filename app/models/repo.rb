@@ -169,6 +169,11 @@ class Repo < ActiveRecord::Base
     self.where("issues_count > 0")
   end
 
+  def self.without_user_subscriptions(user_id)
+    user_subscribed_repo_ids = RepoSubscription.where(user_id: user_id).select(:repo_id)
+    self.where.not(id: user_subscribed_repo_ids)
+  end
+
   def github_url
     File.join('https://github.com', full_name)
   end
@@ -178,19 +183,11 @@ class Repo < ActiveRecord::Base
     Repo.exists?(user_name: user_name, name: repo_name)
   end
 
-  def self.order_by_subscribers
-    joins("LEFT OUTER JOIN repo_subscriptions
-           ON repo_subscriptions.repo_id = repos.id
-           LEFT OUTER JOIN users ON users.id = repo_subscriptions.user_id")
-      .group("repos.id")
-      .order("count(users.id) DESC")
-  end
-
   def update_from_github
     json = fetcher.as_json
     self.update(
-      language: json.fetch('language', language),
-      description: json.fetch('description', description),
+      language:    json.fetch('language', language),
+      description: json.fetch('description', description)&.first(255),
       stars_count: json.fetch('stargazers_count', stars_count)
     )
   end

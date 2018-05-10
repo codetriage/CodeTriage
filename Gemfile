@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '> 2.4', '< 2.6'
+ruby '>= 2.5', '< 2.7'
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -18,7 +18,7 @@ if ENV["RAILS_MASTER"] == '1'
   gem 'arel', git: 'https://github.com/rails/arel.git'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.1.4'
+  gem 'rails', '5.2.0'
 end
 
 gem 'bluecloth'
@@ -27,12 +27,11 @@ gem 'devise'
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.0'
-gem 'mail_view', '~> 1.0.2'
-gem 'maildown', '2.0.0'
-gem 'omniauth', '1.3.1'
+gem 'maildown', '3.0.2'
+gem 'omniauth', '~> 1.6.0'
 gem 'omniauth-github'
 gem 'pg'
-gem 'puma', '~> 3.x'
+gem 'puma', github: "puma/puma", branch: "schneems/waiting"
 gem 'rack-timeout'
 gem 'rails_autolink'
 gem 'rrrretry'
@@ -42,7 +41,7 @@ gem 'wicked'
 gem 'will_paginate', '3.1.0'
 # gem 'sass-rails', '6.0.0.beta1'
 gem 'sassc'
-gem 'sassc-rails', github: "schneems/sassc-rails", branch: "schneems/sprockets4"
+gem 'sassc-rails'
 
 gem 'autoprefixer-rails', '~> 6.3.3'
 gem 'bourbon'
@@ -62,7 +61,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '2.6.2'
+  gem 'capybara', '2.17.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'mocha', require: false
@@ -103,12 +102,18 @@ gem 'yard', '~> 0.9.12'
 
 gem 'oj'
 gem 'rack-canonical-host'
-gem 'sentry-raven' # , github: "getsentry/raven-ruby" # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
+gem 'sentry-raven', github: "getsentry/raven-ruby" # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
 
 gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
-gem 'barnes', git: "https://github.com/heroku/barnes"
 gem 'stackprof'
 gem 'prawn'
 gem 'skylight'
+
+gem 'minitest', '5.10.3'
+gem 'sitemap_generator'
+gem 'premailer-rails'
+
+gem 'barnes', github: "heroku/barnes", branch: "schneems/puma-pool-capacity"
+

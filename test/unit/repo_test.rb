@@ -88,16 +88,6 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
-  test "order by subscribers count" do
-    user  = users(:mockstar)
-    repo  = repos(:rails_rails)
-    user.repo_subscriptions.create(repo: repo, email_limit: 2)
-    order_of_repos_by_name        = Repo.order(:name).pluck(:name)
-    order_of_repos_by_subscribers = Repo.order_by_subscribers
-    assert_not order_of_repos_by_subscribers.pluck(:name) == order_of_repos_by_name
-    assert_equal order_of_repos_by_subscribers.first.name, repo.name
-  end
-
   test "#fetcher" do
     assert repos(:rails_rails).fetcher.is_a? GithubFetcher::Repo
   end
@@ -128,9 +118,19 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test ".with_label_name_like" do
-  	 repo = repos(:rails_rails)
-  	 repo.labels.create(name: "Bug")
+    repo = repos(:rails_rails)
+    repo.labels.create(name: "Bug")
 
-  	 assert_includes Repo.with_label_name_like("bug"), repo
+    assert_includes Repo.with_label_name_like("bug"), repo
+  end
+
+  test '.without_user_subscriptions' do
+    user = users(:schneems)
+    subscribed_repo = user.repo_subscriptions.first
+    unsubscribed_repo = repos(:sinatra_sinatra)
+
+    repos = Repo.without_user_subscriptions(user.id).to_a
+    assert_not repos.include?(subscribed_repo)
+    assert repos.include?(unsubscribed_repo)
   end
 end

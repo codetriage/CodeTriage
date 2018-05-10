@@ -1,0 +1,16 @@
+.static-page {
+  font-size: $larger-font-size;
+
+  color: $off-white-font-color;
+  h2 {
+    color: $base-font-color;
+    font-size: 1.5rem;
+    border-bottom: 2px solid $codetriage-yellow;
+
+    padding: 0.5em 0;
+    margin: 1em 0;
+  }
+  .bullets {
+    padding: 1em 1em 1em 2em;
+  }
+}

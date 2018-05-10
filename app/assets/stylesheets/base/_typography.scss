@@ -55,19 +55,9 @@ picture {
   max-width: 100%;
 }
 
-.what-page {
-  font-size: $larger-font-size;
-  color: $base-font-color;
-  h2 {
-    font-size: 1.5rem;
-    padding: 1em 0 0.25em;
-    border-bottom: 2px solid $codetriage-yellow;
-  }
-}
-
 blockquote {
   padding: 0 1em;
   border-left: 0.25em solid $codetriage-yellow;
   margin: 1em 0;
-  color: $light-font-color;
+  color: $lightest-font-color;
 }

@@ -12,6 +12,8 @@ Rails.application.configure do
 end
 
 default_labels = %w(bug accepted help_wanted in_progress duplicate in_review question)
+repo = Repo.create!(user_name: "rails", name: "sprockets", language: "Ruby")
+PopulateDocsJob.perform_now(repo)
 
 100.times do
   printf "."

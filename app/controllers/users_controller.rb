@@ -33,8 +33,11 @@ class UsersController < ApplicationController
 
   def token_delete
     @user = User.find_by(account_delete_token: params[:account_delete_token])
+
     if @user.nil?
       redirect_to root_url, notice: "Account could not be found. You may have already deleted it, or your GitHub username may have changed."
+    else
+      @lonely_repos = @user.repos.where(subscribers_count: 0)
     end
   end
 

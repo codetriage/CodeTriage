@@ -7,7 +7,7 @@ class UserUnsubscribeTest < ActionDispatch::IntegrationTest
     login_as(@user, scope: :user)
 
     visit token_delete_user_path(token)
-    click_on "Yes, Delete My Account"
+    click_on "destroy_user"
 
     assert page.has_content?('Successfully removed your user account')
   end
@@ -18,7 +18,7 @@ class UserUnsubscribeTest < ActionDispatch::IntegrationTest
     login_as(@user, scope: :user)
 
     visit token_delete_user_path(token)
-    click_on "Yes, Delete My Account"
+    click_on "destroy_user"
 
     visit token_delete_user_path(token)
 

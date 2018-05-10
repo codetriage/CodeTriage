@@ -1,22 +1,44 @@
 class SendDailyTriageEmailJob < ApplicationJob
   def perform(user)
-    return false if before_email_time_of_day?(user)
-    return false if user.repo_subscriptions.empty?
-    return false if email_sent_today?(user)
-    return false if skip_daily_email?(user)
+    return false if skip?(user)
 
     send_daily_triage!(user)
   end
 
   private
 
-  def send_daily_triage!(user)
-    assignments = user.issue_assignments_to_deliver
-    send_email(user, assignments) if assignments.any?
+  def reason_for_skip(user)
+    return "Not time to send"           if before_email_time_of_day?(user)
+    return "No subscriptions"           if user.repo_subscriptions.empty?
+    return "Sent email within 24 hours" if email_sent_today?(user)
+    return "Email backoff"              if skip_daily_email?(user)
+    return false
   end
 
-  def send_email(user, assignments)
-    mail = UserMailer.send_daily_triage(user_id: user.id, assignment_ids: assignments.pluck(:id)).deliver_later
+  def skip?(user)
+    reason_for_skip(user)
+  end
+
+  def send_daily_triage!(user)
+    assignments   = user.issue_assignments_to_deliver
+    subscriptions = user.repo_subscriptions.order('RANDOM()').load
+    docs = DocMailerMaker.new(user, subscriptions)
+
+    return if assignments.empty? && docs.empty?
+    send_email(
+      user:          user,
+      assignments:   assignments,
+      docs:          docs
+    )
+  end
+
+  def send_email(user:, assignments:, docs:)
+    mail = UserMailer.send_daily_triage(
+      user_id:        user.id,
+      assignment_ids: assignments.pluck(:id),
+      write_doc_ids:  docs.write_docs.map(&:id),
+      read_doc_ids:   docs.read_docs.map(&:id)
+    ).deliver_later
     assignments.update_all(delivered: true)
     user.repo_subscriptions.update_all(last_sent_at: Time.now)
     mail
