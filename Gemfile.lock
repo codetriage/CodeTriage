@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/heroku/barnes.git
-  revision: 1ab70a6da89c6994f730a60e8d05f7eb27d147aa
+  revision: f53780d1113ae7b4acb946382f9d8301be1d3264
   branch: schneems/puma-pool-capacity
   specs:
     barnes (0.0.4)
