@@ -468,7 +468,7 @@ DEPENDENCIES
   sentry-raven!
   sidekiq
   simplecov
-  sinatra
+  sinatra (~> 2.0.2)
   sitemap_generator
   skylight
   slim-rails
