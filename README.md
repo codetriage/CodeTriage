@@ -32,8 +32,8 @@ $ bundle install
 ```
 
 ### Database
-* Create a database (default is PostgreSQL)
 * Copy database.yml and if you need, setup your own database credentials
+* Create database (you must use PostgreSQL)
 * Run migrations
 
 ```shell
