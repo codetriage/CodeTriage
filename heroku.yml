@@ -1,0 +1,6 @@
+build:
+  buildpacks:
+    - heroku/metrics
+    - https://github.com/mojodna/heroku-buildpack-jemalloc.git#v3.6.0
+    - heroku/nodejs
+    - heroku/ruby
