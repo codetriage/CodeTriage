@@ -11,6 +11,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
+default_labels = %w(bug accepted help_wanted in_progress duplicate in_review question)
 repo = Repo.create!(user_name: "rails", name: "sprockets", language: "Ruby")
 PopulateDocsJob.perform_now(repo)
 
@@ -36,21 +37,25 @@ PopulateDocsJob.perform_now(repo)
     )
     repo.save(validate: false)
 
+    default_labels.sample(rand(5)).map { |label| repo.labels.create(name: label) }
+
     repo.subscribers << user
 
     rand(10).times do |i|
       issue = repo.issues.new(
         number:     i,
-        last_touched_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         updated_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         title:      Faker::Lorem.paragraph(1, true, 2),
         state:      "open",
         html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
       )
       issue.save
+
+      repo.labels.sample(3).map do |label|
+        issue.labels << label
+      end
     end
-  rescue => e # unique constraints, etc who cares
-    puts "Error generating seed: #{e}, skipping to next seed"
+  rescue # unique constraints, etc who cares
     next
   end
 end

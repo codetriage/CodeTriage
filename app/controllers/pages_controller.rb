@@ -20,6 +20,11 @@ class PagesController < ApplicationController
 
     @repos = Repo.with_some_issues
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
+
+    if (label = valid_params[:label])
+      @repos = @repos.with_label_name_like(label)
+    end
+
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
       @repos = @repos.where(language: language)
     end
@@ -51,7 +56,7 @@ class PagesController < ApplicationController
   end
 
   def valid_params
-    params.permit(:language, :per_page, :page)
+    params.permit(:language, :per_page, :page, :label)
   end
 
   def set_cache_headers

@@ -1,4 +1,4 @@
-.types-filter-wrapper {
+.types-filter-wrapper, .labels-filter-wrapper {
   @include clearfix;
   background-color: darken($base-background-color, 2%);
   border-radius: $base-border-radius;
@@ -19,7 +19,7 @@
   }
 }
 
-.types-filter-label {
+.types-filter-label, .labels-filter-label {
   float: left;
   font-size: 1.125rem;
   font-weight: normal;
@@ -34,7 +34,7 @@
   }
 }
 
-.types-filter-button {
+.types-filter-button, .labels-filter-button {
   background-color: darken($base-background-color, 5%);
   cursor: pointer;
   float: right;
@@ -43,7 +43,7 @@
   text-align: left;
 }
 
-.types-filter {
+.types-filter, .labels-filter {
   @include clearfix;
   @include position(absolute, 5rem (-$base-spacing) null);
   @include transition (all 0.2s ease-in-out);

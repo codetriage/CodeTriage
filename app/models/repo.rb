@@ -11,6 +11,7 @@ class Repo < ActiveRecord::Base
   has_many :subscribers, through: :repo_subscriptions, source: :user
   has_many :doc_classes, dependent: :destroy
   has_many :doc_methods, dependent: :destroy
+  has_many :labels, dependent: :destroy
   delegate :open_issues, to: :issues
 
   before_validation :downcase_name, :strip_whitespaces
@@ -18,6 +19,11 @@ class Repo < ActiveRecord::Base
   after_create :background_populate_issues!, :update_repo_info!, :background_populate_docs!
 
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
+
+  scope :with_label_name_like, lambda { |name|
+    sanitized_name = ActiveRecord::Base.send(:sanitize_sql, name.downcase)
+    joins(:labels).where("lower(labels.name) LIKE ?", "#{sanitized_name}")
+  }
 
   def class_for_doc_language
     language && CLASS_FOR_DOC_LANGUAGE[language.downcase]

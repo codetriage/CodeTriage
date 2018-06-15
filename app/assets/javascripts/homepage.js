@@ -32,6 +32,38 @@ $(document).ready(function(){
   });
 })
 
+$(document).ready(function(){
+  $(".labels-filter-button").click(function() {
+    $(".labels-filter").toggle();
+  });
+
+  $(".labels-filter > li a").click(function(e){
+    e.preventDefault();
+
+    $(".labels-filter").hide();
+    var label = this.getAttribute("data-label");
+    $(".labels-filter-button").html(label);
+    updateQueryStringParam("label", label);
+    removeQueryStringParam("page");
+  $.ajax({
+      url: document.URL,
+      headers: {
+        Accept :        "application/json; charset=utf-8",
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      beforeSend: function () {
+        // go
+      },
+    }).done(function(data) {
+      $('.repo-list-with-pagination').html(data["html"]);
+    }).fail(function(data){
+      console.log(data);
+    });
+
+    return false;
+  });
+})
+
 function baseUrl() {
   return [location.protocol, '//', location.host, location.pathname].join('');
 }

@@ -117,6 +117,13 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
+  test ".with_label_name_like" do
+    repo = repos(:rails_rails)
+    repo.labels.create(name: "Bug")
+
+    assert_includes Repo.with_label_name_like("bug"), repo
+  end
+
   test '.without_user_subscriptions' do
     user = users(:schneems)
     subscribed_repo = user.repo_subscriptions.first
