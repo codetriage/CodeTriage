@@ -31,7 +31,7 @@ gem 'maildown', '3.0.2'
 gem 'omniauth', '~> 1.6.0'
 gem 'omniauth-github'
 gem 'pg'
-gem 'puma', github: "puma/puma", branch: "schneems/waiting"
+gem 'puma', github: "puma/puma"
 gem 'rack-timeout'
 gem 'rails_autolink'
 gem 'rrrretry'
@@ -115,5 +115,5 @@ gem 'minitest', '5.10.3'
 gem 'sitemap_generator'
 gem 'premailer-rails'
 
-gem 'barnes', github: "heroku/barnes", branch: "schneems/puma-pool-capacity"
+gem 'barnes'
 gem 'puma_worker_killer'
