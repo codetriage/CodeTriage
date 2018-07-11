@@ -202,7 +202,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.3.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
     normalize-rails (3.0.3)
     oauth2 (1.4.0)
