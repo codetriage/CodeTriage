@@ -1,10 +1,18 @@
 Hello @<%= @user.github %>,
 
-<% if @days > @max_days %>
-  It's been [<%= @days %> days] since you've clicked on a CodeTriage.com link, let's keep those issue counts down.
+<% case @user.effective_streak_count %>
+<% when 0 %>
+  Welcome! To get your contribution streak started click on a <%=  @grouped_issues_docs.actions(delimiter: "or") %> link below. Your goal is to observe and learn. Read the contents and try to pick out patterns. Keep clicking on links and learning to build up your streak. When it comes to contribution, consistency is key.
+<% when 1..10 %>
+  Your contribution streak is at <%= @user.effective_streak_count %>. Click on a <%=  @grouped_issues_docs.actions(delimiter: "or") %> link below to keep going. The goal is still to learn. Start taking notes on what you observe, how is it different today than what you saw from the last email? How is it the same?
+<% else %>
+  Your contribution streak is at <%= @user.effective_streak_count %>. Keep clicking to keep it growing.
 <% end %>
 
-Here are some <%= @grouped_issues_docs.actions %> you should check out:
+<% case @user.effective_streak_count %>
+<% when 2..5 %>
+  If you miss an email you won't lose everything, but your streak count will go down by one. If that's too much pressure and you need some more time between emails, you can [change your email frequency](<%= edit_user_url(@user) %>). You can also access this page at any time by logging in on CodeTriage.
+<% end %>
 
 <% @grouped_issues_docs.each do |group| %>
 

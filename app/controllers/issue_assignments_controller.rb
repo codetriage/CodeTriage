@@ -9,6 +9,7 @@ class IssueAssignmentsController < ApplicationController
   def click_issue_redirect
     assignment = IssueAssignment.find(params[:id])
     if assignment&.user&.id.to_s == params[:user_id]
+      user.record_click!
       assignment.update_attributes(clicked: true)
       assignment.user.update_attributes(last_clicked_at: Time.now)
       redirect_to assignment.issue.html_url

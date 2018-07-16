@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171125212307) do
+ActiveRecord::Schema.define(version: 2018_07_16_144937) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "pg_stat_statements"
+  enable_extension "plpgsql"
 
   create_table "data_dumps", id: :serial, force: :cascade do |t|
     t.text "data"
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20171125212307) do
     t.index ["repo_id"], name: "index_doc_methods_on_repo_id"
   end
 
+  create_table "email_records", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "streak_count", default: 0
+    t.boolean "was_clicked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_email_records_on_user_id"
+  end
+
   create_table "issue_assignments", id: :serial, force: :cascade do |t|
     t.integer "issue_id"
     t.datetime "created_at"
@@ -103,6 +112,28 @@ ActiveRecord::Schema.define(version: 20171125212307) do
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
     t.index ["state"], name: "index_issues_on_state"
+  end
+
+  create_table "opro_auth_grants", id: :serial, force: :cascade do |t|
+    t.string "code", limit: 255
+    t.string "access_token", limit: 255
+    t.string "refresh_token", limit: 255
+    t.text "permissions"
+    t.datetime "access_token_expires_at"
+    t.integer "user_id"
+    t.integer "application_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "opro_client_apps", id: :serial, force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "app_id", limit: 255
+    t.string "app_secret", limit: 255
+    t.text "permissions"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
@@ -172,12 +203,15 @@ ActiveRecord::Schema.define(version: 20171125212307) do
     t.string "email_frequency", default: "daily"
     t.time "email_time_of_day"
     t.string "old_token"
+    t.integer "raw_streak_count", default: 0
+    t.integer "raw_emails_since_click", default: 0
     t.index ["account_delete_token"], name: "index_users_on_account_delete_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["github"], name: "index_users_on_github", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "email_records", "users"
   add_foreign_key "repo_subscriptions", "repos"
   add_foreign_key "repo_subscriptions", "users"
 end
