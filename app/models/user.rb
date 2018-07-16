@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   # The `raw_streak_count` is the value stored in the
-  # DB. This value is only updated when a user clicks on an
+  # DB. This value should be updated when a user clicks on an
   # email.
   #
   # The `emails_missed_since_click` is updated every time
