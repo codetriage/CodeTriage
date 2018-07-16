@@ -1,6 +1,53 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  test 'streak tests' do
+    # New user, first email
+    user = User.new(github: "whatever1")
+    assert_equal 0, user.effective_streak_count
+
+    user.raw_emails_since_click = 1
+    assert_equal 0, user.effective_streak_count
+
+    # First email click
+    user.record_click!(save: false)
+    assert_equal 0, user.raw_emails_since_click
+    assert_equal 1, user.raw_streak_count
+    assert_equal 1, user.effective_streak_count
+
+    # Multiple clicks on same issue don't change
+    user.record_click!(save: false)
+    user.record_click!(save: false)
+    user.record_click!(save: false)
+    assert_equal 0, user.raw_emails_since_click
+    assert_equal 1, user.raw_streak_count
+    assert_equal 1, user.effective_streak_count
+
+    # 1 email sent since click
+    user = User.new(github: "whatever2")
+    user.raw_streak_count = 10
+    user.raw_emails_since_click = 1
+
+    assert_equal 10, user.effective_streak_count
+    user.record_click!(save: false)
+
+    assert_equal 0, user.raw_emails_since_click
+    assert_equal 11, user.raw_streak_count
+    assert_equal 11, user.effective_streak_count
+
+    # Two emails sent since click
+    user = User.new(github: "whatever3")
+    user.raw_streak_count = 10
+    user.raw_emails_since_click = 2
+
+    assert_equal 9, user.effective_streak_count
+    user.record_click!(save: false)
+
+    assert_equal 0, user.raw_emails_since_click
+    assert_equal 10, user.raw_streak_count
+    assert_equal 10, user.effective_streak_count
+  end
+
   test '#github_url returns github url' do
     github_url = User.new(github: 'jroes').github_url
     assert_equal 'https://github.com/jroes', github_url

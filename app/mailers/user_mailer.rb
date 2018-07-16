@@ -16,6 +16,9 @@ class UserMailer < ActionMailer::Base
     user = User.find(user_id)
     return unless set_and_check_user(user)
 
+    user.raw_emails_since_click += 1
+    user.save!
+
     @grouped_issues_docs = MailBuilder::GroupedIssuesDocs.new(
       user_id:        user_id,
       assignment_ids: assignment_ids,
@@ -23,10 +26,14 @@ class UserMailer < ActionMailer::Base
       write_doc_ids:  write_doc_ids
     )
 
-    @max_days = 2
-    subject   = ""
-    @days     = @user.days_since_last_clicked
-    subject << "[#{time_ago_in_words(@days.days.ago).humanize}] " if @days > @max_days
+    subject = String.new
+    if user.effective_streak_count.zero?
+      subject << "[Start contributing today 💌]"
+    else
+      subject << "[Grow your streak #{user. effective_streak_count} 💌]"
+    end
+
+    subject << " " unless subject.end_with?(" ")
 
     if @grouped_issues_docs.any_issues
       subject << "Help Triage #{assignment_ids.size} Open Source #{"Issue".pluralize(assignment_ids.size)}"

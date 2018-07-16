@@ -25,6 +25,35 @@ class User < ActiveRecord::Base
   delegate :for, to: :repo_subscriptions, prefix: true
   before_save :set_default_last_clicked_at
 
+  # We record when an email is sent out, which includes
+  # the current day's email. When raw_emails_since_click = 1
+  # then there have been zero emails missed.
+  def emails_missed_since_click
+    return 0 if raw_emails_since_click <= 0
+    raw_emails_since_click - 1
+  end
+
+  # The `raw_streak_count` is the value stored in the
+  # DB. This value is only updated when a user clicks on an
+  # email.
+  #
+  # The `emails_missed_since_click` is updated every time
+  # we send an email.
+  #
+  # The streak count is the prior saved streak minus the number
+  # of emails the user has not clicked.
+  def effective_streak_count
+    return raw_streak_count - emails_missed_since_click
+  end
+
+  def record_click!(save: true)
+    return if raw_emails_since_click.zero?
+
+    self.raw_streak_count       = effective_streak_count + 1
+    self.raw_emails_since_click = 0
+    self.save! if save
+  end
+
   def subscribe_docs!
     subscriptions = self.repo_subscriptions.order('RANDOM()').load
     DocMailerMaker.new(self, subscriptions) { |sub| sub.ready_for_next? }.deliver_later

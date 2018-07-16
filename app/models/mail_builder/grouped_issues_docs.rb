@@ -186,10 +186,10 @@ module MailBuilder
     alias :any_docs?   :any_docs
     alias :any_issues? :any_issues
 
-    def actions
+    def actions(delimiter: "and")
       return "issues" if !self.any_docs
       return "docs"   if !self.any_issues
-      "issues and docs"
+      "issues #{delimiter} docs"
     end
 
     def comment_for_doc(doc)
