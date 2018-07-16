@@ -10,8 +10,16 @@
     .input-preprend
       span.add-on
         i.icon-envelope
-      = f.select :email_frequency, options_for_select( EmailRateLimit::USER_STATES.map {|value| [ value.humanize, value ] }, f.object.email_frequency), class: 'select'
-      p When you're busy we try to send you less emails, if that's not good enough set your frequency here. For example if you set "twice a week" you won't receive more than 2 emails a week.
+      = f.select :email_frequency, options_for_select( EmailRateLimit::USER_STATES_HASH.map {|key, name| [ name, key ] }, f.object.email_frequency), class: 'select'
+      p When you're busy we try to send you fewer emails, if that's not good enough set your desired frequency here. For example if you set "twice a week" you won't receive more than 2 emails a week.
+      p How often should you get emails? It depends on your goals:
+      ul.bullets
+        li <strong>Daily:</strong><i> "I want to ramp up as fast as possible, I'm working towards becoming a committer ASAP."</i>
+        li <strong>Twice a week:</strong></i> "Being a committer is still in my sights, but it doesn't need to be tomorrow."</i>
+        li <strong>Once a week:</strong><i> "I might be a committer one day, but for now I only want to help out here and there."</i>
+        li <strong>Once a month:</strong> <i>"I want to see casually what's going on and I want to help a tiny bit."</i>
+      br
+      p The most important thing is consistency. No matter the frequency you can commit to, keep clicking on issues, keep learning, and you'll get there!
 
   = f.label :email_time_of_day, t("activerecord.attributes.user.email_time_of_day", default: "Email time of day"), class: "label label-info"
   .controls
