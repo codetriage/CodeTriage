@@ -2,9 +2,9 @@ Hello @<%= @user.github %>,
 
 <% case @user.effective_streak_count %>
 <% when 0 %>
-  Welcome! To get your contribution streak started click on an <%=  @grouped_issues_docs.actions(delimiter: "or") %> link below. Your goal is to observe and learn. Read the contents and try to pick out patterns. Keep clicking on links and learning to build up your streak. When it comes to contribution, consistency is key.
+  Welcome! To get your contribution streak started click on a contribution link below. Your goal is to observe and learn. Read the contents and try to pick out patterns. Keep clicking on links and learning to build up your streak. When it comes to contribution, consistency is key.
 <% when 1..10 %>
-  Your contribution streak is at <%= @user.effective_streak_count %>. Click on a <%=  @grouped_issues_docs.actions(delimiter: "or") %> link below to keep going. The goal is still to learn. Start taking notes on what you observe, how is it different today than what you saw from the last email? How is it the same?
+  Your contribution streak is at <%= @user.effective_streak_count %>. Click on a contribution link below to keep going. The goal is still to learn. Start taking notes on what you observe, how is it different today than what you saw from the last email? How is it the same?
 <% else %>
   Your contribution streak is at <%= @user.effective_streak_count %>. Keep clicking to keep it growing.
 <% end %>
