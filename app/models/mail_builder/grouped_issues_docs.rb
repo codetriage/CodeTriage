@@ -77,21 +77,13 @@ module MailBuilder
 
       ## Subscriptions
       doc_repo_ids = docs.map(&:repo_id).uniq
+
       subscriptions = RepoSubscription
-                      .where(user_id: user_id)
-                      .where(repo_id: doc_repo_ids)
-                      .includes(:repo)
-                      .select(:id, :repo_id)
-
-      subscriptions += RepoSubscription
-                       .joins(:issue_assignments)
-                       .where("issue_assignments.id" => assignment_ids)
+                       .joins("LEFT OUTER JOIN issue_assignments ON issue_assignments.repo_subscription_id = repo_subscriptions.id")
+                       .where("issue_assignments.id in (?) or repo_id in (?)", assignment_ids, doc_repo_ids)
                        .where(user_id: user_id)
-                       .where.not(repo_id: doc_repo_ids)
-                       .includes(:repo)
                        .select(:id, :repo_id)
-
-      subscriptions.uniq!
+                       .includes(:repo)
 
       store_subscriptions!(subscriptions)
       store_assignments!(assignments)
