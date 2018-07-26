@@ -43,7 +43,9 @@ class User < ActiveRecord::Base
   # The streak count is the prior saved streak minus the number
   # of emails the user has not clicked.
   def effective_streak_count
-    return raw_streak_count - emails_missed_since_click
+    value = raw_streak_count - emails_missed_since_click
+    return 0 if value < 0
+    return value
   end
 
   def record_click!(save: true)

@@ -48,6 +48,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 10, user.effective_streak_count
   end
 
+  test 'negative count' do
+    user = User.new(github: "negativeRawEmailcount")
+    user.raw_streak_count = 1
+    user.raw_emails_since_click = 74
+
+    assert_equal 0, user.effective_streak_count
+  end
+
   test '#github_url returns github url' do
     github_url = User.new(github: 'jroes').github_url
     assert_equal 'https://github.com/jroes', github_url
