@@ -3,3 +3,16 @@
 one:
   repo_subscription: schneems_to_triage
   issue: issue_one
+
+schneems_triage_issue_assignment:
+  repo_subscription: schneems_to_triage
+  issue: issue_one
+
+schneems_sinatra_issue_assignment:
+  repo_subscription: schneems_to_sinatra
+  issue: issue_two
+
+two:
+  repo_subscription: jroes_to_rails
+  issue: issue_two
+

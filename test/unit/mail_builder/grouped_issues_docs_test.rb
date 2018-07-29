@@ -1,6 +1,41 @@
 require 'test_helper'
 
 class GroupedIssuesDocsTest < ActiveSupport::TestCase
+  test "two issues different repos in random order" do
+    assignment_one    = issue_assignments(:schneems_triage_issue_assignment)
+    expected_repo_one = assignment_one.repo
+    user              = assignment_one.repo_subscription.user
+
+    assignment_two    = issue_assignments(:schneems_sinatra_issue_assignment)
+    expected_repo_two = assignment_two.repo
+
+    assert_not_equal expected_repo_one, expected_repo_two
+
+    assignment_ids = [assignment_one.id, assignment_two.id]
+
+    order_one_repos = [assignment_one.repo, assignment_two.repo]
+    order_two_repos = order_one_repos.reverse
+
+    actual = MailBuilder::GroupedIssuesDocs.new(
+      user_id:        user.id,
+      assignment_ids: assignment_ids,
+      random_seed:    1
+    ).map(&:repo)
+
+    assert_equal true, actual.include?(expected_repo_one), "Expected #{actual} to include #{expected_repo_one} but it did not"
+    assert_equal true, actual.include?(expected_repo_two), "Expected #{actual} to include #{expected_repo_two} but it did not"
+
+    assert_equal order_one_repos, actual
+
+    actual = MailBuilder::GroupedIssuesDocs.new(
+      user_id:        user.id,
+      assignment_ids: assignment_ids,
+      random_seed:    2
+    ).map(&:repo)
+
+    assert_equal order_two_repos, actual
+  end
+
   test "empty group works" do
     user = users(:schneems)
 
