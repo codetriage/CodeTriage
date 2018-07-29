@@ -159,6 +159,7 @@ GEM
     htmlentities (4.3.4)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.1-x86_64-darwin-17)
     jmespath (1.3.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
@@ -223,7 +224,7 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     parallel (1.12.1)
-    parser (2.5.0.0)
+    parser (2.5.0.3)
       ast (~> 2.4.0)
     pdf-core (0.7.0)
     pg (0.18.3)
@@ -306,11 +307,12 @@ GEM
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
     rrrretry (1.0.0)
-    rubocop (0.49.1)
+    rubocop (0.58.2)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
-      parser (>= 2.3.3.1, < 3.0)
+      parser (>= 2.5, != 2.5.1.1)
       powerpack (~> 0.1)
-      rainbow (>= 1.99.1, < 3.0)
+      rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
@@ -458,7 +460,7 @@ DEPENDENCIES
   redis-namespace
   render_async (~> 1.1, >= 1.1.2)
   rrrretry
-  rubocop (= 0.49.1)
+  rubocop (= 0.58.2)
   sassc
   sassc-rails
   scout_apm (~> 2.3.x)

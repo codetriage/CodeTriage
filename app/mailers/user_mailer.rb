@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
       assignment_ids:,
       read_doc_ids: [],
       write_doc_ids: []
-  )
+    )
 
     user = User.find(user_id)
     return unless set_and_check_user(user)
