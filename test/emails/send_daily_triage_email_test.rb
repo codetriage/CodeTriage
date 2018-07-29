@@ -23,7 +23,7 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal 2, triage_email.parts.size
     assert_equal "multipart/alternative", triage_email.mime_type
 
-    assert_match /Help Triage 1 Open Source Issue/, triage_email.subject
+    assert_match /Help Triage \d+ Open Source Issue/, triage_email.subject
 
     # Repo groups
     assert_match /## bemurphy\/issue_triage_sandbox/, triage_email_text

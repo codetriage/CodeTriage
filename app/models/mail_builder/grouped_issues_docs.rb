@@ -48,7 +48,7 @@ module MailBuilder
   # returns the subscription ID for that repo.
   #
   class GroupedIssuesDocs
-    def initialize(user_id:, assignment_ids: [], read_doc_ids: [], write_doc_ids: [])
+    def initialize(user_id:, assignment_ids: [], read_doc_ids: [], write_doc_ids: [], random_seed: Random.new_seed)
       @active            = false
       @sub_hashes        = {}
       @repo_id_to_sub    = {}
@@ -77,21 +77,15 @@ module MailBuilder
 
       ## Subscriptions
       doc_repo_ids = docs.map(&:repo_id).uniq
+
       subscriptions = RepoSubscription
+                      .joins("LEFT OUTER JOIN issue_assignments ON issue_assignments.repo_subscription_id = repo_subscriptions.id")
+                      .where("issue_assignments.id in (?) or repo_id in (?)", assignment_ids, doc_repo_ids)
                       .where(user_id: user_id)
-                      .where(repo_id: doc_repo_ids)
-                      .includes(:repo)
                       .select(:id, :repo_id)
-
-      subscriptions += RepoSubscription
-                       .joins(:issue_assignments)
-                       .where("issue_assignments.id" => assignment_ids)
-                       .where(user_id: user_id)
-                       .where.not(repo_id: doc_repo_ids)
-                       .includes(:repo)
-                       .select(:id, :repo_id)
-
-      subscriptions.uniq!
+                      .includes(:repo)
+                      .all
+                      .shuffle(random: Random.new(random_seed))
 
       store_subscriptions!(subscriptions)
       store_assignments!(assignments)
@@ -156,6 +150,7 @@ module MailBuilder
         @active_hash = @error_hash
       end
     end
+    include Enumerable
 
     def repo
       @active_hash[:repo]
