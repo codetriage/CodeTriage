@@ -79,13 +79,13 @@ module MailBuilder
       doc_repo_ids = docs.map(&:repo_id).uniq
 
       subscriptions = RepoSubscription
-                       .joins("LEFT OUTER JOIN issue_assignments ON issue_assignments.repo_subscription_id = repo_subscriptions.id")
-                       .where("issue_assignments.id in (?) or repo_id in (?)", assignment_ids, doc_repo_ids)
-                       .where(user_id: user_id)
-                       .select(:id, :repo_id)
-                       .includes(:repo)
-                       .all
-                       .shuffle(random: Random.new(random_seed))
+                      .joins("LEFT OUTER JOIN issue_assignments ON issue_assignments.repo_subscription_id = repo_subscriptions.id")
+                      .where("issue_assignments.id in (?) or repo_id in (?)", assignment_ids, doc_repo_ids)
+                      .where(user_id: user_id)
+                      .select(:id, :repo_id)
+                      .includes(:repo)
+                      .all
+                      .shuffle(random: Random.new(random_seed))
 
       store_subscriptions!(subscriptions)
       store_assignments!(assignments)
