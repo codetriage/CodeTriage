@@ -44,8 +44,7 @@ class User < ActiveRecord::Base
   # of emails the user has not clicked.
   def effective_streak_count
     value = raw_streak_count - emails_missed_since_click
-    return 0 if value < 0
-    return value
+    [value, 0].max
   end
 
   def record_click!(save: true)
