@@ -1,0 +1,64 @@
+section.subpage-content-wrapper.static-page
+  header.subpage-content-header
+    h1.subpage-primary-title Please Provide an Example App
+
+  .repo-body
+      p
+      | An example app is an application that is designed to reproduce a bug or demonstrate an issue.
+      p
+      | An example app is not a gigantic repo, your private source code, or telling someone a series of bash commands.
+
+      p
+      | Before a bug can be fixed it has to be understood and reproduced. For every issue a maintainer ges they have to decipher what was supposed to happen and then spend minutes or hours piecing together their reproduction.
+      p
+      | Usually, they can't get it right, so they have to ask for clarification. This back-and-forth process takes lots of energy and wastes everyone's time. Instead, it's better to provide an example app from the beginning.
+
+      p
+      | At the end of the day would you rather maintainers spend their time making example apps or fixing issues?
+
+      h2 How to make an example app
+      ol
+        li 1. Start with a clean app with no other features. For example, if you're demonstrating an issue in the Rails framework you would run:
+        pre
+          code
+          |   eg. $ rails new example_app
+
+        li 2. Add whatever code is necessary to demonstrate the issue.
+        li 3. Add instructions to the README describing how to boot the app and reproduce the problem.
+        li 4. Push the example app somewhere public such as GitHub.
+        li 5. Bonus: Give the app to a friend or co-worker. See if they can repro the problem without any instructions other than what's in the README.
+        li 6. Finally: Give a link to the example app to a maintainer (usually through an issue).
+
+      h2 Get Help Faster
+      p
+      | If you want the issue fixed as fast as possible, then you should try to help the maintainers as much as possible. Make an example app! Even if it takes extra time for you, it will ultimately lead to your issues getting fixed faster.
+
+      h2 Sometimes an Example App Fixes the Problem
+      p
+      | When a bug isn't in the library, but instead in an your code - then an example app will help you find an fix it faster.
+      p
+      | If you did end up finding and fixing a bug in your code consider re-reading the documentation and seeing if that behavior of the library is unclear. Consider sending a documentation PR.
+
+      h2 Spread the word
+      p
+      | If you see an issue is reporting a problem without a working reproduction ask them for an example app!
+      p
+      | Better yet, send them a link to this page to help them understand why and how to make an example app:
+
+      p
+      textarea
+        | Please provide an [example app that can reproduce this issue](https://www.codetriage.com/example_app).
+
+      p
+      center
+        img src="https://www.dropbox.com/s/woa4h08jwuobzgp/example-apps.gif?raw=1"
+
+      - if !current_user
+        h2 What is CodeTriage?
+        |
+        p CodeTriage is the easiest way to get started contributing to open source.
+        p
+        | Sign up, subscribe to repos you want to help, and we send you contribution ideas in your inbox. Easy Peazy. If you want to know more read <a href="what">What is CodeTriage</a>.
+        center
+          br
+            = link_to "Sign up via GitHub", user_github_omniauth_authorize_path, class: 'button'

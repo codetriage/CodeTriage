@@ -9,13 +9,11 @@ CodeTriage::Application.routes.draw do
   end
   resources :doc_methods
 
+  resources :university
+  get 'example_app' => 'university#show', id: 'example_app'
+
   devise_for :users, skip: [:registration],
                      :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  # devise_scope(:user) do
-  #   get 'sign_in',  to: 'users/omniauth_callbacks#passthru', as: :new_user_session
-  #   get 'sign_out', to: 'users/omniauth_callbacks#passthru', as: :destroy_user_session
-  # end
 
   as :user do
     get   'users/edit' => 'users#edit',   as: :edit_user_registration
