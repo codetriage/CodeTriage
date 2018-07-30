@@ -1,0 +1,58 @@
+An example app is an application that is designed to reproduce a bug or demonstrate an issue.
+
+An example app is not a gigantic repo, your private source code, or telling someone a series of bash commands.
+
+Before a bug can be fixed it has to be understood and reproduced. For every issue a maintainer gets they have to decipher what was supposed to happen and then spend minutes or hours piecing together their reproduction.
+
+Usually, they can't get it right, so they have to ask for clarification. This back-and-forth process takes lots of energy and wastes everyone's time. Instead, it's better to provide an example app from the beginning.
+
+At the end of the day would you rather maintainers spend their time making example apps or fixing issues?
+
+## How to make an example app
+
+1. Start with a clean app with no other features.
+2. Add whatever code is necessary to demonstrate the issue.
+3. Add instructions to the README describing how to boot the app and reproduce the problem.
+4. Push the example app somewhere public such as GitHub.
+5. Bonus: Give the app to a friend or co-worker. See if they can repro the problem without any instructions other than what's in the README.
+6. Finally: Give a link to the example app to a maintainer (usually through an issue).
+
+## Get Help Faster
+
+If you want the issue fixed as fast as possible, then you should try to help the maintainers as much as possible. Make an example app! Even if it takes extra time for you, it will ultimately lead to your issues getting fixed faster.
+
+## Sometimes an Example App Fixes the Problem
+
+When a bug isn't in the library, but instead in an your code - then an example app will help you find an fix it faster.
+
+If you end up finding and fixing a bug in your code consider re-reading the documentation and seeing if that behavior of the library is unclear. Consider sending a documentation PR.
+
+## Spread the word
+
+If you see an open bug report that does not have a working reproduction ask them for an example app!
+
+Better yet, send them a link to this page to help them understand why and how to make an example app:
+
+<textarea>
+Please provide an [example app that can reproduce this issue](https://www.codetriage.com/example_app).
+</textarea>
+
+<center>
+  <img src="https://www.dropbox.com/s/woa4h08jwuobzgp/example-apps.gif?raw=1" />
+</center>
+
+<% if !current_user %>
+
+## What is CodeTriage?
+
+CodeTriage is the easiest way to get started contributing to open source.
+
+Sign up, subscribe to repos you want to help, and we send you contribution ideas in your inbox. Easy Peazy. If you want to know more read <a href="what">What is CodeTriage</a>.
+
+
+<br />
+<center>
+  <%= link_to "Sign up via GitHub", user_github_omniauth_authorize_path, class: 'button' %>
+</center>
+
+<% end %>
