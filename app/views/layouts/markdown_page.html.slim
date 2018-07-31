@@ -1,0 +1,7 @@
+= render "layouts/app" do
+  section.subpage-content-wrapper.static-page
+    header.subpage-content-header
+      h1.subpage-primary-title= @page_title or raise "Must provide @page_title"
+
+    .repo-body.markdown-body
+      = yield

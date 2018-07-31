@@ -4,20 +4,20 @@ ul.accordion-tabs
   li.tab-header-and-content
     a.is-active.tab-link href="javascript:void(0)" Image URL
     .tab-content.is-open
-      textarea
+      textarea.single-line
         = code_triagers_badge_url
   li.tab-header-and-content
     a.tab-link href="javascript:void(0)" Markdown
     .tab-content
-      textarea
+      textarea.single-line
         | [![Open Source Helpers](#{code_triagers_badge_url})](#{repo_url(@repo)})
   li.tab-header-and-content
     a.tab-link href="javascript:void(0)" Textile
     .tab-content
-      textarea
+      textarea.single-line
         | !#{code_triagers_badge_url}!:#{repo_url(@repo)}
   li.tab-header-and-content
     a.tab-link href="javascript:void(0)" Rdoc
     .tab-content
-      textarea
+      textarea.single-line
         | {<img src='#{code_triagers_badge_url}' alt='Open Source Helpers' />}[#{repo_url(@repo)}]

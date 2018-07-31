@@ -1,6 +1,9 @@
+ul {
+  list-style-type: none;
+}
+
 ul,
 ol {
-  list-style-type: none;
   margin: 0;
   padding: 0;
 
@@ -34,4 +37,8 @@ dl {
 .bullets {
   list-style-type: disc;
   padding: 1em 0 0 2em;
+}
+
+ol.normal-ol {
+  padding: 0 0 inherit;
 }

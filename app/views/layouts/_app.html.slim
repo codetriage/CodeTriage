@@ -1,0 +1,14 @@
+doctype html
+html
+  = render "head"
+
+  body
+    = render "flashes"
+    = render "nav"
+
+    main.main-application
+        = yield
+
+    = render "footer"
+
+  = content_for :render_async

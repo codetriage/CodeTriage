@@ -1,14 +1,3 @@
-doctype html
-html
-  = render "head"
+= render "layouts/app" do
+  = yield
 
-  body
-    = render "flashes"
-    = render "nav"
-
-    main.main-application
-      = yield
-
-    = render "footer"
-
-  = content_for :render_async
