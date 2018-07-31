@@ -82,14 +82,15 @@
 }
 .markdown-body ul.no-list,.markdown-body ol.no-list{
     padding:0;
-    list-style-type:none
+    list-style-type:none;
 }
 .markdown-body ul ul,.markdown-body ul ol,.markdown-body ol ol,.markdown-body ol ul{
     margin-top:0;
-    margin-bottom:0
+    margin-bottom:0;
 }
 .markdown-body li{
-    word-wrap:break-all
+    word-wrap:break-all;
+    list-style-type: disc;
 }
 .markdown-body li>p{
     margin-top:16px
