@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UniversityController < ApplicationController
   layout "markdown_page"
 
@@ -10,7 +12,7 @@ class UniversityController < ApplicationController
       render 'example_app'
     when 'picking_a_repo'
       set_title("Picking the Right Repo(s) to start your Open Source Contribution Journey")
-      set_description("One of the most important decisions you'll make when you start contributing is which open source libraries you contribute to")
+      set_description("One of the most important decisions you'll make when you start contributing is which open source libraries you contribute to. This guide will help you get started")
       @page_title = "Picking the Right Repo(s)"
       render 'picking_a_repo'
     end
