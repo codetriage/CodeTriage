@@ -53,7 +53,7 @@ class RepoSubscription < ActiveRecord::Base
         .active
         .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
         .where(skip_read: false)
-        .order("random()")
+        .order(Arel.sql("RANDOM()"))
         .limit(limit || DEFAULT_READ_LIMIT)
   end
 
@@ -62,7 +62,7 @@ class RepoSubscription < ActiveRecord::Base
         .active
         .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
         .where(skip_write: false)
-        .order("random()")
+        .order(Arel.sql("RANDOM()"))
         .limit(limit || DEFAULT_WRITE_LIMIT)
   end
 

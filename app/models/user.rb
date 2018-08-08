@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def subscribe_docs!
-    subscriptions = self.repo_subscriptions.order('RANDOM()').load
+    subscriptions = self.repo_subscriptions.order(Arel.sql('RANDOM()')).load
     DocMailerMaker.new(self, subscriptions) { |sub| sub.ready_for_next? }.deliver_later
   end
 
