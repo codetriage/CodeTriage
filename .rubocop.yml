@@ -98,8 +98,13 @@ Layout/SpaceInLambdaLiteral:
 Layout/SpaceInsideBlockBraces:
  Enabled: true
 
-Layout/SpaceInsideBrackets:
- Enabled: true
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: true
+  AutoCorrect: true
+
+Layout/SpaceInsideReferenceBrackets:
+  Enabled: true
+  AutoCorrect: true
 
 Layout/SpaceInsideHashLiteralBraces:
  Enabled: true
@@ -116,10 +121,10 @@ Layout/TrailingBlankLines:
 Layout/TrailingWhitespace:
  Enabled: true
 
-Lint/AssignmentInCondition:
+Layout/EndAlignment:
  Enabled: true
 
-Lint/EndAlignment:
+Lint/AssignmentInCondition:
  Enabled: true
 
 Lint/ScriptPermission:
