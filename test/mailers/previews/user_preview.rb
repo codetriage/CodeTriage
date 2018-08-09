@@ -14,7 +14,7 @@ class UserPreview < ActionMailer::Preview
 
   def send_triage_create
     user  = User.last
-    repo  = Repo.order("random()").first
+    repo  = Repo.order(Arel.sql("RANDOM()")).first
     issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first!
     sub   = RepoSubscription.where(user_id: user.id, repo_id: repo.id).first_or_create!
     assignment = sub.issue_assignments.where(issue_id: issue.id).first_or_create!
@@ -23,7 +23,7 @@ class UserPreview < ActionMailer::Preview
 
   def send_triage
     user  = User.last
-    repo  = Repo.order("random()").first
+    repo  = Repo.order(Arel.sql("RANDOM()")).first
     issue = Issue.where(state: "open", repo_id: repo.id).where.not(number: nil).first!
     sub   = RepoSubscription.where(user_id: user.id, repo_id: repo.id).first_or_create!
     assignment = sub.issue_assignments.where(issue_id: issue.id).first_or_create!
@@ -31,11 +31,11 @@ class UserPreview < ActionMailer::Preview
   end
 
   def send_daily_triage_mixed
-    write_docs = DocMethod.order("RANDOM()").includes(:repo).missing_docs.first(rand(0..8))
-    read_docs  = DocMethod.order("RANDOM()").includes(:repo).with_docs.first(rand(0..8))
+    write_docs = DocMethod.order(Arel.sql("RANDOM()")).includes(:repo).missing_docs.first(rand(0..8))
+    read_docs  = DocMethod.order(Arel.sql("RANDOM()")).includes(:repo).with_docs.first(rand(0..8))
 
-    write_docs = DocMethod.order("RANDOM()").includes(:repo).first(rand(0..8)) if write_docs.blank?
-    read_docs  = DocMethod.order("RANDOM()").includes(:repo).first(rand(0..8)) if read_docs.blank?
+    write_docs = DocMethod.order(Arel.sql("RANDOM()")).includes(:repo).first(rand(0..8)) if write_docs.blank?
+    read_docs  = DocMethod.order(Arel.sql("RANDOM()")).includes(:repo).first(rand(0..8)) if read_docs.blank?
 
     user        = User.last
     assignments = []
@@ -80,7 +80,7 @@ class UserPreview < ActionMailer::Preview
       issue = Issue
               .where(state: "open")
               .where.not(number: nil)
-              .order("RANDOM()")
+              .order(Arel.sql("RANDOM()"))
               .first
 
       next if issue.nil?
@@ -104,11 +104,11 @@ class UserPreview < ActionMailer::Preview
   def daily_docs
     user       = User.last
 
-    write_docs = DocMethod.order("RANDOM()").missing_docs.first(rand(0..8))
-    read_docs  = DocMethod.order("RANDOM()").with_docs.first(rand(0..8))
+    write_docs = DocMethod.order(Arel.sql("RANDOM()")).missing_docs.first(rand(0..8))
+    read_docs  = DocMethod.order(Arel.sql("RANDOM()")).with_docs.first(rand(0..8))
 
-    write_docs = DocMethod.order("RANDOM()").first(rand(0..8)) if write_docs.blank?
-    read_docs  = DocMethod.order("RANDOM()").first(rand(0..8)) if read_docs.blank?
+    write_docs = DocMethod.order(Arel.sql("RANDOM()")).first(rand(0..8)) if write_docs.blank?
+    read_docs  = DocMethod.order(Arel.sql("RANDOM()")).first(rand(0..8)) if read_docs.blank?
 
     ::UserMailer.daily_docs(
       user:       user,
