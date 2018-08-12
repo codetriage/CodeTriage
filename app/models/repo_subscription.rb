@@ -6,7 +6,7 @@ class RepoSubscription < ActiveRecord::Base
   validates  :user_id, presence: true
   validates  :email_limit, numericality: { less_than: 21, greater_than_or_equal_to: 0 }
 
-  belongs_to :repo, counter_cache: :subscribers_count
+  belongs_to :repo, counter_cache: :subscribers_count, touch: true
   belongs_to :user
 
   has_many   :issue_assignments
