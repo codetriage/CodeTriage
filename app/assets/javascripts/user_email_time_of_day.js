@@ -13,7 +13,4 @@ $(document).ready(function(){
     return a.text == b.text ? 0 : a.text < b.text ? -1 : 1
   }))
 
-  var after_work = $("#user_email_time_of_day").find("option:contains('19:00')").val()
-  $("#user_email_time_of_day").val(after_work)
-
 });
