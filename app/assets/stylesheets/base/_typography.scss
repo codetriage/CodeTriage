@@ -65,3 +65,20 @@ blockquote {
 textarea.single-line {
   height: 3.25rem;
 }
+
+/*
+ * Taken from bourbon version 5.1.0 to allow for providing text to screen readers but hiding for visual users.
+ * This should be removed when bourbon is upgraded.
+ * https://github.com/thoughtbot/bourbon/blob/v5.1.0/core/bourbon/library/_hide-visually.scss
+*/
+.hide-visually {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
