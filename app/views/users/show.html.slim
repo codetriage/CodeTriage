@@ -30,25 +30,25 @@
                 = link_to "Go public", user_registration_path(user: {private: false}), method: :patch
         li.slats-item
           .slats-hgroup
-            h5.slats-title Email frequency:
+            h3.slats-title Email frequency:
           .slats-action
             p= @user.email_frequency.presence || 'not set'
 
         li.slats-item
           .slats-hgroup
-            h5.slats-title Email time of day:
+            h3.slats-title Email time of day:
           .slats-action
             p= (@user.email_time_of_day && local_time(@user.email_time_of_day, '%H:%M %Z')) || 'not set'
 
         li.slats-item
           .slats-hgroup
-            h5.slats-title Max number of issues you want to receive per day:
+            h3.slats-title Max number of issues you want to receive per day:
           .slats-action
             p= @user.daily_issue_limit.presence || 'not set'
 
         li.slats-item
           .slats-hgroup
-            h5.slats-title Skip Issues with Pull Requests:
+            h3.slats-title Skip Issues with Pull Requests:
           .slats-action
             p= @user.skip_issues_with_pr
 
