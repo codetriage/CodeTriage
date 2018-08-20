@@ -16,10 +16,10 @@
     "heroku-redis:in-dyno",
     "memcachier"
   ],
-  "stack": "cedar-14",
+  "stack": "heroku-16",
   "buildpacks": [
     {
-      "url": "https://github.com/mojodna/heroku-buildpack-jemalloc.git#v3.6.0"
+      "url": "https://github.com/mojodna/heroku-buildpack-jemalloc.git#v5.0.0"
     },
     {
       "url": "heroku/nodejs"
