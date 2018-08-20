@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<GITHUB_APP_ID>:<GITHUB_APP_SECRET>@api.github.com/applications/<GITHUB_APP_ID>/tokens/<GITHUB_API_KEY>
+    uri: https://api.github.com/applications/<GITHUB_APP_ID>/tokens/<GITHUB_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -66,6 +66,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":113219755,"url":"https://api.github.com/authorizations/113219755","app":{"name":"codetriage-davidragone","url":"http://localhost:3000","client_id":"<GITHUB_APP_ID>"},"token":"<GITHUB_API_KEY>","hashed_token":"f4ff0827eb406e73fc079754a102c054457b3c4fcdaf94e6eb4bc56a9fe60260","token_last_eight":"cb2d7628","note":null,"note_url":null,"created_at":"2017-07-06T16:02:42Z","updated_at":"2017-07-06T16:02:43Z","scopes":["user:email"],"fingerprint":null,"user":{"login":"DavidRagone","id":1452099,"avatar_url":"https://avatars1.githubusercontent.com/u/1452099?v=3","gravatar_id":"","url":"https://api.github.com/users/DavidRagone","html_url":"https://github.com/DavidRagone","followers_url":"https://api.github.com/users/DavidRagone/followers","following_url":"https://api.github.com/users/DavidRagone/following{/other_user}","gists_url":"https://api.github.com/users/DavidRagone/gists{/gist_id}","starred_url":"https://api.github.com/users/DavidRagone/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/DavidRagone/subscriptions","organizations_url":"https://api.github.com/users/DavidRagone/orgs","repos_url":"https://api.github.com/users/DavidRagone/repos","events_url":"https://api.github.com/users/DavidRagone/events{/privacy}","received_events_url":"https://api.github.com/users/DavidRagone/received_events","type":"User","site_admin":false}}'
-    http_version: 
+    http_version:
   recorded_at: Sat, 08 Jul 2017 22:17:26 GMT
 recorded_with: VCR 2.9.3
