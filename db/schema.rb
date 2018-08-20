@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_144937) do
+ActiveRecord::Schema.define(version: 2018_08_20_155654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_144937) do
     t.string "old_token"
     t.integer "raw_streak_count", default: 0
     t.integer "raw_emails_since_click", default: 0
+    t.datetime "last_email_at"
     t.index ["account_delete_token"], name: "index_users_on_account_delete_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["github"], name: "index_users_on_github", unique: true

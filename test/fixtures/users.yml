@@ -11,6 +11,7 @@ mockstar:
   last_sign_in_ip: 68.5.230.247
   created_at: 2012-11-10 23:53:33.147175000 Z
   updated_at: 2012-11-10 23:53:33.203388000 Z
+  last_email_at: 2012-11-10 23:53:33.147175000 Z
   zip:
   phone_number:
   twitter:
@@ -37,6 +38,7 @@ foo_user:
   last_sign_in_ip: 68.5.230.247
   created_at: 2012-11-10 23:53:33.147175000 Z
   updated_at: 2012-11-10 23:53:33.203388000 Z
+  last_email_at: 2012-11-10 23:53:33.147175000 Z
   zip:
   phone_number:
   twitter:
@@ -62,6 +64,7 @@ bar_user:
   last_sign_in_ip: 68.5.230.247
   created_at: 2012-11-10 23:53:33.147175000 Z
   updated_at: 2012-11-10 23:53:33.203388000 Z
+  last_email_at: 2012-11-10 23:53:33.147175000 Z
   zip:
   phone_number:
   twitter:
@@ -87,6 +90,7 @@ schneems:
   last_sign_in_ip: 68.5.230.247
   created_at: 2012-11-10 23:53:33.147175000 Z
   updated_at: 2012-11-10 23:53:33.203388000 Z
+  last_email_at: 2012-11-10 23:53:33.147175000 Z
   zip:
   phone_number:
   twitter:
@@ -111,6 +115,7 @@ jroes:
   current_sign_in_ip: 68.5.230.247
   last_sign_in_ip: 68.5.230.247
   created_at: 2012-11-10 23:53:33.147175000 Z
+  last_email_at: 2012-11-10 23:53:33.147175000 Z
   updated_at: 2012-11-10 23:53:33.203388000 Z
   zip:
   phone_number:
@@ -136,6 +141,7 @@ empty:
   current_sign_in_ip: 68.5.230.247
   last_sign_in_ip: 68.5.230.247
   created_at: 2012-11-10 23:53:33.147175000 Z
+  last_email_at: 2012-11-10 23:53:33.147175000 Z
   updated_at: 2012-11-10 23:53:33.203388000 Z
   zip:
   phone_number:
