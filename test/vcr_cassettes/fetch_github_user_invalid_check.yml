@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<GITHUB_APP_ID>:<GITHUB_APP_SECRET>@api.github.com/applications/<GITHUB_APP_ID>/tokens/asdf
+    uri: https://api.github.com/applications/<GITHUB_APP_ID>/tokens/asdf
     body:
       encoding: US-ASCII
       string: ''
@@ -10,54 +10,56 @@ http_interactions:
       Accept:
       - application/vnd.github.3.raw+json
       User-Agent:
-      - 0ce48bcbccef6adc6728a8ac8ffadee9
+      - 4116311d10ddf95c973a40c3f5987b65
       Authorization:
-      - Basic OGQ5NGRhNTAyZmVmOTBmMDRhMWU6MzMyZmQ1M2NiZGE3Y2VhNGZkMDBlNmRkNmQwOWQ2OTNjNjQzYTg3NQ==
+      - Basic ZmIzOTllOGIzNjkwNmZmY2UyNjc6ZGFmZWVjYmM5ZGIwMjc3YTJmZGY3NDk3YjNlNzIwNTNhZWExZWU4ZA==
   response:
     status:
       code: 404
-      message: ''
+      message: Not Found
     headers:
+      Server:
+      - GitHub.com
       Date:
-      - Sat, 08 Jul 2017 22:18:36 GMT
+      - Mon, 20 Aug 2018 18:26:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '77'
-      Server:
-      - GitHub.com
+      - '122'
       Status:
       - 404 Not Found
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4998'
+      - '4999'
       X-Ratelimit-Reset:
-      - '1499555846'
+      - '1534793185'
       X-Github-Media-Type:
       - github.v3; param=3.raw; format=json
       Access-Control-Expose-Headers:
-      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
-        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
       Access-Control-Allow-Origin:
       - "*"
-      Content-Security-Policy:
-      - default-src 'none'
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
       X-Frame-Options:
       - deny
+      X-Content-Type-Options:
+      - nosniff
       X-Xss-Protection:
       - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
       X-Runtime-Rack:
-      - '0.015278'
+      - '0.021987'
       X-Github-Request-Id:
-      - C355:2B2EB:2DA5AA:3A8F1A:59615A3B
+      - CA28:7306:1CDA1E9:3388FE9:5B7B07D1
     body:
       encoding: UTF-8
-      string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3"}'
+      string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3/oauth_authorizations/#check-an-authorization"}'
     http_version: 
-  recorded_at: Sat, 08 Jul 2017 22:18:36 GMT
+  recorded_at: Mon, 20 Aug 2018 18:26:43 GMT
 recorded_with: VCR 2.9.3
