@@ -365,7 +365,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.10)
+    stackprof (0.2.12)
     statsd-ruby (1.4.0)
     teaspoon (1.1.5)
       railties (>= 3.2.5, < 6)
