@@ -37,8 +37,10 @@ class SendDailyTriageEmailJob < ApplicationJob
       user_id:        user.id,
       assignment_ids: assignments.pluck(:id),
       write_doc_ids:  docs.write_docs.map(&:id),
-      read_doc_ids:   docs.read_docs.map(&:id)
+      read_doc_ids:   docs.read_docs.map(&:id),
+      email_at:       Time.now.iso8601
     ).deliver_later
+
     assignments.update_all(delivered: true)
     user.repo_subscriptions.update_all(last_sent_at: Time.now)
     mail

@@ -9,6 +9,7 @@ class UserMailer < ActionMailer::Base
   def send_daily_triage(
       user_id:,
       assignment_ids:,
+      email_at: nil, # Temporary while old queue drains
       read_doc_ids: [],
       write_doc_ids: []
     )
@@ -16,8 +17,14 @@ class UserMailer < ActionMailer::Base
     user = User.find(user_id)
     return unless set_and_check_user(user)
 
-    user.raw_emails_since_click += 1
-    user.save!
+    if email_at # temporary while old queue drains
+      email_at = DateTime.parse(email_at)
+      if user.last_email_at < email_at
+        user.raw_emails_since_click += 1
+        user.last_email_at = email_at
+        user.save!
+      end
+    end
 
     @grouped_issues_docs = MailBuilder::GroupedIssuesDocs.new(
       user_id:        user_id,
