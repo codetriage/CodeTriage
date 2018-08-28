@@ -19,7 +19,7 @@ gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.2.3'
+  gem 'rails', '6.0.0'
 end
 
 gem 'bluecloth'
@@ -75,12 +75,11 @@ end
 
 group :development, :test do
   gem 'derailed_benchmarks'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '2.7.5'
   gem 'faker', require: false
   gem 'pry'
-  gem 'rubocop', '0.71.0', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-performance'
-  gem 'teaspoon'
 end
 
 gem 'rack-mini-profiler'
@@ -93,7 +92,6 @@ gem 'sinatra', '~> 2.0.7'
 gem 'aws-sdk', '~> 3'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'record_tag_helper', '~> 1.0'
 
 gem 'sprockets', github: "rails/sprockets"
 gem 'sprockets-rails'
@@ -121,3 +119,4 @@ gem 'premailer-rails'
 
 gem 'barnes'
 gem 'puma_worker_killer'
+gem 'rake'
