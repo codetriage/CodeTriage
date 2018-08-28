@@ -18,12 +18,13 @@ if ENV["RAILS_MASTER"] == '1'
   gem 'arel', git: 'https://github.com/rails/arel.git'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.2.1'
+  gem 'rails', path: "~/Documents/projects/rails"
+  gem 'arel', git: 'https://github.com/rails/arel.git'
 end
 
 gem 'bluecloth'
 gem 'dalli'
-gem 'devise'
+gem 'devise', github: 'schneems/devise', branch: 'schneems/rails-6'
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.0'
@@ -53,7 +54,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'render_async', '~> 1.2'
 
 group :development do
-  gem 'bullet'
+  # gem 'bullet'
   gem 'foreman'
   gem 'listen'
   gem 'spring'
@@ -73,11 +74,9 @@ end
 
 group :development, :test do
   gem 'derailed_benchmarks'
-  gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', '0.58.2', require: false
-  gem 'teaspoon'
 end
 
 gem 'rack-mini-profiler'
@@ -90,7 +89,7 @@ gem 'sinatra', '~> 2.0.2'
 gem 'aws-sdk', '~> 2'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'record_tag_helper', '~> 1.0'
+# gem 'record_tag_helper', '~> 1.0'
 
 gem 'sprockets', github: "rails/sprockets"
 gem 'sprockets-rails'
@@ -113,7 +112,8 @@ gem 'skylight'
 
 gem 'minitest', '5.10.3'
 gem 'sitemap_generator'
-gem 'premailer-rails'
 
 gem 'barnes'
 gem 'puma_worker_killer'
+
+# gem 'attendance', path: "~/Documents/projects/attendance"
