@@ -230,7 +230,7 @@ GEM
     parser (2.5.0.3)
       ast (~> 2.4.0)
     pdf-core (0.7.0)
-    pg (0.18.3)
+    pg (1.1.2)
     powerpack (0.1.1)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
