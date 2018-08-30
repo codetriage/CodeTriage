@@ -28,7 +28,7 @@ gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.0'
 gem 'maildown', '3.0.2'
-gem 'omniauth', '~> 1.6.0'
+gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-github'
 gem 'pg'
 gem 'puma', github: "puma/puma"
