@@ -46,7 +46,7 @@
 .types-filter {
   @include clearfix;
   @include position(absolute, 5rem (-$base-spacing) null);
-  @include transition (all 0.2s ease-in-out);
+  transition: all 0.2s ease-in-out;
   background-color: darken($base-background-color, 5%);
   border-radius: $base-border-radius;
   cursor: pointer;

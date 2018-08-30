@@ -25,7 +25,7 @@
 
       &::before {
         @include position(absolute, 3px null null -2px);
-        @include size(1.1rem 1rem);
+        @include size(1.1rem, 1rem);
         background-color: $codetriage-blue;
         border-radius: $base-border-radius;
         color: $base-background-color;

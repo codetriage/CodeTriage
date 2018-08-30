@@ -56,7 +56,7 @@ select{
     }
   }
 
-  @include placeholder {
+  ::placeholder {
     color: rgba($white, 0.3);
   }
 }
