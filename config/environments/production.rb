@@ -96,7 +96,9 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  # config.cache_store = :memory_store, { size: 64.megabytes }
+  config.cache_store = :memory_store, { size: 64.megabytes }
 
-  config.cache_store = :dalli_store
+  # config.cache_store = :dalli_store
+  # config.cache_store = :null_store
+  # config.cache_store = :file_store, "tmp/to/cache/directory"
 end
