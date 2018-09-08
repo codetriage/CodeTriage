@@ -13,14 +13,8 @@ end
 
 gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 
-# Gems required in all environments
-if ENV["RAILS_MASTER"] == '1'
-  gem 'arel', git: 'https://github.com/rails/arel.git'
-  gem 'rails', git: 'https://github.com/rails/rails.git'
-else
-  gem 'rails', path: "~/Documents/projects/rails"
-  gem 'arel', git: 'https://github.com/rails/arel.git'
-end
+gem 'rails', path: "~/Documents/projects/rails"
+gem 'arel', git: 'https://github.com/rails/arel.git'
 
 gem 'bluecloth'
 gem 'dalli'

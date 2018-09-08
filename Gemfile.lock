@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/schneems/devise.git
-  revision: fe205d8000d873f97a6cbc41e9b1a787186eebfc
+  revision: fc9aa974ece8c2348ac0cd8c42f76ba6332ff07f
   branch: schneems/rails-6
   specs:
     devise (4.5.0)
