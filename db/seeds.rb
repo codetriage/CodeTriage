@@ -11,6 +11,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
+User.create!(github: "schneems")
 repo = Repo.create!(user_name: "rails", name: "sprockets", language: "Ruby")
 PopulateDocsJob.perform_now(repo)
 
