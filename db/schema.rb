@@ -2,11 +2,11 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
-# you'll amass, the slower it'll run and the greater likelihood for issues).
+# This file is the source Rails uses to define your schema when running `rails
+# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
@@ -73,15 +73,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["repo_id"], name: "index_doc_methods_on_repo_id"
   end
 
-  create_table "email_records", force: :cascade do |t|
-    t.bigint "user_id"
-    t.integer "streak_count", default: 0
-    t.boolean "was_clicked", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_email_records_on_user_id"
-  end
-
   create_table "issue_assignments", id: :serial, force: :cascade do |t|
     t.integer "issue_id"
     t.datetime "created_at"
@@ -112,28 +103,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
     t.index ["state"], name: "index_issues_on_state"
-  end
-
-  create_table "opro_auth_grants", id: :serial, force: :cascade do |t|
-    t.string "code", limit: 255
-    t.string "access_token", limit: 255
-    t.string "refresh_token", limit: 255
-    t.text "permissions"
-    t.datetime "access_token_expires_at"
-    t.integer "user_id"
-    t.integer "application_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "opro_client_apps", id: :serial, force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "app_id", limit: 255
-    t.string "app_secret", limit: 255
-    t.text "permissions"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
@@ -212,7 +181,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "email_records", "users"
   add_foreign_key "repo_subscriptions", "repos"
   add_foreign_key "repo_subscriptions", "users"
 end

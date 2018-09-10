@@ -39,7 +39,7 @@ GIT
       warden (~> 1.2.3)
 
 PATH
-  remote: ../rails
+  remote: ../../../Documents/projects/rails
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)
@@ -484,4 +484,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   1.16.4
