@@ -201,7 +201,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mustermann (1.0.2)
+    mustermann (1.0.3)
     neat (1.7.2)
       bourbon (>= 4.0)
       sass (>= 3.3)
@@ -256,7 +256,7 @@ GEM
       rack (>= 1.0.0, < 3)
     rack-mini-profiler (1.0.0)
       rack (>= 1.2.0)
-    rack-protection (2.0.2)
+    rack-protection (2.0.3)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -346,10 +346,10 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    sinatra (2.0.2)
+    sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.2)
+      rack-protection (= 2.0.3)
       tilt (~> 2.0)
     sitemap_generator (6.0.1)
       builder (~> 3.0)
@@ -473,7 +473,7 @@ DEPENDENCIES
   sentry-raven!
   sidekiq
   simplecov
-  sinatra (~> 2.0.2)
+  sinatra (~> 2.0.3)
   sitemap_generator
   skylight
   slim-rails
