@@ -12,17 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_08_20_155654) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_stat_statements"
-  enable_extension "plpgsql"
-
-  create_table "data_dumps", id: :serial, force: :cascade do |t|
+  create_table "data_dumps", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "doc_assignments", id: :serial, force: :cascade do |t|
+  create_table "doc_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "repo_id"
     t.integer "repo_subscription_id"
     t.integer "doc_method_id"
@@ -34,7 +30,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["repo_subscription_id"], name: "index_doc_assignments_on_repo_subscription_id"
   end
 
-  create_table "doc_classes", id: :serial, force: :cascade do |t|
+  create_table "doc_classes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "repo_id"
     t.string "name"
     t.datetime "created_at"
@@ -46,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["repo_id"], name: "index_doc_classes_on_repo_id"
   end
 
-  create_table "doc_comments", id: :serial, force: :cascade do |t|
+  create_table "doc_comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "doc_class_id"
     t.integer "doc_method_id"
     t.text "comment"
@@ -56,7 +52,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["doc_method_id"], name: "index_doc_comments_on_doc_method_id"
   end
 
-  create_table "doc_methods", id: :serial, force: :cascade do |t|
+  create_table "doc_methods", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "repo_id"
     t.string "name"
     t.integer "line"
@@ -73,7 +69,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["repo_id"], name: "index_doc_methods_on_repo_id"
   end
 
-  create_table "issue_assignments", id: :serial, force: :cascade do |t|
+  create_table "issue_assignments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "issue_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -84,7 +80,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["repo_subscription_id"], name: "index_issue_assignments_on_repo_subscription_id"
   end
 
-  create_table "issues", id: :serial, force: :cascade do |t|
+  create_table "issues", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "comment_count"
     t.string "url"
     t.string "repo_name"
@@ -99,13 +95,13 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.string "state"
     t.boolean "pr_attached", default: false
     t.index ["number"], name: "index_issues_on_number"
-    t.index ["repo_id", "id"], name: "index_issues_on_repo_id_and_id", where: "((state)::text = 'open'::text)"
+    t.index ["repo_id", "id"], name: "index_issues_on_repo_id_and_id"
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
     t.index ["state"], name: "index_issues_on_state"
   end
 
-  create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
+  create_table "repo_subscriptions", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "user_id"
@@ -120,7 +116,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["user_id"], name: "index_repo_subscriptions_on_user_id"
   end
 
-  create_table "repos", id: :serial, force: :cascade do |t|
+  create_table "repos", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "user_name"
     t.integer "issues_count", default: 0, null: false
@@ -142,7 +138,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["user_name"], name: "index_repos_on_user_name"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -164,11 +160,11 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.string "avatar_url", default: "http://gravatar.com/avatar/default"
     t.string "name"
     t.boolean "private", default: false
-    t.string "favorite_languages", array: true
+    t.string "favorite_languages"
     t.integer "daily_issue_limit", default: 50
     t.boolean "skip_issues_with_pr", default: false
     t.string "account_delete_token"
-    t.datetime "last_clicked_at"
+    t.timestamp "last_clicked_at"
     t.string "email_frequency", default: "daily"
     t.time "email_time_of_day"
     t.string "old_token"
