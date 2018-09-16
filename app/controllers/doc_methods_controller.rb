@@ -7,7 +7,7 @@ class DocMethodsController < ApplicationController
     @comment = @doc.doc_comments.select(:comment).first
     @repo    = @doc.repo
     @username = current_user.present? ? current_user.github : "<your name>"
-    @branch   = GitBranchnameGenerator.new(username: @username, doc_path: @doc.path)
+    @branch   = GitBranchnameGenerator.new(username: @username, doc_path: @doc.path).branchname
 
     set_title("Help Writing docs #{@doc.path} - #{@repo.full_name} #{@repo.language}")
     set_description("#{@doc.missing_docs? ? 'Write' : 'Read'} docs for #{@repo.name} starting with #{@doc.path}.")
