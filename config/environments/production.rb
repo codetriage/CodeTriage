@@ -102,6 +102,7 @@ Rails.application.configure do
   # config.cache_store = :null_store
   # config.cache_store = :file_store, "tmp/to/cache/directory"
   #
+
   if ENV["MEMCACHIER_SERVERS"]
     config.cache_store = [:mem_cache_store, (ENV["MEMCACHIER_SERVERS"] || "").split(","),
                           { :username => ENV["MEMCACHIER_USERNAME"],
