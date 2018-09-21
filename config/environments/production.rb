@@ -113,4 +113,6 @@ Rails.application.configure do
   else
     config.cache_store = :mem_cache_store
   end
+
+  config.cache_store = :memory_store
 end
