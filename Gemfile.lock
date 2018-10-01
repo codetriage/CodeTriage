@@ -251,7 +251,7 @@ GEM
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 4)
     rack (2.0.5)
-    rack-canonical-host (0.2.2)
+    rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
     rack-mini-profiler (1.0.0)
