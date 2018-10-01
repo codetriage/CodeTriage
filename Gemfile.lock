@@ -395,7 +395,7 @@ GEM
     vcr (2.9.3)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (3.5.1)
+    web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
