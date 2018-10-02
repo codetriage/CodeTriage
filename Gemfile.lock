@@ -390,7 +390,7 @@ GEM
     valid_email (0.1.0)
       activemodel
       mail (>= 2.6.1)
-    vcr (2.9.3)
+    vcr (4.0.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.7.0)
