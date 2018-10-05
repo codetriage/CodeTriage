@@ -768,7 +768,7 @@ GEM
       kramdown
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    memory_profiler (0.9.11)
+    memory_profiler (0.9.12)
     metaclass (0.0.4)
     method_source (0.9.2)
     mime-types (3.2.2)
