@@ -71,11 +71,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "[CodeTriage] Help triage #{@repo.full_name}")
   end
 
-  def poke_inactive(user:)
+  def poke_inactive(user:, most_issues_repo:, repo_in_need:, random_repo:)
     return unless set_and_check_user(user)
-    @most_repo   = Repo.order_by_issue_count.first
-    @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
-    @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first || @most_repo || @need_repo
+    @most_repo   = most_issues_repo
+    @need_repo   = repo_in_need
+    @random_repo = random_repo
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage misses you")
   end
 
