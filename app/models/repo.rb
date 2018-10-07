@@ -172,6 +172,11 @@ class Repo < ActiveRecord::Base
     self.where.not(id: user_subscribed_repo_ids)
   end
 
+  def self.in_user_lang_preferences(user)
+    return all unless user.has_favorite_languages?
+    self.where('language IN (?)', user.favorite_languages)
+  end
+
   def github_url
     File.join('https://github.com', full_name)
   end

@@ -4,13 +4,19 @@ class BackgroundInactiveEmailJob < ApplicationJob
   def perform(user)
     return false if user.repo_subscriptions.present?
 
-    most_issues_repo = Repo.order_by_issue_count.first
-    repo_in_need = Repo.order_by_need.not_in(most_issues_repo.id).first
+    with_most_issues = curated_repos_for(user).order_by_issue_count.first
+    in_need = curated_repos_for(user).order_by_need.not_in(with_most_issues.id).first
     UserMailer.poke_inactive(
       user: user,
-      most_issues_repo: most_issues_repo,
-      repo_in_need: repo_in_need,
-      random_repo: Repo.rand.not_in(most_issues_repo.id, repo_in_need.id).first
+      most_issues_repo: with_most_issues,
+      repo_in_need: in_need,
+      random_repo: curated_repos_for(user).rand.not_in(with_most_issues.id, in_need.id).first
     ).deliver_later
+  end
+
+  private
+
+  def curated_repos_for(user)
+    Repo.select(:id, :full_name).in_user_lang_preferences(user)
   end
 end

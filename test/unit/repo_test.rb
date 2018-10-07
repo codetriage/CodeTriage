@@ -136,4 +136,36 @@ class RepoTest < ActiveSupport::TestCase
 
     # assert_equal repos, expected_order_by_issues
   # end
+
+  # Testing .in_user_lang_preferences
+
+  test 'Returns matching repo according to user preferences' do
+    javascript_repo = repos(:node)
+    user = users(:schneems)
+    user.favorite_languages = ['javascript']
+
+    javascript_repos = Repo.in_user_lang_preferences(user)
+
+    assert javascript_repos.include?(javascript_repo)
+  end
+
+  test 'Not returning a repo that is not included in the user preferences' do
+    javascript_repo = repos(:node)
+    user = users(:schneems)
+    user.favorite_languages = ['ruby']
+
+    ruby_repos = Repo.in_user_lang_preferences(user)
+
+    assert_not ruby_repos.include?(javascript_repo)
+  end
+
+  test 'Returns all the repos when the user has no language preferences' do
+    javascript_repo = repos(:node)
+    user = users(:schneems)
+    user.favorite_languages = []
+
+    all_repos = Repo.in_user_lang_preferences(user)
+
+    assert all_repos.include?(javascript_repo)
+  end
 end
