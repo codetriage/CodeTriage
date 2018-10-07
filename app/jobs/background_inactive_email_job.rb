@@ -6,11 +6,13 @@ class BackgroundInactiveEmailJob < ApplicationJob
 
     with_most_issues = curated_repos_for(user).order_by_issue_count.first
     in_need = curated_repos_for(user).order_by_need.not_in(with_most_issues.id).first
+    random = curated_repos_for(user).rand.not_in(with_most_issues.id, in_need.id).first
+
     UserMailer.poke_inactive(
       user: user,
       most_issues_repo: with_most_issues,
       repo_in_need: in_need,
-      random_repo: curated_repos_for(user).rand.not_in(with_most_issues.id, in_need.id).first
+      random_repo: random
     ).deliver_later
   end
 

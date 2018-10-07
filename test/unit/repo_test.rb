@@ -129,16 +129,6 @@ class RepoTest < ActiveSupport::TestCase
     assert repos.include?(unsubscribed_repo)
   end
 
-  # test '.order_by_issue_count' do
-  #  expected_order_by_issues = [repos(:issue_triage_sandbox), repos(:rails_rails)]
-
-    # repos = Repo.order_by_issue_count
-
-    # assert_equal repos, expected_order_by_issues
-  # end
-
-  # Testing .in_user_lang_preferences
-
   test 'Returns matching repo according to user preferences' do
     javascript_repo = repos(:node)
     user = users(:schneems)

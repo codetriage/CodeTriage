@@ -174,7 +174,7 @@ class Repo < ActiveRecord::Base
 
   def self.in_user_lang_preferences(user)
     return all unless user.has_favorite_languages?
-    self.where('language IN (?)', user.favorite_languages)
+    self.where(language: user.favorite_languages)
   end
 
   def github_url
