@@ -67,7 +67,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (6.3.6.1)
+    autoprefixer-rails (9.1.4)
       execjs
     aws-sdk (2.1.30)
       aws-sdk-resources (= 2.1.30)
@@ -417,7 +417,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails (~> 6.3.3)
+  autoprefixer-rails (~> 9.1.4)
   aws-sdk (~> 2)
   babel-transpiler
   barnes
