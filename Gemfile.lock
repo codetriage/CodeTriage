@@ -304,7 +304,7 @@ GEM
     redis (4.0.2)
     redis-namespace (1.6.0)
       redis (>= 3.0.4)
-    render_async (1.2.0)
+    render_async (2.0.0)
       bundler (~> 1.8)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
@@ -463,7 +463,7 @@ DEPENDENCIES
   rbtrace
   record_tag_helper (~> 1.0)
   redis-namespace
-  render_async (~> 1.2)
+  render_async (~> 2.0)
   rrrretry
   rubocop (= 0.58.2)
   sassc
