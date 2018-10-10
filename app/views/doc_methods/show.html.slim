@@ -26,25 +26,35 @@ div class="subpage-content-wrapper #{ @repo.weight }"
     section.content-section
       h2.content-section-title Edit
       pre
-        |
-          $ git clone git@github.com:#{ @repo.full_name }.git
-          $ cd #{ @repo.name }
-          $ open #{ @doc.file }
+        .bash
+          | git clone git@github.com:#{ @repo.full_name }.git
+        .bash
+          | cd #{ @repo.name }
+        .bash
+          | open #{ @doc.file }
     section.content-section
       h2.content-section-title Contribute
       pre
-        |
-          # Make a new branch
-          $ git checkout -b #{ @branch }
+        | # Make a new branch
+        .bash
+          | git checkout -b #{ @branch }
+        br
 
-          # Commit to git
-          $ git add #{ @doc.file }
-          $ git commit -m "better docs for #{ @doc.path }"
+        | # Commit to git
+        .bash
+          | git add #{ @doc.file }
+          | git commit -m "better docs for #{ @doc.path }"
+        br
 
-          # Open pull request
-          $ gem install hub # on a mac you can `brew install hub`
-          $ hub fork
-          $ git push #{ @username } #{ @branch }
-          $ hub pull-request
+        | # Open pull request
+        .bash
+          | gem install hub # on a mac you can `brew install hub`
+        .bash
+          | hub fork
+        .bash
+          | git push #{ @username } #{ @branch }
+        .bash
+          | hub pull-request
+        br
 
-          # Celebrate!
+        | # Celebrate!

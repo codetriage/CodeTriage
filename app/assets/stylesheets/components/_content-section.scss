@@ -15,3 +15,7 @@
   margin-bottom: 1rem;
   color: $base-font-color;
 }
+
+.bash::before {
+  content: "$ "
+}
