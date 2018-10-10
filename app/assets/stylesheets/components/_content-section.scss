@@ -16,6 +16,10 @@
   color: $base-font-color;
 }
 
-.bash::before {
-  content: "$ "
+.sh {
+  margin: 0;
+
+  &::before {
+    content: "$ "
+  }
 }

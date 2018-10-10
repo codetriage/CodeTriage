@@ -26,34 +26,34 @@ div class="subpage-content-wrapper #{ @repo.weight }"
     section.content-section
       h2.content-section-title Edit
       pre
-        .bash
+        p.sh
           | git clone git@github.com:#{ @repo.full_name }.git
-        .bash
+        p.sh
           | cd #{ @repo.name }
-        .bash
+        p.sh
           | open #{ @doc.file }
     section.content-section
       h2.content-section-title Contribute
       pre
         | # Make a new branch
-        .bash
+        p.sh
           | git checkout -b #{ @branch }
         br
 
         | # Commit to git
-        .bash
+        p.sh
           | git add #{ @doc.file }
           | git commit -m "better docs for #{ @doc.path }"
         br
 
         | # Open pull request
-        .bash
+        p.sh
           | gem install hub # on a mac you can `brew install hub`
-        .bash
+        p.sh
           | hub fork
-        .bash
+        p.sh
           | git push #{ @username } #{ @branch }
-        .bash
+        p.sh
           | hub pull-request
         br
 
