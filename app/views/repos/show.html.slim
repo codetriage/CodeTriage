@@ -12,7 +12,7 @@ div class="subpage-content-wrapper #{ @repo.weight }"
 div class="subpage-content-wrapper #{ @repo.weight }"
 
   header.subpage-content-header
-    = link_to @repo.github_url
+    = link_to @repo.github_url, target: "_blank"
       h1.subpage-primary-title= @repo.name
       p.subpage-secondary-title= @repo.github_url
       h2.repo-language= @repo.language
