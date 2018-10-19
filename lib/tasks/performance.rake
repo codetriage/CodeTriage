@@ -21,7 +21,9 @@ task :compare_branches do |before, after|
   puts "Before branch: #{before}"
   puts "After branch: #{after}"
 
-  100.times do
+  COUNT = 100
+  COUNT.times do |i|
+    puts "#{i.next}/#{COUNT}"
     Dir.chdir(rails_dir) { run!("git checkout '#{before}'") }
     run!(" bundle exec derailed exec perf:test 2>&1 | tail -n 1 >> '#{before_file}'")
 
