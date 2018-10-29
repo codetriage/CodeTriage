@@ -175,7 +175,7 @@ GEM
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
-    local_time (2.0.0)
+    local_time (2.1.0)
     loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -439,7 +439,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen
-  local_time (= 2.0)
+  local_time (= 2.1.0)
   mail
   maildown (= 3.0.2)
   mime-types (~> 3.2.2)
