@@ -61,7 +61,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '2.17.0'
+  gem 'capybara', '3.10.0'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'mocha', require: false
