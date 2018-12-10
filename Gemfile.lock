@@ -679,7 +679,7 @@ GEM
       sass (~> 3.4)
       thor (~> 0.19)
     builder (3.2.3)
-    bullet (5.8.1)
+    bullet (5.9.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     capybara (3.10.0)
