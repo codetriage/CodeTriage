@@ -117,3 +117,8 @@ gem 'premailer-rails'
 
 gem 'barnes'
 gem 'puma_worker_killer'
+
+group :development do
+  gem 'railroady', '1.5.3' # Generates block diagrams
+  gem 'rails-erd', '1.5.2' # Generates block diagrams
+end

@@ -690,6 +690,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.2)
       xpath (~> 3.2)
+    choice (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -850,6 +851,7 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-timeout (0.5.1)
+    railroady (1.5.3)
     rails (5.2.1.1)
       actioncable (= 5.2.1.1)
       actionmailer (= 5.2.1.1)
@@ -870,6 +872,11 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-erd (1.5.2)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
     rails_autolink (1.1.6)
@@ -910,6 +917,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-graphviz (1.2.4)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
@@ -1047,8 +1055,10 @@ DEPENDENCIES
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
+  railroady (= 1.5.3)
   rails (= 5.2.1.1)
   rails-controller-testing
+  rails-erd (= 1.5.2)
   rails_autolink
   rbtrace
   record_tag_helper (~> 1.0)
@@ -1086,4 +1096,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   1.17.1
