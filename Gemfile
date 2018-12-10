@@ -72,9 +72,12 @@ group :test do
 end
 
 group :development, :test do
+  gem 'brakeman', '4.3.1'
+  gem 'bundler-audit', '0.6.0'
   gem 'derailed_benchmarks'
   gem 'dotenv-rails'
   gem 'faker', require: false
+  gem 'gemsurance', '0.9.0'
   gem 'pry'
   gem 'rubocop', '0.58.2', require: false
   gem 'teaspoon'
