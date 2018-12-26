@@ -24,8 +24,7 @@ class DocMethodsController < ApplicationController
       assignment.user.update_attributes(last_clicked_at: Time.now)
       redirect_to doc_method_url(doc)
     else
-      flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
-      redirect_to :root
+      redirect_to_root_with_message
     end
   rescue => e
     handle_development_click(error: e, url: doc_method_url(doc))
@@ -40,21 +39,29 @@ class DocMethodsController < ApplicationController
       assignment.user.record_click!
       assignment.update_attributes(clicked: true)
       assignment.user.update_attributes(last_clicked_at: Time.now)
-      redirect_to doc.to_github
+      github_url = parsed_url(doc.to_github)
+      redirect_to github_url if github_url
+      redirect_to_root_with_message
     else
-      flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
-      redirect_to :root
+      redirect_to_root_with_message
     end
   rescue => e
     handle_development_click(error: e, url: doc.to_github)
   end
 
-  private def handle_development_click(error:, url:)
+  private
+
+  def handle_development_click(error:, url:)
     raise error unless Rails.env.development?
 
     flash[:error] = error.inspect
     puts error.message
     puts error.backtrace
     redirect_to url
+  end
+
+  def redirect_to_root_with_message
+    flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
+    redirect_to :root
   end
 end
