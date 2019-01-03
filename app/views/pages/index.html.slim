@@ -33,6 +33,10 @@ hr.section-break
           - unless lang.nil?
             li = link_to lang, "#", data: { toggle: "tab", language: lang }
 
+  .types-filter-wrapper
+    label.types-filter-label Search:
+    = text_field_tag :url, nil, placeholder: 'Repository', value: params["query"], class: 'search-field'
+
   section.repo-list-with-pagination
     = render "repos_with_pagination", repos: @repos
 

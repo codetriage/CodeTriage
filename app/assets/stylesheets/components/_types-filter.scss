@@ -77,3 +77,11 @@
     width: 150px;
   }
 }
+
+.search-field {
+  color: white;
+  width: 50%;
+  float: right;
+  padding-left: $base-spacing;
+  padding-top: $small-spacing;
+}

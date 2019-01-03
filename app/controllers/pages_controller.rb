@@ -23,6 +23,9 @@ class PagesController < ApplicationController
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
       @repos = @repos.where(language: language)
     end
+    if ( query = valid_params[:query])
+      @repos = @repos.where("name LIKE ?", "%#{query}%")
+    end
     @repos = @repos.without_user_subscriptions(current_user.id) if user_signed_in?
     @repos = @repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
 
@@ -51,7 +54,7 @@ class PagesController < ApplicationController
   end
 
   def valid_params
-    params.permit(:language, :per_page, :page)
+    params.permit(:language, :per_page, :page, :query)
   end
 
   def set_cache_headers
