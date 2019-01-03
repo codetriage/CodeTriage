@@ -782,7 +782,7 @@ GEM
     mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
     mini_mime (1.0.1)
-    mini_portile2 (2.3.0)
+    mini_portile2 (2.4.0)
     minitest (5.10.3)
     mocha (1.7.0)
       metaclass (~> 0.0.1)
@@ -795,8 +795,8 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.3.1)
-    nokogiri (1.8.5)
-      mini_portile2 (~> 2.3.0)
+    nokogiri (1.9.1)
+      mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
@@ -1086,4 +1086,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   1.17.3
