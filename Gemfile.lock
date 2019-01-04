@@ -1083,7 +1083,7 @@ DEPENDENCIES
   yard (~> 0.9.16)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.6.0p0
 
 BUNDLED WITH
    1.17.3
