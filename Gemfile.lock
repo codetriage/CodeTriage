@@ -6,12 +6,6 @@ GIT
       faraday (>= 0.7.6, < 1.0)
 
 GIT
-  remote: https://github.com/puma/puma.git
-  revision: 7f71af4b45ba0e49ee024441aeb50f47e767e9ec
-  specs:
-    puma (3.11.4)
-
-GIT
   remote: https://github.com/rails/sprockets.git
   revision: 0cb3314368f9f9e84343ebedcc09c7137e920bc4
   specs:
@@ -836,6 +830,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
+    puma (3.12.0)
     puma_worker_killer (0.1.0)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 4)
@@ -1042,7 +1037,7 @@ DEPENDENCIES
   prawn
   premailer-rails
   pry
-  puma!
+  puma
   puma_worker_killer
   rack-canonical-host
   rack-mini-profiler
