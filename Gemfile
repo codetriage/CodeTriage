@@ -31,7 +31,7 @@ gem 'maildown', '3.0.2'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-github'
 gem 'pg'
-gem 'puma', github: "puma/puma"
+gem 'puma'
 gem 'rack-timeout'
 gem 'rails_autolink'
 gem 'rrrretry'
