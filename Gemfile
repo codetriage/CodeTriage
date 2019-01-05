@@ -117,3 +117,4 @@ gem 'premailer-rails'
 
 gem 'barnes'
 gem 'puma_worker_killer'
+gem 'get_process_mem', '0.2.3'
