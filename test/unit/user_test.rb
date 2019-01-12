@@ -1,6 +1,34 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+  test 'default avatar test' do
+    @user = users(:mockstar)
+    assert_equal @user.default_avatar_url, 'http://gravatar.com/avatar/default'
+  end
+
+  test 'public?' do
+    @user1 = users(:mockstar)
+    @user2 = users(:jroes)
+    assert_equal @user1.public?, true
+    assert_equal @user2.public?, false
+  end
+
+  test 'not yet subscribed to' do
+    @user = users(:schneems)
+    @repo1 = repos(:issue_triage_sandbox)
+    @repo2 = repos(:rails_rails)
+    assert_equal @user.not_yet_subscribed_to?(@repo1), false
+    assert_equal @user.not_yet_subscribed_to?(@repo2), true
+  end
+
+  test 'subscribed to' do
+    @user = users(:schneems)
+    @repo1 = repos(:issue_triage_sandbox)
+    @repo2 = repos(:rails_rails)
+    assert_equal @user.subscribed_to?(@repo1), true
+    assert_equal @user.subscribed_to?(@repo2), false
+  end
+
   test 'streak tests' do
     # New user, first email
     user = User.new(github: "whatever1")
