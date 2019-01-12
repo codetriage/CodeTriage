@@ -58,9 +58,14 @@ class UserPrivateTest < ActionDispatch::IntegrationTest
     check_private_user(@user_jroes)
   end
 
-  test 'public user can become private' do
-  end
-
-  test 'private user can become public' do
+  test 'user can switch between public and private' do
+    @user_bar = users(:bar_user)
+    login_as(@user_bar, scope: :user)
+    visit root_path
+    click_on 'bar_user'
+    click_on 'Go private'
+    click_on 'Go public'
+    click_on 'Go private'
+    click_on 'Go public'
   end
 end
