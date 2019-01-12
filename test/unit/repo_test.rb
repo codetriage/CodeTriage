@@ -126,4 +126,53 @@ class RepoTest < ActiveSupport::TestCase
     assert_not repos.include?(subscribed_repo)
     assert repos.include?(unsubscribed_repo)
   end
+
+  test 'weight and color' do
+    @repo = Repo.create user_name: 'Blofeld', name: 'world_domination', issues_count: -1
+    @repo = Repo.new(user_name: 'Blofeld',
+                     name: 'world_domination',
+                     issues_count: -1)
+    assert_equal @repo.weight, ''
+    assert_equal @repo.color, 'lightgrey'
+
+    @repo.issues_count = nil
+    assert_equal @repo.weight, ''
+    assert_equal @repo.color, 'lightgrey'
+
+    @repo.issues_count = 0
+    assert_equal @repo.weight, 'low'
+    assert_equal @repo.color, '5bb878'
+
+    @repo.issues_count = 100
+    assert_equal @repo.weight, 'low'
+    assert_equal @repo.color, '5bb878'
+
+    @repo.issues_count = 199
+    assert_equal @repo.weight, 'low'
+    assert_equal @repo.color, '5bb878'
+
+    @repo.issues_count = 200
+    assert_equal @repo.weight, 'medium'
+    assert_equal @repo.color, 'eba117'
+
+    @repo.issues_count = 500
+    assert_equal @repo.weight, 'medium'
+    assert_equal @repo.color, 'eba117'
+
+    @repo.issues_count = 799
+    assert_equal @repo.weight, 'medium'
+    assert_equal @repo.color, 'eba117'
+
+    @repo.issues_count = 800
+    assert_equal @repo.weight, 'high'
+    assert_equal @repo.color, 'e25443'
+
+    @repo.issues_count = 1000
+    assert_equal @repo.weight, 'high'
+    assert_equal @repo.color, 'e25443'
+
+    @repo.issues_count = 1_000_000_000
+    assert_equal @repo.weight, 'high'
+    assert_equal @repo.color, 'e25443'
+  end
 end
