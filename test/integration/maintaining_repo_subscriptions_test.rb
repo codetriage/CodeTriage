@@ -34,6 +34,17 @@ class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
     assert page.has_content?("mockstar")
   end
 
+  test "clicking an issue leads to a github page" do
+    triage_the_sandbox
+    assert page.has_link?("first test issue", href: /github.com/)
+  end
+
+  test "clicking a doc leads to doc_methods" do
+    triage_the_sandbox
+    click_link "/path/here/issue_triage"
+    assert page.has_current_path?(/doc_methods/)
+  end
+
   # test "list only favorite languages" do
   #   login_via_github
   #   visit "/"
