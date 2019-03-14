@@ -111,7 +111,7 @@ gem 'stackprof'
 gem 'prawn'
 gem 'skylight'
 
-gem 'minitest', '5.10.3'
+gem 'minitest', '5.11.3'
 gem 'sitemap_generator'
 gem 'premailer-rails'
 
