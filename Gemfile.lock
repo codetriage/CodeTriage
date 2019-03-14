@@ -777,7 +777,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
-    minitest (5.10.3)
+    minitest (5.11.3)
     mocha (1.7.0)
       metaclass (~> 0.0.1)
     msgpack (1.2.4)
@@ -1026,7 +1026,7 @@ DEPENDENCIES
   mail
   maildown (= 3.0.2)
   mime-types (~> 3.2.2)
-  minitest (= 5.10.3)
+  minitest (= 5.11.3)
   mocha
   neat
   normalize-rails
