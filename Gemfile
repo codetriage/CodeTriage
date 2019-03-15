@@ -25,6 +25,7 @@ end
 gem 'bluecloth'
 gem 'dalli'
 gem 'devise', git: 'https://github.com/plataformatec/devise'
+gem 'responders', git: 'https://github.com/plataformatec/responders'
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.1.0'
@@ -53,8 +54,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'render_async', '~> 2.0'
 
 group :development do
-  gem 'bullet'
-  gem 'foreman'
+  gem 'bullet', github: 'flyerhzm/bullet'
   gem 'listen'
   gem 'spring'
   gem 'web-console'
@@ -77,7 +77,6 @@ group :development, :test do
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', '0.67.2', require: false
-  gem 'teaspoon'
 end
 
 gem 'rack-mini-profiler'
@@ -90,7 +89,6 @@ gem 'sinatra', '~> 2.0.5'
 gem 'aws-sdk', '~> 3'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'record_tag_helper', '~> 1.0'
 
 gem 'sprockets', github: "rails/sprockets"
 gem 'sprockets-rails'
@@ -113,7 +111,7 @@ gem 'skylight'
 
 gem 'minitest', '5.11.3'
 gem 'sitemap_generator'
-gem 'premailer-rails'
+gem 'premailer-rails', github: 'prathamesh-sonpatki/premailer-rails', branch: 'rails-6'
 
 gem 'barnes'
 gem 'puma_worker_killer'
