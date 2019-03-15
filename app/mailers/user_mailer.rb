@@ -1,5 +1,3 @@
-require 'rails_autolink'
-
 class UserMailer < ActionMailer::Base
   include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"
