@@ -995,7 +995,7 @@ GEM
     will_paginate (3.1.6)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.16)
+    yard (0.9.18)
 
 PLATFORMS
   ruby
@@ -1073,7 +1073,7 @@ DEPENDENCIES
   webmock
   wicked
   will_paginate (= 3.1.6)
-  yard (~> 0.9.16)
+  yard (~> 0.9.18)
 
 RUBY VERSION
    ruby 2.6.2p47
