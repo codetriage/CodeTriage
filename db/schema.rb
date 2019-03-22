@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2019_08_09_190610) do
     t.index ["repo_id", "doc_comments_count"], name: "index_doc_methods_on_repo_id_and_doc_comments_count"
     t.index ["repo_id", "id"], name: "index_doc_methods_on_repo_id_and_id"
     t.index ["repo_id", "name", "path"], name: "index_doc_methods_on_repo_id_and_name_and_path"
-    t.index ["repo_id"], name: "index_doc_methods_on_repo_id"
   end
 
   create_table "issue_assignments", id: :serial, force: :cascade do |t|
@@ -104,7 +103,6 @@ ActiveRecord::Schema.define(version: 2019_08_09_190610) do
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id", "state"], name: "index_issues_on_repo_id_and_state"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
-    t.index ["state"], name: "index_issues_on_state"
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
