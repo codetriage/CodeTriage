@@ -111,7 +111,7 @@ gem 'skylight'
 
 gem 'minitest', '5.11.3'
 gem 'sitemap_generator'
-gem 'premailer-rails', github: 'prathamesh-sonpatki/premailer-rails', branch: 'rails-6'
+gem 'premailer-rails', github: 'fphilipe/premailer-rails'
 
 gem 'barnes'
 gem 'puma_worker_killer'

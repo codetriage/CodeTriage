@@ -7,6 +7,14 @@ GIT
       uniform_notifier (~> 1.11)
 
 GIT
+  remote: https://github.com/fphilipe/premailer-rails.git
+  revision: d8a864c84ce209cb8fdaf6efd9a0a67ace932856
+  specs:
+    premailer-rails (1.10.2)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
+
+GIT
   remote: https://github.com/getsentry/raven-ruby.git
   revision: 729c22f9284939695f14822683bff1a0b72502bd
   specs:
@@ -31,15 +39,6 @@ GIT
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
-
-GIT
-  remote: https://github.com/prathamesh-sonpatki/premailer-rails.git
-  revision: 32eb84c71a90fb62ad4b66791d01fce6e1c082d5
-  branch: rails-6
-  specs:
-    premailer-rails (1.10.2)
-      actionmailer (>= 3, < 6.0)
-      premailer (~> 1.7, >= 1.7.9)
 
 GIT
   remote: https://github.com/rails/sprockets.git
