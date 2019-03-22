@@ -107,7 +107,7 @@ gem 'rbtrace'
 gem 'redis-namespace'
 gem 'stackprof'
 gem 'prawn'
-gem 'skylight'
+gem 'skylight', github: 'skylightio/skylight-ruby'
 
 gem 'minitest', '5.11.3'
 gem 'sitemap_generator'
