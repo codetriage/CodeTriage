@@ -34,7 +34,7 @@ class RepoSubscriptionsController < ApplicationController
   def create_or_update_subscription
     repo_sub = current_user.repo_subscriptions.find(params[:id]) if params[:id]
     repo_sub ||= current_user.repo_subscriptions.new(repo: Repo.find(repo_subscription_params[:repo_id]))
-    repo_sub.update_attributes(repo_subscription_params)
+    repo_sub.update(repo_subscription_params)
     repo_sub
   end
 

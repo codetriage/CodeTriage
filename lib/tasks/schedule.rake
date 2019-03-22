@@ -53,7 +53,7 @@ namespace :schedule do
       next if user.auth_is_valid?
 
       # Archive bad token
-      user.update_attributes(token: nil, old_token: user.token)
+      user.update(token: nil, old_token: user.token)
     end
   end
 
