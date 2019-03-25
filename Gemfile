@@ -19,7 +19,7 @@ gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '6.0.0.beta2'
+  gem 'rails', path: '/Users/prathamesh/Projects/sources/rails' #'6.0.0.beta2'
 end
 
 gem 'bluecloth'
@@ -29,7 +29,7 @@ gem 'responders', git: 'https://github.com/plataformatec/responders'
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.1.0'
-gem 'maildown', git: 'https://github.com/schneems/maildown'
+gem 'maildown', path: '/Users/prathamesh/Projects/sources/maildown'
 gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-github'
 gem 'pg'
