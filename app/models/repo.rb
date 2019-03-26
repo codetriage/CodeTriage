@@ -117,7 +117,7 @@ class Repo < ActiveRecord::Base
       .group("repos.id")
   end
 
-  # these repos have no subscribers and have no buisness being in our database
+  # these repos have no subscribers and have no business being in our database
   def self.inactive
     joins("LEFT OUTER JOIN repo_subscriptions on repos.id = repo_subscriptions.repo_id").where("repo_subscriptions.repo_id is null")
   end

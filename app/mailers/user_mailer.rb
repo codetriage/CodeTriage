@@ -73,7 +73,7 @@ class UserMailer < ActionMailer::Base
     return unless set_and_check_user(user)
     @most_repo   = Repo.order_by_issue_count.first
     @need_repo   = Repo.order_by_need.not_in(@most_repo.id).first
-    @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first
+    @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first || @most_repo || @need_repo
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage misses you")
   end
 

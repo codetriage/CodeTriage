@@ -15,7 +15,6 @@ gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 
 # Gems required in all environments
 if ENV["RAILS_MASTER"] == '1'
-  gem 'arel', git: 'https://github.com/rails/arel.git'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
   gem 'rails', '5.2.2.1'
@@ -42,7 +41,7 @@ gem 'will_paginate', '3.1.6'
 gem 'sassc'
 gem 'sassc-rails'
 
-gem 'autoprefixer-rails', '~> 9.4.3'
+gem 'autoprefixer-rails', '~> 9.5.0'
 gem 'bourbon'
 gem 'coffee-rails', '~> 4.2.0'
 gem 'neat'
@@ -84,7 +83,7 @@ gem 'rack-mini-profiler'
 gem 'the_lone_dyno'
 
 gem 'sidekiq'
-gem 'sinatra', '~> 2.0.4'
+gem 'sinatra', '~> 2.0.5'
 
 gem 'aws-sdk', '~> 3'
 
@@ -97,7 +96,7 @@ gem 'sprockets-rails'
 gem 'babel-transpiler'
 
 gem 'scout_apm', '~> 2.4.20'
-gem 'yard', '~> 0.9.16'
+gem 'yard', '~> 0.9.18'
 
 gem 'oj'
 gem 'rack-canonical-host'
