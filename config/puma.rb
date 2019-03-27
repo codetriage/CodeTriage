@@ -62,8 +62,5 @@ before_fork do
 end
 
 on_worker_boot do
-  # worker specific setup
-  ActiveRecord::Base.establish_connection
-
   Barnes.start
 end
