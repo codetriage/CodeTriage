@@ -3,8 +3,6 @@ require 'test_helper'
 class SubscribersControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  fixtures :users, :repos
-
   test 'list subscribers for a repo' do
     repo = repos(:issue_triage_sandbox)
     repo.users << users(:mockstar)

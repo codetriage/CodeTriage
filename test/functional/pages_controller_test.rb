@@ -3,8 +3,6 @@ require 'test_helper'
 class PagesControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
 
-  fixtures :users
-
   test "siged in user" do
     sign_in users(:mockstar)
     get :index
