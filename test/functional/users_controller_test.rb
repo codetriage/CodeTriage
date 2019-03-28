@@ -2,7 +2,6 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
-  fixtures :users
 
   test 'should destroy a user with the correct account_delete_token' do
     sign_in users(:mockstar)

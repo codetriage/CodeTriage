@@ -2,7 +2,6 @@ require "test_helper"
 
 class MaintainingRepoSubscriptionsTest < ActionDispatch::IntegrationTest
   include ActiveJob::TestHelper
-  fixtures :repos
 
   def triage_the_sandbox
     login_via_github
