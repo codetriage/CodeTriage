@@ -88,7 +88,6 @@ end
 
 task default: [:rubocop, :test]
 
-
 Rake::Task["assets:precompile"].enhance do
   Rake::Task["db:migrate"].invoke
   Rake::Task["db:schema:cache:dump"].invoke

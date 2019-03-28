@@ -2,7 +2,6 @@
 require 'test_helper'
 
 class RepoSubscriptionsTest < ActiveSupport::TestCase
-
   test "the get_issue_for_triage for new user" do
     user          = users(:mockstar)
     repo          = repos(:rails_rails)
