@@ -33,10 +33,10 @@ class DocMethodsController < ApplicationController
 
   def click_source_redirect
     doc        = DocMethod.find(params[:id])
-    sub        = RepoSubscription.find_by!(id: params[:user_id], repo: doc.repo)
+    sub        = RepoSubscription.find_by!(user_id: params[:user_id], repo: doc.repo)
     assignment = DocAssignment.find_by!(doc_method_id: doc.id, repo_subscription_id: sub.id)
 
-    if assignment.user.id.to_s == params[:user_id]
+    if assignment&.user&.id.to_s == params[:user_id]
       assignment.user.record_click!
       assignment.update_attributes(clicked: true)
       assignment.user.update_attributes(last_clicked_at: Time.now)
