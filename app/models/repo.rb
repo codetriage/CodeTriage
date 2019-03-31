@@ -121,7 +121,7 @@ class Repo < ActiveRecord::Base
 
   # these repos have no subscribers and have no business being in our database
   def self.inactive
-    joins("LEFT OUTER JOIN repo_subscriptions on repos.id = repo_subscriptions.repo_id").where("repo_subscriptions.repo_id is null")
+    left_outer_joins(:repo_subscriptions).where(repo_subscriptions: { repo_id: nil })
   end
 
   def self.not_in(*ids)

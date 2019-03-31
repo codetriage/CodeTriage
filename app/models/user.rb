@@ -169,7 +169,7 @@ class User < ActiveRecord::Base
   end
 
   def days_since_last_email
-    last_sent_at = repo_subscriptions.where("last_sent_at is not null").order(:last_sent_at).first.try(:last_sent_at)
+    last_sent_at = repo_subscriptions.where.not(last_sent_at: nil).order(:last_sent_at).first.try(:last_sent_at)
     last_sent_at ||= self.created_at
     (
       (Time.now - last_sent_at) / 1.day
@@ -186,7 +186,7 @@ class User < ActiveRecord::Base
 
   def issue_assignments_to_deliver(assign: true)
     prior_assignments = issue_assignments.where(delivered: false).limit(daily_issue_limit)
-    return prior_assignments unless prior_assignments.blank?
+    return prior_assignments unless prior_assignments.empty?
 
     issue_assigner.assign! if assign
     issue_assignments.where(delivered: false).limit(daily_issue_limit)

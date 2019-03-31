@@ -21,28 +21,10 @@ class IssueAssigner
   private
 
   def assign_issue_for_sub(sub)
-    issue = Issue.find_by_sql(<<-SQL
-                SELECT
-                  *
-                FROM
-                  issues
-                WHERE
-                  repo_id = '#{sub.repo_id}' and
-                  state   = '#{Issue::OPEN}'
-                  AND id NOT IN (
-                    SELECT
-                      issue_id
-                    FROM
-                      issue_assignments
-                    WHERE
-                      repo_subscription_id = '#{sub.id}'
-                  )
-                ORDER BY
-                  random()
-                LIMIT
-                  1
-                SQL
-                             ).first
+    issue = Issue.where(repo_id: sub.repo_id, state: Issue::OPEN)
+                 .where.not(id: IssueAssignment.select(:issue_id).where(repo_subscription_id: sub.id))
+                 .order(Arel.sql('RANDOM()'))
+                 .first
 
     return false if issue.blank?
     if issue.valid_for_user?(user)
