@@ -17,7 +17,7 @@ gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.2.2.1'
+  gem 'rails', '5.2.3'
 end
 
 gem 'bluecloth'
@@ -36,7 +36,7 @@ gem 'rrrretry'
 gem 'valid_email'
 gem 'warden', '1.2.8'
 gem 'wicked'
-gem 'will_paginate', '3.1.6'
+gem 'will_paginate', '3.1.7'
 # gem 'sass-rails', '6.0.0.beta1'
 gem 'sassc'
 gem 'sassc-rails'
