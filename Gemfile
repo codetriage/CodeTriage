@@ -17,7 +17,7 @@ gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.2.3'
+  gem 'rails', '5.2.2.1'
 end
 
 gem 'bluecloth'
