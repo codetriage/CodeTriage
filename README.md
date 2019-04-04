@@ -81,7 +81,7 @@ $ echo PORT=3000 >> .env
 Start your app using [Heroku Local](https://devcenter.heroku.com/articles/heroku-local)
 
 ```shell
-$ heroku local -f Procfile.development
+$ heroku local -f Procfile.development -p 3000
 12:00:03 AM web.1    |  [70676] - Worker 0 (pid: 70696) booted, phase: 0
 12:00:04 AM worker.1 |  INFO: Booting Sidekiq with redis options {:url=>nil}
 ```

@@ -12,9 +12,17 @@ class IssueAssignmentsController < ApplicationController
       assignment.user.record_click!
       assignment.update_attributes(clicked: true)
       assignment.user.update_attributes(last_clicked_at: Time.now)
-      redirect_to assignment.issue.html_url
+      issue_html_url = parsed_url(assignment.issue.html_url)
+      redirect_to issue_html_url if issue_html_url
+      redirect_to_root_with_message
     else
-      redirect_to :root, message: "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
+      redirect_to_root_with_message
     end
+  end
+
+  private
+
+  def redirect_to_root_with_message
+    redirect_to :root, message: "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
   end
 end

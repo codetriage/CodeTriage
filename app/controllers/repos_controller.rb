@@ -53,7 +53,7 @@ class ReposController < RepoBasedController
   def update
     @repo = find_repo(params)
     if @repo.update_attributes(repo_params)
-      redirect_to @repo, notice: "Repo updated"
+      redirect_to repo_path(@repo), notice: "Repo updated"
     else
       render :edit
     end

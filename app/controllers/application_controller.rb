@@ -29,4 +29,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     request.env['omniauth.origin'] || stored_location_for(resource) || root_path
   end
+
+  def parsed_url(url_string)
+    return unless url_string.match?(URI::DEFAULT_PARSER.make_regexp)
+    URI.parse(url_string)
+  end
 end
