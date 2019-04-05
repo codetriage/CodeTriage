@@ -41,31 +41,17 @@ GIT
       railties (>= 4.2.0, < 6.0)
 
 GIT
-  remote: https://github.com/rails/sprockets.git
-  revision: 9e3f0d8e98c44f57e67bc138db87bb8469bf5ddd
-  specs:
-    sprockets (4.0.0.beta8)
-      concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
-
-GIT
-  remote: https://github.com/skylightio/skylight-ruby.git
-  revision: 142ab3a1a3f21320bd0384193182c37ec0225d43
-  specs:
-    skylight (4.0.0.beta2)
-      skylight-core (= 4.0.0.beta2)
-    skylight-core (4.0.0.beta2)
-      activesupport (>= 4.2.0)
-
-PATH
-  remote: /Users/prathamesh/Projects/sources/maildown
+  remote: https://github.com/prathamesh-sonpatki/maildown
+  revision: e3adec15726202fa81037b0711b88b3754e36947
+  branch: rails-6-compat
   specs:
     maildown (3.0.2)
       actionmailer (>= 4.0.0)
       kramdown
 
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://github.com/rails/rails.git
+  revision: a8328f61b6b958140738d5c31438132b20089c93
   specs:
     actioncable (6.0.0.beta3)
       actionpack (= 6.0.0.beta3)
@@ -113,6 +99,7 @@ GEM
       activesupport (= 6.0.0.beta3)
     activestorage (6.0.0.beta3)
       actionpack (= 6.0.0.beta3)
+      activejob (= 6.0.0.beta3)
       activerecord (= 6.0.0.beta3)
       marcel (~> 0.3.1)
     activesupport (6.0.0.beta3)
@@ -120,7 +107,49 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 1.3, >= 1.3.1)
+      zeitwerk (~> 1.4, >= 1.4.3)
+    rails (6.0.0.beta3)
+      actioncable (= 6.0.0.beta3)
+      actionmailbox (= 6.0.0.beta3)
+      actionmailer (= 6.0.0.beta3)
+      actionpack (= 6.0.0.beta3)
+      actiontext (= 6.0.0.beta3)
+      actionview (= 6.0.0.beta3)
+      activejob (= 6.0.0.beta3)
+      activemodel (= 6.0.0.beta3)
+      activerecord (= 6.0.0.beta3)
+      activestorage (= 6.0.0.beta3)
+      activesupport (= 6.0.0.beta3)
+      bundler (>= 1.3.0)
+      railties (= 6.0.0.beta3)
+      sprockets-rails (>= 2.0.0)
+    railties (6.0.0.beta3)
+      actionpack (= 6.0.0.beta3)
+      activesupport (= 6.0.0.beta3)
+      method_source
+      rake (>= 0.8.7)
+      thor (>= 0.20.3, < 2.0)
+
+GIT
+  remote: https://github.com/rails/sprockets.git
+  revision: 9e3f0d8e98c44f57e67bc138db87bb8469bf5ddd
+  specs:
+    sprockets (4.0.0.beta8)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
+
+GIT
+  remote: https://github.com/skylightio/skylight-ruby.git
+  revision: 142ab3a1a3f21320bd0384193182c37ec0225d43
+  specs:
+    skylight (4.0.0.beta2)
+      skylight-core (= 4.0.0.beta2)
+    skylight-core (4.0.0.beta2)
+      activesupport (>= 4.2.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
     ast (2.4.0)
@@ -891,21 +920,6 @@ GEM
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rack-timeout (0.5.1)
-    rails (6.0.0.beta3)
-      actioncable (= 6.0.0.beta3)
-      actionmailbox (= 6.0.0.beta3)
-      actionmailer (= 6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      actiontext (= 6.0.0.beta3)
-      actionview (= 6.0.0.beta3)
-      activejob (= 6.0.0.beta3)
-      activemodel (= 6.0.0.beta3)
-      activerecord (= 6.0.0.beta3)
-      activestorage (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      bundler (>= 1.3.0)
-      railties (= 6.0.0.beta3)
-      sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.4)
       actionpack (>= 5.0.1.x)
       actionview (>= 5.0.1.x)
@@ -915,12 +929,6 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    railties (6.0.0.beta3)
-      actionpack (= 6.0.0.beta3)
-      activesupport (= 6.0.0.beta3)
-      method_source
-      rake (>= 0.8.7)
-      thor (>= 0.20.3, < 2.0)
     rainbow (2.2.2)
       rake
     rake (12.3.2)
@@ -1077,7 +1085,7 @@ DEPENDENCIES
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
-  rails (= 6.0.0.beta3)
+  rails!
   rails-controller-testing
   rbtrace
   redis-namespace
