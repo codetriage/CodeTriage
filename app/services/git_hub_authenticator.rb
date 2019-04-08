@@ -42,17 +42,17 @@ class GitHubAuthenticator
 
   def github_params
     @github_params ||= {
-      github:              auth.info.nickname,
+      github: auth.info.nickname,
       github_access_token: token,
-      avatar_url:          auth.extra.raw_info.avatar_url
+      avatar_url: auth.extra.raw_info.avatar_url
     }
   end
 
   def user_params
     github_params.merge(
       password: Devise.friendly_token[0, 20],
-      name:     auth.extra.raw_info.name,
-      email:    github_email
+      name: auth.extra.raw_info.name,
+      email: github_email
     )
   end
 end

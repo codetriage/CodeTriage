@@ -17,9 +17,9 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     order_two_repos = order_one_repos.reverse
 
     actual = MailBuilder::GroupedIssuesDocs.new(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: assignment_ids,
-      random_seed:    1
+      random_seed: 1
     ).map(&:repo)
 
     assert_equal true, actual.include?(expected_repo_one), "Expected #{actual} to include #{expected_repo_one} but it did not"
@@ -28,9 +28,9 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     assert_equal order_one_repos, actual
 
     actual = MailBuilder::GroupedIssuesDocs.new(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: assignment_ids,
-      random_seed:    2
+      random_seed: 2
     ).map(&:repo)
 
     assert_equal order_two_repos, actual
@@ -52,7 +52,7 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     user          = assignment.repo_subscription.user
 
     group = MailBuilder::GroupedIssuesDocs.new(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: [assignment.id]
     )
     assert_equal false, group.any_docs?
@@ -75,7 +75,7 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     assert_equal expected_repo, repos(:issue_triage_sandbox)
 
     group = MailBuilder::GroupedIssuesDocs.new(
-      user_id:      user.id,
+      user_id: user.id,
       read_doc_ids: [doc.id]
     )
     assert_equal true,  group.any_docs?
@@ -100,7 +100,7 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     assert_equal expected_repo, repos(:issue_triage_sandbox)
 
     group = MailBuilder::GroupedIssuesDocs.new(
-      user_id:       user.id,
+      user_id: user.id,
       write_doc_ids: [doc.id]
     )
     assert_equal true,  group.any_docs?
@@ -128,9 +128,9 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
     assert_equal expected_repo, repos(:issue_triage_sandbox)
 
     group = MailBuilder::GroupedIssuesDocs.new(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: [assignment.id],
-      write_doc_ids:  [doc.id]
+      write_doc_ids: [doc.id]
     )
     assert_equal true, group.any_docs?
     assert_equal true, group.any_issues?

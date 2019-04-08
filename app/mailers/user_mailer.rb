@@ -23,10 +23,10 @@ class UserMailer < ActionMailer::Base
     end
 
     @grouped_issues_docs = MailBuilder::GroupedIssuesDocs.new(
-      user_id:        user_id,
+      user_id: user_id,
       assignment_ids: assignment_ids,
-      read_doc_ids:   read_doc_ids,
-      write_doc_ids:  write_doc_ids
+      read_doc_ids: read_doc_ids,
+      write_doc_ids: write_doc_ids
     )
 
     subject = String.new
@@ -46,9 +46,9 @@ class UserMailer < ActionMailer::Base
     end
 
     mail(
-      to:       @user.email,
+      to: @user.email,
       reply_to: "noreply@codetriage.com",
-      subject:  subject
+      subject: subject
     )
   end
 
