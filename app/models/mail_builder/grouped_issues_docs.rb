@@ -90,9 +90,9 @@ module MailBuilder
       store_subscriptions!(subscriptions)
       store_assignments!(assignments)
       store_docs!(
-        docs:          docs,
+        docs: docs,
         write_doc_ids: write_doc_ids,
-        doc_comments:  doc_comments
+        doc_comments: doc_comments
       )
     end
 

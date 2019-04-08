@@ -81,18 +81,18 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
   test "email_limit allows multiple issues per repo" do
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
-    repo.issues.create(title:           "Foo Bar",
-                       url:             "http://schneems.com",
+    repo.issues.create(title: "Foo Bar",
+                       url: "http://schneems.com",
                        last_touched_at: 2.days.ago,
-                       state:           'open',
-                       html_url:        "http://schneems.com",
-                       number:          9000)
-    repo.issues.create(title:           "Bar Bar",
-                       url:             "http://schneems.com",
+                       state: 'open',
+                       html_url: "http://schneems.com",
+                       number: 9000)
+    repo.issues.create(title: "Bar Bar",
+                       url: "http://schneems.com",
                        last_touched_at: 2.days.ago,
-                       state:           'open',
-                       html_url:        "http://schneems.com",
-                       number:          9001)
+                       state: 'open',
+                       html_url: "http://schneems.com",
+                       number: 9001)
     sub = user.repo_subscriptions.create(repo: repo,
                                          email_limit: 2)
     IssueAssigner.new(user, user.repo_subscriptions).assign!
@@ -103,12 +103,12 @@ class RepoSubscriptionsTest < ActiveSupport::TestCase
     user  = users(:mockstar)
     repo  = repos(:rails_rails)
     repo2 = repos(:rails_rails)
-    repo.issues.create(title:            "Foo Bar",
-                       url:              "http://schneems.com",
-                       last_touched_at:  2.days.ago,
-                       state:            'open',
-                       html_url:         "http://schneems.com",
-                       number:           9000)
+    repo.issues.create(title: "Foo Bar",
+                       url: "http://schneems.com",
+                       last_touched_at: 2.days.ago,
+                       state: 'open',
+                       html_url: "http://schneems.com",
+                       number: 9000)
 
     sub1 = user.repo_subscriptions.create(repo: repo, email_limit: 2)
     user.repo_subscriptions.create(repo: repo2, email_limit: 2)
