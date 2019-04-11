@@ -17,4 +17,16 @@ class IssueAssignmentsController < ApplicationController
       redirect_to :root, message: "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
     end
   end
+
+  def jump_to_issue
+    if IssueAssignment.where(repo_subscription_id: params[:repo_sub_id]).any?
+      issue_assignment = IssueAssignment.where(repo_subscription_id: params[:repo_sub_id]).sample
+      issue_assignment.user.record_click!
+      issue_assignment.update_attributes(clicked: true)
+      issue_assignment.user.update_attributes(last_clicked_at: Time.now)
+      redirect_to issue_assignment.issue.html_url
+    else
+      redirect :root, message: "Something went wrong"
+    end
+  end
 end

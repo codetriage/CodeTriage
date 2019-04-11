@@ -31,4 +31,13 @@ class IssueAssignmentsControllerTest < ActionController::TestCase
 
     assert_redirected_to :root
   end
+
+  test '#jump_to_issue sends the user to the issue url when clicked' do
+    repo = repo_subscriptions(:schneems_to_triage)
+    issue_assignments = issue_assignments(:one)
+
+    get :jump_to_issue, params: { repo_sub_id: repo.id }
+
+    assert_redirected_to issue_assignments.issue.html_url
+  end
 end
