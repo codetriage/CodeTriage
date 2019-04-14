@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IssueAssignmentsController < ApplicationController
   def create
     repo_sub = current_user.repo_subscriptions.find(params[:id])

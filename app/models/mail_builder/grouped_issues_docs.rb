@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailBuilder
   # Takes in Issue Assignment IDs and Doc IDs and groups them together by repo
   #

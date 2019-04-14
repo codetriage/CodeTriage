@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # http://stackoverflow.com/questions/3651860/which-characters-are-illegal-within-a-branch-name
 class GitBranchnameGenerator
   def initialize(username:, doc_path:)

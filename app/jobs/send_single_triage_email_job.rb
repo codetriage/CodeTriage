@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SendSingleTriageEmailJob < ApplicationJob
   def perform(id, create: false)
     repo_sub = RepoSubscription.includes(:user, :repo).find(id)

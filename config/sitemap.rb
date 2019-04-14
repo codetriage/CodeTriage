@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Set the host name for URL creation
 require 'aws-sdk'
 

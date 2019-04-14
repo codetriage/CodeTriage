@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPreview < ActionMailer::Preview
   def invalid_token
     user = User.last

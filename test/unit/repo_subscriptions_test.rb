@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## quick and dirty tests, need to move logic to Factory or fixture
 require 'test_helper'
 

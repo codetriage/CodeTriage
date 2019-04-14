@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GitHubAuthenticator
   def initialize(auth, current_user = nil)
     @auth = auth

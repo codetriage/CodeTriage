@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GithubFetcher
   class CommitSha < Resource
     def initialize(user_name:, name:, default_branch:)
