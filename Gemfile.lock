@@ -919,7 +919,7 @@ GEM
       sprockets-rails
       tilt
     scout_apm (2.4.20)
-    sidekiq (5.2.5)
+    sidekiq (5.2.6)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (>= 1.5.0)
       rack-protection (>= 1.5.0)
