@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if Rails.env.development?
   Bullet.enable = true
   # Bullet.alert = true
