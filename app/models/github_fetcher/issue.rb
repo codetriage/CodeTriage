@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GithubFetcher
   class Issue < Resource
     def initialize(owner_name:, repo_name:, number:)

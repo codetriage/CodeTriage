@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ActiveRecord::Base
   # Include default devise modules (but not :registerable). Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable,

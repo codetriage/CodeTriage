@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SubscribersController < RepoBasedController
   def show
     @repo        = find_repo(params)

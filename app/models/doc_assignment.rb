@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocAssignment < ActiveRecord::Base
   belongs_to :repo_subscription
   belongs_to :doc_method, optional: true

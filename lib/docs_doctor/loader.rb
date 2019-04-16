@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # loads parsers for different languages and tools
 module DocsDoctor
   class Loader

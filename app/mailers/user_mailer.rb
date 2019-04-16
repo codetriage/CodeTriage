@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserMailer < ActionMailer::Base
   include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"

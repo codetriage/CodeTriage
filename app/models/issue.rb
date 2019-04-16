@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Issue < ActiveRecord::Base
   OPEN   = "open"
   CLOSED = "closed"

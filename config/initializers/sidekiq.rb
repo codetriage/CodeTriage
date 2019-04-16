@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 unless Rails.env.production?
   Sidekiq.configure_server do |config|
     config.redis = { url: ENV["REDIS_URL"], namespace: "codetriage-sidekiq" }

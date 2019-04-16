@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BackgroundInactiveEmailJob < ApplicationJob
   def perform(user)
     return false if user.repo_subscriptions.present?

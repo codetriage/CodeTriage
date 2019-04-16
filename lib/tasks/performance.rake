@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 task :compare_branches do |before, after|
   require 'pathname'
   rails_dir = Pathname.new(__dir__).join("../../..", "rails").expand_path

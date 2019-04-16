@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # namespace 'test' do
 #   desc "Run the javascript test"
 #   task javascript: :environment do

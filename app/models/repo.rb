@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'docs_doctor/parsers/ruby/yard'
 
 class Repo < ActiveRecord::Base
