@@ -51,7 +51,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/rails.git
-  revision: a8328f61b6b958140738d5c31438132b20089c93
+  revision: 9f580232ad261e51d982420e07dacb1dea82edca
   specs:
     actioncable (6.0.0.beta3)
       actionpack (= 6.0.0.beta3)
@@ -107,7 +107,7 @@ GIT
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-      zeitwerk (~> 1.4, >= 1.4.3)
+      zeitwerk (~> 2.1, >= 2.1.4)
     rails (6.0.0.beta3)
       actioncable (= 6.0.0.beta3)
       actionmailbox (= 6.0.0.beta3)
@@ -867,7 +867,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.3.1)
-    nokogiri (1.10.2)
+    nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     oauth2 (1.4.0)
@@ -1040,7 +1040,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.19)
-    zeitwerk (1.4.3)
+    zeitwerk (2.1.4)
 
 PLATFORMS
   ruby
