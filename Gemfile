@@ -45,7 +45,7 @@ gem 'sassc-rails'
 
 gem 'autoprefixer-rails', '~> 9.5.1'
 gem 'bourbon'
-gem 'coffee-rails', '~> 4.2.0'
+gem 'coffee-rails', '~> 5.0.0'
 gem 'neat'
 gem 'normalize-rails'
 gem 'slim-rails'
