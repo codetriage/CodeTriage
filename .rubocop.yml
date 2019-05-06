@@ -47,7 +47,7 @@ Layout/EmptyLinesAroundClassBody:
 Layout/ExtraSpacing:
  Enabled: true
 
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
  Enabled: true
 
 Layout/IndentHash:
