@@ -50,7 +50,7 @@ Layout/ExtraSpacing:
 Layout/IndentFirstArrayElement:
  Enabled: true
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
  Enabled: true
 
 Layout/IndentationConsistency:
