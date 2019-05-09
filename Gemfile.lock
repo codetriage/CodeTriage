@@ -899,6 +899,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.6)
+    rubocop-performance (1.2.0)
+      rubocop (>= 0.68.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.5)
@@ -1045,6 +1047,7 @@ DEPENDENCIES
   render_async (~> 2.0)
   rrrretry
   rubocop (= 0.68.1)
+  rubocop-performance
   sassc
   sassc-rails
   scout_apm (~> 2.4.24)

@@ -77,6 +77,7 @@ group :development, :test do
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', '0.68.1', require: false
+  gem 'rubocop-performance'
   gem 'teaspoon'
 end
 
