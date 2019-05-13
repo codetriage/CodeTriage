@@ -53,6 +53,7 @@ group :development do
   gem 'listen'
   gem 'spring'
   gem 'web-console'
+  gem 'sqlite3', '~>1.3.6'
 end
 
 group :test do
