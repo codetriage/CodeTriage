@@ -50,7 +50,7 @@ gem 'neat'
 gem 'normalize-rails'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.0.3'
-gem 'render_async', '~> 2.0'
+gem 'render_async', '~> 2.1'
 
 group :development do
   gem 'bullet'
