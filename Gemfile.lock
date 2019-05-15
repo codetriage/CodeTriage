@@ -38,8 +38,10 @@ GIT
       responders
       warden (~> 1.2.3)
 
-PATH
-  remote: ../rails
+GIT
+  remote: https://github.com/schneems/rails.git
+  revision: dae2e2f02b20cb8b7dbf04df18a6870b9edfaf97
+  branch: schneems/keymaster-more-compat-correct
   specs:
     actioncable (6.0.0.alpha)
       actionpack (= 6.0.0.alpha)

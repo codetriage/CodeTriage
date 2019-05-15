@@ -13,7 +13,7 @@ end
 
 gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 
-gem 'rails', path: "~/Documents/projects/rails"
+gem 'rails', github: "schneems/rails", branch: "schneems/keymaster-more-compat-correct"
 gem 'arel', git: 'https://github.com/rails/arel.git'
 
 gem 'bluecloth'
