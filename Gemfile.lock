@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/getsentry/raven-ruby.git
-  revision: 729c22f9284939695f14822683bff1a0b72502bd
+  revision: 263a33b94d9a689d0fc5ba5c16bc92be9538e9fb
   specs:
     sentry-raven (2.9.0)
       faraday (>= 0.7.6, < 1.0)
@@ -783,7 +783,7 @@ GEM
     msgpack (1.2.10)
     multi_json (1.13.1)
     multi_xml (0.6.0)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     mustermann (1.0.3)
     neat (1.7.2)
       bourbon (>= 4.0)
