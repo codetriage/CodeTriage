@@ -970,7 +970,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
     uniform_notifier (1.12.1)
-    valid_email (0.1.2)
+    valid_email (0.1.3)
       activemodel
       mail (>= 2.6.1)
     vcr (4.0.0)
