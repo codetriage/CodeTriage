@@ -729,7 +729,7 @@ GEM
     ffi (1.10.0)
     foreman (0.85.0)
       thor (~> 0.19.1)
-    get_process_mem (0.2.2)
+    get_process_mem (0.2.3)
     git_hub_bub (0.0.6)
       excon
       rrrretry
