@@ -9,7 +9,7 @@ task :compare_branches do
   out_path.mkpath
 
   branches_to_test = ENV.fetch("BRANCHES_TO_TEST").split(",").each_with_object({}) {|elem, hash| hash[elem] = out_path + "#{elem.gsub('/', ':')}.bench.txt" }
-  script = ENV["DERAILED_SCRIPT"] || "bundle exec derailed perf:test"
+  script = ENV["DERAILED_SCRIPT"] || "bundle exec derailed exec perf:test"
 
   # Make sure the branch exists and the script runs on it
   branches_to_test.each do |branch, file|
