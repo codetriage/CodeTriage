@@ -1,10 +1,10 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ReposControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
   include ActiveJob::TestHelper
-
-  fixtures :users, :repos
 
   test 'responds with 404 if repo does not exist' do
     assert_raise(ActiveRecord::RecordNotFound) {

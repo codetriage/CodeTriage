@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::AfterSignupController < ApplicationController
   include Wicked::Wizard
 

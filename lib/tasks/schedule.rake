@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :schedule do
   desc 'sitemaps'
   task sitemap: :environment do

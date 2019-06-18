@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BadgesController < ApplicationController
   def show
     repo = Repo.where(full_name: permitted[:full_name])

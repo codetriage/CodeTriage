@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GithubFetcher
   # Base class for resources accessible via GitHubBub
   class Resource

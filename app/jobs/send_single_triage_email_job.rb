@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SendSingleTriageEmailJob < ApplicationJob
   def perform(id, create: false)
     repo_sub = RepoSubscription.includes(:user, :repo).find(id)
@@ -7,10 +9,10 @@ class SendSingleTriageEmailJob < ApplicationJob
     if assignment(repo_sub)
       assignment.update!(delivered: true)
       UserMailer.send_triage(
-        repo:       repo_sub.repo,
-        user:       repo_sub.user,
+        repo: repo_sub.repo,
+        user: repo_sub.user,
         assignment: assignment,
-        create:     create
+        create: create
       ).deliver_later
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GithubFetcher
   class User < Resource
     def initialize(options)

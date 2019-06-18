@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocMethod < ActiveRecord::Base
   NeedsDocs = "⚠ Needs Docs ⚠".freeze
 

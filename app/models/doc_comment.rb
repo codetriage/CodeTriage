@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocComment < ActiveRecord::Base
   belongs_to :doc_method, counter_cache: true
   belongs_to :doc_class, counter_cache: true
