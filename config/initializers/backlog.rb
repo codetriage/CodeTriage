@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Thread.new do
 #   while 1 do
 #     sleep 5

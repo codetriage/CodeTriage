@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # PORO
 class IssueAssigner
   attr_reader :user, :subscriptions

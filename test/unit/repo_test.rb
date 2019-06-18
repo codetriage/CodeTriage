@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class RepoTest < ActiveSupport::TestCase
@@ -106,7 +108,7 @@ class RepoTest < ActiveSupport::TestCase
     repo = repos(:rails_rails)
 
     VCR.use_cassette "repo_populate_docs" do
-      double = 'double'
+      double = +'double'
       DocsDoctor::Parsers::Ruby::Yard.stub(:new, ->(_) { double }) do
         double.expects(:process)
         double.expects(:store)

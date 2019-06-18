@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     @user = GitHubAuthenticator.authenticate(request.env["omniauth.auth"], current_user)

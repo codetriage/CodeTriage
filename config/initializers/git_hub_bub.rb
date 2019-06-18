@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # I know it's awful but I don't have time to fix the GitHubBub API and this makes `rails c` not noisey
 GitHubBub::Request.send(:remove_const, :GITHUB_VERSION)
 GitHubBub::Request.send(:remove_const, :USER_AGENT)

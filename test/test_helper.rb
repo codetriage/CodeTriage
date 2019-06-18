@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV["COVERAGE"]
   require 'simplecov'
   SimpleCov.start 'rails'
@@ -43,7 +45,7 @@ OmniAuth.config.add_mock(:github, {
                            },
                            extra: {
                              raw_info: {
-                               name:       "Mock Star",
+                               name: "Mock Star",
                                avatar_url: "http://gravatar.com/avatar/default"
                              }
                            }
