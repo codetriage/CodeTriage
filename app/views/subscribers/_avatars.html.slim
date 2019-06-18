@@ -1,4 +1,7 @@
 - subscribers.each do |subscriber|
   li.user
-    => link_to subscriber.github_url, title: "@#{subscriber.github}" do
-      = image_tag subscriber.avatar_url, alt: subscriber.github, class: 'avatar-image'
+    - if subscriber.public?
+      => link_to subscriber.github_url, title: "@#{subscriber.github}" do
+        = image_tag subscriber.avatar_url, alt: subscriber.github, class: 'avatar-image'
+    - else
+      = image_tag 'private-avatar.svg', alt: 'private avatar', class: 'avatar-image'

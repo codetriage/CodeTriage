@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Creates a mailer for +user+ with +subs+.
 # +user+ is a User object, +subs+ is a collection of +Repo_Subscription+ objects tied to +user+
 # +Repo_Subscription+ objects contain int +user_id+, int +repo_id+,

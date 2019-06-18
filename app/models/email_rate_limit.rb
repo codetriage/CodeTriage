@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class is used to determine the rate at which emails are sent.
 # We look at two parameters, the last day the user clicked on a link and the
 # last day we sent them an email. The idea is that we should send more active users

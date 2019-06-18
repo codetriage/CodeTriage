@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPreview < ActionMailer::Preview
   def invalid_token
     user = User.last
@@ -64,10 +66,10 @@ class UserPreview < ActionMailer::Preview
     end
 
     ::UserMailer.send_daily_triage(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: assignments.map(&:id),
-      write_doc_ids:  write_docs.map(&:id),
-      read_doc_ids:   read_docs.map(&:id)
+      write_doc_ids: write_docs.map(&:id),
+      read_doc_ids: read_docs.map(&:id)
     )
   end
 
@@ -91,7 +93,7 @@ class UserPreview < ActionMailer::Preview
     end
 
     ::UserMailer.send_daily_triage(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: assignments.map(&:id)
     )
   end
@@ -111,9 +113,9 @@ class UserPreview < ActionMailer::Preview
     read_docs  = DocMethod.order(Arel.sql("RANDOM()")).first(rand(0..8)) if read_docs.blank?
 
     ::UserMailer.daily_docs(
-      user:       user,
+      user: user,
       write_docs: write_docs,
-      read_docs:  read_docs
+      read_docs: read_docs
     )
   end
 end

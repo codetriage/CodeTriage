@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PopulateIssuesJob < ApplicationJob
   def perform(repo)
     @repo = repo

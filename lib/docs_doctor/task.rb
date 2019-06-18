@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :docs do
   task :play do
     parser = DocsDoctor::Runner.new('ruby/rdoc', '4.0.0').parser

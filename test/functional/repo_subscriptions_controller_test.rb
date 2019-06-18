@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class RepoSubscriptionsControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
-
-  fixtures :users, :repos, :repo_subscriptions
 
   test 'successfully subscribe to a repo when signed in as mockstar' do
     sign_in users(:mockstar)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
@@ -87,3 +89,8 @@ namespace :test do
 end
 
 task default: [:rubocop, :test]
+
+Rake::Task["assets:precompile"].enhance do
+  Rake::Task["db:migrate"].invoke
+  Rake::Task["db:schema:cache:dump"].invoke
+end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module MailBuilder
   # Takes in Issue Assignment IDs and Doc IDs and groups them together by repo
   #
@@ -90,9 +92,9 @@ module MailBuilder
       store_subscriptions!(subscriptions)
       store_assignments!(assignments)
       store_docs!(
-        docs:          docs,
+        docs: docs,
         write_doc_ids: write_doc_ids,
-        doc_comments:  doc_comments
+        doc_comments: doc_comments
       )
     end
 

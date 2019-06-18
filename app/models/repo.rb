@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'docs_doctor/parsers/ruby/yard'
 
 class Repo < ActiveRecord::Base
@@ -117,7 +119,7 @@ class Repo < ActiveRecord::Base
       .group("repos.id")
   end
 
-  # these repos have no subscribers and have no buisness being in our database
+  # these repos have no subscribers and have no business being in our database
   def self.inactive
     joins("LEFT OUTER JOIN repo_subscriptions on repos.id = repo_subscriptions.repo_id").where("repo_subscriptions.repo_id is null")
   end
@@ -182,7 +184,7 @@ class Repo < ActiveRecord::Base
   def update_from_github
     json = fetcher.as_json
     self.update(
-      language:    json.fetch('language', language),
+      language: json.fetch('language', language),
       description: json.fetch('description', description)&.first(255),
       stars_count: json.fetch('stargazers_count', stars_count)
     )

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require_relative '../../lib/sorted_repo_collection'
 

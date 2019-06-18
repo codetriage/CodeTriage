@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RepoSubscription < ActiveRecord::Base
   DEFAULT_READ_LIMIT  = 3
   DEFAULT_WRITE_LIMIT = 3
