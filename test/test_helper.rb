@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-if ENV["COVERAGE"]
-  require 'simplecov'
-  SimpleCov.start 'rails'
-end
+require 'simplecov'
+SimpleCov.start 'rails'
 
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
