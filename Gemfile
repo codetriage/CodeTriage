@@ -112,3 +112,5 @@ gem 'barnes'
 gem 'puma_worker_killer'
 
 # gem 'attendance', path: "~/Documents/projects/attendance"
+
+gem 'ruby-statistics'
