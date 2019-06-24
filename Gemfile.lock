@@ -918,7 +918,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.4.24)
+    scout_apm (2.5.0)
     sidekiq (5.2.7)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (>= 1.5.0)
@@ -1049,7 +1049,7 @@ DEPENDENCIES
   rubocop-performance
   sassc
   sassc-rails
-  scout_apm (~> 2.4.24)
+  scout_apm (~> 2.5.0)
   sentry-raven!
   sidekiq
   simplecov
