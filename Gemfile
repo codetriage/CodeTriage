@@ -13,7 +13,7 @@ end
 
 gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
 
-gem 'rails', path: "~/Documents/projects/rails"
+gem 'rails', github: "schneems/rails", branch: "schneems/keymaster-more-compat-correct" #path: "~/Documents/projects/rails"
 gem 'arel', git: 'https://github.com/rails/arel.git'
 
 gem 'bluecloth'
@@ -22,7 +22,7 @@ gem 'devise', github: 'schneems/devise', branch: 'schneems/rails-6'
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.0'
-gem 'maildown', '3.0.2'
+gem 'maildown'
 gem 'omniauth', '~> 1.8.1'
 gem 'omniauth-github'
 gem 'pg'
@@ -68,7 +68,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'derailed_benchmarks'
+  gem 'derailed_benchmarks', path: "~/Documents/projects/derailed_benchmarks"
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', '0.58.2', require: false
@@ -114,3 +114,5 @@ gem 'puma_worker_killer'
 # gem 'attendance', path: "~/Documents/projects/attendance"
 
 gem 'ruby-statistics'
+
+gem 'irb'
