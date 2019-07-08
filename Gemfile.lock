@@ -750,7 +750,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.1.0)
     jwt (1.5.6)
-    kramdown (1.16.2)
+    kramdown (2.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
@@ -763,7 +763,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    maildown (3.0.2)
+    maildown (3.0.3)
       actionmailer (>= 4.0.0)
       kramdown
     marcel (0.3.3)
@@ -1021,7 +1021,7 @@ DEPENDENCIES
   listen
   local_time (= 2.1.0)
   mail
-  maildown (= 3.0.2)
+  maildown (= 3.0.3)
   mime-types (~> 3.2.2)
   minitest (= 5.11.3)
   mocha
