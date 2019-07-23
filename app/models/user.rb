@@ -169,7 +169,7 @@ class User < ActiveRecord::Base
   end
 
   def days_since_last_email
-    last_sent_at = repo_subscriptions.where.not(last_sent_at: nil).order(:last_sent_at).first.try(:last_sent_at)
+    last_sent_at = repo_subscriptions.where.not(last_sent_at: nil).order(:last_sent_at).first&.last_sent_at
     last_sent_at ||= self.created_at
     (
       (Time.now - last_sent_at) / 1.day

@@ -21,8 +21,8 @@ class IssueAssigner
   private
 
   def assign_issue_for_sub(sub)
-    issue = Issue.where(repo_id: sub.repo_id, state: Issue::OPEN)
-                 .where.not(id: IssueAssignment.select(:issue_id).where(repo_subscription_id: sub.id))
+    issue = Issue.where(repo_id: sub.repo_id).open_issues
+                 .where.not(id: IssueAssignment.where(repo_subscription_id: sub.id).pluck(:issue_id))
                  .order(Arel.sql('RANDOM()'))
                  .first
 
