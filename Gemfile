@@ -32,7 +32,7 @@ gem 'maildown', '3.0.3'
 gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-github'
 gem 'pg'
-gem 'puma'
+gem 'puma', github: "puma/puma"
 gem 'rack-timeout'
 gem 'rrrretry'
 gem 'valid_email'
@@ -103,7 +103,7 @@ gem 'yard', '~> 0.9.20'
 
 gem 'oj'
 gem 'rack-canonical-host'
-gem 'sentry-raven', github: "getsentry/raven-ruby" # @nateberkopec uses CodeTriage as a guineapig/canary for raven-ruby master
+gem 'sentry-raven'
 
 gem 'bootsnap', require: false
 gem 'rbtrace'

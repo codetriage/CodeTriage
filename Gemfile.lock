@@ -1,9 +1,9 @@
 GIT
-  remote: https://github.com/getsentry/raven-ruby.git
-  revision: 49de115b4890def5086048e1d0ec9cce4bfb83a8
+  remote: https://github.com/puma/puma.git
+  revision: c6dab0ab6dbd36eb94a5d4ed839f236a1b95b6ef
   specs:
-    sentry-raven (2.11.0)
-      faraday (>= 0.7.6, < 1.0)
+    puma (4.0.1)
+      nio4r (~> 2.0)
 
 GIT
   remote: https://github.com/rails/sprockets.git
@@ -828,8 +828,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.1.1)
-    puma (4.0.1)
-      nio4r (~> 2.0)
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
@@ -919,6 +917,8 @@ GEM
       sprockets-rails
       tilt
     scout_apm (2.5.1)
+    sentry-raven (2.11.0)
+      faraday (>= 0.7.6, < 1.0)
     sidekiq (5.2.7)
       connection_pool (~> 2.2, >= 2.2.2)
       rack (>= 1.5.0)
@@ -1033,7 +1033,7 @@ DEPENDENCIES
   prawn
   premailer-rails
   pry
-  puma
+  puma!
   puma_worker_killer
   rack-canonical-host
   rack-mini-profiler
@@ -1050,7 +1050,7 @@ DEPENDENCIES
   sassc
   sassc-rails
   scout_apm (~> 2.5.1)
-  sentry-raven!
+  sentry-raven
   sidekiq
   simplecov
   sinatra (~> 2.0.5)
