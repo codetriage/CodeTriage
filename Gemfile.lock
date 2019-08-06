@@ -726,6 +726,7 @@ GEM
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
+    flamegraph (0.9.5)
     foreman (0.85.0)
       thor (~> 0.19.1)
     get_process_mem (0.2.3)
@@ -1013,6 +1014,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker
+  flamegraph
   foreman
   git_hub_bub
   jquery-rails
@@ -1021,6 +1023,7 @@ DEPENDENCIES
   local_time (= 2.1.0)
   mail
   maildown (= 3.0.3)
+  memory_profiler
   mime-types (~> 3.2.2)
   minitest (= 5.11.3)
   mocha

@@ -53,11 +53,14 @@ gem 'uglifier', '>= 1.0.3'
 gem 'render_async', '~> 2.1'
 
 group :development do
-  gem 'bullet'
+  gem 'bullet', require: false
   gem 'foreman'
   gem 'listen'
   gem 'spring'
   gem 'web-console'
+  gem 'memory_profiler'
+  gem 'stackprof'
+  gem 'flamegraph'
 end
 
 group :test do
