@@ -62,7 +62,7 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-  
+
   if ENV["PROFILE"]
     config.public_file_server.enabled = true
     config.public_file_server.headers = {
@@ -70,12 +70,12 @@ Rails.application.configure do
       'Expires' => "#{1.year.from_now.to_formatted_s(:rfc822)}"
     }
     config.assets.compile = false
-    
+
     # Prod-like logging
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
-    
+
     config.action_view.cache_template_loading = true
   end
   # Raises error for missing translations
@@ -84,6 +84,6 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  
+
   require 'bullet' unless ENV["PROFILE"]
 end
