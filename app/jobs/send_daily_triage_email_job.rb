@@ -23,7 +23,7 @@ class SendDailyTriageEmailJob < ApplicationJob
 
   def send_daily_triage!(user)
     assignments   = user.issue_assignments_to_deliver
-    subscriptions = user.repo_subscriptions.order(Arel.sql('RANDOM()')).load
+    subscriptions = user.repo_subscriptions.order(Arel.sql('RANDOM()')).includes(:doc_assignments).load
     docs = DocMailerMaker.new(user, subscriptions)
 
     return if assignments.empty? && docs.empty?
