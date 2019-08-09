@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_155654) do
+ActiveRecord::Schema.define(version: 2019_08_09_190610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.datetime "updated_at"
     t.boolean "clicked", default: false
     t.index ["repo_id"], name: "index_doc_assignments_on_repo_id"
-    t.index ["repo_subscription_id"], name: "index_doc_assignments_on_repo_subscription_id"
+    t.index ["repo_subscription_id", "doc_method_id"], name: "index_doc_assignments_on_repo_subscription_id_and_doc_method_id"
   end
 
   create_table "doc_classes", id: :serial, force: :cascade do |t|
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.integer "line"
     t.string "path"
     t.string "file"
-    t.index ["repo_id"], name: "index_doc_classes_on_repo_id"
+    t.index ["repo_id", "doc_comments_count"], name: "index_doc_classes_on_repo_id_and_doc_comments_count"
   end
 
   create_table "doc_comments", id: :serial, force: :cascade do |t|
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.boolean "skip_write", default: false
     t.boolean "active", default: true
     t.boolean "skip_read", default: false
+    t.index ["repo_id", "doc_comments_count"], name: "index_doc_methods_on_repo_id_and_doc_comments_count"
     t.index ["repo_id", "id"], name: "index_doc_methods_on_repo_id_and_id"
     t.index ["repo_id", "name", "path"], name: "index_doc_methods_on_repo_id_and_name_and_path"
-    t.index ["repo_id"], name: "index_doc_methods_on_repo_id"
   end
 
   create_table "issue_assignments", id: :serial, force: :cascade do |t|
@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.integer "repo_subscription_id"
     t.boolean "clicked", default: false
     t.boolean "delivered", default: false
-    t.index ["delivered"], name: "index_issue_assignments_on_delivered"
-    t.index ["repo_subscription_id"], name: "index_issue_assignments_on_repo_subscription_id"
+    t.index ["repo_subscription_id", "created_at"], name: "index_issue_assignments_on_repo_subscription_id_and_created_at"
+    t.index ["repo_subscription_id", "delivered"], name: "index_issue_assignments_on_repo_subscription_id_and_delivered"
   end
 
   create_table "issues", id: :serial, force: :cascade do |t|
@@ -101,8 +101,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["number"], name: "index_issues_on_number"
     t.index ["repo_id", "id"], name: "index_issues_on_repo_id_and_id", where: "((state)::text = 'open'::text)"
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
+    t.index ["repo_id", "state"], name: "index_issues_on_repo_id_and_state"
     t.index ["repo_id"], name: "index_issues_on_repo_id"
-    t.index ["state"], name: "index_issues_on_state"
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
@@ -116,8 +116,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.boolean "read", default: false
     t.integer "write_limit"
     t.integer "read_limit"
-    t.index ["repo_id"], name: "index_repo_subscriptions_on_repo_id"
-    t.index ["user_id"], name: "index_repo_subscriptions_on_user_id"
+    t.index ["repo_id", "user_id"], name: "index_repo_subscriptions_on_repo_id_and_user_id"
+    t.index ["user_id", "last_sent_at"], name: "index_repo_subscriptions_on_user_id_and_last_sent_at"
   end
 
   create_table "repos", id: :serial, force: :cascade do |t|
@@ -138,7 +138,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["issues_count"], name: "index_repos_on_issues_count"
     t.index ["language"], name: "index_repos_on_language"
     t.index ["name", "user_name"], name: "index_repos_on_name_and_user_name", unique: true
-    t.index ["name"], name: "index_repos_on_name"
     t.index ["user_name"], name: "index_repos_on_user_name"
   end
 
@@ -178,6 +177,8 @@ ActiveRecord::Schema.define(version: 2018_08_20_155654) do
     t.index ["account_delete_token"], name: "index_users_on_account_delete_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["github"], name: "index_users_on_github", unique: true
+    t.index ["github_access_token"], name: "index_users_on_github_access_token"
+    t.index ["private", "id", "created_at"], name: "index_users_on_private_and_id_and_created_at"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
