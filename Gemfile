@@ -59,8 +59,6 @@ group :development do
   gem 'spring'
   gem 'web-console'
   gem 'memory_profiler'
-  gem 'stackprof'
-  gem 'flamegraph'
 end
 
 group :test do
@@ -112,6 +110,7 @@ gem 'bootsnap', require: false
 gem 'rbtrace'
 gem 'redis-namespace'
 gem 'stackprof'
+gem 'flamegraph'
 gem 'prawn'
 gem 'skylight'
 
