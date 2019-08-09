@@ -70,6 +70,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'vcr'
   gem 'webmock'
+  gem 'test-prof'
 end
 
 group :development, :test do
