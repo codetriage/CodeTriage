@@ -10,6 +10,6 @@ unless Rails.env.production?
   end
 end
 
-if Sidekiq.server? 
+if Sidekiq.server?
   Rails.application.config.active_record.warn_on_records_fetched_greater_than = 1500
 end
