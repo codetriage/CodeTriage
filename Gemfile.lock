@@ -789,7 +789,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     oauth2 (1.4.0)
