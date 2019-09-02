@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.6.3'
+ruby '2.6.4'
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
