@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DocMethodsController < ApplicationController
   def show
     @doc     = DocMethod.where(id: params[:id])

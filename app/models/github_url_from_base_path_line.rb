@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubUrlFromBasePathLine
   def initialize(base, commit_sha, path, line)
     @base = base

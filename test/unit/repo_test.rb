@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class RepoTest < ActiveSupport::TestCase
@@ -29,12 +31,12 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
-  test "update repo info from github error" do
+  test "github url validation attempts to use issue_fetcher" do
     repo = Repo.new user_name: 'codetriage', name: 'codetriage'
     repo.stub(:issues_fetcher, -> { OpenStruct.new(error?: true, api_path: '123') }) do
-      repo.update_from_github
-      assert_equal repo.errors.messages[:expiration_date].first,
-                   "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?"
+      repo.send(:github_url_exists)
+      assert_equal "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?",
+                   repo.errors.messages[:expiration_date].first
     end
   end
 
@@ -106,7 +108,7 @@ class RepoTest < ActiveSupport::TestCase
     repo = repos(:rails_rails)
 
     VCR.use_cassette "repo_populate_docs" do
-      double = 'double'
+      double = +'double'
       DocsDoctor::Parsers::Ruby::Yard.stub(:new, ->(_) { double }) do
         double.expects(:process)
         double.expects(:store)

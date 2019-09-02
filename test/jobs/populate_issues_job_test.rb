@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class PopulateIssuesJobTest < ActiveJob::TestCase
@@ -19,7 +21,7 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
 
   test "#populate_multi_issues creates issues" do
     repo = repos(:issue_triage_sandbox)
-    repo.issues.where(state: 'open').destroy_all
+    repo.issues.where(state: 'open').delete_all
     VCR.use_cassette "issue_triage_sandbox_fetch_issues" do
       assert_difference("Issue.count", 1) do
         PopulateIssuesJob.perform_now(repo)

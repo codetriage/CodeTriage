@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SendDailyTriageEmailJob < ApplicationJob
   def perform(user)
     return false if skip?(user)
@@ -21,24 +23,24 @@ class SendDailyTriageEmailJob < ApplicationJob
 
   def send_daily_triage!(user)
     assignments   = user.issue_assignments_to_deliver
-    subscriptions = user.repo_subscriptions.order(Arel.sql('RANDOM()')).load
+    subscriptions = user.repo_subscriptions.order(Arel.sql('RANDOM()')).includes(:doc_assignments).load
     docs = DocMailerMaker.new(user, subscriptions)
 
     return if assignments.empty? && docs.empty?
     send_email(
-      user:          user,
-      assignments:   assignments,
-      docs:          docs
+      user: user,
+      assignments: assignments,
+      docs: docs
     )
   end
 
   def send_email(user:, assignments:, docs:)
     mail = UserMailer.send_daily_triage(
-      user_id:        user.id,
+      user_id: user.id,
       assignment_ids: assignments.pluck(:id),
-      write_doc_ids:  docs.write_docs.map(&:id),
-      read_doc_ids:   docs.read_docs.map(&:id),
-      email_at:       Time.now.iso8601
+      write_doc_ids: docs.write_docs.map(&:id),
+      read_doc_ids: docs.read_docs.map(&:id),
+      email_at: Time.now.iso8601
     ).deliver_later
 
     assignments.update_all(delivered: true)

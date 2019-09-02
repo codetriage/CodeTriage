@@ -20,20 +20,20 @@ PopulateDocsJob.perform_now(repo)
   begin
     username = Faker::Internet.user_name.tr(".", "-")
     user = User.new(
-      github:     username,
-      email:      Faker::Internet.email,
+      github: username,
+      email: Faker::Internet.email,
       avatar_url: Faker::Avatar.image
     )
     user.save(validate: false)
 
     name = Faker::Hipster.word.gsub(/\W/, '')
     repo = user.repos.new(
-      :user_name     => username,
-      :name          => name,
-      :issues_count  => rand(30),
-      :language      => %w[Ruby PHP Go Javascript Java Swift].sample,
-      :description   => Faker::Lorem.paragraph(1, true, 4),
-      :full_name     => "#{username}/#{name}"
+      :user_name => username,
+      :name => name,
+      :issues_count => rand(30),
+      :language => %w[Ruby PHP Go Javascript Java Swift].sample,
+      :description => Faker::Lorem.paragraph(1, true, 4),
+      :full_name => "#{username}/#{name}"
     )
     repo.save(validate: false)
 
@@ -41,12 +41,12 @@ PopulateDocsJob.perform_now(repo)
 
     rand(10).times do |i|
       issue = repo.issues.new(
-        number:     i,
+        number: i,
         last_touched_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
         updated_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
-        title:      Faker::Lorem.paragraph(1, true, 2),
-        state:      "open",
-        html_url:   "https://github.com/#{username}/#{name}/issues/#{i}"
+        title: Faker::Lorem.paragraph(1, true, 2),
+        state: "open",
+        html_url: "https://github.com/#{username}/#{name}/issues/#{i}"
       )
       issue.save
     end

@@ -1,3 +1,5 @@
+require: rubocop-performance
+
 AllCops:
   DisabledByDefault: true
   TargetRubyVersion: 2.4.1
@@ -47,10 +49,10 @@ Layout/EmptyLinesAroundClassBody:
 Layout/ExtraSpacing:
  Enabled: true
 
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
  Enabled: true
 
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
  Enabled: true
 
 Layout/IndentationConsistency:
@@ -157,3 +159,10 @@ Performance/StringReplacement:
 
 Performance/TimesMap:
   Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  Exclude:
+    - 'bin/*'
+    - 'db/*'
+    - 'db/migrate/*.rb'

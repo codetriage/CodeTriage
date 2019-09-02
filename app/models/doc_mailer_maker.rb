@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Creates a mailer for +user+ with +subs+.
 # +user+ is a User object, +subs+ is a collection of +Repo_Subscription+ objects tied to +user+
 # +Repo_Subscription+ objects contain int +user_id+, int +repo_id+,
@@ -30,7 +32,7 @@ class DocMailerMaker
   # the subscription.
   def assign_doc_to_subscription(doc, sub)
     return if doc.blank?
-    return doc if sub.doc_assignments.where(doc_method_id: doc.id).first
+    return doc if sub.doc_assignments.detect { |da| da.doc_method_id == doc.id }
     ActiveRecord::Base.transaction do
       sub.doc_assignments.create!(doc_method_id: doc.id)
       sub.update_attributes(last_sent_at: Time.now)

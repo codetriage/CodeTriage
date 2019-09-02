@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
 class ApiInfoController < RepoBasedController
@@ -12,11 +14,11 @@ class ApiInfoController < RepoBasedController
     respond_to do |format|
       format.json do
         render json: {
-          stars_count:       @repo.stars_count,
-          subscriber_count:  count,
+          stars_count: @repo.stars_count,
+          subscriber_count: count,
           added_by_username: added_by,
-          time_ago:          time_ago_in_words(@repo.created_at),
-          message:           "This is an unstable interface, do not use"
+          time_ago: time_ago_in_words(@repo.created_at),
+          message: "This is an unstable interface, do not use"
         }.to_json
       end
     end
