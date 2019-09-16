@@ -13,7 +13,7 @@ git_source :github do |name|
   "https://github.com/#{name}.git"
 end
 
-gem 'mime-types', '~> 3.2.2', require: 'mime/types/columnar'
+gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
 
 # Gems required in all environments
 if ENV["RAILS_MASTER"] == '1'
