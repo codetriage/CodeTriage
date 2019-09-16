@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/puma/puma.git
-  revision: 1046165a9c8766ce5c1db8db4d894e200f4c981c
+  revision: 7e704b553c7307d4ab15acaeeb8692387d2b774d
   specs:
-    puma (4.1.0)
+    puma (4.1.1)
       nio4r (~> 2.0)
 
 GIT
@@ -788,7 +788,7 @@ GEM
     neat (1.7.2)
       bourbon (>= 4.0)
       sass (>= 3.3)
-    nio4r (2.4.0)
+    nio4r (2.5.1)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
