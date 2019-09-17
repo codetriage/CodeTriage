@@ -119,6 +119,12 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
+  test 'issues.per_day' do
+    repo = Repo.create(name: 'codetriage', user_name: 'codetriage')
+    10.times { Issue.create(repo: repo, state: 'open') }
+    assert_equal 10, repo.issues.per_day
+  end
+
   test '.without_user_subscriptions' do
     user = users(:schneems)
     subscribed_repo = user.repo_subscriptions.first
