@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'docs_doctor/parsers/ruby/yard'
+require 'open-uri'
+require 'json'
 
 class Repo < ActiveRecord::Base
   # Now done at the DB level # validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
@@ -106,6 +108,11 @@ class Repo < ActiveRecord::Base
     else
       "".freeze
     end
+  end
+
+  def amount_code_helpers
+    apiResponse = open("https://api.github.com/repos/#{user_name}/#{name}/contributors").read
+    JSON.parse(apiResponse).length
   end
 
   def subscriber_count
