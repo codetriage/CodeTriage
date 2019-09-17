@@ -111,7 +111,7 @@ class Repo < ActiveRecord::Base
   end
 
   def amount_code_helpers
-    apiResponse = open("https://api.github.com/repos/#{user_name}/#{name}/contributors").read
+    apiResponse = open("https://api.github.com/repos/#{full_name}/contributors").read
     JSON.parse(apiResponse).length
   end
 
