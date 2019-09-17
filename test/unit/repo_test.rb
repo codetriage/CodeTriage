@@ -78,6 +78,14 @@ class RepoTest < ActiveSupport::TestCase
     assert_not Repo.exists_with_name?("prathamesh-sonpatki/issue_triage_sandbox")
   end
 
+  test "amount_code_helpers should return amount of contributors" do
+    apiResponse = open("https://api.github.com/repos/rails/sprockets/contributors").read
+    amountContributors = JSON.parse(apiResponse).length
+    
+    repository = Repo.new(user_name: 'rails', name: 'sprockets', full_name: 'rails/sprockets')
+    assert_equal repository.amount_code_helpers, amountContributors
+  end
+
   test "issues_fetcher.api_path (private method) returns issues path with Github api" do
     repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
     assert_equal "repos/codetriage/codetriage/issues", repo.issues_fetcher.send(:api_path)
