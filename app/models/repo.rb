@@ -112,7 +112,7 @@ class Repo < ActiveRecord::Base
 
   def amount_code_helpers
     apiResponse = Net::HTTP.get_response(URI.parse("https://api.github.com/repos/#{full_name}/contributors"))
-    apiResponse.code == '200' ? JSON.parse(apiResponse.body).length : 0    
+    apiResponse.code == '200' ? JSON.parse(apiResponse.body).length : 0
   end
 
   def subscriber_count
