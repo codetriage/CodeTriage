@@ -81,7 +81,6 @@ class RepoTest < ActiveSupport::TestCase
   test "amount_code_helpers should return amount of contributors" do
     apiResponse = open("https://api.github.com/repos/rails/sprockets/contributors").read
     amountContributors = JSON.parse(apiResponse).length
-    
     repository = Repo.new(user_name: 'rails', name: 'sprockets', full_name: 'rails/sprockets')
     assert_equal repository.amount_code_helpers, amountContributors
   end
