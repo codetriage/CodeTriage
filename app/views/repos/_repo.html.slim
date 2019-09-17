@@ -13,4 +13,4 @@ li class="repo-item #{ repo.weight }" data-language="#{ repo.language if repo.la
       span.repo-item-full-name
         | (#{repo.full_name})
     span.repo-item-issues-per-day
-      | #{repo.issues.per_day[0].amount} Issue/Day
+      | #{repo.issues.per_day.nil? ? 0 : repo.issues.per_day.amount} Issue/Day

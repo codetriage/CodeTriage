@@ -17,7 +17,7 @@ class Repo < ActiveRecord::Base
             1
         END)::integer) as amount")
         .joins(:repo)
-        .group('repos.created_at')
+        .group('repos.created_at')[0]
     end
   end
   has_many :repo_subscriptions
