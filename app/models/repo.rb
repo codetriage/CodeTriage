@@ -7,7 +7,19 @@ class Repo < ActiveRecord::Base
   validates :name, :user_name, presence: true
   validate :github_url_exists, on: :create
 
-  has_many :issues
+  has_many :issues do
+    def per_day
+      select("(COUNT(issues.id) /
+        (CASE
+          WHEN DATE_PART('day', now() - repos.created_at) <> 0
+            THEN DATE_PART('day', now() - repos.created_at)
+          ELSE
+            1
+        END)::integer) as amount")
+        .joins(:repo)
+        .group('repos.created_at')
+    end
+  end
   has_many :repo_subscriptions
   has_many :users, through: :repo_subscriptions
   has_many :subscribers, through: :repo_subscriptions, source: :user
