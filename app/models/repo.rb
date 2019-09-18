@@ -18,7 +18,7 @@ class Repo < ActiveRecord::Base
             1
         END)::integer) as amount")
         .joins(:repo)
-        .group('repos.created_at')[0] || JSON.parse({:amount => 0}.to_json, object_class: OpenStruct)
+        .group('repos.created_at')[0] || JSON.parse({ :amount => 0 }.to_json, object_class: OpenStruct)
     end
   end
   has_many :repo_subscriptions
