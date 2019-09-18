@@ -10,7 +10,7 @@ class Repo < ActiveRecord::Base
 
   has_many :issues, dependent: :destroy do
     def per_day
-      amount = select("(COUNT(issues.id) /
+      select("(COUNT(issues.id) /
         (CASE
           WHEN DATE_PART('day', now() - repos.created_at) <> 0
             THEN DATE_PART('day', now() - repos.created_at)
