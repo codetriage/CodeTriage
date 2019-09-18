@@ -120,8 +120,8 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test 'issues.per_day' do
-    repo = Repo.create(name: 'tic-tac-toe', user_name: 'edumoreira1506')
-    10.times { Issue.create(repo_id: repo.id, state: 'open') }
+    repo = Repo.create user_name: 'edumoreira1506', name: 'tic-tac-toe'
+    10.times { Issue.create repo_id: repo.id, state: 'open' }
     assert_equal 10, repo.issues.per_day.amount
   end
 

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 require 'docs_doctor/parsers/ruby/yard'
+require 'json'
 
 class Repo < ActiveRecord::Base
   # Now done at the DB level # validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
   validates :name, :user_name, presence: true
   validate :github_url_exists, on: :create
 
-  has_many :issues do
+  has_many :issues, dependent: :destroy do
     def per_day
-      select("(COUNT(issues.id) /
+      amount = select("(COUNT(issues.id) /
         (CASE
           WHEN DATE_PART('day', now() - repos.created_at) <> 0
             THEN DATE_PART('day', now() - repos.created_at)
@@ -17,7 +18,7 @@ class Repo < ActiveRecord::Base
             1
         END)::integer) as amount")
         .joins(:repo)
-        .group('repos.created_at')[0]
+        .group('repos.created_at')[0] || JSON.parse({:amount => 0}.to_json, object_class: OpenStruct)
     end
   end
   has_many :repo_subscriptions
