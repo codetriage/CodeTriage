@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/sprockets.git
-  revision: 1bcee8ebc03489eb7e42ee5c258a712443a6df3c
+  revision: d9e7037b75e8bf881ffc40a0209b6b7529462ff4
   specs:
     sprockets (4.0.0.beta10)
       concurrent-ruby (~> 1.0)
