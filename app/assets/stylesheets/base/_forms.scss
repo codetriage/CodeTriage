@@ -36,6 +36,7 @@ select{
   padding: $small-spacing;
   transition: border-color $base-duration $base-timing;
   width: 100%;
+  color: inherit;
 
   &:hover {
     border-color: shade($base-border-color, 20%);
@@ -56,6 +57,22 @@ select{
     }
   }
 
+  ::-webkit-input-placeholder {
+    color: rgba($white, 0.3);
+  }
+
+  ::-moz-placeholder {
+    color: rgba($white, 0.3);
+  }
+
+  :-ms-input-placeholder {
+    color: rgba($white, 0.3);
+  }
+
+  ::-ms-input-placeholder {
+    color: rgba($white, 0.3);
+  }
+
   ::placeholder {
     color: rgba($white, 0.3);
   }
@@ -66,7 +83,9 @@ textarea {
 }
 
 input[type="search"] {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 input[type="checkbox"],
