@@ -961,7 +961,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    maildown (3.0.3)
+    maildown (3.1.0)
       actionmailer (>= 4.0.0)
       kramdown
     marcel (0.3.3)
@@ -1219,7 +1219,7 @@ DEPENDENCIES
   listen
   local_time (= 2.1.0)
   mail
-  maildown (= 3.0.3)
+  maildown (~> 3.1)
   memory_profiler
   mime-types (~> 3.3)
   minitest (= 5.12.2)
