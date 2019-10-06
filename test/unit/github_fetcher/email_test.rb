@@ -24,7 +24,7 @@ class GithubFetcher::EmailTest < ActiveSupport::TestCase
     VCR.use_cassette "bad_fetch_emails" do
       email_fetcher = GithubFetcher::Email.new(token: 'asdf')
 
-      assert_equal email_fetcher.as_json, {"message"=>"Bad credentials", "documentation_url"=>"https://developer.github.com/v3"}
+      assert_equal email_fetcher.as_json, { "message" => "Bad credentials", "documentation_url" => "https://developer.github.com/v3" }
     end
   end
 end

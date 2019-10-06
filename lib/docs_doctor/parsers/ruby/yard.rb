@@ -60,7 +60,7 @@ module DocsDoctor
 
         def process(exclude = DEFAULT_EXCLUDE)
           require 'yard'
-          yard             = YARD::CLI::Yardoc.new
+          yard = YARD::CLI::Yardoc.new
 
           # yard.files       = files
           yard.excluded    = exclude # http://rubydoc.org/gems/yard/YARD/Parser/SourceParser#parse-class_method

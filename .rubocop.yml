@@ -9,6 +9,8 @@ AllCops:
     - 'tmp/**/*'
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'perf_scripts/**/*'
+    - 'scratch.rb'
 
 Layout/AlignArray:
  Enabled: true
