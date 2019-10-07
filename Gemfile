@@ -78,7 +78,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'pry'
-  gem 'rubocop', '0.71.0', require: false
+  gem 'rubocop', '0.75.0', require: false
   gem 'rubocop-performance'
   gem 'teaspoon'
 end
