@@ -9,6 +9,9 @@ branches:
 rvm:
   - 2.6.5
 
+addons:
+  postgresql: "9.4"
+
 env:
   matrix:
     - "RAILS_MASTER=0"

@@ -104,7 +104,7 @@ class UserPreview < ActionMailer::Preview
   end
 
   def daily_docs
-    user       = User.last
+    user = User.last
 
     write_docs = DocMethod.order(Arel.sql("RANDOM()")).missing_docs.first(rand(0..8))
     read_docs  = DocMethod.order(Arel.sql("RANDOM()")).with_docs.first(rand(0..8))

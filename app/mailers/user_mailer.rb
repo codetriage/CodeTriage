@@ -66,7 +66,7 @@ class UserMailer < ActionMailer::Base
   def send_triage(user:, assignment:, repo:, create: false)
     return unless set_and_check_user(user)
     @create = create
-    @repo  = repo
+    @repo = repo
     @issue = assignment.issue
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "[CodeTriage] Help triage #{@repo.full_name}")
   end

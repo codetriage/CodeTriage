@@ -9,7 +9,7 @@ begin
   require "rubocop/rake_task"
 
   RuboCop::RakeTask.new(:rubocop) do |task|
-    task.options = ['--rails', '--display-cop-names']
+    task.options = ['--display-cop-names']
   end
 rescue LoadError
   # We are in the production environment, where Rubocop is not required.

@@ -13,7 +13,7 @@ class ReposController < RepoBasedController
 
   def show
     record_count = 10
-    @repo   = find_repo(params)
+    @repo = find_repo(params)
     @issues = @repo.open_issues.select(:id, :title, :html_url).limit(record_count)
     @issues = paginate(@issues, after: params[:issues_after],
                                 before: params[:issues_before])

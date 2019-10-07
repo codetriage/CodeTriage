@@ -93,7 +93,7 @@ class GroupedIssuesDocsTest < ActiveSupport::TestCase
   end
 
   test "only a write doc" do
-    subscription  = repo_subscriptions(:write_doc_only)
+    subscription = repo_subscriptions(:write_doc_only)
     # write_doc_only
 
     expected_repo = subscription.repo

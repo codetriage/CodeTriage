@@ -19,7 +19,7 @@ gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '5.2.3'
+  gem 'rails', '6.0.0'
 end
 
 gem 'bluecloth'
@@ -28,7 +28,7 @@ gem 'devise'
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.1.0'
-gem 'maildown', '3.0.3'
+gem 'maildown', '~> 3.1'
 gem 'omniauth', '~> 1.9.0'
 gem 'omniauth-github'
 gem 'pg'
@@ -46,7 +46,7 @@ gem 'sassc-rails'
 gem 'autoprefixer-rails', '~> 9.6.1'
 gem 'bourbon'
 gem 'coffee-rails', '~> 5.0.0'
-gem 'neat'
+gem 'neat', '~> 1.7'
 gem 'normalize-rails'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.0.3'
@@ -75,12 +75,11 @@ end
 
 group :development, :test do
   gem 'derailed_benchmarks'
-  gem 'dotenv-rails'
+  gem 'dotenv-rails', '2.7.5'
   gem 'faker', require: false
   gem 'pry'
-  gem 'rubocop', '0.71.0', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-performance'
-  gem 'teaspoon'
 end
 
 gem 'rack-mini-profiler'
@@ -93,7 +92,6 @@ gem 'sinatra', '~> 2.0.7'
 gem 'aws-sdk', '~> 3'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'record_tag_helper', '~> 1.0'
 
 gem 'sprockets', github: "rails/sprockets"
 gem 'sprockets-rails'
@@ -121,3 +119,4 @@ gem 'premailer-rails'
 
 gem 'barnes'
 gem 'puma_worker_killer'
+gem 'rake'

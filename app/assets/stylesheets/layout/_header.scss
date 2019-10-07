@@ -9,6 +9,7 @@
 
 .application-logo-image {
   background: asset-data-url("logo.svg");
+  background-repeat: no-repeat;
   width: 200px;
   height: 56px;
   margin: 0 auto;

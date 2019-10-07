@@ -2,13 +2,15 @@ require: rubocop-performance
 
 AllCops:
   DisabledByDefault: true
-  TargetRubyVersion: 2.4.1
+  TargetRubyVersion: 2.6.5
   DisplayCopNames: true
   StyleGuideCopsOnly: false
   Exclude:
     - 'tmp/**/*'
     - 'db/schema.rb'
     - 'vendor/**/*'
+    - 'perf_scripts/**/*'
+    - 'scratch.rb'
 
 Layout/AlignArray:
  Enabled: true
