@@ -76,7 +76,11 @@ class DocMailerMaker
 
   # Sends email to +user+ containing current batch of +read_docs+ and +write_docs+.
   def mail
-    UserMailer.daily_docs(user: user, write_docs: write_docs, read_docs: read_docs)
+    UserMailer.daily_docs(
+      user: user,
+      write_docs: write_docs,
+      read_docs: read_docs
+    )
   end
 
   # Triggers mail delivery unless there are no +read_docs+ or +write_docs+ to mail
