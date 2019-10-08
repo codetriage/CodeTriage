@@ -46,30 +46,34 @@ class RepoSubscription < ActiveRecord::Base
     !ready_for_next?
   end
 
-  def pre_assigned_doc_method_ids
-    self.doc_methods.map(&:id) + [-1]
-  end
-
   def unassigned_read_doc_methods(limit = self.read_limit)
-    repo.methods_with_docs
-        .active
-        .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
-        .where(skip_read: false)
-        .order(Arel.sql("RANDOM()"))
-        .limit(limit || DEFAULT_READ_LIMIT)
+    docs = repo.methods_with_docs
+    if doc_assignments.any?
+      docs = docs.where("doc_methods.id NOT IN (?)", doc_assignments.select(:doc_method_id))
+    end
+
+    docs
+      .active
+      .where(skip_read: false)
+      .order(Arel.sql("RANDOM()"))
+      .limit(limit || DEFAULT_READ_LIMIT)
   end
 
   def unassigned_write_doc_methods(limit = self.write_limit)
-    repo.methods_missing_docs
-        .active
-        .where("doc_methods.id not in (?)", pre_assigned_doc_method_ids)
-        .where(skip_write: false)
-        .order(Arel.sql("RANDOM()"))
-        .limit(limit || DEFAULT_WRITE_LIMIT)
+    docs = repo.methods_missing_docs
+    if doc_assignments.any?
+      docs = docs.where("doc_methods.id NOT IN (?)", doc_assignments.select(:doc_method_id))
+    end
+
+    docs
+      .active
+      .where(skip_write: false)
+      .order(Arel.sql("RANDOM()"))
+      .limit(limit || DEFAULT_WRITE_LIMIT)
   end
 
   def doc_methods
-    DocMethod.where(id: doc_assignments.map(&:doc_method_id))
+    DocMethod.where(id: doc_assignments.select(:doc_method_id))
   end
 
   def self.for(repo_id)

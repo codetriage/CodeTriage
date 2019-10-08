@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class SendDailyTriageEmailJob < ApplicationJob
-  def perform(user)
-    return false if skip?(user)
+  def perform(user, force_send: false)
+    return false if !force_send && skip?(user)
 
     send_daily_triage!(user)
   end
