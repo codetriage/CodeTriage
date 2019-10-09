@@ -96,24 +96,24 @@ module DocsDoctor
         end
 
         def in_fork
-          Tempfile.create("stdout") do |tmp_file|
-            pid = fork do
-              $stdout.reopen(tmp_file, "w")
-              $stderr.reopen(tmp_file, "w")
-              $stdout.sync = true
-              $stderr.sync = true
+          rd, wr = IO.pipe
 
-              yield
+          pid = fork do
+            $stdout = wr
+            $stderr = wr
+            rd.close
+            yield
+            wr.close
 
-              Kernel.exit!(0) # needed for https://github.com/seattlerb/minitest/pull/683
-            end
-            Process.waitpid(pid)
+            Kernel.exit!(0) # needed for https://github.com/seattlerb/minitest/pull/683
+          end
+          Process.waitpid(pid)
 
-            if $?.success?
-              puts File.read(tmp_file)
-            else
-              raise File.read(tmp_file)
-            end
+          wr.close
+          if $?.success?
+            puts rd.read
+          else
+            raise rd.read
           end
         end
       end
