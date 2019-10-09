@@ -78,3 +78,15 @@ end
 require 'mocha/setup'
 require 'minitest/mock'
 require 'sidekiq/testing'
+
+
+def get_process_mem_disk_location
+  tmp_path = File.expand_path("../../tmp", __FILE__)
+  path = File.join(tmp_path, "get_process_mem")
+  return path if Dir.exist?(path)
+
+  out = `cd #{tmp_path} && git clone https://github.com/schneems/get_process_mem`
+  raise "Cloning failed #{out.inspect}" unless $?.success?
+
+  return path
+end
