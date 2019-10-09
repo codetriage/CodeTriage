@@ -1009,7 +1009,7 @@ GEM
     optimist (3.0.0)
     orm_adapter (0.5.0)
     parallel (1.17.0)
-    parser (2.6.4.1)
+    parser (2.6.5.0)
       ast (~> 2.4.0)
     pdf-core (0.7.0)
     pg (1.1.4)
@@ -1113,7 +1113,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.6.1)
+    scout_apm (2.6.2)
       parser
     sentry-raven (2.11.3)
       faraday (>= 0.7.6, < 1.0)
@@ -1249,7 +1249,7 @@ DEPENDENCIES
   rubocop-performance
   sassc
   sassc-rails
-  scout_apm (~> 2.6.0)
+  scout_apm (~> 2.6.2)
   sentry-raven
   sidekiq
   simplecov
