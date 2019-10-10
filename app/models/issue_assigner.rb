@@ -51,28 +51,38 @@ class IssueAssigner
     assign_issues_for_sub(sub) unless stop?(sub)
   end
 
+
+
+
   private def issues_for_sub(sub)
     sql = <<~SQL
-      SELECT
-        id, state, pr_attached
+      SELECT *
       FROM
-        issues
-      WHERE
-        repo_id = :repo_id and
-        state   = :issue_state
-        AND id NOT IN (
-          SELECT
-            issue_id
-          FROM
-            issue_assignments
-          WHERE
-            repo_subscription_id = :sub_id
-        )
-      ORDER BY
-        random()
-      LIMIT
-        :email_limit
+      (
+        SELECT
+          id, state, pr_attached,
+          ROW_NUMBER() OVER (PARTITION BY repo_id ORDER BY   RANDOM()) as rn
+        FROM issues
+        WHERE
+          repo_id IN (:repo_ids)
+          AND state = :issue_state
+          AND id NOT IN (
+            SELECT
+              issue_id
+            FROM
+              issue_assignments
+            WHERE
+              repo_subscription_id = :sub_id
+          )
+      ) as x
+      WHERE rn <= :email_limit
+      ORDER BY rn;
     SQL
-    Issue.find_by_sql([sql, { sub_id: sub.id, issue_state: Issue::OPEN, repo_id: sub.repo_id, email_limit: sub.email_limit }]).first(sub.email_limit)
+    Issue.find_by_sql([sql, {
+      sub_id: sub.id,
+      issue_state: Issue::OPEN,
+      repo_id: sub.repo_id,
+      email_limit: sub.email_limit }]
+      ).first(sub.email_limit)
   end
 end
