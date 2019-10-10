@@ -78,11 +78,11 @@ class Issue < ActiveRecord::Base
     last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
 
     self.update(title: issue_hash['title'],
-                           url: issue_hash['url'],
-                           last_touched_at: last_touched_at,
-                           state: issue_hash['state'],
-                           html_url: issue_hash['html_url'],
-                           pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
+                url: issue_hash['url'],
+                last_touched_at: last_touched_at,
+                state: issue_hash['state'],
+                html_url: issue_hash['html_url'],
+                pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
   end
 
   def self.queue_mark_old_as_closed!
