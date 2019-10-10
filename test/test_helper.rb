@@ -79,7 +79,6 @@ require 'mocha/setup'
 require 'minitest/mock'
 require 'sidekiq/testing'
 
-
 def get_process_mem_disk_location
   tmp_path = File.expand_path("../../tmp", __FILE__)
   path = File.join(tmp_path, "get_process_mem")

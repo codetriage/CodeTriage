@@ -15,7 +15,7 @@ class UserMailerTest < ActionMailer::TestCase
 
   test "poke_inactive works" do
     user = users(:schneems)
-    email = UserMailer.poke_inactive(user: user)
+    email = UserMailer.poke_inactive(user: user, repos_by_need_ids: Repo.first(10).map(&:id))
 
     assert_emails 1 do
       email.deliver_now
