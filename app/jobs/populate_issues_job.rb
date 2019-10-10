@@ -23,7 +23,7 @@ class PopulateIssuesJob < ApplicationJob
     fetcher.page = page
 
     if fetcher.error?
-      repo.update_attributes(github_error_msg: fetcher.error_message)
+      repo.update(github_error_msg: fetcher.error_message)
       false
     else
       fetcher.as_json.each do |issue_hash|

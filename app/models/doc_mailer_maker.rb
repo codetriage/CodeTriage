@@ -35,7 +35,7 @@ class DocMailerMaker
     return doc if sub.doc_assignments.detect { |da| da.doc_method_id == doc.id }
     ActiveRecord::Base.transaction do
       sub.doc_assignments.create!(doc_method_id: doc.id)
-      sub.update_attributes(last_sent_at: Time.now)
+      sub.update(last_sent_at: Time.now)
     end
     doc
   end
