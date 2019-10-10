@@ -22,8 +22,8 @@ class DocMethodsController < ApplicationController
 
     if assignment&.user&.id.to_s == params[:user_id]
       assignment.user.record_click!
-      assignment.update_attributes(clicked: true)
-      assignment.user.update_attributes(last_clicked_at: Time.now)
+      assignment.update(clicked: true)
+      assignment.user.update(last_clicked_at: Time.now)
       redirect_to doc_method_url(doc)
     else
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
@@ -40,8 +40,8 @@ class DocMethodsController < ApplicationController
 
     if assignment.user.id.to_s == params[:user_id]
       assignment.user.record_click!
-      assignment.update_attributes(clicked: true)
-      assignment.user.update_attributes(last_clicked_at: Time.now)
+      assignment.update(clicked: true)
+      assignment.user.update(last_clicked_at: Time.now)
       redirect_to doc.to_github
     else
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"

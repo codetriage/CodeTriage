@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     end
 
     @user = current_user
-    if @user.update_attributes(uparams)
+    if @user.update(uparams)
       redirect_to @user, flash: { success: 'User successfully updated' }
     end
   end

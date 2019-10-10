@@ -77,7 +77,7 @@ class Issue < ActiveRecord::Base
   def update_from_github_hash!(issue_hash)
     last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
 
-    self.update_attributes(title: issue_hash['title'],
+    self.update(title: issue_hash['title'],
                            url: issue_hash['url'],
                            last_touched_at: last_touched_at,
                            state: issue_hash['state'],
