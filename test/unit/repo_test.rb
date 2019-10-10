@@ -108,10 +108,9 @@ class RepoTest < ActiveSupport::TestCase
     repo = repos(:rails_rails)
 
     VCR.use_cassette "repo_populate_docs" do
-      double = +'double'
+      double = Object.new
       DocsDoctor::Parsers::Ruby::Yard.stub(:new, ->(_) { double }) do
-        double.expects(:process)
-        double.expects(:store)
+        double.expects(:in_fork)
         assert_nil repo.commit_sha
         repo.populate_docs!
         assert_not_nil repo.commit_sha
