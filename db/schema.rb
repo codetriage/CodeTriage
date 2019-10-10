@@ -116,8 +116,11 @@ ActiveRecord::Schema.define(version: 2019_10_10_023214) do
     t.boolean "read", default: false
     t.integer "write_limit"
     t.integer "read_limit"
+    t.index ["read"], name: "index_repo_subscriptions_on_read"
     t.index ["repo_id", "user_id"], name: "index_repo_subscriptions_on_repo_id_and_user_id"
+    t.index ["repo_id"], name: "index_repo_subscriptions_on_repo_id"
     t.index ["user_id", "last_sent_at"], name: "index_repo_subscriptions_on_user_id_and_last_sent_at"
+    t.index ["write"], name: "index_repo_subscriptions_on_write"
   end
 
   create_table "repos", id: :serial, force: :cascade do |t|
