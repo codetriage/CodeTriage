@@ -4,7 +4,8 @@
   "website": "https://www.codetriage.com/",
   "repository": "https://github.com/codetriage/codetriage",
   "scripts":{
-    "postdeploy":"rake db:schema:load db:migrate db:seed"
+    "postdeploy":"rake db:schema:load db:migrate db:seed",
+    "test": "bundle exec rubocop && bin/rails test"
   },
   "env":{
     "DEVISE_SECRET_KEY": "foo",
