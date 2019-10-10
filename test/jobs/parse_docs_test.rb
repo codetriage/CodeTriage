@@ -24,7 +24,8 @@ class ParseDocsTest < ActiveJob::TestCase
     repos(:get_process_mem)
       .populate_docs!(
         location: get_process_mem_disk_location,
-        commit_sha: repos(:get_process_mem).commit_sha
+        commit_sha: repos(:get_process_mem).commit_sha,
+        has_subscribers: true
       )
   end
 

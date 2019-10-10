@@ -52,9 +52,10 @@ class Repo < ActiveRecord::Base
     )
   end
 
-  def populate_docs!(commit_sha: commit_sha_fetcher.commit_sha, location: nil)
+  def populate_docs!(commit_sha: commit_sha_fetcher.commit_sha, location: nil, has_subscribers: !docs_subscriber_count.zero?)
     return unless can_doctor_docs?
     return unless commit_sha
+    return unless has_subscribers
 
     self.update!(commit_sha: commit_sha)
     location ||= fetcher.clone
@@ -152,7 +153,10 @@ class Repo < ActiveRecord::Base
   end
 
   def force_issues_count_sync!
-    self.update!(issues_count: self.issues.where(state: "open").count)
+    self.update!(
+      issues_count: self.issues.where(state: "open").count,
+      docs_subscriber_count: query_docs_subscriber_count
+    )
   end
 
   def to_param
@@ -229,5 +233,16 @@ class Repo < ActiveRecord::Base
         "cannot reach api.github.com/#{issues_fetcher.send(:api_path)} perhaps github is down, or you mistyped something?"
       )
     end
+  end
+
+  private def query_docs_subscriber_count
+    sql = <<~SQL
+      SELECT count(*)
+      FROM repo_subscriptions
+      WHERE
+        repo_id = :repo_id AND
+        (read = true OR write = true)
+    SQL
+    RepoSubscription.count_by_sql([sql, { repo_id: self.id }])
   end
 end

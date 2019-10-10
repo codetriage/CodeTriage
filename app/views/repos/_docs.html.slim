@@ -1,4 +1,9 @@
-- if @docs.each && @docs.empty?
+- @docs.each # Load into memory so we don't hit multiple queries via empty?
+
+- if @repo.docs_subscriber_count.zero? && @repo.can_doctor_docs?
+  li.slats-item Subscribe to help with docs for this repo and come back later
+
+- elsif @docs.empty?
   ul.slats-list
     - if params[:docs_before] || params[:docs_after]
       li.slats-item Oops, no more docs in that direction, try going back.

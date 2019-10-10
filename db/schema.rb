@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_09_190610) do
+ActiveRecord::Schema.define(version: 2019_10_10_023214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -116,8 +116,11 @@ ActiveRecord::Schema.define(version: 2019_08_09_190610) do
     t.boolean "read", default: false
     t.integer "write_limit"
     t.integer "read_limit"
+    t.index ["read"], name: "index_repo_subscriptions_on_read"
     t.index ["repo_id", "user_id"], name: "index_repo_subscriptions_on_repo_id_and_user_id"
+    t.index ["repo_id"], name: "index_repo_subscriptions_on_repo_id"
     t.index ["user_id", "last_sent_at"], name: "index_repo_subscriptions_on_user_id_and_last_sent_at"
+    t.index ["write"], name: "index_repo_subscriptions_on_write"
   end
 
   create_table "repos", id: :serial, force: :cascade do |t|
@@ -134,6 +137,7 @@ ActiveRecord::Schema.define(version: 2019_08_09_190610) do
     t.string "commit_sha"
     t.integer "stars_count", default: 0
     t.integer "subscribers_count", default: 0
+    t.integer "docs_subscriber_count", default: 0
     t.index ["full_name"], name: "index_repos_on_full_name"
     t.index ["issues_count"], name: "index_repos_on_issues_count"
     t.index ["language"], name: "index_repos_on_language"

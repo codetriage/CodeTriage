@@ -112,7 +112,7 @@ class RepoTest < ActiveSupport::TestCase
       DocsDoctor::Parsers::Ruby::Yard.stub(:new, ->(_) { double }) do
         double.expects(:in_fork)
         assert_nil repo.commit_sha
-        repo.populate_docs!
+        repo.populate_docs!(has_subscribers: true)
         assert_not_nil repo.commit_sha
       end
     end
