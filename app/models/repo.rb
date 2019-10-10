@@ -52,14 +52,18 @@ class Repo < ActiveRecord::Base
     )
   end
 
-  def populate_docs!
+  def populate_docs!(commit_sha: commit_sha_fetcher.commit_sha, location: nil)
     return unless can_doctor_docs?
-    return unless commit_sha_fetcher.commit_sha
+    return unless commit_sha
 
-    self.update!(commit_sha: commit_sha_fetcher.commit_sha)
-    parser = class_for_doc_language.new(fetcher.clone)
-    parser.process
-    parser.store(self)
+    self.update!(commit_sha: commit_sha)
+    location ||= fetcher.clone
+
+    parser = class_for_doc_language.new(location)
+    parser.in_fork do
+      parser.process
+      parser.store(self)
+    end
   end
 
   def background_populate_issues!

@@ -3,6 +3,19 @@
 module DocsDoctor
   module Parsers
     module Ruby
+      # This class is responsible for parsing Ruby Documentation and
+      # storing it in the database. It uses yard under the hood
+      #
+      # Example:
+      #
+      #   `git clone https://github.com/schneems/get_process_mem`
+      #   repo = Repo.where(full_name: "schneems/get_process_mem").first
+      #
+      #   parser = DocsDoctor::Parsers::Ruby::Yard.new("get_process_mem")
+      #   parser.in_fork do
+      #     parser.process
+      #     parser.store(repo)
+      #   end
       class Yard
         # we don't want any files in /test or /spec unless it's
         # for testing this codebase
@@ -80,6 +93,28 @@ module DocsDoctor
         rescue SystemStackError
           Rails.logger.debug "Yard blew up while trying to read from #{root_path}"
           return false
+        end
+
+        def in_fork
+          rd, wr = IO.pipe
+
+          pid = fork do
+            $stdout = wr
+            $stderr = wr
+            rd.close
+            yield
+            wr.close
+
+            Kernel.exit!(0) # needed for https://github.com/seattlerb/minitest/pull/683
+          end
+          Process.waitpid(pid)
+
+          wr.close
+          if $?.success?
+            puts rd.read
+          else
+            raise rd.read
+          end
         end
       end
     end

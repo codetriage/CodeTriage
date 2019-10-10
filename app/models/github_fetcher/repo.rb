@@ -18,7 +18,8 @@ module GithubFetcher
     # TODO - does this really belong here? Seems like it (and Repo#populate_docs!)
     #   should move into the PopulateDocs job
     def clone
-      `cd #{dir} && git clone #{clone_url} 2>&1`
+      out = `cd #{dir} && git clone #{clone_url} 2>&1`
+      raise "Error executing git clone #{clone_url.inspect}: #{out.inspect}" unless $?.success?
       return dir
     end
 
