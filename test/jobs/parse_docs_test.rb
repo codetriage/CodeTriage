@@ -36,4 +36,3 @@ class ParseDocsTest < ActiveJob::TestCase
     end
   end
 end
-
