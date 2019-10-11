@@ -45,17 +45,6 @@ $ gem install bundler
 $ bundle install
 ```
 
-### Database
-* Copy database.yml and if you need, setup your own database credentials
-* Create database (you must use PostgreSQL)
-* Run migrations
-
-```shell
-$ cp config/database.example.yml config/database.yml
-$ bin/rake db:create
-$ bin/rake db:schema:load
-```
-
 ### Install Redis
 
 CodeTriage requires Redis for background processing.
@@ -74,6 +63,17 @@ You now have Redis running on 6379.
 **Other**
 
 See the Download page on Redis.io for steps to install on other systems: [http://redis.io/download](http://redis.io/download)
+
+### Database
+
+* Copy database.yml and if you need, setup your own database credentials
+* Create database (you must use PostgreSQL)
+* Run migrations
+
+```shell
+$ cp config/database.example.yml config/database.yml
+$ bin/rake db:create db:schema:load db:seed
+```
 
 ### Environment
 
