@@ -11,8 +11,12 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
-User.create!(github: "schneems")
-repo = Repo.create!(user_name: "rails", name: "sprockets", language: "Ruby")
+user = User.where(github: "schneems").first_or_create!
+
+repo = Repo.where(user_name: "rails", name: "sprockets", language: "Ruby").first_or_create!
+repo.force_issues_count_sync!
+user.repo_subscriptions.where(repo: repo, read: true, read_limit: 3, email_limit: 3).first_or_create!
+
 PopulateDocsJob.perform_now(repo)
 
 100.times do
@@ -32,7 +36,7 @@ PopulateDocsJob.perform_now(repo)
       :name => name,
       :issues_count => rand(30),
       :language => %w[Ruby PHP Go Javascript Java Swift].sample,
-      :description => Faker::Lorem.paragraph(1, true, 4),
+      :description => Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 4),
       :full_name => "#{username}/#{name}"
     )
     repo.save(validate: false)
@@ -42,9 +46,9 @@ PopulateDocsJob.perform_now(repo)
     rand(10).times do |i|
       issue = repo.issues.new(
         number: i,
-        last_touched_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
-        updated_at: Faker::Time.between(DateTime.now - 30, DateTime.now),
-        title: Faker::Lorem.paragraph(1, true, 2),
+        last_touched_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now),
+        updated_at: Faker::Time.between(from: DateTime.now - 30, to: DateTime.now),
+        title: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 2),
         state: "open",
         html_url: "https://github.com/#{username}/#{name}/issues/#{i}"
       )

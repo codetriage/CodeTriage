@@ -69,7 +69,8 @@ class UserPreview < ActionMailer::Preview
       user_id: user.id,
       assignment_ids: assignments.map(&:id),
       write_doc_ids: write_docs.map(&:id),
-      read_doc_ids: read_docs.map(&:id)
+      read_doc_ids: read_docs.map(&:id),
+      email_at: Time.now.to_s
     )
   end
 
@@ -94,7 +95,8 @@ class UserPreview < ActionMailer::Preview
 
     ::UserMailer.send_daily_triage(
       user_id: user.id,
-      assignment_ids: assignments.map(&:id)
+      assignment_ids: assignments.map(&:id),
+      email_at: Time.now.to_s
     )
   end
 
