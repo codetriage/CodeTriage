@@ -26,11 +26,26 @@ class PopulateIssuesJob < ApplicationJob
       repo.update(github_error_msg: fetcher.error_message)
       false
     else
-      fetcher.as_json.each do |issue_hash|
-        Rails.logger.info "Issue: number: #{issue_hash['number']}, "\
-                    "updated_at: #{issue_hash['updated_at']}"
-        Issue.find_or_create_from_hash!(issue_hash, repo)
+      issue_number_to_github_hash = {}
+      fetcher.as_json.each do |github_issue_hash|
+        issue_number = github_issue_hash['number']
+        issue_number_to_github_hash[issue_number] = github_issue_hash
       end
+
+      # Update issues that do exist
+      issues = Issue
+               .where("number in (?)", issue_number_to_github_hash.keys)
+               .where(repo_id: repo.id)
+      issues.each do |issue|
+        issue_hash = issue_number_to_github_hash.delete(issue.id)
+        issue.update_from_github_hash!(issue_hash)
+      end
+
+      # Create issues that didn't
+      issue_number_to_github_hash.each_value do |issue_hash|
+        Issue.create_from_github_hash!(issue_hash)
+      end
+
       !fetcher.last_page?
     end
   end
