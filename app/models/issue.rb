@@ -85,6 +85,17 @@ class Issue < ActiveRecord::Base
                 pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
   end
 
+  def self.create_from_github_hash!(issue_hash)
+    last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
+
+    Issue.create(title: issue_hash['title'],
+                 url: issue_hash['url'],
+                 last_touched_at: last_touched_at,
+                 state: issue_hash['state'],
+                 html_url: issue_hash['html_url'],
+                 pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
+  end
+
   def self.queue_mark_old_as_closed!
     where("state = ? and updated_at < ?", OPEN, 24.hours.ago)
       .update_all(state: CLOSED)
@@ -92,7 +103,7 @@ class Issue < ActiveRecord::Base
 
   private
 
-  def pr_attached_with_issue?(pull_request_hash)
+  def self.pr_attached_with_issue?(pull_request_hash)
     # issue_hash['pull_request'] has following structure
     #    pull_request: {
     #                    html_url: null,
@@ -102,5 +113,9 @@ class Issue < ActiveRecord::Base
     # When all the values are nil, PR is not attached with the issue
     return false if pull_request_hash.blank?
     pull_request_hash.values.uniq != [nil]
+  end
+
+  def pr_attached_with_issue?(pull_request_hash)
+    self.class.pr_attached_with_issue?(pull_request_hash)
   end
 end
