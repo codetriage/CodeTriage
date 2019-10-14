@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_023214) do
+ActiveRecord::Schema.define(version: 2019_10_14_201819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 2019_10_10_023214) do
     t.integer "repo_subscription_id"
     t.boolean "clicked", default: false
     t.boolean "delivered", default: false
-    t.index ["repo_subscription_id", "created_at"], name: "index_issue_assignments_on_repo_subscription_id_and_created_at"
     t.index ["repo_subscription_id", "delivered"], name: "index_issue_assignments_on_repo_subscription_id_and_delivered"
   end
 
@@ -98,11 +97,9 @@ ActiveRecord::Schema.define(version: 2019_10_10_023214) do
     t.string "html_url"
     t.string "state"
     t.boolean "pr_attached", default: false
-    t.index ["number"], name: "index_issues_on_number"
     t.index ["repo_id", "id"], name: "index_issues_on_repo_id_and_id", where: "((state)::text = 'open'::text)"
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id", "state"], name: "index_issues_on_repo_id_and_state"
-    t.index ["repo_id"], name: "index_issues_on_repo_id"
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
