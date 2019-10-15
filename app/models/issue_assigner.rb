@@ -55,7 +55,7 @@ class IssueAssigner
   private def issues_for_sub(sub)
     sql = <<~SQL
       SELECT
-        id, number, state, pr_attached
+        *
       FROM
         issues
       WHERE
