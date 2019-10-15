@@ -7,9 +7,9 @@ class PopulateIssuesJob < ApplicationJob
   end
 
   def populate_multi_issues!
-    page = 1
-    while populate_issues(page)
-      page += 1
+    page_number = 1
+    while populate_issues(page_number)
+      page_number += 1
     end
     @repo.force_issues_count_sync!
   end
@@ -18,10 +18,9 @@ class PopulateIssuesJob < ApplicationJob
 
   attr_reader :repo
 
-  def populate_issues(page)
+  def populate_issues(page_number)
     fetcher = repo.issues_fetcher
-    fetcher.page = page
-
+    fetcher.page = page_number
     if fetcher.error?
       repo.update(github_error_msg: fetcher.error_message)
       false
@@ -36,9 +35,17 @@ class PopulateIssuesJob < ApplicationJob
       issues = Issue
                .where("number in (?)", issue_number_to_github_hash.keys)
                .where(repo_id: repo.id)
+
       issues.each do |issue|
-        issue_hash = issue_number_to_github_hash.delete(issue.id)
+        issue_hash = issue_number_to_github_hash.fetch(issue.number)
         issue.update_from_github_hash!(issue_hash)
+      end
+
+      # TODO fix, some issues have duplicate numbers in tests
+      # We should ideally delete in the first loop
+      # but cannot for now due to tests
+      issues.each do |issue|
+        issue_number_to_github_hash.delete(issue.number)
       end
 
       # Create issues that didn't

@@ -38,4 +38,14 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
     PopulateIssuesJob.perform_now(repo)
     assert_equal repo.github_error_msg, 'something went wrong'
   end
+
+  test "updates existing issues" do
+    repo = repos(:issue_triage_sandbox)
+
+    VCR.use_cassette "issue_triage_sandbox_fetch_issues" do
+      assert_difference("Issue.count", 0) do
+        PopulateIssuesJob.perform_now(repo)
+      end
+    end
+  end
 end
