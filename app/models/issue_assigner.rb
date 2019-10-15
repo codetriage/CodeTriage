@@ -13,10 +13,11 @@
 class IssueAssigner
   attr_reader :user, :subscriptions
 
-  def initialize(user, subscriptions)
+  def initialize(user, subscriptions, can_access_network: !Rails.env.test?)
     @user          = user
     @subscriptions = subscriptions
     @assigned_count_hash = Hash.new { |hash, key| hash[key] = 0 }
+    @can_access_network = can_access_network
   end
 
   def assign!
@@ -39,7 +40,7 @@ class IssueAssigner
     issues.each do |issue|
       next if stop?(sub)
 
-      if issue.valid_for_user?(user)
+      if issue.valid_for_user?(user, can_access_network: @can_access_network, repo: sub.repo)
         sub.issue_assignments.create(issue_id: issue.id)
         @assigned_count_hash[sub] += 1
       else
@@ -54,7 +55,7 @@ class IssueAssigner
   private def issues_for_sub(sub)
     sql = <<~SQL
       SELECT
-        id, state, pr_attached
+        id, number, state, pr_attached
       FROM
         issues
       WHERE

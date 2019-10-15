@@ -7,34 +7,34 @@ class Issue < ActiveRecord::Base
   validates :state, inclusion: { in: [OPEN, CLOSED] }
   belongs_to :repo
 
-  def valid_for_user?(user, skip_update: Rails.env.test?)
-    unless skip_update
-      update_issue!
-      return false if commenting_users.include?(user.github)
+  def valid_for_user?(user, can_access_network: !Rails.env.test?, repo: nil)
+    if can_access_network
+      update_issue!(repo)
+      return false if commenting_users(repo).include?(user.github)
     end
     return false  if closed?
     return false  if pr_attached? && user.skip_issues_with_pr?
     true
   end
 
-  def fetcher
+  def fetcher(repo = nil)
     @fetcher ||= GithubFetcher::Issue.new(
-      owner_name: owner_name,
-      repo_name: repo_name,
+      owner_name: repo.try(:user_name) || owner_name,
+      repo_name: repo.try(:name) || repo_name,
       number: number,
     )
   end
 
-  def comments_fetcher
+  def comments_fetcher(repo = nil)
     @comments_fetcher ||= GithubFetcher::IssueComments.new(
-      owner_name: owner_name,
-      repo_name: repo_name,
+      owner_name: repo.try(:user_name) || owner_name,
+      repo_name: repo.try(:name) || repo_name,
       number: number,
     )
   end
 
-  def update_issue!
-    update_from_github_hash!(fetcher.as_json)
+  def update_issue!(repo = nil)
+    update_from_github_hash!(fetcher(repo).as_json)
   end
 
   def self.closed
@@ -65,8 +65,8 @@ class Issue < ActiveRecord::Base
     "https://github.com/repos/#{repo.user_name}/#{repo.name}/issues/#{number}"
   end
 
-  def commenting_users
-    comments_fetcher.commenters.sort
+  def commenting_users(repo = nil)
+    comments_fetcher(repo).commenters.sort
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)

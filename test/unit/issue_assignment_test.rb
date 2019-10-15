@@ -45,4 +45,20 @@ class IssueAssignmentTest < ActiveSupport::TestCase
 
     assert_equal 2, user.issue_assignments.where(delivered: false).count
   end
+
+  test "can check github API" do
+    user = users(:schneems)
+
+    user.issue_assignments.where(delivered: false).delete_all
+
+    subscriptions = user.repo_subscriptions.all
+    second_sub = subscriptions.last
+    def second_sub.email_limit; 1; end
+
+    VCR.use_cassette("issue_triage_sandbox_fake_api_responses") do
+      assigner = IssueAssigner.new(user, [second_sub], can_access_network: true)
+      assigner.assign!
+    end
+    assert_equal 1, user.issue_assignments.where(delivered: false).count
+  end
 end

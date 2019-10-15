@@ -54,16 +54,16 @@ class IssueTest < ActiveSupport::TestCase
 
     # should be false if a closed issue
     issue.stubs(:closed?).returns(true)
-    assert_not issue.valid_for_user?(user, skip_update: false), "Issue: #{issue.inspect} expected to be closed"
+    assert_not issue.valid_for_user?(user, can_access_network: true), "Issue: #{issue.inspect} expected to be closed"
 
     # should be true with an open issue with no comments from the current user
     issue.stubs(:closed?).returns(false)
-    assert issue.valid_for_user?(user, skip_update: false)
+    assert issue.valid_for_user?(user, can_access_network: true)
 
     # should be false with comments from the current user
 
     issue.stubs(:commenting_users).returns(["mockstar", "bar"])
-    assert_not issue.valid_for_user?(user, skip_update: false)
+    assert_not issue.valid_for_user?(user, can_access_network: true)
   end
 
   test "valid_for_user? when has open issue and user skipped with PR" do
@@ -84,7 +84,7 @@ class IssueTest < ActiveSupport::TestCase
 
     issue.stubs(:pr_attached?).returns(true)
     user.stubs(:skip_issues_with_pr?).returns(false)
-    assert issue.valid_for_user?(user, skip_update: false), "issue is not valid for given user"
+    assert issue.valid_for_user?(user, can_access_network: true), "issue is not valid for given user"
   end
 
   test 'commenting users' do
