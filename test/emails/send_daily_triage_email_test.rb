@@ -38,4 +38,22 @@ class UserMailerTest < ActionMailer::TestCase
 
     assert_match /### Docs/, triage_email_text
   end
+
+  test "sends subscribed/created email" do
+    user = users(:schneems)
+
+    repo_subscription_id = user.repo_subscriptions.first.id
+    assert_performed_with(job: ActionMailer::DeliveryJob, queue: "mailers") do
+      SendSingleTriageEmailJob.new.perform(repo_subscription_id)
+    end
+    triage_email = ActionMailer::Base.deliveries.last
+    triage_email_text = triage_email.text_part.to_s
+
+    assert_equal 2, triage_email.parts.size
+    assert_equal "multipart/alternative", triage_email.mime_type
+
+    assert_match /Help triage sinatra\/sinatra/, triage_email.subject
+
+    assert_match /## How To Triage?/, triage_email_text
+  end
 end
