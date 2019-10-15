@@ -7,7 +7,7 @@ class Issue < ActiveRecord::Base
   validates :state, inclusion: { in: [OPEN, CLOSED] }
   belongs_to :repo
 
-  def valid_for_user?(user, skip_update = Rails.env.test?)
+  def valid_for_user?(user, skip_update: Rails.env.test?)
     unless skip_update
       update_issue!
       return false if commenting_users.include?(user.github)
