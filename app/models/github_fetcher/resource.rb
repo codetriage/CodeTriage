@@ -16,7 +16,8 @@ module GithubFetcher
     def call(retry_on_bad_token: false)
       resp = response
 
-      return resp if !bad_token? && !retry_on_bad_token
+      return resp unless bad_token?
+      return resp unless retry_on_bad_token
 
       unless retry_on_bad_token.is_a?(Integer)
         raise "retry_on_bad_token must be a number but is #{retry_on_bad_token.class}: #{retry_on_bad_token.inspect}"
