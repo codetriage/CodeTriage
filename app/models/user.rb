@@ -27,6 +27,17 @@ class User < ActiveRecord::Base
   delegate :for, to: :repo_subscriptions, prefix: true
   before_save :set_default_last_clicked_at
 
+  def self.with_repo_subscriptions
+    left_outer_joins(:repo_subscriptions)
+      .where("repo_id is not null")
+      .distinct
+  end
+
+  # users that are not subscribed to any repos
+  def self.inactive
+    joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
+  end
+
   # We record when an email is sent out, which includes
   # the current day's email. When raw_emails_since_click = 1
   # then there have been zero emails missed.
@@ -96,11 +107,6 @@ class User < ActiveRecord::Base
     @@max_id = self.maximum(:id) if @@max_id.nil?
 
     where("id >= ?", Random.new.rand(1..@@max_id))
-  end
-
-  # users that are not subscribed to any repos
-  def self.inactive
-    joins("LEFT OUTER JOIN repo_subscriptions on users.id = repo_subscriptions.user_id").where("repo_subscriptions.user_id is null")
   end
 
   def default_avatar_url
