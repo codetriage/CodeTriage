@@ -36,7 +36,12 @@ class PopulateIssuesJob < ApplicationJob
     else
       issue_number_to_github_hash = {}
       fetcher.as_json.each do |github_issue_hash|
-        issue_number = github_issue_hash['number']
+        begin
+          issue_number = github_issue_hash['number']
+        rescue TypeError
+          raise "Type error #{github_issue_hash.inspect}, status=#{fetcher.response.status}, body=#{fetcher.response.body}"
+        end
+
         issue_number_to_github_hash[issue_number] = github_issue_hash
       end
 
