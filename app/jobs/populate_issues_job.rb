@@ -50,7 +50,7 @@ class PopulateIssuesJob < ApplicationJob
 
       # Create issues that didn't
       issue_number_to_github_hash.each_value do |issue_hash|
-        Issue.create_from_github_hash!(issue_hash)
+        Issue.create_from_github_hash!(issue_hash, repo: @repo)
       end
 
       !fetcher.last_page?

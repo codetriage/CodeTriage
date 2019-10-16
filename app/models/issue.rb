@@ -85,10 +85,11 @@ class Issue < ActiveRecord::Base
                  pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
   end
 
-  def self.create_from_github_hash!(issue_hash)
+  def self.create_from_github_hash!(issue_hash, repo:)
     last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
 
-    Issue.create!(title: issue_hash['title'],
+    Issue.create!(repo_id: repo.id,
+                  title: issue_hash['title'],
                   url: issue_hash['url'],
                   last_touched_at: last_touched_at,
                   state: issue_hash['state'],
