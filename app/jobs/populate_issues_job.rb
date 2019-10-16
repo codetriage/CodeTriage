@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class PopulateIssuesJob < ApplicationJob
-  def perform(repo)
+  def perform(repo_or_id)
+    if repo_or_id.is_a?(Integer)
+      repo = Repo.find(repo_or_id)
+    else
+      repo = repo_or_id
+    end
+
     @repo = repo
     populate_multi_issues!
   end

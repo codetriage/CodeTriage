@@ -1,22 +1,28 @@
 # frozen_string_literal: true
 
 namespace :schedule do
-  desc 'sitemaps'
-  task sitemap: :environment do
-    next unless Date.today.sunday?
-    Rake::Task['sitemap:refresh'].invoke
-  end
-
   desc 'Sends triage emails'
   task triage_emails: :environment do
-    User.find_each(batch_size: 100) do |user|
-      SendDailyTriageEmailJob.perform_later(user)
+    User.with_repo_subscriptions.select(:id).find_each(batch_size: 1000) do |user|
+      # TODO cache last_sent_at in the user object
+      # and move filtering before we enqueue a ton of jobs into
+      # redis
+      SendDailyTriageEmailJob.perform_later(user.id)
+    end
+  end
+
+  desc "pulls in files from repos and adds them to the database"
+  task process_repos: :environment do
+    Repo.where("docs_subscriber_count > 0").select(:id).find_each(batch_size: 1000) do |repo|
+      PopulateDocsJob.perform_later(repo.id)
     end
   end
 
   desc 'Populates github issues'
   task populate_issues: :environment do
-    Repo.find_each(batch_size: 100) { |repo| PopulateIssuesJob.perform_later(repo) }
+    Repo.select(:id).find_each(batch_size: 100) do |repo|
+      PopulateIssuesJob.perform_later(repo.id)
+    end
   end
 
   desc 'Marks issues as closed'
@@ -66,10 +72,9 @@ namespace :schedule do
     end
   end
 
-  desc "pulls in files from repos and adds them to the database"
-  task process_repos: :environment do
-    Repo.find_each(batch_size: 100) do |repo|
-      PopulateDocsJob.perform_later(repo)
-    end
+  desc 'sitemaps'
+  task sitemap: :environment do
+    next unless Date.today.sunday?
+    Rake::Task['sitemap:refresh'].invoke
   end
 end
