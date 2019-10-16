@@ -37,6 +37,7 @@ class IssueTest < ActiveSupport::TestCase
     issue = Issue.new
 
     issue.state = "open"
+    issue.repo = Repo.first
     assert issue.valid?
 
     issue.state = "closed"
