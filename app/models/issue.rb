@@ -34,7 +34,9 @@ class Issue < ActiveRecord::Base
   end
 
   def update_issue!(repo = nil)
-    update_from_github_hash!(fetcher(repo).as_json)
+    fetch = fetcher(repo)
+    fetch.call(retry_on_bad_token: 3)
+    update_from_github_hash!(fetch.as_json)
   end
 
   def self.closed
@@ -66,7 +68,9 @@ class Issue < ActiveRecord::Base
   end
 
   def commenting_users(repo = nil)
-    comments_fetcher(repo).commenters.sort
+    fetch = comments_fetcher(repo)
+    fetch.call(retry_on_bad_token: 3)
+    fetch.commenters.sort
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
