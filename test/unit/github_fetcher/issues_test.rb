@@ -79,35 +79,6 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
     GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:rails_rails))
       assert fetcher.error?
-      assert_not fetcher.bad_token?
     end
-  end
-
-  test "bad credentials do" do
-    VCR.use_cassette("issue_fetcher_bad_credentials") do
-      fetcher = GithubFetcher::Issues.new(
-        user_name: "schneems",
-        name: "wicked",
-        token: "foobar"
-      )
-      assert fetcher.error?
-      assert fetcher.bad_token?
-    end
-  end
-
-  test "call will retry API calls" do
-    # stub_request(:any, "www.github.com").
-      # to_return({body: "blerg", status: 401})
-
-    raise "foo"
-
-    fetcher = GithubFetcher::Issues.new(
-      user_name: "schneems",
-      name: "wicked",
-      token: "foobar"
-    )
-    fetcher.call(retry_on_bad_token: 2)
-
-    assert fetcher.bad_token?
   end
 end

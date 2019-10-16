@@ -32,9 +32,7 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
   test "#populate_multi_issues stores error info when fails" do
     repo = repos(:issue_triage_sandbox)
     def repo.issues_fetcher
-      fetcher = OpenStruct.new(error?: true, error_message: 'something went wrong', page: 1)
-      def fetcher.call(*args); end
-      fetcher
+      OpenStruct.new(error?: true, error_message: 'something went wrong', page: 1)
     end
 
     PopulateIssuesJob.perform_now(repo)

@@ -21,9 +21,6 @@ class PopulateIssuesJob < ApplicationJob
   def populate_issues(page_number)
     fetcher = repo.issues_fetcher
     fetcher.page = page_number
-
-    fetcher.call(retry_on_bad_token: 3)
-
     if fetcher.error?
       repo.update(github_error_msg: fetcher.error_message)
       false
