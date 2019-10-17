@@ -38,7 +38,6 @@ namespace :schedule do
     return GithubFetcher::Repo.new(user_name: "rails", name: "rails").success?
   end
 
-
   desc "Checks if repos have been deleted on GitHub"
   task mark_removed_repos: :environment do
     raise "GITHUB API APPEARS TO BE DOWN" unless github_api_up?
