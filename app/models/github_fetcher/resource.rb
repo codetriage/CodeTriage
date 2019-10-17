@@ -29,6 +29,10 @@ module GithubFetcher
       call(retry_on_bad_token: retry_on_bad_token - 1)
     end
 
+    def status
+      response.status
+    end
+
     # Generally not over-ridden
     def as_json
       @as_json ||= response.json_body
@@ -46,14 +50,14 @@ module GithubFetcher
     end
 
     def success?
-      return true if response.status.to_s.start_with?("2")
+      return true if status.to_s.start_with?("2")
 
-      @error = @error_message = "Status: #{response.status} body: #{response.body}"
+      @error = @error_message = "Status: #{status} body: #{response.body}"
       false
     end
 
     def bad_token?
-      if response.status == 401 && response.body.match?(/Bad credentials/)
+      if status == 401 && response.body.match?(/Bad credentials/)
         @error = @error_message = "Bad credentials"
         return true
       end
