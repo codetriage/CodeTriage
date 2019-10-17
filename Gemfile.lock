@@ -930,7 +930,7 @@ GEM
       thor (>= 0.13.6)
     get_process_mem (0.2.4)
       ffi (~> 1.0)
-    git_hub_bub (1.0.0)
+    git_hub_bub (1.0.1)
       excon
       rrrretry
     globalid (0.4.2)
