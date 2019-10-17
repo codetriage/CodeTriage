@@ -13,15 +13,35 @@ namespace :schedule do
 
   desc "pulls in files from repos and adds them to the database"
   task process_repos: :environment do
-    Repo.where("docs_subscriber_count > 0").select(:id).find_each(batch_size: 1000) do |repo|
+    Repo.where("docs_subscriber_count > 0").select(:id, :removed_from_github).find_each(batch_size: 1000) do |repo|
+      next if repo.removed_from_github?
+
       PopulateDocsJob.perform_later(repo.id)
     end
   end
 
   desc 'Populates github issues'
   task populate_issues: :environment do
-    Repo.select(:id).find_each(batch_size: 100) do |repo|
+    Repo.select(:id, :removed_from_github).find_each(batch_size: 100) do |repo|
+      next if repo.removed_from_github?
+
       PopulateIssuesJob.perform_later(repo.id)
+    end
+  end
+
+  desc "Checks if repos have been deleted on GitHub"
+  task mark_removed_repos: :environment do
+    response          = Excon.get("https://status.github.com/api/status.json").body
+    github_api_status = JSON.parse(response)["status"]
+    next unless github_api_status == "good"
+
+    Repo.select(:user_name, :name).find_each(batch_size: 100) do |repo|
+      fetcher = GithubFetcher::Repo.new(user_name: repo.user_name, name: repo.name)
+      fetcher.call(retry_on_bad_token: 5)
+
+      if fetcher.response.status == 404
+        repo.update!(removed_from_github: true)
+      end
     end
   end
 
@@ -29,6 +49,8 @@ namespace :schedule do
   task mark_closed: :environment do
     Issue.queue_mark_old_as_closed!
     Repo.find_each(batch_size: 100) do |repo|
+      next if repo.removed_from_github?
+
       repo.force_issues_count_sync!
     end
   end
