@@ -45,6 +45,13 @@ module GithubFetcher
                     end
     end
 
+    def success?
+      return true if response.status.to_s.start_with?("2")
+
+      @error = @error_message = "Status: #{response.status} body: #{response.body}"
+      false
+    end
+
     def bad_token?
       if response.status == 401 && response.body.match?(/Bad credentials/)
         @error = @error_message = "Bad credentials"
@@ -57,7 +64,7 @@ module GithubFetcher
       # Ensure API request has been made (by calling `as_json` before returning
       #   error if it happened. `as_json` should always evaluate truthily, but
       #   @error will be false unless there's an error in the API request
-      bad_token? || @error
+      bad_token? || !success? || @error
     end
 
     def page=(number)
