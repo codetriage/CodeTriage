@@ -29,13 +29,21 @@ namespace :schedule do
     end
   end
 
+  def github_api_up?
+    # Github switched where their status page is hosted
+    # and they no longer report programatically
+    # one way to test is by exercising the API for a value
+    # that should be known to exist.
+
+    return GithubFetcher::Repo.new(user_name: "rails", name: "rails").success?
+  end
+
+
   desc "Checks if repos have been deleted on GitHub"
   task mark_removed_repos: :environment do
-    response          = Excon.get("https://status.github.com/api/status.json").body
-    github_api_status = JSON.parse(response)["status"]
-    next unless github_api_status == "good"
+    raise "GITHUB API APPEARS TO BE DOWN" unless github_api_up?
 
-    Repo.select(:user_name, :name).find_each(batch_size: 100) do |repo|
+    Repo.select(:id, :user_name, :name).find_each(batch_size: 100) do |repo|
       fetcher = GithubFetcher::Repo.new(user_name: repo.user_name, name: repo.name)
       fetcher.call(retry_on_bad_token: 5)
 
