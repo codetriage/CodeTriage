@@ -78,10 +78,15 @@ namespace :schedule do
   end
 
   task check_user_auth: :environment do
-    # API may be down
-    response          = Excon.get("https://status.github.com/api/status.json").body
-    github_api_status = JSON.parse(response)["status"]
-    next unless github_api_status == "good"
+    # Why doesn't this work?
+    #
+    #   token = User.where(github: "schneems").pluck(:token).first
+    #   GithubFetcher::User.new(token: token).valid?
+    #
+    # disabling it until I can make it more robust
+    #
+    next
+    raise "GITHUB API APPEARS TO BE DOWN" unless github_api_up?
 
     User.where.not(token: nil).find_each(batch_size: 100) do |user|
       # Check multiple times if token is not valid
