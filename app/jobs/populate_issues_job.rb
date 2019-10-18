@@ -34,6 +34,10 @@ class PopulateIssuesJob < ApplicationJob
       repo.update(github_error_msg: fetcher.error_message)
       false
     else
+      unless fetcher.as_json.is_a?(Array)
+        raise "Error grabbing issues status: #{fetcher.status}, repo_id: #{repo.id}.\nExpected result to be an array of hashes but is #{fetcher.as_json}"
+      end
+
       issue_number_to_github_hash = {}
       fetcher.as_json.each do |github_issue_hash|
         issue_number = github_issue_hash['number']
