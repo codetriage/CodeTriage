@@ -8,8 +8,6 @@ Your GitHub token for CodeTriage is returning a non-success status.
 
 This can happen if you've changed authentication credentials for GitHub or if you revoke API access.
 
-In June of 2017 there was an API outage on GitHub that caused some tokens to falsely be cleared. As a result your account token may have been cleared accidentally. We are sorry for this and as a preventative measure we [hardened this token checking and clearing code](https://github.com/codetriage/codetriage/pull/560).
-
 ## How to fix?
 
 It takes less than 30 seconds to fix this issue with your account.
@@ -27,6 +25,10 @@ If you do not reauthorize CodeTriage on GitHub you will continue to get this ema
 If we don't use authenticated API requests then we're limited to 5,000 API requests on GitHub. Not just for you, but total. When you authorize a token on CodeTriage we use that to pull data such as new issues. To put that number in perspective that's greater than the currently open issues on [kubernetes](https://www.codetriage.com/kubernetes/kubernetes).
 
 By re-authorizing your token on CodeTriage, we can continue to bring you quality issues and documentation. Also you'll avoid getting this reminder email again.
+
+## I don't want you using up my API requests!
+
+Your token is scoped to our application, so when we use it to pull issue data it won't affect any other token's you've generated or their limits. It's good that you're concerned, but as far as we know there's no downside to letting us use your CodeTriage scopped token.
 
 ## I already did but I'm still getting these bloody emails
 
