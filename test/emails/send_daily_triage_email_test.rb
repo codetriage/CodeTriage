@@ -7,7 +7,7 @@ class UserMailerTest < ActionMailer::TestCase
 
   test "sends issues" do
     user = users(:schneems)
-    assert_performed_with(job: ActionMailer::DeliveryJob, queue: "mailers") do
+    assert_performed_with(job: ActionMailer::MailDeliveryJob, queue: "mailers") do
       SendDailyTriageEmailJob.new.perform(user, force_send: true)
     end
     triage_email = ActionMailer::Base.deliveries.last
@@ -26,7 +26,7 @@ class UserMailerTest < ActionMailer::TestCase
 
   test "sends docs" do
     user = users(:bar_user)
-    assert_performed_with(job: ActionMailer::DeliveryJob, queue: "mailers") do
+    assert_performed_with(job: ActionMailer::MailDeliveryJob, queue: "mailers") do
       SendDailyTriageEmailJob.new.perform(user, force_send: true)
     end
     triage_email = ActionMailer::Base.deliveries.last
@@ -43,7 +43,7 @@ class UserMailerTest < ActionMailer::TestCase
     user = users(:schneems)
 
     repo_subscription_id = user.repo_subscriptions.first.id
-    assert_performed_with(job: ActionMailer::DeliveryJob, queue: "mailers") do
+    assert_performed_with(job: ActionMailer::MailDeliveryJob, queue: "mailers") do
       SendSingleTriageEmailJob.new.perform(repo_subscription_id)
     end
     triage_email = ActionMailer::Base.deliveries.last
