@@ -33,7 +33,7 @@ class CodeTraigeRandomApiKeyStore
     @mutex.synchronize do
       return if @keys.any?
 
-      @keys = User.order("RANDOM()").where.not(token: nil).limit(2000).pluck(:token)
+      @keys = User.random.where.not(token: nil).limit(5000).pluck(:token)
     end
   end
 end
