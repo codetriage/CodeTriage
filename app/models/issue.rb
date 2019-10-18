@@ -88,7 +88,7 @@ class Issue < ActiveRecord::Base
                  html_url: issue_hash['html_url'],
                  pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
   rescue => e
-    raise e, "#{e.message} issue_hash: #{issue_hash.inspect}"
+    raise e, "#{e.message} issue_id: #{id}, issue_hash: #{issue_hash.inspect}"
   end
 
   def self.create_from_github_hash!(issue_hash, repo:)
