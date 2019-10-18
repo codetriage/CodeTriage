@@ -13,11 +13,13 @@ end
 
 user = User.where(github: "schneems").first_or_create!
 
-repo = Repo.where(user_name: "rails", name: "sprockets", language: "Ruby").first_or_create!
+repo = Repo.where(user_name: "rails", name: "sprockets", language: "Ruby").first_or_create!(skip_validation: true)
 repo.force_issues_count_sync!
 user.repo_subscriptions.where(repo: repo, read: true, read_limit: 3, email_limit: 3).first_or_create!
 
 PopulateDocsJob.perform_now(repo)
+
+raise "DocMethods not saved" if DocMethod.count.zero?
 
 100.times do
   printf "."
