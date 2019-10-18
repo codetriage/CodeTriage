@@ -32,7 +32,7 @@ class UserPreview < ActionMailer::Preview
     ::UserMailer.send_triage(user: user, repo: repo, assignment: assignment)
   end
 
-  def send_daily_triage_mixed
+  def _01_send_daily_triage_mixed
     write_docs = DocMethod.order(Arel.sql("RANDOM()")).includes(:repo).missing_docs.first(rand(0..8))
     read_docs  = DocMethod.order(Arel.sql("RANDOM()")).includes(:repo).with_docs.first(rand(0..8))
 
@@ -74,7 +74,7 @@ class UserPreview < ActionMailer::Preview
     )
   end
 
-  def send_daily_triage_issues_only
+  def _02_send_daily_triage_issues_only
     issue_count = rand(3..5)
     user        = User.last
     assignments = []
