@@ -87,6 +87,8 @@ class Issue < ActiveRecord::Base
                  state: issue_hash['state'],
                  html_url: issue_hash['html_url'],
                  pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
+  rescue => e
+    raise e, "#{e.message} issue_hash: #{issue_hash.inspect}"
   end
 
   def self.create_from_github_hash!(issue_hash, repo:)
@@ -99,6 +101,9 @@ class Issue < ActiveRecord::Base
                   state: issue_hash['state'],
                   html_url: issue_hash['html_url'],
                   pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
+
+  rescue => e
+    raise e, "#{e.message} issue_hash: #{issue_hash.inspect}"
   end
 
   def self.queue_mark_old_as_closed!
