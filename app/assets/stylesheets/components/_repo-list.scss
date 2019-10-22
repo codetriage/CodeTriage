@@ -122,3 +122,8 @@
   @include position(absolute, null null $base-spacing null);
   color: $lightest-font-color;
 }
+
+.repo-item-issues-per-day {
+  color: $lightest-font-color;
+  font-size: 12px;
+}
