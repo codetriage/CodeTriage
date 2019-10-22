@@ -54,9 +54,9 @@ class Repo < ActiveRecord::Base
   end
 
   def populate_docs!(commit_sha: commit_sha_fetcher.commit_sha, location: nil, has_subscribers: !docs_subscriber_count.zero?)
-    return unless can_doctor_docs?
-    return unless commit_sha
-    return unless has_subscribers
+    return "Skipped, lang not supported" unless can_doctor_docs?
+    return "Skipped, no commit SHA" unless commit_sha
+    return "Skipped, no subscribers" unless has_subscribers
 
     self.update!(commit_sha: commit_sha)
     location ||= fetcher.clone
@@ -66,6 +66,7 @@ class Repo < ActiveRecord::Base
       parser.process
       parser.store(self)
     end
+    return :success
   end
 
   def background_populate_issues!

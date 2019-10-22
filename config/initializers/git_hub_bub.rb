@@ -34,6 +34,10 @@ class CodeTraigeRandomApiKeyStore
       return if @keys.any?
 
       @keys = User.random.where.not(token: nil).limit(5000).pluck(:token)
+
+      if @keys.empty? && User.where.not(token: nil).count.zero?
+        raise "No users with tokens in the database"
+      end
     end
   end
 end
