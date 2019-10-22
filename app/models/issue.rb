@@ -5,6 +5,7 @@ class Issue < ActiveRecord::Base
   CLOSED = "closed"
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
+  validates :number, presence: true
   belongs_to :repo
 
   def valid_for_user?(user, can_access_network: !Rails.env.test?, repo: nil)
@@ -86,6 +87,7 @@ class Issue < ActiveRecord::Base
                  last_touched_at: last_touched_at,
                  state: issue_hash['state'],
                  html_url: issue_hash['html_url'],
+                 number: issue_hash['number'],
                  pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
   rescue => e
     raise e, "#{e.message} issue_id: #{id}, issue_hash: #{issue_hash.inspect}"
@@ -100,6 +102,7 @@ class Issue < ActiveRecord::Base
                   last_touched_at: last_touched_at,
                   state: issue_hash['state'],
                   html_url: issue_hash['html_url'],
+                  number: issue_hash['number'],
                   pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
 
   rescue => e

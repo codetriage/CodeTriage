@@ -16,6 +16,7 @@ class IssueTest < ActiveSupport::TestCase
       issue.last_touched_at = 2.days.ago
       issue.state = 'open'
       issue.html_url = "http://schneems.com"
+      issue.number = 42
       issue.save
 
       repo.force_issues_count_sync!
@@ -38,6 +39,7 @@ class IssueTest < ActiveSupport::TestCase
 
     issue.state = "open"
     issue.repo = Repo.first
+    issue.number = 42
     assert issue.valid?
 
     issue.state = "closed"
@@ -114,7 +116,7 @@ class IssueTest < ActiveSupport::TestCase
     repo.issues.new(state: 'closed')
 
     2.times do
-      open_issues << repo.issues.create!(state: 'open')
+      open_issues << repo.issues.create!(state: 'open', number: 42)
     end
 
     assert_equal open_issues, repo.open_issues.order(:created_at)
