@@ -29,7 +29,7 @@ class IssueAssignmentTest < ActiveSupport::TestCase
 
     user.repo_subscriptions.each do |sub|
       3.times do
-        sub.repo.issues.create!(state: Issue::OPEN)
+        sub.repo.issues.create!(state: Issue::OPEN, number: rand(22...2222))
       end
     end
 

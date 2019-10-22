@@ -42,6 +42,7 @@ issue_three:
 
 issue_triage_sandbox_issue:
   id: 4
+  number: 42
   comment_count:
   url: https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/1
   last_touched_at: 2012-11-10 22:20:24.000000000 Z
@@ -55,6 +56,7 @@ issue_triage_sandbox_issue:
 
 issue_five_extra_long_title:
   id: 5
+  number: 44
   comment_count:
   url: https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/1
   last_touched_at: 2012-11-10 22:20:24.000000000 Z
