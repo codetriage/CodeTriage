@@ -5,6 +5,7 @@ class Issue < ActiveRecord::Base
   CLOSED = "closed"
 
   validates :state, inclusion: { in: [OPEN, CLOSED] }
+  validates :number, presence: true
   belongs_to :repo
 
   def valid_for_user?(user, can_access_network: !Rails.env.test?, repo: nil)
