@@ -2,7 +2,7 @@ get_process_mem:
   user_name: schneems
   name: get_process_mem
   full_name: schneems/get_process_mem
-  language: ruby
+  language: Ruby
   created_at: 2012-11-10 21:50:48.351554000 Z
   updated_at: 2012-11-10 21:50:48.351554000 Z
   issues_count: 1
@@ -12,7 +12,7 @@ issue_triage_sandbox:
   user_name: bemurphy
   name: issue_triage_sandbox
   full_name: bemurphy/issue_triage_sandbox
-  language: ruby
+  language: Ruby
   created_at: 2012-11-10 21:50:48.351554000 Z
   updated_at: 2012-11-10 21:50:48.351554000 Z
   issues_count: 1
@@ -22,7 +22,7 @@ rails_rails:
   user_name: rails
   name: rails
   full_name: rails/rails
-  language: ruby
+  language: Ruby
   created_at: 2012-11-10 21:50:48.351554000 Z
   updated_at: 2012-11-10 21:50:48.351554000 Z
   issues_count: 0
@@ -31,7 +31,7 @@ sinatra_sinatra:
   user_name: sinatra
   name: sinatra
   full_name: sinatra/sinatra
-  language: ruby
+  language: Ruby
   created_at: 2012-11-10 21:50:48.351554000 Z
   updated_at: 2012-11-10 21:50:48.351554000 Z
   issues_count: 1
@@ -40,7 +40,7 @@ no_subscribers:
   user_name: no
   name: subscribers
   full_name: no/subscribers
-  language: ruby
+  language: Ruby
   created_at: 2012-11-10 21:50:48.351554000 Z
   updated_at: 2012-11-10 21:50:48.351554000 Z
   issues_count: 1
@@ -67,7 +67,7 @@ scene_hub_v2:
   user_name: chrisccerami
   name: scene-hub-v2
   full_name: chrisccerami/scene-hub-v2
-  language: ruby
+  language: Ruby
   created_at: 2014-12-19T02:33:42Z
   updated_at: 2015-01-21T22:08:43Z
   issues_count: 0

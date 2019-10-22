@@ -20,7 +20,7 @@ mockstar:
   admin:
   name: Mock Star
   private: false
-  favorite_languages: [ "ruby" ]
+  favorite_languages: [ "Ruby" ]
   last_clicked_at: <%= Time.now %>
   avatar_url: http://gravatar.com/avatar/default
   email_frequency: daily

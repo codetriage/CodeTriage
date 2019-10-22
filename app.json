@@ -5,7 +5,7 @@
   "repository": "https://github.com/codetriage/codetriage",
   "scripts":{
     "postdeploy":"rake db:schema:load db:migrate db:seed",
-    "test": "bundle exec rubocop && bin/rails test"
+    "test": "bundle exec rubocop && bin/rails test && rails db:seed"
   },
   "env":{
     "DEVISE_SECRET_KEY": "foo",

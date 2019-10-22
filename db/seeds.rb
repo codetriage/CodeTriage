@@ -11,13 +11,26 @@ Rails.application.configure do
   config.active_job.queue_adapter = :test
 end
 
-user = User.where(github: "schneems").first_or_create!
+begin
+  Timeout.timeout(5) do
+    user = User.where(github: "schneems").first_or_create!
+    repo = Repo.where(user_name: "schneems", name: "get_process_mem", language: "Ruby").first_or_create!(skip_validation: true)
+    user.repo_subscriptions.where(repo: repo, read: true, read_limit: 3, email_limit: 3).first_or_create!
+    repo.force_issues_count_sync!
 
-repo = Repo.where(user_name: "rails", name: "sprockets", language: "Ruby").first_or_create!(skip_validation: true)
-repo.force_issues_count_sync!
-user.repo_subscriptions.where(repo: repo, read: true, read_limit: 3, email_limit: 3).first_or_create!
+    unless Dir.exist?(Rails.root.join("tmp/get_process_mem"))
+      result = `cd tmp && git clone https://github.com/schneems/get_process_mem`
+      raise "Could not clone repo: #{result}" unless $?.success?
+    end
 
-PopulateDocsJob.perform_now(repo)
+    puts repo.populate_docs!(
+      commit_sha: "254d1a25cdc949ff7ef41f038a419eb2576bcef0",
+      location: Rails.root.join("tmp/get_process_mem")
+    )
+  end
+rescue Timeout::Error => e
+  raise e, "Timeout while trying to parse docs, make sure you're not slamming the GitHub API"
+end
 
 raise "DocMethods not saved" if DocMethod.count.zero?
 
