@@ -59,13 +59,13 @@ class IssueAssignmentTest < ActiveSupport::TestCase
 
     repo.issues.each do |issue|
       stub_request(:get, %r{https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/#{issue.number}})
-       .to_return({ body: issue.as_json.to_json, status: 200})
+        .to_return({ body: issue.as_json.to_json, status: 200 })
 
       stub_request(:get, %r{https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/#{issue.number}/comments})
         .to_return({
-          body: [{ "id" => 5, "user" => { "login" => "rtomayko", "id" => 404 } }].to_json,
-          status: 200
-        })
+                     body: [{ "id" => 5, "user" => { "login" => "rtomayko", "id" => 404 } }].to_json,
+                     status: 200
+                   })
     end
 
     assigner = IssueAssigner.new(user, [sub], can_access_network: true)
