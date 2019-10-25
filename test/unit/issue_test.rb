@@ -116,7 +116,8 @@ class IssueTest < ActiveSupport::TestCase
     repo.issues.new(state: 'closed')
 
     2.times do
-      open_issues << repo.issues.create!(state: 'open', number: 42)
+      number = Issue.maximum(:number) + 1
+      open_issues << repo.issues.create!(state: 'open', number: number)
     end
 
     assert_equal open_issues, repo.open_issues.order(:created_at)
