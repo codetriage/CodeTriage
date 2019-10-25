@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_17_202913) do
+ActiveRecord::Schema.define(version: 2019_10_25_191255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_10_17_202913) do
     t.index ["repo_id", "id"], name: "index_issues_on_repo_id_and_id", where: "((state)::text = 'open'::text)"
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id", "state"], name: "index_issues_on_repo_id_and_state"
+    t.index ["updated_at"], name: "index_issues_on_updated_at", where: "((state)::text = 'open'::text)"
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
