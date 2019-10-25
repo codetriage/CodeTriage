@@ -104,20 +104,6 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
-  test "#populate_docs!" do
-    repo = repos(:rails_rails)
-
-    VCR.use_cassette "repo_populate_docs" do
-      double = Object.new
-      DocsDoctor::Parsers::Ruby::Yard.stub(:new, ->(_) { double }) do
-        double.expects(:in_fork)
-        assert_nil repo.commit_sha
-        repo.populate_docs!(has_subscribers: true)
-        assert_not_nil repo.commit_sha
-      end
-    end
-  end
-
   test '.without_user_subscriptions' do
     user = users(:schneems)
     subscribed_repo = user.repo_subscriptions.first
