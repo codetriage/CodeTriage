@@ -62,10 +62,8 @@ class Repo < ActiveRecord::Base
     location ||= fetcher.clone
 
     parser = class_for_doc_language.new(location)
-    parser.in_fork do
-      parser.process
-      parser.store(self)
-    end
+    parser.process
+    parser.store(self)
     return :success
   end
 
