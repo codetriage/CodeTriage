@@ -12,7 +12,7 @@ Rails.application.configure do
 end
 
 begin
-  Timeout.timeout(5) do
+  Timeout.timeout(10) do
     user = User.where(github: "schneems").first_or_create!
     repo = Repo.where(user_name: "schneems", name: "get_process_mem", language: "Ruby").first_or_create!(skip_validation: true)
     user.repo_subscriptions.where(repo: repo, read: true, read_limit: 3, email_limit: 3).first_or_create!
