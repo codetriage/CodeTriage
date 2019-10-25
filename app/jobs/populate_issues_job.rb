@@ -48,17 +48,18 @@ class PopulateIssuesJob < RepoBasedJob
       upsert_mega_array = []
       fetcher.as_json.each do |github_issue_hash|
         last_touched_at = github_issue_hash['updated_at'] ? DateTime.parse(github_issue_hash['updated_at']) : nil
+        pr_attached = pr_attached_with_issue?(github_issue_hash['pull_request'])
 
         upsert_mega_array << {
           repo_id: @repo.id,
           title: github_issue_hash['title'],
           url: github_issue_hash['url'],
-          last_touched_at: last_touched_at,
           state: github_issue_hash['state'],
           html_url: github_issue_hash['html_url'],
           number: github_issue_hash['number'],
-          pr_attached: pr_attached_with_issue?(github_issue_hash['pull_request'],
-          updated_at: @time_now)
+          pr_attached: pr_attached,
+          last_touched_at: last_touched_at,
+          updated_at: @time_now
         }
       end
 
