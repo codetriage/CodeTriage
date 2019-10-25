@@ -51,14 +51,25 @@ class IssueAssignmentTest < ActiveSupport::TestCase
 
     user.issue_assignments.where(delivered: false).delete_all
 
-    subscriptions = user.repo_subscriptions.all
-    second_sub = subscriptions.last
-    def second_sub.email_limit; 1; end
+    assert_equal 0, user.issue_assignments.where(delivered: false).count
 
-    VCR.use_cassette("issue_triage_sandbox_fake_api_responses") do
-      assigner = IssueAssigner.new(user, [second_sub], can_access_network: true)
-      assigner.assign!
+    repo = Repo.where(full_name: "bemurphy/issue_triage_sandbox").first
+    sub = user.repo_subscriptions.where(repo_id: repo.id).first
+    def sub.email_limit; 1; end
+
+    repo.issues.each do |issue|
+      stub_request(:get, %r{https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/#{issue.number}})
+       .to_return({ body: issue.as_json.to_json, status: 200})
+
+      stub_request(:get, %r{https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/#{issue.number}/comments})
+        .to_return({
+          body: [{ "id" => 5, "user" => { "login" => "rtomayko", "id" => 404 } }].to_json,
+          status: 200
+        })
     end
+
+    assigner = IssueAssigner.new(user, [sub], can_access_network: true)
+    assigner.assign!
     assert_equal 1, user.issue_assignments.where(delivered: false).count
   end
 end
