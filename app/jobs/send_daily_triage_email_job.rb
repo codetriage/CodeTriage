@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 
-class SendDailyTriageEmailJob < ApplicationJob
-  def perform(user_or_id, force_send: false)
-    if user_or_id.is_a?(Integer)
-      user = User.find(user_or_id)
-    else
-      user = user_or_id
-    end
-
+class SendDailyTriageEmailJob < UserBasedJob
+  def perform(user, force_send: false)
     return false if !force_send && skip?(user)
 
     send_daily_triage!(user)

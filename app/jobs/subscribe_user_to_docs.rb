@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SubscribeUserToDocs < ApplicationJob
+class SubscribeUserToDocs < UserBasedJob
   def perform(user)
     user.subscribe_docs!
   end
