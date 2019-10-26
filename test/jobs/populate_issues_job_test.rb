@@ -8,17 +8,6 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
     PopulateIssuesJob.perform_now(repos(:rails_rails))
   end
 
-  test "#populate_multi_issues continues until populate_issues is false" do
-    called = 0
-    job = PopulateIssuesJob.new
-    job.instance_variable_set(:@repo, repos(:rails_rails))
-    job.instance_variable_set(:@state, 'open')
-    job.stub(:populate_issues, ->(page) { called += 1; page.in? [1, 2] }) do
-      job.populate_multi_issues!
-    end
-    assert_equal called, 3
-  end
-
   test "#populate_multi_issues creates issues" do
     repo = repos(:issue_triage_sandbox)
     repo.issues.where(state: 'open').delete_all
