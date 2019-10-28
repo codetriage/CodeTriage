@@ -10,7 +10,7 @@ rvm:
   - 2.6.5
 
 addons:
-  postgresql: "9.4"
+  postgresql: "9.6"
 
 env:
   matrix:
