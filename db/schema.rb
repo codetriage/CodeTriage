@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_191255) do
+ActiveRecord::Schema.define(version: 2019_10_29_194525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
     t.integer "repo_subscription_id"
     t.integer "doc_method_id"
     t.integer "doc_class_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "clicked", default: false
     t.index ["repo_id"], name: "index_doc_assignments_on_repo_id"
     t.index ["repo_subscription_id", "doc_method_id"], name: "index_doc_assignments_on_repo_subscription_id_and_doc_method_id"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
   create_table "doc_classes", id: :serial, force: :cascade do |t|
     t.integer "repo_id"
     t.string "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "doc_comments_count", default: 0, null: false
     t.integer "line"
     t.string "path"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
     t.integer "repo_id"
     t.string "name"
     t.integer "line"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "doc_comments_count", default: 0, null: false
     t.string "path"
     t.string "file"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
 
   create_table "issue_assignments", id: :serial, force: :cascade do |t|
     t.integer "issue_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "repo_subscription_id"
     t.boolean "clicked", default: false
     t.boolean "delivered", default: false
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
     t.string "user_name"
     t.datetime "last_touched_at"
     t.integer "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "repo_id"
     t.text "title"
     t.string "html_url"
@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
   end
 
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "repo_id"
     t.datetime "last_sent_at"
@@ -129,8 +129,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
     t.string "description"
     t.string "full_name"
     t.text "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text "github_error_msg"
     t.string "commit_sha"
     t.integer "stars_count", default: 0
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "zip"
     t.string "phone_number"
     t.boolean "twitter"
