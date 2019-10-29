@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2019_10_25_191255) do
     t.string "html_url"
     t.string "state"
     t.boolean "pr_attached", default: false
-    t.index ["number", "repo_id"], name: "index_issues_on_number_and_repo_id", unique: true
     t.index ["repo_id", "id"], name: "index_issues_on_repo_id_and_id", where: "((state)::text = 'open'::text)"
     t.index ["repo_id", "number"], name: "index_issues_on_repo_id_and_number"
     t.index ["repo_id", "state"], name: "index_issues_on_repo_id_and_state"

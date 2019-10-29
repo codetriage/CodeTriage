@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/repos/sinatra/sinatra/issues/3/comments
+    uri: https://api.github.com/repos/sinatra/sinatra/issues/1/comments
     body:
       encoding: US-ASCII
       string: ''
@@ -69,7 +69,7 @@ http_interactions:
       - DB73:2B2E9:1098AF0:1561DC0:59658634
     body:
       encoding: UTF-8
-      string: '[{"url":"https://api.github.com/repos/sinatra/sinatra/issues/comments/5","html_url":"https://github.com/sinatra/sinatra/issues/3#issuecomment-5","issue_url":"https://api.github.com/repos/sinatra/sinatra/issues/3","id":5,"user":{"login":"rtomayko","id":404,"avatar_url":"https://avatars0.githubusercontent.com/u/404?v=3","gravatar_id":"","url":"https://api.github.com/users/rtomayko","html_url":"https://github.com/rtomayko","followers_url":"https://api.github.com/users/rtomayko/followers","following_url":"https://api.github.com/users/rtomayko/following{/other_user}","gists_url":"https://api.github.com/users/rtomayko/gists{/gist_id}","starred_url":"https://api.github.com/users/rtomayko/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rtomayko/subscriptions","organizations_url":"https://api.github.com/users/rtomayko/orgs","repos_url":"https://api.github.com/users/rtomayko/repos","events_url":"https://api.github.com/users/rtomayko/events{/privacy}","received_events_url":"https://api.github.com/users/rtomayko/received_events","type":"User","site_admin":false},"created_at":"2009-03-06T21:35:42Z","updated_at":"2009-03-06T21:35:42Z","body":"+1\n"}]'
-    http_version:
+      string: '[{"url":"https://api.github.com/repos/sinatra/sinatra/issues/comments/5","html_url":"https://github.com/sinatra/sinatra/issues/1#issuecomment-5","issue_url":"https://api.github.com/repos/sinatra/sinatra/issues/1","id":5,"user":{"login":"rtomayko","id":404,"avatar_url":"https://avatars0.githubusercontent.com/u/404?v=3","gravatar_id":"","url":"https://api.github.com/users/rtomayko","html_url":"https://github.com/rtomayko","followers_url":"https://api.github.com/users/rtomayko/followers","following_url":"https://api.github.com/users/rtomayko/following{/other_user}","gists_url":"https://api.github.com/users/rtomayko/gists{/gist_id}","starred_url":"https://api.github.com/users/rtomayko/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/rtomayko/subscriptions","organizations_url":"https://api.github.com/users/rtomayko/orgs","repos_url":"https://api.github.com/users/rtomayko/repos","events_url":"https://api.github.com/users/rtomayko/events{/privacy}","received_events_url":"https://api.github.com/users/rtomayko/received_events","type":"User","site_admin":false},"created_at":"2009-03-06T21:35:42Z","updated_at":"2009-03-06T21:35:42Z","body":"+1\n"}]'
+    http_version: 
   recorded_at: Wed, 12 Jul 2017 02:15:17 GMT
 recorded_with: VCR 2.9.3
