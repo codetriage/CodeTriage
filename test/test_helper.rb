@@ -50,7 +50,7 @@ OmniAuth.config.add_mock(:github, {
 VCR.configure do |c|
   # This 'allow' should be temporary, work towards covering
   # everything via vcr because github rate limits
-  c.allow_http_connections_when_no_cassette = false
+  c.allow_http_connections_when_no_cassette = true
   c.cassette_library_dir = 'test/vcr_cassettes'
   c.hook_into :webmock
 
