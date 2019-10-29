@@ -3,6 +3,7 @@
 class PopulateIssuesJob < RepoBasedJob
   def perform(repo)
     @repo = repo
+    @time_now = Time.now.utc
     populate_multi_issues!
   end
 
@@ -18,6 +19,18 @@ class PopulateIssuesJob < RepoBasedJob
 
   attr_reader :repo
 
+  def pr_attached_with_issue?(pull_request_hash)
+    # issue_hash['pull_request'] has following structure
+    #    pull_request: {
+    #                    html_url: null,
+    #                    diff_url: null,
+    #                    patch_url: null
+    #                  }
+    # When all the values are nil, PR is not attached with the issue
+    return false if pull_request_hash.blank?
+    pull_request_hash.values.uniq != [nil]
+  end
+
   def populate_issues(page_number)
     fetcher = repo.issues_fetcher
     fetcher.page = page_number
@@ -32,33 +45,26 @@ class PopulateIssuesJob < RepoBasedJob
         raise "Error grabbing issues status: #{fetcher.status}, repo_id: #{repo.id}.\nExpected result to be an array of hashes but is #{fetcher.as_json}"
       end
 
-      issue_number_to_github_hash = {}
+      upsert_mega_array = []
       fetcher.as_json.each do |github_issue_hash|
-        issue_number = github_issue_hash['number']
-        issue_number_to_github_hash[issue_number] = github_issue_hash
+        last_touched_at = github_issue_hash['updated_at'] ? DateTime.parse(github_issue_hash['updated_at']) : nil
+        pr_attached = pr_attached_with_issue?(github_issue_hash['pull_request'])
+
+        upsert_mega_array << {
+          repo_id: @repo.id,
+          title: github_issue_hash['title'],
+          url: github_issue_hash['url'],
+          state: github_issue_hash['state'],
+          html_url: github_issue_hash['html_url'],
+          number: github_issue_hash['number'],
+          pr_attached: pr_attached,
+          last_touched_at: last_touched_at,
+          updated_at: @time_now,
+          created_at: @time_now
+        }
       end
 
-      # Update issues that do exist
-      issues = Issue
-               .where("number in (?)", issue_number_to_github_hash.keys)
-               .where(repo_id: repo.id)
-
-      issues.each do |issue|
-        issue_hash = issue_number_to_github_hash.fetch(issue.number)
-        issue.update_from_github_hash!(issue_hash)
-      end
-
-      # TODO fix, some issues have duplicate numbers in tests
-      # We should ideally delete in the first loop
-      # but cannot for now due to tests
-      issues.each do |issue|
-        issue_number_to_github_hash.delete(issue.number)
-      end
-
-      # Create issues that didn't
-      issue_number_to_github_hash.each_value do |issue_hash|
-        Issue.create_from_github_hash!(issue_hash, repo: @repo)
-      end
+      Issue.upsert_all(upsert_mega_array, unique_by: [:number, :repo_id])
 
       !fetcher.last_page?
     end
