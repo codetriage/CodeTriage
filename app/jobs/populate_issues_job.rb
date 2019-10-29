@@ -59,7 +59,8 @@ class PopulateIssuesJob < RepoBasedJob
           number: github_issue_hash['number'],
           pr_attached: pr_attached,
           last_touched_at: last_touched_at,
-          updated_at: @time_now
+          updated_at: @time_now,
+          created_at: @time_now
         }
       end
 
