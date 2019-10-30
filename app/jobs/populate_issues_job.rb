@@ -52,19 +52,21 @@ class PopulateIssuesJob < RepoBasedJob
 
         upsert_mega_array << {
           repo_id: @repo.id,
+          pr_attached: pr_attached,
+          last_touched_at: last_touched_at,
+          updated_at: @time_now,
+          created_at: @time_now,
           title: github_issue_hash['title'],
           url: github_issue_hash['url'],
           state: github_issue_hash['state'],
           html_url: github_issue_hash['html_url'],
-          number: github_issue_hash['number'],
-          pr_attached: pr_attached,
-          last_touched_at: last_touched_at,
-          updated_at: @time_now,
-          created_at: @time_now
+          number: github_issue_hash['number']
         }
       end
 
-      Issue.upsert_all(upsert_mega_array, unique_by: [:number, :repo_id])
+      if upsert_mega_array.any?
+        Issue.upsert_all(upsert_mega_array, unique_by: [:number, :repo_id])
+      end
 
       !fetcher.last_page?
     end
