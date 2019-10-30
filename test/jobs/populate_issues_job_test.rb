@@ -8,6 +8,15 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
     PopulateIssuesJob.perform_now(repos(:rails_rails))
   end
 
+  test "Works when there's no issues" do
+    stub_request(:any, "https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues?direction=desc&page=1&sort=comments&state=open")
+      .to_return({ body: [].to_json, status: 200 })
+
+    repo = repos(:issue_triage_sandbox)
+
+    PopulateIssuesJob.perform_now(repo)
+  end
+
   test "#populate_multi_issues creates issues" do
     repo = repos(:issue_triage_sandbox)
     repo.issues.where(state: 'open').delete_all
