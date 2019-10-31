@@ -28,6 +28,7 @@ module DocsDoctor
           @yard_objects = []
           @classes ||= []
           @base_path = base
+          @time_now = Time.now.utc
         end
 
         def root_path
@@ -40,8 +41,14 @@ module DocsDoctor
         end
 
         def store(repo)
-          @yard_objects.each do |obj|
-            store_entity(obj, repo)
+          while @yard_objects.any?
+            mega_upsert_method_array = []
+            @yard_objects.pop(50).each do |obj|
+              h = hash_for_entity(obj, repo)
+              mega_upsert_method_array << h if h
+            end
+            DocMethod.upsert_all(mega_upsert_method_array,
+              unique_by: [:repo_id, :name, :path])
           end
         end
 
@@ -49,7 +56,7 @@ module DocsDoctor
         # YARD::CodeObjects::ClassObject
         # YARD::CodeObjects::ConstantObject
         # YARD::CodeObjects::MethodObject
-        def store_entity(obj, repo)
+        def hash_for_entity(obj, repo)
           if obj.is_a? YARD::CodeObjects::MethodObject
             # attr_writer, attr_reader don't need docs
             # document original method instead
@@ -57,17 +64,25 @@ module DocsDoctor
             skip_write = obj.is_attribute? || obj.is_alias? || (obj.respond_to?(:is_constructor?) && obj.is_constructor?)
             skip_read = obj.docstring.strip.eql? ":nodoc:"
 
-            method = repo.doc_methods.where(name: obj.name, path: obj.path).first_or_initialize
-            method.assign_attributes(line: obj.line, file: obj.file, skip_write: skip_write, skip_read: skip_read) # line and file will change, do not want to accidentally create duplicate methods
-            unless method.save
-              Rails.logger.debug "Could not store YARD object, missing one or more properties: #{method.errors.inspect}"
-              return false
-            end
+            doc_method_hash = {
+              name: obj.name,
+              path: obj.path,
+              line: obj.line,
+              file: obj.file,
+              skip_write: skip_write,
+              skip_read: skip_read,
+              comment: obj.docstring,
+              has_comment: obj.docstring.present?,
+              repo_id: repo.id,
+              created_at: @time_now,
+              updated_at: @time_now
+            }
 
-            method.doc_comments.where(comment: obj.docstring).first_or_create if obj.docstring.present?
-          else
-            Rails.logger.debug "Skipping storing non-method: #{obj.inspect}"
-            return true
+            if doc_method_hash[:file] && doc_method_hash[:name] && doc_method_hash[:path]
+              return doc_method_hash
+            else
+              return nil
+            end
           end
         end
 

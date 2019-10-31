@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_194525) do
+ActiveRecord::Schema.define(version: 2019_10_31_144636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -68,9 +68,11 @@ ActiveRecord::Schema.define(version: 2019_10_29_194525) do
     t.boolean "skip_write", default: false
     t.boolean "active", default: true
     t.boolean "skip_read", default: false
+    t.boolean "has_comment"
+    t.text "comment"
     t.index ["repo_id", "doc_comments_count"], name: "index_doc_methods_on_repo_id_and_doc_comments_count"
     t.index ["repo_id", "id"], name: "index_doc_methods_on_repo_id_and_id"
-    t.index ["repo_id", "name", "path"], name: "index_doc_methods_on_repo_id_and_name_and_path"
+    t.index ["repo_id", "name", "path"], name: "index_doc_methods_on_repo_id_and_name_and_path", unique: true
   end
 
   create_table "issue_assignments", id: :serial, force: :cascade do |t|
