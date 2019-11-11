@@ -926,7 +926,7 @@ GEM
     execjs (2.7.0)
     faker (2.7.0)
       i18n (>= 1.6, < 1.8)
-    faraday (0.16.2)
+    faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
     flamegraph (0.9.5)
@@ -1120,7 +1120,7 @@ GEM
       tilt
     scout_apm (2.6.2)
       parser
-    sentry-raven (2.11.3)
+    sentry-raven (2.12.2)
       faraday (>= 0.7.6, < 1.0)
     sidekiq (6.0.3)
       connection_pool (>= 2.2.2)
