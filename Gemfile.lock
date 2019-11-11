@@ -74,7 +74,7 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
-    autoprefixer-rails (9.7.0)
+    autoprefixer-rails (9.7.1)
       execjs
     aws-eventstream (1.0.3)
     aws-partitions (1.220.0)
@@ -1201,7 +1201,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails (~> 9.7.0)
+  autoprefixer-rails (~> 9.7.1)
   aws-sdk (~> 3)
   babel-transpiler
   barnes
