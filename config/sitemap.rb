@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Set the host name for URL creation
-require 'aws-sdk'
+require 'aws-sdk-s3'
 
 if ENV['BUCKETEER_BUCKET_NAME']
 
