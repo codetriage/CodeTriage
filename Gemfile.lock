@@ -354,7 +354,7 @@ GEM
       tilt
     scout_apm (2.6.3)
       parser
-    sentry-raven (2.12.2)
+    sentry-raven (2.12.3)
       faraday (>= 0.7.6, < 1.0)
     sidekiq (6.0.3)
       connection_pool (>= 2.2.2)
