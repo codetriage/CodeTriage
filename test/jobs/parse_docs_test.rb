@@ -3,21 +3,19 @@
 require 'test_helper'
 
 class ParseDocsTest < ActiveJob::TestCase
-  test "Can parse yard docs in a fork" do
+  test "Can parse yard docs" do
     repo = repos(:get_process_mem)
     assert_equal 0, repo.doc_methods.count
 
     parser = DocsDoctor::Parsers::Ruby::Yard.new(
       get_process_mem_disk_location
     )
-    parser.in_fork do
-      parser.process
-      parser.store(repo)
+    parser.process
+    parser.store(repo)
 
-      refute_equal 0, repo.doc_methods.count
+    refute_equal 0, repo.doc_methods.count
 
-      assert DocMethod.where(repo_id: repo).where(path: "GetProcessMem#initialize").any?
-    end
+    assert DocMethod.where(repo_id: repo).where(path: "GetProcessMem#initialize").any?
   end
 
   test "Does not error" do
