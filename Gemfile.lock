@@ -393,6 +393,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stackprof (0.2.15)
+    symbol-fstring (0.1.0)
     temple (0.8.2)
     test-prof (0.10.1)
     the_lone_dyno (1.0.0)
@@ -502,6 +503,7 @@ DEPENDENCIES
   sprockets!
   sprockets-rails
   stackprof
+  symbol-fstring
   test-prof
   the_lone_dyno
   uglifier (>= 1.0.3)
