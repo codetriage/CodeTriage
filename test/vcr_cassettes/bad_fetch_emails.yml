@@ -58,6 +58,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
-    http_version: 
+    http_version:
   recorded_at: Sat, 08 Jul 2017 02:26:14 GMT
 recorded_with: VCR 2.9.3

@@ -60,6 +60,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3/oauth_authorizations/#check-an-authorization"}'
-    http_version: 
+    http_version:
   recorded_at: Mon, 20 Aug 2018 18:26:43 GMT
 recorded_with: VCR 2.9.3
