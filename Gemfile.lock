@@ -392,7 +392,7 @@ GEM
     stackprof (0.2.13)
     statsd-ruby (1.4.0)
     temple (0.8.2)
-    test-prof (0.10.0)
+    test-prof (0.10.1)
     the_lone_dyno (1.0.0)
       hey_you (~> 0.1.1)
     thor (0.20.3)
