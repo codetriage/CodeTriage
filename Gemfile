@@ -121,4 +121,3 @@ gem 'barnes'
 gem 'puma_worker_killer'
 gem 'rake'
 gem 'rails_autoscale_agent'
-
