@@ -89,7 +89,7 @@ gem 'the_lone_dyno'
 gem 'sidekiq'
 gem 'sinatra', '~> 2.0.7'
 
-gem 'aws-sdk-s3', '~> 1.54.0'
+gem 'aws-sdk-s3', '~> 1.59.0'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
 
