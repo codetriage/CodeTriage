@@ -358,7 +358,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.6.5)
+    scout_apm (2.6.6)
       parser
     sentry-raven (2.12.3)
       faraday (>= 0.7.6, < 1.0)
@@ -495,7 +495,7 @@ DEPENDENCIES
   rubocop-performance
   sassc
   sassc-rails
-  scout_apm (~> 2.6.5)
+  scout_apm (~> 2.6.6)
   sentry-raven
   sidekiq
   simplecov
