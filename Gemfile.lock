@@ -362,7 +362,7 @@ GEM
       parser
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
-    sidekiq (6.0.3)
+    sidekiq (6.0.4)
       connection_pool (>= 2.2.2)
       rack (>= 2.0.0)
       rack-protection (>= 2.0.0)
