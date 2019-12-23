@@ -166,7 +166,7 @@ GEM
     erubi (1.9.0)
     excon (0.71.0)
     execjs (2.7.0)
-    faker (2.8.1)
+    faker (2.9.0)
       i18n (>= 1.6, < 1.8)
     faraday (0.17.0)
       multipart-post (>= 1.2, < 3)
