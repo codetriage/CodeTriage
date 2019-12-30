@@ -117,7 +117,7 @@ gem 'minitest', '5.13.0'
 gem 'sitemap_generator'
 gem 'premailer-rails'
 
-gem 'barnes'
+# gem 'barnes'
 gem 'puma_worker_killer'
 gem 'rake'
 gem 'rails_autoscale_agent', github: 'adamlogic/rails_autoscale_agent', branch: 'puma'

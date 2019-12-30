@@ -104,9 +104,6 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    barnes (0.0.7)
-      multi_json (~> 1)
-      statsd-ruby (~> 1.1)
     bcrypt (3.1.13)
     benchmark-ips (2.7.2)
     bindex (0.8.1)
@@ -396,7 +393,6 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     stackprof (0.2.15)
-    statsd-ruby (1.4.0)
     temple (0.8.2)
     test-prof (0.10.1)
     the_lone_dyno (1.0.0)
@@ -444,7 +440,6 @@ DEPENDENCIES
   autoprefixer-rails (~> 9.7.3)
   aws-sdk-s3 (~> 1.59.0)
   babel-transpiler
-  barnes
   bluecloth
   bootsnap
   bourbon
