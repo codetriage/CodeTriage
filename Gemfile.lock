@@ -520,7 +520,7 @@ DEPENDENCIES
   yard (~> 0.9.20)
 
 RUBY VERSION
-   ruby 2.7.0p-1
+   ruby 2.6.5p114
 
 BUNDLED WITH
-   2.1.0.pre.3
+   2.1.2
