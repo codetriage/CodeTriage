@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/adamlogic/rails_autoscale_agent.git
-  revision: 2068f272e642746c4293a55270f28c346842c19e
+  revision: 2a4e100f8e3326cb2a0f43f2cfe7f4cba5b55d13
   branch: puma
   specs:
     rails_autoscale_agent (0.7.0)
@@ -405,7 +405,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     ttfunk (1.5.1)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
