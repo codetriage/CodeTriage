@@ -395,7 +395,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.14)
+    stackprof (0.2.15)
     statsd-ruby (1.4.0)
     temple (0.8.2)
     test-prof (0.10.1)
