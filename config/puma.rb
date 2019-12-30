@@ -41,6 +41,6 @@ before_fork do
   PumaWorkerKiller.enable_rolling_restart # Default is every 6 hours
 end
 
-on_worker_boot do
-  Barnes.start
-end
+# on_worker_boot do
+#   Barnes.start
+# end
