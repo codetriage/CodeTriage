@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/adamlogic/rails_autoscale_agent.git
-  revision: 2a4e100f8e3326cb2a0f43f2cfe7f4cba5b55d13
+  revision: fe040973cfea6b8d4d51779bdeb3ae447a9c1343
   branch: puma
   specs:
     rails_autoscale_agent (0.7.0)
@@ -182,7 +182,7 @@ GEM
     heapy (0.1.4)
     hey_you (0.1.1)
     htmlentities (4.3.4)
-    i18n (1.7.0)
+    i18n (1.7.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jmespath (1.4.0)
