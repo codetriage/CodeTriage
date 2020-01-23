@@ -34,6 +34,7 @@ class ReposController < RepoBasedController
 
   def create
     parse_params_for_repo_info
+    check_params
     @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first unless params_blank?
     @repo ||= Repo.new(repo_params)
     if @repo.save
@@ -121,6 +122,14 @@ class ReposController < RepoBasedController
       params[:repo][:name]      = url_array.pop || ""
       params[:repo][:user_name] = url_array.pop || ""
     end
+  end
+
+  def check_params
+    flash[:error] = "Invalid Github repo or username." if invalid_char?(params[:repo][:user_name]) || invalid_char?(params[:repo][:name])
+  end
+
+  def invalid_char?(param)
+    !!(param =~ /[?=]/)
   end
 
   def params_blank?
