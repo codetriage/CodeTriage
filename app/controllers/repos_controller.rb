@@ -113,14 +113,13 @@ class ReposController < RepoBasedController
   def parse_params_for_repo_info
     return unless params[:url]
     params[:repo] ||= {}
-    if params[:url] =~ /^https:\/\/github\.com\/([^\/]*)\/([^\/]*)\/?$/
-      params[:repo][:user_name] = $1.to_s
-      params[:repo][:name]      = $2.to_s
-    else
-      url_array = params[:url].split("/")
-      params[:repo][:name]      = url_array.pop || ""
-      params[:repo][:user_name] = url_array.pop || ""
-    end
+
+    params[:url].gsub!(/(.*)github\.com\//, "")
+    params[:url].gsub!(/\?(.*)/, "")
+
+    url_array = params[:url].split("/")
+    params[:repo][:name]      = url_array.pop || ""
+    params[:repo][:user_name] = url_array.pop || ""
   end
 
   def params_blank?
