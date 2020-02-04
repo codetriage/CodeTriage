@@ -14,6 +14,13 @@ GIT
       nio4r (~> 2.0)
 
 GIT
+  remote: https://github.com/rack/rack.git
+  revision: 11f732451ca6a2cb7a541a3c65f16f7b456eb024
+  branch: memoize-header-hash
+  specs:
+    rack (2.2.0)
+
+GIT
   remote: https://github.com/rails/sprockets.git
   revision: b1d2da88bb4e0bd35025288360f8f774a09998aa
   specs:
@@ -271,7 +278,6 @@ GEM
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
-    rack (2.0.8)
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
@@ -475,6 +481,7 @@ DEPENDENCIES
   pry
   puma!
   puma_worker_killer
+  rack!
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
