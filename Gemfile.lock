@@ -7,6 +7,13 @@ GIT
       activesupport (>= 3.2)
 
 GIT
+  remote: https://github.com/jeremyevans/rack.git
+  revision: ceb016493d3cd6065b445f914c2f56e1084a5591
+  branch: utils-indifferent
+  specs:
+    rack (2.2.0)
+
+GIT
   remote: https://github.com/puma/puma.git
   revision: 7e691845ddf602609c676d0ea8bb729e3b4d6c93
   specs:
@@ -271,7 +278,6 @@ GEM
     puma_worker_killer (0.1.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7, < 5)
-    rack (2.0.8)
     rack-canonical-host (0.2.3)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
@@ -475,6 +481,7 @@ DEPENDENCIES
   pry
   puma!
   puma_worker_killer
+  rack!
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
