@@ -13,24 +13,35 @@ $(document).ready(function(){
     updateQueryStringParam("language", language);
     removeQueryStringParam("page");
 
-    $.ajax({
-      url: document.URL,
-      headers: {
-        Accept :        "application/json; charset=utf-8",
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      beforeSend: function () {
-        // go
-      },
-    }).done(function(data) {
-      $('.repo-list-with-pagination').html(data["html"]);
-    }).fail(function(data){
-      console.log(data);
-    });
+    reloadRepos();
 
     return false;
   });
+
+
+    $(".search-field").keyup(function(){
+        updateQueryStringParam("query", $(".search-field").val());
+        removeQueryStringParam("page");
+        reloadRepos();
+    });
 })
+
+function reloadRepos() {
+    $.ajax({
+        url: document.URL,
+        headers: {
+            Accept :        "application/json; charset=utf-8",
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        beforeSend: function () {
+            // go
+        },
+    }).done(function(data) {
+        $('.repo-list-with-pagination').html(data["html"]);
+    }).fail(function(data){
+        console.log(data);
+    });
+}
 
 function baseUrl() {
   return [location.protocol, '//', location.host, location.pathname].join('');
