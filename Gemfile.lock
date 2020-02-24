@@ -228,7 +228,7 @@ GEM
       sass (>= 3.3)
       thor (~> 0.19)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     normalize-rails (4.1.1)
     oauth2 (1.4.2)
