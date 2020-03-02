@@ -253,7 +253,7 @@ GEM
     parser (2.7.0.2)
       ast (~> 2.4.0)
     pdf-core (0.7.0)
-    pg (1.2.0)
+    pg (1.2.2)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
