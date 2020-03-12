@@ -4,5 +4,7 @@
 
 require 'rbtrace'
 
+require 'rack/freeze'
+
 require ::File.expand_path('../config/environment', __FILE__)
 run CodeTriage::Application
