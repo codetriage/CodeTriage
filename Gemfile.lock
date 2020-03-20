@@ -8,9 +8,10 @@ GIT
 
 GIT
   remote: https://github.com/puma/puma.git
-  revision: 7e691845ddf602609c676d0ea8bb729e3b4d6c93
+  revision: 17b33a150b96d8bd94645de5b1dc08f9ebe00297
+  branch: wjordan-promote
   specs:
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
 
 GIT
