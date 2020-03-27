@@ -91,6 +91,8 @@ It might not work; you'll need to force push because rebase essentially "overwri
 $ git push --force-with-lease origin <branchname>
 ```
 
+> Note: You should only ever force push to branches you're using for development, never force push to master.
+
 This command will overwrite whatever you've got on that branch on `origin`. The `lease` part makes this slightly safer. If someone else modified your branch (say, by clicking the "update branch" button) while you were working, then it will stop you from overwriting their work.
 
 ## Okay but what __is__ rebase
@@ -146,7 +148,7 @@ Once you're back to where you started from, consider making a backup branch, try
 
 In addition to "rebase," there is also something called "squash." If someone has asked you to "rebase and squash," it likely means they want you to fix your change conflicts and then squash your commits.
 
-To understand how to [squash your commits](https://www.codetriage.com/squash_commits), you can [read our guide](https://www.codetriage.com/squash_commits).
+To understand how to [squash your commits](https://www.codetriage.com/squash), you can [read our guide](https://www.codetriage.com/squash).
 
 <% if !current_user %>
 

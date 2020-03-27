@@ -5,6 +5,11 @@ class UniversityController < ApplicationController
 
   def show
     case params[:id]
+    when "squash"
+      @page_title = "Please squash your commits"
+      set_title(@page_title)
+      set_description("What on earth does squashing commits mean and how do you do it? Find out the what, why, and how of git squashs here.")
+      render 'squash'
     when "rebase"
       @page_title = "Please Rebase your commits"
       set_title(@page_title)
