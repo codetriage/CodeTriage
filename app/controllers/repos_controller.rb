@@ -7,7 +7,9 @@ class ReposController < RepoBasedController
   before_action :default_format
 
   def new
-    @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
+    @repo = Repo.new(user_name: params[:user_name], name: params[:name])
+    @full_name = @repo.name && @repo.user_name ? +"#{@repo.user_name}/#{@repo.name}" : nil
+    @full_name.prepend("https://github.com/") if @full_name
     @repo_sub = RepoSubscription.new
   end
 
@@ -30,6 +32,9 @@ class ReposController < RepoBasedController
 
     set_title("Help Contribute to #{@repo.full_name} - #{@repo.language}")
     set_description("Discover the easiest way to get started contributing to #{@repo.name} with our free community tools. #{@repo.subscribers_count} developers and counting")
+  rescue ActiveRecord::RecordNotFound
+    user_name, name = params[:full_name].split("/")
+    redirect_to new_repo_url(user_name: user_name, name: name), notice: "Repo #{params[:full_name].inspect} is not added to CodeTriage yet, add it!"
   end
 
   def create
