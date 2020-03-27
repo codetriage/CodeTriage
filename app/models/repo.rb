@@ -16,8 +16,7 @@ class Repo < ActiveRecord::Base
   has_many :doc_methods, dependent: :destroy
   delegate :open_issues, to: :issues
 
-  before_validation :downcase_name, :strip_whitespaces
-  before_save :set_full_name
+  before_validation :set_full_name!, :downcase_name, :strip_whitespaces
   after_create :background_populate_issues!, :update_repo_info!, :background_populate_docs!
 
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
@@ -217,8 +216,12 @@ class Repo < ActiveRecord::Base
     self.user_name.downcase!
   end
 
-  def set_full_name
-    self.full_name = "#{user_name}/#{name}"
+  def set_full_name!
+    if self.full_name && user_name.blank?
+      self.user_name, self.name = self.full_name.split("/")
+    else
+      self.full_name = "#{user_name}/#{name}"
+    end
   end
 
   def strip_whitespaces

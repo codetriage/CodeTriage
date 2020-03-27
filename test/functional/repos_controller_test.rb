@@ -7,9 +7,9 @@ class ReposControllerTest < ActionController::TestCase
   include ActiveJob::TestHelper
 
   test 'responds with 404 if repo does not exist' do
-    assert_raise(ActiveRecord::RecordNotFound) {
-      get :show, params: { full_name: 'foo/bar' }
-    }
+    get :show, params: { full_name: 'foo/bar' }
+
+    assert_redirected_to new_repo_url(user_name: "foo", name: "bar")
   end
 
   test 'trying to create repo without logged in will redirect to login page' do

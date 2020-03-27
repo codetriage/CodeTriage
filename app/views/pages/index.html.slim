@@ -1,12 +1,37 @@
-.hero
-  h1.hero-title-primary Help out your favorite open source projects and become a better developer while doing it.
-  = cache(:hero_title_secondary, expires_in: 1.hour) do
-    h2.hero-title-secondary Pick your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{number_with_delimiter(Repo.count, delimiter: ',')} open source repos using CodeTriage.
-    h2.hero-title-secondary =link_to "What is CodeTriage?", what_path
+/ .hero
+/   h1.hero-title-primary Help out your favorite open source projects and become a better developer while doing it.
+/   = cache(:hero_title_secondary, expires_in: 1.hour) do
+/     h2.hero-title-secondary Pick your favorite repos to receive a different open issue in your inbox every day. Fix the issue and everybody wins. #{number_with_delimiter(User.count, delimiter: ',')} developers are working on #{number_with_delimiter(Repo.count, delimiter: ',')} open source repos using CodeTriage.
+/     h2.hero-title-secondary =link_to "What is CodeTriage?", what_path
 
-  - unless user_signed_in?
-      = link_to user_github_omniauth_authorize_path, class: 'button'
-        | Sign up with GitHub
+/   - unless user_signed_in?
+/       = link_to user_github_omniauth_authorize_path, class: 'button'
+/         | Sign up with GitHub
+
+.hero
+  h1.hero-title-primary Triage Open Source Issues, Squash COVID-19
+  h2.hero-title-secondary There's more interest then ever in contributing to healthcare and emergency response related open-source projects. Here's a few we've found:
+
+.repos-list-wrapper
+  .types-filter-wrapper
+    label.types-filter-label Filter list<span> by Language</span>:
+    = render "down"
+    a.types-filter-button
+      = params["language"] || "Select Language"
+
+    ul.types-filter
+      = cache(:language_list, expires_in: 1.hour) do
+        - Repo.select("DISTINCT language").map(&:language).compact.sort.each do |lang|
+          - unless lang.nil?
+            li = link_to lang, "#", data: { toggle: "tab", language: lang }
+
+  section.repo-list-with-pagination
+    = render "repos_with_pagination", repos: @covid_repos
+
+.hero
+  h2.hero-title-secondary To add more COVID-19 related projects please <a href="#">submit a PR</a> to the CodeTriage project.
+  br
+  h2.hero-title-secondary = link_to "What is CodeTriage?", what_path
 
 hr.section-break
 
@@ -20,7 +45,6 @@ hr.section-break
 
 .repos-list-wrapper
   h2.repos-list-title Open source projects on GitHub that need your help.
-  - lang_index = 0
   .types-filter-wrapper
     label.types-filter-label Filter list<span> by Language</span>:
     = render "down"
@@ -36,5 +60,3 @@ hr.section-break
   section.repo-list-with-pagination
     = render "repos_with_pagination", repos: @repos
 
-/ = link_to user_github_omniauth_authorize_path, class: 'button center'
-/   | Load More

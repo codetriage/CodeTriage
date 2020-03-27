@@ -3,6 +3,15 @@
 class PagesController < ApplicationController
   before_action :set_cache_headers, only: [:index]
 
+  def get_covid_repos
+    covid_repos = Repo.where(full_name: COVID_REPOS)
+    if (language = valid_params[:language] || current_user.try(:favorite_languages))
+      covid_repos = covid_repos.where(language: language)
+    end
+
+    covid_repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
+  end
+
   # Renders the about page view
   def what
     render "what"
@@ -19,6 +28,7 @@ class PagesController < ApplicationController
   def index
     set_title("Get Started Contributing to Open Source Projects")
     set_description(description)
+    @covid_repos = get_covid_repos
 
     @repos = Repo.with_some_issues
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
