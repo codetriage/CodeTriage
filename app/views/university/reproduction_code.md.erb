@@ -1,0 +1,57 @@
+## Please Provide Reproduction Code
+
+**What is Reproduction code?** A way to reliably trigger a bug or demonstrate bad behavior in a contained, easily executable package.
+
+**What isn't Reproduction code?:** Repro code is not a step-by-step story of things you did to trigger the error, such as "I clicked this link" or "I entered this command" or "I compiled this code." While such descriptions can sometimes be helpful, they're often missing crucial contexts that might require guessing on the part of the person debugging. Chances are if your "reproduction" doesn't involve source control, it's not "reproduction code."
+
+**Why should I make a Reproduction?** Before someone can fix a bug, they need to understand why it happens. While descriptions can help, the golden standard for debugging code is to be able to reproduce the bug. The easier it is to reproduce the bug, the shorter the debugging cycles will take, and the faster it can be fixed.
+
+- An example could be: Creating a new "clean" repository on GitHub that includes all code, declares dependencies, and instructions necessary to see the behavior.
+- An example could be: Adding a failing test added to the repo
+
+A specialized case of "reproduction code" is an [example app](https://www.codetriage.com/example_app) if you're the open-source library is a framework for application development.
+
+**Does that mean I should send my whole application over when I open a bug report?** Please no. Reproduction code is best when there's a minimal amount of code necessary to reproduce the issue. The more extra stuff there is, the harder it may be to separate what's causing the bug versus what's just there.
+
+**Is a series of shell commands in an issue description reproduction code?** Instead of making a full-on reproduction committed to source control, it might be tempting to provide a bunch of shell commands instead. While a handful of shell commands is better than nothing,  there's an extremely high chance that the person debugging won't be able to reproduce your issue. When this happens, they have to ask for clarification. This back-and-forth process takes lots of energy and wastes everyone's time. Instead, it's better to provide an executable reproduction from the beginning.
+
+## How to make reproduction code
+
+1. Start with a clean repository with no other features.
+2. Add whatever code is necessary to demonstrate the issue.
+3. Add instructions to the README describing how to execute the code.
+4. Push the code somewhere public such as GitHub.
+5. Bonus: Give the repository to a friend or co-worker. See if they can reproduce the problem without any instructions other than what's in the README.
+6. Finally: Give a link to the reproduction code to a maintainer (usually through an issue).
+
+## Get Help Faster
+
+If you want the issue fixed as fast as possible, then you should try to help the maintainers as much as possible. Even if it takes extra time for you, it will ultimately lead to your issues getting fixed faster.
+
+## Sometimes writing a Reproduction case Fixes the Problem
+
+When a bug isn't in the library, but instead in your code - then an example app will help you find and fix it faster.
+
+If you end up finding and fixing a bug in your code, consider re-reading the documentation and seeing if that behavior of the library is unclear. Consider sending a documentation PR.
+
+## Spread the word
+
+If you see an open bug report that does not have a working reproduction ask them for some reproduction code!
+
+Better yet, send them a link to this page to help them understand why and how to make one!
+
+<% if !current_user %>
+
+## What is CodeTriage?
+
+CodeTriage is the easiest way to get started contributing to open source.
+
+Sign up, subscribe to repos you want to help, and we send you contribution ideas in your inbox. Easy Peazy. If you want to know more read <a href="what">What is CodeTriage</a>.
+
+
+<br />
+<center>
+  <%= link_to "Sign up via GitHub", user_github_omniauth_authorize_path, class: 'button' %>
+</center>
+
+<% end %>

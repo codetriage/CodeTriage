@@ -13,6 +13,7 @@ CodeTriage::Application.routes.draw do
 
   resources :university, only: [:show]
   get 'example_app' => 'university#show', id: 'example_app'
+  get 'reproduction' => 'university#show', id: 'reproduction'
 
   devise_for :users, skip: [:registration],
                      :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
