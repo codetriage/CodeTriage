@@ -12,21 +12,21 @@ $(document).ready(function(){
     $(".types-filter-button").html(language);
     updateQueryStringParam("language", language);
     removeQueryStringParam("page");
-
-    $.ajax({
-      url: document.URL,
-      headers: {
-        Accept :        "application/json; charset=utf-8",
-        "Content-Type": "application/json; charset=utf-8"
-      },
-      beforeSend: function () {
-        // go
-      },
-    }).done(function(data) {
-      $('.repo-list-with-pagination').html(data["html"]);
-    }).fail(function(data){
-      console.log(data);
-    });
+    document.location = document.URL;
+//     $.ajax({
+//       url: document.URL,
+//       headers: {
+//         Accept :        "application/json; charset=utf-8",
+//         "Content-Type": "application/json; charset=utf-8"
+//       },
+//       beforeSend: function () {
+//         // go
+//       },
+//     }).done(function(data) {
+//       $('.repo-list-with-pagination').html(data["html"]);
+//     }).fail(function(data){
+//       console.log(data);
+//     });
 
     return false;
   });
