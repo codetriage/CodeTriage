@@ -7,7 +7,23 @@
 # 4) Save the file in the UI and submit a PR
 # 5) Repeat
 #
-# Here's some ideas: https://github.com/soroushchehresa/awesome-coronavirus
 COVID_REPOS = %W{
   nextstrain/ncov
+  jcl5m1/ventilator
+  CSSEGISandData/COVID-19
+  nextstrain/auspice
+  nextstrain/augur
+  nextstrain/janus
+  nextstrain/fauna
+  nextstrain/nextstrain.org
+  neherlab/covid19_scenarios
+  neherlab/covid19_scenarios
+  mhdhejazi/CoronaTracker
+  ahmadawais/corona-cli
+  ushahidi/platform
+  ushahidi/ushahidi_web
+  HospitalRun/hospitalrun
+  HospitalRun/hospitalrun-frontend
+  HospitalRun/hospitalrun-server
+  learningequality/kolibri
 }
