@@ -7,6 +7,7 @@
 # 4) Save the file in the UI and submit a PR
 # 5) Repeat
 #
+# Here's some ideas: https://github.com/soroushchehresa/awesome-coronavirus
 COVID_REPOS = %W{
   nextstrain/ncov
 }
