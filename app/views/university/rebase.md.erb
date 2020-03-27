@@ -1,0 +1,165 @@
+If you've contributed a pull request to an open-source project and someone says, "please rebase your code," it usually means that there are changes on the master branch that isn't on your branch. Huh? How. When you first started developing, you checked out a new branch:
+
+```
+$ git checkout -b <my-sweet-branch-name>
+```
+
+When you did that, it took a copy of what's on the `master` branch and ported it over to your branch. Then you made your changes and submitted your PR. While you were working though, code kept getting merged into master.
+
+When that happened, there might have been some conflicting changes. For example, maybe you renamed a method that someone else renamed. Common sources of conflicts are fixing typos and whitespace as well as updating CHANGLOG.md documents. If there's a conflict you might see this UI or something like it in GitHub:
+
+![](https://www.dropbox.com/s/6e5iln734ihh7up/Screenshot%202020-03-26%2020.59.11.png?raw=1)
+
+That means that git isn't 100% certain that it knows how to apply your changes onto the master branch due to the conflicts.
+
+All that is to say, when someone says, "please rebase your code," they either want you to click that "update branch" button and resolve the conflicts in the website UI, or they want you to do it locally on your machine and then push up the results.
+
+If you use the Web UI then you'll need to pull down the changes so you can keep making changes locally:
+
+```
+$ git pull --rebase origin <my-sweet-branch-name>
+```
+
+> Note: You can see your branch name by running `git branch`, it's the one with the star (`*`) next to it.
+
+If the conflict is too large or complicated it might be helpful to be able to use your normal code editor to resolve the conflicts instead of the web UI.
+
+## How do I "rebase" my code locally
+
+Assuming your PR is against the `master` branch, you can "rebase" by running:
+
+```
+$ git pull --rebase <giturl> master
+```
+
+Where `<giturl>` is the URL of the source repo, such as `https://github.com/rails/rails/`. You can also use a remote instead of specifying the full URL, for example when I make changes to Rails I make them on my branch `github.com/schneems/rails` I have this set as my `origin` branch:
+
+```
+$ git config --get remote.origin.url
+https://github.com/schneems/rails.git
+```
+
+I want to be able to pull from `rails/rails` so I can run:
+
+```
+$ git remote add upstream https://github.com/rails/rails.git
+```
+
+Once I verify that my remote is correct:
+
+```
+$ git config --get remote.upstream.url
+https://github.com/rails/rails.git
+```
+
+> Note: You need to use the URL of the project you're working on, not Rails. Unless you're working on Rails.
+
+Then I can now use the `upstream` remote to rebase:
+
+```
+$ git pull --rebase upstream master
+```
+
+## Fix conflicts
+
+If there are conflicts, you can see them via `git status`. Update the conflicts, then `git add` the files, but do not commit them. When you're done fixing conflicts run:
+
+```
+$ git rebase --continue
+```
+
+If you have multiple commits on your branch, then you might be prompted to fix conflicts multiple times. Repeat the process until git tells you you're don
+If there are conflicts, you can see them via `git status`. Update the conflicts, then `git add` the files, but do not commit them. When you're done fixing conflicts run:
+
+```
+$ git rebase --continue
+```
+
+If you have multiple commits on your branch, then you might be prompted to fix conflicts multiple times. Repeat the process until git tells you you're done.
+
+## Pushf when you're done
+
+Once the conflicts have been resolved and you're happy with your changes, you can push your code back up to your branch. But if you try:
+
+```
+$ git push origin <branchname>
+```
+
+It might not work; you'll need to force push because rebase essentially "overwrites history." You can force push safer by using the `--force-with-lease` option:
+
+```
+$ git push --force-with-lease origin <branchname>
+```
+
+This command will overwrite whatever you've got on that branch on `origin`. The `lease` part makes this slightly safer. If someone else modified your branch (say, by clicking the "update branch" button) while you were working, then it will stop you from overwriting their work.
+
+## Okay but what __is__ rebase
+
+Remember when you first got started, and you made a new branch based off of master. What `--rebase` does is it figuratively rewinds time and pretends that instead of using the code on `master` from a few weeks ago (or whenever you created your branch) that it would use the current code on master. After it's got that squared away, rebase will try to "apply" your commits to the code on master one at a time, sometimes it doesn't quite know what to do, and that's what causes conflicts that you have to resolve manually.
+
+The reason that a "force" push is required is that every git commit generates its signature. This signature is called a "ref" and sometimes a "sha". This value is based on the code change, as well as the commit message, and the time when the commit was made. That way git can know that if two SHAs are the same that they're the same commit. In addition to looking at things inside of your commit, it also looks at all of the history of the commits that came before it to generate the SHA. So if you insert a commit before the one you made, as far as git is concerned, you're "re-writing history". So even though when you `git push` you might think you're pushing the exact same commits (perhaps with some fixed conflicts), the git tool looks at the SHAs and says "nope, not the same thing".
+
+There's not a way to say, "hey git, this commit is actually a replacement for this other one," so instead, the only option is to "force" push.
+
+## Oh No, I messed something up!
+
+I love time travel sci-fi, but they're always based on screwing up the past or messing up the future, you can certainly alter the git timeline for the worse accidentally with rebase. So how do you fix it when that happens?
+
+If this is the first time you've ever rebased, you can make a backup copy of your branch for safety:
+
+```
+$ git checkout -b <my-cool-brancname>-backup
+```
+
+Then if you get into trouble, you can always delete your original branch and replace it with your backup.
+
+If you've already bungled something, stop. Take a deep breath. Don't freak out. Even when you're "overwriting history," git never really loses history. But...the caveat is that if it's *recent* history, it's easier to fix, that means fumbling around and typing in random git commands is not the best path forwards.
+
+Git keeps a copy of all the changes you've ever done in something called the "reflog" as I'm typing this here's what the CodeTriage reflog looks like:
+
+```
+$ git reflog
+586a426 (HEAD -> schneems/reproduction-docs) HEAD@{0}: commit: Grammarly
+20d1788 HEAD@{1}: commit: Grammarly
+9ca049a HEAD@{2}: commit: Please provide reproduction code
+f2c2205 (origin/master, origin/HEAD, master) HEAD@{3}: checkout: moving from master to schneems/reproduction-docs
+f2c2205 (origin/master, origin/HEAD, master) HEAD@{4}: rebase finished: returning to refs/heads/master
+f2c2205 (origin/master, origin/HEAD, master) HEAD@{5}: pull --rebase origin master: checkout f2c2205a8cb0a7f8e9a5e4a95c856d67ee932494
+d500dc5 (heroku/master) HEAD@{6}: checkout: moving from schneems/rack-freeze to master
+c974b7f (origin/schneems/rack-freeze, schneems/rack-freeze) HEAD@{7}: rebase finished: returning to refs/heads/schneems/rack-freeze
+C974b7f (origin/schneems/rack-freeze, schneems/rack-freeze) HEAD@{8}: pull --rebase origin master: Rack freeze
+```
+
+You can see I made a commit titled simply "Grammarly" and then I amended head to the same commit (basically I added extra code and used `git commit --amend`. If I wanted to undo that change, I could use the information in the reflog.
+
+I could move my branch back in time to `20d1788` by running:
+
+```
+$ git reset --hard 20d1788
+```
+
+> Careful, don't copy and paste my commands here. Read what I wrote, understand what `reflog` is showing you, and what resetting does.
+
+Once you're back to where you started from, consider making a backup branch, try to figure out where the rebase when wrong, and then try again.
+
+## What is rebase and squash?
+
+In addition to "rebase," there is also something called "squash." If someone has asked you to "rebase and squash," it likely means they want you to fix your change conflicts and then squash your commits.
+
+To understand how to [squash your commits](https://www.codetriage.com/squash_commits), you can [read our guide](https://www.codetriage.com/squash_commits).
+
+<% if !current_user %>
+
+## What is CodeTriage?
+
+CodeTriage is the easiest way to get started contributing to open source.
+
+Sign up, subscribe to repos you want to help, and we send you contribution ideas in your inbox. Easy Peazy. If you want to know more read <a href="what">What is CodeTriage</a>.
+
+
+<br />
+<center>
+  <%= link_to "Sign up via GitHub", user_github_omniauth_authorize_path, class: 'button' %>
+</center>
+
+<% end %>
