@@ -1,0 +1,266 @@
+If you've contributed a pull request to an open-source project and someone says, "please squash your commits," it usually means that you have multiple commits. Still, the maintainer wants them to be consolidated into one commit. You might have also been asked to "rebase and squash," in which case, you'll want to [rebase your commits](https://www.codetriage.com/rebase) first.
+
+So how do you "squash" commits? Somewhat confusingly, you use a tool called "rebase interactive."
+
+## Squash Tutorial - Setup
+
+To demonstrate how to squash multiple commits, we will make a tutorial codebase with a few commits and then squash them into one.
+
+Make a new clean directory:
+
+```
+$ cd /tmp
+$ mkdir squash-tutorial
+$ cd squash-tutorial
+```
+
+Now initialize git and create a file:
+
+```
+$ git init .
+$ echo "I love" >> README.md
+$ git add README.md
+$ git commit -m first
+```
+
+When you're done you should be able to see your git history:
+
+```
+$ git log
+commit a169df2e308a684bfa519479084529dbd961f9e7 (HEAD -> master)
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:17:56 2020 -0500
+
+    first
+```
+
+Now we'll make a few more commits:
+
+```
+$ echo "open" >> README.md
+$ git add README.md; git commit -m open
+$ echo "source" >> README.md
+$ git add README.md; git commit -m source
+$ echo "yay" >> README.md
+$ git add README.md; git commit -m yay
+```
+
+Now you've got a little readme:
+
+```
+$ cat README.md
+I love
+open
+source
+yay
+```
+
+And several commits:
+
+```
+$ git log
+commit 1a27210291040a7ace1cc94298baa2be8cca0f41 (HEAD -> master)
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:26:27 2020 -0500
+
+    yay
+
+commit c72477662a1a8d3e155d52531693cdd2b8ce0568
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:20:24 2020 -0500
+
+    source
+
+commit 2d1760379b7835642361710e0c699e1107739104
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:20:17 2020 -0500
+
+    open
+
+commit a169df2e308a684bfa519479084529dbd961f9e7
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:17:56 2020 -0500
+
+    first
+```
+
+But those don't need to be multiple commits. They could be just one. The solution: squash
+
+## Squash tutorial - rebase interactive
+
+Now that you've got several commits that you want to squash into one, the first thing to determine is how many commits you want to squash. In this case, we want to turn the last 3 commits into one single commit. In git, `HEAD` is shorthand for "the last commit on this branch," and we can use another shorthand `HEAD~3` to indicate the last three commits from the head. We'll use this syntax along with `git rebase -i` (short for interactive) to squash these commits:
+
+```
+$ git rebase -i HEAD~3
+```
+
+When you run this command an $EDITOR window will pop up, you tell git what to do by modifying the text in the window and then closing it. The default editor for many systems is `vim` but you can configure it to use your editor. When I run the rebase command, here's how my editor looks:
+
+```
+pick 2d17603 open
+pick c724776 source
+pick 1a27210 yay
+
+# Rebase a169df2..1a27210 onto a169df2 (3 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup <commit> = like "squash", but discard this commit's log message
+# x, exec <command> = run command (the rest of the line) using shell
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c <commit> to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+#
+# Note that empty commits are commented out
+```
+
+>Note: your version might look slightly different depending on your editor, or version of vim
+
+At the top, you can see the last 3 commits, and below that, there are some instructions. You might have noticed that "squash" is an option. We can tag each commit with "squash" (or simply "s") that we want to merge into the one before it, in our case we want to merge the last two ("yay" and "source") into the third ("open") to do that the file might look like:
+
+```
+pick 2d17603 open
+s c724776 source
+s 1a27210 yay
+
+# ...
+```
+
+Now when you save this file and close it you'll be prompted to write a new commit message for all three commits:
+
+```
+# This is a combination of 3 commits.
+# This is the 1st commit message:
+
+open
+
+# This is the commit message #2:
+
+source
+
+# This is the commit message #3:
+
+yay
+
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+#
+# Date:      Fri Mar 27 10:20:17 2020 -0500
+#
+# interactive rebase in progress; onto a169df2
+# Last commands done (3 commands done):
+#    squash c724776 source
+#    squash 1a27210 yay
+# No commands remaining.
+# You are currently rebasing branch 'master' on 'a169df2'.
+#
+# Changes to be committed:
+# modified:   README.md
+```
+
+I changed mine to be simply:
+
+```
+Hey, y'all, I love open source, yay!
+
+# ------------------------ >8 ------------------------
+# Do not modify or remove the line above.
+# Everything below it will be ignored.
+#
+# Date:      Fri Mar 27 10:20:17 2020 -0500
+#
+# interactive rebase in progress; onto a169df2
+# Last commands done (3 commands done):
+#    squash c724776 source
+#    squash 1a27210 yay
+# No commands remaining.
+# You are currently rebasing branch 'master' on 'a169df2'.
+#
+# Changes to be committed:
+# modified:   README.md
+```
+
+Now when I save that then I get this result back on my command line (where I originally started the `git rebase -i` command:
+
+```
+[detached HEAD 79e904d] Hey, y'all I love open source, yay!
+ Date: Fri Mar 27 10:20:17 2020 -0500
+ 1 file changed, 3 insertions(+)
+Successfully rebased and updated refs/heads/master.
+```
+
+If you inspect the git history, you'll see your last 3 commits have turned into only one:
+
+```
+$ git log
+commit 79e904d5fb62589fd6a588d32a99d7ad32465c91 (HEAD -> master)
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:20:17 2020 -0500
+
+Hey, y'all, I love open source, yay!
+
+commit a169df2e308a684bfa519479084529dbd961f9e7
+Author: schneems <developer@example.com>
+Date:   Fri Mar 27 10:17:56 2020 -0500
+
+    first
+```
+
+And that's it!
+
+## Push after squash
+
+Since you've modified your git history, if you previously pushed to a branch for a PR then you'll need to force push:
+
+
+```
+$ git push --force-with-lease origin <branchname>
+```
+
+> Note: You should only ever force push to branches you're using for development, never force push to master.
+
+## Why tho?
+
+Now that you know how to "squash" commits, when and why should you use this? In my standard day-to-day work, I like to make many small commits so I can see what changed, essentially these commits help me understand *how* my changes over time have worked. When you lump all that work into one big commit, that history gets lost, so if I must squash, usually I squash when I'm done or close to being done with my work.
+
+But why, tho? It helps to understand why a maintainer might want you to squash if you understand a few tasks maintainers might want to do:
+
+- Blame code: When you use `git blame`, it's a tool to see what commit changed what line of code. Maintainers might use this to dig through contribution history when debugging. If all of your changes are in one single commit, then it becomes easier to see at a glance why a specific line of code was changed and how it interacts with the others.
+- Praise commit count: For better or worse, commit count is used as a proxy for "contribution amount" in many open-source projects. In addition to putting all your logic in one single commit, by forcing all contributions to be squashed to a single commit, it's a way of preventing people from "padding" their count with unnecessary commits. I've seen people make PRs with 3-4 commits to only change one line of code before. Requiring squashing somewhat cuts down on this practice and encourages developers to focus on clarity instead of count for their commits.
+- Rollback and reverting: If a severe bug makes its way into master, it can be easier to revert the code if it's only in one single commit.
+- Clear commit messages: When I make multiple small commit messages, they're usually about _what_ code I'm changing instead of _why_ I'm changing the code. Typically one undescriptive sentence like "work in progress" or "fix bug" or "make it work" these add nothing to a project. Instead, a good commit message should focus on "why" a change was made, what was the context? What was the world like before the commit, and what is it like after the commit? The code in the commit answers the "how," but often years down the line, the question of "why" is much harder to answer.
+
+When I work on open-source, I often squash my commits when it makes sense to me to group them into logical changes. I think of it as tidying my code into a neat little box. One way for sure to know that you need to squash commits is if a developer asks, "can you please squash your commits."
+
+If you want to save the maintainer some time, you can go and search for the word "squash" in pull requests in a project. For instance, in github.com/rails/rails, this word has been typed in issues over a thousand times. Reading a few PRs will let you know if they're asking to squash commits or if they're simply saying, "I squashed that bug." Doing a little issue sleuthing before requiring a maintainer to ask you to squash can save them a bit of time, and help give you some more context from the project.
+
+<% if !current_user %>
+
+## What is CodeTriage?
+
+CodeTriage is the easiest way to get started contributing to open source.
+
+Sign up, subscribe to repos you want to help, and we send you contribution ideas in your inbox. Easy Peazy. If you want to know more read <a href="what">What is CodeTriage</a>.
+
+
+<br />
+<center>
+  <%= link_to "Sign up via GitHub", user_github_omniauth_authorize_path, class: 'button' %>
+</center>
+
+<% end %>

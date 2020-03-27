@@ -1,7 +1,10 @@
 <p>
 Hello <%= @user.github %>,<br /><br />
 
-You signed up to make a difference by triaging issues in github, which is great, but you didn't actually subscribe to any projects. To fix this just click on a link below, sign in, then click on the giant "subscribe" button:<br /><br />
+You signed up to make a difference by triaging open-source issues, which is great, but you also need to subscribe to some projects before you can start making an impact.
+If you're not quite sure where to start, you can read our article on <%= link_to "How to pick an open-source repo to help", university_url(:picking_a_repo) %>. There's also other great guides on our <%= link_to "Open Source University page", university_index_url %>.<br /><br />
+
+While it's better to pick a repo that is meaningful to you, here's a few suggestions of projects needing help:<br /><br />
 
 Help the repo with the most issues:
 <h3><%= link_to @most_repo.full_name, repo_url(@most_repo) %></h3><br />
@@ -12,9 +15,11 @@ Help a repo in need:
 Help a random repo:
 <h3><%= link_to @random_repo.full_name, repo_url(@random_repo) %></h3><br />
 
-If you don't like any of those <%= link_to "add your own", new_repo_url %> repo, <%= link_to "browse existing " , root_url %> repos, or you can even subscribe to <%= link_to "CodeTriage itself", File.join(root_url, "/codetriage/codetriage") %>. The important part is that you pick something to triage, or you will get this same email next week, maybe with different repos.<br /><br />
+To subscribe click on a link, sign in, then click on the giant "subscribe" button. If you don't pick a repo or two to help with, you'll keep getting this nudge email, though maybe with different suggested repos.<br /><br />
 
-To unsubscribe entirely <%= link_to "delete your account", user_url(@user) %> but don't do that, subscribe to an issue above and do some good in the world. I believe in you.<br /><br />
+You can also <%= link_to "add your own", new_repo_url %> repo, <%= link_to "browse existing " , root_url %> repos, or you can even subscribe to help <%= link_to "CodeTriage itself", File.join(root_url, "/codetriage/codetriage") %>. The important part is that you pick something to triage.<br /><br />
+
+To unsubscribe entirely, <%= link_to "delete your account", user_url(@user) %>, but don't do that, subscribe to project instead. I believe in you.<br /><br />
 
 --<br />
 <%= link_to "Richard Schneeman", "https://www.schneems.com" %>
