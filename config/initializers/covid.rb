@@ -26,4 +26,5 @@ COVID_REPOS = %W{
   HospitalRun/hospitalrun-frontend
   HospitalRun/hospitalrun-server
   learningequality/kolibri
+  svs/covid19-supply-chain
 }
