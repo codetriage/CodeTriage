@@ -1,6 +1,5 @@
 language: ruby
 dist: trusty
-sudo: false
 cache: bundler
 
 branches:
