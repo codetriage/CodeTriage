@@ -327,7 +327,7 @@ GEM
     redis-namespace (1.7.0)
       redis (>= 3.0.4)
     regexp_parser (1.6.0)
-    render_async (2.1.4)
+    render_async (2.1.5)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
