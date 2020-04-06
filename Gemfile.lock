@@ -411,7 +411,7 @@ GEM
     valid_email (0.1.3)
       activemodel
       mail (>= 2.6.1)
-    vcr (5.0.0)
+    vcr (5.1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (4.0.1)
