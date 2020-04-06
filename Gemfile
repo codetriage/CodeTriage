@@ -99,7 +99,7 @@ gem 'sprockets-rails'
 gem 'babel-transpiler'
 
 gem 'scout_apm', '~> 2.6.6'
-gem 'yard', '~> 0.9.20'
+gem 'yard', '~> 0.9.24'
 
 gem 'oj'
 gem 'rack-canonical-host'
