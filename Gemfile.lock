@@ -170,7 +170,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
     flamegraph (0.9.5)
-    foreman (0.86.0)
+    foreman (0.87.1)
     get_process_mem (0.2.5)
       ffi (~> 1.0)
     git_hub_bub (1.0.1)
