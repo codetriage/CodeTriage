@@ -13,7 +13,7 @@ class SendDailyTriageEmailJob < UserBasedJob
     return "Not time to send"           if before_email_time_of_day?(user)
     return "No subscriptions"           if user.repo_subscriptions.empty?
     return "Sent email within 24 hours" if email_sent_today?(user)
-    return "Email backoff"              if skip_daily_email?(user)
+    return "Email backoff"              if emails_rate_limited?(user)
     return false
   end
 
@@ -52,13 +52,13 @@ class SendDailyTriageEmailJob < UserBasedJob
     user.repo_subscriptions.where("last_sent_at >= ?", Time.current.beginning_of_day).any?
   end
 
-  def skip_daily_email?(user)
-    skip = email_decider(user).skip?(user.days_since_last_email)
+  def emails_rate_limited?(user)
+    skip = email_rate_limiter(user).skip?(user.days_since_last_email)
     logger.debug "User #{user.github}: skip: #{skip.inspect}, days_since_last_clicked: #{user.days_since_last_clicked}, days_since_last_email: #{user.days_since_last_email}"
     skip
   end
 
-  def email_decider(user)
+  def email_rate_limiter(user)
     EmailRateLimit.new(user.days_since_last_clicked, minimum_frequency: user.email_frequency)
   end
 
