@@ -1,15 +1,15 @@
 // JS for the buttons on the home page
 $(document).ready(function(){
   $(".types-filter-button").click(function() {
-    $(".types-filter").toggle();
+    $(this).parent().find('.types-filter').toggle();
   });
 
   $(".types-filter > li a").click(function(e){
     e.preventDefault();
 
-    $(".types-filter").hide();
+    $(this).parent().parent().parent().find(".types-filter").hide();
     var language = this.getAttribute("data-language");
-    $(".types-filter-button").html(language);
+    $(this).parent().parent().parent().find(".types-filter-button").html(language);
     updateQueryStringParam("language", language);
     removeQueryStringParam("page");
     document.location = document.URL;
