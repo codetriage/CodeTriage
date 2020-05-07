@@ -10,7 +10,8 @@ $(document).ready(function(){
     $(this).parent().parent().parent().find(".types-filter").hide();
     var language = this.getAttribute("data-language");
     $(this).parent().parent().parent().find(".types-filter-button").html(language);
-    updateQueryStringParam("language", language);
+    var queryKey = this.getAttribute("data-query");
+    updateQueryStringParam(queryKey, language);
     removeQueryStringParam("page");
     document.location = document.URL;
 //     $.ajax({
