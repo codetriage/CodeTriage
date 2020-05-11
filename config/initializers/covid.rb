@@ -28,4 +28,6 @@ COVID_REPOS = %W{
   learningequality/kolibri
   svs/covid19-supply-chain
   nytimes/covid-19-data
+  Leo1690/BtPedalClient
+  Leo1690/BtPedalServer
 }
