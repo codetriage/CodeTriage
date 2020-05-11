@@ -32,6 +32,10 @@ workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 #
 preload_app!
 
+nakayoshi_fork
+wait_for_less_busy_worker
+fork_worker
+
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
