@@ -32,7 +32,7 @@ workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 #
 preload_app!
 
-nakayoshi_fork
+nakayoshi_fork true
 wait_for_less_busy_worker
 fork_worker
 
