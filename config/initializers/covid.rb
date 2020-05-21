@@ -30,4 +30,5 @@ COVID_REPOS = %W{
   nytimes/covid-19-data
   Leo1690/BtPedalClient
   Leo1690/BtPedalServer
+  covid19india/covid19india-react
 }
