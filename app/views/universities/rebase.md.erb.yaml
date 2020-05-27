@@ -1,3 +1,9 @@
+---
+title: Please Rebase your commits
+description: What on earth does rebasing commits mean and how do you do it? Find out the what, why, and how of git rebases here.
+section: made-a-pr
+---
+
 If you've contributed a pull request to an open-source project and someone says, "please rebase your code," it usually means that there are changes on the master branch that isn't on your branch. Huh? How. When you first started developing, you checked out a new branch:
 
 ```

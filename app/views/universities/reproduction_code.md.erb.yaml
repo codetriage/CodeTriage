@@ -1,4 +1,9 @@
-## Please Provide Reproduction Code
+---
+title: Please Provide Reproduction Code
+description: Get answers for your open source bug reports faster by providing a code that reproduces your problem. Find out how.
+section: report-a-bug
+link_description: is a general-purpose article
+---
 
 **What is Reproduction code?** A way to reliably trigger a bug or demonstrate bad behavior in a contained, easily executable package.
 

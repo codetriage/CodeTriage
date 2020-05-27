@@ -2,11 +2,6 @@
 
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
 ruby '2.7.1'
 
 git_source :github do |name|
@@ -121,3 +116,4 @@ gem 'premailer-rails'
 gem 'puma_worker_killer'
 gem 'rake'
 gem 'rails_autoscale_agent', github: 'adamlogic/rails_autoscale_agent', branch: 'puma'
+gem 'frontmatter'

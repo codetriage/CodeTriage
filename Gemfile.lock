@@ -173,6 +173,9 @@ GEM
     ffi (1.12.2)
     flamegraph (0.9.5)
     foreman (0.87.1)
+    frontmatter (0.1.0)
+      activesupport
+      railties
     get_process_mem (0.2.5)
       ffi (~> 1.0)
     git_hub_bub (1.0.1)
@@ -463,6 +466,7 @@ DEPENDENCIES
   faker
   flamegraph
   foreman
+  frontmatter
   git_hub_bub
   jquery-rails
   launchy

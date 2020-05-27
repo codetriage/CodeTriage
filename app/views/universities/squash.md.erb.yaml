@@ -1,3 +1,9 @@
+---
+title: Please squash your commits
+description: What on earth does squashing commits mean and how do you do it? Find out the what, why, and how of git squashs here.
+section: made-a-pr
+---
+
 If you've contributed a pull request to an open-source project and someone says, "please squash your commits," it usually means that you have multiple commits. Still, the maintainer wants them to be consolidated into one commit. You might have also been asked to "rebase and squash," in which case, you'll want to [rebase your commits](https://www.codetriage.com/rebase) first.
 
 So how do you "squash" commits? Somewhat confusingly, you use a tool called "rebase interactive."

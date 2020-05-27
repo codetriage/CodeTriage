@@ -4,19 +4,22 @@ You want to help open-source. That's great. CodeTriage is a tool for helping you
 
 While CodeTriage helps by sending issues from repos, how do you pick the open-source repo to help?
 
-- **[Picking an open-source repo to help](university/picking_a_repo)**
+<% University.section("im-stuck").each do |university| %>
+- **<%= link_to university.title, university_path(university.slug) %>**
+<% end %>
 
 ## I want to report a bug
 
 When opening an issue about a bug, the number one thing anyone will want to know is: "how can I reproduce this problem." To help answer that question we've got some guides helping to explain what an excellent reproduction looks like and why:
 
-- **[Please Provide Reproduction Code](reproduction)** is a general-purpose article
-- **[Please Provide an Example App](example_app)** is a more specific case where the bug involves an "application," for instance, a Rails app.
+<% University.section("report-a-bug").each do |university| %>
+- **<%= link_to university.title, university_path(university.slug) %>** <%= university.link_description %>
+<% end %>
 
 ## I made a PR now what
 
 When you make a PR (Pull Request), the maintainer might ask you to do some housekeeping tasks such as "rebase and squash" your code. Don't worry. We can help explain some of this weird terminology and let you know what to do:
 
-- **[Rebase your code](rebase)**
-- **[Squash your commits](squash)**
-
+<% University.section("made-a-pr").each do |university| %>
+- **<%= link_to university.title, university_path(university.slug) %>**
+<% end %>

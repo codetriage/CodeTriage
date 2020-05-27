@@ -1,3 +1,10 @@
+---
+title: Please Provide an Example App
+description: Get answers for your open source bug reports faster by providing an example app. Find out how right here.
+section: report-a-bug
+link_description: is a more specific case where the bug involves an "application," for instance, a Rails app.
+---
+
 An example app is an application that is designed to reproduce a bug or demonstrate an issue.
 
 An example app is not a gigantic repo, your private source code, or telling someone a series of bash commands.
