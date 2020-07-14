@@ -384,9 +384,9 @@ GEM
       tilt (~> 2.0)
     sitemap_generator (6.1.0)
       builder (~> 3.0)
-    skylight (4.2.3)
-      skylight-core (= 4.2.3)
-    skylight-core (4.2.3)
+    skylight (4.3.1)
+      skylight-core (= 4.3.1)
+    skylight-core (4.3.1)
       activesupport (>= 4.2.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
@@ -441,7 +441,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.24)
-    zeitwerk (2.3.0)
+    zeitwerk (2.3.1)
 
 PLATFORMS
   ruby
