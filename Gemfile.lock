@@ -137,7 +137,7 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
-    css_parser (1.7.0)
+    css_parser (1.7.1)
       addressable
     dalli (2.7.10)
     derailed_benchmarks (1.7.0)
@@ -268,7 +268,7 @@ GEM
       addressable
       css_parser (>= 1.6.0)
       htmlentities (>= 4.0.0)
-    premailer-rails (1.10.3)
+    premailer-rails (1.11.1)
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     pry (0.13.1)
