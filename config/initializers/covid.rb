@@ -13,7 +13,7 @@ COVID_REPOS = %W{
   CSSEGISandData/COVID-19
   nextstrain/auspice
   nextstrain/augur
-  nextstrain/janus
+  nextstrain/cli
   nextstrain/fauna
   nextstrain/nextstrain.org
   neherlab/covid19_scenarios
