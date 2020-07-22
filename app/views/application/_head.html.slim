@@ -8,8 +8,8 @@ head
 
   = stylesheet_link_tag "application", media: "all"
 
-  link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"
-  link rel="icon" href="/favicon.ico" type="image/x-icon"
+  = favicon_link_tag 'favicon.ico', rel: 'shortcut icon', type: 'image/x-icon'
+  = favicon_link_tag 'favicon.ico', rel: 'icon', type: 'image/x-icon'
 
   <script src="//use.typekit.net/vyg4pus.js"></script>
   <script>try{Typekit.load({ async: true  });}catch(e){}</script>
