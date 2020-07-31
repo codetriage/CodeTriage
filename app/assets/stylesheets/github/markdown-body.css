@@ -183,6 +183,7 @@
     border-radius:3px
 }
 .markdown-body pre code,.markdown-body pre tt{
+    color:#6a737d;
     display:inline;
     max-width:auto;
     padding:0;
