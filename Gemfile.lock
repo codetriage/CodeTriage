@@ -1,10 +1,9 @@
 GIT
   remote: https://github.com/adamlogic/rails_autoscale_agent.git
-  revision: fe040973cfea6b8d4d51779bdeb3ae447a9c1343
+  revision: f1e2db8020c8c2e371c25df1602155b07dcef6f5
   branch: puma
   specs:
-    rails_autoscale_agent (0.7.0)
-      activesupport (>= 3.2)
+    rails_autoscale_agent (0.9.0)
 
 GIT
   remote: https://github.com/puma/puma.git
