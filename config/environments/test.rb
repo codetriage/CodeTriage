@@ -49,4 +49,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'example.com' }
 
   config.cache_store = :memory_store
+
+  # Create unlogged tables in test environment to speed up build
+  config.to_prepare do
+    ActiveRecord::ConnectionAdapters::PostgreSQLAdapter.create_unlogged_tables = true
+  end
 end
