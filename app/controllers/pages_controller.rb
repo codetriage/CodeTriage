@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def get_covid_repos
     covid_repos = Repo.where(full_name: COVID_REPOS)
-    if (language = valid_params[:language] || current_user.try(:favorite_languages))
+    if (language = valid_params[:language_covid] || current_user.try(:favorite_languages))
       covid_repos = covid_repos.where(language: language)
     end
 
@@ -63,7 +63,7 @@ class PagesController < ApplicationController
   end
 
   def valid_params
-    params.permit(:language, :per_page, :page)
+    params.permit(:language, :language_covid, :per_page, :page)
   end
 
   def set_cache_headers
