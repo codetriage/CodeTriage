@@ -39,6 +39,13 @@ div class="subpage-content-wrapper #{ @repo.weight }"
           = link_to issue_assignments_path(id: @repo_sub.id), class: 'button repo-action', method: :post do
             | Send me a new issue!
 
+    -if @repo_sub&.issues&.any?
+      section.help-triage.content-section
+        h2.content-section-title Jump to an Issue!
+        .repo-instructions If you prefer you can go straight into an issue from the project's repository.
+        = link_to jump_to_issue_path(repo_sub_id: @repo_sub.id), class: 'button repo-action', method: :get do
+          | Send me straight to an issue!
+
     section.help-triage.content-section
       - if @repo_sub.blank? || (@repo_sub.write.blank? && @repo_sub.read.blank?)
         h2.content-section-title Triage Docs!
