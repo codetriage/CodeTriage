@@ -56,7 +56,6 @@ group :development do
   gem 'bullet', require: false, github: 'flyerhzm/bullet'
   gem 'foreman'
   gem 'listen'
-  gem 'spring'
   gem 'web-console'
   gem 'memory_profiler'
 end
