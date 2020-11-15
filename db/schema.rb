@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_11_15_123025) do
     t.integer "repo_subscription_id"
     t.integer "doc_method_id"
     t.integer "doc_class_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean "clicked", default: false
     t.index ["repo_id"], name: "index_doc_assignments_on_repo_id"
     t.index ["repo_subscription_id", "doc_method_id"], name: "index_doc_assignments_on_repo_subscription_id_and_doc_method_id"
