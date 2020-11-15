@@ -19,7 +19,7 @@ gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '6.0.3.2'
+  gem 'rails', '6.1.0.rc1'
 end
 
 gem 'bluecloth'
@@ -53,7 +53,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'render_async', '~> 2.1'
 
 group :development do
-  gem 'bullet', require: false
+  gem 'bullet', require: false, github: 'flyerhzm/bullet'
   gem 'foreman'
   gem 'listen'
   gem 'spring'
@@ -111,7 +111,7 @@ gem 'redis-namespace'
 gem 'stackprof'
 gem 'flamegraph'
 gem 'prawn'
-gem 'skylight'
+gem 'skylight', '5.0.0.beta2'
 
 gem 'minitest', '5.14.1'
 gem 'sitemap_generator'
