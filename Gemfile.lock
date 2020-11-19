@@ -120,7 +120,7 @@ GEM
     benchmark-ips (2.7.2)
     bindex (0.8.1)
     bluecloth (2.2.0)
-    bootsnap (1.4.8)
+    bootsnap (1.5.1)
       msgpack (~> 1.0)
     bourbon (7.0.0)
       thor (~> 1.0)
