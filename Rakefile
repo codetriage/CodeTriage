@@ -3,6 +3,20 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
+if ENV["DEADLOCK_DEBUG"]
+  Thread.new do
+    loop do
+      sleep ENV["DEADLOCK_DEBUG"].to_f # seconds
+      puts
+      puts
+      puts
+      puts "## Deadlock Debug"
+      puts
+      Thread.list.each { |t| puts "=" * 80; puts t.backtrace }
+    end
+  end
+end
+
 require File.expand_path('../config/application', __FILE__)
 
 begin
