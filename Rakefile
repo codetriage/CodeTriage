@@ -109,7 +109,7 @@ Rake::Task["assets:precompile"].enhance do
   Rake::Task["db:schema:cache:dump"].invoke
 end
 
-
+Rake::Task["yarn:install"].clear
 
 namespace :yarn do
   desc "Install all JavaScript dependencies as specified via Yarn"
