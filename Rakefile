@@ -109,20 +109,3 @@ Rake::Task["assets:precompile"].enhance do
   Rake::Task["db:schema:cache:dump"].invoke
 end
 
-Rake::Task["yarn:install"].clear
-
-namespace :yarn do
-  desc "Install all JavaScript dependencies as specified via Yarn"
-  task :install do
-    # Install only production deps when for not usual envs.
-    valid_node_envs = %w[test development production]
-    node_env = ENV.fetch("NODE_ENV") do
-      valid_node_envs.include?(Rails.env) ? Rails.env : "production"
-    end
-    puts "========================"
-    puts({ "NODE_ENV" => node_env })
-    puts "#{Rails.root}/bin/yarn install --no-progress --frozen-lockfile"
-    puts system("which yarn")
-    system({ "NODE_ENV" => node_env }, "#{Rails.root}/bin/yarn install --no-progress --frozen-lockfile")
-  end
-end
