@@ -14,14 +14,6 @@ GIT
       uniform_notifier (~> 1.11)
 
 GIT
-  remote: https://github.com/puma/puma.git
-  revision: dc3b9b89c27d4681c7dce46906d0388ac6e9e25b
-  ref: dc3b9b89
-  specs:
-    puma (4.3.3)
-      nio4r (~> 2.0)
-
-GIT
   remote: https://github.com/rails/sprockets.git
   revision: dba2802f8d6b9f54e3a057350cadd149316d0da5
   specs:
@@ -283,6 +275,8 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.4)
+    puma (5.0.4)
+      nio4r (~> 2.0)
     puma_worker_killer (0.3.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7)
@@ -491,7 +485,7 @@ DEPENDENCIES
   prawn
   premailer-rails
   pry
-  puma!
+  puma
   puma_worker_killer
   rack-canonical-host
   rack-mini-profiler
@@ -532,7 +526,7 @@ DEPENDENCIES
   yard (~> 0.9.24)
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4
