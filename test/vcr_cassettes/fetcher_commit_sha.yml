@@ -81,6 +81,6 @@ http_interactions:
         => ''#FF389C'',\n           :''marker-fill'' => ''#FF389C'',\n           :''marker-symbol''
         => ''music'',\n-          :''marker-size'' => ''#{find_marker_size(venue)}''\n+          :''marker-size''
         => \"#{find_marker_size(venue)}\"\n         }\n       }\n     end"}]}'
-    http_version: 
+    http_version:
   recorded_at: Sat, 08 Jul 2017 22:01:13 GMT
 recorded_with: VCR 2.9.3

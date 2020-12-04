@@ -104,6 +104,6 @@ http_interactions:
         it''s looking much better - can you fix the guide and squash the commits and
         then I''ll merge it, thanks!"},{"url":"https://api.github.com/repos/rails/rails/issues/comments/11035945","html_url":"https://github.com/rails/rails/pull/8404#issuecomment-11035945","issue_url":"https://api.github.com/repos/rails/rails/issues/8404","id":11035945,"user":{"login":"freegenie","id":19538,"avatar_url":"https://avatars.githubusercontent.com/u/19538?v=3","gravatar_id":"","url":"https://api.github.com/users/freegenie","html_url":"https://github.com/freegenie","followers_url":"https://api.github.com/users/freegenie/followers","following_url":"https://api.github.com/users/freegenie/following{/other_user}","gists_url":"https://api.github.com/users/freegenie/gists{/gist_id}","starred_url":"https://api.github.com/users/freegenie/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/freegenie/subscriptions","organizations_url":"https://api.github.com/users/freegenie/orgs","repos_url":"https://api.github.com/users/freegenie/repos","events_url":"https://api.github.com/users/freegenie/events{/privacy}","received_events_url":"https://api.github.com/users/freegenie/received_events","type":"User","site_admin":false},"created_at":"2012-12-05T10:10:00Z","updated_at":"2012-12-05T10:10:00Z","body":"@pixeltrix
         Done! Many thanks to you for your precious review."}]'
-    http_version: 
+    http_version:
   recorded_at: Thu, 07 Apr 2016 17:26:09 GMT
 recorded_with: VCR 2.9.3
