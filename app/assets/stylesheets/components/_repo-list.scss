@@ -122,3 +122,8 @@
   @include position(absolute, null null $base-spacing null);
   color: $lightest-font-color;
 }
+
+.repo-item-code-helpers {
+  color: $lightest-font-color;
+  font-size: 12px;
+}

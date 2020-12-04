@@ -12,3 +12,6 @@ li class="repo-item #{ repo.weight }" data-language="#{ repo.language if repo.la
     - if repo.full_name.present?
       span.repo-item-full-name
         | (#{repo.full_name})
+
+    span.repo-item-code-helpers
+      | #{repo.amount_code_helpers} code helpers
