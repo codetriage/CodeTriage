@@ -112,7 +112,7 @@ class Repo < ActiveRecord::Base
     end
   end
 
-  def subscriber_count
+  def subscribers_count
     users.count
   end
 
