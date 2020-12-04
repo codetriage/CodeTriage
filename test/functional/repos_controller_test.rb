@@ -20,6 +20,11 @@ class ReposControllerTest < ActionController::TestCase
     assert_redirected_to user_github_omniauth_authorize_path(origin: "/repos")
   end
 
+  test 'responds with flash error message if repo name contains invalid characters (?=)' do
+    post :create, params: { repo: { name: 'codetriage', user_name: 'codetriage?=1' } }
+    assert_equal flash[:error], "Invalid Github repo or username."
+  end
+
   test 'do not send email for repo without issues' do
     sign_in users(:mockstar)
 
