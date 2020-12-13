@@ -110,7 +110,7 @@ gem 'redis-namespace'
 gem 'stackprof'
 gem 'flamegraph'
 gem 'prawn'
-gem 'skylight', '5.0.0.beta2'
+gem 'skylight', '~> 5.0.0.beta4'
 
 gem 'minitest', '5.14.1'
 gem 'sitemap_generator'
