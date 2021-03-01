@@ -112,7 +112,7 @@ gem 'flamegraph'
 gem 'prawn'
 gem 'skylight', '~> 5.0.0.beta4'
 
-gem 'minitest', '5.14.1'
+gem 'minitest', '5.14.4'
 gem 'sitemap_generator'
 gem 'premailer-rails'
 
