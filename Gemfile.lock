@@ -260,7 +260,7 @@ GEM
     parser (3.0.0.0)
       ast (~> 2.4.1)
     pdf-core (0.7.0)
-    pg (1.2.2)
+    pg (1.2.3)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
