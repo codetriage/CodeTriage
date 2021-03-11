@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/sprockets.git
-  revision: dba2802f8d6b9f54e3a057350cadd149316d0da5
+  revision: 8fe7ac3d115c9e9d678c9cc58940e1e003be73af
   specs:
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -133,7 +133,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     connection_pool (2.2.3)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
