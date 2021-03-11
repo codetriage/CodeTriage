@@ -17,8 +17,8 @@ nav.application-navigation
     - else
       li.application-navigation-list-item= link_to 'About', what_path
       li.application-navigation-list-item= link_to 'University', university_index_path
-      li.application-navigation-list-item= link_to 'Log in', user_github_omniauth_authorize_path
-      li.application-navigation-list-item= link_to 'Sign Up', user_github_omniauth_authorize_path
+      li.application-navigation-list-item= link_to 'Log in', user_github_omniauth_authorize_path, method: :post
+      li.application-navigation-list-item= link_to 'Sign Up', user_github_omniauth_authorize_path, method: :post
 
 div.application-logo
   = link_to root_path

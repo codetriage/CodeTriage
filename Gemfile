@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby '2.7.2'
+ruby ">= 2.7.2", "< 3.1"
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -24,12 +24,13 @@ end
 
 gem 'bluecloth'
 gem 'dalli'
-gem 'devise'
+gem 'devise', github: "heartcombo/devise"
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.1.0'
 gem 'maildown', '~> 3.3'
-gem 'omniauth', '~> 1.9.1'
+gem 'omniauth', '~> 2.0.3'
+gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-github'
 gem 'pg'
 gem 'puma'

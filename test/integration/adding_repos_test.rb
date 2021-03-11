@@ -40,11 +40,12 @@ class AddingReposTest < ActionDispatch::IntegrationTest
   end
 
   test "supports URL without github.com" do
+    visit "/"
     login_via_github
+
     VCR.use_cassette('my_repos') do
       visit "/"
       click_link "Submit a Repo"
-
       fill_in 'url', with: 'bemurphy/issue_triage_sandbox'
 
       click_button "Add Repo"
