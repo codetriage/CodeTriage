@@ -393,7 +393,7 @@ GEM
       tilt (~> 2.0)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
-    skylight (5.0.0.beta4)
+    skylight (5.0.1)
       activesupport (>= 5.2.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
@@ -509,7 +509,7 @@ DEPENDENCIES
   simplecov
   sinatra (~> 2.1.0)
   sitemap_generator
-  skylight (~> 5.0.0.beta4)
+  skylight (~> 5.0.1)
   slim-rails
   sprockets!
   sprockets-rails
