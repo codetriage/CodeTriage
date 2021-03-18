@@ -1,4 +1,4 @@
 //= link application.js
 //= link application.css
 //= link markdown.css
-//= link_directory ../images
+//= link_tree ../images

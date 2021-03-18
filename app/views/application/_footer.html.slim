@@ -2,17 +2,23 @@ footer.application-footer
   hr.section-break
   = link_to "Submit a Repo", new_repo_path, class: 'button footer-action'
 
-  p.credits
+  h2.credit-title Sponsors
+  section.credits
+    a href="https://ter.li/pi16r5" class="credits-link"
+      = image_tag "sponsors/scout.png", class: "credits-logo", alt: 'Scout logo (sponsors CodeTriage)'
+
+  h2.credit-title Credits
+  section.credits
     a href="https://www.schneems.com" class="credits-link"
-      = image_tag "schneems.svg", class: "credits-logo", alt: ''
+      = image_tag "schneems.svg", class: "credits-logo", alt: 'Schneems logo (created CodeTriage)'
       | Created by Schneems
 
     a href="https://thoughtbot.com" class="credits-link"
-      = image_tag "thoughtbot.svg", class: "credits-logo", alt: ''
+      = image_tag "thoughtbot.svg", class: "credits-logo", alt: 'Thoughtbot logo (donated some visual designer time)'
       | Designed by thoughtbot
 
     a href="https://www.heroku.com" class="credits-link"
-      = image_tag "heroku.svg", class: "credits-logo heroku-logo", alt: ''
+      = image_tag "heroku.svg", class: "credits-logo heroku-logo", alt: 'Heroku logo (app runs on the Heroku platform)'
       | Powered by Heroku
 
   p.housekeeping

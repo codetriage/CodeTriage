@@ -1,3 +1,4 @@
+
 .application-footer {
   margin-bottom: 4rem;
   text-align: center;
@@ -46,6 +47,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.credit-title {
+  color: $lightest-font-color;
+  font-size: 1.75rem;
+  text-align: center;
+  vertical-align: top;
 }
 
 .heroku-logo {
