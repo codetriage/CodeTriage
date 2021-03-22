@@ -196,7 +196,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     jwt (2.2.1)
-    kramdown (2.3.0)
+    kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -211,7 +211,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    maildown (3.2.0)
+    maildown (3.3.0)
       actionmailer (>= 4.0.0)
       kramdown-parser-gfm
     marcel (0.3.3)
@@ -475,7 +475,7 @@ DEPENDENCIES
   listen
   local_time (= 2.1.0)
   mail
-  maildown (~> 3.1)
+  maildown (~> 3.3)
   memory_profiler
   mime-types (~> 3.3)
   minitest (= 5.14.4)
