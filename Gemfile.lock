@@ -333,7 +333,7 @@ GEM
       msgpack (>= 0.4.3)
       optimist (>= 3.0.0)
     redis (4.2.5)
-    redis-namespace (1.7.0)
+    redis-namespace (1.8.1)
       redis (>= 3.0.4)
     regexp_parser (2.1.1)
     render_async (2.1.9)
