@@ -18,7 +18,7 @@
   </blockquote>
   <br />
   <center>
-    <%= link_to "Discover a new way to contribute", user_github_omniauth_authorize_path, class: 'button' %>
+    <%= link_to "Discover a new way to contribute", user_github_omniauth_authorize_path, method: :post, class: 'button' %>
   </center>
   <br />
   <p>
@@ -46,7 +46,7 @@
   </p>
   <br />
   <center>
-    <%= link_to "Get started now", user_github_omniauth_authorize_path, class: 'button' %>
+    <%= link_to "Get started now", user_github_omniauth_authorize_path, method: :post, class: 'button' %>
   </center>
   <br />
   <p>
@@ -66,7 +66,7 @@
   </p>
   <br />
   <center>
-    <%= link_to "Explore Open Source with CodeTriage", user_github_omniauth_authorize_path, class: 'button' %>
+    <%= link_to "Explore Open Source with CodeTriage", user_github_omniauth_authorize_path, method: :post, class: 'button' %>
   </center>
   <br />
     <p>
@@ -82,11 +82,11 @@
     CodeTriage is all about helping people get started and get more involved in Open Source. The service is a volunteer (and Open Source) effort. A huge thank you to <a href="https://github.com/codetriage/codetriage/graphs/contributors">all our contributors!</a>. If you have ideas for tools that can help people make impactful contributions to open source please let us know with an <a href="https://github.com/codetriage/codetriage/issues">issue</a>.
   </p>
   <p>
-    If you're not a <%= link_to "CodeTriage member already", user_github_omniauth_authorize_path %>, what are you waiting for? <%= link_to "Discover how to make your Open Source journey approachable and sustainable", user_github_omniauth_authorize_path %>. Get started!
+    If you're not a <%= link_to "CodeTriage member already", user_github_omniauth_authorize_path, method: :post %>, what are you waiting for? <%= link_to "Discover how to make your Open Source journey approachable and sustainable", user_github_omniauth_authorize_path %>. Get started!
   </p>
   <br />
   <center>
-    <%= link_to "Start Contributing Today", user_github_omniauth_authorize_path, class: 'button' %>
+    <%= link_to "Start Contributing Today", user_github_omniauth_authorize_path, method: :post, class: 'button' %>
   </center>
   <br />
 </div>

@@ -5,7 +5,7 @@
     h2.hero-title-secondary =link_to "What is CodeTriage?", what_path
 
   - unless user_signed_in?
-      = link_to user_github_omniauth_authorize_path, class: 'button'
+      = link_to user_github_omniauth_authorize_path, class: 'button', method: :post
         | Sign up with GitHub
 
 hr.section-break
