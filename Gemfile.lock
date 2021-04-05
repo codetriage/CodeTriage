@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 0cd72a56f984a7ff089246f87a8b259120545edd
+  revision: 5d5636f03ac19e8188d99c044d4b5e90124313af
   specs:
     devise (4.7.3)
       bcrypt (~> 3.0)
@@ -193,7 +193,7 @@ GEM
       thor
     hey_you (0.1.1)
     htmlentities (4.3.4)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     jquery-rails (4.4.0)
