@@ -15,9 +15,9 @@ GIT
 
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 0cd72a56f984a7ff089246f87a8b259120545edd
+  revision: 57d1a1d3816901e9f2cc26e36c3ef70547a91034
   specs:
-    devise (4.7.3)
+    devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -193,7 +193,7 @@ GEM
       thor
     hey_you (0.1.1)
     htmlentities (4.3.4)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     jquery-rails (4.4.0)
@@ -211,7 +211,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     local_time (2.1.0)
-    loofah (2.9.0)
+    loofah (2.9.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -227,7 +227,7 @@ GEM
     mime-types-data (3.2019.1009)
     mini_histogram (0.3.1)
     mini_mime (1.0.3)
-    mini_portile2 (2.5.0)
+    mini_portile2 (2.5.1)
     minitest (5.14.4)
     mocha (1.12.0)
     msgpack (1.4.2)
@@ -240,7 +240,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.5.7)
-    nokogiri (1.11.2)
+    nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     normalize-rails (8.0.1)
