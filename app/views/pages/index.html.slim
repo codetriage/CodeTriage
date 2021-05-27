@@ -22,10 +22,7 @@ hr.section-break
   h2.repos-list-title Open source projects on GitHub that need your help.
   .types-filter-wrapper
     label.types-filter-label Filter list<span> by Language</span>:
-    - if params["language"]
-      = render "clear"
-    - else
-      = render "down"
+    = render "down"
     a.types-filter-button
       = params["language"] || "Select Language"
 

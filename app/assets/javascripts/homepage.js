@@ -1,19 +1,7 @@
 // JS for the buttons on the home page
 $(document).ready(function(){
   $(".types-filter-button").click(function() {
-    // If the button icon is the down arrow, means we want to see
-    // the languages list
-    if(!!$(this).parent().find('.down-circle')[0]) {
-      // Toggle for the languages list
-      $(this).parent().find('.types-filter').toggle();
-    }
-    // If we have the clear button, then we remove the URL params
-    // to clear the language selection
-    else if(!!$(this).parent().find('.clear-circle')[0])  {
-      let url = new URL(document.location.href);
-      url.search = '';
-      location.replace(url.href);
-    }
+    $(this).parent().find('.types-filter').toggle();
   });
 
   $(".types-filter > li a").click(function(e){
