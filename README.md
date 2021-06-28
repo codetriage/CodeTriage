@@ -24,7 +24,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details about contributing and runnin
 
 ## Contact
 
-[Richard Schneeman](http://twitter.com/schneems)
+[Richard Schneeman](https://twitter.com/schneems)
 
 Licensed under MIT License.
 Copyright (c) 2012 Schneems.
