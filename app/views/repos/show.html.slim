@@ -54,12 +54,13 @@ div class="subpage-content-wrapper #{ @repo.weight }"
           .repo-instructions
             = form_for(@repo_sub, html: {class: 'email-amount'}) do |f|
               label Triage more docs! (Or less)
-              = f.label "Read Docs"
-              = f.select :read_limit, (0..20)
-              = f.submit "Save", class: 'save-amount'
-              = f.label "Write Docs"
-              => f.select :write_limit, (0..20)
-              = f.submit "Save", class: 'save-amount'
+              .read
+                = f.label "Read Docs"
+                = f.select :read_limit, (0..20)
+              .write
+                = f.label "Write Docs"
+                => f.select :write_limit, (0..20)
+                = f.submit "Save", class: 'save-amount'
 
       - if user_signed_in? && current_user.able_to_edit_repo?(@repo)
         section.content-section

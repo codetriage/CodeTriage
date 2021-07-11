@@ -56,6 +56,11 @@
     display: inline-block;
   }
 
+  .read {
+    float: left;
+    margin-right: 20px;
+  }
+
   .save-amount {
     background: none;
     color: $action-color;
