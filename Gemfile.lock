@@ -415,7 +415,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.16)
+    stackprof (0.2.17)
     temple (0.8.2)
     test-prof (1.0.2)
     the_lone_dyno (1.0.0)
