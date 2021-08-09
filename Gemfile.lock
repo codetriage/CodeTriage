@@ -229,7 +229,7 @@ GEM
     mini_mime (1.1.0)
     mini_portile2 (2.5.3)
     minitest (5.14.4)
-    mocha (1.12.0)
+    mocha (1.13.0)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -250,7 +250,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
-    oj (3.11.2)
+    oj (3.13.0)
     omniauth (2.0.3)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
@@ -402,7 +402,7 @@ GEM
       tilt (~> 2.0)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
-    skylight (5.0.1)
+    skylight (5.1.1)
       activesupport (>= 5.2.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
@@ -415,7 +415,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.16)
+    stackprof (0.2.17)
     temple (0.8.2)
     test-prof (1.0.2)
     the_lone_dyno (1.0.0)
@@ -519,7 +519,7 @@ DEPENDENCIES
   simplecov
   sinatra (~> 2.1.0)
   sitemap_generator
-  skylight (~> 5.0.1)
+  skylight (~> 5.1.1)
   slim-rails
   sprockets!
   sprockets-rails
