@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: https://github.com/flyerhzm/bullet.git
-  revision: 06f0d304cbb3b3f52d2dabb2574eb2e98f3b1ac9
+  revision: e44e37512d78352dca34d711ec9593e025cef080
   specs:
     bullet (6.1.4)
       activesupport (>= 3.0.0)
@@ -229,7 +229,7 @@ GEM
     mini_mime (1.1.0)
     mini_portile2 (2.5.3)
     minitest (5.14.4)
-    mocha (1.12.0)
+    mocha (1.13.0)
     msgpack (1.4.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -402,7 +402,7 @@ GEM
       tilt (~> 2.0)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
-    skylight (5.0.1)
+    skylight (5.1.1)
       activesupport (>= 5.2.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
@@ -415,7 +415,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stackprof (0.2.16)
+    stackprof (0.2.17)
     temple (0.8.2)
     test-prof (1.0.2)
     the_lone_dyno (1.0.0)
@@ -428,7 +428,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.0.0)
-    uniform_notifier (1.14.1)
+    uniform_notifier (1.14.2)
     valid_email (0.1.3)
       activemodel
       mail (>= 2.6.1)
@@ -519,7 +519,7 @@ DEPENDENCIES
   simplecov
   sinatra (~> 2.1.0)
   sitemap_generator
-  skylight (~> 5.0.1)
+  skylight (~> 5.1.1)
   slim-rails
   sprockets!
   sprockets-rails
