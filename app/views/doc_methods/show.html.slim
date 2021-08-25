@@ -19,9 +19,9 @@ div class="subpage-content-wrapper #{ @repo.weight }"
       p
         = link_to "Source ", @doc.to_github
         | |
-        = link_to " Google " , "https://www.google.com/search?q=#{URI.encode(@doc.path)}"
+        = link_to " Google " , "https://www.google.com/search?q=#{::URI::DEFAULT_PARSER.escape(@doc.path)}"
         | |
-        = link_to " Stack overflow ", "http://stackoverflow.com/search?q=#{URI.encode(@doc.path)}"
+        = link_to " Stack overflow ", "http://stackoverflow.com/search?q=#{::URI::DEFAULT_PARSER.escape(@doc.path)}"
 
     section.content-section
       h2.content-section-title Edit
