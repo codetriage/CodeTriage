@@ -19,7 +19,7 @@ gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '6.1.4'
+  gem 'rails', '6.1.4.1'
 end
 
 gem 'bluecloth'
@@ -89,7 +89,7 @@ gem 'the_lone_dyno'
 gem 'sidekiq'
 gem 'sinatra', '~> 2.1.0'
 
-gem 'aws-sdk-s3', '~> 1.89.0'
+gem 'aws-sdk-s3', '~> 1.100.0'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
 
