@@ -120,7 +120,7 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.16)
-    benchmark-ips (2.8.4)
+    benchmark-ips (2.9.1)
     bindex (0.8.1)
     bluecloth (2.2.0)
     bootsnap (1.7.7)
@@ -152,8 +152,8 @@ GEM
     css_parser (1.7.1)
       addressable
     dalli (2.7.11)
-    dead_end (1.1.6)
-    derailed_benchmarks (2.0.1)
+    dead_end (1.1.7)
+    derailed_benchmarks (2.1.1)
       benchmark-ips (~> 2)
       dead_end
       get_process_mem (~> 0)
@@ -177,7 +177,7 @@ GEM
       i18n (>= 1.6, < 2)
     faraday (0.17.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.15.3)
+    ffi (1.15.4)
     flamegraph (0.9.5)
     foreman (0.87.2)
     get_process_mem (0.2.7)
