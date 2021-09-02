@@ -251,7 +251,7 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     oj (3.13.3)
-    omniauth (2.0.3)
+    omniauth (2.0.4)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
       rack-protection
@@ -495,7 +495,7 @@ DEPENDENCIES
   neat (~> 1.7)
   normalize-rails
   oj
-  omniauth (~> 2.0.3)
+  omniauth (~> 2.0.4)
   omniauth-github
   omniauth-rails_csrf_protection
   pg
