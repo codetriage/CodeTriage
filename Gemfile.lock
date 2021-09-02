@@ -7,9 +7,9 @@ GIT
 
 GIT
   remote: https://github.com/flyerhzm/bullet.git
-  revision: 06f0d304cbb3b3f52d2dabb2574eb2e98f3b1ac9
+  revision: 371beece05a89c0acd6162a4406e6262a55a8d85
   specs:
-    bullet (6.1.4)
+    bullet (6.1.5)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
 
@@ -433,7 +433,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (2.0.0)
-    uniform_notifier (1.14.1)
+    uniform_notifier (1.14.2)
     valid_email (0.1.4)
       activemodel
       mail (>= 2.6.1)
