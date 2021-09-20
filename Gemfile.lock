@@ -100,8 +100,8 @@ GEM
     autoprefixer-rails (10.2.4.0)
       execjs
     aws-eventstream (1.2.0)
-    aws-partitions (1.494.0)
-    aws-sdk-core (3.120.0)
+    aws-partitions (1.503.0)
+    aws-sdk-core (3.121.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
@@ -109,11 +109,11 @@ GEM
     aws-sdk-kms (1.48.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sigv4 (~> 1.1)
-    aws-sdk-s3 (1.101.0)
+    aws-sdk-s3 (1.103.0)
       aws-sdk-core (~> 3, >= 3.120.0)
       aws-sdk-kms (~> 1)
-      aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.3.0)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.4.0)
       aws-eventstream (~> 1, >= 1.0.2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -466,7 +466,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails (~> 10.2.4)
-  aws-sdk-s3 (~> 1.101.0)
+  aws-sdk-s3 (~> 1.103.0)
   babel-transpiler
   bluecloth
   bootsnap
