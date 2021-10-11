@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: c82e4cf47b02002b2fd7ca31d441cf1043fc634c
+  revision: 8593801130f2df94a50863b5db535c272b00efe1
   specs:
     devise (4.8.0)
       bcrypt (~> 3.0)
@@ -240,7 +240,7 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
+    nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     normalize-rails (8.0.1)
