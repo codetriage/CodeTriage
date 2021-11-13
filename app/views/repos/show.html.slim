@@ -65,6 +65,11 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         section.content-section
           = link_to "Edit this repo", edit_repo_path(@repo), class: 'button full-width-action'
 
+
+    - if @repo_sub
+      section.content-section
+        = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging full-width-action', method: :delete, data: { confirm: 'Are you sure?' } do
+            | Stop Triaging
     - cache [@repo, "repo_subscribers"] do
       section.avatars.content-section
         h2.content-section-title
@@ -95,7 +100,3 @@ div class="subpage-content-wrapper #{ @repo.weight }"
           .tab-content class=(@docs_pagination ? "is-open" : "")
             - cache_if(!@docs_pagination,  [@repo, "docs"]) do
               = render partial: "docs"
-
-    - if @repo_sub
-      = link_to repo_subscription_path(@repo_sub), class: 'button stop-triaging full-width-action', method: :delete, data: { confirm: 'Are you sure?' } do
-          | Stop Triaging
