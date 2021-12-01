@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_length_of     :password, within: 8..128, allow_blank: true
   validates :github, presence: true, uniqueness: true
   validates :email_frequency, inclusion: { in: EmailRateLimit::USER_STATES.map(&:to_s) + [nil], message: "Not a valid frequency, pick from #{EmailRateLimit::USER_STATES}" }
-
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   # Setup accessible (or protected) attributes for your model
 
   has_many :repo_subscriptions, dependent: :destroy
