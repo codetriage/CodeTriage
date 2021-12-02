@@ -1,0 +1,9 @@
+default:
+  id: 1
+  repo_id: 1
+  repo_subscription_id: 1
+  doc_method_id: 1
+  doc_class_id: 1
+  created_at:
+  updated_at:
+  clicked: false
