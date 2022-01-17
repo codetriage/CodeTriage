@@ -97,8 +97,8 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
-    autoprefixer-rails (10.2.4.0)
-      execjs
+    autoprefixer-rails (10.4.2.0)
+      execjs (~> 2)
     aws-eventstream (1.2.0)
     aws-partitions (1.503.0)
     aws-sdk-core (3.121.0)
@@ -172,7 +172,7 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     excon (0.71.0)
-    execjs (2.7.0)
+    execjs (2.8.1)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (0.17.4)
@@ -465,7 +465,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails (~> 10.2.4)
+  autoprefixer-rails (~> 10.4.2)
   aws-sdk-s3 (~> 1.103.0)
   babel-transpiler
   bluecloth
