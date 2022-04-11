@@ -23,28 +23,38 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         | |
         = link_to " Stack overflow ", "http://stackoverflow.com/search?q=#{::URI::DEFAULT_PARSER.escape(@doc.path)}"
 
-    section.content-section
+    section.content-section.selectable
       h2.content-section-title Edit
       pre
-        |
-          $ git clone git@github.com:#{ @repo.full_name }.git
-          $ cd #{ @repo.name }
-          $ open #{ @doc.file }
-    section.content-section
+        p
+          | git clone git@github.com:#{ @repo.full_name }.git
+        p
+          | cd #{ @repo.name }
+        p
+          | open #{ @doc.file }
+    section.content-section.selectable
       h2.content-section-title Contribute
       pre
-        |
-          # Make a new branch
-          $ git checkout -b #{ @branch }
+        | # Make a new branch
+        p
+          | git checkout -b #{ @branch }
+        br
 
-          # Commit to git
-          $ git add #{ @doc.file }
-          $ git commit -m "better docs for #{ @doc.path }"
+        | # Commit to git
+        p
+          | git add #{ @doc.file }
+          | git commit -m "better docs for #{ @doc.path }"
+        br
 
-          # Open pull request
-          $ gem install hub # on a mac you can `brew install hub`
-          $ hub fork
-          $ git push #{ @username } #{ @branch }
-          $ hub pull-request
+        | # Open pull request
+        p
+          | gem install hub # on a mac you can `brew install hub`
+        p
+          | hub fork
+        p
+          | git push #{ @username } #{ @branch }
+        p
+          | hub pull-request
+        br
 
-          # Celebrate!
+        | # Celebrate!
