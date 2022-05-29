@@ -67,4 +67,13 @@ class AddingReposTest < ActionDispatch::IntegrationTest
 
     assert page.has_content? "can't be blank"
   end
+
+  test "add page without login" do
+    # do not login first
+    VCR.use_cassette('blank_repo') do
+      visit "/somerando/project"
+    end
+
+    assert page.has_content? "You must be logged in"
+  end
 end

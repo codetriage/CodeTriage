@@ -3,7 +3,7 @@
 require File.expand_path("../../../lib/sorted_repo_collection", __FILE__)
 
 class ReposController < RepoBasedController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:create, :edit, :update]
   before_action :default_format
 
   def new

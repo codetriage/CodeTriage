@@ -6,11 +6,21 @@
     h1.subpage-primary-title Add a new repo to CodeTriage
 
   section.content-section
+  - if user_signed_in?
     h2.content-section-title Add another repo by pasting the full repo URL
-
     = form_tag repos_path, { class: "new_repo", id: "new_repo_from_url" } do
       => text_field_tag :url, @full_name, placeholder: 'full url e.g. "https://github.com/schneems/sextant', class: 'url_field'
       = submit_tag nil, value: "Add Repo", class: 'button full-width-action', id: 'createRepo'
+  - else
+    - if @full_name.blank?
+      p You must be logged in to add a repo to CodeTriage
+    - else
+      p
+        | You must be logged in to add 
+        a href=@full_name 
+          | #{@repo.user_name}/#{@repo.name} 
+        | to CodeTriage.
+    = link_to 'Log in', user_github_omniauth_authorize_path, class: "button full-width-action", method: :post
 
   - if user_signed_in?
     section.content-section
