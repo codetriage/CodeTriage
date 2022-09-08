@@ -1,4 +1,5 @@
 # Contributing to CodeTriage
+
 We want to make contributing to this project as straight forward as possible, whether it's:
 
 - Reporting a bug
@@ -7,6 +8,7 @@ We want to make contributing to this project as straight forward as possible, wh
 - Proposing new features
 
 ## Code Changes Happen Through Pull Requests
+
 We use github to host code, to track issues and feature requests, as well as accept pull requests.
 Pull requests are the best way to propose changes to the codebase.
 
@@ -19,9 +21,11 @@ We actively welcome your pull requests:
 6. Issue the pull request using the PULL_REQUEST_TEMPLATE.md
 
 ## Report bugs using Github's issues
+
 We use GitHub issues to track public bugs. Report a bug by [opening a new issue](https://github.com/codetriage/codetriage/issues);
 
 ## Write bug reports with detail, background, and sample code
+
 See our ISSUE_TEMPLATE.md when submitting an issue.
 
 **Bug Reports** tend to have:
@@ -79,14 +83,15 @@ $ bin/rake db:create db:schema:load db:seed
 
 If you want your users to sign up with Github, register a [GitHub a new OAuth Application](https://github.com/settings/applications/new). The urls you are asked to provide will be something like this:
 
+- Application name: `CodeTriage local dev`
 - URL: `http://localhost:3000`
 - Callback URL: `http://localhost:3000/users/auth/github/callback`
 
 Then add the credentials to your .env file:
 
 ```shell
-$ echo GITHUB_APP_ID=foo >> .env
-$ echo GITHUB_APP_SECRET=bar >> .env
+$ echo GITHUB_APP_ID=<id from github app> >> .env
+$ echo GITHUB_APP_SECRET=<secret from github app> >> .env
 $ echo PORT=3000 >> .env
 ```
 

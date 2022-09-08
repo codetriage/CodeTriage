@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class UserMailer < ActionMailer::Base
+  class AbortDeliveryError < StandardError; end
+
   include ActionView::Helpers::DateHelper
   default from: "CodeTriage <noreply@codetriage.com>"
 
   layout "mail_layout"
+
+  rescue_from AbortDeliveryError, with: -> {}
 
   def send_daily_triage(
       user_id:,
@@ -88,9 +92,16 @@ class UserMailer < ActionMailer::Base
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
-  def spam(user:, subject:, message:)
+  def spam(user:, subject:, message:, htos_contributor: false)
     return unless set_and_check_user(user)
     @message = message
+    @htos = htos_contributor
+
+    if @htos
+      raise AbortDeliveryError if @user.htos_contributor_unsubscribe
+      raise AbortDeliveryError if @user.htos_contributor_bought
+    end
+
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: subject)
   end
 
