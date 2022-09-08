@@ -10,5 +10,11 @@
 |________________________________________________</abbr>
 
 <% if @user %>
+<% if @htos %>
+Don't want to receive free content from my upcoming book "How to Open Source"?
+[Click here to "mute" these emails.](<%= edit_user_url(@user) %>%).
+You'll still receive CodeTriage emails.
+
+<% end %>
 [Remove Account](<%= token_delete_user_url(@user.account_delete_token) %>)
 <% end %>

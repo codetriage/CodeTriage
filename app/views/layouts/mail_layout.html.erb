@@ -8,6 +8,17 @@
     <div class="logo-wrapper">
       <%= link_to image_tag(asset_url('logo-dark-text.png')), root_url %>
     </div>
+
+  <% if @htos %>
+    <div class="footer-links" style="padding: 0">
+
+      <p>
+        <strong>Don't want to receive free content from my upcoming book <dfn>"How to Open Source"</dfn>?</strong>
+        <%= link_to "Click here to 'mute' these emails", edit_user_url(@user) %>.
+        You'll still receive CodeTriage emails.
+      </p>
+    </div>
+  <% end %>
     <div class="footer-links">
       <% if @user %>
         <%= link_to "Remove Account", token_delete_user_url(@user.account_delete_token) %>

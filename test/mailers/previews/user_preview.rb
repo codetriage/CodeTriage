@@ -11,7 +11,7 @@ class UserPreview < ActionMailer::Preview
     user    = User.last
     subject = "Big launch"
     message = "hello world"
-    ::UserMailer.spam(user: user, subject: subject, message: message)
+    ::UserMailer.spam(user: user, subject: subject, message: message, htos_contributor: true)
   end
 
   def send_triage_create

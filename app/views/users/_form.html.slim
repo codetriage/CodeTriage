@@ -37,7 +37,11 @@
 
   = f.check_box :skip_issues_with_pr, class: 'checkbox'
   => f.label :skip_issues_with_pr, t("activerecord.attributes.user.skip_issues_with_pr", default: "Skip Pull requests"), class: "label label-info"
-  p By default we send you a combination of issues and pull request, check this box to only get Issues.
+  p By default, we send you a combination of issues and pull request. Check this box to only get Issues.
+
+  = f.check_box :htos_contributor_unsubscribe, class: 'checkbox'
+  => f.label :htos_contributor_unsubscribe, t("activerecord.attributes.user.htos_promo", default: "Mute 'How to Open Source' book content emails"), class: "label label-info"
+  p By default, you will receive promotional emails (e.g. discount codes and free content) for the "How to Open Source: Learn the secrets of successful contributors" book. Check this box to mute those emails.
 
 .form-actions
   => button_tag "Save", class: "button full-width-action"

@@ -69,6 +69,7 @@ class UsersController < ApplicationController
       :email_frequency,
       :email_time_of_day,
       :skip_issues_with_pr,
+      :htos_contributor_unsubscribe,
       favorite_languages: []
     )
   end

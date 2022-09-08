@@ -3,5 +3,5 @@ Hi <%= @user.github %>,
 <%= @message.html_safe %>
 
 --
-
 [Richard Schneeman](https://www.schneems.com)
+<%= link_to("Unsubscribe from 'How to Open Source' promotional emails", edit_user_url(@user)) if @htos %>
