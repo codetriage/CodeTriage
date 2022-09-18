@@ -1,12 +1,28 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :omniauth_workaround_authenticate_user!, only: [:edit, :update, :destroy]
+
+  def omniauth_workaround_authenticate_user!
+    return if current_user
+
+    # Omniauth changed the requirement so calling `authenticate_user!`
+    # must be done through a post request, if someone tries
+    # one of these actions that they must be logged in for
+    # we have to tell them to log in first.
+    if request.post?
+      authenticate_user!
+    else
+      redirect_to user_path(id: params[:id]), alert: "Please log in to access your requested page"
+    end
+  end
 
   def show
     @user = User.find(params[:id])
+
+    # You must be logged in to see your own user account, enforced in the view
     if @user.private?
-      redirect_to root_path unless current_user && @user == current_user
+      redirect_to root_path, alert: "User is private" unless current_user && @user == current_user
     end
   end
 
