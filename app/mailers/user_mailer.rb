@@ -108,7 +108,6 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: @user.email,
-      from: "noreply@codetriage.com",
       reply_to: reply_to,
       subject: subject
     )
