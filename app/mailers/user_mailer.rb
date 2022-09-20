@@ -2,9 +2,10 @@
 
 class UserMailer < ActionMailer::Base
   class AbortDeliveryError < StandardError; end
+  DEFAULT_FROM = "CodeTriage <noreply@codetriage.com>"
 
   include ActionView::Helpers::DateHelper
-  default from: "CodeTriage <noreply@codetriage.com>"
+  default from: DEFAULT_FROM
 
   layout "mail_layout"
 
@@ -108,6 +109,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: @user.email,
+      from: DEFAULT_FROM,
       reply_to: reply_to,
       subject: subject
     )
