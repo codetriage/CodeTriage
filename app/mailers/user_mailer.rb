@@ -92,7 +92,7 @@ class UserMailer < ActionMailer::Base
   end
 
   # general purpose mailer for sending out admin communications, only use from one off tasks
-  def spam(user:, subject:, message:, htos_contributor: false)
+  def spam(user:, subject:, message:, htos_contributor:)
     return unless set_and_check_user(user)
     @message = message
     @htos = htos_contributor
