@@ -100,15 +100,10 @@ class UserMailer < ActionMailer::Base
     if @htos
       raise AbortDeliveryError if @user.htos_contributor_unsubscribe
       raise AbortDeliveryError if @user.htos_contributor_bought
-
-      reply_to = "get.howtoopensource@gmail.com"
-    else
-      reply_to = "noreply@codetriage.com"
     end
 
     mail(
       to: @user.email,
-      reply_to: reply_to,
       subject: subject
     )
   end
