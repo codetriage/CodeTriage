@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/rails/rails/labels
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.3.raw+json
+      User-Agent:
+      - 81fd8d500e69f5aea0fb8fa8337c73b8
+      Authorization:
+      - token <GITHUB_API_KEY>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 04 Oct 2022 14:00:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '5784'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - '"9e60597066fa8eff0c1230a7c7c94366bdf497b43d1442f01fa98a2f18cf4547"'
+      X-Oauth-Scopes:
+      - user:email
+      X-Accepted-Oauth-Scopes:
+      - repo
+      X-Oauth-Client-Id:
+      - "<GITHUB_APP_ID>"
+      X-Github-Media-Type:
+      - github.v3; param=3.raw; format=json
+      Link:
+      - <https://api.github.com/repositories/8514/labels?page=2>; rel="next", <https://api.github.com/repositories/8514/labels?page=2>;
+        rel="last"
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4956'
+      X-Ratelimit-Reset:
+      - '1664894372'
+      X-Ratelimit-Used:
+      - '44'
+      X-Ratelimit-Resource:
+      - core
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO,
+        X-GitHub-Request-Id, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - '0'
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D362:3CB7:1060BB6:2170F46:633C3C66
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":300028327,"node_id":"MDU6TGFiZWwzMDAwMjgzMjc=","url":"https://api.github.com/repos/rails/rails/labels/actioncable","name":"actioncable","color":"bfdadc","default":false,"description":null},{"id":1174770998,"node_id":"MDU6TGFiZWwxMTc0NzcwOTk4","url":"https://api.github.com/repos/rails/rails/labels/actionmailbox","name":"actionmailbox","color":"f4a6cb","default":false,"description":""},{"id":107188,"node_id":"MDU6TGFiZWwxMDcxODg=","url":"https://api.github.com/repos/rails/rails/labels/actionmailer","name":"ActionMailer","color":"8B00FC","default":false,"description":null},{"id":107189,"node_id":"MDU6TGFiZWwxMDcxODk=","url":"https://api.github.com/repos/rails/rails/labels/actionpack","name":"actionpack","color":"FFF700","default":false,"description":null},{"id":1180817762,"node_id":"MDU6TGFiZWwxMTgwODE3NzYy","url":"https://api.github.com/repos/rails/rails/labels/actiontext","name":"actiontext","color":"3bc667","default":false,"description":""},{"id":3666649,"node_id":"MDU6TGFiZWwzNjY2NjQ5","url":"https://api.github.com/repos/rails/rails/labels/actionview","name":"actionview","color":"d7e102","default":false,"description":null},{"id":123812746,"node_id":"MDU6TGFiZWwxMjM4MTI3NDY=","url":"https://api.github.com/repos/rails/rails/labels/activejob","name":"activejob","color":"5319e7","default":false,"description":null},{"id":107190,"node_id":"MDU6TGFiZWwxMDcxOTA=","url":"https://api.github.com/repos/rails/rails/labels/activemodel","name":"activemodel","color":"00E5FF","default":false,"description":null},{"id":107191,"node_id":"MDU6TGFiZWwxMDcxOTE=","url":"https://api.github.com/repos/rails/rails/labels/activerecord","name":"activerecord","color":"0b02e1","default":false,"description":null},{"id":664533972,"node_id":"MDU6TGFiZWw2NjQ1MzM5NzI=","url":"https://api.github.com/repos/rails/rails/labels/activestorage","name":"activestorage","color":"bfd4f2","default":false,"description":null},{"id":107194,"node_id":"MDU6TGFiZWwxMDcxOTQ=","url":"https://api.github.com/repos/rails/rails/labels/activesupport","name":"activesupport","color":"FC9300","default":false,"description":null},{"id":128693,"node_id":"MDU6TGFiZWwxMjg2OTM=","url":"https://api.github.com/repos/rails/rails/labels/asset%20pipeline","name":"asset
+        pipeline","color":"d7e102","default":false,"description":null},{"id":41328116,"node_id":"MDU6TGFiZWw0MTMyODExNg==","url":"https://api.github.com/repos/rails/rails/labels/attached%20PR","name":"attached
+        PR","color":"006b75","default":false,"description":null},{"id":1907985386,"node_id":"MDU6TGFiZWwxOTA3OTg1Mzg2","url":"https://api.github.com/repos/rails/rails/labels/autoloading","name":"autoloading","color":"f4ff5e","default":false,"description":""},{"id":776781281,"node_id":"MDU6TGFiZWw3NzY3ODEyODE=","url":"https://api.github.com/repos/rails/rails/labels/ci%20issues","name":"ci
+        issues","color":"aaafff","default":false,"description":null},{"id":150377,"node_id":"MDU6TGFiZWwxNTAzNzc=","url":"https://api.github.com/repos/rails/rails/labels/docs","name":"docs","color":"02d7e1","default":false,"description":null},{"id":4782967,"node_id":"MDU6TGFiZWw0NzgyOTY3","url":"https://api.github.com/repos/rails/rails/labels/engines","name":"engines","color":"e102d8","default":false,"description":null},{"id":126788695,"node_id":"MDU6TGFiZWwxMjY3ODg2OTU=","url":"https://api.github.com/repos/rails/rails/labels/enum","name":"enum","color":"d4c5f9","default":false,"description":null},{"id":384913768,"node_id":"MDU6TGFiZWwzODQ5MTM3Njg=","url":"https://api.github.com/repos/rails/rails/labels/good%20first%20issue","name":"good
+        first issue","color":"0e8a16","default":true,"description":""},{"id":202293,"node_id":"MDU6TGFiZWwyMDIyOTM=","url":"https://api.github.com/repos/rails/rails/labels/i18n","name":"i18n","color":"e102d8","default":false,"description":null},{"id":5944892,"node_id":"MDU6TGFiZWw1OTQ0ODky","url":"https://api.github.com/repos/rails/rails/labels/JRuby","name":"JRuby","color":"02d7e1","default":false,"description":null},{"id":3451328742,"node_id":"LA_kwDNIULOzbcY5g","url":"https://api.github.com/repos/rails/rails/labels/Missing%20changelog","name":"Missing
+        changelog","color":"AEB90A","default":false,"description":""},{"id":1071962662,"node_id":"MDU6TGFiZWwxMDcxOTYyNjYy","url":"https://api.github.com/repos/rails/rails/labels/more-information-needed","name":"more-information-needed","color":"bfdadc","default":false,"description":"When
+        reporter needs to provide more information"},{"id":309390193,"node_id":"MDU6TGFiZWwzMDkzOTAxOTM=","url":"https://api.github.com/repos/rails/rails/labels/MySQL","name":"MySQL","color":"fef2c0","default":false,"description":null},{"id":3451848882,"node_id":"LA_kwDNIULOzb8Isg","url":"https://api.github.com/repos/rails/rails/labels/need%20rebase","name":"need
+        rebase","color":"5D2996","default":false,"description":""},{"id":377277835,"node_id":"MDU6TGFiZWwzNzcyNzc4MzU=","url":"https://api.github.com/repos/rails/rails/labels/needs%20backport","name":"needs
+        backport","color":"f9d0c4","default":false,"description":null},{"id":128692,"node_id":"MDU6TGFiZWwxMjg2OTI=","url":"https://api.github.com/repos/rails/rails/labels/needs%20feedback","name":"needs
+        feedback","color":"ededed","default":false,"description":null},{"id":257468118,"node_id":"MDU6TGFiZWwyNTc0NjgxMTg=","url":"https://api.github.com/repos/rails/rails/labels/needs%20work","name":"needs
+        work","color":"000000","default":false,"description":null},{"id":2036522896,"node_id":"MDU6TGFiZWwyMDM2NTIyODk2","url":"https://api.github.com/repos/rails/rails/labels/onboarding","name":"onboarding","color":"ddf76a","default":false,"description":""},{"id":4982956,"node_id":"MDU6TGFiZWw0OTgyOTU2","url":"https://api.github.com/repos/rails/rails/labels/onhold","name":"onhold","color":"ededed","default":false,"description":null}]'
+  recorded_at: Tue, 04 Oct 2022 14:00:06 GMT
+recorded_with: VCR 6.0.0
