@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_08_011235) do
+ActiveRecord::Schema.define(version: 2022_10_04_010749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
@@ -106,6 +106,22 @@ ActiveRecord::Schema.define(version: 2022_09_08_011235) do
     t.index ["updated_at"], name: "index_issues_on_updated_at", where: "((state)::text = 'open'::text)"
   end
 
+  create_table "labels", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "repo_labels", force: :cascade do |t|
+    t.bigint "repo_id", null: false
+    t.bigint "label_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["label_id"], name: "index_repo_labels_on_label_id"
+    t.index ["repo_id", "label_id"], name: "index_repo_labels_on_repo_id_and_label_id", unique: true
+    t.index ["repo_id"], name: "index_repo_labels_on_repo_id"
+  end
+
   create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -190,6 +206,8 @@ ActiveRecord::Schema.define(version: 2022_09_08_011235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "repo_labels", "labels"
+  add_foreign_key "repo_labels", "repos"
   add_foreign_key "repo_subscriptions", "repos"
   add_foreign_key "repo_subscriptions", "users"
 end

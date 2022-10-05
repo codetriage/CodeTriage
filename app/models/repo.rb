@@ -16,6 +16,9 @@ class Repo < ActiveRecord::Base
   has_many :doc_methods, dependent: :destroy
   delegate :open_issues, to: :issues
 
+  has_many :repo_labels
+  has_many :labels, through: :repo_labels
+
   before_validation :set_full_name!, :downcase_name, :strip_whitespaces
   after_create :background_populate_issues!, :update_repo_info!, :background_populate_docs!
 

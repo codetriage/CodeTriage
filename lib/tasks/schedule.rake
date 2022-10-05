@@ -111,4 +111,11 @@ namespace :schedule do
     next unless Date.today.sunday?
     Rake::Task['sitemap:refresh'].invoke
   end
+
+  desc 'fetch and assign labels for repos'
+  task fetch_labels_and_assign: :environment do
+    Repo.find_each(batch_size: 100) do |repo|
+      RepoLabelAssigner.new(repo: repo).create_and_associate_labels!
+    end
+  end
 end
