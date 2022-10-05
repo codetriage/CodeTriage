@@ -29,6 +29,3 @@ module DependencyParser
     end
   end
 end
-
-content = ARGF.read
-puts DependencyParser::Ruby::Parse.new(content).call if DependencyParser::Ruby::Parse.valid_gemfile?(content)
