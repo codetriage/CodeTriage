@@ -144,7 +144,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crack (0.4.5)
       rexml
@@ -170,7 +170,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    erubi (1.10.0)
+    erubi (1.11.0)
     excon (0.71.0)
     execjs (2.8.1)
     faker (2.19.0)
@@ -185,7 +185,7 @@ GEM
     git_hub_bub (1.0.1)
       excon
       rrrretry
-    globalid (0.5.2)
+    globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
     hashie (4.1.0)
@@ -193,7 +193,7 @@ GEM
       thor
     hey_you (0.1.1)
     htmlentities (4.3.4)
-    i18n (1.8.10)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     jquery-rails (4.4.0)
@@ -202,7 +202,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.6.2)
     jwt (2.2.2)
-    kramdown (2.3.1)
+    kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -212,12 +212,12 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     local_time (2.1.0)
-    loofah (2.12.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    maildown (3.3.0)
+    maildown (3.3.1)
       actionmailer (>= 4.0.0)
       kramdown-parser-gfm
     marcel (1.0.1)
@@ -227,8 +227,8 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     mini_histogram (0.3.1)
-    mini_mime (1.1.1)
-    mini_portile2 (2.6.1)
+    mini_mime (1.1.2)
+    mini_portile2 (2.8.0)
     minitest (5.14.4)
     mocha (1.13.0)
     msgpack (1.5.6)
@@ -241,8 +241,8 @@ GEM
       bourbon (>= 4.0)
       sass (>= 3.3)
     nio4r (2.5.8)
-    nokogiri (1.12.4)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.13.8)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     normalize-rails (8.0.1)
     oauth2 (1.4.4)
@@ -291,7 +291,7 @@ GEM
     puma_worker_killer (0.3.1)
       get_process_mem (~> 0.2)
       puma (>= 2.7)
-    racc (1.5.2)
+    racc (1.6.0)
     rack (2.2.4)
     rack-canonical-host (1.0.0)
       addressable (> 0, < 3)
@@ -300,8 +300,8 @@ GEM
       rack (>= 1.2.0)
     rack-protection (2.1.0)
       rack
-    rack-test (1.1.0)
-      rack (>= 1.0, < 3)
+    rack-test (2.0.2)
+      rack (>= 1.3)
     rack-timeout (0.6.0)
     rails (6.1.4.1)
       actioncable (= 6.1.4.1)
@@ -325,7 +325,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.2)
+    rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     railties (6.1.4.1)
       actionpack (= 6.1.4.1)
@@ -427,7 +427,7 @@ GEM
     thor (1.1.0)
     tilt (2.0.10)
     ttfunk (1.7.0)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -461,7 +461,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.26)
-    zeitwerk (2.4.2)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   ruby
