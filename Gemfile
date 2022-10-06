@@ -44,7 +44,7 @@ gem 'will_paginate', '3.3.1'
 gem 'sassc'
 gem 'sassc-rails'
 
-gem 'autoprefixer-rails', '~> 10.2.4'
+gem 'autoprefixer-rails', '~> 10.4.7'
 gem 'bourbon'
 gem 'coffee-rails', '~> 5.0.0'
 gem 'neat', '~> 1.7'
