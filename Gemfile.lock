@@ -26,11 +26,11 @@ GIT
 
 GIT
   remote: https://github.com/rails/sprockets.git
-  revision: 24c97270fbf6de11b4ffff0311bb427b7a8a3a83
+  revision: 1276b431e2e4c1099dae1b3ff76adc868c863ddd
   specs:
-    sprockets (4.0.2)
+    sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
-      rack (> 1, < 3)
+      rack (>= 2.2.4, < 4)
 
 GEM
   remote: https://rubygems.org/
@@ -144,7 +144,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     connection_pool (2.3.0)
     crack (0.4.5)
       rexml
@@ -221,6 +221,7 @@ GEM
       actionmailer (>= 4.0.0)
       kramdown-parser-gfm
     marcel (1.0.1)
+    matrix (0.4.2)
     memory_profiler (1.0.0)
     method_source (1.0.0)
     mime-types (3.3.1)
@@ -240,6 +241,14 @@ GEM
     neat (1.7.4)
       bourbon (>= 4.0)
       sass (>= 3.3)
+    net-imap (0.3.1)
+      net-protocol
+    net-pop (0.1.2)
+      net-protocol
+    net-protocol (0.1.3)
+      timeout
+    net-smtp (0.3.2)
+      net-protocol
     nio4r (2.5.8)
     nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
@@ -424,8 +433,9 @@ GEM
     test-prof (1.0.7)
     the_lone_dyno (1.0.0)
       hey_you (~> 0.1.1)
-    thor (1.1.0)
+    thor (1.2.1)
     tilt (2.0.10)
+    timeout (0.3.0)
     ttfunk (1.7.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -490,11 +500,15 @@ DEPENDENCIES
   local_time (= 2.1.0)
   mail
   maildown (~> 3.3)
+  matrix (~> 0.4.2)
   memory_profiler
   mime-types (~> 3.3)
   minitest (= 5.14.4)
   mocha
   neat (~> 1.7)
+  net-imap
+  net-pop
+  net-smtp
   normalize-rails
   oj
   omniauth (~> 2.0.4)
@@ -545,7 +559,7 @@ DEPENDENCIES
   yard (~> 0.9.26)
 
 RUBY VERSION
-   ruby 3.0.4p208
+   ruby 3.1.2
 
 BUNDLED WITH
    2.3.21
