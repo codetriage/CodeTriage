@@ -19,12 +19,12 @@ gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '6.1.4.1'
+  gem 'rails', '7.0.4'
 end
 
 gem 'bluecloth'
 gem 'dalli'
-gem 'devise', github: "heartcombo/devise"
+gem 'devise', '~> 4.8.1', github: "heartcombo/devise"
 gem 'git_hub_bub'
 gem 'jquery-rails'
 gem 'local_time', '2.1.0'
