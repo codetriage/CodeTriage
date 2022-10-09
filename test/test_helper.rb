@@ -76,7 +76,7 @@ module ActionDispatch
   end
 end
 
-require 'mocha/setup'
+require 'mocha/minitest'
 require 'minitest/mock'
 require 'sidekiq/testing'
 
