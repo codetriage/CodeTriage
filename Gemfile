@@ -91,7 +91,7 @@ gem 'rack-mini-profiler'
 gem 'the_lone_dyno'
 
 gem 'sidekiq'
-gem 'sinatra', '~> 2.1.0'
+gem 'sinatra', '~> 3.0.2'
 
 gem 'aws-sdk-s3', '~> 1.103.0'
 
