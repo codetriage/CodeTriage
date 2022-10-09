@@ -450,7 +450,7 @@ GEM
       activemodel
       mail (>= 2.6.1)
       simpleidn
-    vcr (6.0.0)
+    vcr (6.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
