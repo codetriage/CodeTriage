@@ -189,7 +189,7 @@ GEM
     globalid (1.0.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
-    hashie (4.1.0)
+    hashie (5.0.0)
     heapy (0.2.0)
       thor
     hey_you (0.1.1)
@@ -272,7 +272,7 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
-    omniauth-rails_csrf_protection (1.0.0)
+    omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     optimist (3.0.1)
