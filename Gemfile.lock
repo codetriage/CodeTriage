@@ -304,7 +304,7 @@ GEM
     rack-canonical-host (1.0.0)
       addressable (> 0, < 3)
       rack (>= 1.0.0, < 3)
-    rack-mini-profiler (2.3.3)
+    rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
     rack-protection (3.0.2)
       rack
