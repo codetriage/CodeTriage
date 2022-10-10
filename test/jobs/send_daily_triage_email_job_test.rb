@@ -14,7 +14,7 @@ class SendDailyTriageEmailJobTest < ActiveJob::TestCase
     def @job.before_email_time_of_day?(*); false; end
 
     # {:job=>ActionMailer::DeliveryJob, :args=>["UserMailer", "send_daily_triage", "deliver_now", {"user_id"=>110871456, "assignment_ids"=>[980190962], "write_doc_ids"=>[], "read_doc_ids"=>[], "_aj_symbol_keys"=>["user_id", "assignment_ids", "write_doc_ids", "read_doc_ids"]}], :queue=>"mailers"}.
-    assert_enqueued_with(job: ActionMailer::MailDeliveryJob, queue: "mailers") do
+    assert_enqueued_with(job: ActionMailer::MailDeliveryJob, queue: "default") do
       @job.perform(@user)
     end
   end
