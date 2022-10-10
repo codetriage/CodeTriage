@@ -38,7 +38,8 @@ OmniAuth.config.add_mock(
     },
     email: "mockstar@example.com",
     info: {
-      nickname: 'mockstar'
+      nickname: 'mockstar',
+      email: "mockstar@example.com"
     },
     extra: {
       raw_info: {
