@@ -12,10 +12,10 @@ class GitHubAuthenticator
 
   def authenticate
     if (user = find_user)
-      user.update!(github_params)
+      user.update!(user_params)
       user
     else
-      User.create(user_params)
+      User.create(user_params.merge!(password: Devise.friendly_token[0, 20]))
     end
   end
 
@@ -52,7 +52,6 @@ class GitHubAuthenticator
 
   def user_params
     github_params.merge(
-      password: Devise.friendly_token[0, 20],
       name: auth.extra.raw_info.name,
       email: github_email
     )
