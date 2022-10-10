@@ -229,7 +229,7 @@ GEM
     mini_histogram (0.3.1)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.14.4)
+    minitest (5.16.3)
     mocha (1.13.0)
     msgpack (1.5.6)
     multi_json (1.15.0)
@@ -502,7 +502,7 @@ DEPENDENCIES
   matrix (~> 0.4.2)
   memory_profiler
   mime-types (~> 3.3)
-  minitest (= 5.14.4)
+  minitest (= 5.16.3)
   mocha
   neat (~> 1.7)
   net-imap
