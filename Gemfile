@@ -58,7 +58,6 @@ gem 'uglifier', '>= 1.0.3'
 gem 'render_async', '~> 2.1'
 
 group :development do
-  gem 'bullet', require: false, github: 'flyerhzm/bullet'
   gem 'foreman'
   gem 'listen'
   gem 'web-console'

@@ -6,14 +6,6 @@ GIT
     rails_autoscale_agent (0.9.0)
 
 GIT
-  remote: https://github.com/flyerhzm/bullet.git
-  revision: 371beece05a89c0acd6162a4406e6262a55a8d85
-  specs:
-    bullet (6.1.5)
-      activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.11)
-
-GIT
   remote: https://github.com/heartcombo/devise.git
   revision: 6d32d2447cc0f3739d9732246b5a5bde98d9e032
   specs:
@@ -452,7 +444,6 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (2.3.0)
-    uniform_notifier (1.14.2)
     valid_email (0.1.4)
       activemodel
       mail (>= 2.6.1)
@@ -492,7 +483,6 @@ DEPENDENCIES
   bluecloth
   bootsnap
   bourbon
-  bullet!
   capybara (= 3.37.1)
   coffee-rails (~> 5.0.0)
   dalli
