@@ -24,7 +24,7 @@ class DocMethodsController < ApplicationController
       assignment.user.record_click!
       assignment.update(clicked: true)
       assignment.user.update(last_clicked_at: Time.now)
-      redirect_to doc_method_url(doc)
+      redirect_to doc_method_url(doc), allow_other_host: true
     else
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
       redirect_to :root
@@ -42,7 +42,7 @@ class DocMethodsController < ApplicationController
       assignment.user.record_click!
       assignment.update(clicked: true)
       assignment.user.update(last_clicked_at: Time.now)
-      redirect_to doc.to_github
+      redirect_to doc.to_github, allow_other_host: true
     else
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
       redirect_to :root

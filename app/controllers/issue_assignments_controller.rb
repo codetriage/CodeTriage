@@ -14,7 +14,7 @@ class IssueAssignmentsController < ApplicationController
       assignment.user.record_click!
       assignment.update(clicked: true)
       assignment.user.update(last_clicked_at: Time.now)
-      redirect_to assignment.issue.html_url
+      redirect_to assignment.issue.html_url, allow_other_host: true
     else
       redirect_to :root, message: "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
     end
