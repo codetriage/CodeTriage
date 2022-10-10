@@ -151,7 +151,7 @@ GEM
     css_parser (1.7.1)
       addressable
     dalli (2.7.11)
-    dead_end (1.1.7)
+    dead_end (4.0.0)
     derailed_benchmarks (2.1.1)
       benchmark-ips (~> 2)
       dead_end
