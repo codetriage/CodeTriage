@@ -429,7 +429,7 @@ GEM
       sprockets (>= 3.0.0)
     stackprof (0.2.17)
     temple (0.8.2)
-    test-prof (1.0.7)
+    test-prof (1.0.10)
     the_lone_dyno (1.0.0)
       hey_you (~> 0.1.1)
     thor (1.2.1)
