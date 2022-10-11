@@ -1,29 +1,3 @@
-GIT
-  remote: https://github.com/adamlogic/rails_autoscale_agent.git
-  revision: f1e2db8020c8c2e371c25df1602155b07dcef6f5
-  branch: puma
-  specs:
-    rails_autoscale_agent (0.9.0)
-
-GIT
-  remote: https://github.com/heartcombo/devise.git
-  revision: 6d32d2447cc0f3739d9732246b5a5bde98d9e032
-  specs:
-    devise (4.8.1)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-
-GIT
-  remote: https://github.com/rails/sprockets.git
-  revision: 1276b431e2e4c1099dae1b3ff76adc868c863ddd
-  specs:
-    sprockets (4.1.1)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -164,6 +138,12 @@ GEM
       rake (> 10, < 14)
       ruby-statistics (>= 2.1)
       thor (>= 0.19, < 2)
+    devise (4.8.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     docile (1.3.5)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
@@ -190,7 +170,6 @@ GEM
     hashie (5.0.0)
     heapy (0.2.0)
       thor
-    hey_you (0.1.1)
     htmlentities (4.3.4)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -325,6 +304,10 @@ GEM
       activesupport (= 7.0.4)
       bundler (>= 1.15.0)
       railties (= 7.0.4)
+    rails-autoscale-core (1.1.0)
+    rails-autoscale-web (1.1.0)
+      rails-autoscale-core
+      railties
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
@@ -391,7 +374,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (4.1.2)
+    scout_apm (5.3.1)
       parser
     sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
@@ -423,6 +406,9 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
+    sprockets (4.1.1)
+      concurrent-ruby (~> 1.0)
+      rack (> 1, < 3)
     sprockets-rails (3.4.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
@@ -430,8 +416,6 @@ GEM
     stackprof (0.2.17)
     temple (0.8.2)
     test-prof (1.0.10)
-    the_lone_dyno (1.0.0)
-      hey_you (~> 0.1.1)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
@@ -477,18 +461,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails (~> 10.2.4)
-  aws-sdk-s3 (~> 1.103.0)
+  autoprefixer-rails
+  aws-sdk-s3
   babel-transpiler
   bluecloth
   bootsnap
   bourbon
-  capybara (= 3.37.1)
+  capybara
   coffee-rails (~> 5.0.0)
   dalli
   derailed_benchmarks
-  devise (~> 4.8.1)!
-  dotenv-rails (= 2.8.1)
+  devise
+  dotenv-rails
   faker
   flamegraph
   foreman
@@ -496,18 +480,18 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen
-  local_time (= 2.1.0)
+  local_time
   mail
-  maildown (~> 3.3)
+  maildown
   matrix
   memory_profiler
-  mime-types (~> 3.3)
-  minitest (= 5.16.3)
+  mime-types
+  minitest
   mocha
   neat (~> 1.7)
   normalize-rails
   oj
-  omniauth (~> 2.1.0)
+  omniauth
   omniauth-github
   omniauth-rails_csrf_protection
   pg
@@ -520,38 +504,36 @@ DEPENDENCIES
   rack-mini-profiler
   rack-timeout
   rails (= 7.0.4)
+  rails-autoscale-web
   rails-controller-testing
-  rails_autoscale_agent!
   rake
   rbtrace
   redis-namespace
-  render_async (~> 2.1)
+  render_async
   rrrretry
   rubocop
   rubocop-performance
   sassc
   sassc-rails
-  scout_apm (~> 4.1.2)
+  scout_apm
   sentry-raven
   sidekiq
   simplecov
-  sinatra (~> 3.0.2)
+  sinatra
   sitemap_generator
-  skylight (~> 5.3.3)
+  skylight
   slim-rails
-  sprockets!
+  sprockets
   sprockets-rails
   stackprof
   test-prof
-  the_lone_dyno
   uglifier (>= 1.0.3)
   valid_email
   vcr
-  warden (= 1.2.9)
   web-console
   webmock
   wicked
-  will_paginate (= 3.3.1)
+  will_paginate
   yard (~> 0.9.28)
 
 RUBY VERSION

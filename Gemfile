@@ -13,7 +13,7 @@ git_source :github do |name|
   "https://github.com/#{name}.git"
 end
 
-gem 'mime-types', '~> 3.3', require: 'mime/types/columnar'
+gem 'mime-types', require: 'mime/types/columnar'
 
 # Gems required in all environments
 if ENV["RAILS_MASTER"] == '1'
@@ -24,12 +24,12 @@ end
 
 gem 'bluecloth'
 gem 'dalli'
-gem 'devise', '~> 4.8.1', github: "heartcombo/devise"
+gem 'devise'
 gem 'git_hub_bub'
 gem 'jquery-rails'
-gem 'local_time', '2.1.0'
-gem 'maildown', '~> 3.3'
-gem 'omniauth', '~> 2.1.0'
+gem 'local_time'
+gem 'maildown'
+gem 'omniauth'
 gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-github'
 gem 'pg'
@@ -37,21 +37,20 @@ gem 'puma'
 gem 'rack-timeout'
 gem 'rrrretry'
 gem 'valid_email'
-gem 'warden', '1.2.9'
 gem 'wicked'
-gem 'will_paginate', '3.3.1'
+gem 'will_paginate'
 # gem 'sass-rails', '6.0.0.beta1'
 gem 'sassc'
 gem 'sassc-rails'
 
-gem 'autoprefixer-rails', '~> 10.2.4'
+gem 'autoprefixer-rails'
 gem 'bourbon'
 gem 'coffee-rails', '~> 5.0.0'
 gem 'neat', '~> 1.7'
 gem 'normalize-rails'
 gem 'slim-rails'
 gem 'uglifier', '>= 1.0.3'
-gem 'render_async', '~> 2.1'
+gem 'render_async'
 
 group :development do
   gem 'foreman'
@@ -61,7 +60,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '3.37.1'
+  gem 'capybara'
   # Not essential but helpful for save_and_open_page
   gem 'launchy'
   gem 'mocha', require: false
@@ -74,7 +73,7 @@ end
 
 group :development, :test do
   gem 'derailed_benchmarks'
-  gem 'dotenv-rails', '2.8.1'
+  gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', require: false
@@ -83,21 +82,19 @@ end
 
 gem 'rack-mini-profiler'
 
-gem 'the_lone_dyno'
-
 gem 'sidekiq'
-gem 'sinatra', '~> 3.0.2'
+gem 'sinatra'
 
-gem 'aws-sdk-s3', '~> 1.103.0'
+gem 'aws-sdk-s3'
 
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
 
-gem 'sprockets', github: "rails/sprockets"
+gem 'sprockets'
 gem 'sprockets-rails'
 
 gem 'babel-transpiler'
 
-gem 'scout_apm', '~> 4.1.2'
+gem 'scout_apm'
 gem 'yard', '~> 0.9.28'
 
 gem 'oj'
@@ -110,14 +107,14 @@ gem 'redis-namespace'
 gem 'stackprof'
 gem 'flamegraph'
 gem 'prawn'
-gem 'skylight', '~> 5.3.3'
+gem 'skylight'
 gem 'matrix'
 
-gem 'minitest', '5.16.3'
+gem 'minitest'
 gem 'sitemap_generator'
 gem 'premailer-rails'
 
 # gem 'barnes'
 gem 'puma_worker_killer'
 gem 'rake'
-gem 'rails_autoscale_agent', github: 'adamlogic/rails_autoscale_agent', branch: 'puma'
+gem 'rails-autoscale-web'
