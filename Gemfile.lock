@@ -499,15 +499,11 @@ DEPENDENCIES
   local_time (= 2.1.0)
   mail
   maildown (~> 3.3)
-  matrix (~> 0.4.2)
   memory_profiler
   mime-types (~> 3.3)
   minitest (= 5.14.4)
   mocha
   neat (~> 1.7)
-  net-imap
-  net-pop
-  net-smtp
   normalize-rails
   oj
   omniauth (~> 2.0.4)
