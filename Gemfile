@@ -74,7 +74,7 @@ end
 
 group :development, :test do
   gem 'derailed_benchmarks'
-  gem 'dotenv-rails', '2.7.6'
+  gem 'dotenv-rails', '2.8.1'
   gem 'faker', require: false
   gem 'pry'
   gem 'rubocop', require: false
