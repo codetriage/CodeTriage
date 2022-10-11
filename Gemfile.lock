@@ -499,6 +499,7 @@ DEPENDENCIES
   local_time (= 2.1.0)
   mail
   maildown (~> 3.3)
+  matrix
   memory_profiler
   mime-types (~> 3.3)
   minitest (= 5.16.3)

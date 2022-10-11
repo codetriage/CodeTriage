@@ -111,6 +111,7 @@ gem 'stackprof'
 gem 'flamegraph'
 gem 'prawn'
 gem 'skylight', '~> 5.3.3'
+gem 'matrix'
 
 gem 'minitest', '5.16.3'
 gem 'sitemap_generator'
