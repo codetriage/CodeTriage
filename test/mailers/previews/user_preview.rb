@@ -102,9 +102,8 @@ class UserPreview < ActionMailer::Preview
 
   def poke_inactive
     user = User.last
-    repos_by_need_ids = Repo.order_by_need.limit(10).pluck(:id)
 
-    ::UserMailer.poke_inactive(user: user, repos_by_need_ids: repos_by_need_ids)
+    ::UserMailer.poke_inactive(user: user, min_issue_count: 0, min_subscriber_count: 0)
   end
 
   def daily_docs
