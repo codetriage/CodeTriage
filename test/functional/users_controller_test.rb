@@ -30,7 +30,7 @@ class UsersControllerTest < ActionController::TestCase
 
     get :token_delete, params: { account_delete_token: users(:schneems).account_delete_token }
 
-    assigns(:lonely_repos).any?
+    assert(assigns(:lonely_repos).any?)
   end
 
   test 'should destroy a user with the correct account_delete_token' do
