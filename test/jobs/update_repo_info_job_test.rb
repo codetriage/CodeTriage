@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-
-# frozen_string_literal: true
-
-require 'test_helper'
 class UpdateRepoInfoJobTest < ActiveJob::TestCase
   test 'repo deleted or made private' do
     GithubFetcher::Resource.any_instance.stubs(:status).returns(404)
