@@ -37,7 +37,7 @@ class Repo < ActiveRecord::Base
   end
 
   def fetcher_json
-    fetcher.as_json
+    @fetcher_json ||= fetcher.as_json
   end
 
   def issues_fetcher
