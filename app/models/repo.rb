@@ -192,12 +192,26 @@ class Repo < ActiveRecord::Base
   end
 
   def update_from_github
-    json = fetcher.as_json
-    self.update(
-      language: json.fetch('language', language),
-      description: json.fetch('description', description)&.first(255),
-      stars_count: json.fetch('stargazers_count', stars_count)
-    )
+    if fetcher.not_found?
+      self.update!(removed_from_github: true)
+    elsif fetcher.success?
+      repo_full_name = fetcher_json.fetch('full_name', full_name)
+
+      if repo_full_name != full_name && self.class.exists_with_name?(repo_full_name)
+        # TODO: Add deduplication step
+        return
+      end
+
+      repo_user_name, repo_name = repo_full_name.split("/")
+      self.update!(
+        name: repo_name,
+        user_name: repo_user_name,
+        language: fetcher_json.fetch('language', language),
+        description: fetcher_json.fetch('description', description)&.first(255),
+        full_name: repo_full_name,
+        removed_from_github: false
+      )
+    end
   end
 
   def repo_path
