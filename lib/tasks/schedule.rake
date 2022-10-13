@@ -38,17 +38,12 @@ namespace :schedule do
     return GithubFetcher::Repo.new(user_name: "rails", name: "rails").success?
   end
 
-  desc "Checks if repos have been deleted on GitHub"
-  task mark_removed_repos: :environment do
+  desc "Update repos information"
+  task update_repos: :environment do
     raise "GITHUB API APPEARS TO BE DOWN" unless github_api_up?
 
-    Repo.select(:id, :user_name, :name).find_each(batch_size: 100) do |repo|
-      fetcher = GithubFetcher::Repo.new(user_name: repo.user_name, name: repo.name)
-      fetcher.call(retry_on_bad_token: 5)
-
-      if fetcher.response.status == 404
-        repo.update!(removed_from_github: true)
-      end
+    Repo.find_each(batch_size: 100) do |repo|
+      repo.update_repo_info!
     end
   end
 
