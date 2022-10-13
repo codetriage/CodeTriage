@@ -26,7 +26,8 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
       {
         'full_name' => 'test_owner/test_repo',
         'language' => 'test_language',
-        'description' => 'test_description'
+        'description' => 'test_description',
+        'archived' => true
       }
     )
     repo = repos(:node)
@@ -37,6 +38,7 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
         repo.user_name,
         repo.language,
         repo.description,
+        repo.archived
       ]
     } do
       UpdateRepoInfoJob.perform_now(repo)
@@ -48,6 +50,7 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
     assert_equal 'test_owner', repo.user_name
     assert_equal 'test_language', repo.language
     assert_equal 'test_description', repo.description
+    assert_equal true, repo.archived
   end
 
   test 'repo rename conflict' do
@@ -65,6 +68,7 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
         repo.user_name,
         repo.language,
         repo.description,
+        repo.archived
       ]
     } do
       UpdateRepoInfoJob.perform_now(repo)

@@ -209,7 +209,8 @@ class Repo < ActiveRecord::Base
         language: fetcher_json.fetch('language', language),
         description: fetcher_json.fetch('description', description)&.first(255),
         full_name: repo_full_name,
-        removed_from_github: false
+        removed_from_github: false,
+        archived: fetcher_json.fetch('archived', archived)
       )
     end
   end
