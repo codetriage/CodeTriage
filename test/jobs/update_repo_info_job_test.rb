@@ -8,15 +8,16 @@ require 'test_helper'
 class UpdateRepoInfoJobTest < ActiveJob::TestCase
   test 'repo deleted or made private' do
     GithubFetcher::Resource.any_instance.stubs(:status).returns(404)
-    @repo = repos(:node)
+    repo = repos(:node)
     assert_changes -> {
       [
-        @repo.reload.removed_from_github,
+        repo.removed_from_github,
       ]
     } do
-      UpdateRepoInfoJob.perform_now(@repo)
+      UpdateRepoInfoJob.perform_now(repo)
+      repo.reload
     end
-    assert @repo.reload.removed_from_github
+    assert repo.removed_from_github
   end
 
   test 'repo with information updated' do
@@ -28,24 +29,25 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
         'description' => 'test_description'
       }
     )
-    @repo = repos(:node)
+    repo = repos(:node)
     assert_changes -> {
       [
-        @repo.reload.full_name,
-        @repo.reload.name,
-        @repo.reload.user_name,
-        @repo.reload.language,
-        @repo.reload.description,
+        repo.full_name,
+        repo.name,
+        repo.user_name,
+        repo.language,
+        repo.description,
       ]
     } do
-      UpdateRepoInfoJob.perform_now(@repo)
+      UpdateRepoInfoJob.perform_now(repo)
+      repo.reload
     end
-    assert_equal false, @repo.reload.removed_from_github
-    assert_equal 'test_owner/test_repo', @repo.reload.full_name
-    assert_equal 'test_repo', @repo.reload.name
-    assert_equal 'test_owner', @repo.reload.user_name
-    assert_equal 'test_language', @repo.reload.language
-    assert_equal 'test_description', @repo.reload.description
+    assert_equal false, repo.removed_from_github
+    assert_equal 'test_owner/test_repo', repo.full_name
+    assert_equal 'test_repo', repo.name
+    assert_equal 'test_owner', repo.user_name
+    assert_equal 'test_language', repo.language
+    assert_equal 'test_description', repo.description
   end
 
   test 'repo rename conflict' do
@@ -55,17 +57,18 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
         'full_name' => 'sinatra/sinatra',
       }
     )
-    @repo = repos(:node)
+    repo = repos(:node)
     assert_no_changes -> {
       [
-        @repo.reload.full_name,
-        @repo.reload.name,
-        @repo.reload.user_name,
-        @repo.reload.language,
-        @repo.reload.description,
+        repo.full_name,
+        repo.name,
+        repo.user_name,
+        repo.language,
+        repo.description,
       ]
     } do
-      UpdateRepoInfoJob.perform_now(@repo)
+      UpdateRepoInfoJob.perform_now(repo)
+      repo.reload
     end
   end
 end
