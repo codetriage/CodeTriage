@@ -1,0 +1,39 @@
+name: Main
+on: [push, pull_request]
+
+jobs:
+  base:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby: ["3.0", 3.1]
+    name: Running tests with Ruby ${{ matrix.ruby }}
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_DB: triage_test
+          POSTGRES_PASSWORD: password
+          POSTGRES_USER: postgres
+        ports: ["5432:5432"]
+    env:
+      BUNDLE_GEMFILE: Gemfile
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Setup database
+        run: |
+          cp config/database.ci.yml config/database.yml
+          RAILS_ENV=test bundle exec rake db:create db:schema:load
+
+      - name: Run tests
+        run: bin/rake test
