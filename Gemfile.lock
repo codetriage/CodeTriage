@@ -413,7 +413,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stackprof (0.2.17)
+    stackprof (0.2.22)
     temple (0.8.2)
     test-prof (1.0.10)
     thor (1.2.1)
