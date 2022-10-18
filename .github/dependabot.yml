@@ -3,45 +3,9 @@ updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
-    interval: weekly
+    interval: monthly
   open-pull-requests-limit: 10
   ignore:
   - dependency-name: neat
     versions:
     - "< 4, >= 3.a"
-  - dependency-name: sidekiq
-    versions:
-    - 5.2.4
-  - dependency-name: oj
-    versions:
-    - 3.11.1
-    - 3.11.3
-  - dependency-name: aws-sdk-s3
-    versions:
-    - 1.92.0
-    - 1.93.0
-  - dependency-name: rubocop
-    versions:
-    - 1.12.0
-    - 1.12.1
-  - dependency-name: rubocop-performance
-    versions:
-    - 1.10.2
-  - dependency-name: listen
-    versions:
-    - 3.5.0
-  - dependency-name: sentry-raven
-    versions:
-    - 3.1.1
-  - dependency-name: rails
-    versions:
-    - 6.1.3
-  - dependency-name: prawn
-    versions:
-    - 2.4.0
-  - dependency-name: minitest
-    versions:
-    - 5.14.3
-  - dependency-name: render_async
-    versions:
-    - 2.1.8
