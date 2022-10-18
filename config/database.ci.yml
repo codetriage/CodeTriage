@@ -1,0 +1,15 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  host: localhost
+  password: password
+  username: postgres
+
+development:
+  <<: *defaults
+  database: triage_development
+
+test:
+  <<: *defaults
+  database: triage_test
