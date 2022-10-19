@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_10_011048) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_13_212959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -155,6 +155,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_10_011048) do
     t.integer "subscribers_count", default: 0
     t.integer "docs_subscriber_count", default: 0
     t.boolean "removed_from_github", default: false
+    t.boolean "archived", default: false
+    t.index ["archived"], name: "index_repos_on_archived"
     t.index ["full_name"], name: "index_repos_on_full_name"
     t.index ["issues_count"], name: "index_repos_on_issues_count"
     t.index ["language"], name: "index_repos_on_language"

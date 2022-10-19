@@ -56,6 +56,10 @@ module GithubFetcher
       false
     end
 
+    def not_found?
+      status == 404 ? true : false
+    end
+
     def bad_token?
       if status == 401 && response.body.match?(/Bad credentials/)
         @error = @error_message = "Bad credentials"
