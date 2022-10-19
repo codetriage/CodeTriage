@@ -1,19 +1,31 @@
 An example app is an application that is designed to reproduce a bug or demonstrate an issue.
 
-An example app is not a gigantic repo, your private source code, or telling someone a series of bash commands.
+**Q: "What is an example app?"**
 
-Before a bug can be fixed, it has to be understood and reproduced. For every issue, a maintainer gets, they have to decipher what was supposed to happen and then spend minutes or hours piecing together their reproduction.
+A way to reliably trigger a bug or demonstrate bad behavior in a contained, easily executable application. It is a specific form of [a reproduction](https://codetriage.com/reproduction).
 
-Usually, they can't get it right, so they have to ask for clarification. This back-and-forth process takes lots of energy and wastes everyone's time. Instead, it's better to provide an example app from the beginning.
+**Q: "What isn't an example app?"**
 
-At the end of the day, would you rather maintainers spend their time making example apps or fixing issues?
+An example app is not a step-by-step story of things you did to trigger the error, such as "I clicked this link" or "I entered this command" or "I compiled this code." While such descriptions can sometimes be helpful, they're often missing crucial contexts that might require guessing on the part of the person debugging. Chances are if your "reproduction" doesn't involve source control, it's not "a reproduction app."
+
+**Q: "Why should I make an example app?"**
+
+Before someone can fix a bug, they need to understand why it happens. While descriptions can help, the golden standard for debugging code is to be able to reproduce the bug. The easier it is to reproduce the bug, the shorter the debugging cycles will take, and the faster it can be fixed.
+
+**Q: "Does that mean I should send my whole application over when I open a bug report?"**
+
+Please no. Reproduction code is best when there's a minimal amount of code necessary to reproduce the issue. The more extra stuff there is, the harder it may be to separate what's causing the bug versus what's just there.
+
+**Q: "Is a series of shell commands in an issue description reproduction code?"**
+
+Instead of making a full-on reproduction committed to source control, it might be tempting to provide a bunch of shell commands instead. While a handful of shell commands is better than nothing, there's an extremely high chance that the person debugging won't be able to reproduce your issue. When this happens, they have to ask for clarification. This back-and-forth process takes lots of energy and wastes everyone's time. Instead, it's better to provide an executable reproduction from the beginning.
 
 ## How to make an example app
 
 1. Start with a clean app with no other features.
 2. Add whatever code is necessary to demonstrate the issue.
 3. Add instructions to the README describing how to boot the app and reproduce the problem.
-4. Push the example app somewhere public such as GitHub.
+4. Push the example app somewhere public, such as GitHub.
 5. Bonus: Give the app to a friend or co-worker. See if they can repro the problem without any instructions other than what's in the README.
 6. Finally: Give a link to the example app to a maintainer (usually through an issue).
 
@@ -37,9 +49,7 @@ Better yet, send them a link to this page to help them understand why and how to
 Please provide an [example app that can reproduce this issue](https://www.codetriage.com/example_app).
 </textarea>
 
-<center>
-  <img src="https://www.dropbox.com/s/woa4h08jwuobzgp/example-apps.gif?raw=1" />
-</center>
+For additional tips on creating and responding to issues, check out the [How to Open Source](https://howtoopensource.dev/) book.
 
 <% if !current_user %>
 
@@ -48,7 +58,6 @@ Please provide an [example app that can reproduce this issue](https://www.codetr
 CodeTriage is the easiest way to get started contributing to open source.
 
 Sign up, subscribe to repos you want to help, and we send you contribution ideas in your inbox. Easy Peazy. If you want to know more read <a href="what">What is CodeTriage</a>.
-
 
 <br />
 <center>
