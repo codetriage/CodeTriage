@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/quick/Marshal.4.8/solid_use_case-2.2.0.gemspec.rz
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - bundler/2.3.9 rubygems/3.2.22 ruby/3.0.2 (arm64-apple-darwin21) command/test/dependency_parsers/ruby_parser_test.rb:13
+        options/build.phashion,gem.changelog,gem.ci,gem.linter,gem.test,gemfile,https://rubygems.pkg.github.com/ygt/
+        7cda2dac900b8423
+      X-Gemfile-Source:
+      - https://rubygems.org
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '592'
+      X-Amz-Id-2:
+      - 0u4/8xPTWA1CSBolnInrTN2/6IE8DMfo1GHKNR8G6foJ7RLkvjNC4kGGjpnqkgqfTINlW36ZgVc=
+      X-Amz-Request-Id:
+      - N2TE9JHWB6SS5C23
+      X-Amz-Replication-Status:
+      - COMPLETED
+      Last-Modified:
+      - Thu, 15 Nov 2018 21:09:40 GMT
+      Etag:
+      - '"fd2cb96eb8a580cf8c814eebf6f33774"'
+      Cache-Control:
+      - max-age=31536000
+      X-Amz-Version-Id:
+      - if3V8D36kQXmr15lP1gHamlXJOcPhCzY
+      Via:
+      - 1.1 varnish, 1.1 varnish
+      Content-Type:
+      - application/octet-stream
+      X-Backend:
+      - F_S3 52.92.132.122:443, fastlyshield--shield_ssl_cache_sea4479_SEA 199.27.78.79:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Wed, 05 Oct 2022 20:29:29 GMT
+      Age:
+      - '1290391'
+      X-Served-By:
+      - cache-sea4479-SEA, cache-fra19161-FRA
+      X-Cache:
+      - HIT, HIT
+      X-Cache-Hits:
+      - 9, 1
+      X-Timer:
+      - S1665001770.681589,VS0,VE1
+      Server:
+      - RubyGems.org
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eJyNU8Fu00AQDShyYzcRSQGBEKCRjxVykhZxWIsqqDSVD0gIEi45RGt7kqxq75rddYKLxJ/wAfwFn8KnsHZoCUqjYh/s3X375s3Mm3ojJ4/OMSXkY4YRm7GIaib43YN6vTF5HLj7R94rr39sEetsxOzAva9EwuJprnAaUYWWXxuNSaci+IRSmasTK3CdI+/I65WHQU7sEUux9evHs58181jEvhQcA7cxHp0axDBw37+BWYJfWJggjBWeGl7IqNYoOegF1bAS8kLB4YrpxSEUIpfVziwRqxfAhQY6p4wrDUx7a0EPK0Ef8HPOJKbI9cQy717g7n07qRC+Vcps/BE59u1rwMnrDYC1zsG1ZR4W5e/EFuRBRf4WM+Qx8qhwiDPgNDUpHcRoRKeMM6VZVOJJZyD/qtiM848Qp2eqXMUyXLrIkDRlzrWpG2kPMokSEzRVGZIng+W6ytMNWvUfvMJ3HH8/cJthzuMEZbnnN3debPS94wrSIu0Yl5iIrIzk3xv67VsvXcWyJb3A7UA3VNhv+Z0t7htwV8yOVMatt+RgrNt/6fV38u8C98r10zlLQpQ6nFN5SQfzlLLEi0RamcCcN8/X52t/3Pl+KpFqBDMXUM6FMsZFWNGi/BawMh2EFCnXoAWE6MEZVSwpwHSTzQpgPMu1AmN1pNEClMYMKI9BIU0TVMogZ0YAlBMAUa60SAGlFBJiqmkFjQRfImemSdezk1IdLRife2uRvYXWmSLd7tyw5GGZTdd4NUa6FLK7PdejwfOqq++CUbn8WvsNWwIjBg==
+  recorded_at: Wed, 05 Oct 2022 20:29:29 GMT
+recorded_with: VCR 6.0.0
