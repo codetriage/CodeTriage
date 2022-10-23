@@ -24,6 +24,9 @@ class Repo < ActiveRecord::Base
 
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
 
+  default_scope -> { where(removed_from_github: false) }
+  default_scope -> { where(archived: false) }
+
   def class_for_doc_language
     language && CLASS_FOR_DOC_LANGUAGE[language.downcase]
   end

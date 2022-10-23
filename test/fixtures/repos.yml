@@ -72,4 +72,25 @@ scene_hub_v2:
   updated_at: 2015-01-21T22:08:43Z
   issues_count: 0
 
+deleted_repo:
+  user_name: repo
+  name: deleted
+  full_name: repo/deleted
+  language: Ruby
+  created_at: 2014-12-19T02:33:42Z
+  updated_at: 2015-01-21T22:08:43Z
+  issues_count: 0
+  removed_from_github: true
+
+
+archived_repo:
+  user_name: repo
+  name: archived
+  full_name: repo/archived
+  language: Ruby
+  created_at: 2014-12-19T02:33:42Z
+  updated_at: 2015-01-21T22:08:43Z
+  issues_count: 0
+  removed_from_github: true
+
 

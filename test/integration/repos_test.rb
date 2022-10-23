@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ReposTest < ActionController::TestCase
+class ReposTest < ActionDispatch::IntegrationTest
   test "regular repo routes" do
     assert_routing(
       'rails/rails',
@@ -26,5 +26,20 @@ class ReposTest < ActionController::TestCase
       'angular/angular.js',
       { controller: "repos", action: "show", full_name: "angular/angular.js" },
     )
+  end
+
+  test "valid repo" do
+    get repo_url 'rails/rails'
+    assert_response :success
+  end
+
+  test "deleted_from_github repo" do
+    get repo_url 'repo/deleted'
+    assert_redirected_to new_repo_url(user_name: 'repo', name: 'deleted')
+  end
+
+  test "archived repo" do
+    get repo_url 'repo/archived'
+    assert_redirected_to new_repo_url(user_name: 'repo', name: 'archived')
   end
 end
