@@ -7,7 +7,9 @@ class RepoBasedController < ApplicationController
     [options[:name], options[:format]].compact.join('.')
   end
 
-  def find_repo(options)
-    Repo.find_by_full_name(options[:full_name].downcase)
+  def find_repo(options, only_active: true)
+    repo = Repo
+    repo = repo.active if only_active
+    repo.find_by_full_name(options[:full_name].downcase)
   end
 end

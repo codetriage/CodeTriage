@@ -24,8 +24,12 @@ class Repo < ActiveRecord::Base
 
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
 
-  default_scope -> { where(removed_from_github: false) }
-  default_scope -> { where(archived: false) }
+  scope :archived, -> { where(archived: true) }
+  scope :not_archived, -> { where(archived: false) }
+  scope :removed_from_github, -> { where(removed_from_github: true) }
+  scope :not_removed_from_github, -> { where(removed_from_github: false) }
+
+  scope :active, -> { not_archived.not_removed_from_github }
 
   def class_for_doc_language
     language && CLASS_FOR_DOC_LANGUAGE[language.downcase]
