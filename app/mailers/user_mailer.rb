@@ -77,12 +77,12 @@ class UserMailer < ActionMailer::Base
 
   def poke_inactive(user:, repos_by_need_ids:)
     return unless set_and_check_user(user)
-    @most_repo = Repo.order_by_issue_count.first
+    @most_repo = Repo.active.order_by_issue_count.first
 
     repo_need_id = repos_by_need_ids.detect { |id| id != @most_repo.id }
     @need_repo = Repo.where(id: repo_need_id).first
 
-    @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first || @most_repo || @need_repo
+    @random_repo = Repo.active.rand.not_in(@most_repo.id, @need_repo.id).first || @most_repo || @need_repo
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage misses you")
   end
 
