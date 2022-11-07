@@ -226,6 +226,10 @@ class Repo < ActiveRecord::Base
     File.join 'repos', path
   end
 
+  def active?
+    removed_from_github == false && archived == false
+  end
+
   def self.find_by_full_name(full_name)
     Repo.find_by!(full_name: full_name)
   end
