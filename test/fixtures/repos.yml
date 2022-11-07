@@ -73,9 +73,9 @@ scene_hub_v2:
   issues_count: 0
 
 deleted_repo:
-  user_name: repo
+  user_name: empty
   name: deleted
-  full_name: repo/deleted
+  full_name: empty/deleted
   language: Ruby
   created_at: 2014-12-19T02:33:42Z
   updated_at: 2015-01-21T22:08:43Z
@@ -84,9 +84,9 @@ deleted_repo:
 
 
 archived_repo:
-  user_name: repo
+  user_name: empty
   name: archived
-  full_name: repo/archived
+  full_name: empty/archived
   language: Ruby
   created_at: 2014-12-19T02:33:42Z
   updated_at: 2015-01-21T22:08:43Z
