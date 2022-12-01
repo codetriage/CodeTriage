@@ -304,9 +304,9 @@ GEM
       activesupport (= 7.0.4)
       bundler (>= 1.15.0)
       railties (= 7.0.4)
-    rails-autoscale-core (1.1.0)
-    rails-autoscale-web (1.1.0)
-      rails-autoscale-core
+    rails-autoscale-core (1.2.3)
+    rails-autoscale-web (1.2.3)
+      rails-autoscale-core (= 1.2.3)
       railties
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
@@ -455,7 +455,7 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.1)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
