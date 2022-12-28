@@ -61,9 +61,15 @@ namespace :schedule do
   task poke_inactive: :environment do
     next unless Date.today.tuesday?
 
-    repos_by_need_ids = Repo.order_by_need.limit(10).pluck(:id)
+    perc_90_issues_count = ActiveRecord::Base.connection.select_one("SELECT PERCENTILE_CONT(0.90) WITHIN GROUP(ORDER BY issues_count) FROM repos;")["percentile_cont"]
+    perc_90_subscriber_count = ActiveRecord::Base.connection.select_one("SELECT PERCENTILE_CONT(0.90) WITHIN GROUP(ORDER BY subscribers_count) FROM repos;")["percentile_cont"]
+
     User.inactive.find_each(batch_size: 100) do |user|
-      BackgroundInactiveEmailJob.perform_later(user, repos_by_need_ids: repos_by_need_ids)
+      BackgroundInactiveEmailJob.perform_later(
+        user,
+        min_issue_count: perc_90_issues_count,
+        min_subscriber_count: perc_90_subscriber_count
+      )
     end
   end
 

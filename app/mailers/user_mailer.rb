@@ -75,14 +75,22 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "[CodeTriage] Help triage #{@repo.full_name}")
   end
 
-  def poke_inactive(user:, repos_by_need_ids:)
+  def poke_inactive(user:, min_issue_count:, min_subscriber_count:)
     return unless set_and_check_user(user)
-    @most_repo = Repo.order_by_issue_count.first
+    languages = @user.favorite_languages&.sort || []
 
-    repo_need_id = repos_by_need_ids.detect { |id| id != @most_repo.id }
-    @need_repo = Repo.where(id: repo_need_id).first
+    query = Repo
+    query = repo.where(language: languages) if !languages.empty?
+    query = query
+            .where("issues_count >= ?", min_issue_count)
+            .where("subscribers_count >= ?", min_subscriber_count)
 
-    @random_repo = Repo.rand.not_in(@most_repo.id, @need_repo.id).first || @most_repo || @need_repo
+    @repos = Random::CachedIdQuery.new(
+      query: query,
+      limit: 3,
+      expires_in: 24.hours
+    ).call
+
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage misses you")
   end
 

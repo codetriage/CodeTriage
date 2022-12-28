@@ -103,7 +103,10 @@ class User < ActiveRecord::Base
   end
 
   @@max_id = nil
-  def self.random
+
+  # Much faster than order("RANDOM()") but it's
+  # not guaranteed to return results
+  def self.fast_rand
     @@max_id = self.maximum(:id) if @@max_id.nil?
 
     where("id >= ?", Random.new.rand(1..@@max_id))
