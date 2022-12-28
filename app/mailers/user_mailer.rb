@@ -75,7 +75,7 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "[CodeTriage] Help triage #{@repo.full_name}")
   end
 
-  def poke_inactive(user:, min_issue_count: , min_subscriber_count: )
+  def poke_inactive(user:, min_issue_count:, min_subscriber_count:)
     return unless set_and_check_user(user)
 
     if @user.favorite_languages.present?
@@ -85,9 +85,9 @@ class UserMailer < ActionMailer::Base
     end
 
     @repos = @repos
-      .rand
-      .where("issues_count >= ?", min_issue_count)
-      .where("subscribers_count >= ?", min_subscriber_count).first(3)
+             .rand
+             .where("issues_count >= ?", min_issue_count)
+             .where("subscribers_count >= ?", min_subscriber_count).first(3)
     mail(to: @user.email, reply_to: "noreply@codetriage.com", subject: "CodeTriage misses you")
   end
 
