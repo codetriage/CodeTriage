@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_13_212959) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_28_065556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -161,6 +161,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_212959) do
     t.index ["issues_count"], name: "index_repos_on_issues_count"
     t.index ["language"], name: "index_repos_on_language"
     t.index ["name", "user_name"], name: "index_repos_on_name_and_user_name", unique: true
+    t.index ["subscribers_count"], name: "index_repos_on_subscribers_count"
     t.index ["user_name"], name: "index_repos_on_user_name"
   end
 
