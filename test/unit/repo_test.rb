@@ -45,7 +45,7 @@ class RepoTest < ActiveSupport::TestCase
       repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
       repo.users << users(:jroes)
       repo.users << users(:schneems)
-      repo.subscriber_count == 2
+      repo.subscribers_count == 2
     end
   end
 
