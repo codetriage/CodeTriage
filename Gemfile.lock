@@ -415,7 +415,7 @@ GEM
       sprockets (>= 3.0.0)
     stackprof (0.2.17)
     temple (0.8.2)
-    test-prof (1.0.10)
+    test-prof (1.2.0)
     thor (1.2.1)
     tilt (2.0.11)
     timeout (0.3.0)
