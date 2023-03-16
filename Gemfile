@@ -60,9 +60,6 @@ gem 'redis-namespace'
 # Database
 gem 'pg'
 
-# Documentation
-gem 'yard', '~> 0.9.28'
-
 # Email
 gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
 gem 'premailer-rails'
@@ -106,9 +103,6 @@ gem 'sitemap_generator'
 # Storage
 gem 'aws-sdk-s3'
 
-# Tests
-gem 'minitest'
-
 # Utilities
 gem 'rake'
 gem 'rrrretry'
@@ -118,11 +112,13 @@ group :development do
   gem 'listen'
   gem 'memory_profiler'
   gem 'web-console'
+  gem 'yard', '~> 0.9.28'
 end
 
 group :test do
   gem 'capybara'
   gem 'launchy' # Not essential but helpful for save_and_open_page
+  gem 'minitest'
   gem 'mocha', require: false
   gem 'rails-controller-testing'
   gem 'simplecov', require: false
