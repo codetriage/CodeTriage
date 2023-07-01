@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Provides an actual random result exactly as expected
 # but it's cached for a period of time.
 #
