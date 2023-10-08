@@ -28,6 +28,8 @@ CodeTriage::Application.routes.draw do
 
   root to: "pages#index"
 
+  get "/topics/:topic", to: "pages#topic"
+
   get 'what'    => "pages#what"
   get 'privacy' => "pages#privacy"
   get 'support' => 'pages#support'
