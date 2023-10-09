@@ -64,15 +64,15 @@ class PagesController < ApplicationController
 
     label = Label.find_by(name: topic_name)
 
-    @topic_repos = Repo.with_some_issues
+    @repos = Repo.with_some_issues
                  .includes(:repo_labels)
-                 .where(repo_labels: {label_id: label.id})
+                 .where(repo_labels: { label_id: label.id })
                  .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
 
-    @repos = @topic_repos.without_user_subscriptions(current_user.id) if user_signed_in?
-    @repos = @repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
+    topic_repo_ids = @repos.map { |repo| repo.id }
 
-    topic_repo_ids = @topic_repos.map { |repo| repo.id }
+    @repos = @repos.without_user_subscriptions(current_user.id) if user_signed_in?
+    @repos = @repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
 
     if user_signed_in?
       @repos_subs = current_user.repo_subscriptions.page(valid_params[:page]).per_page(valid_params[:per_page] || 50).includes(:repo)

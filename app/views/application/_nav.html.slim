@@ -17,12 +17,16 @@ nav.application-navigation
           = content_tag 'a', 'Topics'
           div.dropdown-content
             =link_to 'Hacktoberfest', '/topics/hacktoberfest'
-
       li.application-navigation-list-item= link_to "Submit Repo", new_repo_path
       li.application-navigation-list-item= link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
       li.application-navigation-list-item= link_to 'About', what_path
       li.application-navigation-list-item= link_to 'University', university_index_path
+      li.application-navigation-list-item
+        div.dropdown
+          = content_tag 'a', 'Topics'
+          div.dropdown-content
+            =link_to 'Hacktoberfest', '/topics/hacktoberfest'
       li.application-navigation-list-item= link_to 'Log in', user_github_omniauth_authorize_path, method: :post
       li.application-navigation-list-item= link_to 'Sign Up', user_github_omniauth_authorize_path, method: :post
 
