@@ -54,6 +54,11 @@ class PagesController < ApplicationController
   def topic
     topic_name = params['topic']
 
+    if not ['hacktoberfest'].include?(topic_name)
+      redirect_back fallback_location: root_path
+      return
+    end
+
     set_title("Open Source Project Topic: #{topic_name}")
     set_description(description)
 
