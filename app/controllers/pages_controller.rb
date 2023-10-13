@@ -51,46 +51,7 @@ class PagesController < ApplicationController
     end
   end
 
-  def topic
-    topic_name = params['topic']
-
-    if not ['hacktoberfest'].include?(topic_name)
-      redirect_back fallback_location: root_path
-      return
-    end
-
-    set_title("Open Source Project Topic: #{topic_name}")
-    set_description(description)
-
-    label = Label.find_by(name: topic_name)
-
-    @repos = Repo.with_some_issues
-                 .includes(:repo_labels)
-                 .where(repo_labels: { label_id: label.id })
-                 .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
-
-    topic_repo_ids = @repos.map { |repo| repo.id }
-
-    @repos = @repos.without_user_subscriptions(current_user.id) if user_signed_in?
-    @repos = @repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
-
-    if user_signed_in?
-      @repos_subs = current_user.repo_subscriptions.page(valid_params[:page]).per_page(valid_params[:per_page] || 50).includes(:repo)
-      @repos_subs = @repos_subs.where(repo_id: topic_repo_ids)
-    end
-
-    respond_to do |format|
-      format.html {}
-      format.json do
-        htmlForPage = render_to_string(partial: "repos_with_pagination", locals: { repos: @repos }, formats: ['html'])
-        render json: { html: htmlForPage }.to_json
-      end
-    end
-  end
-
-  private
-
-  def description
+  private def description
     Rails.cache.fetch("pages#index/description", expires_in: 1.hour) do
       "Discover the easiest way to get started contributing to open source. " \
       "Over #{number_with_delimiter(User.count, delimiter: ',')} devs are " \
@@ -99,11 +60,11 @@ class PagesController < ApplicationController
     end
   end
 
-  def valid_params
+  private def valid_params
     params.permit(:language, :per_page, :page)
   end
 
-  def set_cache_headers
+  private def set_cache_headers
     response.headers["Cache-Control"] = "no-cache, no-store"
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
