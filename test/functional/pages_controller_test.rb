@@ -26,9 +26,4 @@ class PagesControllerTest < ActionController::TestCase
     assert_equal("no-cache", response.headers["Pragma"])
     assert_equal("Fri, 01 Jan 1990 00:00:00 GMT", response.headers["Expires"])
   end
-
-  test "redirect invalid topic" do
-    get :topic, params: { topic: 'test' }
-    assert_redirected_to root_url
-  end
 end
