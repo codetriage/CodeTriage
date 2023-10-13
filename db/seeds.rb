@@ -34,6 +34,8 @@ end
 
 raise "DocMethods not saved" if DocMethod.count.zero?
 
+hacktoberfest_label = Label.where(name: "hacktoberfest").first_or_create!
+
 100.times do
   printf "."
   begin
@@ -55,6 +57,8 @@ raise "DocMethods not saved" if DocMethod.count.zero?
       :full_name => "#{username}/#{name}"
     )
     repo.save(validate: false)
+
+    repo.repo_labels.where(label: hacktoberfest_label).first_or_create!
 
     repo.subscribers << user
 
