@@ -102,7 +102,7 @@ namespace :test do
   end
 end
 
-task default: [:rubocop, :test]
+task default: [:test]
 
 Rake::Task["assets:precompile"].enhance do
   Rake::Task["db:migrate"].invoke

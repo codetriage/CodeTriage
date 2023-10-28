@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.0", 3.1]
+        ruby: ["3.1"]
     name: Running tests with Ruby ${{ matrix.ruby }}
     services:
       postgres:
@@ -30,10 +30,15 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
+      - name: Linting
+        run: |
+          bundle exec standardrb
       - name: Setup database
         run: |
           cp config/database.ci.yml config/database.yml
           RAILS_ENV=test bundle exec rake db:create db:schema:load
-
       - name: Run tests
         run: bin/rake test
+      - name: Run seed tasks
+        run: rails db:seed
+

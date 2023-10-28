@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby ">= 2.7.2", "< 3.2"
+ruby ">= 3.1", "< 3.3"
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -133,6 +133,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'faker', require: false
   gem 'pry'
-  gem 'rubocop', require: false
+  gem 'standardrb', require: false
   gem 'rubocop-performance'
 end
