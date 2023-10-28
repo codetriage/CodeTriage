@@ -193,8 +193,11 @@ GEM
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
-    mail (2.7.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
+      net-imap
+      net-pop
+      net-smtp
     maildown (3.3.1)
       actionmailer (>= 4.0.0)
       kramdown-parser-gfm
@@ -206,7 +209,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
     mini_histogram (0.3.1)
-    mini_mime (1.1.2)
+    mini_mime (1.1.5)
     mini_portile2 (2.8.2)
     minitest (5.18.1)
     mocha (1.16.0)
