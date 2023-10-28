@@ -107,12 +107,14 @@ gem 'aws-sdk-s3'
 gem 'rake'
 gem 'rrrretry'
 
+# Parse Ruby documentation
+gem 'yard', '~> 0.9.28'
+
 group :development do
   gem 'foreman'
   gem 'listen'
   gem 'memory_profiler'
   gem 'web-console'
-  gem 'yard', '~> 0.9.28'
 end
 
 group :test do
