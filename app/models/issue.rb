@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Issue < ActiveRecord::Base
-  OPEN   = "open"
+  OPEN = "open"
   CLOSED = "closed"
 
-  validates :state, inclusion: { in: [OPEN, CLOSED] }
+  validates :state, inclusion: {in: [OPEN, CLOSED]}
   validates :number, presence: true
   belongs_to :repo
 
@@ -13,8 +13,8 @@ class Issue < ActiveRecord::Base
       update_issue!(repo)
       return false if commenting_users(repo).include?(user.github)
     end
-    return false  if closed?
-    return false  if pr_attached? && user.skip_issues_with_pr?
+    return false if closed?
+    return false if pr_attached? && user.skip_issues_with_pr?
     true
   end
 
@@ -22,7 +22,7 @@ class Issue < ActiveRecord::Base
     @fetcher ||= GithubFetcher::Issue.new(
       owner_name: repo.try(:user_name) || owner_name,
       repo_name: repo.try(:name) || repo_name,
-      number: number,
+      number: number
     )
   end
 
@@ -30,7 +30,7 @@ class Issue < ActiveRecord::Base
     @comments_fetcher ||= GithubFetcher::IssueComments.new(
       owner_name: repo.try(:user_name) || owner_name,
       repo_name: repo.try(:name) || repo_name,
-      number: number,
+      number: number
     )
   end
 
@@ -57,11 +57,11 @@ class Issue < ActiveRecord::Base
   end
 
   def repo_name
-    self.repo.name
+    repo.name
   end
 
   def owner_name
-    self.repo.user_name
+    repo.user_name
   end
 
   def public_url
@@ -75,36 +75,35 @@ class Issue < ActiveRecord::Base
   end
 
   def self.find_or_create_from_hash!(issue_hash, repo)
-    issue = Issue.find_or_create_by(number: issue_hash['number'], repo: repo)
+    issue = Issue.find_or_create_by(number: issue_hash["number"], repo: repo)
     issue.update_from_github_hash!(issue_hash)
   end
 
   def update_from_github_hash!(issue_hash)
-    last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
+    last_touched_at = issue_hash["updated_at"] ? DateTime.parse(issue_hash["updated_at"]) : nil
 
-    self.update!(title: issue_hash['title'],
-                 url: issue_hash['url'],
-                 last_touched_at: last_touched_at,
-                 state: issue_hash['state'],
-                 html_url: issue_hash['html_url'],
-                 number: issue_hash['number'],
-                 pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
+    update!(title: issue_hash["title"],
+      url: issue_hash["url"],
+      last_touched_at: last_touched_at,
+      state: issue_hash["state"],
+      html_url: issue_hash["html_url"],
+      number: issue_hash["number"],
+      pr_attached: pr_attached_with_issue?(issue_hash["pull_request"]))
   rescue => e
     raise e, "#{e.message} issue_id: #{id}, issue_hash: #{issue_hash.inspect}"
   end
 
   def self.create_from_github_hash!(issue_hash, repo:)
-    last_touched_at = issue_hash['updated_at'] ? DateTime.parse(issue_hash['updated_at']) : nil
+    last_touched_at = issue_hash["updated_at"] ? DateTime.parse(issue_hash["updated_at"]) : nil
 
     Issue.create!(repo_id: repo.id,
-                  title: issue_hash['title'],
-                  url: issue_hash['url'],
-                  last_touched_at: last_touched_at,
-                  state: issue_hash['state'],
-                  html_url: issue_hash['html_url'],
-                  number: issue_hash['number'],
-                  pr_attached: pr_attached_with_issue?(issue_hash['pull_request']))
-
+      title: issue_hash["title"],
+      url: issue_hash["url"],
+      last_touched_at: last_touched_at,
+      state: issue_hash["state"],
+      html_url: issue_hash["html_url"],
+      number: issue_hash["number"],
+      pr_attached: pr_attached_with_issue?(issue_hash["pull_request"]))
   rescue => e
     raise e, "#{e.message} issue_hash: #{issue_hash.inspect}"
   end
@@ -113,8 +112,6 @@ class Issue < ActiveRecord::Base
     where("state = ? and updated_at < ?", OPEN, 24.hours.ago)
       .update_all(state: CLOSED)
   end
-
-  private
 
   def self.pr_attached_with_issue?(pull_request_hash)
     # issue_hash['pull_request'] has following structure
@@ -128,7 +125,7 @@ class Issue < ActiveRecord::Base
     pull_request_hash.values.uniq != [nil]
   end
 
-  def pr_attached_with_issue?(pull_request_hash)
+  private def pr_attached_with_issue?(pull_request_hash)
     self.class.pr_attached_with_issue?(pull_request_hash)
   end
 end

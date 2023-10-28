@@ -4,7 +4,7 @@ module GithubFetcher
   class Email < Resource
     def initialize(options)
       super
-      @api_path = '/user/emails'
+      @api_path = "/user/emails"
     end
 
     private

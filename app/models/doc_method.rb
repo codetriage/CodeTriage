@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class DocMethod < ActiveRecord::Base
-  NeedsDocs = "⚠ Needs Docs ⚠".freeze
+  NEEDS_DOCS = "⚠ Needs Docs ⚠"
 
   belongs_to :repo
-  has_many   :doc_comments, dependent: :destroy, counter_cache: :doc_comments_count
+  has_many :doc_comments, dependent: :destroy, counter_cache: :doc_comments_count
 
   validates :raw_file, :name, :path, presence: true
 
   include ActiveRecord::CounterCache
 
   def self.missing_docs
-    where(doc_methods: { doc_comments_count: 0 })
+    where(doc_methods: {doc_comments_count: 0})
   end
 
   def self.active
@@ -33,7 +33,7 @@ class DocMethod < ActiveRecord::Base
   def file
     return nil if raw_file.blank?
     _absolute, _match, relative = raw_file.partition(/(\/|^)#{repo.name}\//i)
-    return relative
+    relative
   end
 
   # converts a doc method to a github path

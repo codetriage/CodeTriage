@@ -9,32 +9,32 @@ class AddingReposTest < ActionDispatch::IntegrationTest
 
   test "adding a new valid repo passing the URL" do
     login_via_github
-    VCR.use_cassette('my_repos') do
+    VCR.use_cassette("my_repos") do
       visit "/"
       click_link "Submit a Repo"
 
-      fill_in 'url', with: 'https://github.com/bemurphy/issue_triage_sandbox'
+      fill_in "url", with: "https://github.com/bemurphy/issue_triage_sandbox"
 
       click_button "Add Repo"
     end
 
-    VCR.use_cassette('add_valid_repo') do
+    VCR.use_cassette("add_valid_repo") do
       assert page.has_content?("Added bemurphy/issue_triage_sandbox for triaging")
     end
   end
 
   test "modifies the URL when it has invalid params" do
     login_via_github
-    VCR.use_cassette('my_repos') do
+    VCR.use_cassette("my_repos") do
       visit "/"
       click_link "Submit a Repo"
 
-      fill_in 'url', with: 'https://github.com/bemurphy/issue_triage_sandbox?files=1'
+      fill_in "url", with: "https://github.com/bemurphy/issue_triage_sandbox?files=1"
 
       click_button "Add Repo"
     end
 
-    VCR.use_cassette('add_valid_repo') do
+    VCR.use_cassette("add_valid_repo") do
       assert page.has_content?("Added bemurphy/issue_triage_sandbox for triaging")
     end
   end
@@ -43,22 +43,22 @@ class AddingReposTest < ActionDispatch::IntegrationTest
     visit "/"
     login_via_github
 
-    VCR.use_cassette('my_repos') do
+    VCR.use_cassette("my_repos") do
       visit "/"
       click_link "Submit a Repo"
-      fill_in 'url', with: 'bemurphy/issue_triage_sandbox'
+      fill_in "url", with: "bemurphy/issue_triage_sandbox"
 
       click_button "Add Repo"
     end
 
-    VCR.use_cassette('add_valid_repo') do
+    VCR.use_cassette("add_valid_repo") do
       assert page.has_content?("Added bemurphy/issue_triage_sandbox for triaging")
     end
   end
 
   test "adding invalid repo with blank params" do
     login_via_github
-    VCR.use_cassette('blank_repo') do
+    VCR.use_cassette("blank_repo") do
       visit "/"
       click_link "Submit a Repo"
 
@@ -70,7 +70,7 @@ class AddingReposTest < ActionDispatch::IntegrationTest
 
   test "add page without login" do
     # do not login first
-    VCR.use_cassette('blank_repo') do
+    VCR.use_cassette("blank_repo") do
       visit "/somerando/project"
     end
 

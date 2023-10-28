@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class EmailRateLimitTest < ActiveSupport::TestCase
   def seed_array
@@ -10,10 +10,10 @@ class EmailRateLimitTest < ActiveSupport::TestCase
   test "decides daily email frequency" do
     # Daily
     last_clicked_days_ago = 0..3
-    multiplier            = 1
-    valid_values          = seed_array.map { |n| n * multiplier }
-    day_ago               = rand(last_clicked_days_ago)
-    clicked_ago           = valid_values.sample
+    multiplier = 1
+    valid_values = seed_array.map { |n| n * multiplier }
+    day_ago = rand(last_clicked_days_ago)
+    clicked_ago = valid_values.sample
 
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     # Use user email frequency settings
@@ -23,22 +23,22 @@ class EmailRateLimitTest < ActiveSupport::TestCase
   test "wait" do
     # wait
     last_clicked_days_ago = 4..6
-    multiplier            = 1
-    valid_values          = seed_array.map { |n| n * multiplier }
-    invalid_values        = last_clicked_days_ago.to_a - valid_values
-    day_ago               = rand(last_clicked_days_ago)
-    bad_clicked_ago       = invalid_values.sample
+    multiplier = 1
+    valid_values = seed_array.map { |n| n * multiplier }
+    invalid_values = last_clicked_days_ago.to_a - valid_values
+    day_ago = rand(last_clicked_days_ago)
+    bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
   end
 
   test "twice a week" do
     # twice a week
     last_clicked_days_ago = 7..13
-    multiplier            = 3
-    valid_values          = seed_array.map { |n| n * multiplier }
-    invalid_values        = last_clicked_days_ago.to_a - valid_values
-    day_ago               = rand(last_clicked_days_ago)
-    clicked_ago           = valid_values.sample
+    multiplier = 3
+    valid_values = seed_array.map { |n| n * multiplier }
+    invalid_values = last_clicked_days_ago.to_a - valid_values
+    day_ago = rand(last_clicked_days_ago)
+    clicked_ago = valid_values.sample
     bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
@@ -50,11 +50,11 @@ class EmailRateLimitTest < ActiveSupport::TestCase
   test "once a week" do
     # once a week
     last_clicked_days_ago = 14..30
-    multiplier            = 7
-    valid_values          = seed_array.map { |n| n * multiplier }
-    invalid_values        = last_clicked_days_ago.to_a - valid_values
-    day_ago               = rand(last_clicked_days_ago)
-    clicked_ago           = valid_values.sample
+    multiplier = 7
+    valid_values = seed_array.map { |n| n * multiplier }
+    invalid_values = last_clicked_days_ago.to_a - valid_values
+    day_ago = rand(last_clicked_days_ago)
+    clicked_ago = valid_values.sample
     bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"
@@ -66,11 +66,11 @@ class EmailRateLimitTest < ActiveSupport::TestCase
   test "once a month" do
     # once a month
     last_clicked_days_ago = 31..10_000
-    multiplier            = 30
-    valid_values          = seed_array.map { |n| n * multiplier }
-    invalid_values        = last_clicked_days_ago.to_a - valid_values
-    day_ago               = rand(last_clicked_days_ago)
-    clicked_ago           = valid_values.sample
+    multiplier = 30
+    valid_values = seed_array.map { |n| n * multiplier }
+    invalid_values = last_clicked_days_ago.to_a - valid_values
+    day_ago = rand(last_clicked_days_ago)
+    clicked_ago = valid_values.sample
     bad_clicked_ago = invalid_values.sample
     assert EmailRateLimit.new(day_ago).now?(clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).now?(#{clicked_ago}) to be true, was not"
     assert EmailRateLimit.new(day_ago).skip?(bad_clicked_ago), "Expected  EmailRateLimit.new(#{day_ago}).skip?(#{bad_clicked_ago}) to be true, was not"

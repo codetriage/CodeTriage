@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
   def fetcher(repo)
     GithubFetcher::CommitSha.new(
       user_name: repo.user_name,
       name: repo.name,
-      default_branch: 'master'
+      default_branch: "master"
     )
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: 'asdf')
+    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: "asdf")
   end
 
   test "#as_json returns json" do
@@ -20,7 +20,7 @@ class GithubFetcher::CommitShaTest < ActiveSupport::TestCase
     commit_message = "Fixed geojson method in band model"
 
     VCR.use_cassette "fetcher_commit_sha" do
-      assert_equal fetcher.as_json['commit']['message'], commit_message, fetcher.as_json
+      assert_equal fetcher.as_json["commit"]["message"], commit_message, fetcher.as_json
     end
   end
 

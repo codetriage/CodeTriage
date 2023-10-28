@@ -1,10 +1,10 @@
 class CreateIssues < ActiveRecord::Migration[4.2]
   def change
     create_table :issues do |t|
-      t.integer   :comment_count
-      t.string    :url, :repo_name, :user_name
-      t.datetime  :last_touched_at
-      t.integer   :number
+      t.integer :comment_count
+      t.string :url, :repo_name, :user_name
+      t.datetime :last_touched_at
+      t.integer :number
 
       t.timestamps
     end

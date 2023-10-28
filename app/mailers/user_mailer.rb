@@ -11,12 +11,12 @@ class UserMailer < ActionMailer::Base
   rescue_from AbortDeliveryError, with: -> {}
 
   def send_daily_triage(
-      user_id:,
-      assignment_ids:,
-      email_at:,
-      read_doc_ids: [],
-      write_doc_ids: []
-    )
+    user_id:,
+    assignment_ids:,
+    email_at:,
+    read_doc_ids: [],
+    write_doc_ids: []
+  )
 
     user = User.find(user_id)
     return unless set_and_check_user(user)
@@ -35,11 +35,11 @@ class UserMailer < ActionMailer::Base
       write_doc_ids: write_doc_ids
     )
 
-    subject = String.new
-    if user.effective_streak_count.zero?
-      subject << "[Start contributing today 💌]"
+    subject = +""
+    subject << if user.effective_streak_count.zero?
+      "[Start contributing today 💌]"
     else
-      subject << "[Grow your streak #{user. effective_streak_count} 💌]"
+      "[Grow your streak #{user.effective_streak_count} 💌]"
     end
 
     subject << " " unless subject.end_with?(" ")
@@ -61,9 +61,9 @@ class UserMailer < ActionMailer::Base
   def daily_docs(user:, write_docs:, read_docs:)
     return unless set_and_check_user(user)
     @write_docs = write_docs
-    @read_docs  = read_docs
-    count       = (@write_docs.try(:count) || 0) + (@read_docs.try(:count) || 0)
-    subject     = "Check out #{count} Open Source #{"Doc".pluralize(count)}"
+    @read_docs = read_docs
+    count = (@write_docs.try(:count) || 0) + (@read_docs.try(:count) || 0)
+    subject = "Check out #{count} Open Source #{"Doc".pluralize(count)}"
     mail(to: @user.email, subject: subject)
   end
 
@@ -82,8 +82,8 @@ class UserMailer < ActionMailer::Base
     query = Repo.active
     query = repo.where(language: languages) if !languages.empty?
     query = query
-            .where("issues_count >= ?", min_issue_count)
-            .where("subscribers_count >= ?", min_subscriber_count)
+      .where("issues_count >= ?", min_issue_count)
+      .where("subscribers_count >= ?", min_subscriber_count)
 
     @repos = Random::CachedIdQuery.new(
       query: query,

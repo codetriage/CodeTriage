@@ -51,43 +51,43 @@ module MailBuilder
   #
   class GroupedIssuesDocs
     def initialize(user_id:, assignment_ids: [], read_doc_ids: [], write_doc_ids: [], random_seed: Random.new_seed)
-      @active            = false
-      @sub_hashes        = {}
-      @repo_id_to_sub    = {}
+      @active = false
+      @sub_hashes = {}
+      @repo_id_to_sub = {}
       @doc_comments_hash = {}
-      @error_hash        = Hash.new { raise "must call within each" }
-      @active_hash       = @error_hash
+      @error_hash = Hash.new { raise "must call within each" }
+      @active_hash = @error_hash
 
-      @any_docs   = read_doc_ids.present? || write_doc_ids.present?
+      @any_docs = read_doc_ids.present? || write_doc_ids.present?
       @any_issues = assignment_ids.present?
 
       ## Issue assignments
       assignments = IssueAssignment
-                    .where(id: assignment_ids)
-                    .includes(:issue)
-                    .select(:id, :repo_subscription_id, :issue_id)
+        .where(id: assignment_ids)
+        .includes(:issue)
+        .select(:id, :repo_subscription_id, :issue_id)
 
       ## Docs
       docs = DocMethod
-             .where(id: write_doc_ids + read_doc_ids)
-             .select(:id, :repo_id, :line, :file, :path)
+        .where(id: write_doc_ids + read_doc_ids)
+        .select(:id, :repo_id, :line, :file, :path)
 
       ## Comments
       doc_comments = DocComment
-                     .where(doc_method_id: docs.map(&:id).uniq)
-                     .select(:comment, :doc_method_id)
+        .where(doc_method_id: docs.map(&:id).uniq)
+        .select(:comment, :doc_method_id)
 
       ## Subscriptions
       doc_repo_ids = docs.map(&:repo_id).uniq
 
       subscriptions = RepoSubscription
-                      .joins("LEFT OUTER JOIN issue_assignments ON issue_assignments.repo_subscription_id = repo_subscriptions.id")
-                      .where("issue_assignments.id in (?) or repo_id in (?)", assignment_ids, doc_repo_ids)
-                      .where(user_id: user_id)
-                      .select(:id, :repo_id)
-                      .includes(:repo)
-                      .all
-                      .shuffle(random: Random.new(random_seed))
+        .joins("LEFT OUTER JOIN issue_assignments ON issue_assignments.repo_subscription_id = repo_subscriptions.id")
+        .where("issue_assignments.id in (?) or repo_id in (?)", assignment_ids, doc_repo_ids)
+        .where(user_id: user_id)
+        .select(:id, :repo_id)
+        .includes(:repo)
+        .all
+        .shuffle(random: Random.new(random_seed))
 
       store_subscriptions!(subscriptions)
       store_assignments!(assignments)
@@ -105,9 +105,8 @@ module MailBuilder
         @sub_hashes[sub.id] ||= {}
         @sub_hashes[sub.id][:repo] = sub.repo
         @sub_hashes[sub.id][:assignments] ||= []
-        @sub_hashes[sub.id][:read_docs]   ||= []
-        @sub_hashes[sub.id][:write_docs]  ||= []
-        @sub_hashes
+        @sub_hashes[sub.id][:read_docs] ||= []
+        @sub_hashes[sub.id][:write_docs] ||= []
       end
     end
 
@@ -119,7 +118,7 @@ module MailBuilder
 
     def store_docs!(write_doc_ids:, docs:, doc_comments:)
       write_docs = []
-      read_docs  = []
+      read_docs = []
       docs.each do |doc|
         if write_doc_ids.include?(doc.id)
           write_docs << doc
@@ -145,10 +144,10 @@ module MailBuilder
 
     def each
       @sub_hashes.each do |_, hash|
-        @active      = true
+        @active = true
         @active_hash = hash
         yield self
-        @active      = false
+        @active = false
         @active_hash = @error_hash
       end
     end
@@ -172,20 +171,20 @@ module MailBuilder
 
     def any_docs
       return @any_docs if !@active
-      return read_docs.any? || write_docs.any?
+      read_docs.any? || write_docs.any?
     end
 
     def any_issues
       return @any_issues if !@active
-      return assignments.any?
+      assignments.any?
     end
 
-    alias :any_docs?   :any_docs
-    alias :any_issues? :any_issues
+    alias_method :any_docs?, :any_docs
+    alias_method :any_issues?, :any_issues
 
     def actions(delimiter: "and")
-      return "issues" if !self.any_docs
-      return "docs"   if !self.any_issues
+      return "issues" if !any_docs
+      return "docs" if !any_issues
       "issues #{delimiter} docs"
     end
 

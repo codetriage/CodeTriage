@@ -27,12 +27,10 @@ class User < ActiveRecord::Base
 end
 
 mass_user_create = 1000.times.each.map do
-  {name: "user" }
+  {name: "user"}
 end
 
 User.create(mass_user_create)
-
-
 
 ALL_USERS = User.all
 
@@ -45,4 +43,3 @@ Benchmark.bm { |x|
     end
   }
 }
-

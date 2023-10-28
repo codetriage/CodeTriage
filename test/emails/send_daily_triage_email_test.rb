@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class UserMailerTest < ActionMailer::TestCase
   include ActiveJob::TestHelper::TestQueueAdapter
@@ -15,13 +15,13 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal 2, triage_email.parts.size
     assert_equal "multipart/alternative", triage_email.mime_type
 
-    assert_match /Help Triage \d+ Open Source Issue/, triage_email.subject
+    assert_match(/Help Triage \d+ Open Source Issue/, triage_email.subject)
 
     # Repo groups
-    assert_match /## bemurphy\/issue_triage_sandbox/, triage_email_text
+    assert_match(/## bemurphy\/issue_triage_sandbox/, triage_email_text)
 
     # Issue number one
-    assert_match /bemurphy\/issue_triage_sandbox#1/, triage_email_text
+    assert_match(/bemurphy\/issue_triage_sandbox#1/, triage_email_text)
   end
 
   test "sends docs" do
@@ -35,9 +35,9 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal 2, triage_email.parts.size
     assert_equal "multipart/alternative", triage_email.mime_type
 
-    assert_match /Help Triage 1 Open Source Doc/, triage_email.subject
+    assert_match(/Help Triage 1 Open Source Doc/, triage_email.subject)
 
-    assert_match /### Docs/, triage_email_text
+    assert_match(/### Docs/, triage_email_text)
   end
 
   test "sends subscribed/created email" do
@@ -53,8 +53,8 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal 2, triage_email.parts.size
     assert_equal "multipart/alternative", triage_email.mime_type
 
-    assert_match /Help triage sinatra\/sinatra/, triage_email.subject
+    assert_match(/Help triage sinatra\/sinatra/, triage_email.subject)
 
-    assert_match /## How To Triage?/, triage_email_text
+    assert_match(/## How To Triage?/, triage_email_text)
   end
 end

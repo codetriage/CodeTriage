@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'docs_doctor/parsers/ruby/yard'
+require "docs_doctor/parsers/ruby/yard"
 
 class Repo < ActiveRecord::Base
   # Now done at the DB level # validates :name, uniqueness: {scope: :user_name, case_sensitive: false }
@@ -22,7 +22,7 @@ class Repo < ActiveRecord::Base
   before_validation :set_full_name!, :downcase_name, :strip_whitespaces
   after_create :background_populate_issues!, :update_repo_info!, :background_populate_docs!
 
-  CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
+  CLASS_FOR_DOC_LANGUAGE = {"ruby" => DocsDoctor::Parsers::Ruby::Yard}
 
   scope :archived, -> { where(archived: true) }
   scope :not_archived, -> { where(archived: false) }
@@ -67,13 +67,13 @@ class Repo < ActiveRecord::Base
     return "Skipped, no commit SHA" unless commit_sha
     return "Skipped, no subscribers" unless has_subscribers
 
-    self.update!(commit_sha: commit_sha)
+    update!(commit_sha: commit_sha)
     location ||= fetcher.clone
 
     parser = class_for_doc_language.new(location)
     parser.process
     parser.store(self)
-    return :success
+    :success
   end
 
   def background_populate_issues!
@@ -85,7 +85,7 @@ class Repo < ActiveRecord::Base
   end
 
   def methods_missing_docs
-    doc_methods.where(doc_methods: { doc_comments_count: 0 })
+    doc_methods.where(doc_methods: {doc_comments_count: 0})
   end
 
   def methods_with_docs
@@ -93,32 +93,32 @@ class Repo < ActiveRecord::Base
   end
 
   def classes_missing_docs
-    doc_classes.where(doc_classes: { doc_comments_count: 0 })
+    doc_classes.where(doc_classes: {doc_comments_count: 0})
   end
 
   def color
     case weight
     when "low"
-      "5bb878".freeze
+      "5bb878"
     when "medium"
-      "eba117".freeze
+      "eba117"
     when "high"
-      "e25443".freeze
+      "e25443"
     else
-      "lightgrey".freeze
+      "lightgrey"
     end
   end
 
   def weight
     case issues_count
     when 0..199
-      "low".freeze
+      "low"
     when 200..799
-      "medium".freeze
+      "medium"
     when 800..Float::INFINITY
-      "high".freeze
+      "high"
     else
-      "".freeze
+      ""
     end
   end
 
@@ -151,8 +151,8 @@ class Repo < ActiveRecord::Base
   end
 
   def force_issues_count_sync!
-    self.update!(
-      issues_count: self.issues.where(state: "open").count,
+    update!(
+      issues_count: issues.where(state: "open").count,
       docs_subscriber_count: query_docs_subscriber_count
     )
   end
@@ -162,7 +162,7 @@ class Repo < ActiveRecord::Base
   end
 
   def self.order_by_issue_count
-    self.order("issues_count DESC")
+    order("issues_count DESC")
   end
 
   def self.search_by(repo_name, user_name)
@@ -170,28 +170,28 @@ class Repo < ActiveRecord::Base
   end
 
   def self.with_some_issues
-    self.where("issues_count > 0")
+    where("issues_count > 0")
   end
 
   def self.without_user_subscriptions(user_id)
     user_subscribed_repo_ids = RepoSubscription.where(user_id: user_id).select(:repo_id)
-    self.where.not(id: user_subscribed_repo_ids)
+    where.not(id: user_subscribed_repo_ids)
   end
 
   def github_url
-    File.join('https://github.com', full_name)
+    File.join("https://github.com", full_name)
   end
 
   def self.exists_with_name?(name)
-    user_name, repo_name = name.downcase.split(?/)
+    user_name, repo_name = name.downcase.split("/")
     Repo.exists?(user_name: user_name, name: repo_name)
   end
 
   def update_from_github
     if fetcher.not_found?
-      self.update!(removed_from_github: true)
+      update!(removed_from_github: true)
     elsif fetcher.success?
-      repo_full_name = fetcher_json.fetch('full_name', full_name)
+      repo_full_name = fetcher_json.fetch("full_name", full_name)
 
       if repo_full_name != full_name && self.class.exists_with_name?(repo_full_name)
         # TODO: Add deduplication step
@@ -199,20 +199,20 @@ class Repo < ActiveRecord::Base
       end
 
       repo_user_name, repo_name = repo_full_name.split("/")
-      self.update!(
+      update!(
         name: repo_name,
         user_name: repo_user_name,
-        language: fetcher_json.fetch('language', language),
-        description: fetcher_json.fetch('description', description)&.first(255),
+        language: fetcher_json.fetch("language", language),
+        description: fetcher_json.fetch("description", description)&.first(255),
         full_name: repo_full_name,
         removed_from_github: false,
-        archived: fetcher_json.fetch('archived', archived)
+        archived: fetcher_json.fetch("archived", archived)
       )
     end
   end
 
   def repo_path
-    File.join 'repos', path
+    File.join "repos", path
   end
 
   def active?
@@ -228,21 +228,21 @@ class Repo < ActiveRecord::Base
   end
 
   private def downcase_name
-    self.name.downcase!
-    self.user_name.downcase!
+    name.downcase!
+    user_name.downcase!
   end
 
   private def set_full_name!
-    if self.full_name && user_name.blank?
-      self.user_name, self.name = self.full_name.split("/")
+    if full_name && user_name.blank?
+      self.user_name, self.name = full_name.split("/")
     else
       self.full_name = "#{user_name}/#{name}"
     end
   end
 
   private def strip_whitespaces
-    self.name.strip!
-    self.user_name.strip!
+    name.strip!
+    user_name.strip!
   end
 
   private def github_url_exists
@@ -262,6 +262,6 @@ class Repo < ActiveRecord::Base
         repo_id = :repo_id AND
         (read = true OR write = true)
     SQL
-    RepoSubscription.count_by_sql([sql, { repo_id: self.id }])
+    RepoSubscription.count_by_sql([sql, {repo_id: id}])
   end
 end

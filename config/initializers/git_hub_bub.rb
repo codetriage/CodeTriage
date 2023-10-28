@@ -5,8 +5,8 @@ GitHubBub::Request.send(:remove_const, :GITHUB_VERSION)
 GitHubBub::Request.send(:remove_const, :USER_AGENT)
 GitHubBub::Request.send(:remove_const, :RETRIES)
 
-GitHubBub::Request::GITHUB_VERSION = 'vnd.github.v3.full+json'
-GitHubBub::Request::USER_AGENT = 'codetriage'
+GitHubBub::Request::GITHUB_VERSION = "vnd.github.v3.full+json"
+GitHubBub::Request::USER_AGENT = "codetriage"
 GitHubBub::Request::RETRIES = 3
 
 class CodeTraigeRandomApiKeyStore
@@ -16,13 +16,13 @@ class CodeTraigeRandomApiKeyStore
   end
 
   def call
-    return ENV['GITHUB_API_KEY'] if ENV['GITHUB_API_KEY']
+    return ENV["GITHUB_API_KEY"] if ENV["GITHUB_API_KEY"]
 
     until (key = @keys.pop)
       populate_keys
     end
 
-    return key
+    key
   end
 
   private def get_key

@@ -8,8 +8,8 @@ class ReposController < RepoBasedController
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: params[:name])
-    @full_name = @repo.name && @repo.user_name ? +"#{@repo.user_name}/#{@repo.name}" : nil
-    @full_name.prepend("https://github.com/") if @full_name
+    @full_name = (@repo.name && @repo.user_name) ? +"#{@repo.user_name}/#{@repo.name}" : nil
+    @full_name&.prepend("https://github.com/")
     @repo_sub = RepoSubscription.new
   end
 
@@ -18,16 +18,16 @@ class ReposController < RepoBasedController
     @repo = find_repo(params)
     @issues = @repo.open_issues.select(:id, :title, :html_url).limit(record_count)
     @issues = paginate(@issues, after: params[:issues_after],
-                                before: params[:issues_before])
+      before: params[:issues_before])
 
-    @docs   = @repo.doc_methods.select(:id, :doc_comments_count, :path).limit(record_count)
-    @docs   = paginate(@docs, after: params[:docs_after],
-                              before: params[:docs_before])
+    @docs = @repo.doc_methods.select(:id, :doc_comments_count, :path).limit(record_count)
+    @docs = paginate(@docs, after: params[:docs_after],
+      before: params[:docs_before])
 
-    @repo_sub    = current_user.repo_subscriptions_for(@repo.id).first if current_user
+    @repo_sub = current_user.repo_subscriptions_for(@repo.id).first if current_user
     @subscribers = @repo.subscribers.select(:private, :avatar_url, :github).limit(27)
 
-    @docs_pagination   = params[:docs_after]   || params[:docs_before]
+    @docs_pagination = params[:docs_after] || params[:docs_before]
     @issues_pagination = params[:issues_after] || params[:issues_before]
 
     set_title("Help Contribute to #{@repo.full_name} - #{@repo.language}")
@@ -39,7 +39,7 @@ class ReposController < RepoBasedController
 
   def create
     parse_params_for_repo_info
-    @repo   = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first unless params_blank?
+    @repo = Repo.search_by(params[:repo][:name], params[:repo][:user_name]).first unless params_blank?
     @repo ||= Repo.new(repo_params)
     if @repo.save
       @repo_sub = current_user.repo_subscriptions.create(repo: @repo)
@@ -70,12 +70,12 @@ class ReposController < RepoBasedController
     @repo = Repo.new(user_name: params[:user_name], name: name_from_params(params))
     if user_signed_in?
       case params[:show]
-      when 'own'
-        @repos = cached_repos 'repos', current_user.own_repos_json
-      when 'starred'
-        @repos = cached_repos 'starred', current_user.starred_repos_json
-      when 'watched'
-        @repos = cached_repos 'subscriptions', current_user.subscribed_repos_json
+      when "own"
+        @repos = cached_repos "repos", current_user.own_repos_json
+      when "starred"
+        @repos = cached_repos "starred", current_user.starred_repos_json
+      when "watched"
+        @repos = cached_repos "subscriptions", current_user.subscribed_repos_json
       end
     end
     render layout: nil
@@ -111,7 +111,7 @@ class ReposController < RepoBasedController
       :stars_count,
       :language,
       :description,
-      :full_name,
+      :full_name
     )
   end
 
@@ -123,7 +123,7 @@ class ReposController < RepoBasedController
     params[:url].gsub!(/\?(.*)/, "")
 
     url_array = params[:url].split("/")
-    params[:repo][:name]      = url_array.pop || ""
+    params[:repo][:name] = url_array.pop || ""
     params[:repo][:user_name] = url_array.pop || ""
   end
 

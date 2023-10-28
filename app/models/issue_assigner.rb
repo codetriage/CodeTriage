@@ -14,7 +14,7 @@ class IssueAssigner
   attr_reader :user, :subscriptions
 
   def initialize(user, subscriptions, can_access_network: !Rails.env.test?)
-    @user          = user
+    @user = user
     @subscriptions = subscriptions
     @assigned_count_hash = Hash.new { |hash, key| hash[key] = 0 }
     @can_access_network = can_access_network
@@ -74,6 +74,6 @@ class IssueAssigner
       LIMIT
         :email_limit
     SQL
-    Issue.find_by_sql([sql, { sub_id: sub.id, issue_state: Issue::OPEN, repo_id: sub.repo_id, email_limit: sub.email_limit }]).first(sub.email_limit)
+    Issue.find_by_sql([sql, {sub_id: sub.id, issue_state: Issue::OPEN, repo_id: sub.repo_id, email_limit: sub.email_limit}]).first(sub.email_limit)
   end
 end

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'test_helper'
-require_relative '../../lib/dependency_parser/ruby/parse'
+require "test_helper"
+require_relative "../../lib/dependency_parser/ruby/parse"
 
 class RubyParserTest < ActiveSupport::TestCase
   test "returns nothing on invalid Gemfile.lock" do
     parser = DependencyParser::Ruby::Parse.new("invalid")
     parser.call
     refute parser.success?
-    assert_equal({ repos: [], language: "ruby" }, parser.direct)
+    assert_equal({repos: [], language: "ruby"}, parser.direct)
   end
 
   test "returns the list of gems for a small Gemfle" do
@@ -34,7 +34,7 @@ class RubyParserTest < ActiveSupport::TestCase
       BUNDLED WITH
          2.3.21
 
-      LOCKFILE
+    LOCKFILE
 
     parser = DependencyParser::Ruby::Parse.new(gemfile_lock)
     VCR.use_cassette("dependency_parser/rubygems") do

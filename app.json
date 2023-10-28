@@ -1,13 +1,13 @@
 {
-  "name":"Code Triage ",
+  "name": "Code Triage ",
   "description": "Helping you contribute to open source since 2013",
   "website": "https://www.codetriage.com/",
   "repository": "https://github.com/codetriage/codetriage",
-  "scripts":{
-    "postdeploy":"rake db:schema:load db:migrate db:seed",
-    "test": "bundle exec rubocop && bin/rails test && rails db:seed"
+  "scripts": {
+    "postdeploy": "rake db:schema:load db:migrate db:seed",
+    "test": "bundle exec standardrb && bin/rails test && rails db:seed"
   },
-  "env":{
+  "env": {
     "DEVISE_SECRET_KEY": "foo",
     "DEVISE_SECRET_TOKEN": "bar",
     "WEB_CONCURRENCY": "1"

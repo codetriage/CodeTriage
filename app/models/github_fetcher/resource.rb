@@ -41,12 +41,12 @@ module GithubFetcher
     # Generally not over-ridden
     def response
       @response ||= begin
-                      GitHubBub.get(api_path, options)
-                    rescue GitHubBub::RequestError => e
-                      @error = e
-                      @error_message = e.message
-                      null_response(e)
-                    end
+        GitHubBub.get(api_path, options)
+      rescue GitHubBub::RequestError => e
+        @error = e
+        @error_message = e.message
+        null_response(e)
+      end
     end
 
     def success?
@@ -57,7 +57,7 @@ module GithubFetcher
     end
 
     def not_found?
-      status == 404 ? true : false
+      status == 404
     end
 
     def bad_token?

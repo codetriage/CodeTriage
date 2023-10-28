@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  test 'streak tests' do
+  test "streak tests" do
     # New user, first email
     user = User.new(github: "whatever1")
     assert_equal 0, user.effective_streak_count
@@ -50,7 +50,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 10, user.effective_streak_count
   end
 
-  test 'negative count' do
+  test "negative count" do
     user = User.new(github: "negativeRawEmailcount")
     user.raw_streak_count = 1
     user.raw_emails_since_click = 74
@@ -58,14 +58,14 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 0, user.effective_streak_count
   end
 
-  test '#github_url returns github url' do
-    github_url = User.new(github: 'jroes').github_url
-    assert_equal 'https://github.com/jroes', github_url
+  test "#github_url returns github url" do
+    github_url = User.new(github: "jroes").github_url
+    assert_equal "https://github.com/jroes", github_url
   end
 
-  test 'public scope should only return public users' do
-    user           = users(:mockstar)
-    private_user   = users(:jroes)
+  test "public scope should only return public users" do
+    user = users(:mockstar)
+    private_user = users(:jroes)
 
     # Sanity check for fixture state
     assert_not user.private
@@ -77,7 +77,7 @@ class UserTest < ActiveSupport::TestCase
     assert_includes result, user
   end
 
-  test 'able_to_edit_repo allows the correct rights' do
+  test "able_to_edit_repo allows the correct rights" do
     u = User.new(github: "bob")
     r = Repo.new(user_name: "bob")
     assert u.able_to_edit_repo?(r)
@@ -86,12 +86,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not u.able_to_edit_repo?(r2)
   end
 
-  test 'valid_email? is true when valid' do
-    assert User.new(email: 'richard.schneeman@gmail.com').valid_email?
+  test "valid_email? is true when valid" do
+    assert User.new(email: "richard.schneeman@gmail.com").valid_email?
   end
 
-  test 'valid_email? is false when bad' do
-    assert_not User.new(email: 'a really bad e-mail address').valid_email?
+  test "valid_email? is false when bad" do
+    assert_not User.new(email: "a really bad e-mail address").valid_email?
   end
 
   test "user favorite_language?" do
@@ -137,19 +137,19 @@ class UserTest < ActiveSupport::TestCase
 
   test "#own_repos_json" do
     VCR.use_cassette "fetcher_owned_repos_for_user_first_100" do
-      assert_equal users(:mockstar).own_repos_json.last['name'], 'writings'
+      assert_equal users(:mockstar).own_repos_json.last["name"], "writings"
     end
   end
 
   test "#starred_repos_json" do
     VCR.use_cassette "fetcher_starred_repos_for_user" do
-      assert_equal users(:mockstar).starred_repos_json.first['full_name'], 'tscanlin/next-blog'
+      assert_equal users(:mockstar).starred_repos_json.first["full_name"], "tscanlin/next-blog"
     end
   end
 
   test "#subscribed_repos_json" do
     VCR.use_cassette "fetcher_subscribed_repos_for_user" do
-      assert_equal users(:mockstar).subscribed_repos_json.first['full_name'], 'thoughtbot/suspenders'
+      assert_equal users(:mockstar).subscribed_repos_json.first["full_name"], "thoughtbot/suspenders"
     end
   end
 

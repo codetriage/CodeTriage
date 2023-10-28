@@ -6,7 +6,7 @@ class ApiInfoController < RepoBasedController
   include ActionView::Helpers::DateHelper
 
   def show
-    @repo    = find_repo(params)
+    @repo = find_repo(params)
     added_by = @repo.subscribers.where(private: false).order(:created_at).first&.github
     count = @repo.subscribers_count
     count = 0 if added_by.nil?

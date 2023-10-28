@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Here is how to add a "COVID-19" related resource to the project
 #
 # 1) Find the GitHub url of the project such as `https://github.com/nextstrain/ncov`
@@ -7,7 +8,7 @@
 # 4) Save the file in the UI and submit a PR
 # 5) Repeat
 #
-COVID_REPOS = %W{
+COVID_REPOS = %W[
   nextstrain/ncov
   jcl5m1/ventilator
   CSSEGISandData/COVID-19
@@ -31,4 +32,4 @@ COVID_REPOS = %W{
   Leo1690/BtPedalClient
   Leo1690/BtPedalServer
   covid19india/covid19india-react
-}
+]

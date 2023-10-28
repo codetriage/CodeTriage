@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class Users::OmniauthCallbacksControllerTest < ActionController::TestCase
   include Devise::Test::ControllerHelpers
@@ -11,17 +11,17 @@ class Users::OmniauthCallbacksControllerTest < ActionController::TestCase
   end
 
   test "make user feel good when legit email address" do
-    stub_oauth_user('legit@legit.com')
+    stub_oauth_user("legit@legit.com")
     get :github
     assert flash[:notice] == I18n.t("devise.omniauth_callbacks.success",
-                                    kind: "GitHub")
+      kind: "GitHub")
   end
 
   test "redirect to user page and inform when bad e-mail address" do
-    stub_oauth_user('awful e-mail address')
+    stub_oauth_user("awful e-mail address")
     get :github
     assert flash[:notice] == I18n.t("devise.omniauth_callbacks.bad_email_success",
-                                    kind: "GitHub")
+      kind: "GitHub")
     assert_redirected_to root_path
   end
 

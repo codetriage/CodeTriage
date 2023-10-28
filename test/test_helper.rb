@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-SimpleCov.start 'rails'
+require "simplecov"
+SimpleCov.start "rails"
 
 ENV["RAILS_ENV"] = "test"
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
+require File.expand_path("../../config/environment", __FILE__)
+require "rails/test_help"
 require "capybara/rails"
-require 'webmock/minitest'
+require "webmock/minitest"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
@@ -32,13 +32,13 @@ end
 OmniAuth.config.test_mode = true
 OmniAuth.config.add_mock(
   :github, {
-    uid: 'mockstar',
+    uid: "mockstar",
     credentials: {
-      token: ENV['GITHUB_API_KEY'] || "d401116495671f0a0ceca9276e677eff"
+      token: ENV["GITHUB_API_KEY"] || "d401116495671f0a0ceca9276e677eff"
     },
     email: "mockstar@example.com",
     info: {
-      nickname: 'mockstar',
+      nickname: "mockstar",
       email: "mockstar@example.com"
     },
     extra: {
@@ -54,10 +54,10 @@ VCR.configure do |c|
   # This 'allow' should be temporary, work towards covering
   # everything via vcr because github rate limits
   c.allow_http_connections_when_no_cassette = false
-  c.cassette_library_dir = 'test/vcr_cassettes'
+  c.cassette_library_dir = "test/vcr_cassettes"
   c.hook_into :webmock
 
-  'GITHUB_APP_ID GITHUB_APP_SECRET GITHUB_API_KEY'.split(' ').each do |secure|
+  "GITHUB_APP_ID GITHUB_APP_SECRET GITHUB_API_KEY".split(" ").each do |secure|
     sensitive = ENV[secure] ||= secure
     c.filter_sensitive_data("<#{secure}>") { sensitive }
   end
@@ -77,9 +77,9 @@ module ActionDispatch
   end
 end
 
-require 'mocha/minitest'
-require 'minitest/mock'
-require 'sidekiq/testing'
+require "mocha/minitest"
+require "minitest/mock"
+require "sidekiq/testing"
 
 def get_process_mem_disk_location
   tmp_path = File.expand_path("../../tmp", __FILE__)
@@ -89,5 +89,5 @@ def get_process_mem_disk_location
   out = `cd #{tmp_path} && git clone https://github.com/schneems/get_process_mem`
   raise "Cloning failed #{out.inspect}" unless $?.success?
 
-  return path
+  path
 end

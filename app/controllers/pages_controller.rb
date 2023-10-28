@@ -31,7 +31,7 @@ class PagesController < ApplicationController
     @covid_repos = get_covid_repos
 
     @repos = Repo.with_some_issues
-                 .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
+      .select(:id, :updated_at, :issues_count, :language, :full_name, :name, :description)
     if (language = valid_params[:language] || current_user.try(:favorite_languages))
       @repos = @repos.where(language: language)
     end
@@ -45,8 +45,8 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json do
-        htmlForPage = render_to_string(partial: "repos_with_pagination", locals: { repos: @repos }, formats: ['html'])
-        render json: { html: htmlForPage }.to_json
+        html_for_page = render_to_string(partial: "repos_with_pagination", locals: {repos: @repos}, formats: ["html"])
+        render json: {html: html_for_page}.to_json
       end
     end
   end
@@ -54,8 +54,8 @@ class PagesController < ApplicationController
   private def description
     Rails.cache.fetch("pages#index/description", expires_in: 1.hour) do
       "Discover the easiest way to get started contributing to open source. " \
-      "Over #{number_with_delimiter(User.count, delimiter: ',')} devs are " \
-      "helping #{number_with_delimiter(Repo.count, delimiter: ',')} projects " \
+      "Over #{number_with_delimiter(User.count, delimiter: ",")} devs are " \
+      "helping #{number_with_delimiter(Repo.count, delimiter: ",")} projects " \
       "with our free, community developed tools"
     end
   end

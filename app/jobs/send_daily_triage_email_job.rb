@@ -10,11 +10,11 @@ class SendDailyTriageEmailJob < UserBasedJob
   private
 
   def reason_for_skip(user)
-    return "Not time to send"           if before_email_time_of_day?(user)
-    return "No subscriptions"           if user.repo_subscriptions.empty?
+    return "Not time to send" if before_email_time_of_day?(user)
+    return "No subscriptions" if user.repo_subscriptions.empty?
     return "Sent email within 24 hours" if email_sent_today?(user)
-    return "Email backoff"              if skip_daily_email?(user)
-    return false
+    return "Email backoff" if skip_daily_email?(user)
+    false
   end
 
   def skip?(user)
@@ -22,8 +22,8 @@ class SendDailyTriageEmailJob < UserBasedJob
   end
 
   def send_daily_triage!(user)
-    assignments   = user.issue_assignments_to_deliver
-    subscriptions = user.repo_subscriptions.order(Arel.sql('RANDOM()')).includes(:doc_assignments).load
+    assignments = user.issue_assignments_to_deliver
+    subscriptions = user.repo_subscriptions.order(Arel.sql("RANDOM()")).includes(:doc_assignments).load
     docs = DocMailerMaker.new(user, subscriptions)
 
     return if assignments.empty? && docs.empty?
@@ -62,7 +62,7 @@ class SendDailyTriageEmailJob < UserBasedJob
     EmailRateLimit.new(user.days_since_last_clicked, minimum_frequency: user.email_frequency)
   end
 
-  DEFAULT_EMAIL_TIME_OF_DAY = Time.utc(2000, 1, 1, 17, 00, 0)
+  DEFAULT_EMAIL_TIME_OF_DAY = Time.utc(2000, 1, 1, 17, 0o0, 0)
 
   def before_email_time_of_day?(user)
     Time.current.change(year: 2000, month: 1, day: 1) < email_time_of_day_or_default(user)

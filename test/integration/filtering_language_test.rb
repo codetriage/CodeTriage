@@ -10,6 +10,6 @@ class FilteringLanguageTest < ActionDispatch::IntegrationTest
   test "filtering language in normal projects" do
     visit "/?language=Ruby"
 
-    assert_equal page.all('.types-filter-button')[0].text, 'Ruby'
+    assert_equal page.all(".types-filter-button")[0].text, "Ruby"
   end
 end

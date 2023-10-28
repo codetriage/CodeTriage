@@ -27,7 +27,7 @@ end
 
 user = User.create!(name: "user name", dog_name: "cinco")
 user.respond_to?(:name)
-topic = user.topics.build(title: "topic title")
+user.topics.build(title: "topic title")
 
 # Benchmark.ips do |x|
 #   x.report("changed?") { topic.changed? }
@@ -45,4 +45,3 @@ Benchmark.bm { |x|
     }
   }
 }
-

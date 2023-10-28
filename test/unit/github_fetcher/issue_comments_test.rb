@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class GithubFetcher::IssueCommentsTest < ActiveSupport::TestCase
   def comments_fetcher
@@ -15,14 +15,14 @@ class GithubFetcher::IssueCommentsTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: 'asdf')
+    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: "asdf")
   end
 
   test "#as_json returns list of comments" do
     first_comment_url = "https://api.github.com/repos/sinatra/sinatra/issues/comments/5"
 
     VCR.use_cassette "fetch_issue_comments" do
-      assert_equal comments_fetcher.as_json.first['url'], first_comment_url
+      assert_equal comments_fetcher.as_json.first["url"], first_comment_url
     end
   end
 
@@ -36,12 +36,12 @@ class GithubFetcher::IssueCommentsTest < ActiveSupport::TestCase
     fetcher = comments_fetcher
     fetcher.stub(:as_json, -> {
       [
-        { "id" => 5, "user" => { "login" => "rtomayko", "id" => 404 } },
-        { "id" => 6, "user" => { "login" => "rtomayko", "id" => 404 } },
-        { "id" => 7, "user" => { "login" => "DavidRagone", "id" => 22345 } },
+        {"id" => 5, "user" => {"login" => "rtomayko", "id" => 404}},
+        {"id" => 6, "user" => {"login" => "rtomayko", "id" => 404}},
+        {"id" => 7, "user" => {"login" => "DavidRagone", "id" => 22345}}
       ]
     }) do
-      assert_equal fetcher.commenters, ['rtomayko', 'DavidRagone']
+      assert_equal fetcher.commenters, ["rtomayko", "DavidRagone"]
     end
   end
 end
