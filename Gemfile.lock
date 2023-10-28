@@ -287,7 +287,7 @@ GEM
     rack-canonical-host (1.2.0)
       addressable (> 0, < 3)
       rack (>= 1, < 4)
-    rack-mini-profiler (3.0.0)
+    rack-mini-profiler (3.1.1)
       rack (>= 1.2.0)
     rack-protection (3.0.2)
       rack
