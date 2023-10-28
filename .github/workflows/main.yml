@@ -40,5 +40,5 @@ jobs:
       - name: Run tests
         run: bin/rake test
       - name: Run seed tasks
-        run: rails db:seed
+        run: bin/rails db:seed
 
