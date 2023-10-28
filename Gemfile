@@ -55,7 +55,6 @@ gem 'sinatra'
 
 # Caching
 gem 'dalli'
-gem 'redis-namespace'
 
 # Database
 gem 'pg'

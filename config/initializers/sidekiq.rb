@@ -5,10 +5,6 @@ sidekiq_config = {
   ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
 }
 
-unless Rails.env.production?
-  sidekiq_config[:namespace] = "codetriage-sidekiq"
-end
-
 Sidekiq.configure_server do |config|
   config.redis = sidekiq_config
 end
