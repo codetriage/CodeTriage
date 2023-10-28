@@ -223,18 +223,16 @@ class Repo < ActiveRecord::Base
     Repo.find_by!(full_name: full_name)
   end
 
-  private
-
   def update_repo_info!
     UpdateRepoInfoJob.perform_later(self)
   end
 
-  def downcase_name
+  private def downcase_name
     self.name.downcase!
     self.user_name.downcase!
   end
 
-  def set_full_name!
+  private def set_full_name!
     if self.full_name && user_name.blank?
       self.user_name, self.name = self.full_name.split("/")
     else
@@ -242,12 +240,12 @@ class Repo < ActiveRecord::Base
     end
   end
 
-  def strip_whitespaces
+  private def strip_whitespaces
     self.name.strip!
     self.user_name.strip!
   end
 
-  def github_url_exists
+  private def github_url_exists
     if issues_fetcher.error?
       errors.add(
         :expiration_date,
