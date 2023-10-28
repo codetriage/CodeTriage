@@ -17,7 +17,7 @@ end
 if ENV["RAILS_MASTER"] == '1'
   gem 'rails', git: 'https://github.com/rails/rails.git'
 else
-  gem 'rails', '7.0.6'
+  gem 'rails', '7.0.8'
 end
 
 # API & Networking
