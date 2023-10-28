@@ -29,7 +29,6 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
-
       - name: Linting
         run: |
           bundle exec standardrb
@@ -39,6 +38,6 @@ jobs:
           RAILS_ENV=test bundle exec rake db:create db:schema:load
       - name: Run tests
         run: bin/rake test
-      - name: Run seed tasks
-        run: bin/rails db:seed
+      - name: Ensure seed task still works
+        run: RAILS_ENV=test bin/rails db:seed
 
