@@ -124,7 +124,7 @@ GEM
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
-    dalli (3.2.5)
+    dalli (3.2.6)
     dead_end (4.0.0)
     derailed_benchmarks (2.1.1)
       benchmark-ips (~> 2)
