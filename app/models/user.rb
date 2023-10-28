@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
 
   has_many :repo_subscriptions, dependent: :destroy
-  has_many :repo_assignments, through: :repo_subscriptions
   has_many :repos, through: :repo_subscriptions
 
   has_many :issue_assignments, through: :repo_subscriptions
@@ -103,7 +102,10 @@ class User < ActiveRecord::Base
   end
 
   @@max_id = nil
-  def self.random
+
+  # Much faster than order("RANDOM()") but it's
+  # not guaranteed to return results
+  def self.fast_rand
     @@max_id = self.maximum(:id) if @@max_id.nil?
 
     where("id >= ?", Random.new.rand(1..@@max_id))

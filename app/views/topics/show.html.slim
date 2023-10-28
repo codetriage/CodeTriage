@@ -1,0 +1,14 @@
+.hero
+  h1.hero-title-primary Repos with label: #{@topic}
+
+  - unless user_signed_in?
+      = link_to user_github_omniauth_authorize_path, class: 'button', method: :post
+        | Sign up with GitHub
+
+hr.section-break
+
+.repos-list-wrapper
+  h2.repos-list-title All repos with label #{@topic}.
+
+  section.repo-list-with-pagination
+    = render "pages/repos_with_pagination", repos: @repos

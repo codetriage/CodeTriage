@@ -27,6 +27,7 @@ CodeTriage::Application.routes.draw do
   end
 
   root to: "pages#index"
+  resources :topics, only: [:show]
 
   get 'what'    => "pages#what"
   get 'privacy' => "pages#privacy"

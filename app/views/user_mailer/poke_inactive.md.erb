@@ -1,0 +1,34 @@
+Hello <%= @user.github %>,
+
+You're getting this email because you've signed up for [CodeTriage](<%= root_url %>), but haven't subscribed to any repos yet. Here are some tips for getting started.
+
+### Tips and tricks
+
+- Open source tip: Not sure how to get started? Read [picking the right repo](https://www.codetriage.com/university/picking_a_repo) from the [CodeTriage University](<%= university_index_url %>).
+- Open source tip: More of a visual learner? [Watch Richard triage issues in real time](https://www.schneems.com/2020/09/22/triage-with-me-11-issues-2-prs-in-15-hours/) (about 7 minutes per issue) from the [CodeTriage University](<%= university_index_url %>).
+- Want more? The ["How to Open Source" is a comprehensive contribution manual](https://howtoopensource.dev/). Click through for a free sample chapter.
+
+### Suggested repos
+
+<% @repos.each do |repo| %>
+- **<%= repo.language %>: <%= repo.full_name %>** ([Subscribe](<%= repo_url(repo) %>))
+<% end %>
+
+If you don't like any of those [add your own repo](<%= new_repo_url %>) or [browse all repos](<%= root_url %>).
+
+<% if @user.favorite_languages.blank? %>
+
+### Tell us your favorite progrmaming languages
+
+CodeTriage can help you pick a repo. All you have to do is tell us the programming language(s) you most commonly use:
+
+[Select your favorite languages(s)](user_url(@user))
+
+<% end %>
+
+### See you next week
+
+Subscribe to a repo, or you will get this same email next week, maybe with different suggestions. To unsubscribe entirely, [delete your account](<%= user_url(@user) %>), but don't do that, subscribe to a repo and start your open source journey. We believe in you!
+
+--
+For open source tips, follow [@HowToOpenSource](https://twitter.com/HowToOpenSource) on Twitter.

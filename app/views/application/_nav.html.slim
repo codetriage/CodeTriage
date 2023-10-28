@@ -12,11 +12,13 @@ nav.application-navigation
       li.application-navigation-list-item= image_tag current_user.avatar_url, class: 'user-profile-image', alt: 'user avatar'
       li.application-navigation-list-item= link_to current_user.github, current_user
       li.application-navigation-list-item= link_to 'University', university_index_path
+      li.application-navigation-list-item= link_to 'Hacktoberfest', topic_path(id: "hacktoberfest")
       li.application-navigation-list-item= link_to "Submit Repo", new_repo_path
       li.application-navigation-list-item= link_to "Sign Out", destroy_user_session_path, method: :delete
     - else
       li.application-navigation-list-item= link_to 'About', what_path
       li.application-navigation-list-item= link_to 'University', university_index_path
+      li.application-navigation-list-item= link_to 'Hacktoberfest', topic_path(id: "hacktoberfest")
       li.application-navigation-list-item= link_to 'Log in', user_github_omniauth_authorize_path, method: :post
       li.application-navigation-list-item= link_to 'Sign Up', user_github_omniauth_authorize_path, method: :post
 
@@ -24,3 +26,17 @@ div.application-logo
   = link_to root_path
     span.application-logo-image
     span.hide-visually Code Triage Home
+
+scss class="class":
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }

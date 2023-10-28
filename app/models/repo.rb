@@ -122,10 +122,6 @@ class Repo < ActiveRecord::Base
     end
   end
 
-  def subscriber_count
-    users.count
-  end
-
   # pulls out number of issues divided by number of subscribers
   def self.order_by_need
     joins(:repo_subscriptions)
@@ -140,13 +136,6 @@ class Repo < ActiveRecord::Base
 
   def self.not_in(*ids)
     where("repos.id not in (?)", ids)
-  end
-
-  @@max_id = nil
-  def self.rand
-    @@max_id = self.maximum(:id) if @@max_id.nil?
-
-    where("id >= ?", Random.new.rand(1..@@max_id))
   end
 
   def self.all_languages

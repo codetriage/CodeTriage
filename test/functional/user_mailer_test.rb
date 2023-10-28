@@ -6,7 +6,11 @@ class UserMailerTest < ActionMailer::TestCase
   test "send_triage works" do
     repo_sub = repo_subscriptions(:schneems_to_triage)
     assignment = issue_assignments(:one)
-    email = UserMailer.send_triage(repo: repo_sub.repo, user: repo_sub.user, assignment: assignment)
+    email = UserMailer.send_triage(
+      repo: repo_sub.repo,
+      user: repo_sub.user,
+      assignment: assignment,
+    )
 
     assert_emails 1 do
       email.deliver_now
@@ -15,7 +19,11 @@ class UserMailerTest < ActionMailer::TestCase
 
   test "poke_inactive works" do
     user = users(:schneems)
-    email = UserMailer.poke_inactive(user: user, repos_by_need_ids: Repo.first(10).map(&:id))
+    email = UserMailer.poke_inactive(
+      user: user,
+      min_issue_count: 0,
+      min_subscriber_count: 0,
+    )
 
     assert_emails 1 do
       email.deliver_now
