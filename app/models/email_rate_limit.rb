@@ -7,15 +7,15 @@
 class EmailRateLimit
   # USER_STATES = ["daily", "twice_a_week", "once_a_week", "once_a_month"]
   USER_STATES_HASH = {}
-  USER_STATES_HASH["daily"]        = "Daily"
+  USER_STATES_HASH["daily"] = "Daily"
   USER_STATES_HASH["twice_a_week"] = "Twice a week"
-  USER_STATES_HASH["once_a_week"]  = "Once a week"
+  USER_STATES_HASH["once_a_week"] = "Once a week"
   USER_STATES_HASH["once_a_month"] = "Once a month"
   USER_STATES = USER_STATES_HASH.keys
 
   def initialize(last_clicked_days_ago, minimum_frequency: nil)
     @last_clicked_days_ago = last_clicked_days_ago
-    @minimum_frequency     = minimum_frequency
+    @minimum_frequency = minimum_frequency
   end
 
   def skip?(last_sent_days_ago)

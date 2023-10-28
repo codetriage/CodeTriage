@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class GithubFetcher::RepoTest < ActiveSupport::TestCase
   def fetcher(repo)
@@ -8,7 +8,7 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: 'asdf')
+    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: "asdf")
   end
 
   test "#as_json returns json" do
@@ -16,7 +16,7 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
     expected_clone_url = "https://github.com/chrisccerami/scene-hub-v2.git"
 
     VCR.use_cassette "create_repo_without_issues" do
-      assert_equal fetcher.as_json['clone_url'], expected_clone_url, fetcher.as_json
+      assert_equal fetcher.as_json["clone_url"], expected_clone_url, fetcher.as_json
     end
   end
 
@@ -24,7 +24,7 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
     GitHubBub.stub(:get, ->(_, _) { raise GitHubBub::RequestError }) do
       fetcher = fetcher(repos(:scene_hub_v2))
       assert_equal fetcher.as_json, {}
-      assert_nil fetcher.as_json['clone_url'], fetcher.as_json
+      assert_nil fetcher.as_json["clone_url"], fetcher.as_json
     end
   end
 

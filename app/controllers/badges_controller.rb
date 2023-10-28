@@ -3,16 +3,16 @@
 class BadgesController < ApplicationController
   def show
     repo = Repo.where(full_name: permitted[:full_name])
-               .select(:subscribers_count, :issues_count, :updated_at)
-               .first
-    raise ActionController::RoutingError.new('Not Found') if repo.blank?
+      .select(:subscribers_count, :issues_count, :updated_at)
+      .first
+    raise ActionController::RoutingError.new("Not Found") if repo.blank?
 
     case permitted[:badge_type]
     when "users"
       count = repo.subscribers_count
-      svg   = make_shield(name: "code helpers", count: count, color_b: repo.color)
+      svg = make_shield(name: "code helpers", count: count, color_b: repo.color)
     else
-      raise ActionController::RoutingError.new('Not Found')
+      raise ActionController::RoutingError.new("Not Found")
     end
 
     # Set Cache-Control header
@@ -59,10 +59,10 @@ class BadgesController < ApplicationController
   end
 
   def make_shield(name:, count:, color_a: "555", color_b: "4c1", logo_width: 0, logo_padding: 0)
-    name_width  = (width_of(name) + 10).to_f
+    name_width = (width_of(name) + 10).to_f
     count_width = (width_of(count) + 10).to_f
     total_width = name_width + count_width
-    svg = <<~EOS
+    <<~EOS
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="#{total_width}" height="20">
         <linearGradient id="smooth" x2="0" y2="100%">
           <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
@@ -87,7 +87,6 @@ class BadgesController < ApplicationController
         </g>
       </svg>
     EOS
-    return svg
   end
 
   def permitted

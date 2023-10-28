@@ -26,7 +26,7 @@ class GitHubAuthenticator
   def find_user
     current_user ||
       User.find_by(github: auth.info.nickname) ||
-      User.find_by(email:  auth_email)
+      User.find_by(email: auth_email)
   end
 
   def auth_email

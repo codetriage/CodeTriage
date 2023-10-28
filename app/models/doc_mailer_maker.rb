@@ -8,15 +8,15 @@
 #
 # +#subs+ is an accessor for the collection of +Repo_Subscription+ objects pass to the class.
 class DocMailerMaker
-  attr_accessor :user, :subs, :write_docs, :read_docs
+  attr_accessor :user, :subs
 
-  READY_FOR_NEXT_DEFAULT = Proc.new { |_s| true }
+  READY_FOR_NEXT_DEFAULT = proc { |_s| true }
 
   def initialize(user, subs, _options = {}, &send_next)
-    @user       = user
-    @subs       = subs
+    @user = user
+    @subs = subs
     @write_docs = []
-    @read_docs  = []
+    @read_docs = []
     assign_docs(&(send_next || READY_FOR_NEXT_DEFAULT))
   end
 
@@ -41,7 +41,7 @@ class DocMailerMaker
   end
 
   # Assigns documentation tasks to a subscription
-  def assign_docs()
+  def assign_docs
     subs.flat_map do |sub|
       if !yield(sub)
         Rails.logger.debug "Filtered: #{sub.inspect}"
@@ -52,7 +52,7 @@ class DocMailerMaker
       # to the appropriate subscription queue.
       if sub.read?
         sub.unassigned_read_doc_methods.each do |doc|
-          @read_docs  << assign_doc_to_subscription(doc, sub)
+          @read_docs << assign_doc_to_subscription(doc, sub)
         end
       end
 

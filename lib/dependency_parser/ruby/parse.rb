@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-require 'bundler'
-require 'json'
+
+require "bundler"
+require "json"
 
 module DependencyParser
   module Ruby
@@ -23,7 +24,7 @@ module DependencyParser
       end
 
       def direct
-        { repos: @direct, language: "ruby" }
+        {repos: @direct, language: "ruby"}
       end
 
       def success?
@@ -39,12 +40,12 @@ module DependencyParser
       attr_reader :content
 
       def validate_lockfile!(content)
-        @errors << 'No specs found' unless Bundler::LockfileParser.new(content).specs.any?
+        @errors << "No specs found" unless Bundler::LockfileParser.new(content).specs.any?
       end
 
       def fetch_spec(name:, version: nil)
         full_spec = fetcher.fetch_spec([name, version])
-        { name: full_spec.name, url: extract_url(full_spec), description: full_spec.description }
+        {name: full_spec.name, url: extract_url(full_spec), description: full_spec.description}
       rescue
         @errors << "Invalid spec #{name}"
         nil
@@ -56,7 +57,7 @@ module DependencyParser
       end
 
       def fetcher
-        @fetcher ||= Bundler::Fetcher.new(Bundler::Source::Rubygems::Remote.new('https://rubygems.org'))
+        @fetcher ||= Bundler::Fetcher.new(Bundler::Source::Rubygems::Remote.new("https://rubygems.org"))
       end
     end
   end

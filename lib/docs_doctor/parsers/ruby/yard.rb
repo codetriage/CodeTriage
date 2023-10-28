@@ -19,7 +19,7 @@ module DocsDoctor
       class Yard
         # we don't want any files in /test or /spec unless it's
         # for testing this codebase
-        DEFAULT_EXCLUDE = ["(^|\/)test\/(?!fixtures)", "(^|\/)spec\/(?!fixtures)"]
+        DEFAULT_EXCLUDE = ["(^|/)test/(?!fixtures)", "(^|/)spec/(?!fixtures)"]
 
         attr_reader :yard_objects
         attr_accessor :files, :base_path
@@ -33,7 +33,7 @@ module DocsDoctor
 
         def root_path
           root_path = Pathname.new(base_path).expand_path
-          if root_path.to_s =~ /\.rb+$/
+          if /\.rb+$/.match?(root_path.to_s)
             root_path.dirname
           else
             root_path
@@ -79,21 +79,19 @@ module DocsDoctor
             }
 
             if doc_method_hash[:file] && doc_method_hash[:name] && doc_method_hash[:path]
-              return doc_method_hash
-            else
-              return nil
+              doc_method_hash
             end
           end
         end
 
         def process(exclude = DEFAULT_EXCLUDE)
-          require 'yard'
+          require "yard"
           yard = YARD::CLI::Yardoc.new
 
           # yard.files       = files
-          yard.excluded    = exclude # http://rubydoc.org/gems/yard/YARD/Parser/SourceParser#parse-class_method
+          yard.excluded = exclude # http://rubydoc.org/gems/yard/YARD/Parser/SourceParser#parse-class_method
           yard.save_yardoc = false
-          yard.generate    = false
+          yard.generate = false
           # yard.use_cache = false'
 
           Dir.chdir(root_path) do
@@ -107,7 +105,7 @@ module DocsDoctor
           YARD::Registry.clear
         rescue SystemStackError
           Rails.logger.debug "Yard blew up while trying to read from #{root_path}"
-          return false
+          false
         end
 
         def in_fork

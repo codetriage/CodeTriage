@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class GithubFetcher::IssuesTest < ActiveSupport::TestCase
   def fetcher(repo)
@@ -8,7 +8,7 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
   end
 
   test "quacks like a GithubFetcher::Resource" do
-    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: 'asdf')
+    assert_kind_of GithubFetcher::Resource, GithubFetcher::User.new(token: "asdf")
   end
 
   test "#as_json returns first page of open issues, sorted by comments desc (by default)" do
@@ -17,9 +17,9 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
     VCR.use_cassette "rails_rails_fetch_issues" do
       as_json = fetcher.as_json
       assert_equal as_json.size, 30, as_json
-      assert_equal as_json.first['title'], "Missing helper file helpers//Users/xxxx/"\
+      assert_equal as_json.first["title"], "Missing helper file helpers//Users/xxxx/" \
         "Sites/xxxx/app/helpers/application_helper.rb_helper.rb"
-      assert_equal as_json.last['title'], "Provide a default Content Security Policy "\
+      assert_equal as_json.last["title"], "Provide a default Content Security Policy " \
         "(CSP) that is lenient yet secure"
     end
   end
@@ -31,10 +31,10 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
     VCR.use_cassette "rails_rails_fetch_issues_page_two" do
       as_json = fetcher.as_json
       assert_equal 30, as_json.size, as_json
-      assert_equal "Give clients a way to refer to ActionDispatch "\
-        "middleware classes without triggering an early load of ActionDispatch", as_json.first['title']
-      assert_equal "default_scope breaks chained having "\
-        "statements in rails4", as_json.last['title']
+      assert_equal "Give clients a way to refer to ActionDispatch " \
+        "middleware classes without triggering an early load of ActionDispatch", as_json.first["title"]
+      assert_equal "default_scope breaks chained having " \
+        "statements in rails4", as_json.last["title"]
     end
   end
 
@@ -42,15 +42,15 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
     fetcher = fetcher(repos(:rails_rails))
 
     VCR.use_cassette "rails_rails_fetch_issues" do
-      assert_equal "Missing helper file helpers//Users/xxxx/"\
-        "Sites/xxxx/app/helpers/application_helper.rb_helper.rb", fetcher.as_json.first['title']
+      assert_equal "Missing helper file helpers//Users/xxxx/" \
+        "Sites/xxxx/app/helpers/application_helper.rb_helper.rb", fetcher.as_json.first["title"]
     end
 
     fetcher.page = 2
 
     VCR.use_cassette "rails_rails_fetch_issues_page_two" do
-      assert_equal "Give clients a way to refer to ActionDispatch "\
-        "middleware classes without triggering an early load of ActionDispatch", fetcher.as_json.first['title']
+      assert_equal "Give clients a way to refer to ActionDispatch " \
+        "middleware classes without triggering an early load of ActionDispatch", fetcher.as_json.first["title"]
     end
   end
 
@@ -85,7 +85,7 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
 
   test "bad credentials" do
     stub_request(:any, %r{github.com})
-      .to_return({ body: "Bad credentials", status: 401 })
+      .to_return({body: "Bad credentials", status: 401})
 
     fetcher = GithubFetcher::Issues.new(
       user_name: "schneems",
@@ -98,7 +98,7 @@ class GithubFetcher::IssuesTest < ActiveSupport::TestCase
 
   test "call will retry API calls" do
     stub = stub_request(:any, %r{github.com})
-           .to_return({ body: "Bad credentials", status: 401 })
+      .to_return({body: "Bad credentials", status: 401})
 
     fetcher = GithubFetcher::Issues.new(
       user_name: "schneems",

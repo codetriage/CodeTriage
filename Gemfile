@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -14,125 +14,125 @@ git_source :github do |name|
 end
 
 # Core
-if ENV["RAILS_MASTER"] == '1'
-  gem 'rails', git: 'https://github.com/rails/rails.git'
+if ENV["RAILS_MASTER"] == "1"
+  gem "rails", git: "https://github.com/rails/rails.git"
 else
-  gem 'rails', '7.0.8'
+  gem "rails", "7.0.8"
 end
 
 # API & Networking
-gem 'git_hub_bub'
+gem "git_hub_bub"
 
 # Application server & middleware
-gem 'puma'
-gem 'puma_worker_killer'
-gem 'rack-timeout'
-gem 'rack-canonical-host'
+gem "puma"
+gem "puma_worker_killer"
+gem "rack-timeout"
+gem "rack-canonical-host"
 
 # Assets
-gem 'autoprefixer-rails'
-gem 'babel-transpiler'
-gem 'bourbon'
-gem 'coffee-rails', '~> 5.0.0'
-gem 'neat', '~> 1.7'
-gem 'normalize-rails'
-gem 'sassc'
-gem 'sassc-rails'
-gem 'slim-rails'
-gem 'sprockets'
-gem 'sprockets-rails'
-gem 'uglifier', '>= 1.0.3'
+gem "autoprefixer-rails"
+gem "babel-transpiler"
+gem "bourbon"
+gem "coffee-rails", "~> 5.0.0"
+gem "neat", "~> 1.7"
+gem "normalize-rails"
+gem "sassc"
+gem "sassc-rails"
+gem "slim-rails"
+gem "sprockets"
+gem "sprockets-rails"
+gem "uglifier", ">= 1.0.3"
 
 # Authentication & Authorization
-gem 'devise'
-gem 'omniauth'
-gem 'omniauth-rails_csrf_protection'
-gem 'omniauth-github'
+gem "devise"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
+gem "omniauth-github"
 
 # Backgroud jobs
-gem 'sidekiq'
-gem 'sinatra'
+gem "sidekiq"
+gem "sinatra"
 
 # Caching
-gem 'dalli'
+gem "dalli"
 
 # Database
-gem 'pg'
+gem "pg"
 
 # Email
-gem 'mail', require: ['mail', 'mail/utilities', 'mail/parsers'] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
-gem 'premailer-rails'
-gem 'valid_email'
+gem "mail", require: ["mail", "mail/utilities", "mail/parsers"] # parsers is used by `valid_email` and may be causing https://github.com/mikel/mail/issues/912#issuecomment-170121429
+gem "premailer-rails"
+gem "valid_email"
 
 # File Handling & Data Processing
-gem 'mime-types', require: 'mime/types/columnar'
+gem "mime-types", require: "mime/types/columnar"
 
 # JavaScript
-gem 'jquery-rails'
-gem 'render_async'
+gem "jquery-rails"
+gem "render_async"
 
 # JSON
-gem 'oj'
+gem "oj"
 
 # Views
-gem 'bluecloth'
-gem 'local_time'
-gem 'maildown'
-gem 'wicked'
+gem "bluecloth"
+gem "local_time"
+gem "maildown"
+gem "wicked"
 
 # Pagination
-gem 'will_paginate'
+gem "will_paginate"
 
 # Performance & Monitoring
-gem 'bootsnap', require: false
-gem 'flamegraph'
-gem 'matrix'
-gem 'prawn'
-gem 'rack-mini-profiler'
-gem 'rails-autoscale-web'
-gem 'rbtrace'
-gem 'sentry-raven'
-gem 'scout_apm'
-gem 'skylight'
-gem 'stackprof'
+gem "bootsnap", require: false
+gem "flamegraph"
+gem "matrix"
+gem "prawn"
+gem "rack-mini-profiler"
+gem "rails-autoscale-web"
+gem "rbtrace"
+gem "sentry-raven"
+gem "scout_apm"
+gem "skylight"
+gem "stackprof"
 
 # SEO & Sitemaps
-gem 'sitemap_generator'
+gem "sitemap_generator"
 
 # Storage
-gem 'aws-sdk-s3'
+gem "aws-sdk-s3"
 
 # Utilities
-gem 'rake'
-gem 'rrrretry'
+gem "rake"
+gem "rrrretry"
 
 # Parse Ruby documentation
-gem 'yard', '~> 0.9.28'
+gem "yard", "~> 0.9.28"
 
 group :development do
-  gem 'foreman'
-  gem 'listen'
-  gem 'memory_profiler'
-  gem 'web-console'
+  gem "foreman"
+  gem "listen"
+  gem "memory_profiler"
+  gem "web-console"
 end
 
 group :test do
-  gem 'capybara'
-  gem 'launchy' # Not essential but helpful for save_and_open_page
-  gem 'minitest'
-  gem 'mocha', require: false
-  gem 'rails-controller-testing'
-  gem 'simplecov', require: false
-  gem 'test-prof'
-  gem 'vcr'
-  gem 'webmock'
+  gem "capybara"
+  gem "launchy" # Not essential but helpful for save_and_open_page
+  gem "minitest"
+  gem "mocha", require: false
+  gem "rails-controller-testing"
+  gem "simplecov", require: false
+  gem "test-prof"
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development, :test do
-  gem 'derailed_benchmarks'
-  gem 'dotenv-rails'
-  gem 'faker', require: false
-  gem 'pry'
-  gem 'standardrb', require: false
-  gem 'rubocop-performance'
+  gem "derailed_benchmarks"
+  gem "dotenv-rails"
+  gem "faker", require: false
+  gem "pry"
+  gem "standardrb", require: false
+  gem "rubocop-performance"
 end

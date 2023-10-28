@@ -25,8 +25,8 @@ puts TestController.view_paths
 
 # Create a bunch of data
 
-letters = ('a'..'z').to_a * 5
-1000.times { Customer.create!(name: letters.shuffle.first(10).join) }
+letters = ("a".."z").to_a * 5
+1000.times { Customer.create!(name: letters.sample(10).join) }
 
 customers = Customer.all.to_a
 

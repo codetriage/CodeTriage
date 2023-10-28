@@ -2,22 +2,22 @@
 
 class DocMethodsController < ApplicationController
   def show
-    @doc     = DocMethod.where(id: params[:id])
-                        .select(:id, :repo_id, :path, :line, :file, :doc_comments_count)
-                        .includes(:repo)
-                        .first!
+    @doc = DocMethod.where(id: params[:id])
+      .select(:id, :repo_id, :path, :line, :file, :doc_comments_count)
+      .includes(:repo)
+      .first!
     @comment = @doc.doc_comments.select(:comment).first
-    @repo    = @doc.repo
+    @repo = @doc.repo
     @username = current_user.present? ? current_user.github : "<your name>"
-    @branch   = GitBranchnameGenerator.new(username: @username, doc_path: @doc.path).branchname
+    @branch = GitBranchnameGenerator.new(username: @username, doc_path: @doc.path).branchname
 
     set_title("Help Writing docs #{@doc.path} - #{@repo.full_name} #{@repo.language}")
-    set_description("#{@doc.missing_docs? ? 'Write' : 'Read'} docs for #{@repo.name} starting with #{@doc.path}.")
+    set_description("#{@doc.missing_docs? ? "Write" : "Read"} docs for #{@repo.name} starting with #{@doc.path}.")
   end
 
   def click_method_redirect
-    doc        = DocMethod.find(params[:id])
-    sub        = RepoSubscription.where(user_id: params[:user_id], repo: doc.repo).first
+    doc = DocMethod.find(params[:id])
+    sub = RepoSubscription.where(user_id: params[:user_id], repo: doc.repo).first
     assignment = DocAssignment.where(doc_method_id: doc.id, repo_subscription_id: sub.id).first
 
     if assignment&.user&.id.to_s == params[:user_id]
@@ -34,8 +34,8 @@ class DocMethodsController < ApplicationController
   end
 
   def click_source_redirect
-    doc        = DocMethod.find(params[:id])
-    sub        = RepoSubscription.find_by!(user_id: params[:user_id], repo: doc.repo)
+    doc = DocMethod.find(params[:id])
+    sub = RepoSubscription.find_by!(user_id: params[:user_id], repo: doc.repo)
     assignment = DocAssignment.find_by!(doc_method_id: doc.id, repo_subscription_id: sub.id)
 
     if assignment&.user&.id.to_s == params[:user_id]

@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-require 'test_helper'
-require_relative '../../lib/dependency_parser/php/parse'
+require "test_helper"
+require_relative "../../lib/dependency_parser/php/parse"
 
 class PHPParserTest < ActiveSupport::TestCase
   test "returns nothing on invalid composer.lock" do
     parser = DependencyParser::PHP::Parse.new("invalid")
     parser.call
     refute parser.success?
-    assert_equal({ repos: [], language: "php" }, parser.direct)
+    assert_equal({repos: [], language: "php"}, parser.direct)
   end
 
   test "returns the list of dependencies (with dev dependencies) for a small composer.lock file" do
-    gemfile_lock = file_fixture('composer.lock').read
+    gemfile_lock = file_fixture("composer.lock").read
 
     parser = DependencyParser::PHP::Parse.new(gemfile_lock)
     parser.call

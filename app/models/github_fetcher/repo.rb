@@ -4,15 +4,15 @@ module GithubFetcher
   class Repo < Resource
     def initialize(options)
       @api_path = File.join(
-        'repos',
+        "repos",
         options.delete(:user_name),
-        options.delete(:name),
+        options.delete(:name)
       )
       super
     end
 
     def default_branch
-      as_json['default_branch']
+      as_json["default_branch"]
     end
 
     # TODO - does this really belong here? Seems like it (and Repo#populate_docs!)
@@ -20,7 +20,7 @@ module GithubFetcher
     def clone
       out = `cd #{dir} && git clone #{clone_url} 2>&1`
       raise "Error executing git clone #{clone_url.inspect}: #{out.inspect}" unless $?.success?
-      return dir
+      dir
     end
 
     private

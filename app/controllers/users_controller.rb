@@ -34,12 +34,12 @@ class UsersController < ApplicationController
     begin
       uparams = user_params
     rescue ActionController::ParameterMissing
-      uparams = { favorite_languages: [] }
+      uparams = {favorite_languages: []}
     end
 
     @user = current_user
     if @user.update(uparams)
-      redirect_to @user, flash: { success: 'User successfully updated' }
+      redirect_to @user, flash: {success: "User successfully updated"}
     end
   end
 

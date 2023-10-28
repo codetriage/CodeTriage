@@ -12,18 +12,21 @@ if ENV["DEADLOCK_DEBUG"]
       puts
       puts "## Deadlock Debug"
       puts
-      Thread.list.each { |t| puts "=" * 80; puts t.backtrace }
+      Thread.list.each { |t|
+        puts "=" * 80
+        puts t.backtrace
+      }
     end
   end
 end
 
-require File.expand_path('../config/application', __FILE__)
+require File.expand_path("../config/application", __FILE__)
 
 begin
   require "rubocop/rake_task"
 
   RuboCop::RakeTask.new(:rubocop) do |task|
-    task.options = ['--display-cop-names']
+    task.options = ["--display-cop-names"]
   end
 rescue LoadError
   # We are in the production environment, where Rubocop is not required.

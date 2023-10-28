@@ -2,7 +2,7 @@
 
 namespace :docs do
   task :play do
-    parser = DocsDoctor::Runner.new('ruby/rdoc', '4.0.0').parser
+    parser = DocsDoctor::Runner.new("ruby/rdoc", "4.0.0").parser
     puts parser.inspect
     parser.add_files("test/fixtures/ruby/string/strip.rb")
     parser.go!

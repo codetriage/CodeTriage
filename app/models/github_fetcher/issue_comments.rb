@@ -4,12 +4,12 @@ module GithubFetcher
   class IssueComments < Resource
     def initialize(owner_name:, repo_name:, number:)
       @api_path = File.join(
-        'repos',
+        "repos",
         owner_name,
         repo_name,
-        'issues',
+        "issues",
         number.to_s,
-        'comments'
+        "comments"
       )
       super({})
     end

@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'faker'
+require "faker"
 
 Rails.application.configure do
   config.active_job.queue_adapter = :test
@@ -47,14 +47,14 @@ hacktoberfest_label = Label.where(name: "hacktoberfest").first_or_create!
     )
     user.save(validate: false)
 
-    name = Faker::Hipster.word.gsub(/\W/, '')
+    name = Faker::Hipster.word.gsub(/\W/, "")
     repo = user.repos.new(
-      :user_name => username,
-      :name => name,
-      :issues_count => rand(30),
-      :language => %w[Ruby PHP Go Javascript Java Swift].sample,
-      :description => Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 4),
-      :full_name => "#{username}/#{name}"
+      user_name: username,
+      name: name,
+      issues_count: rand(30),
+      language: %w[Ruby PHP Go Javascript Java Swift].sample,
+      description: Faker::Lorem.paragraph(sentence_count: 1, supplemental: true, random_sentences_to_add: 4),
+      full_name: "#{username}/#{name}"
     )
     repo.save(validate: false)
 

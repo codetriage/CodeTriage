@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class ParseDocsTest < ActiveJob::TestCase
   test "Can parse yard docs" do

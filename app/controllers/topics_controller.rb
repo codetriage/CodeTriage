@@ -10,15 +10,15 @@ class TopicsController < ApplicationController
 
     label = Label.find_by(name: @topic)
     @repos = Repo.with_some_issues
-                 .joins(:repo_labels)
-                 .where(repo_labels: { label_id: label.id })
-                 .select(:id, :issues_count, :language, :full_name, :name, :description)
+      .joins(:repo_labels)
+      .where(repo_labels: {label_id: label.id})
+      .select(:id, :issues_count, :language, :full_name, :name, :description)
 
     @repos = @repos.order_by_issue_count.page(valid_params[:page]).per_page(valid_params[:per_page] || 50)
   end
 
   private def set_topic
-    topic_name = valid_params['id'].downcase
+    topic_name = valid_params["id"].downcase
     @topic = TOPICS.detect { |t| t == topic_name }
 
     if @topic.blank?

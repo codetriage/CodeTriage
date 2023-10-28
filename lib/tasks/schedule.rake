@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 namespace :schedule do
-  desc 'Sends triage emails'
+  desc "Sends triage emails"
   task triage_emails: :environment do
     User.with_repo_subscriptions.select(:id).find_each(batch_size: 1000) do |user|
       # TODO cache last_sent_at in the user object
@@ -18,7 +18,7 @@ namespace :schedule do
     end
   end
 
-  desc 'Populates github issues'
+  desc "Populates github issues"
   task populate_issues: :environment do
     Repo.active.select(:id, :removed_from_github).find_each(batch_size: 100) do |repo|
       PopulateIssuesJob.perform_later(repo.id)
@@ -31,7 +31,7 @@ namespace :schedule do
     # one way to test is by exercising the API for a value
     # that should be known to exist.
 
-    return GithubFetcher::Repo.new(user_name: "rails", name: "rails").success?
+    GithubFetcher::Repo.new(user_name: "rails", name: "rails").success?
   end
 
   desc "Update repos information"
@@ -43,7 +43,7 @@ namespace :schedule do
     end
   end
 
-  desc 'Marks issues as closed'
+  desc "Marks issues as closed"
   task mark_closed: :environment do
     Issue.queue_mark_old_as_closed!
     Repo.active.find_each(batch_size: 100) do |repo|
@@ -51,7 +51,7 @@ namespace :schedule do
     end
   end
 
-  desc 'Sends an email to invite users to engage once a week'
+  desc "Sends an email to invite users to engage once a week"
   task poke_inactive: :environment do
     next unless Date.today.tuesday?
 
@@ -81,18 +81,18 @@ namespace :schedule do
     # disabling it until I can make it more robust
     #
     next
-    raise "GITHUB API APPEARS TO BE DOWN" unless github_api_up?
+    # raise "GITHUB API APPEARS TO BE DOWN" unless github_api_up?
 
-    User.where.not(token: nil).find_each(batch_size: 100) do |user|
-      # Check multiple times if token is not valid
-      # if token is valid once, go to next user
-      next if user.auth_is_valid?
-      next if user.auth_is_valid?
-      next if user.auth_is_valid?
+    # User.where.not(token: nil).find_each(batch_size: 100) do |user|
+    #   # Check multiple times if token is not valid
+    #   # if token is valid once, go to next user
+    #   next if user.auth_is_valid?
+    #   next if user.auth_is_valid?
+    #   next if user.auth_is_valid?
 
-      # Archive bad token
-      user.update(token: nil, old_token: user.token)
-    end
+    #   # Archive bad token
+    #   user.update(token: nil, old_token: user.token)
+    # end
   end
 
   task warn_invalid_token: :environment do
@@ -102,13 +102,13 @@ namespace :schedule do
     end
   end
 
-  desc 'sitemaps'
+  desc "sitemaps"
   task sitemap: :environment do
     next unless Date.today.sunday?
-    Rake::Task['sitemap:refresh'].invoke
+    Rake::Task["sitemap:refresh"].invoke
   end
 
-  desc 'fetch and assign labels for repos'
+  desc "fetch and assign labels for repos"
   task fetch_labels_and_assign: :environment do
     Repo.active.find_each(batch_size: 100) do |repo|
       RepoLabelAssigner.new(repo: repo).create_and_associate_labels!

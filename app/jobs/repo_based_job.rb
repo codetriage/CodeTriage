@@ -28,10 +28,10 @@
 class RepoBasedJob < ApplicationJob
   around_perform do |job, block|
     repo_or_id = job.arguments[0]
-    if repo_or_id.is_a?(Integer)
-      repo = Repo.find(repo_or_id)
+    repo = if repo_or_id.is_a?(Integer)
+      Repo.find(repo_or_id)
     else
-      repo = repo_or_id
+      repo_or_id
     end
     job.arguments[0] = repo
     ScoutApm::Context.add(repo_id: repo.id)

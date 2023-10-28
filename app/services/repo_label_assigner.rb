@@ -13,7 +13,7 @@
 class RepoLabelAssigner
   def initialize(repo:)
     @repo = repo
-    url = ['repos', repo.user_name, repo.name, 'labels'].join('/')
+    url = ["repos", repo.user_name, repo.name, "labels"].join("/")
     @github_bub_response = GitHubBub.get(url)
   end
 
@@ -21,7 +21,7 @@ class RepoLabelAssigner
     return unless github_bub_response.success?
 
     remote_labels.each do |label_hash|
-      label_name = label_hash['name'].downcase
+      label_name = label_hash["name"].downcase
       label = Label.where(name: label_name).first_or_create!
       repo.repo_labels.where(label: label).first_or_create
     end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class IssueTest < ActiveSupport::TestCase
   test "issue counter cache" do
@@ -12,9 +12,9 @@ class IssueTest < ActiveSupport::TestCase
     assert_difference("Repo.find(#{repo.id}).issues_count", 1) do
       issue = repo.issues.new
       issue.title = "Foo Bar"
-      issue.url   = "http://schneems.com"
+      issue.url = "http://schneems.com"
       issue.last_touched_at = 2.days.ago
-      issue.state = 'open'
+      issue.state = "open"
       issue.html_url = "http://schneems.com"
       issue.number = 42
       issue.save
@@ -28,7 +28,7 @@ class IssueTest < ActiveSupport::TestCase
     end
   end
 
-  test 'issue with extra long title' do
+  test "issue with extra long title" do
     issue = issues(:issue_five_extra_long_title)
 
     assert_equal true, issue.valid?
@@ -50,7 +50,7 @@ class IssueTest < ActiveSupport::TestCase
   end
 
   test "valid_for_user?" do
-    user  = users("mockstar")
+    user = users("mockstar")
     issue = repos("rails_rails").issues.new
     issue.stubs(:update_issue!).returns(true)
     issue.stubs(:commenting_users).returns(["foo", "bar"])
@@ -70,7 +70,7 @@ class IssueTest < ActiveSupport::TestCase
   end
 
   test "valid_for_user? when has open issue and user skipped with PR" do
-    user  = users("mockstar")
+    user = users("mockstar")
     issue = repos("rails_rails").issues.new
     issue.stubs(:commenting_users).returns(["foo", "bar"])
 
@@ -80,7 +80,7 @@ class IssueTest < ActiveSupport::TestCase
   end
 
   test "valid_for_user? when has open issue and user has not skipped issues with PR" do
-    user  = users("mockstar")
+    user = users("mockstar")
     issue = repos("rails_rails").issues.new
     issue.stubs(:commenting_users).returns(["foo", "bar"])
     issue.stubs(:update_issue!).returns(true)
@@ -90,7 +90,7 @@ class IssueTest < ActiveSupport::TestCase
     assert issue.valid_for_user?(user, can_access_network: true), "issue is not valid for given user"
   end
 
-  test 'commenting users' do
+  test "commenting users" do
     repo = repos("rails_rails")
     issue = repo.issues.new
     issue.repo_name = "rails"
@@ -98,14 +98,14 @@ class IssueTest < ActiveSupport::TestCase
     issue.save
 
     commenting_users = []
-    VCR.use_cassette('commenting_users_issue') do
+    VCR.use_cassette("commenting_users_issue") do
       commenting_users = issue.commenting_users
     end
-    assert_equal ['Trevoke', 'freegenie', 'pixeltrix', 'steveklabnik'], commenting_users
+    assert_equal ["Trevoke", "freegenie", "pixeltrix", "steveklabnik"], commenting_users
   end
 
   test "public_url" do
-    repo  = repos("rails_rails")
+    repo = repos("rails_rails")
     issue = repo.issues.new(number: "8404")
     assert_equal "https://github.com/repos/rails/rails/issues/8404", issue.public_url
   end
@@ -113,11 +113,11 @@ class IssueTest < ActiveSupport::TestCase
   test "open_issues" do
     open_issues = []
     repo = repos("rails_rails")
-    repo.issues.new(state: 'closed')
+    repo.issues.new(state: "closed")
 
     2.times do
       number = Issue.maximum(:number) + 1
-      open_issues << repo.issues.create!(state: 'open', number: number)
+      open_issues << repo.issues.create!(state: "open", number: number)
     end
 
     assert_equal open_issues, repo.open_issues.order(:created_at)

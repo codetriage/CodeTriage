@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class RepoTest < ActiveSupport::TestCase
   test "normalizing names to lowercase" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
+      repo = Repo.create user_name: "Refinery", name: "Refinerycms"
       assert_equal "refinery", repo.user_name
       assert_equal "refinerycms", repo.name
     end
@@ -13,10 +13,10 @@ class RepoTest < ActiveSupport::TestCase
 
   test "uniqueness of repo with case insensitivity" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      Repo.create user_name: 'refinery', name: 'refinerycms'
+      Repo.create user_name: "refinery", name: "refinerycms"
       VCR.use_cassette "create_duplicate_repo_refinery", record: :once do
         assert_raises(ActiveRecord::RecordNotUnique) {
-          Repo.create user_name: 'Refinery', name: 'Refinerycms'
+          Repo.create user_name: "Refinery", name: "Refinerycms"
         }
       end
     end
@@ -24,7 +24,7 @@ class RepoTest < ActiveSupport::TestCase
 
   test "update repo info from github" do
     VCR.use_cassette "repo_info" do
-      repo = Repo.new user_name: 'refinery', name: 'refinerycms'
+      repo = Repo.new user_name: "refinery", name: "refinerycms"
       repo.update_from_github
       assert_equal "Ruby", repo.language
       assert_match "CMS", repo.description
@@ -32,17 +32,17 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "github url validation attempts to use issue_fetcher" do
-    repo = Repo.new user_name: 'codetriage', name: 'codetriage'
-    repo.stub(:issues_fetcher, -> { OpenStruct.new(error?: true, api_path: '123') }) do
+    repo = Repo.new user_name: "codetriage", name: "codetriage"
+    repo.stub(:issues_fetcher, -> { OpenStruct.new(error?: true, api_path: "123") }) do
       repo.send(:github_url_exists)
       assert_equal "cannot reach api.github.com/123 perhaps github is down, or you mistyped something?",
-                   repo.errors.messages[:expiration_date].first
+        repo.errors.messages[:expiration_date].first
     end
   end
 
   test "counts number of subscribers" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
+      repo = Repo.create user_name: "Refinery", name: "Refinerycms"
       repo.users << users(:jroes)
       repo.users << users(:schneems)
       repo.subscribers_count == 2
@@ -51,7 +51,7 @@ class RepoTest < ActiveSupport::TestCase
 
   test "#all_languages does not contain empty string" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      Repo.create user_name: 'Refinery', name: "RefineryCMS", language: ""
+      Repo.create user_name: "Refinery", name: "RefineryCMS", language: ""
       assert_not Repo.all_languages.include? ""
     end
   end
@@ -79,14 +79,14 @@ class RepoTest < ActiveSupport::TestCase
   end
 
   test "issues_fetcher.api_path (private method) returns issues path with Github api" do
-    repo = Repo.new(name: 'codetriage', user_name: 'codetriage')
+    repo = Repo.new(name: "codetriage", user_name: "codetriage")
     assert_equal "repos/codetriage/codetriage/issues", repo.issues_fetcher.send(:api_path)
   end
 
   test "search_by returns repo by name and user_name" do
     VCR.use_cassette "create_repo_refinery", record: :once do
-      repo = Repo.create user_name: 'Refinery', name: 'Refinerycms'
-      assert_equal [repo], Repo.search_by('refinerycms', 'refinery')
+      repo = Repo.create user_name: "Refinery", name: "Refinerycms"
+      assert_equal [repo], Repo.search_by("refinerycms", "refinery")
     end
   end
 
@@ -104,7 +104,7 @@ class RepoTest < ActiveSupport::TestCase
     end
   end
 
-  test '.without_user_subscriptions' do
+  test ".without_user_subscriptions" do
     user = users(:schneems)
     subscribed_repo = user.repo_subscriptions.first
     unsubscribed_repo = repos(:no_subscribers)

@@ -28,10 +28,10 @@
 class UserBasedJob < ApplicationJob
   around_perform do |job, block|
     user_or_id = job.arguments[0]
-    if user_or_id.is_a?(Integer)
-      user = User.find(user_or_id)
+    user = if user_or_id.is_a?(Integer)
+      User.find(user_or_id)
     else
-      user = user_or_id
+      user_or_id
     end
     job.arguments[0] = user
     ScoutApm::Context.add_user(github: user.github)

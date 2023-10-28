@@ -7,13 +7,13 @@ module DocsDoctor
 
     def initialize(parser_lang_name, version)
       @lang, @name = parser_lang_name.to_s.downcase.split("/")
-      @version     = Gem::Version.new version
+      @version = Gem::Version.new version
       load_parser
     end
 
     def parser
-      require self.path
-      return constant.new
+      require path
+      constant.new
     end
 
     def constant
@@ -22,7 +22,7 @@ module DocsDoctor
 
     # parsers/ruby/rdoc.rb
     def path
-      [__dir__, 'parsers', lang, name_extension].join('/')
+      [__dir__, "parsers", lang, name_extension].join("/")
     end
 
     def load_parser
@@ -42,12 +42,12 @@ module DocsDoctor
 
     def dot_extension
       @extension = extension
-      @extension.prepend('.rb') unless @extension.include?('.')
+      @extension.prepend(".rb") unless @extension.include?(".")
       @extension
     end
 
     def pretty_version
-      version.to_s.tr('.', '_')
+      version.to_s.tr(".", "_")
     end
   end
 end

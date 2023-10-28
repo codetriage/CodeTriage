@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class IssueAssignmentTest < ActiveSupport::TestCase
   test "validates presence of relevant ids" do
@@ -36,9 +36,13 @@ class IssueAssignmentTest < ActiveSupport::TestCase
     subscriptions = user.repo_subscriptions.all
     first_sub = subscriptions.first
     second_sub = subscriptions.last
-    def first_sub.email_limit; 1; end
+    def first_sub.email_limit
+      1
+    end
 
-    def second_sub.email_limit; 1; end
+    def second_sub.email_limit
+      1
+    end
 
     assigner = IssueAssigner.new(user, [first_sub, second_sub])
     assigner.assign!
@@ -55,17 +59,19 @@ class IssueAssignmentTest < ActiveSupport::TestCase
 
     repo = Repo.where(full_name: "bemurphy/issue_triage_sandbox").first
     sub = user.repo_subscriptions.where(repo_id: repo.id).first
-    def sub.email_limit; 1; end
+    def sub.email_limit
+      1
+    end
 
     repo.issues.each do |issue|
       stub_request(:get, %r{https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/#{issue.number}})
-        .to_return({ body: issue.as_json.to_json, status: 200 })
+        .to_return({body: issue.as_json.to_json, status: 200})
 
       stub_request(:get, %r{https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues/#{issue.number}/comments})
         .to_return({
-                     body: [{ "id" => 5, "user" => { "login" => "rtomayko", "id" => 404 } }].to_json,
-                     status: 200
-                   })
+          body: [{"id" => 5, "user" => {"login" => "rtomayko", "id" => 404}}].to_json,
+          status: 200
+        })
     end
 
     assigner = IssueAssigner.new(user, [sub], can_access_network: true)

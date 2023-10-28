@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'json'
+
+require "json"
 
 module DependencyParser
   module PHP
@@ -15,17 +16,17 @@ module DependencyParser
       def call
         deps = JSON.parse(content, symbolize_names: true)
         @direct = deps[:packages].map do |package|
-          { name: package[:name], url: package.dig(:source, :url), description: package[:description] }
+          {name: package[:name], url: package.dig(:source, :url), description: package[:description]}
         end
-        @direct += deps[:'packages-dev'].map do |package|
-          { name: package[:name], url: package.dig(:source, :url), description: package[:description] }
+        @direct += deps[:"packages-dev"].map do |package|
+          {name: package[:name], url: package.dig(:source, :url), description: package[:description]}
         end
-      rescue StandardError
-        @errors << 'Cannot parse lock file'
+      rescue
+        @errors << "Cannot parse lock file"
       end
 
       def direct
-        { repos: @direct, language: "php" }
+        {repos: @direct, language: "php"}
       end
 
       def success?

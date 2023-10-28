@@ -44,4 +44,3 @@ Benchmark.bm { |x|
     }
   }
 }
-

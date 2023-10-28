@@ -22,6 +22,6 @@ class SendSingleTriageEmailJob < ApplicationJob
   def assignment(repo_sub = nil)
     raise ArgumentError if repo_sub.nil? && @assignment.nil? # provide repo_sub first time
     @assignment ||= repo_sub.user.issue_assignments.order(:created_at).eager_load(:repo_subscription)
-                            .where(repo_subscriptions: { repo_id: repo_sub.repo_id }).last
+      .where(repo_subscriptions: {repo_id: repo_sub.repo_id}).last
   end
 end
