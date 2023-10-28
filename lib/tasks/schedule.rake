@@ -13,18 +13,14 @@ namespace :schedule do
 
   desc "pulls in files from repos and adds them to the database"
   task process_repos: :environment do
-    Repo.where("docs_subscriber_count > 0").select(:id, :removed_from_github).find_each(batch_size: 1000) do |repo|
-      next if repo.removed_from_github?
-
+    Repo.active.where("docs_subscriber_count > 0").select(:id).find_each(batch_size: 1000) do |repo|
       PopulateDocsJob.perform_later(repo.id)
     end
   end
 
   desc 'Populates github issues'
   task populate_issues: :environment do
-    Repo.select(:id, :removed_from_github).find_each(batch_size: 100) do |repo|
-      next if repo.removed_from_github?
-
+    Repo.active.select(:id, :removed_from_github).find_each(batch_size: 100) do |repo|
       PopulateIssuesJob.perform_later(repo.id)
     end
   end
@@ -50,9 +46,7 @@ namespace :schedule do
   desc 'Marks issues as closed'
   task mark_closed: :environment do
     Issue.queue_mark_old_as_closed!
-    Repo.find_each(batch_size: 100) do |repo|
-      next if repo.removed_from_github?
-
+    Repo.active.find_each(batch_size: 100) do |repo|
       repo.force_issues_count_sync!
     end
   end
@@ -61,6 +55,7 @@ namespace :schedule do
   task poke_inactive: :environment do
     next unless Date.today.tuesday?
 
+    # TODO Ensure not archived, ensure not removed from github
     perc_90_issues_count = ActiveRecord::Base.connection.select_one("SELECT PERCENTILE_CONT(0.90) WITHIN GROUP(ORDER BY issues_count) FROM repos;")["percentile_cont"]
     perc_90_subscriber_count = ActiveRecord::Base.connection.select_one("SELECT PERCENTILE_CONT(0.90) WITHIN GROUP(ORDER BY subscribers_count) FROM repos;")["percentile_cont"]
 
@@ -115,7 +110,7 @@ namespace :schedule do
 
   desc 'fetch and assign labels for repos'
   task fetch_labels_and_assign: :environment do
-    Repo.find_each(batch_size: 100) do |repo|
+    Repo.active.find_each(batch_size: 100) do |repo|
       RepoLabelAssigner.new(repo: repo).create_and_associate_labels!
     end
   end

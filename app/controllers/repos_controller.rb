@@ -53,12 +53,12 @@ class ReposController < RepoBasedController
   end
 
   def edit
-    @repo = find_repo(params)
+    @repo = find_repo(params, only_active: false)
     redirect_to root_path, notice: "You cannot edit this repo" unless current_user.able_to_edit_repo?(@repo)
   end
 
   def update
-    @repo = find_repo(params)
+    @repo = find_repo(params, only_active: false)
     if @repo.update(repo_params)
       redirect_to @repo, notice: "Repo updated"
     else

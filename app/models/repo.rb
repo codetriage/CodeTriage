@@ -24,6 +24,13 @@ class Repo < ActiveRecord::Base
 
   CLASS_FOR_DOC_LANGUAGE = { "ruby" => DocsDoctor::Parsers::Ruby::Yard }
 
+  scope :archived, -> { where(archived: true) }
+  scope :not_archived, -> { where(archived: false) }
+  scope :removed_from_github, -> { where(removed_from_github: true) }
+  scope :not_removed_from_github, -> { where(removed_from_github: false) }
+
+  scope :active, -> { not_archived.not_removed_from_github }
+
   def class_for_doc_language
     language && CLASS_FOR_DOC_LANGUAGE[language.downcase]
   end
@@ -206,6 +213,10 @@ class Repo < ActiveRecord::Base
 
   def repo_path
     File.join 'repos', path
+  end
+
+  def active?
+    removed_from_github == false && archived == false
   end
 
   def self.find_by_full_name(full_name)

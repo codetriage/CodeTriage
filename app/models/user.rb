@@ -203,6 +203,7 @@ class User < ActiveRecord::Base
   private
 
   def issue_assigner
-    @issue_assigner ||= IssueAssigner.new(self, repo_subscriptions)
+    subs = repo_subscriptions.select { |s| s.repo.active? }
+    @issue_assigner ||= IssueAssigner.new(self, subs)
   end
 end

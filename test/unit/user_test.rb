@@ -160,4 +160,8 @@ class UserTest < ActiveSupport::TestCase
   test "#repos_fetcher" do
     assert users(:mockstar).repos_fetcher(GithubFetcher::Repos::OWNED).is_a? GithubFetcher::Repos
   end
+
+  test "#issue_assignments_to_deliver should ignore repos not active" do
+    assert_empty users(:empty).issue_assignments_to_deliver
+  end
 end
