@@ -475,7 +475,6 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webrick (1.7.0)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -484,8 +483,7 @@ GEM
     will_paginate (4.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yard (0.9.28)
-      webrick (~> 1.7.0)
+    yard (0.9.34)
     zeitwerk (2.6.12)
 
 PLATFORMS
@@ -564,7 +562,7 @@ DEPENDENCIES
   webmock
   wicked
   will_paginate
-  yard (~> 0.9.28)
+  yard (~> 0.9.34)
 
 RUBY VERSION
    ruby 3.1.4p223
