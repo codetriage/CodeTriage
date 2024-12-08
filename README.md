@@ -29,3 +29,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details about contributing and runnin
 Licensed under MIT License.
 Copyright (c) 2012 Schneems.
 See LICENSE.txt for further details.
+
+## Contributors
+[Mitya Zhdanovich] (https://github.com/Mitya890625) - Maintainer
+
+
