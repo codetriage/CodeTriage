@@ -567,7 +567,7 @@ DEPENDENCIES
   yard (~> 0.9.28)
 
 RUBY VERSION
-   ruby 3.1.4p223
+   ruby 3.2.9p265
 
 BUNDLED WITH
    2.7.1
