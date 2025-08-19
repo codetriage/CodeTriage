@@ -24,8 +24,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details about contributing and runnin
 
 ## Contact
 
-[Richard Schneeman](https://twitter.com/schneems)
+If you have any questions or need further assistance, feel free to reach out:
 
-Licensed under MIT License.
-Copyright (c) 2012 Schneems.
+- [Richard Schneeman](https://twitter.com/schneems) on Twitter
+- [Discussion Forum](https://github.com/codetriage/codetriage/discussions) for community help and discussions
+- [GitHub Issues](https://github.com/codetriage/codetriage/issues) for reporting bugs or requesting features
+
+Licensed under MIT License.  
+Copyright (c) 2012 Schneems.  
 See LICENSE.txt for further details.
