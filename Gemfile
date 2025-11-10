@@ -24,7 +24,7 @@ end
 gem "git_hub_bub"
 
 # Application server & middleware
-gem "puma"
+gem "puma", "7.0.0.pre1"
 gem "puma_worker_killer"
 gem "rack-timeout"
 gem "rack-canonical-host"

@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.1"]
+        ruby: ["3.2.9"]
     name: Running tests with Ruby ${{ matrix.ruby }}
     services:
       postgres:
