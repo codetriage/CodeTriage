@@ -152,7 +152,7 @@ class Repo < ActiveRecord::Base
 
   def force_issues_count_sync!
     update!(
-      issues_count: issues.where(state: "open").count,
+      issues_count: issues.open_issues.issues_only.count,
       docs_subscriber_count: query_docs_subscriber_count
     )
   end

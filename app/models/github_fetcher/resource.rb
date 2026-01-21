@@ -82,6 +82,11 @@ module GithubFetcher
     end
 
     def last_page?
+      # If no next_url, we're on the last page
+      return true if response.next_url.nil?
+      # If next_url exists but last_url is nil, there are more pages
+      # (git_hub_bub gem bug - it tries to parse nil last_url)
+      return false if response.last_url.nil?
       response.last_page?
     end
 

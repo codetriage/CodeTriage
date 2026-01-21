@@ -14,6 +14,7 @@ module GithubFetcher
       options[:direction] ||= "desc"
       options[:state] ||= "open"
       options[:page] ||= 1
+      options[:per_page] ||= GitHubConfig::ISSUES_PER_PAGE
 
       super
     end

@@ -56,6 +56,37 @@ class Issue < ActiveRecord::Base
     state == OPEN
   end
 
+  # GitHub's Issues API (/repos/{owner}/{repo}/issues) returns both issues AND pull requests.
+  # The API response includes a `pull_request` key with URLs when the item is a PR:
+  #
+  #   Issue:        { "pull_request": null }
+  #   Pull Request: { "pull_request": { "html_url": "...", "diff_url": "...", "patch_url": "..." } }
+  #
+  # The `pr_attached` column stores whether the `pull_request` key had non-null values,
+  # meaning the record IS a pull request (not an issue with a PR linked to it).
+  #
+  # These methods provide clearer semantics:
+
+  # Returns true if this record is a Pull Request (not a regular issue)
+  def is_pull_request?
+    pr_attached == true
+  end
+
+  # Returns true if this record is a regular Issue (not a pull request)
+  def is_issue?
+    pr_attached == false
+  end
+
+  # Scope: Returns only Pull Requests
+  def self.pull_requests
+    where(pr_attached: true)
+  end
+
+  # Scope: Returns only regular Issues (excludes PRs)
+  def self.issues_only
+    where(pr_attached: false)
+  end
+
   def repo_name
     repo.name
   end

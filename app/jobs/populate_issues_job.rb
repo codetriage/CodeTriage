@@ -11,6 +11,9 @@ class PopulateIssuesJob < RepoBasedJob
     page_number = 1
     while populate_issues(page_number)
       page_number += 1
+      # Sleep only when approaching GitHub API rate limit (remaining < 1000)
+      # Uses X-RateLimit headers to calculate optimal sleep time
+      @last_response&.rate_limit_sleep!
     end
     @repo.force_issues_count_sync!
   end
@@ -36,6 +39,7 @@ class PopulateIssuesJob < RepoBasedJob
     fetcher.page = page_number
 
     fetcher.call(retry_on_bad_token: 3)
+    @last_response = fetcher.response
 
     if fetcher.error?
       repo.update(github_error_msg: fetcher.error_message)
