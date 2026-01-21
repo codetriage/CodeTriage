@@ -119,7 +119,7 @@ end
 group :test do
   gem "capybara"
   gem "launchy" # Not essential but helpful for save_and_open_page
-  gem "minitest"
+  gem "minitest", "~> 5.0"  # Version 6.0+ removed minitest/mock
   gem "mocha", require: false
   gem "rails-controller-testing"
   gem "simplecov", require: false

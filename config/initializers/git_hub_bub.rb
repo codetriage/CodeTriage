@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+# GitHub API Configuration
+# These can be overridden via environment variables
+module GitHubConfig
+  # Maximum items per page for GitHub API requests (GitHub allows up to 100)
+  ISSUES_PER_PAGE = Integer(ENV.fetch("GITHUB_ISSUES_PER_PAGE", 100))
+end
+
 # I know it's awful but I don't have time to fix the GitHubBub API and this makes `rails c` not noisey
 GitHubBub::Request.send(:remove_const, :GITHUB_VERSION)
 GitHubBub::Request.send(:remove_const, :USER_AGENT)
