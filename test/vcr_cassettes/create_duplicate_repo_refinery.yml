@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/repos/refinery/refinerycms/issues?direction=desc&page=1&sort=comments&state=open
+    uri: https://api.github.com/repos/refinery/refinerycms/issues?direction=desc&page=1&per_page=100&sort=comments&state=open
     body:
       encoding: UTF-8
       string: '{"state":"open","page":1,"sort":"comments","direction":"desc"}'
@@ -49,8 +49,8 @@ http_interactions:
       X-Github-Media-Type:
       - github.v3; param=3.raw; format=json
       Link:
-      - <https://api.github.com/repositories/212862/issues?direction=desc&page=2&sort=comments&state=open>;
-        rel="next", <https://api.github.com/repositories/212862/issues?direction=desc&page=2&sort=comments&state=open>;
+      - <https://api.github.com/repositories/212862/issues?direction=desc&page=2&per_page=100&sort=comments&state=open>;
+        rel="next", <https://api.github.com/repositories/212862/issues?direction=desc&page=2&per_page=100&sort=comments&state=open>;
         rel="last"
       Access-Control-Expose-Headers:
       - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,

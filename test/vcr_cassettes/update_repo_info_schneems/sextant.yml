@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/repos/schneems/sextant/issues?direction=desc&page=1&sort=comments
+    uri: https://api.github.com/repos/schneems/sextant/issues?direction=desc&page=1&per_page=100&sort=comments
     body:
       encoding: UTF-8
       string: '{"page":1,"sort":"comments","direction":"desc"}'
@@ -79,7 +79,7 @@ http_interactions:
   recorded_at: Thu, 07 Apr 2016 17:26:05 GMT
 - request:
     method: get
-    uri: https://api.github.com/repos/schneems/sextant/issues?direction=desc&page=1&sort=comments&state=open
+    uri: https://api.github.com/repos/schneems/sextant/issues?direction=desc&page=1&per_page=100&sort=comments&state=open
     body:
       encoding: UTF-8
       string: '{"state":"open","page":1,"sort":"comments","direction":"desc"}'

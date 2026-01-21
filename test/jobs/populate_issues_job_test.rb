@@ -9,7 +9,7 @@ class PopulateIssuesJobTest < ActiveJob::TestCase
   end
 
   test "Works when there's no issues" do
-    stub_request(:any, "https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues?direction=desc&page=1&sort=comments&state=open")
+    stub_request(:any, "https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues?direction=desc&page=1&per_page=#{GitHubConfig::ISSUES_PER_PAGE}&sort=comments&state=open")
       .to_return({body: [].to_json, status: 200})
 
     repo = repos(:issue_triage_sandbox)

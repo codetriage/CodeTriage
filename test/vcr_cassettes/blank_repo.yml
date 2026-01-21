@@ -254,7 +254,7 @@ http_interactions:
   recorded_at: Thu, 06 Jul 2017 20:04:39 GMT
 - request:
     method: get
-    uri: https://api.github.com/repos/issues?direction=desc&page=1&sort=comments&state=open
+    uri: https://api.github.com/repos/issues?direction=desc&page=1&per_page=100&sort=comments&state=open
     body:
       encoding: UTF-8
       string: '{"state":"open","page":1,"sort":"comments","direction":"desc"}'

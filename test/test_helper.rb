@@ -61,6 +61,24 @@ VCR.configure do |c|
     sensitive = ENV[secure] ||= secure
     c.filter_sensitive_data("<#{secure}>") { sensitive }
   end
+
+  # Custom matcher that ignores per_page parameter
+  # This allows GITHUB_ISSUES_PER_PAGE env variable to be changed without breaking tests
+  c.register_request_matcher :uri_without_per_page do |request_1, request_2|
+    uri_1 = URI(request_1.uri)
+    uri_2 = URI(request_2.uri)
+
+    # Compare everything except per_page query param
+    params_1 = URI.decode_www_form(uri_1.query || "").reject { |k, _| k == "per_page" }.sort
+    params_2 = URI.decode_www_form(uri_2.query || "").reject { |k, _| k == "per_page" }.sort
+
+    uri_1.scheme == uri_2.scheme &&
+      uri_1.host == uri_2.host &&
+      uri_1.path == uri_2.path &&
+      params_1 == params_2
+  end
+
+  c.default_cassette_options = {match_requests_on: [:method, :uri_without_per_page]}
 end
 
 module ActionDispatch

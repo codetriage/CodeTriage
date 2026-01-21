@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues?direction=desc&page=1&sort=comments&state=open
+    uri: https://api.github.com/repos/bemurphy/issue_triage_sandbox/issues?direction=desc&page=1&per_page=100&sort=comments&state=open
     body:
       encoding: UTF-8
       string: '{"sort":"comments","direction":"desc","state":"open","page":1}'
