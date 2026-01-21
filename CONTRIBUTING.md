@@ -95,6 +95,13 @@ $ echo GITHUB_APP_SECRET=<secret from github app> >> .env
 $ echo PORT=3000 >> .env
 ```
 
+#### Optional GitHub API Configuration
+
+```shell
+# Number of issues to fetch per API request (default: 100, max: 100)
+$ echo GITHUB_ISSUES_PER_PAGE=100 >> .env
+```
+
 ### Running the app
 
 Start your app using [Heroku Local](https://devcenter.heroku.com/articles/heroku-local)
