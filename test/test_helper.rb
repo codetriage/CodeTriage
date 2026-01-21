@@ -22,6 +22,7 @@ end
 class ActionDispatch::IntegrationTest
   # https://github.com/plataformatec/devise/wiki/How-To:-Test-with-Capybara
   include Warden::Test::Helpers
+
   Warden.test_mode!
 
   setup do
@@ -69,8 +70,9 @@ VCR.configure do |c|
     uri_2 = URI(request_2.uri)
 
     # Compare everything except per_page query param
-    params_1 = URI.decode_www_form(uri_1.query || "").reject { |k, _| k == "per_page" }.sort
-    params_2 = URI.decode_www_form(uri_2.query || "").reject { |k, _| k == "per_page" }.sort
+    # URI.decode_www_form returns Array of arrays, convert to Hash to use except
+    params_1 = URI.decode_www_form(uri_1.query || "").to_h.except("per_page").sort
+    params_2 = URI.decode_www_form(uri_2.query || "").to_h.except("per_page").sort
 
     uri_1.scheme == uri_2.scheme &&
       uri_1.host == uri_2.host &&

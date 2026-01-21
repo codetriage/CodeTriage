@@ -8,6 +8,6 @@ class GitBranchnameGenerator
   end
 
   def branchname
-    "#{@username}-update-docs-#{@doc_path}-for-pr".gsub(/[^a-zA-Z0-9\_]/, "-")
+    "#{@username}-update-docs-#{@doc_path}-for-pr".gsub(/[^a-zA-Z0-9_]/, "-")
   end
 end
