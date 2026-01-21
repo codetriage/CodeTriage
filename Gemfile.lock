@@ -178,6 +178,7 @@ GEM
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
     ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
     flamegraph (0.9.5)
     foreman (0.90.0)
       thor (~> 1.4)
@@ -274,6 +275,8 @@ GEM
     nio4r (2.7.5)
     nokogiri (1.19.0-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.19.0-x86_64-linux-gnu)
+      racc (~> 1.4)
     normalize-rails (8.0.1)
     oauth2 (2.0.18)
       faraday (>= 0.17.3, < 4.0)
@@ -309,6 +312,7 @@ GEM
       racc
     pdf-core (0.10.0)
     pg (1.6.3-arm64-darwin)
+    pg (1.6.3-x86_64-linux)
     prawn (2.5.0)
       matrix (~> 0.4)
       pdf-core (~> 0.10.0)
@@ -539,6 +543,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-25
+  x86_64-linux
 
 DEPENDENCIES
   autoprefixer-rails
