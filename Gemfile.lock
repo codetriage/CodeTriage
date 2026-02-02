@@ -151,7 +151,8 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.12.0)
-    excon (0.71.0)
+    excon (1.3.2)
+      logger
     execjs (2.8.1)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
@@ -162,7 +163,8 @@ GEM
     foreman (0.87.2)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
-    git_hub_bub (1.0.1)
+    git_hub_bub (2.0.0)
+      base64
       excon
       rrrretry
     globalid (1.1.0)
@@ -193,6 +195,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     local_time (2.1.0)
+    logger (1.7.0)
     loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
