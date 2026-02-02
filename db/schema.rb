@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
+ActiveRecord::Schema[7.0].define(version: 2026_02_02_163145) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
-  create_table "data_dumps", id: :serial, force: :cascade do |t|
+  create_table "data_dumps", force: :cascade do |t|
     t.text "data"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
   end
 
-  create_table "doc_assignments", id: :serial, force: :cascade do |t|
-    t.integer "repo_id"
-    t.integer "repo_subscription_id"
-    t.integer "doc_method_id"
-    t.integer "doc_class_id"
+  create_table "doc_assignments", force: :cascade do |t|
+    t.bigint "repo_id"
+    t.bigint "repo_subscription_id"
+    t.bigint "doc_method_id"
+    t.bigint "doc_class_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
     t.boolean "clicked", default: false
@@ -33,8 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.index ["repo_subscription_id", "doc_method_id"], name: "index_doc_assignments_on_repo_subscription_id_and_doc_method_id"
   end
 
-  create_table "doc_classes", id: :serial, force: :cascade do |t|
-    t.integer "repo_id"
+  create_table "doc_classes", force: :cascade do |t|
+    t.bigint "repo_id"
     t.string "name"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -45,9 +45,9 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.index ["repo_id", "doc_comments_count"], name: "index_doc_classes_on_repo_id_and_doc_comments_count"
   end
 
-  create_table "doc_comments", id: :serial, force: :cascade do |t|
-    t.integer "doc_class_id"
-    t.integer "doc_method_id"
+  create_table "doc_comments", force: :cascade do |t|
+    t.bigint "doc_class_id"
+    t.bigint "doc_method_id"
     t.text "comment"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
@@ -55,8 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.index ["doc_method_id"], name: "index_doc_comments_on_doc_method_id"
   end
 
-  create_table "doc_methods", id: :serial, force: :cascade do |t|
-    t.integer "repo_id"
+  create_table "doc_methods", force: :cascade do |t|
+    t.bigint "repo_id"
     t.string "name"
     t.integer "line"
     t.datetime "created_at", precision: nil, null: false
@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.bigint "issue_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "repo_subscription_id"
+    t.bigint "repo_subscription_id"
     t.boolean "clicked", default: false
     t.boolean "delivered", default: false
     t.index ["repo_subscription_id", "delivered"], name: "index_issue_assignments_on_repo_subscription_id_and_delivered"
@@ -93,7 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.integer "number"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "repo_id"
+    t.bigint "repo_id"
     t.text "title"
     t.string "html_url"
     t.string "state"
@@ -121,11 +121,11 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.index ["repo_id"], name: "index_repo_labels_on_repo_id"
   end
 
-  create_table "repo_subscriptions", id: :serial, force: :cascade do |t|
+  create_table "repo_subscriptions", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.integer "user_id"
-    t.integer "repo_id"
+    t.bigint "user_id"
+    t.bigint "repo_id"
     t.datetime "last_sent_at", precision: nil
     t.integer "email_limit", default: 1
     t.boolean "write", default: false
@@ -139,7 +139,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.index ["write"], name: "index_repo_subscriptions_on_write"
   end
 
-  create_table "repos", id: :serial, force: :cascade do |t|
+  create_table "repos", force: :cascade do |t|
     t.string "name"
     t.string "user_name"
     t.integer "issues_count", default: 0, null: false
@@ -165,7 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
     t.index ["user_name"], name: "index_repos_on_user_name"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
