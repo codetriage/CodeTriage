@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_28_065556) do
+ActiveRecord::Schema[7.0].define(version: 2026_02_02_160000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_065556) do
     t.index ["repo_id", "name", "path"], name: "index_doc_methods_on_repo_id_and_name_and_path", unique: true
   end
 
-  create_table "issue_assignments", id: :serial, force: :cascade do |t|
-    t.integer "issue_id"
+  create_table "issue_assignments", force: :cascade do |t|
+    t.bigint "issue_id"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.integer "repo_subscription_id"
@@ -84,7 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_28_065556) do
     t.index ["repo_subscription_id", "delivered"], name: "index_issue_assignments_on_repo_subscription_id_and_delivered"
   end
 
-  create_table "issues", id: :serial, force: :cascade do |t|
+  create_table "issues", force: :cascade do |t|
     t.integer "comment_count"
     t.string "url"
     t.string "repo_name"
