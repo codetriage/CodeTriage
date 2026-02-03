@@ -5,11 +5,7 @@ source "https://rubygems.org"
 ruby file: ".ruby-version"
 
 # Core
-if ENV["RAILS_MASTER"] == "1"
-  gem "rails", git: "https://github.com/rails/rails.git"
-else
-  gem "rails", "8.1.2"
-end
+gem "rails", "8.1.2"
 
 # API & Networking
 gem "git_hub_bub"
