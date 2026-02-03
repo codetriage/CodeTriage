@@ -121,7 +121,8 @@ end
 group :test do
   gem "capybara"
   gem "launchy" # Not essential but helpful for save_and_open_page
-  gem "minitest", "< 6.0" # Pin to < 6.0 for Rails 7.1 compatibility
+  gem "minitest"
+  gem "minitest-mock" # Required for minitest 6.0+
   gem "mocha", require: false
   gem "rails-controller-testing"
   gem "simplecov", require: false

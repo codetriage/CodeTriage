@@ -270,7 +270,9 @@ GEM
     mime-types-data (3.2026.0203)
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
-    minitest (5.27.0)
+    minitest (6.0.1)
+      prism (~> 1.5)
+    minitest-mock (5.27.0)
     mocha (3.0.1)
       ruby2_keywords (>= 0.0.5)
     msgpack (1.8.0)
@@ -645,7 +647,8 @@ DEPENDENCIES
   matrix
   memory_profiler
   mime-types
-  minitest (< 6.0)
+  minitest
+  minitest-mock
   mocha
   neat (~> 1.7)
   normalize-rails
@@ -801,7 +804,8 @@ CHECKSUMS
   mime-types-data (3.2026.0203) sha256=54353d693af028847391c28361c07d4b8b689cad78c3e1cc272fb1205c6d2a2f
   mini_histogram (0.3.1) sha256=6a114b504e4618b0e076cc672996036870f7cc6f16b8e5c25c0c637726d2dd94
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
-  minitest (5.27.0) sha256=2d3b17f8a36fe7801c1adcffdbc38233b938eb0b4966e97a6739055a45fa77d5
+  minitest (6.0.1) sha256=7854c74f48e2e975969062833adc4013f249a4b212f5e7b9d5c040bf838d54bb
+  minitest-mock (5.27.0) sha256=7040ed7185417a966920987eaa6eaf1be4ea1fc5b25bb03ff4703f98564a55b0
   mocha (3.0.1) sha256=74f82c5959e3df6cfa2757d60aa420dcb151ac7c5eb61dcebf1cd4e368ed7469
   msgpack (1.8.0) sha256=e64ce0212000d016809f5048b48eb3a65ffb169db22238fb4b72472fecb2d732
   multi_xml (0.8.1) sha256=addba0290bac34e9088bfe73dc4878530297a82a7bbd66cb44dcd0a4b86edf5a
