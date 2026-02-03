@@ -58,4 +58,10 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {host: "example.com"}
 
   config.cache_store = :memory_store
+
+  # Use the test adapter for Active Job so that test helpers work
+  config.active_job.queue_adapter = :test
+
+  # Don't check if assets are precompiled in test environment
+  config.assets.check_precompiled_asset = false
 end

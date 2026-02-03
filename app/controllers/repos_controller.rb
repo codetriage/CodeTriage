@@ -8,7 +8,7 @@ class ReposController < RepoBasedController
 
   def new
     @repo = Repo.new(user_name: params[:user_name], name: params[:name])
-    @full_name = (@repo.name && @repo.user_name) ? +"#{@repo.user_name}/#{@repo.name}" : nil
+    @full_name = (@repo.name && @repo.user_name) ? "#{@repo.user_name}/#{@repo.name}" : nil
     @full_name&.prepend("https://github.com/")
     @repo_sub = RepoSubscription.new
   end

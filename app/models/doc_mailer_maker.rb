@@ -17,7 +17,7 @@ class DocMailerMaker
     @subs = subs
     @write_docs = []
     @read_docs = []
-    assign_docs(&(send_next || READY_FOR_NEXT_DEFAULT))
+    assign_docs(&send_next || READY_FOR_NEXT_DEFAULT)
   end
 
   def empty?

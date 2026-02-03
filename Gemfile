@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby ">= 3.1", "< 3.3"
+ruby file: ".ruby-version"
 
 git_source :github do |name|
   "https://github.com/#{name}.git"
@@ -17,7 +17,7 @@ end
 if ENV["RAILS_MASTER"] == "1"
   gem "rails", git: "https://github.com/rails/rails.git"
 else
-  gem "rails", "7.0.8"
+  gem "rails", "8.1.2"
 end
 
 # API & Networking
@@ -91,7 +91,8 @@ gem "prawn"
 gem "rack-mini-profiler"
 gem "rails-autoscale-web"
 gem "rbtrace"
-gem "sentry-raven"
+gem "sentry-ruby"
+gem "sentry-rails"
 gem "scout_apm"
 gem "skylight"
 gem "stackprof"
@@ -103,6 +104,7 @@ gem "sitemap_generator"
 gem "aws-sdk-s3"
 
 # Utilities
+gem "ostruct" # Required for Ruby 4.0+
 gem "rake"
 gem "rrrretry"
 
@@ -119,7 +121,7 @@ end
 group :test do
   gem "capybara"
   gem "launchy" # Not essential but helpful for save_and_open_page
-  gem "minitest"
+  gem "minitest", "< 6.0" # Pin to < 6.0 for Rails 7.1 compatibility
   gem "mocha", require: false
   gem "rails-controller-testing"
   gem "simplecov", require: false
@@ -133,6 +135,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "faker", require: false
   gem "pry"
+  gem "standard", ">= 1.35.1"
   gem "standardrb", require: false
   gem "rubocop-performance"
 end

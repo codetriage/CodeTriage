@@ -4,6 +4,7 @@ class UserMailer < ActionMailer::Base
   class AbortDeliveryError < StandardError; end
 
   include ActionView::Helpers::DateHelper
+
   default from: "CodeTriage <noreply@codetriage.com>"
 
   layout "mail_layout"
@@ -17,7 +18,6 @@ class UserMailer < ActionMailer::Base
     read_doc_ids: [],
     write_doc_ids: []
   )
-
     user = User.find(user_id)
     return unless set_and_check_user(user)
 
