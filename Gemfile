@@ -11,7 +11,7 @@ gem "rails", "8.1.2"
 gem "git_hub_bub"
 
 # Application server & middleware
-gem "puma", "7.0.0.pre1"
+gem "puma", "7.2.0"
 gem "puma_worker_killer"
 gem "rack-timeout"
 gem "rack-canonical-host"
