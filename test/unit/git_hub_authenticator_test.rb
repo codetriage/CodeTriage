@@ -39,7 +39,7 @@ class GitHubAuthenticatorTest < ActiveSupport::TestCase
     )
 
     emails = Struct.new(:json_body).new ["john.doe@example.com"]
-    GitHubBub.expects(:get).with("/user/emails", token: "123qwe")
+    GitHubBub.expects(:get).with("/user/emails", {token: "123qwe"})
       .returns emails
 
     user = GitHubAuthenticator.authenticate oauth

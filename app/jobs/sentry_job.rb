@@ -2,6 +2,6 @@
 
 class SentryJob < ApplicationJob
   def perform(event)
-    Raven.send_event(event)
+    Sentry.capture_event(event)
   end
 end

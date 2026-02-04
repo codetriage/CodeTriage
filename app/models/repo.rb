@@ -143,7 +143,7 @@ class Repo < ActiveRecord::Base
   end
 
   def self.repos_needing_help_for_user(user)
-    if user && user.has_favorite_languages?
+    if user&.has_favorite_languages?
       where(language: user.favorite_languages)
     else
       self

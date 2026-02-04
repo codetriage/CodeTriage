@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include ActionView::Helpers::NumberHelper
+
   protect_from_forgery
 
   before_action do
@@ -12,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   before_action do
     if current_user
-      Raven.user_context email: current_user.email, id: current_user.id, username: current_user.github
+      Sentry.set_user(email: current_user.email, id: current_user.id, username: current_user.github)
     end
   end
 
