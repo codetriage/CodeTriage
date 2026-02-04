@@ -28,7 +28,7 @@ gem "sassc-rails"
 gem "slim-rails"
 gem "sprockets"
 gem "sprockets-rails"
-gem "uglifier", ">= 1.0.3"
+gem "terser"
 
 # Authentication & Authorization
 gem "devise"
