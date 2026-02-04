@@ -8,8 +8,8 @@ class Repo < ActiveRecord::Base
   validate :github_url_exists, on: :create, unless: :skip_validation
   validates :name, :user_name, presence: true
 
-  has_many :issues
-  has_many :repo_subscriptions
+  has_many :issues, dependent: :destroy
+  has_many :repo_subscriptions, dependent: :restrict_with_error
   has_many :users, through: :repo_subscriptions
   has_many :subscribers, through: :repo_subscriptions, source: :user
   has_many :doc_classes, dependent: :destroy
@@ -194,7 +194,24 @@ class Repo < ActiveRecord::Base
       repo_full_name = fetcher_json.fetch("full_name", full_name)
 
       if repo_full_name != full_name && self.class.exists_with_name?(repo_full_name)
-        # TODO: Add deduplication step
+        ActiveRecord::Base.transaction do
+          new_repo = self.class.find_by(full_name: repo_full_name)
+
+          repo_subscriptions.each do |existing_subscription|
+            new_repo.repo_subscriptions.find_or_create_by!(user_id: existing_subscription.user_id) do |new_subscription|
+              new_subscription.last_sent_at = existing_subscription.last_sent_at
+              new_subscription.email_limit = existing_subscription.email_limit
+              new_subscription.write = existing_subscription.write
+              new_subscription.read = existing_subscription.read
+              new_subscription.write_limit = existing_subscription.write_limit
+              new_subscription.read_limit = existing_subscription.read_limit
+            end
+          end
+
+          repo_subscriptions.destroy_all
+          destroy!
+        end
+
         return
       end
 
