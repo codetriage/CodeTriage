@@ -498,12 +498,13 @@ GEM
     scout_apm (6.0.2)
       parser
     securerandom (0.4.1)
-    sentry-rails (6.3.0)
+    sentry-rails (6.4.0)
       railties (>= 5.2.0)
-      sentry-ruby (~> 6.3.0)
-    sentry-ruby (6.3.0)
+      sentry-ruby (~> 6.4.0)
+    sentry-ruby (6.4.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
+      logger
     sidekiq (8.1.0)
       connection_pool (>= 3.0.0)
       json (>= 2.16.0)
@@ -896,8 +897,8 @@ CHECKSUMS
   sassc-rails (2.1.2) sha256=5f4fdf3881fc9bdc8e856ffbd9850d70a2878866feae8114aa45996179952db5
   scout_apm (6.0.2) sha256=ddd440eaff18526b61c098d33cb0f4e4aaea9c0fa5a2d3b43bac08b7e887d6be
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  sentry-rails (6.3.0) sha256=2ea15aba6d5b08621764b3dab7d87af34823a890813d5023e0e07ae3d17a3eef
-  sentry-ruby (6.3.0) sha256=14b5806b25d5101002959e21ed1970cb48c038bda3ac0713c1b9a3f1b746f2a5
+  sentry-rails (6.4.0) sha256=ad0ebbb2dc331d3488561f6245cdcf6709768cfd2c93ef59f73c6675c7a8f93c
+  sentry-ruby (6.4.0) sha256=562bee79aea8f92825ac9df3ea01cc7788f9170d382f8d38947895280dc3be06
   sidekiq (8.1.0) sha256=6bde5eaee9e4d7b1121e97ebd585273627fb32b1f870a47893723572479ad1e4
   simplecov (0.22.0) sha256=fe2622c7834ff23b98066bb0a854284b2729a569ac659f82621fc22ef36213a5
   simplecov-html (0.13.2) sha256=bd0b8e54e7c2d7685927e8d6286466359b6f16b18cb0df47b508e8d73c777246
