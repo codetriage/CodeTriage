@@ -71,7 +71,7 @@ gem "wicked"
 gem "will_paginate"
 
 # Performance & Monitoring
-gem "barnes", github: "heroku/barnes", branch: "schneems/direct-http-metrics"
+gem "barnes"
 gem "bootsnap", require: false
 gem "flamegraph"
 gem "matrix"
