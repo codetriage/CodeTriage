@@ -58,7 +58,8 @@ CodeTriage requires Redis for background processing.
 If you're on OS X, Homebrew is the simplest way to install Redis:
 
 ```shell
-$ brew install redis memcached && brew cask install phantomjs
+$ brew install redis memcached
+$ brew install --cask phantomjs
 $ redis-server
 ```
 
