@@ -24,7 +24,3 @@ before_fork do
 
   Barnes.start
 end
-
-# on_worker_boot do
-#   Barnes.start
-# end
