@@ -17,10 +17,7 @@ port ENV.fetch("PORT") { 3000 }
 plugin :tmp_restart
 
 before_fork do
-  require "barnes"
   require "puma_worker_killer"
 
   PumaWorkerKiller.enable_rolling_restart # Default is every 6 hours
-
-  Barnes.start
 end
