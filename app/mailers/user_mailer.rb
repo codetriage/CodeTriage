@@ -80,7 +80,7 @@ class UserMailer < ActionMailer::Base
     languages = @user.favorite_languages&.sort || []
 
     query = Repo.active
-    query = repo.where(language: languages) if !languages.empty?
+    query = query.where(language: languages) if !languages.empty?
     query = query
       .where("issues_count >= ?", min_issue_count)
       .where("subscribers_count >= ?", min_subscriber_count)
