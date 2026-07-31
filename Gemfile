@@ -97,7 +97,7 @@ gem "rake"
 gem "rrrretry"
 
 # Parse Ruby documentation
-gem "yard", "~> 0.9.28"
+gem "yard", "~> 0.9.45"
 
 group :development do
   gem "foreman"
