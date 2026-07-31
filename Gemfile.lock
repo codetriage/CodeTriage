@@ -145,7 +145,7 @@ GEM
     crass (1.0.7)
     css_parser (1.21.1)
       addressable
-    dalli (4.3.0)
+    dalli (5.0.5)
       logger
     date (3.5.1)
     derailed_benchmarks (2.2.1)
@@ -749,7 +749,7 @@ CHECKSUMS
   crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
   crass (1.0.7) sha256=94868719948664c89ddcaf0a37c65048413dfcb1c869470a5f7a7ceb5390b295
   css_parser (1.21.1) sha256=6cfd3ffc0a97333b39d2b1b49c95397b05e0e3b684d68f77ec471ba4ec2ef7c7
-  dalli (4.3.0) sha256=4a552e7ea28b1e1bccea5039dac029210dcc80360968933fcfa2e10c0d117c0b
+  dalli (5.0.5) sha256=5f51502200999278806654c846054856d6d0b5607cc1d14d06c617042f71e6f9
   date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0
   derailed_benchmarks (2.2.1) sha256=654280664fded41c9cd8fc27fc0fcfaf096023afab90eb4ac1185ba70c5d4439
   devise (5.0.4) sha256=d605f2b85854e74e56ee789e2d398702bc2d06e6bcd894717a670a3199c74cc1
