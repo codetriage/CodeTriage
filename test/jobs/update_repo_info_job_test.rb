@@ -56,19 +56,13 @@ class UpdateRepoInfoJobTest < ActiveJob::TestCase
         "full_name" => "sinatra/sinatra"
       }
     )
-    repo = repos(:node)
-    assert_no_changes -> {
-      [
-        repo.full_name,
-        repo.name,
-        repo.user_name,
-        repo.language,
-        repo.description,
-        repo.archived
-      ]
-    } do
+    repo = repos(:rails_rails)
+    sinatra = repos(:sinatra_sinatra)
+
+    assert_difference "Repo.count", -1 do
       UpdateRepoInfoJob.perform_now(repo)
-      repo.reload
     end
+
+    assert_equal 2, sinatra.subscribers.count
   end
 end
