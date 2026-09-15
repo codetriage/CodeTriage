@@ -77,9 +77,8 @@ module GithubFetcher
       as_json["clone_url"]
     end
 
-    # TODO - this appears to be uncalled... remove? or do we need it and should use it?
-    def cleanup
-      FileUtils.remove_entry(dir)
+    public def cleanup
+      FileUtils.remove_entry(@dir) if @dir
     end
   end
 end

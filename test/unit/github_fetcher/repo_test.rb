@@ -78,4 +78,20 @@ class GithubFetcher::RepoTest < ActiveSupport::TestCase
     assert separator_index, "expected a -- separator so the URL cannot be parsed as a git option"
     assert_equal url, argv[separator_index + 1]
   end
+
+  test "#cleanup removes the temporary working directory it created" do
+    fetcher = fetcher(repos(:scene_hub_v2))
+    dir = fetcher.send(:dir) # #clone checks the repo out into this scratch dir
+    assert Dir.exist?(dir)
+
+    fetcher.cleanup
+
+    refute Dir.exist?(dir), "expected the cloned scratch dir to be removed"
+  end
+
+  test "#cleanup is a safe no-op when nothing was cloned" do
+    fetcher = fetcher(repos(:scene_hub_v2))
+
+    assert_nothing_raised { fetcher.cleanup }
+  end
 end

@@ -74,6 +74,8 @@ class Repo < ActiveRecord::Base
     parser.process
     parser.store(self)
     :success
+  ensure
+    fetcher.cleanup
   end
 
   def background_populate_issues!
