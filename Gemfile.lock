@@ -117,8 +117,8 @@ GEM
     bigdecimal (3.3.1)
     bindex (0.8.1)
     bluecloth (2.2.0)
-    bootsnap (1.24.6)
-      msgpack (~> 1.2)
+    bootsnap (1.25.0)
+      msgpack (~> 1.5)
     bourbon (7.3.0)
       thor (~> 1.0)
     builder (3.3.0)
@@ -745,7 +745,7 @@ CHECKSUMS
   bigdecimal (3.3.1) sha256=eaa01e228be54c4f9f53bf3cc34fe3d5e845c31963e7fcc5bedb05a4e7d52218
   bindex (0.8.1) sha256=7b1ecc9dc539ed8bccfc8cb4d2732046227b09d6f37582ff12e50a5047ceb17e
   bluecloth (2.2.0) sha256=b30128433f6a83909b0cb52c3e001ee002ca8760d9b433ecc5ced308f7e703f9
-  bootsnap (1.24.6) sha256=c60bab88c70332290f0a2636a288f675299eb4f804a02a3c085b42eca9da164a
+  bootsnap (1.25.0) sha256=41059e7d0f9cb4023a33465d095f64b913fc9d1b808d6524c307da945fbcffcf
   bourbon (7.3.0) sha256=8a150f97d574ef13d4b50a1c936e5059efe2ae2483de13a7f265e5129c6f98b7
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
   bundler (4.0.12) sha256=7f8b757d28dfb636e7b24fba2344ac6dd13b5b24f4b46d62573d483f211825ac
