@@ -26,9 +26,10 @@
       &::before {
         @include position(absolute, 3px null null -2px);
         @include size(1.1rem, 1rem);
-        background-color: $codetriage-blue;
+        background-color: transparent;
+        border: 1px solid $codetriage-blue;
         border-radius: $base-border-radius;
-        color: $base-background-color;
+        color: $white;
         content: "";
         display: inline-block;
         line-height: 1rem;
@@ -37,10 +38,11 @@
       }
     }
 
-    &:checked + label {
-      &::before {
-        background-color: $white;
-        content: "×";
+    &:checked +label{
+      &::before{
+        background-color :$codetriage-blue;
+        border-color:$codetriage-blue;
+        content:"\2713";
       }
     }
   }
