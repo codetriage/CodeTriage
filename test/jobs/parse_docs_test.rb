@@ -34,4 +34,35 @@ class ParseDocsTest < ActiveJob::TestCase
       ).in_fork { raise "foo" }
     end
   end
+
+  test "process enables YARD safe mode" do
+    require "yard"
+    YARD::Config.options[:safe_mode] = false
+
+    Dir.mktmpdir do |repo_dir|
+      FileUtils.mkdir_p(File.join(repo_dir, "lib"))
+      File.write(File.join(repo_dir, "lib", "thing.rb"), "class Thing\n  def hello\n  end\nend\n")
+
+      DocsDoctor::Parsers::Ruby::Yard.new(repo_dir).process
+
+      assert YARD::Config.options[:safe_mode],
+        "Expected process to run YARD in safe mode"
+    end
+  end
+
+  test "process ignores the repo's .yardopts and still parses methods" do
+    Dir.mktmpdir do |repo_dir|
+      # If this .yardopts were honored, `--exclude lib` would drop lib/thing.rb
+      # from parsing and Thing#hello would be missing.
+      File.write(File.join(repo_dir, ".yardopts"), "--exclude lib\n")
+      FileUtils.mkdir_p(File.join(repo_dir, "lib"))
+      File.write(File.join(repo_dir, "lib", "thing.rb"), "class Thing\n  def hello\n  end\nend\n")
+
+      parser = DocsDoctor::Parsers::Ruby::Yard.new(repo_dir)
+      parser.process
+
+      assert(parser.yard_objects.any? { |o| o.respond_to?(:path) && o.path == "Thing#hello" },
+        "Expected the repo's .yardopts to be ignored so Thing#hello is still parsed")
+    end
+  end
 end

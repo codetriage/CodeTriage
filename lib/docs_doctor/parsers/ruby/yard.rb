@@ -86,7 +86,18 @@ module DocsDoctor
 
         def process(exclude = DEFAULT_EXCLUDE)
           require "yard"
+
+          # We run YARD against untrusted, user-submitted repositories, so it
+          # must never execute code that ships in the repo. Safe mode disables
+          # YARD's code-execution features (`-e/--load`, `--query`, custom
+          # template paths), and ignoring the repo's `.yardopts` file stops YARD
+          # from reading attacker-controlled options at all. Without this a repo
+          # could gain remote code execution via a malicious `.yardopts`
+          # (the same class of RCE abused against RubyDoc.info).
+          YARD::Config.options[:safe_mode] = true
+
           yard = YARD::CLI::Yardoc.new
+          yard.use_yardopts_file = false
 
           # yard.files       = files
           yard.excluded = exclude # http://rubydoc.org/gems/yard/YARD/Parser/SourceParser#parse-class_method
