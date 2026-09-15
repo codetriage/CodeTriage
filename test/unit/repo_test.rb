@@ -113,4 +113,36 @@ class RepoTest < ActiveSupport::TestCase
     assert_not repos.include?(subscribed_repo)
     assert repos.include?(unsubscribed_repo)
   end
+
+  test "#populate_docs! removes the working directory it cloned" do
+    repo = repos(:get_process_mem)
+    cloned_dir = nil
+
+    repo.fetcher.define_singleton_method(:clone) do
+      dir = send(:dir)
+      cloned_dir = dir
+      FileUtils.mkdir_p(File.join(dir, "lib"))
+      File.write(File.join(dir, "lib", "thing.rb"), "class Thing\n  def hello\n  end\nend\n")
+      dir
+    end
+
+    repo.populate_docs!(commit_sha: "abc123", has_subscribers: true)
+
+    refute_nil cloned_dir
+    refute Dir.exist?(cloned_dir),
+      "expected populate_docs! to clean up the temp dir it cloned"
+  end
+
+  test "#populate_docs! does not delete a caller-provided location" do
+    repo = repos(:get_process_mem)
+    location = Dir.mktmpdir
+    FileUtils.mkdir_p(File.join(location, "lib"))
+    File.write(File.join(location, "lib", "thing.rb"), "class Thing\n  def hello\n  end\nend\n")
+
+    repo.populate_docs!(commit_sha: "abc123", location: location, has_subscribers: true)
+
+    assert Dir.exist?(location), "a caller-provided location must not be deleted"
+  ensure
+    FileUtils.remove_entry(location) if location && Dir.exist?(location)
+  end
 end
