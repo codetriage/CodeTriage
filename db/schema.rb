@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_02_163145) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_16_000001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pg_stat_statements"
@@ -123,6 +123,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_02_163145) do
 
   create_table "repo_subscriptions", force: :cascade do |t|
     t.datetime "created_at", precision: nil, null: false
+    t.datetime "docs_last_click_at"
+    t.datetime "docs_reopt_in_sent_at"
     t.integer "email_limit", default: 1
     t.datetime "last_sent_at", precision: nil
     t.boolean "read", default: false
