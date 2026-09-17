@@ -51,6 +51,16 @@ namespace :schedule do
     end
   end
 
+  desc "Pause inactive doc subscriptions and email a one-click re-opt-in"
+  task pause_inactive_docs: :environment do
+    next if ENV["DISABLE_DOC_GENERATION"]
+
+    RepoSubscription.inactive_docs_needing_reopt_in.find_each(batch_size: 1000) do |sub|
+      UserMailer.resume_docs(repo_subscription: sub).deliver_later
+      sub.update_column(:docs_reopt_in_sent_at, Time.now)
+    end
+  end
+
   desc "Sends an email to invite users to engage once a week"
   task poke_inactive: :environment do
     next unless Date.today.tuesday?
