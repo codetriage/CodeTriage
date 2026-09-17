@@ -1,0 +1,13 @@
+Hi @<%= @user.github %>,
+
+It's been a while since you engaged with docs for **<%= @repo.full_name %>**, so we've paused doc suggestions for you.
+
+Want to keep helping? Re-enable them with one click:
+
+[Re-enable docs for <%= @repo.full_name %>](<%= resume_docs_url(@repo_subscription.signed_id(purpose: :resume_docs, expires_in: 30.days)) %>)
+
+--
+
+Go forth and make the world a better place
+
+[Help doctor more docs at codetriage.com](<%= root_url %>)

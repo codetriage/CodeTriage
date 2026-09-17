@@ -29,4 +29,15 @@ class UserMailerTest < ActionMailer::TestCase
       email.deliver_now
     end
   end
+
+  test "resume_docs renders and links to the repo" do
+    repo_sub = repo_subscriptions(:write_doc_only)
+    email = UserMailer.resume_docs(repo_subscription: repo_sub)
+
+    assert_emails 1 do
+      email.deliver_now
+    end
+    assert_match repo_sub.repo.full_name, email.html_part.body.to_s
+    assert_match "/resume", email.html_part.body.to_s
+  end
 end

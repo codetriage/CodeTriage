@@ -67,6 +67,18 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: subject)
   end
 
+  def resume_docs(repo_subscription:)
+    @repo_subscription = repo_subscription
+    @repo = repo_subscription.repo
+    return unless set_and_check_user(repo_subscription.user)
+
+    mail(
+      to: @user.email,
+      reply_to: "noreply@codetriage.com",
+      subject: "Want to keep getting docs for #{@repo.full_name}?"
+    )
+  end
+
   def send_triage(user:, assignment:, repo:, create: false)
     return unless set_and_check_user(user)
     @create = create
