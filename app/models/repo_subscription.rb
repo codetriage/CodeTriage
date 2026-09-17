@@ -3,6 +3,8 @@
 class RepoSubscription < ActiveRecord::Base
   DEFAULT_READ_LIMIT = 3
   DEFAULT_WRITE_LIMIT = 3
+  DOC_SUBSCRIBE_MIN_ACCOUNT_AGE = 7.days
+  DOC_ACTIVITY_WINDOW = 60.days
 
   validates :repo_id, uniqueness: {scope: :user_id}, presence: true
   validates :user_id, presence: true
@@ -14,6 +16,13 @@ class RepoSubscription < ActiveRecord::Base
   has_many :issue_assignments
   has_many :issues, through: :issue_assignments
   has_many :doc_assignments
+
+  scope :docs, -> { where(read: true).or(where(write: true)) }
+  scope :active_docs, -> { docs.where("docs_last_click_at > ?", DOC_ACTIVITY_WINDOW.ago) }
+  scope :inactive_docs_needing_reopt_in, lambda {
+    docs.where("docs_last_click_at <= ?", DOC_ACTIVITY_WINDOW.ago)
+      .where(docs_reopt_in_sent_at: nil)
+  }
 
   before_save :set_read_write
 
