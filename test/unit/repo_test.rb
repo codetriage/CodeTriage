@@ -145,4 +145,45 @@ class RepoTest < ActiveSupport::TestCase
   ensure
     FileUtils.remove_entry(location) if location && Dir.exist?(location)
   end
+
+  test "docs_subscriber_count counts only active doc subscriptions" do
+    repo = repos(:no_subscribers)
+    sub = RepoSubscription.create!(repo: repo, user: users(:schneems), write_limit: 1)
+    sub.update_column(:docs_last_click_at, Time.current)
+
+    repo.force_issues_count_sync!
+    assert_equal 1, repo.reload.docs_subscriber_count
+
+    sub.update_column(:docs_last_click_at, (RepoSubscription::DOC_ACTIVITY_WINDOW + 1.day).ago)
+    repo.force_issues_count_sync!
+    assert_equal 0, repo.reload.docs_subscriber_count
+  end
+
+  test "has_doc_subscribers? is true only when a read/write subscription exists" do
+    assert repos(:issue_triage_sandbox).has_doc_subscribers? # write_doc_only
+    refute repos(:no_subscribers).has_doc_subscribers?
+  end
+
+  test "has_active_doc_subscribers? requires a recent doc click" do
+    repo = repos(:issue_triage_sandbox)
+    refute repo.has_active_doc_subscribers? # write_doc_only has nil docs_last_click_at
+
+    repo_subscriptions(:write_doc_only).update_column(:docs_last_click_at, Time.current)
+    assert repo.has_active_doc_subscribers?
+  end
+
+  test "doc_opt_in_open_to? gates fresh accounts unless the repo is already active" do
+    repo = repos(:no_subscribers)
+    old_user = users(:schneems) # created 2012
+    new_user = users(:mockstar)
+    new_user.update_column(:created_at, Time.current)
+
+    assert repo.doc_opt_in_open_to?(old_user)
+    assert repo.doc_opt_in_open_to?(nil) # logged-out visitor sees the CTA
+    refute repo.doc_opt_in_open_to?(new_user)
+
+    active = RepoSubscription.create!(repo: repo, user: old_user, write_limit: 1)
+    active.update_column(:docs_last_click_at, Time.current)
+    assert repo.doc_opt_in_open_to?(new_user)
+  end
 end
