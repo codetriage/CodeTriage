@@ -24,6 +24,7 @@ class DocMethodsController < ApplicationController
       assignment.user.record_click!
       assignment.update(clicked: true)
       assignment.user.update(last_clicked_at: Time.now)
+      sub.update_columns(docs_last_click_at: Time.now, docs_reopt_in_sent_at: nil)
       redirect_to doc_method_url(doc), allow_other_host: true
     else
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
@@ -42,6 +43,7 @@ class DocMethodsController < ApplicationController
       assignment.user.record_click!
       assignment.update(clicked: true)
       assignment.user.update(last_clicked_at: Time.now)
+      sub.update_columns(docs_last_click_at: Time.now, docs_reopt_in_sent_at: nil)
       redirect_to doc.to_github, allow_other_host: true
     else
       flash[:notice] = "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
