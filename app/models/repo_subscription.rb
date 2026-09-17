@@ -9,6 +9,7 @@ class RepoSubscription < ActiveRecord::Base
   validates :repo_id, uniqueness: {scope: :user_id}, presence: true
   validates :user_id, presence: true
   validates :email_limit, numericality: {less_than: 21, greater_than_or_equal_to: 0}
+  validate :doc_subscription_allowed, if: :newly_enabling_docs?
 
   belongs_to :repo, counter_cache: :subscribers_count, touch: true
   belongs_to :user
@@ -25,6 +26,7 @@ class RepoSubscription < ActiveRecord::Base
   }
 
   before_save :set_read_write
+  before_save :seed_docs_last_click_at
 
   def set_read_write
     self.read = !(read_limit.blank? || read_limit.zero?)
@@ -79,5 +81,41 @@ class RepoSubscription < ActiveRecord::Base
 
   def self.for(repo_id)
     where(repo_id: repo_id)
+  end
+
+  def seed_docs_last_click_at
+    if (read || write) && docs_last_click_at.nil?
+      self.docs_last_click_at = Time.now
+    end
+    true
+  end
+
+  private
+
+  # The gate fires only when a subscription is newly becoming a doc sub. We read
+  # intent from the incoming limits (mirroring set_read_write) because the
+  # read/write booleans are not recomputed until the before_save callback, which
+  # runs after validation.
+  def newly_enabling_docs?
+    will_be_doc_subscription? && !was_doc_subscription?
+  end
+
+  def will_be_doc_subscription?
+    doc_limit?(read_limit) || doc_limit?(write_limit)
+  end
+
+  def was_doc_subscription?
+    !!read_in_database || !!write_in_database
+  end
+
+  def doc_limit?(limit)
+    !(limit.blank? || limit.zero?)
+  end
+
+  def doc_subscription_allowed
+    return if user && user.created_at <= DOC_SUBSCRIBE_MIN_ACCOUNT_AGE.ago
+    return if repo && repo.repo_subscriptions.active_docs.where.not(id: id).exists?
+
+    errors.add(:base, "You can turn on docs once your account is 7 days old, or if this repo already has active doc subscribers.")
   end
 end
