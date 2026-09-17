@@ -13,6 +13,8 @@ namespace :schedule do
 
   desc "pulls in files from repos and adds them to the database"
   task process_repos: :environment do
+    next if ENV["DISABLE_DOC_GENERATION"]
+
     Repo.active.where("docs_subscriber_count > 0").select(:id).find_each(batch_size: 1000) do |repo|
       PopulateDocsJob.perform_later(repo.id)
     end

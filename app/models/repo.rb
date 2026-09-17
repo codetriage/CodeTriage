@@ -80,6 +80,7 @@ class Repo < ActiveRecord::Base
   end
 
   def populate_docs!(commit_sha: commit_sha_fetcher.commit_sha, location: nil, has_subscribers: !docs_subscriber_count.zero?)
+    return "Skipped, doc generation disabled" if ENV["DISABLE_DOC_GENERATION"]
     return "Skipped, lang not supported" unless can_doctor_docs?
     return "Skipped, no commit SHA" unless commit_sha
     return "Skipped, no subscribers" unless has_subscribers

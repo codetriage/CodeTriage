@@ -186,4 +186,15 @@ class RepoTest < ActiveSupport::TestCase
     active.update_column(:docs_last_click_at, Time.current)
     assert repo.doc_opt_in_open_to?(new_user)
   end
+
+  test "populate_docs! short-circuits when doc generation is disabled" do
+    ENV["DISABLE_DOC_GENERATION"] = "1"
+    repo = repos(:issue_triage_sandbox)
+
+    # Pass commit_sha so the default-arg fetcher (network) is never evaluated;
+    # the kill-switch guard is the first line of the method body.
+    assert_equal "Skipped, doc generation disabled", repo.populate_docs!(commit_sha: "abc123")
+  ensure
+    ENV.delete("DISABLE_DOC_GENERATION")
+  end
 end
