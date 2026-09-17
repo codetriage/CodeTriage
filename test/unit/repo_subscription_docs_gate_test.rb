@@ -29,6 +29,16 @@ class RepoSubscriptionDocsGateTest < ActiveSupport::TestCase
     assert sub.valid?
   end
 
+  test "still blocks a fresh account when the repo's only other doc sub is stale" do
+    repo = repos(:no_subscribers)
+    other = RepoSubscription.create!(repo: repo, user: users(:schneems), write_limit: 1)
+    other.update_column(:docs_last_click_at, (RepoSubscription::DOC_ACTIVITY_WINDOW + 1.day).ago)
+
+    sub = new_account.repo_subscriptions.new(repo: repo, read_limit: 1)
+    refute sub.valid?
+    assert_includes sub.errors[:base].join, "your account is 7 days old"
+  end
+
   test "does not re-gate an existing doc subscription that only changes its limits" do
     repo = repos(:no_subscribers)
     sub = users(:mockstar).repo_subscriptions.create!(repo: repo, write_limit: 1) # allowed while old
