@@ -64,4 +64,23 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     assert_equal flash[:error], "Something went wrong"
     assert_redirected_to repo_path(repo_subscription.repo)
   end
+
+  test "resume reactivates a doc subscription from a valid signed id" do
+    sub = repo_subscriptions(:write_doc_only)
+    sub.update_columns(docs_last_click_at: 90.days.ago, docs_reopt_in_sent_at: 30.days.ago)
+
+    get :resume, params: {signed_id: sub.signed_id(purpose: :resume_docs)}
+
+    sub.reload
+    assert sub.docs_last_click_at > 1.minute.ago
+    assert_nil sub.docs_reopt_in_sent_at
+    assert_redirected_to repo_path(sub.repo)
+  end
+
+  test "resume with an invalid signed id redirects to root with an error" do
+    get :resume, params: {signed_id: "not-a-valid-signed-id"}
+
+    assert_equal "That re-enable link is invalid or has expired.", flash[:error]
+    assert_redirected_to :root
+  end
 end
