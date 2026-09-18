@@ -22,6 +22,16 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     assert_redirected_to repo_path(repo)
   end
 
+  test "blocked doc subscription surfaces the gate reason instead of a generic error" do
+    user = users(:mockstar)
+    user.update_column(:created_at, Time.current)
+    sign_in user
+    repo = repos(:no_subscribers)
+    post :create, params: {repo_subscription: {repo_id: repo.id, read: true, write: true, read_limit: 3, write_limit: 3}}
+    assert_includes flash[:error], "You can turn on docs once your account is 7 days old"
+    assert_redirected_to repo_path(repo)
+  end
+
   test "not update schneems' subscription when signed in as mockstar" do
     sign_in users(:mockstar)
     assert_raise ActiveRecord::RecordNotFound do
@@ -61,7 +71,7 @@ class RepoSubscriptionsControllerTest < ActionController::TestCase
     sign_in users(:schneems)
     patch :update, params: {id: repo_subscription.id,
                             repo_subscription: {email_limit: -1}}
-    assert_equal flash[:error], "Something went wrong"
+    assert_includes flash[:error], "must be greater than or equal to 0"
     assert_redirected_to repo_path(repo_subscription.repo)
   end
 

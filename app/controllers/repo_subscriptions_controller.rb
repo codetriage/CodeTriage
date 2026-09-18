@@ -9,7 +9,7 @@ class RepoSubscriptionsController < ApplicationController
       SendSingleTriageEmailJob.perform_later(@repo_subscription.id)
       redirect_to @repo_subscription.repo, notice: I18n.t("repo_subscriptions.subscribed")
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = @repo_subscription.errors.full_messages.to_sentence.presence || "Something went wrong"
       redirect_to repo_path(@repo_subscription.try(:repo) || Repo.find(repo_subscription_params[:repo_id]))
     end
   end
@@ -26,7 +26,7 @@ class RepoSubscriptionsController < ApplicationController
     if @repo_sub.save
       flash[:success] = "Preferences updated!"
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = @repo_sub.errors.full_messages.to_sentence.presence || "Something went wrong"
     end
     redirect_to repo_path(@repo_sub.repo)
   end
