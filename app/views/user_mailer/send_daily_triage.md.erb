@@ -46,6 +46,16 @@ Hello @<%= @user.github %>,
 
 <% end %>
 
+<% if @paused_doc_subscriptions.any? %>
+## Paused docs
+
+You haven't clicked a doc from these repos in a while. We stop updating docs when nobody reads them. Keep them coming with one click, or turn them off by setting your doc limits to 0.
+
+<% @paused_doc_subscriptions.each do |sub| %>
+- **<%= sub.repo.full_name %>**: [Keep my docs](<%= resume_docs_url(sub.signed_id(purpose: :resume_docs, expires_in: 30.days)) %>) or [change doc settings](<%= repo_url(sub.repo) %>)
+<% end %>
+
+<% end %>
 ---
 
 Go forth and make the world a better place!

@@ -45,7 +45,11 @@ div class="subpage-content-wrapper #{ @repo.weight }"
         p.repo-instructions
           | Receive a documented method or class from your favorite GitHub repos in your inbox every day. If you're really pro, receive undocumented methods or classes and supercharge your commit history.
         - if @repo.can_doctor_docs?
-          = link_to_or_log_in(text: "Triage Docs", path: repo_subscriptions_path(id: @repo_sub.try(:id), repo_subscription: { repo_id: @repo.id, read: true, write: true,  read_limit: 3, write_limit: 3, email_limit: @repo_sub.try(:email_limit) || 0 }), html_class: "repo-action")
+          - if @repo.doc_opt_in_open_to?(current_user)
+            = link_to_or_log_in(text: "Triage Docs", path: repo_subscriptions_path(id: @repo_sub.try(:id), repo_subscription: { repo_id: @repo.id, read: true, write: true,  read_limit: 3, write_limit: 3, email_limit: @repo_sub.try(:email_limit) || 0 }), html_class: "repo-action")
+          - else
+            p.repo-instructions You can turn on docs once your account is 7 days old, or if this repo already has active doc subscribers.
+            = link_to "Docs locked", '#', class: "button inactive repo-action"
         - else
           = link_to "#{@repo.language} not yet supported", '#', class: "button inactive repo-action"
 
