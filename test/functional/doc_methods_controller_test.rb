@@ -26,4 +26,19 @@ class DocMethodsControllerTest < ActionController::TestCase
     assert flash[:notice].eql? "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
     assert_redirected_to :root
   end
+
+  test "click_source_redirect with a DocAssignment redirects to the github source url" do
+    DocAssignment.create(doc_method_id: @triage_doc.id, repo_subscription_id: @repo_sub.id)
+
+    get :click_source_redirect, params: {id: @triage_doc.id, user_id: @user.id}
+
+    assert_redirected_to @triage_doc.to_github
+  end
+
+  test "click_source_redirect without any DocAssignment returns to root and displays an error" do
+    get :click_source_redirect, params: {id: @triage_doc.id, user_id: @user.id}
+
+    assert flash[:notice].eql? "Bad url, if this problem persists please open an issue github.com/codetriage/codetriage"
+    assert_redirected_to :root
+  end
 end
