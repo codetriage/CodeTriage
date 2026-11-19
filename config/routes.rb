@@ -48,6 +48,7 @@ CodeTriage::Application.routes.draw do
   get "/doc_methods/:id/users/:user_id/source_click", to: "doc_methods#click_source_redirect", as: :doc_source_click
 
   resources :repo_subscriptions, only: [:create, :destroy, :update]
+  get "/repo_subscriptions/:signed_id/resume", to: "repo_subscriptions#resume", as: :resume_docs
 
   get "mail_view", to: redirect("rails/mailers")
 

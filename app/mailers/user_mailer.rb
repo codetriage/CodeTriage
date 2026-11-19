@@ -34,6 +34,7 @@ class UserMailer < ActionMailer::Base
       read_doc_ids: read_doc_ids,
       write_doc_ids: write_doc_ids
     )
+    @paused_doc_subscriptions = user.repo_subscriptions.inactive_docs.includes(:repo)
 
     subject = +""
     subject << if user.effective_streak_count.zero?

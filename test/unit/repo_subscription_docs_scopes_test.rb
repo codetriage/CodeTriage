@@ -1,0 +1,39 @@
+# frozen_string_literal: true
+
+require "test_helper"
+
+class RepoSubscriptionDocsScopesTest < ActiveSupport::TestCase
+  # write_doc_only is the only fixture with write=true persisted. The others
+  # (schneems_to_triage, read_doc_only) set only limits, which fixtures do not
+  # translate into the read/write booleans, so they are NOT in the docs scope.
+  test "docs scope selects only read-or-write subscriptions" do
+    assert_includes RepoSubscription.docs, repo_subscriptions(:write_doc_only)
+
+    # test read-arm of the OR condition
+    read_sub = repo_subscriptions(:read_doc_only)
+    read_sub.update_columns(read: true, write: false)
+    assert_includes RepoSubscription.docs, read_sub
+
+    refute_includes RepoSubscription.docs, repo_subscriptions(:schneems_to_triage)
+  end
+
+  test "active_docs excludes a doc sub with a stale docs_last_click_at" do
+    sub = repo_subscriptions(:write_doc_only)
+
+    sub.update_column(:docs_last_click_at, Time.current)
+    assert_includes RepoSubscription.active_docs, sub
+
+    sub.update_column(:docs_last_click_at, (RepoSubscription::DOC_ACTIVITY_WINDOW + 1.day).ago)
+    refute_includes RepoSubscription.active_docs, sub
+  end
+
+  test "inactive_docs selects doc subs with a stale docs_last_click_at" do
+    sub = repo_subscriptions(:write_doc_only)
+
+    sub.update_column(:docs_last_click_at, (RepoSubscription::DOC_ACTIVITY_WINDOW + 1.day).ago)
+    assert_includes RepoSubscription.inactive_docs, sub
+
+    sub.update_column(:docs_last_click_at, Time.current)
+    refute_includes RepoSubscription.inactive_docs, sub
+  end
+end

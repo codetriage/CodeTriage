@@ -39,6 +39,23 @@ class Repo < ActiveRecord::Base
     class_for_doc_language.present?
   end
 
+  def has_active_doc_subscribers?
+    repo_subscriptions.active_docs.exists?
+  end
+
+  def has_doc_subscribers?
+    repo_subscriptions.docs.exists?
+  end
+
+  # Advisory check for the doc opt-in CTA. Mirrors the RepoSubscription entry
+  # gate. The model validation remains the authoritative enforcement.
+  # Callers must check can_doctor_docs? separately.
+  def doc_opt_in_open_to?(user)
+    return true if has_active_doc_subscribers?
+
+    user.nil? || user.created_at <= RepoSubscription::DOC_SUBSCRIBE_MIN_ACCOUNT_AGE.ago
+  end
+
   def fetcher
     @fetcher ||= GithubFetcher::Repo.new(user_name: user_name, name: name)
   end
@@ -63,6 +80,7 @@ class Repo < ActiveRecord::Base
   end
 
   def populate_docs!(commit_sha: commit_sha_fetcher.commit_sha, location: nil, has_subscribers: !docs_subscriber_count.zero?)
+    return "Skipped, doc generation disabled" if ENV["SKIP_DOC_GENERATION"]
     return "Skipped, lang not supported" unless can_doctor_docs?
     return "Skipped, no commit SHA" unless commit_sha
     return "Skipped, no subscribers" unless has_subscribers
@@ -257,13 +275,6 @@ class Repo < ActiveRecord::Base
   end
 
   private def query_docs_subscriber_count
-    sql = <<~SQL
-      SELECT count(*)
-      FROM repo_subscriptions
-      WHERE
-        repo_id = :repo_id AND
-        (read = true OR write = true)
-    SQL
-    RepoSubscription.count_by_sql([sql, {repo_id: id}])
+    repo_subscriptions.active_docs.count
   end
 end
